@@ -3,6 +3,7 @@ import type { ToolRow } from "@/types/database";
 
 export type ToolItem = MockTool & {
   category_id?: string;
+  cover_url?: string | null;
   created_at?: string;
   updated_at?: string;
   target_users?: string[];

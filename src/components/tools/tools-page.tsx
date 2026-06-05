@@ -15,7 +15,7 @@ type ToolsPageProps = {
 };
 
 const allOption = "全部";
-const FEATURED_COUNT = 3;
+const FEATURED_COUNT = 2;
 
 export function ToolsPage({ tools }: ToolsPageProps) {
   const [query, setQuery] = useState("");
@@ -76,9 +76,8 @@ export function ToolsPage({ tools }: ToolsPageProps) {
   };
 
   const featuredTools = filteredTools.slice(0, FEATURED_COUNT);
-  const remainingTools = filteredTools.slice(FEATURED_COUNT);
   const hasFeatured = featuredTools.length > 0;
-  const hasRemaining = remainingTools.length > 0;
+  const hasTools = filteredTools.length > 0;
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f8fbff]">
@@ -118,7 +117,7 @@ export function ToolsPage({ tools }: ToolsPageProps) {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                 {featuredTools.map((tool) => (
                   <FeaturedToolCard key={tool.id} tool={tool} />
                 ))}
@@ -133,26 +132,14 @@ export function ToolsPage({ tools }: ToolsPageProps) {
             <div className="mb-4 flex items-center gap-3 sm:mb-5">
               <span className="h-8 w-1 rounded-full bg-gradient-to-b from-[#14b8a6] to-[#0ea5e9]" />
               <h2 className="text-lg font-black text-[#0f172a] sm:text-xl">
-                {hasFeatured ? "全部工具" : "工具列表"}
+                全部工具
               </h2>
               <span className="text-xs font-semibold text-slate-400">
-                {remainingTools.length > 0
-                  ? `共 ${remainingTools.length} 个`
-                  : filteredTools.length > 0 && !hasRemaining
-                    ? `共 ${filteredTools.length} 个`
-                    : ""}
+                {hasTools ? `共 ${filteredTools.length} 个` : ""}
               </span>
             </div>
 
-            {hasRemaining ? (
-              <ToolsGrid tools={remainingTools} onClear={clearFilters} />
-            ) : hasFeatured && !hasRemaining ? (
-              <p className="rounded-2xl border border-dashed border-slate-200 bg-white/50 px-5 py-8 text-center text-sm text-slate-400">
-                以上为全部匹配工具
-              </p>
-            ) : (
-              <ToolsGrid tools={filteredTools} onClear={clearFilters} />
-            )}
+            <ToolsGrid tools={filteredTools} onClear={clearFilters} />
           </div>
         </section>
 

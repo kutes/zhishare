@@ -41,7 +41,7 @@ export function ToolsFilterPanel({
               type="search"
               value={query}
               onChange={(event) => onQueryChange(event.target.value)}
-              placeholder="搜索工具名称、简介或标签"
+              placeholder="搜索工具名称、功能、平台或关键词..."
               className="h-11 w-full rounded-[16px] border border-white/90 bg-white/80 pl-10 pr-4 text-sm font-semibold text-[#0f172a] shadow-[inset_0_2px_10px_rgba(15,23,42,0.04)] outline-none transition placeholder:text-slate-400 focus:border-cyan-300 focus:bg-white focus:ring-4 focus:ring-cyan-100 sm:h-12 sm:text-base"
             />
           </div>

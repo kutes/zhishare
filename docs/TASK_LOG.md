@@ -2,6 +2,82 @@
 
 ## 2026-06-06
 
+任务：重新设计首页 `/`，打造中文工具与知识发现站正式门面。
+
+改动文件：
+- `src/app/page.tsx`
+- `src/components/home/home-page.tsx`
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-search-section.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-article-card.tsx`
+- 新增 `src/components/home/home-trust-section.tsx`
+- 新增 `src/components/home/home-sponsor-banner.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 首页结构调整为：Hero 首页主视觉、搜索入口、核心入口卡片、精选工具预览、最新文章预览、收录原则 / 可信说明、合作推广横幅。
+- 首页 Hero 更新为“中文工具与知识发现站”，主标题为“发现值得信任的工具、方法和实用知识”，副标题说明知享持续整理工具、开源项目和教程。
+- Hero 右侧“今日发现看板”只显示真实数据：published 工具总数、published 文章总数、当前分类数量；移动端隐藏右侧看板，避免首屏过长。
+- 删除首页旧的 `79 / 34 / 12` 假数据和“内容雷达”表达。
+- 搜索入口改为全站搜索卡片，输入关键词后跳转 `/search?q=关键词`，空关键词跳转 `/search`。
+- 核心入口卡片改为 4 个入口：工具库、实用文章、推荐工具、版权与反馈。
+- 精选工具区从真实 published tools 中取前 3 个，只显示“查看详情”，不显示“访问官网”。
+- 最新文章区从真实 published articles 中取前 3 篇，卡片展示标题、摘要、分类和发布时间 fallback。
+- 新增收录原则区，展示来源清晰、功能明确、风险提醒、人工整理 4 个原则。
+- 新增首页合作推广横幅，按钮链接到现有 `/submit`，不新增商家合作页面。
+- 首页添加 `dynamic = "force-dynamic"`、`revalidate = 0`、`fetchCache = "force-no-store"` 和 `noStore()`，避免后台发布内容后首页长期缓存。
+- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/admin/*`、`/tools/[slug]`、`/tools` 页面、投稿页、投诉页、登录页、Turnstile、sitemap、robots 或文章详情业务逻辑。
+- 已运行 `npm run build`，通过。
+- 构建日志确认当前 published 工具包含 `open-design,raycast,chatgpt`，首页 `/` 已为动态渲染页面。
+
+下一步：
+- 打开首页 `/` 检查 Hero、搜索入口、4 个入口卡片、精选工具、最新文章、收录原则和合作推广横幅；再用手机尺寸检查单列布局和无横向滚动。
+
+## 2026-06-06
+
+任务：严格对齐 `/tools` 工具库结构性重设计要求。
+
+改动文件：
+- `src/components/tools/tools-page.tsx`
+- `src/components/tools/ToolsHero.tsx`
+- `src/components/tools/ToolsFilterPanel.tsx`
+- `src/components/tools/FeaturedToolCard.tsx`
+- `src/components/tools/CompactToolCard.tsx`
+- `src/components/tools/SponsorBanner.tsx`
+- `src/components/tools/tool-card-utils.ts`
+- `src/lib/db/tools.ts`
+- `src/types/tool.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 执行前已检查 `git status`，工作区干净，因此无需做保护提交。
+- 确认 `/tools` 已是 Hero、搜索筛选栏、精选推荐、全部工具、合作推广横幅的结构，本次做严格对齐修正。
+- 精选推荐数量改为从 `filteredTools` 取前 2 个，符合“精选推荐横向大卡区”的数据规则。
+- 全部工具区改为继续展示完整 `filteredTools`，不再把精选工具从全部工具中移除，避免用户误以为内容丢失。
+- 精选推荐桌面端固定为 2 列布局，移动端 1 列。
+- 搜索框 placeholder 改为 `搜索工具名称、功能、平台或关键词...`。
+- Hero 右侧工具库概览补充明确 `LIVE` 角标，并继续只显示真实数据：工具总数、分类数量、标签数量。
+- `cover_url` 通过 `src/lib/db/tools.ts` 最小透传到 `ToolItem`，未改数据库结构。
+- `ToolItem` 类型补充 `cover_url?: string | null`，便于卡片安全读取封面图。
+- 工具视觉 fallback 补强：缺少标题显示“未命名工具”，缺少简介显示“暂无简介”，缺少 cover_url 使用渐变背景，空标签会过滤。
+- Featured / Compact 卡片改为 CSS background 展示 cover_url，避免 `<img>` 构建警告，同时保留渐变 fallback。
+- 合作推广横幅按钮改为普通 `button`，不新增商家合作页面；右侧卖点改为编号模块，更符合产品化视觉。
+- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/admin/*`、`/tools/[slug]` 业务逻辑、投稿页、投诉页、登录页、Turnstile、sitemap、robots 或文章页。
+- 列表页仍只显示“查看详情”，没有新增“访问官网”按钮。
+- 已运行 `npm run build`，通过且无图片 lint 警告。
+- 构建日志确认当前 published 工具包含 `open-design,raycast,chatgpt`，`/tools` 仍为动态渲染页面。
+
+下一步：
+- 打开 `/tools` 检查首屏密度、精选推荐 2 列、全部工具完整列表、合作推广横幅和手机端单列布局。
+
+## 2026-06-06
+
 任务：重新设计 `/tools` 工具库页面 —— 结构性视觉改版。
 
 改动文件：

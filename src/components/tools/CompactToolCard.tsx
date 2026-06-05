@@ -24,6 +24,11 @@ export function CompactToolCard({ tool }: CompactToolCardProps) {
   const gradient = getCategoryGradient(tool.category);
   const accentClass = getCategoryAccentClass(tool.category);
   const visibleTags = getVisibleTags(tool, 3);
+  const logoStyle = coverUrl
+    ? {
+        backgroundImage: `url("${coverUrl}")`,
+      }
+    : undefined;
 
   return (
     <article className="glass-card soft-card-hover group flex min-h-[14rem] min-w-0 flex-col p-5">
@@ -31,28 +36,13 @@ export function CompactToolCard({ tool }: CompactToolCardProps) {
       <div className="flex items-start gap-3">
         {/* Logo / fallback */}
         <div
-          className={`flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-gradient-to-br ${gradient} shadow-sm`}
+          className={`flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-gradient-to-br bg-cover bg-center ${gradient} shadow-sm`}
+          style={logoStyle}
+          aria-label={coverUrl ? `${title} 图标` : undefined}
         >
-          {coverUrl ? (
-            <img
-              src={coverUrl}
-              alt={title}
-              className="h-full w-full object-cover"
-              onError={(e) => {
-                const el = e.target as HTMLImageElement;
-                el.style.display = "none";
-                const parent = el.parentElement;
-                if (parent) {
-                  const span = document.createElement("span");
-                  span.className = "text-xs font-black text-white/90";
-                  span.textContent = initials;
-                  parent.appendChild(span);
-                }
-              }}
-            />
-          ) : (
+          {!coverUrl ? (
             <span className="text-xs font-black text-white/90">{initials}</span>
-          )}
+          ) : null}
         </div>
 
         <div className="min-w-0 flex-1">

@@ -24,29 +24,25 @@ export function FeaturedToolCard({ tool }: FeaturedToolCardProps) {
   const gradient = getCategoryGradient(tool.category);
   const accentClass = getCategoryAccentClass(tool.category);
   const visibleTags = getVisibleTags(tool, 3);
+  const coverStyle = coverUrl
+    ? {
+        backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.12), rgba(14, 165, 233, 0.08)), url("${coverUrl}")`,
+      }
+    : undefined;
 
   return (
-    <article className="glass-card soft-card-hover group flex min-w-0 flex-col overflow-hidden sm:flex-row">
+    <article className="glass-card soft-card-hover group flex min-w-0 flex-col overflow-hidden sm:min-h-[230px] sm:flex-row">
       {/* Left: cover image or gradient fallback */}
-      <div className="relative h-44 shrink-0 overflow-hidden sm:h-auto sm:w-56 lg:w-64">
-        {coverUrl ? (
-          <img
-            src={coverUrl}
-            alt={title}
-            className="h-full w-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-              (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
-            }}
-          />
-        ) : null}
-        <div
-          className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${gradient} ${coverUrl ? "hidden" : ""}`}
-        >
+      <div
+        className={`relative flex h-44 shrink-0 items-center justify-center overflow-hidden bg-gradient-to-br bg-cover bg-center ${gradient} sm:h-auto sm:w-56 lg:w-64`}
+        style={coverStyle}
+        aria-label={coverUrl ? `${title} 封面` : undefined}
+      >
+        {!coverUrl ? (
           <span className="text-3xl font-black text-white/90 drop-shadow-lg sm:text-4xl">
             {initials}
           </span>
-        </div>
+        ) : null}
       </div>
 
       {/* Right: content */}

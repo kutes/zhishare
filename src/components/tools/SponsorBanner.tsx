@@ -1,17 +1,17 @@
 export function SponsorBanner() {
   const sellingPoints = [
     {
-      emoji: "📈",
+      mark: "01",
       label: "高质量流量",
       desc: "精准触达寻找工具的用户",
     },
     {
-      emoji: "🏷️",
+      mark: "02",
       label: "品牌曝光",
       desc: "在专业工具导航站展示",
     },
     {
-      emoji: "🤝",
+      mark: "03",
       label: "灵活合作",
       desc: "支持多种推广形式",
     },
@@ -35,12 +35,12 @@ export function SponsorBanner() {
           <p className="mt-3 text-sm leading-6 text-slate-500 sm:text-base">
             精准触达正在寻找工具、软件和效率方案的用户。
           </p>
-          <a
-            href="mailto:contact@zhishare.com"
+          <button
+            type="button"
             className="mt-5 inline-flex h-11 items-center justify-center rounded-[14px] bg-[#0f172a] px-6 text-sm font-bold text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-lg"
           >
             了解合作
-          </a>
+          </button>
         </div>
 
         {/* Right: selling points */}
@@ -50,8 +50,8 @@ export function SponsorBanner() {
               key={point.label}
               className="flex items-center gap-3 rounded-[18px] border border-white/80 bg-white/60 p-3.5 shadow-inner backdrop-blur sm:flex-col sm:items-start sm:gap-2"
             >
-              <span className="text-xl sm:text-2xl" role="img" aria-hidden="true">
-                {point.emoji}
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-gradient-to-br from-[#2563eb] to-[#0ea5e9] text-xs font-black text-white shadow-sm">
+                {point.mark}
               </span>
               <div>
                 <p className="text-sm font-bold text-[#0f172a]">{point.label}</p>

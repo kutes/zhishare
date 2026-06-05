@@ -1,12 +1,12 @@
 import type { ToolItem } from "@/types/tool";
 
 const categoryGradients: Record<string, string> = {
-  "AI 工具": "from-violet-500 via-purple-500 to-fuchsia-500",
-  "在线工具": "from-sky-500 via-cyan-500 to-teal-500",
-  "开源项目": "from-emerald-500 via-green-500 to-lime-500",
-  "效率软件": "from-amber-500 via-orange-500 to-rose-500",
-  "设计工具": "from-pink-500 via-rose-500 to-red-500",
-  "开发工具": "from-blue-500 via-indigo-500 to-violet-500",
+  "AI 工具": "from-cyan-400 via-emerald-500 to-slate-900",
+  "在线工具": "from-sky-300 via-cyan-400 to-teal-500",
+  "开源项目": "from-blue-500 via-cyan-500 to-emerald-500",
+  "效率软件": "from-violet-500 via-indigo-500 to-slate-900",
+  "设计工具": "from-pink-400 via-violet-500 to-orange-400",
+  "开发工具": "from-blue-500 via-slate-700 to-slate-950",
   "知识管理": "from-cyan-500 via-teal-500 to-emerald-500",
 };
 
@@ -20,12 +20,12 @@ const categoryAccentColors: Record<string, string> = {
   "知识管理": "bg-cyan-100 text-cyan-700 border-cyan-200",
 };
 
-const defaultGradient = "from-slate-500 via-slate-600 to-slate-700";
+const defaultGradient = "from-sky-300 via-cyan-200 to-slate-700";
 const defaultAccent = "bg-slate-100 text-slate-700 border-slate-200";
 
 export function getToolInitials(title: string): string {
   if (!title || title.trim().length === 0) {
-    return "?";
+    return "工";
   }
 
   const text = title.trim();
@@ -64,12 +64,11 @@ export function getCategoryAccentClass(categoryName: string): string {
 
 export function getToolSummary(tool: ToolItem): string {
   // ToolItem.name = display name, ToolItem.tagline = one-liner, ToolItem.description = full text
-  return tool.tagline || tool.description || "";
+  return tool.tagline || tool.description || "暂无简介";
 }
 
 export function getToolCoverUrl(tool: ToolItem): string | null {
-  // cover_url may exist at runtime from DB rows even if not in ToolItem type
-  const cover = (tool as Record<string, unknown>).cover_url;
+  const cover = tool.cover_url;
   if (typeof cover === "string" && cover.trim().length > 0) {
     return cover.trim();
   }
@@ -78,7 +77,7 @@ export function getToolCoverUrl(tool: ToolItem): string | null {
 
 export function getToolCardTitle(tool: ToolItem): string {
   // normalizeTool stores the DB title as `name`
-  return tool.name || tool.slug || "";
+  return tool.name || tool.slug || "未命名工具";
 }
 
 export function getToolSlug(tool: ToolItem): string {
@@ -90,5 +89,6 @@ export function getVisibleTags(tool: ToolItem, maxCount = 4): string[] {
   if (!Array.isArray(tagList)) {
     return [];
   }
-  return tagList.slice(0, maxCount);
+
+  return tagList.map((tag) => tag.trim()).filter(Boolean).slice(0, maxCount);
 }

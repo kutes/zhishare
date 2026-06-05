@@ -62,7 +62,7 @@ export async function getToolBySlug(slug: string): Promise<ToolItem | null> {
   const categoryMap = buildCategoryNameMap(await fetchCategoryRows(client));
   const tagMap = await fetchToolTagMap(client, [String(data.id)]);
 
-  return normalizeTool(data, {
+  return normalizeToolWithCover(data, {
     categoryName: data.category_id ? categoryMap.get(String(data.category_id)) : undefined,
     tags: tagMap.get(String(data.id)),
   });
@@ -104,7 +104,7 @@ export async function getRelatedTools(categoryId: string | undefined, currentToo
   );
 
   return rows.map((row) =>
-    normalizeTool(row, {
+    normalizeToolWithCover(row, {
       categoryName: row.category_id ? categoryMap.get(String(row.category_id)) : undefined,
       tags: tagMap.get(String(row.id)),
     }),
@@ -252,11 +252,24 @@ async function fetchPublishedToolsFromSupabase(): Promise<ToolItem[]> {
   );
 
   return rows.map((row) =>
-    normalizeTool(row, {
+    normalizeToolWithCover(row, {
       categoryName: row.category_id ? categoryMap.get(String(row.category_id)) : undefined,
       tags: tagMap.get(String(row.id)),
     }),
   );
+}
+
+function normalizeToolWithCover(
+  row: ToolRow,
+  options: {
+    categoryName?: string;
+    tags?: string[];
+  } = {},
+): ToolItem {
+  return {
+    ...normalizeTool(row, options),
+    cover_url: row.cover_url ?? null,
+  };
 }
 
 async function fetchToolTagMap(client: SupabaseServerClient, toolIds: string[]) {
