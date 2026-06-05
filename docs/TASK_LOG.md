@@ -2,6 +2,30 @@
 
 ## 2026-06-05
 
+任务：升级 `/tools` 页面上半部分视觉，完成工具库视觉改版第 2 步。
+
+改动文件：
+- `src/components/tools/ToolsHero.tsx`
+- `src/components/tools/ToolsFilterPanel.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- `ToolsHero` 改为浅蓝白渐变 Hero，增加柔和蓝色光晕和桌面端左右布局。
+- Hero 左侧更新为“精选工具库”小标签、指定主标题、副标题和 5 个工具类型 chips。
+- Hero 右侧改为玻璃拟态“筛选控制台”，显示 `LIVE`、当前已发布工具数量、筛选维度和“先看详情，再去官网”的访问逻辑。
+- `ToolsFilterPanel` 改为更明显的玻璃拟态筛选面板，包含标题、副标题、大搜索框、清空筛选按钮、分类 chips、标签 chips 和底部状态条。
+- 底部状态条显示“当前显示：X 个工具”和“排序方式：最新优先”。
+- 本次没有修改工具卡片、工具网格、工具详情页、后台 CRUD、数据库结构、RLS、投稿页、投诉页、登录页或 Turnstile。
+- 本次没有修改 `/tools` 的数据来源、搜索逻辑、分类筛选逻辑、标签筛选逻辑或清空筛选逻辑。
+- 已运行 `npm run build`，通过。
+- 构建日志确认当前 published 工具包含 `open-design`，`/tools` 仍为动态渲染页面。
+
+下一步：
+- 打开 `/tools` 检查桌面端 Hero、筛选控制台和筛选面板视觉；再用手机尺寸检查 Hero 单列、chips 换行和无横向滚动。
+
+## 2026-06-05
+
 任务：加固 `/tools` 工具库列表页读取，确保显示最新 published 工具。
 
 改动文件：
