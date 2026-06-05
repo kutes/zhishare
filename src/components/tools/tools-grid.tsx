@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { AdPlaceholder } from "@/components/common/AdPlaceholder";
 import type { ToolItem } from "@/types/tool";
-import { ToolCard } from "./ToolCard";
+import { CompactToolCard } from "./CompactToolCard";
 import { ToolsNoResults } from "./tools-no-results";
 
 type ToolsGridProps = {
@@ -16,7 +16,7 @@ export function ToolsGrid({ tools, onClear }: ToolsGridProps) {
         variant="banner"
         title="合作推广"
         description="这里可以展示赞助工具、精选服务或广告内容"
-        className="min-h-32"
+        className="min-h-28"
       />
     </div>
   );
@@ -33,10 +33,10 @@ export function ToolsGrid({ tools, onClear }: ToolsGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
       {tools.map((tool, index) => (
         <Fragment key={tool.id}>
-          <ToolCard tool={tool} />
+          <CompactToolCard tool={tool} />
           {index === 5 ? adBlock : null}
         </Fragment>
       ))}

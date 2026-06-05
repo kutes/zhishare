@@ -2,6 +2,51 @@
 
 ## 2026-06-06
 
+任务：重新设计 `/tools` 工具库页面 —— 结构性视觉改版。
+
+改动文件：
+- `src/components/tools/tools-page.tsx`
+- `src/components/tools/ToolsHero.tsx`
+- `src/components/tools/ToolsFilterPanel.tsx`
+- `src/components/tools/tools-grid.tsx`
+- `src/components/tools/tools-no-results.tsx`
+- 新增 `src/components/tools/tool-card-utils.ts`
+- 新增 `src/components/tools/FeaturedToolCard.tsx`
+- 新增 `src/components/tools/CompactToolCard.tsx`
+- 新增 `src/components/tools/SponsorBanner.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- `/tools` 页面整体布局改为：Hero → 搜索筛选栏 → 精选推荐区 → 全部工具区 → 底部合作推广横幅。
+- `ToolsHero` 左侧更新标题为"发现更好用的工具，让效率与创意触手可及"，副标题为"收录 AI、设计、开发、运营、办公等优质工具，先看介绍，再进入详情判断是否值得使用。"，下方四个优势条：严格筛选、持续更新、分类清晰、安全可靠。
+- `ToolsHero` 右侧工具库概览卡片只显示真实数据（当前收录 tools.length、分类数量 categoryCount、标签数量 tagCount，标签为 0 时隐藏），不显示假数据。
+- `ToolsHero` 移动端隐藏右侧概览卡片。
+- `ToolsFilterPanel` 改为横向高级搜索栏：搜索框 + 分类 chips + 标签 chips + 清空筛选 + 当前显示计数。保留现有搜索、分类、标签、清空筛选逻辑，不改数据来源。
+- 新增 `tool-card-utils.ts`：`getToolInitials(title)` 提取首字母/首字符，`getCategoryGradient(categoryName)` 按分类返回渐变，`getCategoryAccentClass(categoryName)` 返回分类强调色，`getToolSummary(tool)` 返回一句话简介，`getToolCoverUrl(tool)` 安全读取 cover_url，`getToolCardTitle(tool)` 返回工具名，`getVisibleTags(tool, maxCount)` 返回前 N 个标签。
+- 新增 `FeaturedToolCard`：横向大卡，左侧封面/渐变 fallback，右侧名称、简介、分类标签、免费/开源状态、"查看详情"按钮。cover_url 存在时用图片，不存在时用渐变背景 + 首字母 fallback。不显示"访问官网"。
+- 新增 `CompactToolCard`：小卡网格，左侧 logo/首字母 fallback，工具名、一句话简介、分类和标签、"查看详情"按钮。不显示"访问官网"、不显示收藏按钮。
+- 全部工具区桌面端 3 列、平板 2 列、手机 1 列。
+- `tools-grid` 改用 `CompactToolCard` 渲染工具卡片，保留 AdPlaceholder 广告位（第 6 个工具后或列表底部）。
+- 新增 `SponsorBanner`：底部高级玻璃横幅，小标签"合作推广"、标题"在这里展示你的产品或服务"、副标题"精准触达正在寻找工具、软件和效率方案的用户。"、按钮"了解合作"、右侧 3 个卖点（高质量流量、品牌曝光、灵活合作）。
+- 精选推荐区标题为"精选推荐"，全部工具区标题为"全部工具"或"工具列表"。
+- 数据来源不变：`getPublishedTools()` → `normalizeTool()` → `ToolItem`。筛选逻辑不变（query + category + tag）。
+- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/tools/[slug]` 详情页、投稿页、投诉页、登录页、Turnstile、sitemap、robots。
+- 未修改 `ToolCard.tsx`（仍被 search-results.tsx 使用）。
+- `tools-grid.tsx`、`ToolsFilterPanel`、`ToolsHero`、`ToolsPage` 的 Props 接口保持兼容。
+- 所有工具只通过"查看详情"进入 `/tools/[slug]`，列表页不显示"访问官网"按钮。
+- 没有 undefined/null 渲染到页面。
+- 已运行 `npm run build`，通过。
+- 构建日志确认当前 published 工具包含 `open-design,raycast,chatgpt`，`/tools` 仍为动态渲染页面。
+
+下一步：
+- 打开 `/tools` 检查桌面端 Hero、搜索筛选栏、精选推荐区、全部工具网格和合作推广横幅视觉效果。
+- 检查搜索、分类筛选、标签筛选、清空筛选功能正常。
+- 检查"查看详情"可跳转到 `/tools/[slug]`。
+- 检查手机端单列布局和无横向滚动。
+
+## 2026-06-06
+
 任务：修复 `/tools` 页面上半部分留白过大、控制台过大和数据真实性问题。
 
 改动文件：
