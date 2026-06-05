@@ -1923,3 +1923,108 @@
 下一步：
 
 - 把代码提交到 GitHub 后，按 `docs/DEPLOYMENT.md` 的步骤导入 Vercel，并配置生产环境变量。
+
+## 2026-06-05
+
+任务：上线后安全收尾与测试数据清理记录。
+
+改动文件：
+- `docs/DEPLOYMENT.md`
+- `docs/TASK_LOG.md`
+
+检查方式：
+
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 已确认项目已部署到线上地址：`https://zhishare.vercel.app`。
+- 已通过 `git ls-files` 检查，`.env.local` 未被 Git 跟踪。
+- 已通过 `git check-ignore` 检查，`.env.local`、`.env`、`.env.production.local` 均被 `.gitignore` 忽略。
+- 已扫描 `src`、`package.json`、`next.config.ts`，未发现 `SUPABASE_SERVICE_ROLE_KEY` 或 `service_role` 硬编码。
+- 已检查线上 `https://zhishare.vercel.app/robots.txt`，确认禁止 `/admin`、`/admin/`、`/admin/*`。
+- 已检查线上 `robots.txt` 指向 `https://zhishare.vercel.app/sitemap.xml`。
+- 已检查线上 `https://zhishare.vercel.app/sitemap.xml`，确认使用线上域名。
+- 已检查线上 sitemap，当前未发现 `published-test-tool`、`draft-test-tool`、`published-test-article`、`draft-test-article`。
+- 已在 `docs/DEPLOYMENT.md` 补充 Vercel 环境变量复查说明：当前版本只需要 `NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`NEXT_PUBLIC_SITE_URL`。
+- 已在 `docs/DEPLOYMENT.md` 记录当前版本不需要 `SUPABASE_SERVICE_ROLE_KEY`，如曾添加不必要 secret key，建议删除并轮换相关 key。
+- 已在 `docs/DEPLOYMENT.md` 记录建议轮换 Supabase `service_role` key 或任何曾经暴露在临时位置的 secret key。
+- 已在 `docs/DEPLOYMENT.md` 记录测试数据清理项和后台删除路径。
+- 当前没有 `README.md`，本次未修改 README。
+- 本次未修改前台页面、后台 CRUD、数据库结构、RLS 策略、视觉设计或依赖。
+
+测试数据清理提醒：
+
+- 通过 `/admin/tools` 删除 `published-test-tool` 和 `draft-test-tool`。
+- 通过 `/admin/articles` 删除 `published-test-article` 和 `draft-test-article`。
+- 删除后重新检查 `https://zhishare.vercel.app/sitemap.xml`，确认不再包含测试 slug。
+
+下一步：
+
+- 在 Vercel 项目设置中人工复查环境变量，确认没有多余 secret；然后完成后台测试数据清理和一次完整线上冒烟测试。
+
+## 2026-06-05
+
+任务：接入 Cloudflare Turnstile 人机验证。
+
+改动文件：
+- `src/app/api/turnstile/verify/route.ts`
+- `src/app/admin/login/page.tsx`
+- `src/app/submit/submit-client.tsx`
+- `src/app/copyright/copyright-client.tsx`
+- `src/components/security/TurnstileWidget.tsx`
+- `src/lib/security/turnstile.ts`
+- `src/lib/security/turnstile-client.ts`
+- `docs/DEPLOYMENT.md`
+- `docs/TASK_LOG.md`
+
+检查方式：
+
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 已新增服务端 API：`/api/turnstile/verify`。
+- 服务端验证通过 `TURNSTILE_SECRET_KEY` 调用 Cloudflare Turnstile siteverify 接口。
+- `TURNSTILE_SECRET_KEY` 只在服务端读取，未暴露到前端。
+- 已新增前端 Turnstile 组件，使用 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 渲染 Widget。
+- `/submit` 提交前必须完成人机验证；未验证提示“请先完成人机验证。”。
+- `/copyright` 提交前必须完成人机验证；未验证提示“请先完成人机验证。”。
+- `/admin/login` 登录前必须完成人机验证；未验证提示“请先完成人机验证。”。
+- Turnstile 服务端验证失败时统一提示“验证失败，请刷新后重试。”。
+- 验证成功后才继续原来的 Supabase 投稿写入、版权投诉写入或后台登录逻辑。
+- 保留原有 loading、成功提示和失败提示。
+- 未修改工具页、文章页、搜索页、后台 CRUD、数据库结构、RLS 策略或视觉设计。
+- 已更新 `docs/DEPLOYMENT.md`，记录 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 和 `TURNSTILE_SECRET_KEY` 的本地/Vercel 配置方式，以及上线后检查方法。
+- 已运行 `npm run lint`，通过。
+- 已运行 `npm run build`，通过；构建输出包含 `/api/turnstile/verify`。
+
+下一步：
+
+- 部署到 Vercel 后，在线上分别测试 `/submit`、`/copyright`、`/admin/login`：未验证时应阻止提交，验证通过后应继续原有写入或登录流程。
+
+## 2026-06-05
+
+任务：修复并复查 Cloudflare Turnstile 真实接入。
+
+改动文件：
+- `src/app/admin/login/page.tsx`
+- `src/app/submit/submit-client.tsx`
+- `src/app/copyright/copyright-client.tsx`
+- `src/components/security/TurnstileWidget.tsx`
+- `docs/DEPLOYMENT.md`
+- `docs/TASK_LOG.md`
+
+检查方式：
+
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 已确认 `/submit`、`/copyright`、`/admin/login` 页面提交前均检查 Turnstile token。
+- 已确认没有 token 时页面提示 `请先完成人机验证。`，不会继续调用 Supabase 写入或登录。
+- 已确认有 token 时先调用 `/api/turnstile/verify`，只有验证成功后才继续 `submissions`、`reports` 或 Supabase Auth 登录请求。
+- 已确认 `TurnstileWidget` 使用 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 渲染，并在缺少站点 key 时显示 `人机验证配置缺失，请联系管理员。`。
+- 已确认服务端验证接口仍使用 `TURNSTILE_SECRET_KEY`，不会暴露到前端。
+- 已检查线上 `https://zhishare.vercel.app/submit` 当前加载的 JS chunk：未包含 `turnstile` 和 `/api/turnstile/verify`，说明线上当前仍是未包含 Turnstile 的旧部署包或最新代码尚未部署成功。
+- 已更新 `docs/DEPLOYMENT.md`，补充 Turnstile 的线上 Network 检查顺序和旧部署包排查说明。
+- 已运行 `npm run lint`，通过。
+- 已运行 `npm run build`，通过；构建输出包含 `/api/turnstile/verify`。
+- 已启动本地 `http://localhost:3000` 做轻量检查，`/submit` 返回 200，页面能显示人机验证区域或缺配置提示。
+- 已用无效 token 请求本地 `/api/turnstile/verify`，返回 `{"success":false}`，确认不会放行无效验证。
+
+下一步：
+
+- 推送最新代码并重新部署 Vercel，确认 Production 环境同时配置 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 和 `TURNSTILE_SECRET_KEY`。
+- 重新部署后在线上测试 `/submit`、`/copyright`、`/admin/login`：页面应显示 Turnstile，Network 中应先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase 写入或登录请求。

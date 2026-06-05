@@ -1,10 +1,12 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/security/TurnstileWidget";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { createSubmission } from "@/lib/db/submissions";
+import { verifyTurnstileTokenOnClient } from "@/lib/security/turnstile-client";
 
 type SubmitErrors = Partial<Record<"toolName" | "officialUrl" | "summary" | "email", string>>;
 type SubmitStatusMessage = { type: "success" | "error"; message: string } | null;
@@ -23,6 +25,8 @@ export default function SubmitPage() {
   const [errors, setErrors] = useState<SubmitErrors>({});
   const [statusMessage, setStatusMessage] = useState<SubmitStatusMessage>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileWidgetHandle | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -62,9 +66,23 @@ export default function SubmitPage() {
 
     setErrors({});
     setStatusMessage(null);
+
+    if (!turnstileToken) {
+      setStatusMessage({ type: "error", message: "请先完成人机验证。" });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
+      const isVerified = await verifyTurnstileTokenOnClient(turnstileToken);
+
+      if (!isVerified) {
+        setStatusMessage({ type: "error", message: "验证失败，请刷新后重试。" });
+        turnstileRef.current?.reset();
+        return;
+      }
+
       const result = await createSubmission({
         tool_name: toolName,
         website_url: officialUrl,
@@ -79,6 +97,7 @@ export default function SubmitPage() {
           message: "提交成功，我们会进行人工审核后决定是否收录。",
         });
         form.reset();
+        turnstileRef.current?.reset();
       } else {
         setStatusMessage({ type: "error", message: "提交失败，请稍后重试。" });
       }
@@ -207,6 +226,12 @@ export default function SubmitPage() {
                     type="email"
                     placeholder="可选，方便后续联系补充信息"
                     error={errors.email}
+                  />
+
+                  <TurnstileWidget
+                    ref={turnstileRef}
+                    onTokenChange={setTurnstileToken}
+                    className="rounded-2xl border border-white/75 bg-white/55 px-4 py-3 shadow-sm"
                   />
 
                   <button

@@ -38,6 +38,8 @@ npm run build
 NEXT_PUBLIC_SUPABASE_URL=你的 Supabase Project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=你的 Supabase anon public key
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=你的 Cloudflare Turnstile Site Key
+TURNSTILE_SECRET_KEY=你的 Cloudflare Turnstile Secret Key
 ```
 
 说明：
@@ -47,6 +49,8 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 - `.env.local` 必须保留在 `.gitignore` 中。
 - 当前版本不需要 `SUPABASE_SERVICE_ROLE_KEY`。
 - 如果后续服务端任务确实需要 `SUPABASE_SERVICE_ROLE_KEY`，只能放在服务端环境变量中，不能暴露到前台代码或浏览器。
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 可以被浏览器读取。
+- `TURNSTILE_SECRET_KEY` 只能在服务端 API Route 中读取，不能暴露到前台代码或公开文档。
 
 ## Vercel 生产环境变量
 
@@ -60,6 +64,8 @@ Vercel → Project Settings → Environment Variables
 NEXT_PUBLIC_SUPABASE_URL=你的 Supabase Project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=你的 Supabase anon public key
 NEXT_PUBLIC_SITE_URL=https://你的正式域名
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=你的 Cloudflare Turnstile Site Key
+TURNSTILE_SECRET_KEY=你的 Cloudflare Turnstile Secret Key
 ```
 
 说明：
@@ -69,6 +75,7 @@ NEXT_PUBLIC_SITE_URL=https://你的正式域名
 - 如果还没有绑定自定义域名，可以先使用 Vercel 默认域名，例如 `https://your-project.vercel.app`。
 - 后续绑定自定义域名后，要把 `NEXT_PUBLIC_SITE_URL` 改成自定义域名。
 - 修改环境变量后需要 Redeploy，新的 robots、sitemap、canonical 才会使用新域名。
+- Cloudflare Turnstile Widget 需要在 Cloudflare 控制台添加线上域名，例如 `zhishare.vercel.app`。
 
 如果未来确实有服务端后台任务使用 service role，再添加：
 
@@ -165,6 +172,45 @@ node_modules
 
 确认输出中的域名和 `NEXT_PUBLIC_SITE_URL` 一致。
 
+## Turnstile 人机验证检查
+
+当前 Turnstile 用于保护这些入口：
+
+- `/submit`
+- `/copyright`
+- `/admin/login`
+
+环境变量：
+
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`：前端 Widget 使用，可以公开。
+- `TURNSTILE_SECRET_KEY`：服务端校验使用，禁止暴露到前端。
+
+实现原则：
+
+- 用户提交 `/submit` 前必须完成人机验证。
+- 用户提交 `/copyright` 前必须完成人机验证。
+- 管理员登录 `/admin/login` 前必须完成人机验证。
+- 未完成验证时提示：`请先完成人机验证。`
+- Turnstile 站点 key 缺失时提示：`人机验证配置缺失，请联系管理员。`
+- 验证失败时提示：`验证失败，请刷新后重试。`
+- 验证成功后才继续原来的 Supabase 写入或登录逻辑。
+
+上线后检查：
+
+- 打开 `/submit`，确认显示 Turnstile，并且未验证时不能提交。
+- 打开 `/copyright`，确认显示 Turnstile，并且未验证时不能提交。
+- 打开 `/admin/login`，确认显示 Turnstile，并且未验证时不能登录。
+- 提交 `/submit` 时，浏览器 Network 中必须先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase `submissions` 请求。
+- 提交 `/copyright` 时，浏览器 Network 中必须先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase `reports` 请求。
+- 登录 `/admin/login` 时，浏览器 Network 中必须先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase Auth 登录请求。
+- 在浏览器开发者工具中确认前端代码不会出现 `TURNSTILE_SECRET_KEY`。
+
+排错说明：
+
+- 如果页面没有显示 Turnstile，先检查 Vercel Production 环境是否配置了 `NEXT_PUBLIC_TURNSTILE_SITE_KEY`，修改后必须 Redeploy。
+- 如果 Network 中只有 Supabase `submissions` 或 `reports` 请求，没有 `/api/turnstile/verify` 请求，说明线上部署包仍是旧版本，或最新代码尚未部署成功；需要确认最新代码已推送并重新部署 Vercel。
+- 如果 `/api/turnstile/verify` 返回 `success: false`，检查 Vercel Production 环境是否配置了 `TURNSTILE_SECRET_KEY`，并确认 Cloudflare Turnstile Widget 已添加线上域名 `zhishare.vercel.app`。
+
 ## Vercel 部署步骤
 
 1. 本地执行 `npm run build`，确认通过。
@@ -182,6 +228,10 @@ node_modules
 13. 检查 `/robots.txt` 和 `/sitemap.xml` 是否是正式域名。
 
 ## 上线后检查清单
+
+线上地址：
+
+- `https://zhishare.vercel.app`
 
 ### 前台页面
 
@@ -217,6 +267,89 @@ node_modules
 - 投诉能进入 `reports`。
 - 后台能登录。
 - 后台 CRUD 正常。
+
+## 上线后安全收尾
+
+### 已检查项目
+
+- `.env.local` 不应提交到 GitHub。
+- `.env.local`、`.env`、`.env.*.local` 应保留在 `.gitignore` 中。
+- 代码中不应写死 `SUPABASE_SERVICE_ROLE_KEY`、`service_role` 或其他 secret key。
+- `robots.txt` 应禁止后台路径：
+  - `/admin`
+  - `/admin/`
+  - `/admin/*`
+- `sitemap.xml` 应使用线上域名。
+- `sitemap.xml` 不应包含草稿内容或测试内容。
+
+### Vercel 环境变量复查
+
+Vercel → Project Settings → Environment Variables 中，当前版本只需要：
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+NEXT_PUBLIC_SITE_URL
+NEXT_PUBLIC_TURNSTILE_SITE_KEY
+TURNSTILE_SECRET_KEY
+```
+
+当前版本不需要：
+
+```bash
+SUPABASE_SERVICE_ROLE_KEY
+```
+
+如果 Vercel 项目中曾经添加过不必要的 secret key，建议删除不需要的变量，并在 Supabase 中轮换相关 key。
+
+### Supabase key 轮换建议
+
+上线后建议在 Supabase 中轮换或重新生成敏感 key，尤其是：
+
+- `service_role` key。
+- 任何曾经复制到本地、聊天记录、截图、日志或临时文件中的 secret key。
+
+注意：
+
+- 前台和浏览器端只能使用 anon public key。
+- `service_role` key 具有高权限，不应该出现在前台代码、GitHub、Vercel 前台变量、README 或公开文档中。
+- 轮换 key 后，需要同步更新 Vercel 环境变量并 Redeploy。
+
+### 测试数据清理
+
+请通过后台删除以下测试数据：
+
+- `published-test-tool`
+- `draft-test-tool`
+- `published-test-article`
+- `draft-test-article`
+
+建议路径：
+
+- 工具测试数据：进入 `/admin/tools`，找到对应工具后删除。
+- 文章测试数据：进入 `/admin/articles`，找到对应文章后删除。
+
+删除后检查：
+
+- 打开 `https://zhishare.vercel.app/sitemap.xml`。
+- 搜索测试 slug，确认不再包含：
+  - `published-test-tool`
+  - `draft-test-tool`
+  - `published-test-article`
+  - `draft-test-article`
+- 打开 `/tools` 和 `/articles`，确认测试内容不再显示。
+
+### 线上检查记录
+
+2026-06-05 检查记录：
+
+- 线上地址：`https://zhishare.vercel.app`。
+- `robots.txt` 可访问，并禁止 `/admin`、`/admin/`、`/admin/*`。
+- `robots.txt` 指向 `https://zhishare.vercel.app/sitemap.xml`。
+- `sitemap.xml` 可访问，并使用 `https://zhishare.vercel.app` 域名。
+- 检查时 `sitemap.xml` 未发现 `published-test-tool`、`draft-test-tool`、`published-test-article`、`draft-test-article`。
+- 本地 Git 检查确认 `.env.local` 未被跟踪，并被 `.gitignore` 忽略。
+- 本地代码扫描未发现 `SUPABASE_SERVICE_ROLE_KEY` 或 `service_role` 写入 `src`、`package.json`、`next.config.ts`。
 
 ## 常见风险
 

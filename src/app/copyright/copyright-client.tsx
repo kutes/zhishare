@@ -1,10 +1,12 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/security/TurnstileWidget";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { createReport } from "@/lib/db/reports";
+import { verifyTurnstileTokenOnClient } from "@/lib/security/turnstile-client";
 
 type CopyrightErrors = Partial<
   Record<"ownerName" | "email" | "pageUrl" | "issueType" | "request", string>
@@ -33,6 +35,8 @@ export default function CopyrightPage() {
   const [errors, setErrors] = useState<CopyrightErrors>({});
   const [statusMessage, setStatusMessage] = useState<ReportStatusMessage>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileWidgetHandle | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -79,9 +83,23 @@ export default function CopyrightPage() {
 
     setErrors({});
     setStatusMessage(null);
+
+    if (!turnstileToken) {
+      setStatusMessage({ type: "error", message: "请先完成人机验证。" });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
+      const isVerified = await verifyTurnstileTokenOnClient(turnstileToken);
+
+      if (!isVerified) {
+        setStatusMessage({ type: "error", message: "验证失败，请刷新后重试。" });
+        turnstileRef.current?.reset();
+        return;
+      }
+
       const result = await createReport({
         owner_name: ownerName,
         email,
@@ -97,6 +115,7 @@ export default function CopyrightPage() {
           message: "反馈已提交，我们会在核实后及时处理。",
         });
         form.reset();
+        turnstileRef.current?.reset();
       } else {
         setStatusMessage({ type: "error", message: "提交失败，请稍后重试。" });
       }
@@ -236,6 +255,12 @@ export default function CopyrightPage() {
                     placeholder="请说明希望我们修改、删除、更正或补充哪些内容。"
                     error={errors.request}
                     required
+                  />
+
+                  <TurnstileWidget
+                    ref={turnstileRef}
+                    onTokenChange={setTurnstileToken}
+                    className="rounded-2xl border border-white/75 bg-white/55 px-4 py-3 shadow-sm"
                   />
 
                   <button

@@ -1,8 +1,10 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/security/TurnstileWidget";
+import { verifyTurnstileTokenOnClient } from "@/lib/security/turnstile-client";
 import {
   getSupabaseBrowserClient,
   getSupabaseUserWithTimeout,
@@ -15,6 +17,8 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const [status, setStatus] = useState<LoginStatus>("checking");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileWidgetHandle | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -77,6 +81,11 @@ export default function AdminLoginPage() {
       return;
     }
 
+    if (!turnstileToken) {
+      setErrorMessage("请先完成人机验证。");
+      return;
+    }
+
     const supabase = getSupabaseBrowserClient();
 
     if (!supabase) {
@@ -87,6 +96,15 @@ export default function AdminLoginPage() {
     setStatus("submitting");
     setErrorMessage("");
 
+    const isVerified = await verifyTurnstileTokenOnClient(turnstileToken);
+
+    if (!isVerified) {
+      setErrorMessage("验证失败，请刷新后重试。");
+      turnstileRef.current?.reset();
+      setStatus("idle");
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -95,6 +113,7 @@ export default function AdminLoginPage() {
     if (error) {
       console.error("[Admin Login] signInWithPassword", error);
       setErrorMessage("登录失败，请检查邮箱和密码。");
+      turnstileRef.current?.reset();
       setStatus("idle");
       return;
     }
@@ -167,6 +186,12 @@ export default function AdminLoginPage() {
                       className="min-h-12 rounded-2xl border border-white/75 bg-white/75 px-4 text-base font-medium text-ink shadow-inner outline-none transition focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
                     />
                   </label>
+
+                  <TurnstileWidget
+                    ref={turnstileRef}
+                    onTokenChange={setTurnstileToken}
+                    className="rounded-2xl border border-white/75 bg-white/55 px-4 py-3 shadow-sm"
+                  />
 
                   <button
                     type="submit"
