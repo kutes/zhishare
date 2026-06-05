@@ -3,7 +3,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 
 const TURNSTILE_SCRIPT_ID = "cloudflare-turnstile-script";
-const TURNSTILE_SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+const TURNSTILE_SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js";
 
 type TurnstileRenderOptions = {
   sitekey: string;
@@ -131,7 +131,7 @@ export const TurnstileWidget = forwardRef<TurnstileWidgetHandle, TurnstileWidget
   return (
     <div className={className}>
       <p className="mb-3 text-sm font-bold text-slate-700">人机验证</p>
-      <div ref={containerRef} />
+      <div ref={containerRef} className="cf-turnstile" />
     </div>
   );
 });

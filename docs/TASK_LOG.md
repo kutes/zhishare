@@ -1985,7 +1985,7 @@
 - `/submit` 提交前必须完成人机验证；未验证提示“请先完成人机验证。”。
 - `/copyright` 提交前必须完成人机验证；未验证提示“请先完成人机验证。”。
 - `/admin/login` 登录前必须完成人机验证；未验证提示“请先完成人机验证。”。
-- Turnstile 服务端验证失败时统一提示“验证失败，请刷新后重试。”。
+- Turnstile 服务端验证失败时统一提示“人机验证失败，请刷新后重试。”。
 - 验证成功后才继续原来的 Supabase 投稿写入、版权投诉写入或后台登录逻辑。
 - 保留原有 loading、成功提示和失败提示。
 - 未修改工具页、文章页、搜索页、后台 CRUD、数据库结构、RLS 策略或视觉设计。
@@ -2028,3 +2028,41 @@
 
 - 推送最新代码并重新部署 Vercel，确认 Production 环境同时配置 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 和 `TURNSTILE_SECRET_KEY`。
 - 重新部署后在线上测试 `/submit`、`/copyright`、`/admin/login`：页面应显示 Turnstile，Network 中应先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase 写入或登录请求。
+
+## 2026-06-05
+
+任务：强制补强 Cloudflare Turnstile 接入。
+
+改动文件：
+- `src/app/api/turnstile/verify/route.ts`
+- `src/components/security/TurnstileWidget.tsx`
+- `src/app/admin/login/page.tsx`
+- `src/app/submit/submit-client.tsx`
+- `src/app/copyright/copyright-client.tsx`
+- `docs/DEPLOYMENT.md`
+- `docs/TASK_LOG.md`
+
+检查方式：
+
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 已将 `TurnstileWidget` 的脚本地址固定为 `https://challenges.cloudflare.com/turnstile/v0/api.js`。
+- `TurnstileWidget` 文件顶部保留 `"use client";`。
+- `TurnstileWidget` 使用 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 渲染；缺少 site key 时显示 `人机验证配置缺失，请联系管理员。`，不会静默跳过。
+- `TurnstileWidget` 使用 `window.turnstile.render`，渲染容器包含 `cf-turnstile` class。
+- `TurnstileWidget` 在成功 callback 时把 token 传给父组件，在 expired/error callback 时清空 token。
+- 已将 `/api/turnstile/verify` 改为在 route 内直接读取 `TURNSTILE_SECRET_KEY`、接收 `token`、使用 `FormData` 调用 Cloudflare `siteverify`。
+- `/api/turnstile/verify` 在 token 缺失、secret 缺失、Cloudflare 验证失败时都返回 `{ success: false }`。
+- `/api/turnstile/verify` 不输出 `TURNSTILE_SECRET_KEY`。
+- 已确认 `/submit` 实际表单逻辑在 `submit-client.tsx`，提交时无 token 会提示 `请先完成人机验证。`，有 token 时先调用 `/api/turnstile/verify`，成功后才调用 `createSubmission`。
+- 已确认 `/copyright` 实际表单逻辑在 `copyright-client.tsx`，提交时无 token 会提示 `请先完成人机验证。`，有 token 时先调用 `/api/turnstile/verify`，成功后才调用 `createReport`。
+- 已确认 `/admin/login` 登录时无 token 会提示 `请先完成人机验证。`，有 token 时先调用 `/api/turnstile/verify`，成功后才调用 Supabase Auth 登录。
+- 验证失败文案统一为 `人机验证失败，请刷新后重试。`。
+- 已运行 `npm run lint`，通过。
+- 已运行 `npm run build`，通过；构建输出包含 `/api/turnstile/verify`。
+- 已检查 `.next` 构建产物，确认包含 `cf-turnstile`、Cloudflare `api.js`、`/api/turnstile/verify` 和验证提示文案。
+- 已启动本地开发服务，用无效 token 请求 `http://localhost:3000/api/turnstile/verify`，返回 `{"success":false}`。
+
+下一步：
+
+- 推送最新代码并重新部署 Vercel。
+- 线上重新测试 `/submit`、`/copyright`、`/admin/login`：Network 必须先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase 写入或登录请求。

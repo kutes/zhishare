@@ -78,7 +78,7 @@ export default function SubmitPage() {
       const isVerified = await verifyTurnstileTokenOnClient(turnstileToken);
 
       if (!isVerified) {
-        setStatusMessage({ type: "error", message: "验证失败，请刷新后重试。" });
+        setStatusMessage({ type: "error", message: "人机验证失败，请刷新后重试。" });
         turnstileRef.current?.reset();
         return;
       }

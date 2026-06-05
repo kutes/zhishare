@@ -1,18 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyTurnstileToken } from "@/lib/security/turnstile";
+
+type CloudflareTurnstileResponse = {
+  success?: boolean;
+  "error-codes"?: string[];
+};
 
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as { token?: unknown };
     const token = typeof body.token === "string" ? body.token : "";
-    const remoteIp = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for")?.split(",")[0];
-    const result = await verifyTurnstileToken(token, remoteIp);
+    const secretKey = process.env.TURNSTILE_SECRET_KEY;
 
-    if (!result.success) {
-      console.error("[Turnstile] verify failed", result.errorCodes);
+    if (!token || !secretKey) {
+      return NextResponse.json({ success: false });
     }
 
-    return NextResponse.json({ success: result.success });
+    const formData = new FormData();
+    formData.append("secret", secretKey);
+    formData.append("response", token);
+
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: formData,
+      cache: "no-store",
+    });
+    const result = (await response.json()) as CloudflareTurnstileResponse;
+
+    if (!result.success) {
+      console.error("[Turnstile] verify failed", result["error-codes"]);
+    }
+
+    return NextResponse.json({ success: result.success === true });
   } catch (error) {
     console.error("[Turnstile] verify route error", error);
     return NextResponse.json({ success: false }, { status: 500 });

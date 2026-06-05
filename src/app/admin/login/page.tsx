@@ -99,7 +99,7 @@ export default function AdminLoginPage() {
     const isVerified = await verifyTurnstileTokenOnClient(turnstileToken);
 
     if (!isVerified) {
-      setErrorMessage("验证失败，请刷新后重试。");
+      setErrorMessage("人机验证失败，请刷新后重试。");
       turnstileRef.current?.reset();
       setStatus("idle");
       return;
