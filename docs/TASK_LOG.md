@@ -1,5 +1,24 @@
 # TASK_LOG
 
+## 2026-06-05
+
+任务：修复前台工具库 `/tools` 不能及时显示后台新增 published 工具的问题。
+
+改动文件：
+- `src/app/tools/page.tsx`
+- `src/app/tools/[slug]/page.tsx`
+- `src/lib/db/tools.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- `/tools` 页面新增 `dynamic = "force-dynamic"` 和 `revalidate = 0`，避免 Vercel 使用构建时的旧工具列表。
+- `/tools/[slug]` 页面新增 `dynamic = "force-dynamic"` 和 `revalidate = 0`，并移除 `generateStaticParams()`，让后台新增的工具 slug 可以直接访问详情页。
+- `getPublishedTools()` 继续只读取 `status = "published"` 的工具，并改为优先按 `updated_at` 倒序，再按 `created_at` 倒序，保证最新发布或更新的工具排在前面。
+- `getPublishedTools()` 和 `getToolBySlug()` 查询失败时会输出真实 Supabase 错误到控制台，并返回空数组或 `null`，不让前台页面崩溃。
+- 工具详情页相关推荐只在存在真实 `category_id` 时查询，避免把展示用分类名当作 uuid 查询。
+- 本次未修改后台 CRUD、数据库结构、RLS 策略、文章页面或整体视觉风格。
+
 ## 2026-06-04
 
 任务：修复首页搜索框与 `/search` URL 参数联动。

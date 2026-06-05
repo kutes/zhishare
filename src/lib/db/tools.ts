@@ -50,7 +50,7 @@ export async function getToolBySlug(slug: string): Promise<ToolItem | null> {
     .maybeSingle();
 
   if (error) {
-    logSupabaseError(`fetch tool by slug: ${slug}`, error);
+    console.error("getToolBySlug error:", error);
     return null;
   }
 
@@ -228,10 +228,11 @@ async function fetchPublishedToolsFromSupabase(): Promise<ToolItem[]> {
     .from("tools")
     .select("*")
     .eq("status", "published")
+    .order("updated_at", { ascending: false })
     .order("created_at", { ascending: false });
 
   if (error) {
-    logSupabaseError("fetch published tools", error);
+    console.error("getPublishedTools error:", error);
     return [];
   }
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ToolDetailPage, ToolNotFoundPage } from "@/components/tools/tool-detail-page";
-import { getPublishedTools, getRelatedTools, getToolBySlug } from "@/lib/db/tools";
+import { getRelatedTools, getToolBySlug } from "@/lib/db/tools";
 import { DEFAULT_SITE_DESCRIPTION, createPageMetadata } from "@/lib/seo";
 
 type ToolPageProps = {
@@ -9,13 +9,8 @@ type ToolPageProps = {
   }>;
 };
 
-export async function generateStaticParams() {
-  const tools = await getPublishedTools();
-
-  return tools.map((tool) => ({
-    slug: tool.slug,
-  }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: ToolPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -54,7 +49,7 @@ export default async function Page({ params }: ToolPageProps) {
     return <ToolNotFoundPage />;
   }
 
-  const relatedTools = await getRelatedTools(tool.category_id ?? tool.category, tool.id);
+  const relatedTools = await getRelatedTools(tool.category_id, tool.id);
 
   return <ToolDetailPage tool={tool} relatedTools={relatedTools} />;
 }
