@@ -1,5 +1,31 @@
 # TASK_LOG
 
+## 2026-06-06
+
+任务：修复 `/tools` 页面上半部分留白过大、控制台过大和数据真实性问题。
+
+改动文件：
+- `src/components/tools/ToolsHero.tsx`
+- `src/components/tools/ToolsFilterPanel.tsx`
+- `src/components/tools/tools-page.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 收紧 Hero 上下 padding、标题间距、标签间距和背景过渡高度，让首屏能看到更多内容。
+- 右侧 Hero 控制台从大卡片改为紧凑型“工具库概览 / 筛选控制台”，不再使用任何无来源的静态数字。
+- 控制台数据改为来自当前 `/tools` 已加载 published 工具数据：当前收录工具数、分类数量和标签数量。
+- 手机端隐藏右侧 Hero 控制台，只保留小标签、主标题、副标题和 chips，避免首屏过长。
+- 收紧筛选面板 padding、搜索框高度、chips 间距、筛选组间距和底部状态条高度。
+- 收紧 Hero 与筛选面板、筛选面板与工具列表区之间的 section 间距。
+- 本次没有修改 ToolCard、tools-grid、工具详情页、后台 CRUD、数据库结构、RLS、投稿页、投诉页、登录页或 Turnstile。
+- 本次没有修改 `/tools` 的搜索、分类筛选、标签筛选、清空筛选、查看详情跳转或数据读取逻辑。
+- 已运行 `npm run build`，通过。
+- 构建日志确认当前 published 工具包含 `open-design`，`/tools` 仍为动态渲染页面。
+
+下一步：
+- 打开 `/tools` 检查桌面端首屏密度、移动端控制台隐藏效果，以及搜索/筛选和 `Open Design` 详情跳转是否正常。
+
 ## 2026-06-05
 
 任务：升级 `/tools` 页面上半部分视觉，完成工具库视觉改版第 2 步。

@@ -27,6 +27,16 @@ export function ToolsPage({ tools }: ToolsPageProps) {
     [tools],
   );
 
+  const categoryCount = useMemo(
+    () => categories.filter((category) => category !== allOption && category.trim().length > 0).length,
+    [categories],
+  );
+
+  const tagCount = useMemo(
+    () => tags.filter((tag) => tag !== allOption && tag.trim().length > 0).length,
+    [tags],
+  );
+
   const filteredTools = useMemo(() => {
     const keyword = query.trim().toLowerCase();
 
@@ -64,8 +74,8 @@ export function ToolsPage({ tools }: ToolsPageProps) {
     <div className="min-h-screen overflow-hidden bg-[#f8fbff]">
       <SiteHeader />
       <main>
-        <ToolsHero totalCount={tools.length} />
-        <section className="section-gradient-soft py-10 sm:py-12 lg:py-14">
+        <ToolsHero totalCount={tools.length} categoryCount={categoryCount} tagCount={tagCount} />
+        <section className="section-gradient-soft py-5 sm:py-6 lg:py-7">
           <div className="page-shell">
             <ToolsFilterPanel
               categories={categories}
@@ -81,7 +91,7 @@ export function ToolsPage({ tools }: ToolsPageProps) {
             />
           </div>
         </section>
-        <section className="section-gradient-cyan section-block">
+        <section className="section-gradient-cyan py-8 sm:py-9 lg:py-10">
           <div className="page-shell">
             <ToolsGridHeader resultCount={filteredTools.length} totalCount={tools.length} />
             <ToolsGrid tools={filteredTools} onClear={clearFilters} />
