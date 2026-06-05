@@ -32,6 +32,7 @@ type ToolInsertPayload = ToolInsert & AdminToolPayload;
 type ToolUpdatePayload = ToolUpdate & AdminToolPayload;
 
 export async function getPublishedTools(): Promise<ToolItem[]> {
+  console.log("getPublishedTools start");
   return fetchPublishedToolsFromSupabase();
 }
 
@@ -229,7 +230,8 @@ async function fetchPublishedToolsFromSupabase(): Promise<ToolItem[]> {
     .select("*")
     .eq("status", "published")
     .order("updated_at", { ascending: false })
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false })
+    .limit(100);
 
   if (error) {
     console.error("getPublishedTools error:", error);
@@ -237,6 +239,12 @@ async function fetchPublishedToolsFromSupabase(): Promise<ToolItem[]> {
   }
 
   const rows = data ?? [];
+  console.log(
+    "getPublishedTools count:",
+    rows.length,
+    "slugs:",
+    rows.map((row) => row.slug).join(","),
+  );
   const categoryMap = buildCategoryNameMap(await fetchCategoryRows(client));
   const tagMap = await fetchToolTagMap(
     client,

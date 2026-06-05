@@ -2,6 +2,25 @@
 
 ## 2026-06-05
 
+任务：加固 `/tools` 工具库列表页读取，确保显示最新 published 工具。
+
+改动文件：
+- `src/app/tools/page.tsx`
+- `src/lib/db/tools.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 已确认 `/tools` 页面继续使用 `getPublishedTools()`，不是纯 mock 数据源。
+- 已确认 `ToolsPage`、`ToolsGrid`、`ToolCard` 没有 `featured`、`cover_url`、`tags.length`、`category_id` 或 `slice(0, 6)` 等默认过滤，默认会渲染全部传入工具。
+- `/tools` 页面补充 `fetchCache = "force-no-store"`，并在服务端入口调用 `noStore()`，进一步避免工具库列表被缓存。
+- `getPublishedTools()` 查询继续限制 `status = "published"`，按 `updated_at`、`created_at` 倒序，最多读取 100 条，保证最新发布工具优先出现在工具库。
+- `getPublishedTools()` 增加服务端日志 `getPublishedTools count` 和 `getPublishedTools slugs`，便于在 Vercel 日志确认是否读取到了 `open-design`。
+- 本地 `npm run build` 已通过，构建日志确认读取到 `open-design,raycast,chatgpt`，且 `/tools` 仍为动态渲染页面。
+- 本次未修改后台 CRUD、数据库结构、RLS 策略、投稿页、登录页、Turnstile 或整体视觉风格。
+
+## 2026-06-05
+
 任务：修复前台工具库 `/tools` 不能及时显示后台新增 published 工具的问题。
 
 改动文件：

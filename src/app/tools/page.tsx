@@ -1,9 +1,11 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { ToolsPage } from "@/components/tools/tools-page";
 import { getPublishedTools } from "@/lib/db/tools";
 import { createPageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+export const fetchCache = "force-no-store";
 
 export const metadata = createPageMetadata({
   title: "工具库",
@@ -12,6 +14,7 @@ export const metadata = createPageMetadata({
 });
 
 export default async function Page() {
+  noStore();
   const tools = await getPublishedTools();
 
   return <ToolsPage tools={tools} />;
