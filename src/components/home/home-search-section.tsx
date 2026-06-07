@@ -2,9 +2,36 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const quickKeywords = ["AI 工具", "在线工具", "效率软件", "开源项目"];
+const quickKeywords = ["AI", "设计", "效率", "开源"];
+
+function DoodleSearchMark() {
+  return (
+    <svg viewBox="0 0 96 28" fill="none" className="h-5 w-20 text-[#5ecfb1]" aria-hidden="true">
+      <path
+        d="M4 18c15-8 30-11 45-9 14 2 27 7 43 3"
+        stroke="currentColor"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function DoodleSpark() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className="h-8 w-8 text-[#facc15]" aria-hidden="true">
+      <path
+        d="M22 4c2 10 7 16 18 18-11 2-16 8-18 22C20 30 14 24 4 22c10-2 16-8 18-18Z"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function HomeSearchSection() {
   const router = useRouter();
@@ -21,59 +48,69 @@ export function HomeSearchSection() {
   }
 
   return (
-    <section id="search" className="section-gradient-soft py-6 sm:py-8">
-      <div className="page-shell">
-        <div className="glass-card-strong liquid-border relative overflow-hidden rounded-[28px] border border-white/75 bg-white/72 p-4 shadow-[0_22px_70px_rgba(15,23,42,0.08)] backdrop-blur-2xl sm:p-5 lg:p-6">
-          <div className="pointer-events-none absolute right-[-6rem] top-[-7rem] h-44 w-44 rounded-full bg-sky-100/76 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-[-7rem] left-[-8rem] h-44 w-44 rounded-full bg-cyan-100/66 blur-3xl" />
-
-          <div className="relative mb-4 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="inline-flex rounded-full border border-sky-100 bg-sky-50/70 px-3 py-1 text-xs font-bold text-sky-700">
-                全站搜索
-              </p>
-              <h2 className="mt-2 text-lg font-black leading-snug text-[#0f172a] sm:text-xl">
-                快速找到你需要的工具或文章
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#64748b]">
-                输入关键词，搜索工具名称、简介、文章标题和内容。
-              </p>
-            </div>
+    <section className="relative z-20 -mt-7 px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1240px]">
+        <form
+          action="/search"
+          method="get"
+          onSubmit={handleSubmit}
+          className="relative overflow-hidden rounded-[28px] border-2 border-[#0f172a]/[0.08] bg-white/92 p-3 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur"
+        >
+          <div className="pointer-events-none absolute left-7 top-0 h-2 w-24 rotate-[-2deg] rounded-full bg-[#fde68a]" />
+          <div className="pointer-events-none absolute right-8 top-4 hidden sm:block">
+            <DoodleSpark />
           </div>
 
-          <form onSubmit={handleSubmit} className="relative grid gap-2.5 sm:grid-cols-[1fr_auto]">
-            <label className="sr-only" htmlFor="home-search">
-              搜索工具或文章
-            </label>
-            <input
-              id="home-search"
-              type="search"
-              value={keyword}
-              onChange={(event) => setKeyword(event.target.value)}
-              placeholder="搜索 AI 工具、在线工具、效率软件、开源项目..."
-              className="h-12 w-full rounded-[18px] border border-white/90 bg-white/86 px-4 text-sm font-semibold text-[#0f172a] shadow-[inset_0_2px_12px_rgba(15,23,42,0.05)] outline-none transition placeholder:text-slate-400 focus:border-cyan-300 focus:bg-white focus:ring-4 focus:ring-cyan-100 sm:h-14 sm:text-base"
-            />
+          <div className="relative grid gap-3 md:grid-cols-[1fr_auto] md:items-center">
+            <div className="relative">
+              <input
+                id="home-search"
+                name="q"
+                type="search"
+                value={keyword}
+                onChange={(event) => setKeyword(event.target.value)}
+                placeholder="搜索 AI、设计、效率、开源工具..."
+                className="h-12 w-full rounded-[20px] border border-[#0f172a]/[0.10] bg-[#f8fbff] px-5 pr-12 text-sm font-bold text-[#0f172a] outline-none transition placeholder:text-[#94a3b8] focus:border-[#5ecfb1]/70 focus:bg-white focus:ring-4 focus:ring-[#5ecfb1]/15"
+              />
+
+              <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#93c5fd]">
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+                  <path
+                    d="m20 20-4.5-4.5M18 10.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
             <button
               type="submit"
-              className="inline-flex h-12 items-center justify-center rounded-[16px] bg-[#0f172a] px-7 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-lg sm:h-14"
+              className="h-12 rounded-[20px] bg-[#0f172a] px-8 text-sm font-black text-white shadow-[0_12px_24px_rgba(15,23,42,0.18)] transition hover:-translate-y-0.5 hover:bg-[#111827] md:min-w-[118px]"
             >
               搜索
             </button>
-          </form>
+          </div>
 
-          <div className="relative mt-4 flex flex-wrap items-center gap-2">
-            <span className="mr-1 text-xs font-bold text-slate-400">快速入口</span>
+          <div className="mt-3 flex flex-wrap items-center gap-2 pl-1">
+            <span className="text-xs font-black text-[#94a3b8]">热门</span>
+
             {quickKeywords.map((item) => (
-              <a
+              <Link
                 key={item}
-                href={getSearchPath(item)}
-                className="rounded-full border border-slate-200/70 bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-200 hover:bg-cyan-50 hover:text-[#0f172a]"
+                href={`/search?q=${encodeURIComponent(item)}`}
+                className="inline-flex h-7 items-center rounded-full border border-[#0f172a]/[0.08] bg-white px-3 text-xs font-black text-[#475569] transition hover:-translate-y-0.5 hover:border-[#5ecfb1]/60 hover:text-[#20a27f]"
               >
                 {item}
-              </a>
+              </Link>
             ))}
+
+            <div className="ml-auto hidden text-[#5ecfb1] sm:block">
+              <DoodleSearchMark />
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   );

@@ -1,40 +1,43 @@
 import Link from "next/link";
 import type { PublishedArticle } from "@/types/article";
 import { HomeArticleCard } from "./home-article-card";
+import { homeShellClassName } from "./home-visual-utils";
 
 type HomeLatestArticlesProps = {
   articles: PublishedArticle[];
 };
 
 export function HomeLatestArticles({ articles }: HomeLatestArticlesProps) {
+  const latestArticles = articles.slice(0, 3);
+
   return (
-    <section id="latest-articles" className="section-gradient-violet py-8 sm:py-10 lg:py-12">
-      <div className="page-shell">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <section id="latest-articles" className="relative bg-[#f7fbf6]/70 py-6 sm:py-7 lg:py-8">
+      <div className={homeShellClassName}>
+        <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
           <div>
-            <p className="text-sm font-semibold text-indigo-700">最新文章</p>
-            <h2 className="mt-2 text-2xl font-black text-[#0f172a] sm:text-3xl">从工具选择到上手实践</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
-              从工具选择、使用方法到实用教程，帮助你更快上手。
+            <p className="text-xs font-black text-[#34a987]">阅读预览</p>
+            <h2 className="mt-1 text-2xl font-black text-[#0f172a] sm:text-3xl">最新文章</h2>
+            <p className="mt-1.5 max-w-2xl text-sm leading-6 text-[#64748b]">
+              用简单易懂的方式整理工具选择、使用教程和避坑经验。
             </p>
           </div>
           <Link
             href="/articles"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[14px] border border-white/80 bg-white/70 px-4 text-sm font-bold text-[#0f172a] shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[16px] border border-[#0f172a]/[0.10] bg-white px-4 text-sm font-black text-[#0f172a] shadow-[3px_3px_0_rgba(125,211,188,0.18)] transition hover:-translate-y-0.5 hover:border-[#5ecfb1] hover:bg-[#f7fbf6]"
           >
             查看全部文章
           </Link>
         </div>
 
-        {articles.length > 0 ? (
-          <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article) => (
+        {latestArticles.length > 0 ? (
+          <div className="mt-3.5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {latestArticles.map((article) => (
               <HomeArticleCard key={article.id} article={article} />
             ))}
           </div>
         ) : (
-          <div className="glass-card mt-5 p-6 text-sm leading-7 text-slate-500">
-            暂无已发布文章。发布文章后，这里会显示最新内容。
+          <div className="mt-3.5 rounded-[22px] border border-dashed border-[#0f172a]/14 bg-white/78 p-4 text-sm leading-7 text-[#64748b] shadow-[5px_5px_0_rgba(250,204,21,0.12)]">
+            暂时还没有文章，正在整理中。
           </div>
         )}
       </div>

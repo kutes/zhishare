@@ -2,6 +2,381 @@
 
 ## 2026-06-06
 
+任务：首页移动端全局间距压缩与收尾检查。
+
+改动文件：
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-page.tsx`
+- `src/components/home/home-sponsor-banner.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 收紧了移动端 Hero 的整体高度、标题间距、chips 间距和按钮前后留白，右侧控制台继续隐藏。
+- 收紧了搜索区与 Hero 的衔接节奏，并保持输入框与按钮不挤压。
+- 收紧了分类区的移动端 `py`、卡片 `min-height` 和卡片内图标 / 文案间距。
+- 收紧了精选工具区的移动端 / 区块间距，并保留桌面 3 列大卡不变。
+- 收紧了最新文章区的移动端 `py`、标题到列表的间距和空状态占位。
+- 收紧了收录原则与合作推广横幅的移动端 `py`、标题 / 文案间距和按钮前留白。
+- 保留桌面端原有节奏与视觉，不影响 `/tools`、`/articles`、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页“最新文章”区域手机端再次优化，改成紧凑便签列表。
+
+改动文件：
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-article-card.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 桌面端保留当前文章卡片风格，不大改。
+- 手机端改成紧凑便签列表：左侧便签 / 文档图标，中间标题、摘要一行和日期 / 分类，右侧 `阅读` 小按钮。
+- 手机端单篇高度压缩到更轻量的浏览节奏，减少留白和装饰。
+- 保留文章安全 fallback：标题、摘要、日期、slug 都使用现有安全函数处理，不输出 `undefined` / `null`。
+- 未修改 `/articles` 页面业务逻辑、Hero、搜索区、分类区、精选工具区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页“最新文章”区域手机端单独优化，改成紧凑便签列表。
+
+改动文件：
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-article-card.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 桌面端保留当前文章卡片风格，不大改。
+- 手机端改成紧凑便签列表：左侧便签 / 文档图标，中间标题、摘要一行和日期 / 分类，右侧 `阅读` 小按钮。
+- 手机端单篇高度压缩到更轻量的浏览节奏，减少留白和装饰。
+- 保留文章安全 fallback：标题、摘要、日期、slug 都使用现有安全函数处理，不输出 `undefined` / `null`。
+- 未修改 `/articles` 页面业务逻辑、Hero、搜索区、分类区、精选工具区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页“精选工具”区域手机端再次优化，改成紧凑小图标列表，桌面端保持大卡。
+
+改动文件：
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 桌面端继续保留现有手绘大卡风格，`md` 及以上仍显示大卡。
+- 手机端改成紧凑小列表卡：左侧首字母图标块，中间工具名、简介、标签，右侧小号 `详情` 按钮。
+- 手机端隐藏大插画区、适合谁模块和大面积留白，单项高度压缩到更轻的浏览节奏。
+- 精选工具区布局为手机单列、`md` 两列、`lg` 三列，当前 3 个工具在桌面端仍保持同一行。
+- 不显示访问官网按钮，不显示收藏按钮。
+- 本次未修改 Hero、搜索区、分类区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+- 已用本地浏览器检查桌面 1280x720：可见 3 张大卡，首张卡片高度约 441px，桌面大卡结构保留。
+- 已用本地浏览器检查移动 390x844：可见 3 条紧凑列表项，首张卡片高度约 105px，无横向溢出，无 `undefined` / `null`。
+
+任务：首页“精选工具”区域手机端单独优化，改为紧凑小图标列表。
+
+改动文件：
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 桌面端继续保留现有手绘大卡风格，不大改。
+- 手机端改为紧凑小列表卡：左侧首字母图标块，中间工具名、简介、标签，右侧小号 `详情` 按钮。
+- 手机端隐藏大插画区、适合谁模块、大留白和过高按钮区，单项高度控制在更紧凑范围内。
+- 卡片响应式双形态已完成：`md` 及以上显示桌面大卡，`md` 以下显示手机列表卡。
+- 精选工具区布局调整为手机单列、`md` 两列、`lg` 三列，当前仅 3 个工具时桌面端仍一行 3 个。
+- 未修改官网按钮、收藏按钮、工具数据来源、Hero、搜索区、分类区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页“精选工具”区域单独重写，让 3 个工具在桌面端同一行，统一成手绘信息卡。
+
+改动文件：
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 已将精选工具区改为桌面 3 列、平板 2 列、手机单列的统一布局，当前仅 3 个工具时会稳定同一行显示。
+- 工具卡统一为手绘信息卡风格，去掉了前两个大卡、第三个掉行的问题。
+- 卡片内部保留手绘插画区、工具首字母、分类、标签、工具名、简介、适合谁和 `查看详情` 按钮。
+- 不显示 `访问官网` 按钮，不显示收藏按钮。
+- 卡片高度尽量统一，并保持 `tools.length` 为空时的空状态文案。
+- 本次未修改 Hero、搜索区、分类区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页“按场景浏览”分类区单独重写，让分类入口更像手绘便利贴。
+
+改动文件：
+- `src/components/home/home-category-section.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 已将“按场景浏览”改成更像手绘纸片 / 便利贴的分类入口，保留标题不变。
+- 删除了抢眼的“场景入口”小标签，顶部文案更轻。
+- 分类卡片改为 4 张浅色手绘卡：`AI 工具`、`在线工具`、`效率软件`、`开源项目`。
+- 桌面端 4 列，平板 2 列，手机 2 列；卡片高度保持紧凑。
+- 每张卡片都带简笔 SVG 图标，点击仍然跳转 `/tools`。
+- 本次未修改 Hero、搜索区、精选工具区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页搜索条单独重写，让搜索区域更简洁、紧凑并贴近手绘效果图。
+
+改动文件：
+- `src/components/home/home-search-section.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 已将首页搜索区替换为手绘圆角白色卡片，并通过 `-mt-7` 与 Hero 做轻微叠压衔接。
+- 删除搜索条前面的 `搜索入口`、`快速找到工具或文章` 等多余文案。
+- 搜索区仅保留搜索输入框、搜索按钮和热门关键词 chips：`AI`、`设计`、`效率`、`开源`。
+- 保留 `action="/search"`、`name="q"` 和客户端 `router.push()` 跳转逻辑，关键词会进入 `/search?q=关键词`，空关键词进入 `/search`。
+- 热门关键词改为 `Link` 直达 `/search?q=关键词`。
+- 未使用 clipboard API，未调用 `navigator.clipboard.writeText`。
+- 本次未修改 `home-hero.tsx`、`/tools`、`/tools/[slug]`、分类区、精选工具区、最新文章区、合作推广区、后台、数据库、RLS、Turnstile 或搜索页业务逻辑。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页 Hero 标题区精修，只优化左侧标题海报感。
+
+改动文件：
+- `src/components/home/home-hero.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 本次仅修改 Hero 左侧标题区域，右侧手绘控制台保持不变。
+- 保留 `人工筛选 · 适合小白` 小标签、`KT严选` 主标题、4 个 chips 和 `进入工具库` / `阅读文章` 两个按钮。
+- 删除标题下方简介文案，减少 Hero 左侧纵向占用。
+- 将手绘下划线从标题 absolute 装饰改为标题下方独立一行，避免压住 `KT严选`。
+- 标题改为 `KT` 与 `严选` 分组的手绘海报式排版，增加浅蓝 / 黄色手绘色块、黄色圆点和星形点缀；未引入字体文件或新依赖。
+- 移动端标题使用更保守的 `clamp(4rem,16vw,7.2rem)`，避免横向溢出。
+- 本次未修改 `/tools`、`/tools/[slug]`、搜索区、分类区、精选工具区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页 Hero 区单独重写，让首屏更接近“简笔手绘 + 清新年轻 + 杂志感工具发现站”。
+
+改动文件：
+- `src/components/home/home-hero.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 已按本次范围仅替换 `HomeHero` 组件，未改动搜索区、分类区、精选工具区、最新文章区、合作推广区或其他页面。
+- Hero 主标题保持为 `KT严选`，副标题改为“人工筛选实用工具、优质文章和清晰可靠的使用经验，帮你更快找到值得尝试的数字工具。”
+- 保留 `进入工具库`、`阅读文章` 两个按钮，以及 `人工筛选`、`持续更新`、`来源清晰`、`适合小白` 四个 chips。
+- 右侧改为更大的手绘控制台，只展示真实 `toolCount`、`articleCount` 和传入工具列表前 3 个工具名；无工具时使用“等待收录”兜底，不显示 `undefined` / `null`。
+- 手机端继续隐藏右侧大控制台，仅显示一条真实数量胶囊，避免 Hero 首屏过高。
+- `src/components/home/home-page.tsx` 当前传参已包含 `articleCount={articles.length}`，与新组件 props 匹配，本次未修改。
+- 本次未修改 `/tools`、`/tools/[slug]`、`/articles`、`/submit`、`/copyright`、`/admin/*`、Turnstile、Supabase RLS、数据库 schema、后台 CRUD、搜索区、分类区、精选工具区、最新文章区或合作推广区。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：首页 `/` 手绘风二次精修，按参考图做视觉降噪、文案简化和版式压缩。
+
+改动文件：
+- `src/app/page.tsx`
+- `src/components/home/home-page.tsx`
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-search-section.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-sponsor-banner.tsx`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- Hero 主标题已改为 `KT严选`，顶部导航品牌名仍保留 `知享`。
+- Hero 副标题已改为指定的人工筛选工具、文章和经验说明。
+- Hero 装饰已降噪：去掉大面积网格、散落箭头和过多装饰，只保留云朵、纸飞机、少量星星和薄荷绿手绘下划线。
+- 右侧控制台标题改为 `知享控制台`，只保留真实 `tools.length` 和 `articles.length` 两个统计，最近更新改成一行小胶囊，手机端继续隐藏控制台。
+- 搜索区删除 `搜索入口` 和 `快速找到工具或文章`，改为紧凑一体化搜索条，保留 `/search?q=关键词` 跳转。
+- 热门关键词压缩为 `AI`、`设计`、`效率`、`开源`。
+- 分类区继续保留 4 个入口，桌面 4 列、手机 2 列，卡片高度和间距已收紧。
+- 精选工具区改为最多 3 个工具，桌面端 3 张等宽中型手绘卡，避免第三张卡片单独掉到下一行。
+- 首页工具卡继续只显示 `查看详情`，不显示 `访问官网`、收藏按钮或官网入口。
+- 最新文章区和合作推广横幅已同步压缩间距和高度。
+- 本次未修改 `/tools` 页面、工具详情页、文章业务逻辑、投稿页、投诉页、后台、Turnstile、RLS、数据库 schema、sitemap 或 robots。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+
+任务：继续重做首页 `/` 的视觉比例与手绘组件结构，使其更接近“简笔手绘 SaaS 首页效果图”。
+
+改动文件：
+- `src/components/home/home-header.tsx`
+- `src/components/home/home-page.tsx`
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-search-section.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-trust-section.tsx`
+- `src/components/home/home-visual-utils.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 新增 `homeShellClassName`，首页导航、Hero、搜索、分类、精选工具、最新文章、可信说明和合作横幅统一使用 `max-width: 1280px` 的首页容器，修正主体过窄问题。
+- Hero 重新重构为桌面端左侧大标题、右侧大号手绘控制台结构；桌面 1280x720 下 Hero 实测高度约 437px。
+- Hero 标题增加 `DoodleUnderline` 手绘下划线，背景加入低透明网格和成组云朵、纸飞机、箭头、星星装饰，避免零散小点缀。
+- Hero 右侧控制台改为 `SketchPanel` 手绘白板 / 电脑窗口结构，包含胶带、窗口圆点、虚线、统计便签、最近更新和右下角便签。
+- Hero 控制台继续只使用真实数据：`tools.length`、`articles.length`、最近 3 个工具名称和首字母 fallback；无假数字、无商业 logo。
+- 手机端单独压缩 Hero：隐藏右侧控制台，按钮改为双列，保留小型“已收录 X 个工具”胶囊；390px 视口下 Hero 实测约 449px。
+- 搜索区重做为与 Hero 衔接的白色一体化手绘搜索条，统一首页宽度，保留 `/search?q=关键词` 和空搜索 `/search` 逻辑。
+- 分类区重做为更明显的 4 个浅色手绘入口卡，桌面 4 列、手机 2 列，点击仍进入 `/tools`。
+- 精选工具区重做布局，桌面端前 2 个工具从 `lg` 起并排横向大卡，后续工具为紧凑小卡。
+- `HomeToolCard` 重写为大卡“左侧手绘插画区 + 右侧信息区”，小卡降低高度，只显示工具名、简介、分类 / 标签和“查看详情”，不展示官网或收藏。
+- 最新文章区保留 published articles 前 3 篇，统一首页宽度，文章卡继续保持便签纸视觉和 fallback。
+- 本次未修改 `/tools`、`/tools/[slug]`、`/articles` 业务逻辑、`/submit`、`/copyright`、`/admin/*`、Turnstile、RLS、数据库 schema、sitemap、robots 或后台 CRUD。
+
+检查结果：
+- 已运行 `npm run build`，通过。
+- 已重启 `npm run dev -- -p 3001`，首页 `/` 返回 200。
+- 已用 in-app browser 检查桌面 1280x720：首页主容器宽度约 1265px，Hero、搜索条和按场景浏览起始区域可见，无横向溢出。
+- 已用 Chrome DevTools 强制 390x844 移动视口检查：右侧控制台隐藏，`scrollWidth = 390`，无横向滚动，无 `undefined` / `null` / `NaN` 文案。
+- 已用 HTTP 检查 `/search?q=AI`、`/tools`、`/tools/open-design`、`/submit`、`/copyright`、`/admin/login` 均返回 200。
+
+## 2026-06-06
+
+任务：按第三张“简笔手绘 SaaS 首页效果图”再次重做首页 `/`。
+
+改动文件：
+- `src/app/page.tsx`
+- `src/components/home/home-page.tsx`
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-search-section.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-article-card.tsx`
+- `src/components/home/home-sponsor-banner.tsx`
+- `src/components/home/home-visual-utils.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 首页数据入口改为 `Promise.all([getPublishedTools(), getPublishedArticles()])`，同时读取 published tools 和 published articles。
+- `HomePage` props 增加 `articles`，页面结构调整为：首页专属导航、Hero、搜索区、按场景浏览、精选工具、最新文章、可信说明 / 收录原则、合作推广横幅、现有 footer。
+- Hero 重做为更紧凑的手绘 SaaS 首页主视觉：左侧保留指定标签、标题、副标题、4 个 chips 和两个按钮；右侧改为桌面端手绘控制台。
+- Hero 控制台只显示真实数据：已收录工具数、已发布文章数、最近 3 个工具名称 / 首字母；无工具时显示“等待收录”，没有使用假数字或商业 logo。
+- 手机端隐藏 Hero 右侧控制台，仅保留核心文案、chips 和按钮，减少首屏高度。
+- 搜索区改为紧凑手绘圆角搜索板，保留 `/search?q=关键词` 跳转、空搜索 `/search` 和原生 GET 兜底；热门关键词继续跳转搜索页。
+- 分类区标题改为“按场景浏览”，展示 AI 工具、在线工具、效率软件、开源项目 4 个入口，手机端保持 2 列。
+- 精选工具区改为前 2 个工具横向大卡，后续工具为紧凑小卡；卡片只展示名称、简介、分类、标签、适合谁和“查看详情”，不展示官网或收藏。
+- 最新文章区重新接入首页，展示 published articles 前 3 篇；文章卡改为手绘便签风，支持日期和摘要 fallback。
+- 新增紧凑可信说明 section，展示来源清晰、功能明确、风险提醒、人工整理 4 个原则。
+- 合作推广横幅改为浅绿 / 浅蓝手绘 banner，按钮继续链接现有 `/submit`，未新增合作页面。
+- 本次未修改 `/tools`、`/tools/[slug]`、`/articles` 业务逻辑、`/submit`、`/copyright`、`/admin/*`、Turnstile、RLS、数据库 schema、sitemap、robots 或后台 CRUD。
+
+检查结果：
+- 已运行 `npm run build`，通过；构建日志显示首页 `/` 为动态页面，当前 published tools 为 `open-design,raycast,chatgpt`。
+- 已启动 `npm run dev -- -p 3001` 做干净端口验证，`/`、`/search?q=AI`、`/tools/open-design` 均返回 200。
+- 已用 in-app browser 检查桌面 1280x720：Hero、手绘控制台、搜索条、场景区起始位置可见，无横向溢出。
+- 已用 Chrome DevTools 强制 390x844 移动视口检查：Hero 右侧控制台隐藏，顶部菜单可见，分类区为 2 列，`scrollWidth` 等于视口宽度，无横向溢出。
+- 已在移动视口触发表单搜索，输入 `AI` 后跳转到 `/search?q=AI`。
+- 已用 HTTP 检查 `/submit`、`/copyright`、`/admin/login` 均返回 200。
+
+## 2026-06-06
+
+任务：二次重做首页 `/`，进一步贴近“简笔手绘风格效果图”。
+
+改动文件：
+- `src/app/page.tsx`
+- `src/components/home/home-page.tsx`
+- 新增 `src/components/home/home-header.tsx`
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-search-section.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `src/components/home/home-sponsor-banner.tsx`
+- `src/components/home/home-visual-utils.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已重新阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 首页结构收敛为：首页专属导航、Hero 手绘主视觉、紧凑搜索条、按使用场景开始浏览、精选工具、合作推广横幅、现有 footer。
+- 新增首页专属 `HomeHeader`，保留首页、工具库、文章、投稿、版权投诉、搜索、推荐工具等主要入口，不修改全站共享 Header，避免影响 `/tools` 等页面。
+- Hero 重写为更明显的手绘首页主视觉：浅蓝网格背景、云朵、纸飞机、波浪线、手写下划线、左侧品牌文案和右侧插画控制台。
+- Hero 右侧控制台改为白色手绘纸板：包含真实 published 工具总数、分类导航入口、最近 3 个真实工具名、LIVE 胶囊、便签和首字母 fallback；未使用假数字或真实商业 logo。
+- 移动端隐藏右侧大控制台，只保留标题、副标题、4 个胶囊、两个按钮和小型“今日发现 / 已收录工具”真实数据条。
+- 搜索区改为圆润的一体化白色手绘卡片，保留 `/search?q=关键词` 跳转和原生 GET 兜底。
+- 分类区标题改为“按使用场景开始浏览”，桌面 4 列，手机 2 列，卡片加入便签胶带、柔和色块和手绘 SVG 图标。
+- 精选工具区标题改为“先看这些实用工具”，副标题为“帮你减少试错成本”；工具优先读取 `featured` / `is_featured` 字段，没有则取前 3 个 published 工具。
+- 工具卡改成轻手绘信息卡，展示工具名、一句话简介、分类、最多 2 个标签、“适合谁”和“查看详情”按钮；不显示“访问官网”或收藏按钮。
+- 合作推广区改成手绘横向 banner，加入纸飞机、电脑线稿和装饰色块，按钮链接继续使用现有 `/submit`。
+- 首页不再渲染文章列表和收录原则模块，减少垂直长度，贴合本次指定结构；未删除相关旧组件文件。
+- 本次未修改 `/tools` 页面、工具详情页、文章页、投稿页、版权页、后台、数据库 schema、RLS、Turnstile、搜索页核心逻辑或后台 CRUD。
+- `npm run build` 已通过；构建日志确认首页 `/` 为动态渲染页面，并读取当前 published 工具 `open-design,raycast,chatgpt`。
+- 已重启 `npm run dev -- -p 3000`，本地首页返回 200。
+- 已用浏览器检查桌面 1280x720：首屏可见 Hero、手绘控制台、搜索条和场景标题，无横向溢出。
+- 已用浏览器检查移动 390x844：大控制台隐藏，小数据条显示，分类卡 2 列，无横向溢出。
+- 已用浏览器实测首页搜索：输入 `AI` 后跳转到 `/search?q=AI`。
+- 已用 HTTP 检查 `/tools/open-design` 返回 200，工具详情跳转目标正常。
+
+## 2026-06-06
+
+任务：按“简笔手绘 + 清新年轻 + 杂志感 SaaS 工具发现站”重新设计首页。
+
+改动文件：
+- `src/app/page.tsx`
+- `src/components/home/home-page.tsx`
+- `src/components/home/home-hero.tsx`
+- `src/components/home/home-search-section.tsx`
+- `src/components/home/home-category-section.tsx`
+- `src/components/home/home-featured-tools.tsx`
+- `src/components/home/home-tool-card.tsx`
+- `src/components/home/home-latest-articles.tsx`
+- `src/components/home/home-article-card.tsx`
+- `src/components/home/home-trust-section.tsx`
+- `src/components/home/home-sponsor-banner.tsx`
+- 新增 `src/components/home/home-visual-utils.ts`
+- `docs/TASK_LOG.md`
+
+检查与修复：
+- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
+- 首页结构调整为：现有 `SiteHeader`、Hero 手绘主视觉、搜索入口、按场景浏览、精选工具、最新文章、收录原则、合作推广横幅、现有 `SiteFooter`。
+- Hero 主文案改为“让好工具 / 更容易被发现”，小标签为“人工筛选 · 适合小白”，并加入人工筛选、持续更新、来源清晰、适合小白 chips。
+- Hero 右侧改为手绘“知享控制台”，只显示真实 published 工具总数、published 文章总数和最近 3 个工具名称；无工具时显示“等待收录”。
+- 控制台下方的工具标识使用工具名首字母 / 缩写 fallback，不读取或展示真实商业 logo。
+- 手机端隐藏 Hero 右侧控制台，避免首屏过长。
+- 首页搜索入口保持现有 `/search?q=关键词` 跳转，空关键词跳转 `/search`，并补充原生 GET 表单兜底，未新增搜索系统。
+- “按场景浏览”改为 4 张手绘卡片：AI 工具、在线工具、效率软件、开源项目，全部链接到现有 `/tools`。
+- 精选工具继续展示 published tools 前 3 个，只显示“查看详情”，不显示“访问官网”或收藏按钮。
+- 最新文章继续展示 published articles 前 3 篇，点击进入 `/articles/[slug]`。
+- 新增 `home-visual-utils.ts` 统一处理标题、摘要、分类、标签、详情链接和首字母 fallback，避免渲染 `undefined` / `null`。
+- 首页去掉不必要的 `getCategories()` 读取，仅保留 published tools 和 published articles 数据读取；不修改 `src/lib/db/*` 数据函数。
+- 保留 `dynamic = "force-dynamic"`、`revalidate = 0`、`fetchCache = "force-no-store"` 和 `noStore()`，避免首页长期静态缓存。
+- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/admin/*`、`/tools`、`/tools/[slug]`、`/submit`、`/copyright`、Turnstile、sitemap、robots、投稿逻辑、投诉逻辑或登录逻辑。
+- 已用本地浏览器检查桌面 1280x720：首屏可见导航、Hero、搜索入口和“按场景浏览”标题，无横向溢出。
+- 已用本地浏览器检查移动 390x844：Hero 控制台隐藏，搜索按钮正常，场景区单列，无横向溢出。
+- 已用本地浏览器实测首页搜索：输入 `AI` 后点击“搜索”，地址跳转为 `/search?q=AI`。
+
+构建结果：
+- 已运行 `npm run build`，通过；构建日志确认首页 `/` 仍为动态渲染页面，并读取到当前 published 工具 `open-design,raycast,chatgpt`。
+
+## 2026-06-06
+
 任务：重新设计首页 `/`，打造中文工具与知识发现站正式门面。
 
 改动文件：

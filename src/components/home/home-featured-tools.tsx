@@ -7,57 +7,46 @@ type HomeFeaturedToolsProps = {
 };
 
 export function HomeFeaturedTools({ tools }: HomeFeaturedToolsProps) {
-  return (
-    <section id="featured-tools" className="section-gradient-soft py-8 sm:py-10 lg:py-12">
-      <div className="page-shell">
-        <SectionHeading
-          eyebrow="精选工具"
-          title="先看介绍，再进入详情判断"
-          description="展示少量已发布工具，帮助你快速进入工具详情页继续判断是否适合。"
-          actionLabel="查看全部工具"
-          actionHref="/tools"
-        />
+  const displayTools = tools.slice(0, 3);
 
-        {tools.length > 0 ? (
-          <div className="mt-5 grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {tools.map((tool) => (
-              <HomeToolCard key={tool.id} tool={tool} />
+  return (
+    <section id="featured-tools" className="relative px-5 py-6 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
+      <div className="mx-auto max-w-[1240px]">
+        <div className="mb-3.5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div>
+            <p className="mb-1 inline-flex rounded-full border border-[#5ecfb1]/35 bg-white px-3 py-1 text-xs font-black text-[#20a27f] shadow-sm">
+              精选工具
+            </p>
+
+            <h2 className="text-2xl font-black tracking-[-0.04em] text-[#0f172a] sm:text-3xl">
+              先看这些实用工具
+            </h2>
+
+            <p className="mt-1 max-w-2xl text-sm font-medium leading-6 text-[#64748b]">
+              帮你减少试错成本，先了解适合谁，再进入详情判断。
+            </p>
+          </div>
+
+          <Link
+            href="/tools"
+            className="inline-flex h-10 items-center justify-center rounded-2xl border border-[#0f172a]/10 bg-white px-4 text-xs font-black text-[#0f172a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#5ecfb1]/60 hover:text-[#20a27f]"
+          >
+            查看全部工具
+          </Link>
+        </div>
+
+        {displayTools.length > 0 ? (
+          <div className="grid gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
+            {displayTools.map((tool, index) => (
+              <HomeToolCard key={tool.id} tool={tool} index={index} />
             ))}
           </div>
         ) : (
-          <EmptyState text="暂无已发布工具。发布工具后，这里会显示精选工具预览。" />
+          <div className="rounded-[26px] border-2 border-dashed border-[#0f172a]/[0.10] bg-white/80 p-5 text-sm font-bold leading-7 text-[#64748b] shadow-sm">
+            暂时还没有工具，欢迎提交推荐。
+          </div>
         )}
       </div>
     </section>
   );
-}
-
-type SectionHeadingProps = {
-  eyebrow: string;
-  title: string;
-  description: string;
-  actionLabel: string;
-  actionHref: string;
-};
-
-function SectionHeading({ eyebrow, title, description, actionLabel, actionHref }: SectionHeadingProps) {
-  return (
-    <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-      <div>
-        <p className="text-sm font-semibold text-sky-700">{eyebrow}</p>
-        <h2 className="mt-2 text-2xl font-black text-[#0f172a] sm:text-3xl">{title}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">{description}</p>
-      </div>
-      <Link
-        href={actionHref}
-        className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[14px] border border-white/80 bg-white/70 px-4 text-sm font-bold text-[#0f172a] shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
-      >
-        {actionLabel}
-      </Link>
-    </div>
-  );
-}
-
-function EmptyState({ text }: { text: string }) {
-  return <div className="glass-card mt-5 p-6 text-sm leading-7 text-slate-500">{text}</div>;
 }
