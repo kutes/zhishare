@@ -4,6 +4,8 @@ import type { ToolRow } from "@/types/database";
 export type ToolItem = MockTool & {
   category_id?: string;
   cover_url?: string | null;
+  download_url?: string | null;
+  downloadUrl?: string | null;
   created_at?: string;
   updated_at?: string;
   target_users?: string[];
@@ -23,6 +25,7 @@ export type AdminToolInput = {
   summary: string;
   description?: string;
   website_url?: string;
+  download_url?: string;
   cover_url?: string | null;
   category_id?: string;
   is_free: boolean;

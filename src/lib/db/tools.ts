@@ -16,6 +16,7 @@ type AdminToolPayload = {
   summary: string;
   description: string | null;
   website_url: string | null;
+  download_url: string | null;
   cover_url: string | null;
   category_id: string | null;
   is_free: boolean;
@@ -336,6 +337,7 @@ function buildToolPayload(data: AdminToolInput, mode: "insert" | "update") {
     summary: data.summary.trim(),
     description: optionalText(data.description),
     website_url: optionalText(data.website_url),
+    download_url: optionalText(data.download_url),
     cover_url: optionalText(data.cover_url),
     category_id: optionalUuid(data.category_id),
     is_free: data.is_free,

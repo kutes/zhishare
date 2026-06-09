@@ -27,6 +27,7 @@ export type ToolRow = {
   summary: string | null;
   description: string | null;
   website_url: string | null;
+  download_url: string | null;
   cover_url: string | null;
   category_id: string | null;
   category: string | null;

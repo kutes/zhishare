@@ -24,6 +24,7 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
     summary: initialValues?.summary ?? "",
     description: initialValues?.description ?? "",
     website_url: initialValues?.website_url ?? "",
+    download_url: initialValues?.download_url ?? "",
     cover_url: initialValues?.cover_url ?? "",
     category_id: initialValues?.category_id ?? "",
     is_free: initialValues?.is_free ?? true,
@@ -83,7 +84,7 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
     });
 
     if (!result.success) {
-      setMessage(result.error || "保存失败，请检查控制台错误信息。");
+      setMessage(result.error || "Save failed, please check the console error details.");
       setIsSubmitting(false);
       return;
     }
@@ -99,8 +100,8 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
 
       <section className="glass-card-strong grid gap-5 p-5 sm:p-6">
         <div>
-          <p className="text-sm font-bold text-sky-700">基础信息</p>
-          <h2 className="mt-2 text-xl font-black text-ink">前台展示最核心的工具信息</h2>
+          <p className="text-sm font-bold text-sky-700">前台核心信息</p>
+          <h2 className="mt-2 text-xl font-black text-ink">前台展示的核心信息</h2>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -150,7 +151,7 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
 
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2 text-sm font-bold text-slate-700">
-            官网地址
+            官网链接
             <input
               value={values.website_url}
               onChange={(event) => updateValue("website_url", event.target.value)}
@@ -160,7 +161,20 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
           </label>
 
           <label className="grid gap-2 text-sm font-bold text-slate-700">
-            封面图地址
+            网盘下载链接
+            <input
+              value={values.download_url ?? ""}
+              onChange={(event) => updateValue("download_url", event.target.value)}
+              className={inputClass}
+              placeholder="https://pan.quark.cn/..."
+            />
+            <span className="text-xs font-medium leading-5 text-slate-500">
+              可选。填写后会在工具详情页显示“网盘下载”按钮；不填写则按钮置灰不可点击。
+            </span>
+          </label>
+
+          <label className="grid gap-2 text-sm font-bold text-slate-700">
+            封面图链接
             <input
               value={values.cover_url ?? ""}
               onChange={(event) => updateValue("cover_url", event.target.value)}
@@ -227,8 +241,8 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
 
       <section className="glass-card grid gap-5 p-5 sm:p-6">
         <div>
-          <p className="text-sm font-bold text-sky-700">内容补充</p>
-          <h2 className="mt-2 text-xl font-black text-ink">详情页阅读信息</h2>
+          <p className="text-sm font-bold text-sky-700">决策信息</p>
+          <h2 className="mt-2 text-xl font-black text-ink">适合人群与使用场景</h2>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -279,7 +293,7 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
             value={values.risk_notice}
             onChange={(event) => updateValue("risk_notice", event.target.value)}
             className={textareaClass}
-            placeholder="例如：上传敏感文件前请确认隐私政策和服务条款"
+            placeholder="例如：上传敏感文件前请确认隐私政策和授权说明"
           />
         </label>
       </section>
@@ -315,6 +329,10 @@ function validateTool(values: AdminToolInput) {
 
   if (values.website_url && !isHttpUrl(values.website_url)) {
     return "官网地址必须是 http 或 https 链接。";
+  }
+
+  if (values.download_url && !isHttpUrl(values.download_url)) {
+    return "网盘下载链接必须是 http 或 https 链接。";
   }
 
   if (values.status !== "draft" && values.status !== "published") {

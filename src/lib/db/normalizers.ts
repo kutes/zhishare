@@ -55,6 +55,8 @@ export function normalizeTool(
     tags,
     pricing: firstText(row.pricing, row.free_status, isFree ? "免费或免费起步" : "以官网为准"),
     website_url: row.website_url ?? undefined,
+    download_url: row.download_url ?? undefined,
+    downloadUrl: row.download_url ?? undefined,
     is_free: isFree,
     is_open_source: isOpenSource,
     free_status: firstText(row.free_status, isFree ? "免费" : "以官网为准"),

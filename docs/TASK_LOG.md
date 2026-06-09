@@ -1,10 +1,296 @@
-# TASK_LOG
+﻿# TASK_LOG
+
+## 2026-06-09
+
+Task: Finish the sitewide cleanup pass for tool detail page edge cases.
+Files changed:
+- src/components/tools/tool-detail-page.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Verified there are no user-visible continuous question-mark乱码 strings left in `src` or `docs`.
+- Kept the mobile detail flow and button order intact.
+- Confirmed the admin tool form still includes `download_url` and the label/description remain in place.
+- Verified `npm run build` passes.
+
+## 2026-06-09
+
+Task: Finalize the mobile tool detail page information flow.
+Files changed:
+- src/components/tools/tool-detail-page.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Kept the mobile flow in the order: return link, summary card, decision panel, quick facts, detail sections, related tools, bottom ad, footer.
+- Kept the desktop detail layout unchanged.
+- Verified `npm run build` passes.
+
+## 2026-06-09
+
+Task: Reorder the mobile tool detail page into the final information flow.
+Files changed:
+- src/components/tools/tool-detail-page.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Reordered the mobile detail page flow to show the summary card, decision panel, quick facts, detail sections, related tools, and a single bottom ad in that order.
+- Hid the desktop hero and desktop related layout on mobile so the phone view does not duplicate content.
+- Kept the desktop detail page structure intact.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Add a mobile-only summary card at the top of the tool detail page.
+Files changed:
+- src/components/tools/tool-mobile-summary-card.tsx
+- src/components/tools/tool-detail-page.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Added a mobile-only top summary card for `/tools/[slug]` so the key info appears earlier on small screens.
+- Kept category, free/open-source status, title, tagline, tags, and the collapsible description inside the new mobile card.
+- Hid the original desktop hero block on mobile to avoid duplicate content.
+- Kept the desktop hero and the rest of the detail page structure unchanged.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Add a mobile summary card for the top of the tool detail page.
+Files changed:
+- src/components/tools/tool-mobile-summary-card.tsx
+- src/components/tools/tool-detail-page.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Added `ToolMobileSummaryCard` for mobile top summary display.
+- Hid the original desktop hero card on mobile to avoid duplicate top information.
+- Kept category, free/open-source status, title, tagline, tags, and collapsible description in the new mobile card.
+- Desktop still uses the original detail hero layout.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Compress the mobile tool detail top introduction section.
+Files changed:
+- src/components/tools/collapsible-description.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Compressed the mobile "这个工具是什么" section to about 3 lines by default.
+- Preserved the expand/collapse interaction for full text on mobile.
+- Desktop still shows the full description without the toggle button.
+- No changes were made to the quick decision panel, download button, or key information module.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Compress the mobile tool detail quick decision panel so it defaults to summary only and expands on demand.
+Files changed:
+- src/components/tools/tool-decision-panel.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Rebuilt the mobile quick decision panel so the default state only shows the summary and the expand/collapse button.
+- The four decision cards now appear only after clicking "展开判断", and collapse back on the same button.
+- Desktop still shows the full four decision cards.
+- Kept the button order: 访问官网 / 网盘下载 / 返回工具库.
+- Kept disabled fallbacks for missing `website_url` and `download_url`.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Keep compressing the mobile tool detail key information module, leaving only the expand categories button visible by default.
+Files changed:
+- src/components/tools/mobile-tool-detail-sections.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Rebuilt the mobile key information panel so the summary and the three small status blocks are shown by default.
+- The category table stays hidden until "展开分类" is clicked.
+- Only one category can be open at a time after the table is expanded.
+- Desktop detail content remains unchanged.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Rebuild the mobile tool detail key information module into a single compact accordion-style table.
+Files changed:
+- src/components/tools/mobile-tool-detail-sections.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Rewrote the mobile key information area into one unified panel with a compact table layout.
+- Kept the desktop detail content, related recommendations, and ad layout unchanged.
+- Default state is collapsed; tapping a row expands that category below the row, and only one category is open at a time.
+- Mobile now shows the compact table only, while desktop does not show this module.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Rebuild the mobile tool detail "key information" module into a single compact accordion-style table.
+Files changed:
+- src/components/tools/mobile-tool-detail-sections.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Rewrote the mobile key information area into one unified panel with a compact table layout.
+- Kept the desktop detail content, related recommendations, and ad layout unchanged.
+- Default state is collapsed; tapping a row expands that category below the row, and only one category is open at a time.
+- Mobile now shows the compact table only, while desktop does not show this module.
+- `npm run build` passed.
+
+## 2026-06-09
+
+Task: Compress the mobile tool detail page related recommendations and ad slots.
+Files changed:
+- src/components/tools/mobile-related-tools-compact.tsx
+- src/components/tools/tool-detail-page.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Added `MobileRelatedToolsCompact` for mobile, showing at most two compact related tools in a list layout.
+- Kept the desktop related tools section and desktop ad layout unchanged.
+- Hid the inline and sidebar ad slots on mobile, while keeping a single compact bottom ad on mobile.
+- Preserved the official site, download link, return to tools button, and the expand/collapse content sections.
+- `npm run build` passed.
+
+## 2026-06-08
+
+Task: Clean up user-visible garbled Chinese text across the project, with focus on the admin tool form and tool detail panel.
+Files changed:
+- src/components/admin/AdminToolForm.tsx
+- src/components/tools/tool-decision-panel.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Restored the admin tool form labels, placeholders, section titles, helper text, and validation messages to normal Chinese.
+- Restored the tool detail quick decision panel labels, fallback copy, and button text while keeping the `download_url` button logic intact.
+- Verified that `rg "\\?{3,}" src docs` no longer returns user-visible question-mark garbage.
+- `npm run build` passed after clearing the project cache and rebuilding.
+
+## 2026-06-08
+
+Task: Fix garbled Chinese text in the tool detail quick decision panel while keeping the download button logic intact.
+Files changed:
+- src/components/tools/tool-decision-panel.tsx
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Rewrote the quick decision panel with clean Chinese labels and fallback copy.
+- Kept the existing button order: 璁块棶瀹樼綉 / 缃戠洏涓嬭浇 / 杩斿洖宸ュ叿搴?
+- Kept `download_url` support and the disabled fallback state when no download link exists.
+- Corrected the website URL lookup keys so `websiteUrl` and `officialUrl` are read properly.
+- No changes were made to the homepage, tools list, database schema, RLS, backend form structure, `src/lib/db/tools.ts`, `src/lib/db/normalizers.ts`, or `/tools/[slug]` routing.
+
+Check result:
+- `npm run build` passed.
+
+## 2026-06-08
+
+Task: Add a "缃戠洏涓嬭浇" button to the tool decision panel and let the admin tool editor fill `download_url`.
+Files changed:
+- src/types/database.ts
+- src/types/tool.ts
+- src/lib/db/normalizers.ts
+- src/lib/db/tools.ts
+- src/components/tools/tool-decision-panel.tsx
+- src/components/admin/AdminToolForm.tsx
+- src/app/admin/tools/[id]/edit/page.tsx
+- docs/DATABASE_SCHEMA.md
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Added optional `download_url` support end-to-end from database types to the frontend tool model and admin save payload.
+- Added a download URL field to the admin create/edit form so editors can save the link directly.
+- Added a "缃戠洏涓嬭浇" button in the quick decision panel, placed after the official site button and before "杩斿洖宸ュ叿搴?.
+- When the download link exists, it opens in a new tab with `rel="nofollow noopener noreferrer"`; when it is empty, the UI shows a disabled fallback with a short hint.
+- Build verification passed after fixing the admin form and decision panel syntax issues.
+
+## 2026-06-08
+
+Task: Add a "download link" button to the tool detail page quick decision panel and let the admin tool editor fill a download URL.
+Files changed:
+- src/types/database.ts
+- src/types/tool.ts
+- src/lib/db/normalizers.ts
+- src/lib/db/tools.ts
+- src/components/tools/tool-decision-panel.tsx
+- src/components/admin/AdminToolForm.tsx
+- src/app/admin/tools/[id]/edit/page.tsx
+- docs/DATABASE_SCHEMA.md
+- docs/TASK_LOG.md
+
+Checks and fixes:
+- Added optional `download_url` to the `tools` table schema and synced it through database types, the frontend `ToolItem` type, the normalizer, and the admin save payload.
+- Added a "download link" input to the admin create/edit form. It now round-trips and saves, and empty values are stored as `null`.
+- Reordered the quick decision panel buttons to: Visit official site / Download link / Back to tools.
+- When `download_url` exists, the button opens in a new tab and uses `rel="nofollow noopener noreferrer"`; when it is empty, the button is disabled and shows a small "no download link yet" hint.
+- No changes to the tools list page, homepage, submissions, reports, Turnstile, RLS, or the article system.
+
+Check result:
+- `npm run build` passed.
+
+## 2026-06-08
+
+浠诲姟锛氫紭鍖?`/tools/[slug]` 宸ュ叿璇︽儏椤垫墜鏈虹増姝ｆ枃灞曠ず鏂瑰紡锛屽鍔犫€滃睍寮€鍏ㄦ枃 / 鏀惰捣鍏ㄦ枃鈥濄€?
+鏀瑰姩鏂囦欢锛?
+- `src/components/tools/tool-detail-page.tsx`
+- `src/components/tools/mobile-tool-detail-sections.tsx`
+- `docs/TASK_LOG.md`
+
+妫€鏌ヤ笌淇锛?
+- 宸插皢绉诲姩绔鏂囬暱鍐呭鍗曠嫭鎶樺彔锛岄《閮?Hero 鐨勨€滆繖涓伐鍏锋槸浠€涔堚€濈户缁繚鎸佸彲灞曞紑銆?
+- 鏂板 `MobileToolDetailSections` 瀹㈡埛绔粍浠讹紝鍦ㄦ墜鏈虹鎶娾€滀富瑕佸姛鑳?/ 閫傚悎浜虹兢 / 浣跨敤鍦烘櫙 / 浼樼偣 / 缂虹偣 / 椋庨櫓鎻愰啋鈥濇敼鎴愭墜椋庣惔鍒楄〃銆?
+- 妗岄潰绔户缁繚鐣欏師鏈夊畬鏁存鏂囧睍绀猴紝涓嶅奖鍝嶉灞忓垽鏂潰鏉裤€佸畼缃戞寜閽€佽繑鍥為摼鎺ャ€佺浉鍏虫帹鑽愬拰骞垮憡浣嶃€?
+- 鏈敼鏁版嵁璇诲彇銆佺紦瀛樸€?04銆乣/tools` 鍒楄〃椤垫垨棣栭〉閫昏緫銆?
+
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+
+## 2026-06-08
+
+浠诲姟锛氫紭鍖?`/tools/[slug]` 宸ュ叿璇︽儏椤垫墜鏈虹増姝ｆ枃灞曠ず鏂瑰紡锛屽鍔犫€滃睍寮€鍏ㄦ枃 / 鏀惰捣鍏ㄦ枃鈥濄€?
+鏀瑰姩鏂囦欢锛?
+- `src/components/tools/tool-detail-page.tsx`
+- `src/components/tools/collapsible-description.tsx`
+- `src/components/tools/tool-decision-panel.tsx`
+- `docs/TASK_LOG.md`
+
+妫€鏌ヤ笌淇锛?
+- 灏嗗伐鍏疯鎯呴〉椤堕儴浠嬬粛姝ｆ枃鏀逛负绉诲姩绔粯璁ゆ姌鍙狅紝閬垮厤姝ｆ枃杩囬暱鎶娾€滃揩閫熷垽鏂€濆尯鍩熼《寰楀お闈犱笅銆?
+- 鎸夎繖娆¤创鍑虹殑鏇挎崲鐗堣姹傦紝鎶婃姌鍙犵粍浠剁湡姝ｆ帴鍒伴灞?Hero 鐨勯暱浠嬬粛涓婏紝涓嬮潰姝ｆ枃鍖轰繚鎸佷笉鍔ㄣ€?
+- 鏂板 `CollapsibleDescription` 瀹㈡埛绔粍浠讹紝浣跨敤 `useState` 鎺у埗灞曞紑涓庢敹璧凤紝鐐瑰嚮鍚庝笉鏀瑰彉 URL锛屼篃涓嶅奖鍝嶅畼缃戞寜閽拰杩斿洖閾炬帴銆?
+- 绉诲姩绔粯璁ゆ樉绀虹害 5 琛屾鏂囷紝骞堕厤鏈夋贰鍑烘笎鍙橀伄缃╀笌鈥滃睍寮€鍏ㄦ枃鈥濇寜閽€?
+- 灞曞紑鍚庢樉绀哄畬鏁存鏂囷紝鎸夐挳鍒囨崲涓衡€滄敹璧峰叏鏂団€濓紱妗岄潰绔户缁畬鏁村睍绀猴紝涓嶅己鍒舵姌鍙犮€?
+- 鏈敼鍔ㄦ暟鎹鍙栥€佺紦瀛樼瓥鐣ャ€?04 琛屼负銆佺浉鍏虫帹鑽愰€昏緫鎴栧垪琛ㄩ〉銆?
+
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+
+## 2026-06-07
+
+浠诲姟锛氬伐鍏疯鎯呴〉绗竴杞紭鍖栵紝鍙噸鏋?`/tools/[slug]` 璇︽儏椤甸灞忓拰鍐崇瓥闈㈡澘銆?
+鏀瑰姩鏂囦欢锛?
+- `src/components/tools/tool-detail-page.tsx`
+- `docs/TASK_LOG.md`
+
+妫€鏌ヤ笌淇锛?
+- 灏嗚鎯呴〉棣栧睆閲嶆瀯涓衡€滆繑鍥炲伐鍏峰簱 + 宸︿晶宸ュ叿鏍稿績淇℃伅 + 鍙充晶蹇€熷垽鏂潰鏉?+ 蹇€熷垽鏂潯鈥濈殑缁撴瀯銆?
+- 宸︿晶淇濈暀鍒嗙被銆佸悕绉般€佺畝浠嬨€佹爣绛惧拰鐘舵€佽兌鍥婏紝骞朵负缂哄け瀛楁琛ュ厖瀹夊叏 fallback锛岄伩鍏嶆覆鏌?`undefined` / `null`銆?
+- 鍙充晶鏂板蹇€熷垽鏂潰鏉匡紝鎸夆€滈€傚悎浜虹兢 / 浣跨敤鍦烘櫙 / 椋庨櫓鎻愰啋 / 璁块棶璺緞鈥濈粍缁囦俊鎭紝骞朵粎鍦ㄥ瓨鍦?`website_url` 鏃舵樉绀哄畼缃戞寜閽€?
+- 鍒犻櫎棣栧睆涓嬫柟閲嶅鐨勫畼缃?CTA锛岃棣栧睆鍒ゆ柇淇℃伅鏇撮泦涓€?
+- 蹇€熷垽鏂潯鍦ㄦ墜鏈虹淇濇寔 2 鍒椼€佹闈㈢ 4 鍒楋紝渚夸簬蹇€熸壂璇汇€?
+- 淇濈暀姝ｆ枃涓殑骞垮憡浣嶃€佺浉鍏虫帹鑽愬拰鐗堟潈鍖猴紝涓嶈皟鏁存暟鎹鍙栥€佺紦瀛樸€?04 琛屼负鎴栫浉鍏虫帹鑽愰€昏緫銆?
+- 鏈鏈慨鏀?`/tools` 鍒楄〃椤点€乣src/lib/db/tools.ts`銆乣src/lib/db/normalizers.ts` 鎴栨暟鎹簱缁撴瀯銆?
+
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
 ## 2026-06-06
 
-任务：首页移动端全局间距压缩与收尾检查。
+浠诲姟锛氶椤电Щ鍔ㄧ鍏ㄥ眬闂磋窛鍘嬬缉涓庢敹灏炬鏌ャ€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-hero.tsx`
 - `src/components/home/home-category-section.tsx`
 - `src/components/home/home-featured-tools.tsx`
@@ -13,183 +299,183 @@
 - `src/components/home/home-sponsor-banner.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 收紧了移动端 Hero 的整体高度、标题间距、chips 间距和按钮前后留白，右侧控制台继续隐藏。
-- 收紧了搜索区与 Hero 的衔接节奏，并保持输入框与按钮不挤压。
-- 收紧了分类区的移动端 `py`、卡片 `min-height` 和卡片内图标 / 文案间距。
-- 收紧了精选工具区的移动端 / 区块间距，并保留桌面 3 列大卡不变。
-- 收紧了最新文章区的移动端 `py`、标题到列表的间距和空状态占位。
-- 收紧了收录原则与合作推广横幅的移动端 `py`、标题 / 文案间距和按钮前留白。
-- 保留桌面端原有节奏与视觉，不影响 `/tools`、`/articles`、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 鏀剁揣浜嗙Щ鍔ㄧ Hero 鐨勬暣浣撻珮搴︺€佹爣棰橀棿璺濄€乧hips 闂磋窛鍜屾寜閽墠鍚庣暀鐧斤紝鍙充晶鎺у埗鍙扮户缁殣钘忋€?
+- 鏀剁揣浜嗘悳绱㈠尯涓?Hero 鐨勮鎺ヨ妭濂忥紝骞朵繚鎸佽緭鍏ユ涓庢寜閽笉鎸ゅ帇銆?
+- 鏀剁揣浜嗗垎绫诲尯鐨勭Щ鍔ㄧ `py`銆佸崱鐗?`min-height` 鍜屽崱鐗囧唴鍥炬爣 / 鏂囨闂磋窛銆?
+- 鏀剁揣浜嗙簿閫夊伐鍏峰尯鐨勭Щ鍔ㄧ / 鍖哄潡闂磋窛锛屽苟淇濈暀妗岄潰 3 鍒楀ぇ鍗′笉鍙樸€?
+- 鏀剁揣浜嗘渶鏂版枃绔犲尯鐨勭Щ鍔ㄧ `py`銆佹爣棰樺埌鍒楄〃鐨勯棿璺濆拰绌虹姸鎬佸崰浣嶃€?
+- 鏀剁揣浜嗘敹褰曞師鍒欎笌鍚堜綔鎺ㄥ箍妯箙鐨勭Щ鍔ㄧ `py`銆佹爣棰?/ 鏂囨闂磋窛鍜屾寜閽墠鐣欑櫧銆?
+- 淇濈暀妗岄潰绔師鏈夎妭濂忎笌瑙嗚锛屼笉褰卞搷 `/tools`銆乣/articles`銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页“最新文章”区域手机端再次优化，改成紧凑便签列表。
+浠诲姟锛氶椤碘€滄渶鏂版枃绔犫€濆尯鍩熸墜鏈虹鍐嶆浼樺寲锛屾敼鎴愮揣鍑戜究绛惧垪琛ㄣ€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-latest-articles.tsx`
 - `src/components/home/home-article-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 桌面端保留当前文章卡片风格，不大改。
-- 手机端改成紧凑便签列表：左侧便签 / 文档图标，中间标题、摘要一行和日期 / 分类，右侧 `阅读` 小按钮。
-- 手机端单篇高度压缩到更轻量的浏览节奏，减少留白和装饰。
-- 保留文章安全 fallback：标题、摘要、日期、slug 都使用现有安全函数处理，不输出 `undefined` / `null`。
-- 未修改 `/articles` 页面业务逻辑、Hero、搜索区、分类区、精选工具区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 妗岄潰绔繚鐣欏綋鍓嶆枃绔犲崱鐗囬鏍硷紝涓嶅ぇ鏀广€?
+- 鎵嬫満绔敼鎴愮揣鍑戜究绛惧垪琛細宸︿晶渚跨 / 鏂囨。鍥炬爣锛屼腑闂存爣棰樸€佹憳瑕佷竴琛屽拰鏃ユ湡 / 鍒嗙被锛屽彸渚?`闃呰` 灏忔寜閽€?
+- 鎵嬫満绔崟绡囬珮搴﹀帇缂╁埌鏇磋交閲忕殑娴忚鑺傚锛屽噺灏戠暀鐧藉拰瑁呴グ銆?
+- 淇濈暀鏂囩珷瀹夊叏 fallback锛氭爣棰樸€佹憳瑕併€佹棩鏈熴€乻lug 閮戒娇鐢ㄧ幇鏈夊畨鍏ㄥ嚱鏁板鐞嗭紝涓嶈緭鍑?`undefined` / `null`銆?
+- 鏈慨鏀?`/articles` 椤甸潰涓氬姟閫昏緫銆丠ero銆佹悳绱㈠尯銆佸垎绫诲尯銆佺簿閫夊伐鍏峰尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页“最新文章”区域手机端单独优化，改成紧凑便签列表。
+浠诲姟锛氶椤碘€滄渶鏂版枃绔犫€濆尯鍩熸墜鏈虹鍗曠嫭浼樺寲锛屾敼鎴愮揣鍑戜究绛惧垪琛ㄣ€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-latest-articles.tsx`
 - `src/components/home/home-article-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 桌面端保留当前文章卡片风格，不大改。
-- 手机端改成紧凑便签列表：左侧便签 / 文档图标，中间标题、摘要一行和日期 / 分类，右侧 `阅读` 小按钮。
-- 手机端单篇高度压缩到更轻量的浏览节奏，减少留白和装饰。
-- 保留文章安全 fallback：标题、摘要、日期、slug 都使用现有安全函数处理，不输出 `undefined` / `null`。
-- 未修改 `/articles` 页面业务逻辑、Hero、搜索区、分类区、精选工具区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 妗岄潰绔繚鐣欏綋鍓嶆枃绔犲崱鐗囬鏍硷紝涓嶅ぇ鏀广€?
+- 鎵嬫満绔敼鎴愮揣鍑戜究绛惧垪琛細宸︿晶渚跨 / 鏂囨。鍥炬爣锛屼腑闂存爣棰樸€佹憳瑕佷竴琛屽拰鏃ユ湡 / 鍒嗙被锛屽彸渚?`闃呰` 灏忔寜閽€?
+- 鎵嬫満绔崟绡囬珮搴﹀帇缂╁埌鏇磋交閲忕殑娴忚鑺傚锛屽噺灏戠暀鐧藉拰瑁呴グ銆?
+- 淇濈暀鏂囩珷瀹夊叏 fallback锛氭爣棰樸€佹憳瑕併€佹棩鏈熴€乻lug 閮戒娇鐢ㄧ幇鏈夊畨鍏ㄥ嚱鏁板鐞嗭紝涓嶈緭鍑?`undefined` / `null`銆?
+- 鏈慨鏀?`/articles` 椤甸潰涓氬姟閫昏緫銆丠ero銆佹悳绱㈠尯銆佸垎绫诲尯銆佺簿閫夊伐鍏峰尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页“精选工具”区域手机端再次优化，改成紧凑小图标列表，桌面端保持大卡。
+浠诲姟锛氶椤碘€滅簿閫夊伐鍏封€濆尯鍩熸墜鏈虹鍐嶆浼樺寲锛屾敼鎴愮揣鍑戝皬鍥炬爣鍒楄〃锛屾闈㈢淇濇寔澶у崱銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-featured-tools.tsx`
 - `src/components/home/home-tool-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 桌面端继续保留现有手绘大卡风格，`md` 及以上仍显示大卡。
-- 手机端改成紧凑小列表卡：左侧首字母图标块，中间工具名、简介、标签，右侧小号 `详情` 按钮。
-- 手机端隐藏大插画区、适合谁模块和大面积留白，单项高度压缩到更轻的浏览节奏。
-- 精选工具区布局为手机单列、`md` 两列、`lg` 三列，当前 3 个工具在桌面端仍保持同一行。
-- 不显示访问官网按钮，不显示收藏按钮。
-- 本次未修改 Hero、搜索区、分类区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 妗岄潰绔户缁繚鐣欑幇鏈夋墜缁樺ぇ鍗￠鏍硷紝`md` 鍙婁互涓婁粛鏄剧ず澶у崱銆?
+- 鎵嬫満绔敼鎴愮揣鍑戝皬鍒楄〃鍗★細宸︿晶棣栧瓧姣嶅浘鏍囧潡锛屼腑闂村伐鍏峰悕銆佺畝浠嬨€佹爣绛撅紝鍙充晶灏忓彿 `璇︽儏` 鎸夐挳銆?
+- 鎵嬫満绔殣钘忓ぇ鎻掔敾鍖恒€侀€傚悎璋佹ā鍧楀拰澶ч潰绉暀鐧斤紝鍗曢」楂樺害鍘嬬缉鍒版洿杞荤殑娴忚鑺傚銆?
+- 绮鹃€夊伐鍏峰尯甯冨眬涓烘墜鏈哄崟鍒椼€乣md` 涓ゅ垪銆乣lg` 涓夊垪锛屽綋鍓?3 涓伐鍏峰湪妗岄潰绔粛淇濇寔鍚屼竴琛屻€?
+- 涓嶆樉绀鸿闂畼缃戞寜閽紝涓嶆樉绀烘敹钘忔寜閽€?
+- 鏈鏈慨鏀?Hero銆佹悳绱㈠尯銆佸垎绫诲尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
-- 已用本地浏览器检查桌面 1280x720：可见 3 张大卡，首张卡片高度约 441px，桌面大卡结构保留。
-- 已用本地浏览器检查移动 390x844：可见 3 条紧凑列表项，首张卡片高度约 105px，无横向溢出，无 `undefined` / `null`。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸茬敤鏈湴娴忚鍣ㄦ鏌ユ闈?1280x720锛氬彲瑙?3 寮犲ぇ鍗★紝棣栧紶鍗＄墖楂樺害绾?441px锛屾闈㈠ぇ鍗＄粨鏋勪繚鐣欍€?
+- 宸茬敤鏈湴娴忚鍣ㄦ鏌ョЩ鍔?390x844锛氬彲瑙?3 鏉＄揣鍑戝垪琛ㄩ」锛岄寮犲崱鐗囬珮搴︾害 105px锛屾棤妯悜婧㈠嚭锛屾棤 `undefined` / `null`銆?
 
-任务：首页“精选工具”区域手机端单独优化，改为紧凑小图标列表。
+浠诲姟锛氶椤碘€滅簿閫夊伐鍏封€濆尯鍩熸墜鏈虹鍗曠嫭浼樺寲锛屾敼涓虹揣鍑戝皬鍥炬爣鍒楄〃銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-featured-tools.tsx`
 - `src/components/home/home-tool-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 桌面端继续保留现有手绘大卡风格，不大改。
-- 手机端改为紧凑小列表卡：左侧首字母图标块，中间工具名、简介、标签，右侧小号 `详情` 按钮。
-- 手机端隐藏大插画区、适合谁模块、大留白和过高按钮区，单项高度控制在更紧凑范围内。
-- 卡片响应式双形态已完成：`md` 及以上显示桌面大卡，`md` 以下显示手机列表卡。
-- 精选工具区布局调整为手机单列、`md` 两列、`lg` 三列，当前仅 3 个工具时桌面端仍一行 3 个。
-- 未修改官网按钮、收藏按钮、工具数据来源、Hero、搜索区、分类区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 妗岄潰绔户缁繚鐣欑幇鏈夋墜缁樺ぇ鍗￠鏍硷紝涓嶅ぇ鏀广€?
+- 鎵嬫満绔敼涓虹揣鍑戝皬鍒楄〃鍗★細宸︿晶棣栧瓧姣嶅浘鏍囧潡锛屼腑闂村伐鍏峰悕銆佺畝浠嬨€佹爣绛撅紝鍙充晶灏忓彿 `璇︽儏` 鎸夐挳銆?
+- 鎵嬫満绔殣钘忓ぇ鎻掔敾鍖恒€侀€傚悎璋佹ā鍧椼€佸ぇ鐣欑櫧鍜岃繃楂樻寜閽尯锛屽崟椤归珮搴︽帶鍒跺湪鏇寸揣鍑戣寖鍥村唴銆?
+- 鍗＄墖鍝嶅簲寮忓弻褰㈡€佸凡瀹屾垚锛歚md` 鍙婁互涓婃樉绀烘闈㈠ぇ鍗★紝`md` 浠ヤ笅鏄剧ず鎵嬫満鍒楄〃鍗°€?
+- 绮鹃€夊伐鍏峰尯甯冨眬璋冩暣涓烘墜鏈哄崟鍒椼€乣md` 涓ゅ垪銆乣lg` 涓夊垪锛屽綋鍓嶄粎 3 涓伐鍏锋椂妗岄潰绔粛涓€琛?3 涓€?
+- 鏈慨鏀瑰畼缃戞寜閽€佹敹钘忔寜閽€佸伐鍏锋暟鎹潵婧愩€丠ero銆佹悳绱㈠尯銆佸垎绫诲尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页“精选工具”区域单独重写，让 3 个工具在桌面端同一行，统一成手绘信息卡。
+浠诲姟锛氶椤碘€滅簿閫夊伐鍏封€濆尯鍩熷崟鐙噸鍐欙紝璁?3 涓伐鍏峰湪妗岄潰绔悓涓€琛岋紝缁熶竴鎴愭墜缁樹俊鎭崱銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-featured-tools.tsx`
 - `src/components/home/home-tool-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 已将精选工具区改为桌面 3 列、平板 2 列、手机单列的统一布局，当前仅 3 个工具时会稳定同一行显示。
-- 工具卡统一为手绘信息卡风格，去掉了前两个大卡、第三个掉行的问题。
-- 卡片内部保留手绘插画区、工具首字母、分类、标签、工具名、简介、适合谁和 `查看详情` 按钮。
-- 不显示 `访问官网` 按钮，不显示收藏按钮。
-- 卡片高度尽量统一，并保持 `tools.length` 为空时的空状态文案。
-- 本次未修改 Hero、搜索区、分类区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 宸插皢绮鹃€夊伐鍏峰尯鏀逛负妗岄潰 3 鍒椼€佸钩鏉?2 鍒椼€佹墜鏈哄崟鍒楃殑缁熶竴甯冨眬锛屽綋鍓嶄粎 3 涓伐鍏锋椂浼氱ǔ瀹氬悓涓€琛屾樉绀恒€?
+- 宸ュ叿鍗＄粺涓€涓烘墜缁樹俊鎭崱椋庢牸锛屽幓鎺変簡鍓嶄袱涓ぇ鍗°€佺涓変釜鎺夎鐨勯棶棰樸€?
+- 鍗＄墖鍐呴儴淇濈暀鎵嬬粯鎻掔敾鍖恒€佸伐鍏烽瀛楁瘝銆佸垎绫汇€佹爣绛俱€佸伐鍏峰悕銆佺畝浠嬨€侀€傚悎璋佸拰 `鏌ョ湅璇︽儏` 鎸夐挳銆?
+- 涓嶆樉绀?`璁块棶瀹樼綉` 鎸夐挳锛屼笉鏄剧ず鏀惰棌鎸夐挳銆?
+- 鍗＄墖楂樺害灏介噺缁熶竴锛屽苟淇濇寔 `tools.length` 涓虹┖鏃剁殑绌虹姸鎬佹枃妗堛€?
+- 鏈鏈慨鏀?Hero銆佹悳绱㈠尯銆佸垎绫诲尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页“按场景浏览”分类区单独重写，让分类入口更像手绘便利贴。
+浠诲姟锛氶椤碘€滄寜鍦烘櫙娴忚鈥濆垎绫诲尯鍗曠嫭閲嶅啓锛岃鍒嗙被鍏ュ彛鏇村儚鎵嬬粯渚垮埄璐淬€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-category-section.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 已将“按场景浏览”改成更像手绘纸片 / 便利贴的分类入口，保留标题不变。
-- 删除了抢眼的“场景入口”小标签，顶部文案更轻。
-- 分类卡片改为 4 张浅色手绘卡：`AI 工具`、`在线工具`、`效率软件`、`开源项目`。
-- 桌面端 4 列，平板 2 列，手机 2 列；卡片高度保持紧凑。
-- 每张卡片都带简笔 SVG 图标，点击仍然跳转 `/tools`。
-- 本次未修改 Hero、搜索区、精选工具区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 宸插皢鈥滄寜鍦烘櫙娴忚鈥濇敼鎴愭洿鍍忔墜缁樼焊鐗?/ 渚垮埄璐寸殑鍒嗙被鍏ュ彛锛屼繚鐣欐爣棰樹笉鍙樸€?
+- 鍒犻櫎浜嗘姠鐪肩殑鈥滃満鏅叆鍙ｂ€濆皬鏍囩锛岄《閮ㄦ枃妗堟洿杞汇€?
+- 鍒嗙被鍗＄墖鏀逛负 4 寮犳祬鑹叉墜缁樺崱锛歚AI 宸ュ叿`銆乣鍦ㄧ嚎宸ュ叿`銆乣鏁堢巼杞欢`銆乣寮€婧愰」鐩甡銆?
+- 妗岄潰绔?4 鍒楋紝骞虫澘 2 鍒楋紝鎵嬫満 2 鍒楋紱鍗＄墖楂樺害淇濇寔绱у噾銆?
+- 姣忓紶鍗＄墖閮藉甫绠€绗?SVG 鍥炬爣锛岀偣鍑讳粛鐒惰烦杞?`/tools`銆?
+- 鏈鏈慨鏀?Hero銆佹悳绱㈠尯銆佺簿閫夊伐鍏峰尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页搜索条单独重写，让搜索区域更简洁、紧凑并贴近手绘效果图。
+浠诲姟锛氶椤垫悳绱㈡潯鍗曠嫭閲嶅啓锛岃鎼滅储鍖哄煙鏇寸畝娲併€佺揣鍑戝苟璐磋繎鎵嬬粯鏁堟灉鍥俱€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-search-section.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 已将首页搜索区替换为手绘圆角白色卡片，并通过 `-mt-7` 与 Hero 做轻微叠压衔接。
-- 删除搜索条前面的 `搜索入口`、`快速找到工具或文章` 等多余文案。
-- 搜索区仅保留搜索输入框、搜索按钮和热门关键词 chips：`AI`、`设计`、`效率`、`开源`。
-- 保留 `action="/search"`、`name="q"` 和客户端 `router.push()` 跳转逻辑，关键词会进入 `/search?q=关键词`，空关键词进入 `/search`。
-- 热门关键词改为 `Link` 直达 `/search?q=关键词`。
-- 未使用 clipboard API，未调用 `navigator.clipboard.writeText`。
-- 本次未修改 `home-hero.tsx`、`/tools`、`/tools/[slug]`、分类区、精选工具区、最新文章区、合作推广区、后台、数据库、RLS、Turnstile 或搜索页业务逻辑。
+妫€鏌ヤ笌淇锛?
+- 宸插皢棣栭〉鎼滅储鍖烘浛鎹负鎵嬬粯鍦嗚鐧借壊鍗＄墖锛屽苟閫氳繃 `-mt-7` 涓?Hero 鍋氳交寰彔鍘嬭鎺ャ€?
+- 鍒犻櫎鎼滅储鏉″墠闈㈢殑 `鎼滅储鍏ュ彛`銆乣蹇€熸壘鍒板伐鍏锋垨鏂囩珷` 绛夊浣欐枃妗堛€?
+- 鎼滅储鍖轰粎淇濈暀鎼滅储杈撳叆妗嗐€佹悳绱㈡寜閽拰鐑棬鍏抽敭璇?chips锛歚AI`銆乣璁捐`銆乣鏁堢巼`銆乣寮€婧恅銆?
+- 淇濈暀 `action="/search"`銆乣name="q"` 鍜屽鎴风 `router.push()` 璺宠浆閫昏緫锛屽叧閿瘝浼氳繘鍏?`/search?q=鍏抽敭璇峘锛岀┖鍏抽敭璇嶈繘鍏?`/search`銆?
+- 鐑棬鍏抽敭璇嶆敼涓?`Link` 鐩磋揪 `/search?q=鍏抽敭璇峘銆?
+- 鏈娇鐢?clipboard API锛屾湭璋冪敤 `navigator.clipboard.writeText`銆?
+- 鏈鏈慨鏀?`home-hero.tsx`銆乣/tools`銆乣/tools/[slug]`銆佸垎绫诲尯銆佺簿閫夊伐鍏峰尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS銆乀urnstile 鎴栨悳绱㈤〉涓氬姟閫昏緫銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页 Hero 标题区精修，只优化左侧标题海报感。
+浠诲姟锛氶椤?Hero 鏍囬鍖虹簿淇紝鍙紭鍖栧乏渚ф爣棰樻捣鎶ユ劅銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-hero.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 本次仅修改 Hero 左侧标题区域，右侧手绘控制台保持不变。
-- 保留 `人工筛选 · 适合小白` 小标签、`KT严选` 主标题、4 个 chips 和 `进入工具库` / `阅读文章` 两个按钮。
-- 删除标题下方简介文案，减少 Hero 左侧纵向占用。
-- 将手绘下划线从标题 absolute 装饰改为标题下方独立一行，避免压住 `KT严选`。
-- 标题改为 `KT` 与 `严选` 分组的手绘海报式排版，增加浅蓝 / 黄色手绘色块、黄色圆点和星形点缀；未引入字体文件或新依赖。
-- 移动端标题使用更保守的 `clamp(4rem,16vw,7.2rem)`，避免横向溢出。
-- 本次未修改 `/tools`、`/tools/[slug]`、搜索区、分类区、精选工具区、最新文章区、合作推广区、后台、数据库、RLS 或 Turnstile。
+妫€鏌ヤ笌淇锛?
+- 鏈浠呬慨鏀?Hero 宸︿晶鏍囬鍖哄煙锛屽彸渚ф墜缁樻帶鍒跺彴淇濇寔涓嶅彉銆?
+- 淇濈暀 `浜哄伐绛涢€?路 閫傚悎灏忕櫧` 灏忔爣绛俱€乣KT涓ラ€塦 涓绘爣棰樸€? 涓?chips 鍜?`杩涘叆宸ュ叿搴揱 / `闃呰鏂囩珷` 涓や釜鎸夐挳銆?
+- 鍒犻櫎鏍囬涓嬫柟绠€浠嬫枃妗堬紝鍑忓皯 Hero 宸︿晶绾靛悜鍗犵敤銆?
+- 灏嗘墜缁樹笅鍒掔嚎浠庢爣棰?absolute 瑁呴グ鏀逛负鏍囬涓嬫柟鐙珛涓€琛岋紝閬垮厤鍘嬩綇 `KT涓ラ€塦銆?
+- 鏍囬鏀逛负 `KT` 涓?`涓ラ€塦 鍒嗙粍鐨勬墜缁樻捣鎶ュ紡鎺掔増锛屽鍔犳祬钃?/ 榛勮壊鎵嬬粯鑹插潡銆侀粍鑹插渾鐐瑰拰鏄熷舰鐐圭紑锛涙湭寮曞叆瀛椾綋鏂囦欢鎴栨柊渚濊禆銆?
+- 绉诲姩绔爣棰樹娇鐢ㄦ洿淇濆畧鐨?`clamp(4rem,16vw,7.2rem)`锛岄伩鍏嶆í鍚戞孩鍑恒€?
+- 鏈鏈慨鏀?`/tools`銆乣/tools/[slug]`銆佹悳绱㈠尯銆佸垎绫诲尯銆佺簿閫夊伐鍏峰尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯銆佸悗鍙般€佹暟鎹簱銆丷LS 鎴?Turnstile銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页 Hero 区单独重写，让首屏更接近“简笔手绘 + 清新年轻 + 杂志感工具发现站”。
+浠诲姟锛氶椤?Hero 鍖哄崟鐙噸鍐欙紝璁╅灞忔洿鎺ヨ繎鈥滅畝绗旀墜缁?+ 娓呮柊骞磋交 + 鏉傚織鎰熷伐鍏峰彂鐜扮珯鈥濄€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-hero.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已按本次范围仅替换 `HomeHero` 组件，未改动搜索区、分类区、精选工具区、最新文章区、合作推广区或其他页面。
-- Hero 主标题保持为 `KT严选`，副标题改为“人工筛选实用工具、优质文章和清晰可靠的使用经验，帮你更快找到值得尝试的数字工具。”
-- 保留 `进入工具库`、`阅读文章` 两个按钮，以及 `人工筛选`、`持续更新`、`来源清晰`、`适合小白` 四个 chips。
-- 右侧改为更大的手绘控制台，只展示真实 `toolCount`、`articleCount` 和传入工具列表前 3 个工具名；无工具时使用“等待收录”兜底，不显示 `undefined` / `null`。
-- 手机端继续隐藏右侧大控制台，仅显示一条真实数量胶囊，避免 Hero 首屏过高。
-- `src/components/home/home-page.tsx` 当前传参已包含 `articleCount={articles.length}`，与新组件 props 匹配，本次未修改。
-- 本次未修改 `/tools`、`/tools/[slug]`、`/articles`、`/submit`、`/copyright`、`/admin/*`、Turnstile、Supabase RLS、数据库 schema、后台 CRUD、搜索区、分类区、精选工具区、最新文章区或合作推广区。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸叉寜鏈鑼冨洿浠呮浛鎹?`HomeHero` 缁勪欢锛屾湭鏀瑰姩鎼滅储鍖恒€佸垎绫诲尯銆佺簿閫夊伐鍏峰尯銆佹渶鏂版枃绔犲尯銆佸悎浣滄帹骞垮尯鎴栧叾浠栭〉闈€?
+- Hero 涓绘爣棰樹繚鎸佷负 `KT涓ラ€塦锛屽壇鏍囬鏀逛负鈥滀汉宸ョ瓫閫夊疄鐢ㄥ伐鍏枫€佷紭璐ㄦ枃绔犲拰娓呮櫚鍙潬鐨勪娇鐢ㄧ粡楠岋紝甯綘鏇村揩鎵惧埌鍊煎緱灏濊瘯鐨勬暟瀛楀伐鍏枫€傗€?
+- 淇濈暀 `杩涘叆宸ュ叿搴揱銆乣闃呰鏂囩珷` 涓や釜鎸夐挳锛屼互鍙?`浜哄伐绛涢€塦銆乣鎸佺画鏇存柊`銆乣鏉ユ簮娓呮櫚`銆乣閫傚悎灏忕櫧` 鍥涗釜 chips銆?
+- 鍙充晶鏀逛负鏇村ぇ鐨勬墜缁樻帶鍒跺彴锛屽彧灞曠ず鐪熷疄 `toolCount`銆乣articleCount` 鍜屼紶鍏ュ伐鍏峰垪琛ㄥ墠 3 涓伐鍏峰悕锛涙棤宸ュ叿鏃朵娇鐢ㄢ€滅瓑寰呮敹褰曗€濆厹搴曪紝涓嶆樉绀?`undefined` / `null`銆?
+- 鎵嬫満绔户缁殣钘忓彸渚уぇ鎺у埗鍙帮紝浠呮樉绀轰竴鏉＄湡瀹炴暟閲忚兌鍥婏紝閬垮厤 Hero 棣栧睆杩囬珮銆?
+- `src/components/home/home-page.tsx` 褰撳墠浼犲弬宸插寘鍚?`articleCount={articles.length}`锛屼笌鏂扮粍浠?props 鍖归厤锛屾湰娆℃湭淇敼銆?
+- 鏈鏈慨鏀?`/tools`銆乣/tools/[slug]`銆乣/articles`銆乣/submit`銆乣/copyright`銆乣/admin/*`銆乀urnstile銆丼upabase RLS銆佹暟鎹簱 schema銆佸悗鍙?CRUD銆佹悳绱㈠尯銆佸垎绫诲尯銆佺簿閫夊伐鍏峰尯銆佹渶鏂版枃绔犲尯鎴栧悎浣滄帹骞垮尯銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：首页 `/` 手绘风二次精修，按参考图做视觉降噪、文案简化和版式压缩。
+浠诲姟锛氶椤?`/` 鎵嬬粯椋庝簩娆＄簿淇紝鎸夊弬鑰冨浘鍋氳瑙夐檷鍣€佹枃妗堢畝鍖栧拰鐗堝紡鍘嬬缉銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
 - `src/components/home/home-hero.tsx`
@@ -201,26 +487,26 @@
 - `src/components/home/home-sponsor-banner.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- Hero 主标题已改为 `KT严选`，顶部导航品牌名仍保留 `知享`。
-- Hero 副标题已改为指定的人工筛选工具、文章和经验说明。
-- Hero 装饰已降噪：去掉大面积网格、散落箭头和过多装饰，只保留云朵、纸飞机、少量星星和薄荷绿手绘下划线。
-- 右侧控制台标题改为 `知享控制台`，只保留真实 `tools.length` 和 `articles.length` 两个统计，最近更新改成一行小胶囊，手机端继续隐藏控制台。
-- 搜索区删除 `搜索入口` 和 `快速找到工具或文章`，改为紧凑一体化搜索条，保留 `/search?q=关键词` 跳转。
-- 热门关键词压缩为 `AI`、`设计`、`效率`、`开源`。
-- 分类区继续保留 4 个入口，桌面 4 列、手机 2 列，卡片高度和间距已收紧。
-- 精选工具区改为最多 3 个工具，桌面端 3 张等宽中型手绘卡，避免第三张卡片单独掉到下一行。
-- 首页工具卡继续只显示 `查看详情`，不显示 `访问官网`、收藏按钮或官网入口。
-- 最新文章区和合作推广横幅已同步压缩间距和高度。
-- 本次未修改 `/tools` 页面、工具详情页、文章业务逻辑、投稿页、投诉页、后台、Turnstile、RLS、数据库 schema、sitemap 或 robots。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- Hero 涓绘爣棰樺凡鏀逛负 `KT涓ラ€塦锛岄《閮ㄥ鑸搧鐗屽悕浠嶄繚鐣?`鐭ヤ韩`銆?
+- Hero 鍓爣棰樺凡鏀逛负鎸囧畾鐨勪汉宸ョ瓫閫夊伐鍏枫€佹枃绔犲拰缁忛獙璇存槑銆?
+- Hero 瑁呴グ宸查檷鍣細鍘绘帀澶ч潰绉綉鏍笺€佹暎钀界澶村拰杩囧瑁呴グ锛屽彧淇濈暀浜戞湹銆佺焊椋炴満銆佸皯閲忔槦鏄熷拰钖勮嵎缁挎墜缁樹笅鍒掔嚎銆?
+- 鍙充晶鎺у埗鍙版爣棰樻敼涓?`鐭ヤ韩鎺у埗鍙癭锛屽彧淇濈暀鐪熷疄 `tools.length` 鍜?`articles.length` 涓や釜缁熻锛屾渶杩戞洿鏂版敼鎴愪竴琛屽皬鑳跺泭锛屾墜鏈虹缁х画闅愯棌鎺у埗鍙般€?
+- 鎼滅储鍖哄垹闄?`鎼滅储鍏ュ彛` 鍜?`蹇€熸壘鍒板伐鍏锋垨鏂囩珷`锛屾敼涓虹揣鍑戜竴浣撳寲鎼滅储鏉★紝淇濈暀 `/search?q=鍏抽敭璇峘 璺宠浆銆?
+- 鐑棬鍏抽敭璇嶅帇缂╀负 `AI`銆乣璁捐`銆乣鏁堢巼`銆乣寮€婧恅銆?
+- 鍒嗙被鍖虹户缁繚鐣?4 涓叆鍙ｏ紝妗岄潰 4 鍒椼€佹墜鏈?2 鍒楋紝鍗＄墖楂樺害鍜岄棿璺濆凡鏀剁揣銆?
+- 绮鹃€夊伐鍏峰尯鏀逛负鏈€澶?3 涓伐鍏凤紝妗岄潰绔?3 寮犵瓑瀹戒腑鍨嬫墜缁樺崱锛岄伩鍏嶇涓夊紶鍗＄墖鍗曠嫭鎺夊埌涓嬩竴琛屻€?
+- 棣栭〉宸ュ叿鍗＄户缁彧鏄剧ず `鏌ョ湅璇︽儏`锛屼笉鏄剧ず `璁块棶瀹樼綉`銆佹敹钘忔寜閽垨瀹樼綉鍏ュ彛銆?
+- 鏈€鏂版枃绔犲尯鍜屽悎浣滄帹骞挎í骞呭凡鍚屾鍘嬬缉闂磋窛鍜岄珮搴︺€?
+- 鏈鏈慨鏀?`/tools` 椤甸潰銆佸伐鍏疯鎯呴〉銆佹枃绔犱笟鍔￠€昏緫銆佹姇绋块〉銆佹姇璇夐〉銆佸悗鍙般€乀urnstile銆丷LS銆佹暟鎹簱 schema銆乻itemap 鎴?robots銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-任务：继续重做首页 `/` 的视觉比例与手绘组件结构，使其更接近“简笔手绘 SaaS 首页效果图”。
+浠诲姟锛氱户缁噸鍋氶椤?`/` 鐨勮瑙夋瘮渚嬩笌鎵嬬粯缁勪欢缁撴瀯锛屼娇鍏舵洿鎺ヨ繎鈥滅畝绗旀墜缁?SaaS 棣栭〉鏁堟灉鍥锯€濄€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-header.tsx`
 - `src/components/home/home-page.tsx`
 - `src/components/home/home-hero.tsx`
@@ -233,33 +519,33 @@
 - `src/components/home/home-visual-utils.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 新增 `homeShellClassName`，首页导航、Hero、搜索、分类、精选工具、最新文章、可信说明和合作横幅统一使用 `max-width: 1280px` 的首页容器，修正主体过窄问题。
-- Hero 重新重构为桌面端左侧大标题、右侧大号手绘控制台结构；桌面 1280x720 下 Hero 实测高度约 437px。
-- Hero 标题增加 `DoodleUnderline` 手绘下划线，背景加入低透明网格和成组云朵、纸飞机、箭头、星星装饰，避免零散小点缀。
-- Hero 右侧控制台改为 `SketchPanel` 手绘白板 / 电脑窗口结构，包含胶带、窗口圆点、虚线、统计便签、最近更新和右下角便签。
-- Hero 控制台继续只使用真实数据：`tools.length`、`articles.length`、最近 3 个工具名称和首字母 fallback；无假数字、无商业 logo。
-- 手机端单独压缩 Hero：隐藏右侧控制台，按钮改为双列，保留小型“已收录 X 个工具”胶囊；390px 视口下 Hero 实测约 449px。
-- 搜索区重做为与 Hero 衔接的白色一体化手绘搜索条，统一首页宽度，保留 `/search?q=关键词` 和空搜索 `/search` 逻辑。
-- 分类区重做为更明显的 4 个浅色手绘入口卡，桌面 4 列、手机 2 列，点击仍进入 `/tools`。
-- 精选工具区重做布局，桌面端前 2 个工具从 `lg` 起并排横向大卡，后续工具为紧凑小卡。
-- `HomeToolCard` 重写为大卡“左侧手绘插画区 + 右侧信息区”，小卡降低高度，只显示工具名、简介、分类 / 标签和“查看详情”，不展示官网或收藏。
-- 最新文章区保留 published articles 前 3 篇，统一首页宽度，文章卡继续保持便签纸视觉和 fallback。
-- 本次未修改 `/tools`、`/tools/[slug]`、`/articles` 业务逻辑、`/submit`、`/copyright`、`/admin/*`、Turnstile、RLS、数据库 schema、sitemap、robots 或后台 CRUD。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏂板 `homeShellClassName`锛岄椤靛鑸€丠ero銆佹悳绱€佸垎绫汇€佺簿閫夊伐鍏枫€佹渶鏂版枃绔犮€佸彲淇¤鏄庡拰鍚堜綔妯箙缁熶竴浣跨敤 `max-width: 1280px` 鐨勯椤靛鍣紝淇涓讳綋杩囩獎闂銆?
+- Hero 閲嶆柊閲嶆瀯涓烘闈㈢宸︿晶澶ф爣棰樸€佸彸渚уぇ鍙锋墜缁樻帶鍒跺彴缁撴瀯锛涙闈?1280x720 涓?Hero 瀹炴祴楂樺害绾?437px銆?
+- Hero 鏍囬澧炲姞 `DoodleUnderline` 鎵嬬粯涓嬪垝绾匡紝鑳屾櫙鍔犲叆浣庨€忔槑缃戞牸鍜屾垚缁勪簯鏈点€佺焊椋炴満銆佺澶淬€佹槦鏄熻楗帮紝閬垮厤闆舵暎灏忕偣缂€銆?
+- Hero 鍙充晶鎺у埗鍙版敼涓?`SketchPanel` 鎵嬬粯鐧芥澘 / 鐢佃剳绐楀彛缁撴瀯锛屽寘鍚兌甯︺€佺獥鍙ｅ渾鐐广€佽櫄绾裤€佺粺璁′究绛俱€佹渶杩戞洿鏂板拰鍙充笅瑙掍究绛俱€?
+- Hero 鎺у埗鍙扮户缁彧浣跨敤鐪熷疄鏁版嵁锛歚tools.length`銆乣articles.length`銆佹渶杩?3 涓伐鍏峰悕绉板拰棣栧瓧姣?fallback锛涙棤鍋囨暟瀛椼€佹棤鍟嗕笟 logo銆?
+- 鎵嬫満绔崟鐙帇缂?Hero锛氶殣钘忓彸渚ф帶鍒跺彴锛屾寜閽敼涓哄弻鍒楋紝淇濈暀灏忓瀷鈥滃凡鏀跺綍 X 涓伐鍏封€濊兌鍥婏紱390px 瑙嗗彛涓?Hero 瀹炴祴绾?449px銆?
+- 鎼滅储鍖洪噸鍋氫负涓?Hero 琛旀帴鐨勭櫧鑹蹭竴浣撳寲鎵嬬粯鎼滅储鏉★紝缁熶竴棣栭〉瀹藉害锛屼繚鐣?`/search?q=鍏抽敭璇峘 鍜岀┖鎼滅储 `/search` 閫昏緫銆?
+- 鍒嗙被鍖洪噸鍋氫负鏇存槑鏄剧殑 4 涓祬鑹叉墜缁樺叆鍙ｅ崱锛屾闈?4 鍒椼€佹墜鏈?2 鍒楋紝鐐瑰嚮浠嶈繘鍏?`/tools`銆?
+- 绮鹃€夊伐鍏峰尯閲嶅仛甯冨眬锛屾闈㈢鍓?2 涓伐鍏蜂粠 `lg` 璧峰苟鎺掓í鍚戝ぇ鍗★紝鍚庣画宸ュ叿涓虹揣鍑戝皬鍗°€?
+- `HomeToolCard` 閲嶅啓涓哄ぇ鍗♀€滃乏渚ф墜缁樻彃鐢诲尯 + 鍙充晶淇℃伅鍖衡€濓紝灏忓崱闄嶄綆楂樺害锛屽彧鏄剧ず宸ュ叿鍚嶃€佺畝浠嬨€佸垎绫?/ 鏍囩鍜屸€滄煡鐪嬭鎯呪€濓紝涓嶅睍绀哄畼缃戞垨鏀惰棌銆?
+- 鏈€鏂版枃绔犲尯淇濈暀 published articles 鍓?3 绡囷紝缁熶竴棣栭〉瀹藉害锛屾枃绔犲崱缁х画淇濇寔渚跨绾歌瑙夊拰 fallback銆?
+- 鏈鏈慨鏀?`/tools`銆乣/tools/[slug]`銆乣/articles` 涓氬姟閫昏緫銆乣/submit`銆乣/copyright`銆乣/admin/*`銆乀urnstile銆丷LS銆佹暟鎹簱 schema銆乻itemap銆乺obots 鎴栧悗鍙?CRUD銆?
 
-检查结果：
-- 已运行 `npm run build`，通过。
-- 已重启 `npm run dev -- -p 3001`，首页 `/` 返回 200。
-- 已用 in-app browser 检查桌面 1280x720：首页主容器宽度约 1265px，Hero、搜索条和按场景浏览起始区域可见，无横向溢出。
-- 已用 Chrome DevTools 强制 390x844 移动视口检查：右侧控制台隐藏，`scrollWidth = 390`，无横向滚动，无 `undefined` / `null` / `NaN` 文案。
-- 已用 HTTP 检查 `/search?q=AI`、`/tools`、`/tools/open-design`、`/submit`、`/copyright`、`/admin/login` 均返回 200。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸查噸鍚?`npm run dev -- -p 3001`锛岄椤?`/` 杩斿洖 200銆?
+- 宸茬敤 in-app browser 妫€鏌ユ闈?1280x720锛氶椤典富瀹瑰櫒瀹藉害绾?1265px锛孒ero銆佹悳绱㈡潯鍜屾寜鍦烘櫙娴忚璧峰鍖哄煙鍙锛屾棤妯悜婧㈠嚭銆?
+- 宸茬敤 Chrome DevTools 寮哄埗 390x844 绉诲姩瑙嗗彛妫€鏌ワ細鍙充晶鎺у埗鍙伴殣钘忥紝`scrollWidth = 390`锛屾棤妯悜婊氬姩锛屾棤 `undefined` / `null` / `NaN` 鏂囨銆?
+- 宸茬敤 HTTP 妫€鏌?`/search?q=AI`銆乣/tools`銆乣/tools/open-design`銆乣/submit`銆乣/copyright`銆乣/admin/login` 鍧囪繑鍥?200銆?
 
 ## 2026-06-06
 
-任务：按第三张“简笔手绘 SaaS 首页效果图”再次重做首页 `/`。
+浠诲姟锛氭寜绗笁寮犫€滅畝绗旀墜缁?SaaS 棣栭〉鏁堟灉鍥锯€濆啀娆￠噸鍋氶椤?`/`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
 - `src/components/home/home-hero.tsx`
@@ -273,37 +559,37 @@
 - `src/components/home/home-visual-utils.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 首页数据入口改为 `Promise.all([getPublishedTools(), getPublishedArticles()])`，同时读取 published tools 和 published articles。
-- `HomePage` props 增加 `articles`，页面结构调整为：首页专属导航、Hero、搜索区、按场景浏览、精选工具、最新文章、可信说明 / 收录原则、合作推广横幅、现有 footer。
-- Hero 重做为更紧凑的手绘 SaaS 首页主视觉：左侧保留指定标签、标题、副标题、4 个 chips 和两个按钮；右侧改为桌面端手绘控制台。
-- Hero 控制台只显示真实数据：已收录工具数、已发布文章数、最近 3 个工具名称 / 首字母；无工具时显示“等待收录”，没有使用假数字或商业 logo。
-- 手机端隐藏 Hero 右侧控制台，仅保留核心文案、chips 和按钮，减少首屏高度。
-- 搜索区改为紧凑手绘圆角搜索板，保留 `/search?q=关键词` 跳转、空搜索 `/search` 和原生 GET 兜底；热门关键词继续跳转搜索页。
-- 分类区标题改为“按场景浏览”，展示 AI 工具、在线工具、效率软件、开源项目 4 个入口，手机端保持 2 列。
-- 精选工具区改为前 2 个工具横向大卡，后续工具为紧凑小卡；卡片只展示名称、简介、分类、标签、适合谁和“查看详情”，不展示官网或收藏。
-- 最新文章区重新接入首页，展示 published articles 前 3 篇；文章卡改为手绘便签风，支持日期和摘要 fallback。
-- 新增紧凑可信说明 section，展示来源清晰、功能明确、风险提醒、人工整理 4 个原则。
-- 合作推广横幅改为浅绿 / 浅蓝手绘 banner，按钮继续链接现有 `/submit`，未新增合作页面。
-- 本次未修改 `/tools`、`/tools/[slug]`、`/articles` 业务逻辑、`/submit`、`/copyright`、`/admin/*`、Turnstile、RLS、数据库 schema、sitemap、robots 或后台 CRUD。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 棣栭〉鏁版嵁鍏ュ彛鏀逛负 `Promise.all([getPublishedTools(), getPublishedArticles()])`锛屽悓鏃惰鍙?published tools 鍜?published articles銆?
+- `HomePage` props 澧炲姞 `articles`锛岄〉闈㈢粨鏋勮皟鏁翠负锛氶椤典笓灞炲鑸€丠ero銆佹悳绱㈠尯銆佹寜鍦烘櫙娴忚銆佺簿閫夊伐鍏枫€佹渶鏂版枃绔犮€佸彲淇¤鏄?/ 鏀跺綍鍘熷垯銆佸悎浣滄帹骞挎í骞呫€佺幇鏈?footer銆?
+- Hero 閲嶅仛涓烘洿绱у噾鐨勬墜缁?SaaS 棣栭〉涓昏瑙夛細宸︿晶淇濈暀鎸囧畾鏍囩銆佹爣棰樸€佸壇鏍囬銆? 涓?chips 鍜屼袱涓寜閽紱鍙充晶鏀逛负妗岄潰绔墜缁樻帶鍒跺彴銆?
+- Hero 鎺у埗鍙板彧鏄剧ず鐪熷疄鏁版嵁锛氬凡鏀跺綍宸ュ叿鏁般€佸凡鍙戝竷鏂囩珷鏁般€佹渶杩?3 涓伐鍏峰悕绉?/ 棣栧瓧姣嶏紱鏃犲伐鍏锋椂鏄剧ず鈥滅瓑寰呮敹褰曗€濓紝娌℃湁浣跨敤鍋囨暟瀛楁垨鍟嗕笟 logo銆?
+- 鎵嬫満绔殣钘?Hero 鍙充晶鎺у埗鍙帮紝浠呬繚鐣欐牳蹇冩枃妗堛€乧hips 鍜屾寜閽紝鍑忓皯棣栧睆楂樺害銆?
+- 鎼滅储鍖烘敼涓虹揣鍑戞墜缁樺渾瑙掓悳绱㈡澘锛屼繚鐣?`/search?q=鍏抽敭璇峘 璺宠浆銆佺┖鎼滅储 `/search` 鍜屽師鐢?GET 鍏滃簳锛涚儹闂ㄥ叧閿瘝缁х画璺宠浆鎼滅储椤点€?
+- 鍒嗙被鍖烘爣棰樻敼涓衡€滄寜鍦烘櫙娴忚鈥濓紝灞曠ず AI 宸ュ叿銆佸湪绾垮伐鍏枫€佹晥鐜囪蒋浠躲€佸紑婧愰」鐩?4 涓叆鍙ｏ紝鎵嬫満绔繚鎸?2 鍒椼€?
+- 绮鹃€夊伐鍏峰尯鏀逛负鍓?2 涓伐鍏锋í鍚戝ぇ鍗★紝鍚庣画宸ュ叿涓虹揣鍑戝皬鍗★紱鍗＄墖鍙睍绀哄悕绉般€佺畝浠嬨€佸垎绫汇€佹爣绛俱€侀€傚悎璋佸拰鈥滄煡鐪嬭鎯呪€濓紝涓嶅睍绀哄畼缃戞垨鏀惰棌銆?
+- 鏈€鏂版枃绔犲尯閲嶆柊鎺ュ叆棣栭〉锛屽睍绀?published articles 鍓?3 绡囷紱鏂囩珷鍗℃敼涓烘墜缁樹究绛鹃锛屾敮鎸佹棩鏈熷拰鎽樿 fallback銆?
+- 鏂板绱у噾鍙俊璇存槑 section锛屽睍绀烘潵婧愭竻鏅般€佸姛鑳芥槑纭€侀闄╂彁閱掋€佷汉宸ユ暣鐞?4 涓師鍒欍€?
+- 鍚堜綔鎺ㄥ箍妯箙鏀逛负娴呯豢 / 娴呰摑鎵嬬粯 banner锛屾寜閽户缁摼鎺ョ幇鏈?`/submit`锛屾湭鏂板鍚堜綔椤甸潰銆?
+- 鏈鏈慨鏀?`/tools`銆乣/tools/[slug]`銆乣/articles` 涓氬姟閫昏緫銆乣/submit`銆乣/copyright`銆乣/admin/*`銆乀urnstile銆丷LS銆佹暟鎹簱 schema銆乻itemap銆乺obots 鎴栧悗鍙?CRUD銆?
 
-检查结果：
-- 已运行 `npm run build`，通过；构建日志显示首页 `/` 为动态页面，当前 published tools 为 `open-design,raycast,chatgpt`。
-- 已启动 `npm run dev -- -p 3001` 做干净端口验证，`/`、`/search?q=AI`、`/tools/open-design` 均返回 200。
-- 已用 in-app browser 检查桌面 1280x720：Hero、手绘控制台、搜索条、场景区起始位置可见，无横向溢出。
-- 已用 Chrome DevTools 强制 390x844 移动视口检查：Hero 右侧控制台隐藏，顶部菜单可见，分类区为 2 列，`scrollWidth` 等于视口宽度，无横向溢出。
-- 已在移动视口触发表单搜索，输入 `AI` 后跳转到 `/search?q=AI`。
-- 已用 HTTP 检查 `/submit`、`/copyright`、`/admin/login` 均返回 200。
+妫€鏌ョ粨鏋滐細
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤烘棩蹇楁樉绀洪椤?`/` 涓哄姩鎬侀〉闈紝褰撳墠 published tools 涓?`open-design,raycast,chatgpt`銆?
+- 宸插惎鍔?`npm run dev -- -p 3001` 鍋氬共鍑€绔彛楠岃瘉锛宍/`銆乣/search?q=AI`銆乣/tools/open-design` 鍧囪繑鍥?200銆?
+- 宸茬敤 in-app browser 妫€鏌ユ闈?1280x720锛欻ero銆佹墜缁樻帶鍒跺彴銆佹悳绱㈡潯銆佸満鏅尯璧峰浣嶇疆鍙锛屾棤妯悜婧㈠嚭銆?
+- 宸茬敤 Chrome DevTools 寮哄埗 390x844 绉诲姩瑙嗗彛妫€鏌ワ細Hero 鍙充晶鎺у埗鍙伴殣钘忥紝椤堕儴鑿滃崟鍙锛屽垎绫诲尯涓?2 鍒楋紝`scrollWidth` 绛変簬瑙嗗彛瀹藉害锛屾棤妯悜婧㈠嚭銆?
+- 宸插湪绉诲姩瑙嗗彛瑙﹀彂琛ㄥ崟鎼滅储锛岃緭鍏?`AI` 鍚庤烦杞埌 `/search?q=AI`銆?
+- 宸茬敤 HTTP 妫€鏌?`/submit`銆乣/copyright`銆乣/admin/login` 鍧囪繑鍥?200銆?
 
 ## 2026-06-06
 
-任务：二次重做首页 `/`，进一步贴近“简笔手绘风格效果图”。
+浠诲姟锛氫簩娆￠噸鍋氶椤?`/`锛岃繘涓€姝ヨ创杩戔€滅畝绗旀墜缁橀鏍兼晥鏋滃浘鈥濄€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
-- 新增 `src/components/home/home-header.tsx`
+- 鏂板 `src/components/home/home-header.tsx`
 - `src/components/home/home-hero.tsx`
 - `src/components/home/home-search-section.tsx`
 - `src/components/home/home-category-section.tsx`
@@ -313,32 +599,32 @@
 - `src/components/home/home-visual-utils.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已重新阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 首页结构收敛为：首页专属导航、Hero 手绘主视觉、紧凑搜索条、按使用场景开始浏览、精选工具、合作推广横幅、现有 footer。
-- 新增首页专属 `HomeHeader`，保留首页、工具库、文章、投稿、版权投诉、搜索、推荐工具等主要入口，不修改全站共享 Header，避免影响 `/tools` 等页面。
-- Hero 重写为更明显的手绘首页主视觉：浅蓝网格背景、云朵、纸飞机、波浪线、手写下划线、左侧品牌文案和右侧插画控制台。
-- Hero 右侧控制台改为白色手绘纸板：包含真实 published 工具总数、分类导航入口、最近 3 个真实工具名、LIVE 胶囊、便签和首字母 fallback；未使用假数字或真实商业 logo。
-- 移动端隐藏右侧大控制台，只保留标题、副标题、4 个胶囊、两个按钮和小型“今日发现 / 已收录工具”真实数据条。
-- 搜索区改为圆润的一体化白色手绘卡片，保留 `/search?q=关键词` 跳转和原生 GET 兜底。
-- 分类区标题改为“按使用场景开始浏览”，桌面 4 列，手机 2 列，卡片加入便签胶带、柔和色块和手绘 SVG 图标。
-- 精选工具区标题改为“先看这些实用工具”，副标题为“帮你减少试错成本”；工具优先读取 `featured` / `is_featured` 字段，没有则取前 3 个 published 工具。
-- 工具卡改成轻手绘信息卡，展示工具名、一句话简介、分类、最多 2 个标签、“适合谁”和“查看详情”按钮；不显示“访问官网”或收藏按钮。
-- 合作推广区改成手绘横向 banner，加入纸飞机、电脑线稿和装饰色块，按钮链接继续使用现有 `/submit`。
-- 首页不再渲染文章列表和收录原则模块，减少垂直长度，贴合本次指定结构；未删除相关旧组件文件。
-- 本次未修改 `/tools` 页面、工具详情页、文章页、投稿页、版权页、后台、数据库 schema、RLS、Turnstile、搜索页核心逻辑或后台 CRUD。
-- `npm run build` 已通过；构建日志确认首页 `/` 为动态渲染页面，并读取当前 published 工具 `open-design,raycast,chatgpt`。
-- 已重启 `npm run dev -- -p 3000`，本地首页返回 200。
-- 已用浏览器检查桌面 1280x720：首屏可见 Hero、手绘控制台、搜索条和场景标题，无横向溢出。
-- 已用浏览器检查移动 390x844：大控制台隐藏，小数据条显示，分类卡 2 列，无横向溢出。
-- 已用浏览器实测首页搜索：输入 `AI` 后跳转到 `/search?q=AI`。
-- 已用 HTTP 检查 `/tools/open-design` 返回 200，工具详情跳转目标正常。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查噸鏂伴槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 棣栭〉缁撴瀯鏀舵暃涓猴細棣栭〉涓撳睘瀵艰埅銆丠ero 鎵嬬粯涓昏瑙夈€佺揣鍑戞悳绱㈡潯銆佹寜浣跨敤鍦烘櫙寮€濮嬫祻瑙堛€佺簿閫夊伐鍏枫€佸悎浣滄帹骞挎í骞呫€佺幇鏈?footer銆?
+- 鏂板棣栭〉涓撳睘 `HomeHeader`锛屼繚鐣欓椤点€佸伐鍏峰簱銆佹枃绔犮€佹姇绋裤€佺増鏉冩姇璇夈€佹悳绱€佹帹鑽愬伐鍏风瓑涓昏鍏ュ彛锛屼笉淇敼鍏ㄧ珯鍏变韩 Header锛岄伩鍏嶅奖鍝?`/tools` 绛夐〉闈€?
+- Hero 閲嶅啓涓烘洿鏄庢樉鐨勬墜缁橀椤典富瑙嗚锛氭祬钃濈綉鏍艰儗鏅€佷簯鏈点€佺焊椋炴満銆佹尝娴嚎銆佹墜鍐欎笅鍒掔嚎銆佸乏渚у搧鐗屾枃妗堝拰鍙充晶鎻掔敾鎺у埗鍙般€?
+- Hero 鍙充晶鎺у埗鍙版敼涓虹櫧鑹叉墜缁樼焊鏉匡細鍖呭惈鐪熷疄 published 宸ュ叿鎬绘暟銆佸垎绫诲鑸叆鍙ｃ€佹渶杩?3 涓湡瀹炲伐鍏峰悕銆丩IVE 鑳跺泭銆佷究绛惧拰棣栧瓧姣?fallback锛涙湭浣跨敤鍋囨暟瀛楁垨鐪熷疄鍟嗕笟 logo銆?
+- 绉诲姩绔殣钘忓彸渚уぇ鎺у埗鍙帮紝鍙繚鐣欐爣棰樸€佸壇鏍囬銆? 涓兌鍥娿€佷袱涓寜閽拰灏忓瀷鈥滀粖鏃ュ彂鐜?/ 宸叉敹褰曞伐鍏封€濈湡瀹炴暟鎹潯銆?
+- 鎼滅储鍖烘敼涓哄渾娑︾殑涓€浣撳寲鐧借壊鎵嬬粯鍗＄墖锛屼繚鐣?`/search?q=鍏抽敭璇峘 璺宠浆鍜屽師鐢?GET 鍏滃簳銆?
+- 鍒嗙被鍖烘爣棰樻敼涓衡€滄寜浣跨敤鍦烘櫙寮€濮嬫祻瑙堚€濓紝妗岄潰 4 鍒楋紝鎵嬫満 2 鍒楋紝鍗＄墖鍔犲叆渚跨鑳跺甫銆佹煍鍜岃壊鍧楀拰鎵嬬粯 SVG 鍥炬爣銆?
+- 绮鹃€夊伐鍏峰尯鏍囬鏀逛负鈥滃厛鐪嬭繖浜涘疄鐢ㄥ伐鍏封€濓紝鍓爣棰樹负鈥滃府浣犲噺灏戣瘯閿欐垚鏈€濓紱宸ュ叿浼樺厛璇诲彇 `featured` / `is_featured` 瀛楁锛屾病鏈夊垯鍙栧墠 3 涓?published 宸ュ叿銆?
+- 宸ュ叿鍗℃敼鎴愯交鎵嬬粯淇℃伅鍗★紝灞曠ず宸ュ叿鍚嶃€佷竴鍙ヨ瘽绠€浠嬨€佸垎绫汇€佹渶澶?2 涓爣绛俱€佲€滈€傚悎璋佲€濆拰鈥滄煡鐪嬭鎯呪€濇寜閽紱涓嶆樉绀衡€滆闂畼缃戔€濇垨鏀惰棌鎸夐挳銆?
+- 鍚堜綔鎺ㄥ箍鍖烘敼鎴愭墜缁樻í鍚?banner锛屽姞鍏ョ焊椋炴満銆佺數鑴戠嚎绋垮拰瑁呴グ鑹插潡锛屾寜閽摼鎺ョ户缁娇鐢ㄧ幇鏈?`/submit`銆?
+- 棣栭〉涓嶅啀娓叉煋鏂囩珷鍒楄〃鍜屾敹褰曞師鍒欐ā鍧楋紝鍑忓皯鍨傜洿闀垮害锛岃创鍚堟湰娆℃寚瀹氱粨鏋勶紱鏈垹闄ょ浉鍏虫棫缁勪欢鏂囦欢銆?
+- 鏈鏈慨鏀?`/tools` 椤甸潰銆佸伐鍏疯鎯呴〉銆佹枃绔犻〉銆佹姇绋块〉銆佺増鏉冮〉銆佸悗鍙般€佹暟鎹簱 schema銆丷LS銆乀urnstile銆佹悳绱㈤〉鏍稿績閫昏緫鎴栧悗鍙?CRUD銆?
+- `npm run build` 宸查€氳繃锛涙瀯寤烘棩蹇楃‘璁ら椤?`/` 涓哄姩鎬佹覆鏌撻〉闈紝骞惰鍙栧綋鍓?published 宸ュ叿 `open-design,raycast,chatgpt`銆?
+- 宸查噸鍚?`npm run dev -- -p 3000`锛屾湰鍦伴椤佃繑鍥?200銆?
+- 宸茬敤娴忚鍣ㄦ鏌ユ闈?1280x720锛氶灞忓彲瑙?Hero銆佹墜缁樻帶鍒跺彴銆佹悳绱㈡潯鍜屽満鏅爣棰橈紝鏃犳í鍚戞孩鍑恒€?
+- 宸茬敤娴忚鍣ㄦ鏌ョЩ鍔?390x844锛氬ぇ鎺у埗鍙伴殣钘忥紝灏忔暟鎹潯鏄剧ず锛屽垎绫诲崱 2 鍒楋紝鏃犳í鍚戞孩鍑恒€?
+- 宸茬敤娴忚鍣ㄥ疄娴嬮椤垫悳绱細杈撳叆 `AI` 鍚庤烦杞埌 `/search?q=AI`銆?
+- 宸茬敤 HTTP 妫€鏌?`/tools/open-design` 杩斿洖 200锛屽伐鍏疯鎯呰烦杞洰鏍囨甯搞€?
 
 ## 2026-06-06
 
-任务：按“简笔手绘 + 清新年轻 + 杂志感 SaaS 工具发现站”重新设计首页。
+浠诲姟锛氭寜鈥滅畝绗旀墜缁?+ 娓呮柊骞磋交 + 鏉傚織鎰?SaaS 宸ュ叿鍙戠幇绔欌€濋噸鏂拌璁￠椤点€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
 - `src/components/home/home-hero.tsx`
@@ -350,36 +636,36 @@
 - `src/components/home/home-article-card.tsx`
 - `src/components/home/home-trust-section.tsx`
 - `src/components/home/home-sponsor-banner.tsx`
-- 新增 `src/components/home/home-visual-utils.ts`
+- 鏂板 `src/components/home/home-visual-utils.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 首页结构调整为：现有 `SiteHeader`、Hero 手绘主视觉、搜索入口、按场景浏览、精选工具、最新文章、收录原则、合作推广横幅、现有 `SiteFooter`。
-- Hero 主文案改为“让好工具 / 更容易被发现”，小标签为“人工筛选 · 适合小白”，并加入人工筛选、持续更新、来源清晰、适合小白 chips。
-- Hero 右侧改为手绘“知享控制台”，只显示真实 published 工具总数、published 文章总数和最近 3 个工具名称；无工具时显示“等待收录”。
-- 控制台下方的工具标识使用工具名首字母 / 缩写 fallback，不读取或展示真实商业 logo。
-- 手机端隐藏 Hero 右侧控制台，避免首屏过长。
-- 首页搜索入口保持现有 `/search?q=关键词` 跳转，空关键词跳转 `/search`，并补充原生 GET 表单兜底，未新增搜索系统。
-- “按场景浏览”改为 4 张手绘卡片：AI 工具、在线工具、效率软件、开源项目，全部链接到现有 `/tools`。
-- 精选工具继续展示 published tools 前 3 个，只显示“查看详情”，不显示“访问官网”或收藏按钮。
-- 最新文章继续展示 published articles 前 3 篇，点击进入 `/articles/[slug]`。
-- 新增 `home-visual-utils.ts` 统一处理标题、摘要、分类、标签、详情链接和首字母 fallback，避免渲染 `undefined` / `null`。
-- 首页去掉不必要的 `getCategories()` 读取，仅保留 published tools 和 published articles 数据读取；不修改 `src/lib/db/*` 数据函数。
-- 保留 `dynamic = "force-dynamic"`、`revalidate = 0`、`fetchCache = "force-no-store"` 和 `noStore()`，避免首页长期静态缓存。
-- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/admin/*`、`/tools`、`/tools/[slug]`、`/submit`、`/copyright`、Turnstile、sitemap、robots、投稿逻辑、投诉逻辑或登录逻辑。
-- 已用本地浏览器检查桌面 1280x720：首屏可见导航、Hero、搜索入口和“按场景浏览”标题，无横向溢出。
-- 已用本地浏览器检查移动 390x844：Hero 控制台隐藏，搜索按钮正常，场景区单列，无横向溢出。
-- 已用本地浏览器实测首页搜索：输入 `AI` 后点击“搜索”，地址跳转为 `/search?q=AI`。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 棣栭〉缁撴瀯璋冩暣涓猴細鐜版湁 `SiteHeader`銆丠ero 鎵嬬粯涓昏瑙夈€佹悳绱㈠叆鍙ｃ€佹寜鍦烘櫙娴忚銆佺簿閫夊伐鍏枫€佹渶鏂版枃绔犮€佹敹褰曞師鍒欍€佸悎浣滄帹骞挎í骞呫€佺幇鏈?`SiteFooter`銆?
+- Hero 涓绘枃妗堟敼涓衡€滆濂藉伐鍏?/ 鏇村鏄撹鍙戠幇鈥濓紝灏忔爣绛句负鈥滀汉宸ョ瓫閫?路 閫傚悎灏忕櫧鈥濓紝骞跺姞鍏ヤ汉宸ョ瓫閫夈€佹寔缁洿鏂般€佹潵婧愭竻鏅般€侀€傚悎灏忕櫧 chips銆?
+- Hero 鍙充晶鏀逛负鎵嬬粯鈥滅煡浜帶鍒跺彴鈥濓紝鍙樉绀虹湡瀹?published 宸ュ叿鎬绘暟銆乸ublished 鏂囩珷鎬绘暟鍜屾渶杩?3 涓伐鍏峰悕绉帮紱鏃犲伐鍏锋椂鏄剧ず鈥滅瓑寰呮敹褰曗€濄€?
+- 鎺у埗鍙颁笅鏂圭殑宸ュ叿鏍囪瘑浣跨敤宸ュ叿鍚嶉瀛楁瘝 / 缂╁啓 fallback锛屼笉璇诲彇鎴栧睍绀虹湡瀹炲晢涓?logo銆?
+- 鎵嬫満绔殣钘?Hero 鍙充晶鎺у埗鍙帮紝閬垮厤棣栧睆杩囬暱銆?
+- 棣栭〉鎼滅储鍏ュ彛淇濇寔鐜版湁 `/search?q=鍏抽敭璇峘 璺宠浆锛岀┖鍏抽敭璇嶈烦杞?`/search`锛屽苟琛ュ厖鍘熺敓 GET 琛ㄥ崟鍏滃簳锛屾湭鏂板鎼滅储绯荤粺銆?
+- 鈥滄寜鍦烘櫙娴忚鈥濇敼涓?4 寮犳墜缁樺崱鐗囷細AI 宸ュ叿銆佸湪绾垮伐鍏枫€佹晥鐜囪蒋浠躲€佸紑婧愰」鐩紝鍏ㄩ儴閾炬帴鍒扮幇鏈?`/tools`銆?
+- 绮鹃€夊伐鍏风户缁睍绀?published tools 鍓?3 涓紝鍙樉绀衡€滄煡鐪嬭鎯呪€濓紝涓嶆樉绀衡€滆闂畼缃戔€濇垨鏀惰棌鎸夐挳銆?
+- 鏈€鏂版枃绔犵户缁睍绀?published articles 鍓?3 绡囷紝鐐瑰嚮杩涘叆 `/articles/[slug]`銆?
+- 鏂板 `home-visual-utils.ts` 缁熶竴澶勭悊鏍囬銆佹憳瑕併€佸垎绫汇€佹爣绛俱€佽鎯呴摼鎺ュ拰棣栧瓧姣?fallback锛岄伩鍏嶆覆鏌?`undefined` / `null`銆?
+- 棣栭〉鍘绘帀涓嶅繀瑕佺殑 `getCategories()` 璇诲彇锛屼粎淇濈暀 published tools 鍜?published articles 鏁版嵁璇诲彇锛涗笉淇敼 `src/lib/db/*` 鏁版嵁鍑芥暟銆?
+- 淇濈暀 `dynamic = "force-dynamic"`銆乣revalidate = 0`銆乣fetchCache = "force-no-store"` 鍜?`noStore()`锛岄伩鍏嶉椤甸暱鏈熼潤鎬佺紦瀛樸€?
+- 鏈慨鏀规暟鎹簱 schema銆丼upabase RLS銆佸悗鍙?CRUD銆乣/admin/*`銆乣/tools`銆乣/tools/[slug]`銆乣/submit`銆乣/copyright`銆乀urnstile銆乻itemap銆乺obots銆佹姇绋块€昏緫銆佹姇璇夐€昏緫鎴栫櫥褰曢€昏緫銆?
+- 宸茬敤鏈湴娴忚鍣ㄦ鏌ユ闈?1280x720锛氶灞忓彲瑙佸鑸€丠ero銆佹悳绱㈠叆鍙ｅ拰鈥滄寜鍦烘櫙娴忚鈥濇爣棰橈紝鏃犳í鍚戞孩鍑恒€?
+- 宸茬敤鏈湴娴忚鍣ㄦ鏌ョЩ鍔?390x844锛欻ero 鎺у埗鍙伴殣钘忥紝鎼滅储鎸夐挳姝ｅ父锛屽満鏅尯鍗曞垪锛屾棤妯悜婧㈠嚭銆?
+- 宸茬敤鏈湴娴忚鍣ㄥ疄娴嬮椤垫悳绱細杈撳叆 `AI` 鍚庣偣鍑烩€滄悳绱⑩€濓紝鍦板潃璺宠浆涓?`/search?q=AI`銆?
 
-构建结果：
-- 已运行 `npm run build`，通过；构建日志确认首页 `/` 仍为动态渲染页面，并读取到当前 published 工具 `open-design,raycast,chatgpt`。
+鏋勫缓缁撴灉锛?
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤烘棩蹇楃‘璁ら椤?`/` 浠嶄负鍔ㄦ€佹覆鏌撻〉闈紝骞惰鍙栧埌褰撳墠 published 宸ュ叿 `open-design,raycast,chatgpt`銆?
 
 ## 2026-06-06
 
-任务：重新设计首页 `/`，打造中文工具与知识发现站正式门面。
+浠诲姟锛氶噸鏂拌璁￠椤?`/`锛屾墦閫犱腑鏂囧伐鍏蜂笌鐭ヨ瘑鍙戠幇绔欐寮忛棬闈€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
 - `src/components/home/home-hero.tsx`
@@ -389,35 +675,35 @@
 - `src/components/home/home-tool-card.tsx`
 - `src/components/home/home-latest-articles.tsx`
 - `src/components/home/home-article-card.tsx`
-- 新增 `src/components/home/home-trust-section.tsx`
-- 新增 `src/components/home/home-sponsor-banner.tsx`
+- 鏂板 `src/components/home/home-trust-section.tsx`
+- 鏂板 `src/components/home/home-sponsor-banner.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 首页结构调整为：Hero 首页主视觉、搜索入口、核心入口卡片、精选工具预览、最新文章预览、收录原则 / 可信说明、合作推广横幅。
-- 首页 Hero 更新为“中文工具与知识发现站”，主标题为“发现值得信任的工具、方法和实用知识”，副标题说明知享持续整理工具、开源项目和教程。
-- Hero 右侧“今日发现看板”只显示真实数据：published 工具总数、published 文章总数、当前分类数量；移动端隐藏右侧看板，避免首屏过长。
-- 删除首页旧的 `79 / 34 / 12` 假数据和“内容雷达”表达。
-- 搜索入口改为全站搜索卡片，输入关键词后跳转 `/search?q=关键词`，空关键词跳转 `/search`。
-- 核心入口卡片改为 4 个入口：工具库、实用文章、推荐工具、版权与反馈。
-- 精选工具区从真实 published tools 中取前 3 个，只显示“查看详情”，不显示“访问官网”。
-- 最新文章区从真实 published articles 中取前 3 篇，卡片展示标题、摘要、分类和发布时间 fallback。
-- 新增收录原则区，展示来源清晰、功能明确、风险提醒、人工整理 4 个原则。
-- 新增首页合作推广横幅，按钮链接到现有 `/submit`，不新增商家合作页面。
-- 首页添加 `dynamic = "force-dynamic"`、`revalidate = 0`、`fetchCache = "force-no-store"` 和 `noStore()`，避免后台发布内容后首页长期缓存。
-- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/admin/*`、`/tools/[slug]`、`/tools` 页面、投稿页、投诉页、登录页、Turnstile、sitemap、robots 或文章详情业务逻辑。
-- 已运行 `npm run build`，通过。
-- 构建日志确认当前 published 工具包含 `open-design,raycast,chatgpt`，首页 `/` 已为动态渲染页面。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 棣栭〉缁撴瀯璋冩暣涓猴細Hero 棣栭〉涓昏瑙夈€佹悳绱㈠叆鍙ｃ€佹牳蹇冨叆鍙ｅ崱鐗囥€佺簿閫夊伐鍏烽瑙堛€佹渶鏂版枃绔犻瑙堛€佹敹褰曞師鍒?/ 鍙俊璇存槑銆佸悎浣滄帹骞挎í骞呫€?
+- 棣栭〉 Hero 鏇存柊涓衡€滀腑鏂囧伐鍏蜂笌鐭ヨ瘑鍙戠幇绔欌€濓紝涓绘爣棰樹负鈥滃彂鐜板€煎緱淇′换鐨勫伐鍏枫€佹柟娉曞拰瀹炵敤鐭ヨ瘑鈥濓紝鍓爣棰樿鏄庣煡浜寔缁暣鐞嗗伐鍏枫€佸紑婧愰」鐩拰鏁欑▼銆?
+- Hero 鍙充晶鈥滀粖鏃ュ彂鐜扮湅鏉库€濆彧鏄剧ず鐪熷疄鏁版嵁锛歱ublished 宸ュ叿鎬绘暟銆乸ublished 鏂囩珷鎬绘暟銆佸綋鍓嶅垎绫绘暟閲忥紱绉诲姩绔殣钘忓彸渚х湅鏉匡紝閬垮厤棣栧睆杩囬暱銆?
+- 鍒犻櫎棣栭〉鏃х殑 `79 / 34 / 12` 鍋囨暟鎹拰鈥滃唴瀹归浄杈锯€濊〃杈俱€?
+- 鎼滅储鍏ュ彛鏀逛负鍏ㄧ珯鎼滅储鍗＄墖锛岃緭鍏ュ叧閿瘝鍚庤烦杞?`/search?q=鍏抽敭璇峘锛岀┖鍏抽敭璇嶈烦杞?`/search`銆?
+- 鏍稿績鍏ュ彛鍗＄墖鏀逛负 4 涓叆鍙ｏ細宸ュ叿搴撱€佸疄鐢ㄦ枃绔犮€佹帹鑽愬伐鍏枫€佺増鏉冧笌鍙嶉銆?
+- 绮鹃€夊伐鍏峰尯浠庣湡瀹?published tools 涓彇鍓?3 涓紝鍙樉绀衡€滄煡鐪嬭鎯呪€濓紝涓嶆樉绀衡€滆闂畼缃戔€濄€?
+- 鏈€鏂版枃绔犲尯浠庣湡瀹?published articles 涓彇鍓?3 绡囷紝鍗＄墖灞曠ず鏍囬銆佹憳瑕併€佸垎绫诲拰鍙戝竷鏃堕棿 fallback銆?
+- 鏂板鏀跺綍鍘熷垯鍖猴紝灞曠ず鏉ユ簮娓呮櫚銆佸姛鑳芥槑纭€侀闄╂彁閱掋€佷汉宸ユ暣鐞?4 涓師鍒欍€?
+- 鏂板棣栭〉鍚堜綔鎺ㄥ箍妯箙锛屾寜閽摼鎺ュ埌鐜版湁 `/submit`锛屼笉鏂板鍟嗗鍚堜綔椤甸潰銆?
+- 棣栭〉娣诲姞 `dynamic = "force-dynamic"`銆乣revalidate = 0`銆乣fetchCache = "force-no-store"` 鍜?`noStore()`锛岄伩鍏嶅悗鍙板彂甯冨唴瀹瑰悗棣栭〉闀挎湡缂撳瓨銆?
+- 鏈慨鏀规暟鎹簱 schema銆丼upabase RLS銆佸悗鍙?CRUD銆乣/admin/*`銆乣/tools/[slug]`銆乣/tools` 椤甸潰銆佹姇绋块〉銆佹姇璇夐〉銆佺櫥褰曢〉銆乀urnstile銆乻itemap銆乺obots 鎴栨枃绔犺鎯呬笟鍔￠€昏緫銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 鏋勫缓鏃ュ織纭褰撳墠 published 宸ュ叿鍖呭惈 `open-design,raycast,chatgpt`锛岄椤?`/` 宸蹭负鍔ㄦ€佹覆鏌撻〉闈€?
 
-下一步：
-- 打开首页 `/` 检查 Hero、搜索入口、4 个入口卡片、精选工具、最新文章、收录原则和合作推广横幅；再用手机尺寸检查单列布局和无横向滚动。
+涓嬩竴姝ワ細
+- 鎵撳紑棣栭〉 `/` 妫€鏌?Hero銆佹悳绱㈠叆鍙ｃ€? 涓叆鍙ｅ崱鐗囥€佺簿閫夊伐鍏枫€佹渶鏂版枃绔犮€佹敹褰曞師鍒欏拰鍚堜綔鎺ㄥ箍妯箙锛涘啀鐢ㄦ墜鏈哄昂瀵告鏌ュ崟鍒楀竷灞€鍜屾棤妯悜婊氬姩銆?
 
 ## 2026-06-06
 
-任务：严格对齐 `/tools` 工具库结构性重设计要求。
+浠诲姟锛氫弗鏍煎榻?`/tools` 宸ュ叿搴撶粨鏋勬€ч噸璁捐瑕佹眰銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/ToolsHero.tsx`
 - `src/components/tools/ToolsFilterPanel.tsx`
@@ -429,197 +715,197 @@
 - `src/types/tool.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 执行前已检查 `git status`，工作区干净，因此无需做保护提交。
-- 确认 `/tools` 已是 Hero、搜索筛选栏、精选推荐、全部工具、合作推广横幅的结构，本次做严格对齐修正。
-- 精选推荐数量改为从 `filteredTools` 取前 2 个，符合“精选推荐横向大卡区”的数据规则。
-- 全部工具区改为继续展示完整 `filteredTools`，不再把精选工具从全部工具中移除，避免用户误以为内容丢失。
-- 精选推荐桌面端固定为 2 列布局，移动端 1 列。
-- 搜索框 placeholder 改为 `搜索工具名称、功能、平台或关键词...`。
-- Hero 右侧工具库概览补充明确 `LIVE` 角标，并继续只显示真实数据：工具总数、分类数量、标签数量。
-- `cover_url` 通过 `src/lib/db/tools.ts` 最小透传到 `ToolItem`，未改数据库结构。
-- `ToolItem` 类型补充 `cover_url?: string | null`，便于卡片安全读取封面图。
-- 工具视觉 fallback 补强：缺少标题显示“未命名工具”，缺少简介显示“暂无简介”，缺少 cover_url 使用渐变背景，空标签会过滤。
-- Featured / Compact 卡片改为 CSS background 展示 cover_url，避免 `<img>` 构建警告，同时保留渐变 fallback。
-- 合作推广横幅按钮改为普通 `button`，不新增商家合作页面；右侧卖点改为编号模块，更符合产品化视觉。
-- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/admin/*`、`/tools/[slug]` 业务逻辑、投稿页、投诉页、登录页、Turnstile、sitemap、robots 或文章页。
-- 列表页仍只显示“查看详情”，没有新增“访问官网”按钮。
-- 已运行 `npm run build`，通过且无图片 lint 警告。
-- 构建日志确认当前 published 工具包含 `open-design,raycast,chatgpt`，`/tools` 仍为动态渲染页面。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鎵ц鍓嶅凡妫€鏌?`git status`锛屽伐浣滃尯骞插噣锛屽洜姝ゆ棤闇€鍋氫繚鎶ゆ彁浜ゃ€?
+- 纭 `/tools` 宸叉槸 Hero銆佹悳绱㈢瓫閫夋爮銆佺簿閫夋帹鑽愩€佸叏閮ㄥ伐鍏枫€佸悎浣滄帹骞挎í骞呯殑缁撴瀯锛屾湰娆″仛涓ユ牸瀵归綈淇銆?
+- 绮鹃€夋帹鑽愭暟閲忔敼涓轰粠 `filteredTools` 鍙栧墠 2 涓紝绗﹀悎鈥滅簿閫夋帹鑽愭í鍚戝ぇ鍗″尯鈥濈殑鏁版嵁瑙勫垯銆?
+- 鍏ㄩ儴宸ュ叿鍖烘敼涓虹户缁睍绀哄畬鏁?`filteredTools`锛屼笉鍐嶆妸绮鹃€夊伐鍏蜂粠鍏ㄩ儴宸ュ叿涓Щ闄わ紝閬垮厤鐢ㄦ埛璇互涓哄唴瀹逛涪澶便€?
+- 绮鹃€夋帹鑽愭闈㈢鍥哄畾涓?2 鍒楀竷灞€锛岀Щ鍔ㄧ 1 鍒椼€?
+- 鎼滅储妗?placeholder 鏀逛负 `鎼滅储宸ュ叿鍚嶇О銆佸姛鑳姐€佸钩鍙版垨鍏抽敭璇?..`銆?
+- Hero 鍙充晶宸ュ叿搴撴瑙堣ˉ鍏呮槑纭?`LIVE` 瑙掓爣锛屽苟缁х画鍙樉绀虹湡瀹炴暟鎹細宸ュ叿鎬绘暟銆佸垎绫绘暟閲忋€佹爣绛炬暟閲忋€?
+- `cover_url` 閫氳繃 `src/lib/db/tools.ts` 鏈€灏忛€忎紶鍒?`ToolItem`锛屾湭鏀规暟鎹簱缁撴瀯銆?
+- `ToolItem` 绫诲瀷琛ュ厖 `cover_url?: string | null`锛屼究浜庡崱鐗囧畨鍏ㄨ鍙栧皝闈㈠浘銆?
+- 宸ュ叿瑙嗚 fallback 琛ュ己锛氱己灏戞爣棰樻樉绀衡€滄湭鍛藉悕宸ュ叿鈥濓紝缂哄皯绠€浠嬫樉绀衡€滄殏鏃犵畝浠嬧€濓紝缂哄皯 cover_url 浣跨敤娓愬彉鑳屾櫙锛岀┖鏍囩浼氳繃婊ゃ€?
+- Featured / Compact 鍗＄墖鏀逛负 CSS background 灞曠ず cover_url锛岄伩鍏?`<img>` 鏋勫缓璀﹀憡锛屽悓鏃朵繚鐣欐笎鍙?fallback銆?
+- 鍚堜綔鎺ㄥ箍妯箙鎸夐挳鏀逛负鏅€?`button`锛屼笉鏂板鍟嗗鍚堜綔椤甸潰锛涘彸渚у崠鐐规敼涓虹紪鍙锋ā鍧楋紝鏇寸鍚堜骇鍝佸寲瑙嗚銆?
+- 鏈慨鏀规暟鎹簱 schema銆丼upabase RLS銆佸悗鍙?CRUD銆乣/admin/*`銆乣/tools/[slug]` 涓氬姟閫昏緫銆佹姇绋块〉銆佹姇璇夐〉銆佺櫥褰曢〉銆乀urnstile銆乻itemap銆乺obots 鎴栨枃绔犻〉銆?
+- 鍒楄〃椤典粛鍙樉绀衡€滄煡鐪嬭鎯呪€濓紝娌℃湁鏂板鈥滆闂畼缃戔€濇寜閽€?
+- 宸茶繍琛?`npm run build`锛岄€氳繃涓旀棤鍥剧墖 lint 璀﹀憡銆?
+- 鏋勫缓鏃ュ織纭褰撳墠 published 宸ュ叿鍖呭惈 `open-design,raycast,chatgpt`锛宍/tools` 浠嶄负鍔ㄦ€佹覆鏌撻〉闈€?
 
-下一步：
-- 打开 `/tools` 检查首屏密度、精选推荐 2 列、全部工具完整列表、合作推广横幅和手机端单列布局。
+涓嬩竴姝ワ細
+- 鎵撳紑 `/tools` 妫€鏌ラ灞忓瘑搴︺€佺簿閫夋帹鑽?2 鍒椼€佸叏閮ㄥ伐鍏峰畬鏁村垪琛ㄣ€佸悎浣滄帹骞挎í骞呭拰鎵嬫満绔崟鍒楀竷灞€銆?
 
 ## 2026-06-06
 
-任务：重新设计 `/tools` 工具库页面 —— 结构性视觉改版。
+浠诲姟锛氶噸鏂拌璁?`/tools` 宸ュ叿搴撻〉闈?鈥斺€?缁撴瀯鎬ц瑙夋敼鐗堛€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/ToolsHero.tsx`
 - `src/components/tools/ToolsFilterPanel.tsx`
 - `src/components/tools/tools-grid.tsx`
 - `src/components/tools/tools-no-results.tsx`
-- 新增 `src/components/tools/tool-card-utils.ts`
-- 新增 `src/components/tools/FeaturedToolCard.tsx`
-- 新增 `src/components/tools/CompactToolCard.tsx`
-- 新增 `src/components/tools/SponsorBanner.tsx`
+- 鏂板 `src/components/tools/tool-card-utils.ts`
+- 鏂板 `src/components/tools/FeaturedToolCard.tsx`
+- 鏂板 `src/components/tools/CompactToolCard.tsx`
+- 鏂板 `src/components/tools/SponsorBanner.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- `/tools` 页面整体布局改为：Hero → 搜索筛选栏 → 精选推荐区 → 全部工具区 → 底部合作推广横幅。
-- `ToolsHero` 左侧更新标题为"发现更好用的工具，让效率与创意触手可及"，副标题为"收录 AI、设计、开发、运营、办公等优质工具，先看介绍，再进入详情判断是否值得使用。"，下方四个优势条：严格筛选、持续更新、分类清晰、安全可靠。
-- `ToolsHero` 右侧工具库概览卡片只显示真实数据（当前收录 tools.length、分类数量 categoryCount、标签数量 tagCount，标签为 0 时隐藏），不显示假数据。
-- `ToolsHero` 移动端隐藏右侧概览卡片。
-- `ToolsFilterPanel` 改为横向高级搜索栏：搜索框 + 分类 chips + 标签 chips + 清空筛选 + 当前显示计数。保留现有搜索、分类、标签、清空筛选逻辑，不改数据来源。
-- 新增 `tool-card-utils.ts`：`getToolInitials(title)` 提取首字母/首字符，`getCategoryGradient(categoryName)` 按分类返回渐变，`getCategoryAccentClass(categoryName)` 返回分类强调色，`getToolSummary(tool)` 返回一句话简介，`getToolCoverUrl(tool)` 安全读取 cover_url，`getToolCardTitle(tool)` 返回工具名，`getVisibleTags(tool, maxCount)` 返回前 N 个标签。
-- 新增 `FeaturedToolCard`：横向大卡，左侧封面/渐变 fallback，右侧名称、简介、分类标签、免费/开源状态、"查看详情"按钮。cover_url 存在时用图片，不存在时用渐变背景 + 首字母 fallback。不显示"访问官网"。
-- 新增 `CompactToolCard`：小卡网格，左侧 logo/首字母 fallback，工具名、一句话简介、分类和标签、"查看详情"按钮。不显示"访问官网"、不显示收藏按钮。
-- 全部工具区桌面端 3 列、平板 2 列、手机 1 列。
-- `tools-grid` 改用 `CompactToolCard` 渲染工具卡片，保留 AdPlaceholder 广告位（第 6 个工具后或列表底部）。
-- 新增 `SponsorBanner`：底部高级玻璃横幅，小标签"合作推广"、标题"在这里展示你的产品或服务"、副标题"精准触达正在寻找工具、软件和效率方案的用户。"、按钮"了解合作"、右侧 3 个卖点（高质量流量、品牌曝光、灵活合作）。
-- 精选推荐区标题为"精选推荐"，全部工具区标题为"全部工具"或"工具列表"。
-- 数据来源不变：`getPublishedTools()` → `normalizeTool()` → `ToolItem`。筛选逻辑不变（query + category + tag）。
-- 未修改数据库 schema、Supabase RLS、后台 CRUD、`/tools/[slug]` 详情页、投稿页、投诉页、登录页、Turnstile、sitemap、robots。
-- 未修改 `ToolCard.tsx`（仍被 search-results.tsx 使用）。
-- `tools-grid.tsx`、`ToolsFilterPanel`、`ToolsHero`、`ToolsPage` 的 Props 接口保持兼容。
-- 所有工具只通过"查看详情"进入 `/tools/[slug]`，列表页不显示"访问官网"按钮。
-- 没有 undefined/null 渲染到页面。
-- 已运行 `npm run build`，通过。
-- 构建日志确认当前 published 工具包含 `open-design,raycast,chatgpt`，`/tools` 仍为动态渲染页面。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- `/tools` 椤甸潰鏁翠綋甯冨眬鏀逛负锛欻ero 鈫?鎼滅储绛涢€夋爮 鈫?绮鹃€夋帹鑽愬尯 鈫?鍏ㄩ儴宸ュ叿鍖?鈫?搴曢儴鍚堜綔鎺ㄥ箍妯箙銆?
+- `ToolsHero` 宸︿晶鏇存柊鏍囬涓?鍙戠幇鏇村ソ鐢ㄧ殑宸ュ叿锛岃鏁堢巼涓庡垱鎰忚Е鎵嬪彲鍙?锛屽壇鏍囬涓?鏀跺綍 AI銆佽璁°€佸紑鍙戙€佽繍钀ャ€佸姙鍏瓑浼樿川宸ュ叿锛屽厛鐪嬩粙缁嶏紝鍐嶈繘鍏ヨ鎯呭垽鏂槸鍚﹀€煎緱浣跨敤銆?锛屼笅鏂瑰洓涓紭鍔挎潯锛氫弗鏍肩瓫閫夈€佹寔缁洿鏂般€佸垎绫绘竻鏅般€佸畨鍏ㄥ彲闈犮€?
+- `ToolsHero` 鍙充晶宸ュ叿搴撴瑙堝崱鐗囧彧鏄剧ず鐪熷疄鏁版嵁锛堝綋鍓嶆敹褰?tools.length銆佸垎绫绘暟閲?categoryCount銆佹爣绛炬暟閲?tagCount锛屾爣绛句负 0 鏃堕殣钘忥級锛屼笉鏄剧ず鍋囨暟鎹€?
+- `ToolsHero` 绉诲姩绔殣钘忓彸渚ф瑙堝崱鐗囥€?
+- `ToolsFilterPanel` 鏀逛负妯悜楂樼骇鎼滅储鏍忥細鎼滅储妗?+ 鍒嗙被 chips + 鏍囩 chips + 娓呯┖绛涢€?+ 褰撳墠鏄剧ず璁℃暟銆備繚鐣欑幇鏈夋悳绱€佸垎绫汇€佹爣绛俱€佹竻绌虹瓫閫夐€昏緫锛屼笉鏀规暟鎹潵婧愩€?
+- 鏂板 `tool-card-utils.ts`锛歚getToolInitials(title)` 鎻愬彇棣栧瓧姣?棣栧瓧绗︼紝`getCategoryGradient(categoryName)` 鎸夊垎绫昏繑鍥炴笎鍙橈紝`getCategoryAccentClass(categoryName)` 杩斿洖鍒嗙被寮鸿皟鑹诧紝`getToolSummary(tool)` 杩斿洖涓€鍙ヨ瘽绠€浠嬶紝`getToolCoverUrl(tool)` 瀹夊叏璇诲彇 cover_url锛宍getToolCardTitle(tool)` 杩斿洖宸ュ叿鍚嶏紝`getVisibleTags(tool, maxCount)` 杩斿洖鍓?N 涓爣绛俱€?
+- 鏂板 `FeaturedToolCard`锛氭í鍚戝ぇ鍗★紝宸︿晶灏侀潰/娓愬彉 fallback锛屽彸渚у悕绉般€佺畝浠嬨€佸垎绫绘爣绛俱€佸厤璐?寮€婧愮姸鎬併€?鏌ョ湅璇︽儏"鎸夐挳銆俢over_url 瀛樺湪鏃剁敤鍥剧墖锛屼笉瀛樺湪鏃剁敤娓愬彉鑳屾櫙 + 棣栧瓧姣?fallback銆備笉鏄剧ず"璁块棶瀹樼綉"銆?
+- 鏂板 `CompactToolCard`锛氬皬鍗＄綉鏍硷紝宸︿晶 logo/棣栧瓧姣?fallback锛屽伐鍏峰悕銆佷竴鍙ヨ瘽绠€浠嬨€佸垎绫诲拰鏍囩銆?鏌ョ湅璇︽儏"鎸夐挳銆備笉鏄剧ず"璁块棶瀹樼綉"銆佷笉鏄剧ず鏀惰棌鎸夐挳銆?
+- 鍏ㄩ儴宸ュ叿鍖烘闈㈢ 3 鍒椼€佸钩鏉?2 鍒椼€佹墜鏈?1 鍒椼€?
+- `tools-grid` 鏀圭敤 `CompactToolCard` 娓叉煋宸ュ叿鍗＄墖锛屼繚鐣?AdPlaceholder 骞垮憡浣嶏紙绗?6 涓伐鍏峰悗鎴栧垪琛ㄥ簳閮級銆?
+- 鏂板 `SponsorBanner`锛氬簳閮ㄩ珮绾х幓鐠冩í骞咃紝灏忔爣绛?鍚堜綔鎺ㄥ箍"銆佹爣棰?鍦ㄨ繖閲屽睍绀轰綘鐨勪骇鍝佹垨鏈嶅姟"銆佸壇鏍囬"绮惧噯瑙﹁揪姝ｅ湪瀵绘壘宸ュ叿銆佽蒋浠跺拰鏁堢巼鏂规鐨勭敤鎴枫€?銆佹寜閽?浜嗚В鍚堜綔"銆佸彸渚?3 涓崠鐐癸紙楂樿川閲忔祦閲忋€佸搧鐗屾洕鍏夈€佺伒娲诲悎浣滐級銆?
+- 绮鹃€夋帹鑽愬尯鏍囬涓?绮鹃€夋帹鑽?锛屽叏閮ㄥ伐鍏峰尯鏍囬涓?鍏ㄩ儴宸ュ叿"鎴?宸ュ叿鍒楄〃"銆?
+- 鏁版嵁鏉ユ簮涓嶅彉锛歚getPublishedTools()` 鈫?`normalizeTool()` 鈫?`ToolItem`銆傜瓫閫夐€昏緫涓嶅彉锛坬uery + category + tag锛夈€?
+- 鏈慨鏀规暟鎹簱 schema銆丼upabase RLS銆佸悗鍙?CRUD銆乣/tools/[slug]` 璇︽儏椤点€佹姇绋块〉銆佹姇璇夐〉銆佺櫥褰曢〉銆乀urnstile銆乻itemap銆乺obots銆?
+- 鏈慨鏀?`ToolCard.tsx`锛堜粛琚?search-results.tsx 浣跨敤锛夈€?
+- `tools-grid.tsx`銆乣ToolsFilterPanel`銆乣ToolsHero`銆乣ToolsPage` 鐨?Props 鎺ュ彛淇濇寔鍏煎銆?
+- 鎵€鏈夊伐鍏峰彧閫氳繃"鏌ョ湅璇︽儏"杩涘叆 `/tools/[slug]`锛屽垪琛ㄩ〉涓嶆樉绀?璁块棶瀹樼綉"鎸夐挳銆?
+- 娌℃湁 undefined/null 娓叉煋鍒伴〉闈€?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 鏋勫缓鏃ュ織纭褰撳墠 published 宸ュ叿鍖呭惈 `open-design,raycast,chatgpt`锛宍/tools` 浠嶄负鍔ㄦ€佹覆鏌撻〉闈€?
 
-下一步：
-- 打开 `/tools` 检查桌面端 Hero、搜索筛选栏、精选推荐区、全部工具网格和合作推广横幅视觉效果。
-- 检查搜索、分类筛选、标签筛选、清空筛选功能正常。
-- 检查"查看详情"可跳转到 `/tools/[slug]`。
-- 检查手机端单列布局和无横向滚动。
+涓嬩竴姝ワ細
+- 鎵撳紑 `/tools` 妫€鏌ユ闈㈢ Hero銆佹悳绱㈢瓫閫夋爮銆佺簿閫夋帹鑽愬尯銆佸叏閮ㄥ伐鍏风綉鏍煎拰鍚堜綔鎺ㄥ箍妯箙瑙嗚鏁堟灉銆?
+- 妫€鏌ユ悳绱€佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹竻绌虹瓫閫夊姛鑳芥甯搞€?
+- 妫€鏌?鏌ョ湅璇︽儏"鍙烦杞埌 `/tools/[slug]`銆?
+- 妫€鏌ユ墜鏈虹鍗曞垪甯冨眬鍜屾棤妯悜婊氬姩銆?
 
 ## 2026-06-06
 
-任务：修复 `/tools` 页面上半部分留白过大、控制台过大和数据真实性问题。
+浠诲姟锛氫慨澶?`/tools` 椤甸潰涓婂崐閮ㄥ垎鐣欑櫧杩囧ぇ銆佹帶鍒跺彴杩囧ぇ鍜屾暟鎹湡瀹炴€ч棶棰樸€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/tools/ToolsHero.tsx`
 - `src/components/tools/ToolsFilterPanel.tsx`
 - `src/components/tools/tools-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 收紧 Hero 上下 padding、标题间距、标签间距和背景过渡高度，让首屏能看到更多内容。
-- 右侧 Hero 控制台从大卡片改为紧凑型“工具库概览 / 筛选控制台”，不再使用任何无来源的静态数字。
-- 控制台数据改为来自当前 `/tools` 已加载 published 工具数据：当前收录工具数、分类数量和标签数量。
-- 手机端隐藏右侧 Hero 控制台，只保留小标签、主标题、副标题和 chips，避免首屏过长。
-- 收紧筛选面板 padding、搜索框高度、chips 间距、筛选组间距和底部状态条高度。
-- 收紧 Hero 与筛选面板、筛选面板与工具列表区之间的 section 间距。
-- 本次没有修改 ToolCard、tools-grid、工具详情页、后台 CRUD、数据库结构、RLS、投稿页、投诉页、登录页或 Turnstile。
-- 本次没有修改 `/tools` 的搜索、分类筛选、标签筛选、清空筛选、查看详情跳转或数据读取逻辑。
-- 已运行 `npm run build`，通过。
-- 构建日志确认当前 published 工具包含 `open-design`，`/tools` 仍为动态渲染页面。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏀剁揣 Hero 涓婁笅 padding銆佹爣棰橀棿璺濄€佹爣绛鹃棿璺濆拰鑳屾櫙杩囨浮楂樺害锛岃棣栧睆鑳界湅鍒版洿澶氬唴瀹广€?
+- 鍙充晶 Hero 鎺у埗鍙颁粠澶у崱鐗囨敼涓虹揣鍑戝瀷鈥滃伐鍏峰簱姒傝 / 绛涢€夋帶鍒跺彴鈥濓紝涓嶅啀浣跨敤浠讳綍鏃犳潵婧愮殑闈欐€佹暟瀛椼€?
+- 鎺у埗鍙版暟鎹敼涓烘潵鑷綋鍓?`/tools` 宸插姞杞?published 宸ュ叿鏁版嵁锛氬綋鍓嶆敹褰曞伐鍏锋暟銆佸垎绫绘暟閲忓拰鏍囩鏁伴噺銆?
+- 鎵嬫満绔殣钘忓彸渚?Hero 鎺у埗鍙帮紝鍙繚鐣欏皬鏍囩銆佷富鏍囬銆佸壇鏍囬鍜?chips锛岄伩鍏嶉灞忚繃闀裤€?
+- 鏀剁揣绛涢€夐潰鏉?padding銆佹悳绱㈡楂樺害銆乧hips 闂磋窛銆佺瓫閫夌粍闂磋窛鍜屽簳閮ㄧ姸鎬佹潯楂樺害銆?
+- 鏀剁揣 Hero 涓庣瓫閫夐潰鏉裤€佺瓫閫夐潰鏉夸笌宸ュ叿鍒楄〃鍖轰箣闂寸殑 section 闂磋窛銆?
+- 鏈娌℃湁淇敼 ToolCard銆乼ools-grid銆佸伐鍏疯鎯呴〉銆佸悗鍙?CRUD銆佹暟鎹簱缁撴瀯銆丷LS銆佹姇绋块〉銆佹姇璇夐〉銆佺櫥褰曢〉鎴?Turnstile銆?
+- 鏈娌℃湁淇敼 `/tools` 鐨勬悳绱€佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹竻绌虹瓫閫夈€佹煡鐪嬭鎯呰烦杞垨鏁版嵁璇诲彇閫昏緫銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 鏋勫缓鏃ュ織纭褰撳墠 published 宸ュ叿鍖呭惈 `open-design`锛宍/tools` 浠嶄负鍔ㄦ€佹覆鏌撻〉闈€?
 
-下一步：
-- 打开 `/tools` 检查桌面端首屏密度、移动端控制台隐藏效果，以及搜索/筛选和 `Open Design` 详情跳转是否正常。
+涓嬩竴姝ワ細
+- 鎵撳紑 `/tools` 妫€鏌ユ闈㈢棣栧睆瀵嗗害銆佺Щ鍔ㄧ鎺у埗鍙伴殣钘忔晥鏋滐紝浠ュ強鎼滅储/绛涢€夊拰 `Open Design` 璇︽儏璺宠浆鏄惁姝ｅ父銆?
 
 ## 2026-06-05
 
-任务：升级 `/tools` 页面上半部分视觉，完成工具库视觉改版第 2 步。
+浠诲姟锛氬崌绾?`/tools` 椤甸潰涓婂崐閮ㄥ垎瑙嗚锛屽畬鎴愬伐鍏峰簱瑙嗚鏀圭増绗?2 姝ャ€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/tools/ToolsHero.tsx`
 - `src/components/tools/ToolsFilterPanel.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- `ToolsHero` 改为浅蓝白渐变 Hero，增加柔和蓝色光晕和桌面端左右布局。
-- Hero 左侧更新为“精选工具库”小标签、指定主标题、副标题和 5 个工具类型 chips。
-- Hero 右侧改为玻璃拟态“筛选控制台”，显示 `LIVE`、当前已发布工具数量、筛选维度和“先看详情，再去官网”的访问逻辑。
-- `ToolsFilterPanel` 改为更明显的玻璃拟态筛选面板，包含标题、副标题、大搜索框、清空筛选按钮、分类 chips、标签 chips 和底部状态条。
-- 底部状态条显示“当前显示：X 个工具”和“排序方式：最新优先”。
-- 本次没有修改工具卡片、工具网格、工具详情页、后台 CRUD、数据库结构、RLS、投稿页、投诉页、登录页或 Turnstile。
-- 本次没有修改 `/tools` 的数据来源、搜索逻辑、分类筛选逻辑、标签筛选逻辑或清空筛选逻辑。
-- 已运行 `npm run build`，通过。
-- 构建日志确认当前 published 工具包含 `open-design`，`/tools` 仍为动态渲染页面。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- `ToolsHero` 鏀逛负娴呰摑鐧芥笎鍙?Hero锛屽鍔犳煍鍜岃摑鑹插厜鏅曞拰妗岄潰绔乏鍙冲竷灞€銆?
+- Hero 宸︿晶鏇存柊涓衡€滅簿閫夊伐鍏峰簱鈥濆皬鏍囩銆佹寚瀹氫富鏍囬銆佸壇鏍囬鍜?5 涓伐鍏风被鍨?chips銆?
+- Hero 鍙充晶鏀逛负鐜荤拑鎷熸€佲€滅瓫閫夋帶鍒跺彴鈥濓紝鏄剧ず `LIVE`銆佸綋鍓嶅凡鍙戝竷宸ュ叿鏁伴噺銆佺瓫閫夌淮搴﹀拰鈥滃厛鐪嬭鎯咃紝鍐嶅幓瀹樼綉鈥濈殑璁块棶閫昏緫銆?
+- `ToolsFilterPanel` 鏀逛负鏇存槑鏄剧殑鐜荤拑鎷熸€佺瓫閫夐潰鏉匡紝鍖呭惈鏍囬銆佸壇鏍囬銆佸ぇ鎼滅储妗嗐€佹竻绌虹瓫閫夋寜閽€佸垎绫?chips銆佹爣绛?chips 鍜屽簳閮ㄧ姸鎬佹潯銆?
+- 搴曢儴鐘舵€佹潯鏄剧ず鈥滃綋鍓嶆樉绀猴細X 涓伐鍏封€濆拰鈥滄帓搴忔柟寮忥細鏈€鏂颁紭鍏堚€濄€?
+- 鏈娌℃湁淇敼宸ュ叿鍗＄墖銆佸伐鍏风綉鏍笺€佸伐鍏疯鎯呴〉銆佸悗鍙?CRUD銆佹暟鎹簱缁撴瀯銆丷LS銆佹姇绋块〉銆佹姇璇夐〉銆佺櫥褰曢〉鎴?Turnstile銆?
+- 鏈娌℃湁淇敼 `/tools` 鐨勬暟鎹潵婧愩€佹悳绱㈤€昏緫銆佸垎绫荤瓫閫夐€昏緫銆佹爣绛剧瓫閫夐€昏緫鎴栨竻绌虹瓫閫夐€昏緫銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 鏋勫缓鏃ュ織纭褰撳墠 published 宸ュ叿鍖呭惈 `open-design`锛宍/tools` 浠嶄负鍔ㄦ€佹覆鏌撻〉闈€?
 
-下一步：
-- 打开 `/tools` 检查桌面端 Hero、筛选控制台和筛选面板视觉；再用手机尺寸检查 Hero 单列、chips 换行和无横向滚动。
+涓嬩竴姝ワ細
+- 鎵撳紑 `/tools` 妫€鏌ユ闈㈢ Hero銆佺瓫閫夋帶鍒跺彴鍜岀瓫閫夐潰鏉胯瑙夛紱鍐嶇敤鎵嬫満灏哄妫€鏌?Hero 鍗曞垪銆乧hips 鎹㈣鍜屾棤妯悜婊氬姩銆?
 
 ## 2026-06-05
 
-任务：加固 `/tools` 工具库列表页读取，确保显示最新 published 工具。
+浠诲姟锛氬姞鍥?`/tools` 宸ュ叿搴撳垪琛ㄩ〉璇诲彇锛岀‘淇濇樉绀烘渶鏂?published 宸ュ叿銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/tools/page.tsx`
 - `src/lib/db/tools.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已确认 `/tools` 页面继续使用 `getPublishedTools()`，不是纯 mock 数据源。
-- 已确认 `ToolsPage`、`ToolsGrid`、`ToolCard` 没有 `featured`、`cover_url`、`tags.length`、`category_id` 或 `slice(0, 6)` 等默认过滤，默认会渲染全部传入工具。
-- `/tools` 页面补充 `fetchCache = "force-no-store"`，并在服务端入口调用 `noStore()`，进一步避免工具库列表被缓存。
-- `getPublishedTools()` 查询继续限制 `status = "published"`，按 `updated_at`、`created_at` 倒序，最多读取 100 条，保证最新发布工具优先出现在工具库。
-- `getPublishedTools()` 增加服务端日志 `getPublishedTools count` 和 `getPublishedTools slugs`，便于在 Vercel 日志确认是否读取到了 `open-design`。
-- 本地 `npm run build` 已通过，构建日志确认读取到 `open-design,raycast,chatgpt`，且 `/tools` 仍为动态渲染页面。
-- 本次未修改后台 CRUD、数据库结构、RLS 策略、投稿页、登录页、Turnstile 或整体视觉风格。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/DEPLOYMENT.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸茬‘璁?`/tools` 椤甸潰缁х画浣跨敤 `getPublishedTools()`锛屼笉鏄函 mock 鏁版嵁婧愩€?
+- 宸茬‘璁?`ToolsPage`銆乣ToolsGrid`銆乣ToolCard` 娌℃湁 `featured`銆乣cover_url`銆乣tags.length`銆乣category_id` 鎴?`slice(0, 6)` 绛夐粯璁よ繃婊わ紝榛樿浼氭覆鏌撳叏閮ㄤ紶鍏ュ伐鍏枫€?
+- `/tools` 椤甸潰琛ュ厖 `fetchCache = "force-no-store"`锛屽苟鍦ㄦ湇鍔＄鍏ュ彛璋冪敤 `noStore()`锛岃繘涓€姝ラ伩鍏嶅伐鍏峰簱鍒楄〃琚紦瀛樸€?
+- `getPublishedTools()` 鏌ヨ缁х画闄愬埗 `status = "published"`锛屾寜 `updated_at`銆乣created_at` 鍊掑簭锛屾渶澶氳鍙?100 鏉★紝淇濊瘉鏈€鏂板彂甯冨伐鍏蜂紭鍏堝嚭鐜板湪宸ュ叿搴撱€?
+- `getPublishedTools()` 澧炲姞鏈嶅姟绔棩蹇?`getPublishedTools count` 鍜?`getPublishedTools slugs`锛屼究浜庡湪 Vercel 鏃ュ織纭鏄惁璇诲彇鍒颁簡 `open-design`銆?
+- 鏈湴 `npm run build` 宸查€氳繃锛屾瀯寤烘棩蹇楃‘璁よ鍙栧埌 `open-design,raycast,chatgpt`锛屼笖 `/tools` 浠嶄负鍔ㄦ€佹覆鏌撻〉闈€?
+- 鏈鏈慨鏀瑰悗鍙?CRUD銆佹暟鎹簱缁撴瀯銆丷LS 绛栫暐銆佹姇绋块〉銆佺櫥褰曢〉銆乀urnstile 鎴栨暣浣撹瑙夐鏍笺€?
 
 ## 2026-06-05
 
-任务：修复前台工具库 `/tools` 不能及时显示后台新增 published 工具的问题。
+浠诲姟锛氫慨澶嶅墠鍙板伐鍏峰簱 `/tools` 涓嶈兘鍙婃椂鏄剧ず鍚庡彴鏂板 published 宸ュ叿鐨勯棶棰樸€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/tools/page.tsx`
 - `src/app/tools/[slug]/page.tsx`
 - `src/lib/db/tools.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- `/tools` 页面新增 `dynamic = "force-dynamic"` 和 `revalidate = 0`，避免 Vercel 使用构建时的旧工具列表。
-- `/tools/[slug]` 页面新增 `dynamic = "force-dynamic"` 和 `revalidate = 0`，并移除 `generateStaticParams()`，让后台新增的工具 slug 可以直接访问详情页。
-- `getPublishedTools()` 继续只读取 `status = "published"` 的工具，并改为优先按 `updated_at` 倒序，再按 `created_at` 倒序，保证最新发布或更新的工具排在前面。
-- `getPublishedTools()` 和 `getToolBySlug()` 查询失败时会输出真实 Supabase 错误到控制台，并返回空数组或 `null`，不让前台页面崩溃。
-- 工具详情页相关推荐只在存在真实 `category_id` 时查询，避免把展示用分类名当作 uuid 查询。
-- 本次未修改后台 CRUD、数据库结构、RLS 策略、文章页面或整体视觉风格。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/DEPLOYMENT.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- `/tools` 椤甸潰鏂板 `dynamic = "force-dynamic"` 鍜?`revalidate = 0`锛岄伩鍏?Vercel 浣跨敤鏋勫缓鏃剁殑鏃у伐鍏峰垪琛ㄣ€?
+- `/tools/[slug]` 椤甸潰鏂板 `dynamic = "force-dynamic"` 鍜?`revalidate = 0`锛屽苟绉婚櫎 `generateStaticParams()`锛岃鍚庡彴鏂板鐨勫伐鍏?slug 鍙互鐩存帴璁块棶璇︽儏椤点€?
+- `getPublishedTools()` 缁х画鍙鍙?`status = "published"` 鐨勫伐鍏凤紝骞舵敼涓轰紭鍏堟寜 `updated_at` 鍊掑簭锛屽啀鎸?`created_at` 鍊掑簭锛屼繚璇佹渶鏂板彂甯冩垨鏇存柊鐨勫伐鍏锋帓鍦ㄥ墠闈€?
+- `getPublishedTools()` 鍜?`getToolBySlug()` 鏌ヨ澶辫触鏃朵細杈撳嚭鐪熷疄 Supabase 閿欒鍒版帶鍒跺彴锛屽苟杩斿洖绌烘暟缁勬垨 `null`锛屼笉璁╁墠鍙伴〉闈㈠穿婧冦€?
+- 宸ュ叿璇︽儏椤电浉鍏虫帹鑽愬彧鍦ㄥ瓨鍦ㄧ湡瀹?`category_id` 鏃舵煡璇紝閬垮厤鎶婂睍绀虹敤鍒嗙被鍚嶅綋浣?uuid 鏌ヨ銆?
+- 鏈鏈慨鏀瑰悗鍙?CRUD銆佹暟鎹簱缁撴瀯銆丷LS 绛栫暐銆佹枃绔犻〉闈㈡垨鏁翠綋瑙嗚椋庢牸銆?
 
 ## 2026-06-04
 
-任务：修复首页搜索框与 `/search` URL 参数联动。
+浠诲姟锛氫慨澶嶉椤垫悳绱㈡涓?`/search` URL 鍙傛暟鑱斿姩銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/components/home/home-search-section.tsx`
 - `src/app/search/page.tsx`
 - `src/components/search/search-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 修复首页搜索区：输入关键词后提交会跳转到 `/search?q=关键词`。
-- 首页搜索关键词使用 `encodeURIComponent` 生成查询参数。
-- 首页搜索区空关键词提交会跳转到 `/search`。
-- 首页搜索表单增加 `action` 和 `method="get"` 作为原生表单兜底，避免提交到 `/?q=...`。
-- 首页热门标签从页面内锚点改为 `/search?q=...` 链接。
-- `/search` 页面读取 URL 参数 `q`，例如 `/search?q=published` 会自动填充搜索框并展示匹配结果。
-- `/search` 页面保留现有手动输入搜索、热门关键词、筛选和搜索结果卡片逻辑。
-- 未修改搜索数据来源、后台、数据库结构、Supabase RLS、工具详情页和文章详情页。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- 已清理 `.next` 并重新启动 `npm run dev -- -p 3000`。
-- 已用浏览器检查首页搜索表单：空关键词点击搜索后跳转 `/search`，无错误页。
-- 已用浏览器检查首页热门标签链接均为编码后的 `/search?q=...`，旧的 `#featured-tools` 链接已移除。
-- 已用浏览器检查 `/search?q=published`：搜索框自动显示 `published`，并显示 `Published Test Tool`，工具结果按钮为“查看详情”。
-- 已确认 `/search?q=published` 未出现“查看官网”或“访问官方网站”，页面无横向滚动。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 淇棣栭〉鎼滅储鍖猴細杈撳叆鍏抽敭璇嶅悗鎻愪氦浼氳烦杞埌 `/search?q=鍏抽敭璇峘銆?
+- 棣栭〉鎼滅储鍏抽敭璇嶄娇鐢?`encodeURIComponent` 鐢熸垚鏌ヨ鍙傛暟銆?
+- 棣栭〉鎼滅储鍖虹┖鍏抽敭璇嶆彁浜や細璺宠浆鍒?`/search`銆?
+- 棣栭〉鎼滅储琛ㄥ崟澧炲姞 `action` 鍜?`method="get"` 浣滀负鍘熺敓琛ㄥ崟鍏滃簳锛岄伩鍏嶆彁浜ゅ埌 `/?q=...`銆?
+- 棣栭〉鐑棬鏍囩浠庨〉闈㈠唴閿氱偣鏀逛负 `/search?q=...` 閾炬帴銆?
+- `/search` 椤甸潰璇诲彇 URL 鍙傛暟 `q`锛屼緥濡?`/search?q=published` 浼氳嚜鍔ㄥ～鍏呮悳绱㈡骞跺睍绀哄尮閰嶇粨鏋溿€?
+- `/search` 椤甸潰淇濈暀鐜版湁鎵嬪姩杈撳叆鎼滅储銆佺儹闂ㄥ叧閿瘝銆佺瓫閫夊拰鎼滅储缁撴灉鍗＄墖閫昏緫銆?
+- 鏈慨鏀规悳绱㈡暟鎹潵婧愩€佸悗鍙般€佹暟鎹簱缁撴瀯銆丼upabase RLS銆佸伐鍏疯鎯呴〉鍜屾枃绔犺鎯呴〉銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸叉竻鐞?`.next` 骞堕噸鏂板惎鍔?`npm run dev -- -p 3000`銆?
+- 宸茬敤娴忚鍣ㄦ鏌ラ椤垫悳绱㈣〃鍗曪細绌哄叧閿瘝鐐瑰嚮鎼滅储鍚庤烦杞?`/search`锛屾棤閿欒椤点€?
+- 宸茬敤娴忚鍣ㄦ鏌ラ椤电儹闂ㄦ爣绛鹃摼鎺ュ潎涓虹紪鐮佸悗鐨?`/search?q=...`锛屾棫鐨?`#featured-tools` 閾炬帴宸茬Щ闄ゃ€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/search?q=published`锛氭悳绱㈡鑷姩鏄剧ず `published`锛屽苟鏄剧ず `Published Test Tool`锛屽伐鍏风粨鏋滄寜閽负鈥滄煡鐪嬭鎯呪€濄€?
+- 宸茬‘璁?`/search?q=published` 鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濇垨鈥滆闂畼鏂圭綉绔欌€濓紝椤甸潰鏃犳í鍚戞粴鍔ㄣ€?
 
-下一步：
-- 手动在首页搜索框输入 `published`，点击“搜索”或按 Enter，确认地址变为 `/search?q=published` 且结果正常显示。
+涓嬩竴姝ワ細
+- 鎵嬪姩鍦ㄩ椤垫悳绱㈡杈撳叆 `published`锛岀偣鍑烩€滄悳绱⑩€濇垨鎸?Enter锛岀‘璁ゅ湴鍧€鍙樹负 `/search?q=published` 涓旂粨鏋滄甯告樉绀恒€?
 
 ## 2026-06-04
 
-任务：检查并修复文章前台数据联动与搜索页数据联动。
+浠诲姟锛氭鏌ュ苟淇鏂囩珷鍓嶅彴鏁版嵁鑱斿姩涓庢悳绱㈤〉鏁版嵁鑱斿姩銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/articles/page.tsx`
 - `src/app/articles/[slug]/page.tsx`
 - `src/app/search/page.tsx`
@@ -627,69 +913,69 @@
 - `src/types/article.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 确认 `/articles` 使用 `getPublishedArticles()` 读取 Supabase `articles` 表数据。
-- 确认 `/articles/[slug]` 使用 `getArticleBySlug(slug)` 读取 Supabase `articles` 表数据。
-- 确认 `/search` 同时使用 `getPublishedTools()` 和 `getPublishedArticles()`，不是纯 mock 数据。
-- 将 `/articles`、`/articles/[slug]`、`/search` 标记为 `dynamic = "force-dynamic"`，避免构建时把 Supabase 数据静态固化，确保后台新增或编辑 published 内容后前台能按请求更新。
-- 移除 `/articles/[slug]` 的 `generateStaticParams()`，让后台新增的 published 文章 slug 能直接打开详情页。
-- `getPublishedArticles()` 继续只查询 `status = "published"`，排序改为优先 `updated_at` 倒序，再按 `created_at` 倒序。
-- `getPublishedArticles()` 查询失败时输出 `console.error("getPublishedArticles error:", error)`，并返回空数组。
-- `getArticleBySlug(slug)` 查询时同时要求 `slug` 和 `status = "published"`，查询失败时输出 `console.error("getArticleBySlug error:", error)`，查不到时返回 `null`。
-- `getRelatedArticles(categoryId, currentArticleId)` 在 `categoryId` 为空时返回空数组，查询失败时输出错误并返回空数组。
-- 文章详情页相关推荐只传 `article.category_id`，避免把“未分类”等展示文案当作 uuid 查询。
-- 补充 `PublishedArticle` 类型兼容字段：`content`、`cover_url`、`status`，继续兼容 `category_id`、`created_at`、`updated_at` 可选。
-- 已使用匿名 Supabase 客户端只读检查当前环境：`articles` 共 2 篇，published 2 篇，draft 0 篇；`tools` 共 3 个，published 3 个，draft 0 个。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过；构建结果确认 `/articles`、`/articles/[slug]`、`/search` 均为动态渲染。
-- 已清理 `.next` 并重新启动 `npm run dev -- -p 3000`。
-- 已用浏览器检查 `/articles` 显示 Supabase published 文章：“如何判断一个 AI 工具是否值得使用？”和“在线工具站适合收录哪些内容？”。
-- 已用浏览器检查 `/articles/how-to-choose-ai-tools` 可打开，正文、广告位和版权声明正常显示。
-- 已用浏览器检查 `/articles/not-public-or-missing` 显示“没有找到这篇文章”和“返回文章列表”，没有错误页。
-- 已用浏览器检查 `/search` 初始状态显示 Supabase published 工具和文章。
-- 已用浏览器检查 `/search` 搜索 `AI` 可匹配 published 工具 `ChatGPT` 和 published 文章“如何判断一个 AI 工具是否值得使用？”。
-- 已确认 `/search` 工具结果按钮为“查看详情”，文章结果按钮为“阅读全文”，未出现“查看官网”或“访问官方网站”。
-- 已确认 `/articles`、`/articles/[slug]`、`/search` 未发现横向滚动。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 纭 `/articles` 浣跨敤 `getPublishedArticles()` 璇诲彇 Supabase `articles` 琛ㄦ暟鎹€?
+- 纭 `/articles/[slug]` 浣跨敤 `getArticleBySlug(slug)` 璇诲彇 Supabase `articles` 琛ㄦ暟鎹€?
+- 纭 `/search` 鍚屾椂浣跨敤 `getPublishedTools()` 鍜?`getPublishedArticles()`锛屼笉鏄函 mock 鏁版嵁銆?
+- 灏?`/articles`銆乣/articles/[slug]`銆乣/search` 鏍囪涓?`dynamic = "force-dynamic"`锛岄伩鍏嶆瀯寤烘椂鎶?Supabase 鏁版嵁闈欐€佸浐鍖栵紝纭繚鍚庡彴鏂板鎴栫紪杈?published 鍐呭鍚庡墠鍙拌兘鎸夎姹傛洿鏂般€?
+- 绉婚櫎 `/articles/[slug]` 鐨?`generateStaticParams()`锛岃鍚庡彴鏂板鐨?published 鏂囩珷 slug 鑳界洿鎺ユ墦寮€璇︽儏椤点€?
+- `getPublishedArticles()` 缁х画鍙煡璇?`status = "published"`锛屾帓搴忔敼涓轰紭鍏?`updated_at` 鍊掑簭锛屽啀鎸?`created_at` 鍊掑簭銆?
+- `getPublishedArticles()` 鏌ヨ澶辫触鏃惰緭鍑?`console.error("getPublishedArticles error:", error)`锛屽苟杩斿洖绌烘暟缁勩€?
+- `getArticleBySlug(slug)` 鏌ヨ鏃跺悓鏃惰姹?`slug` 鍜?`status = "published"`锛屾煡璇㈠け璐ユ椂杈撳嚭 `console.error("getArticleBySlug error:", error)`锛屾煡涓嶅埌鏃惰繑鍥?`null`銆?
+- `getRelatedArticles(categoryId, currentArticleId)` 鍦?`categoryId` 涓虹┖鏃惰繑鍥炵┖鏁扮粍锛屾煡璇㈠け璐ユ椂杈撳嚭閿欒骞惰繑鍥炵┖鏁扮粍銆?
+- 鏂囩珷璇︽儏椤电浉鍏虫帹鑽愬彧浼?`article.category_id`锛岄伩鍏嶆妸鈥滄湭鍒嗙被鈥濈瓑灞曠ず鏂囨褰撲綔 uuid 鏌ヨ銆?
+- 琛ュ厖 `PublishedArticle` 绫诲瀷鍏煎瀛楁锛歚content`銆乣cover_url`銆乣status`锛岀户缁吋瀹?`category_id`銆乣created_at`銆乣updated_at` 鍙€夈€?
+- 宸蹭娇鐢ㄥ尶鍚?Supabase 瀹㈡埛绔彧璇绘鏌ュ綋鍓嶇幆澧冿細`articles` 鍏?2 绡囷紝published 2 绡囷紝draft 0 绡囷紱`tools` 鍏?3 涓紝published 3 涓紝draft 0 涓€?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤虹粨鏋滅‘璁?`/articles`銆乣/articles/[slug]`銆乣/search` 鍧囦负鍔ㄦ€佹覆鏌撱€?
+- 宸叉竻鐞?`.next` 骞堕噸鏂板惎鍔?`npm run dev -- -p 3000`銆?
+- 宸茬敤娴忚鍣ㄦ鏌?`/articles` 鏄剧ず Supabase published 鏂囩珷锛氣€滃浣曞垽鏂竴涓?AI 宸ュ叿鏄惁鍊煎緱浣跨敤锛熲€濆拰鈥滃湪绾垮伐鍏风珯閫傚悎鏀跺綍鍝簺鍐呭锛熲€濄€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/articles/how-to-choose-ai-tools` 鍙墦寮€锛屾鏂囥€佸箍鍛婁綅鍜岀増鏉冨０鏄庢甯告樉绀恒€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/articles/not-public-or-missing` 鏄剧ず鈥滄病鏈夋壘鍒拌繖绡囨枃绔犫€濆拰鈥滆繑鍥炴枃绔犲垪琛ㄢ€濓紝娌℃湁閿欒椤点€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/search` 鍒濆鐘舵€佹樉绀?Supabase published 宸ュ叿鍜屾枃绔犮€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/search` 鎼滅储 `AI` 鍙尮閰?published 宸ュ叿 `ChatGPT` 鍜?published 鏂囩珷鈥滃浣曞垽鏂竴涓?AI 宸ュ叿鏄惁鍊煎緱浣跨敤锛熲€濄€?
+- 宸茬‘璁?`/search` 宸ュ叿缁撴灉鎸夐挳涓衡€滄煡鐪嬭鎯呪€濓紝鏂囩珷缁撴灉鎸夐挳涓衡€滈槄璇诲叏鏂団€濓紝鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濇垨鈥滆闂畼鏂圭綉绔欌€濄€?
+- 宸茬‘璁?`/articles`銆乣/articles/[slug]`銆乣/search` 鏈彂鐜版í鍚戞粴鍔ㄣ€?
 
-下一步：
-- 如需继续验收 draft 排除效果，可在后台新增一篇 `status = draft` 的文章，确认 `/articles`、`/articles/[slug]`、`/search` 均不展示该文章。
+涓嬩竴姝ワ細
+- 濡傞渶缁х画楠屾敹 draft 鎺掗櫎鏁堟灉锛屽彲鍦ㄥ悗鍙版柊澧炰竴绡?`status = draft` 鐨勬枃绔狅紝纭 `/articles`銆乣/articles/[slug]`銆乣/search` 鍧囦笉灞曠ず璇ユ枃绔犮€?
 
 ## 2026-06-04
 
-任务：前后台数据联动验收与修复。
+浠诲姟锛氬墠鍚庡彴鏁版嵁鑱斿姩楠屾敹涓庝慨澶嶃€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/lib/db/tools.ts`
 - `src/lib/db/articles.ts`
 - `src/components/home/home-article-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 检查前台页面与组件链路：`/`、`/tools`、`/tools/[slug]`、`/articles`、`/articles/[slug]`、`/search`。
-- 修复前台 Supabase 数据读取策略：缺少 Supabase 配置时仍保留 mock 兜底；一旦 Supabase 已配置但查询失败，不再回退到 mock，改为返回空数组或 `null`，避免后台删除、草稿状态或查询错误被假数据掩盖。
-- 确认 `getPublishedTools()`、`getToolBySlug(slug)`、`getRelatedTools(categoryId, currentToolId)` 的前台读取仍限定 `status = "published"`。
-- 确认 `getPublishedArticles()`、`getArticleBySlug(slug)`、`getRelatedArticles(categoryId, currentArticleId)` 的前台读取仍限定 `status = "published"`。
-- 修复首页最新文章卡片链接：从 `/articles/${article.id}` 改为 `/articles/${article.slug}`，避免后台文章的 uuid `id` 被误当作详情页 slug。
-- 文本检查确认前台工具列表、首页工具卡片和搜索工具结果使用“查看详情”，未出现“查看官网”。
-- 文本检查确认“访问官方网站”只出现在工具详情组件，且官网链接带 `target="_blank"` 与 `rel="nofollow noopener noreferrer"`。
-- 检查工具详情页和文章详情页仍包含 `AdPlaceholder` 与 `CopyrightNotice`，相关推荐为空时不会崩溃。
-- 已使用匿名 Supabase 客户端只读 count 检查当前环境：`tools` 总数 0、`articles` 总数 0，因此当前前台显示友好空状态是正常结果。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- build 后发现当前 dev 服务缓存被覆盖导致首页请求缺失 chunk，已停止本项目 dev 进程、删除 `.next`、重新启动 `npm run dev -- -p 3000`。
-- 已检查 `/`、`/tools`、`/articles`、`/search` 均可打开，无错误页、无横向滚动，并显示空状态或广告位。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 妫€鏌ュ墠鍙伴〉闈笌缁勪欢閾捐矾锛歚/`銆乣/tools`銆乣/tools/[slug]`銆乣/articles`銆乣/articles/[slug]`銆乣/search`銆?
+- 淇鍓嶅彴 Supabase 鏁版嵁璇诲彇绛栫暐锛氱己灏?Supabase 閰嶇疆鏃朵粛淇濈暀 mock 鍏滃簳锛涗竴鏃?Supabase 宸查厤缃絾鏌ヨ澶辫触锛屼笉鍐嶅洖閫€鍒?mock锛屾敼涓鸿繑鍥炵┖鏁扮粍鎴?`null`锛岄伩鍏嶅悗鍙板垹闄ゃ€佽崏绋跨姸鎬佹垨鏌ヨ閿欒琚亣鏁版嵁鎺╃洊銆?
+- 纭 `getPublishedTools()`銆乣getToolBySlug(slug)`銆乣getRelatedTools(categoryId, currentToolId)` 鐨勫墠鍙拌鍙栦粛闄愬畾 `status = "published"`銆?
+- 纭 `getPublishedArticles()`銆乣getArticleBySlug(slug)`銆乣getRelatedArticles(categoryId, currentArticleId)` 鐨勫墠鍙拌鍙栦粛闄愬畾 `status = "published"`銆?
+- 淇棣栭〉鏈€鏂版枃绔犲崱鐗囬摼鎺ワ細浠?`/articles/${article.id}` 鏀逛负 `/articles/${article.slug}`锛岄伩鍏嶅悗鍙版枃绔犵殑 uuid `id` 琚褰撲綔璇︽儏椤?slug銆?
+- 鏂囨湰妫€鏌ョ‘璁ゅ墠鍙板伐鍏峰垪琛ㄣ€侀椤靛伐鍏峰崱鐗囧拰鎼滅储宸ュ叿缁撴灉浣跨敤鈥滄煡鐪嬭鎯呪€濓紝鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 鏂囨湰妫€鏌ョ‘璁も€滆闂畼鏂圭綉绔欌€濆彧鍑虹幇鍦ㄥ伐鍏疯鎯呯粍浠讹紝涓斿畼缃戦摼鎺ュ甫 `target="_blank"` 涓?`rel="nofollow noopener noreferrer"`銆?
+- 妫€鏌ュ伐鍏疯鎯呴〉鍜屾枃绔犺鎯呴〉浠嶅寘鍚?`AdPlaceholder` 涓?`CopyrightNotice`锛岀浉鍏虫帹鑽愪负绌烘椂涓嶄細宕╂簝銆?
+- 宸蹭娇鐢ㄥ尶鍚?Supabase 瀹㈡埛绔彧璇?count 妫€鏌ュ綋鍓嶇幆澧冿細`tools` 鎬绘暟 0銆乣articles` 鎬绘暟 0锛屽洜姝ゅ綋鍓嶅墠鍙版樉绀哄弸濂界┖鐘舵€佹槸姝ｅ父缁撴灉銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- build 鍚庡彂鐜板綋鍓?dev 鏈嶅姟缂撳瓨琚鐩栧鑷撮椤佃姹傜己澶?chunk锛屽凡鍋滄鏈」鐩?dev 杩涚▼銆佸垹闄?`.next`銆侀噸鏂板惎鍔?`npm run dev -- -p 3000`銆?
+- 宸叉鏌?`/`銆乣/tools`銆乣/articles`銆乣/search` 鍧囧彲鎵撳紑锛屾棤閿欒椤点€佹棤妯悜婊氬姩锛屽苟鏄剧ず绌虹姸鎬佹垨骞垮憡浣嶃€?
 
-下一步：
-- 在后台新增一条 `status = published` 的工具和文章后，前台 `/tools`、`/articles`、首页和 `/search` 应显示；新增 `status = draft` 的工具和文章后，前台不应显示。
-- 如果 published 内容仍不显示，优先检查 Supabase RLS 是否允许匿名用户读取 `tools`、`articles`、`categories`、`tags` 及关系表。
+涓嬩竴姝ワ細
+- 鍦ㄥ悗鍙版柊澧炰竴鏉?`status = published` 鐨勫伐鍏峰拰鏂囩珷鍚庯紝鍓嶅彴 `/tools`銆乣/articles`銆侀椤靛拰 `/search` 搴旀樉绀猴紱鏂板 `status = draft` 鐨勫伐鍏峰拰鏂囩珷鍚庯紝鍓嶅彴涓嶅簲鏄剧ず銆?
+- 濡傛灉 published 鍐呭浠嶄笉鏄剧ず锛屼紭鍏堟鏌?Supabase RLS 鏄惁鍏佽鍖垮悕鐢ㄦ埛璇诲彇 `tools`銆乣articles`銆乣categories`銆乣tags` 鍙婂叧绯昏〃銆?
 
 ## 2026-06-04
 
-任务：后台功能统一验收与修复。
+浠诲姟锛氬悗鍙板姛鑳界粺涓€楠屾敹涓庝慨澶嶃€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/login/page.tsx`
 - `src/app/admin/page.tsx`
 - `src/app/admin/tools/page.tsx`
@@ -712,31 +998,31 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查与修复：
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 检查后台页面：`/admin/login`、`/admin`、`/admin/tools`、`/admin/articles`、`/admin/categories`、`/admin/tags`、`/admin/submissions`、`/admin/reports`。
-- 确认后台跳转使用相对路径，没有硬编码 `localhost:3000` 或 `localhost:3001`。
-- 给后台登录检查增加超时兜底，避免页面永久停留在“正在检查登录状态”或“正在验证登录状态”。
-- 正常未登录时不再把 `Auth session missing` 当作页面错误展示；未登录访问后台管理页会跳转到 `/admin/login?next=admin`。
-- 新增 `src/lib/db/admin-errors.ts`，统一处理后台友好错误提示。
-- Supabase RLS 或权限类错误统一显示：`权限不足，请检查 Supabase RLS 配置。`
-- 工具、文章、分类、标签、投稿、投诉的后台数据函数保留真实错误 `console.error`，页面显示友好中文提示。
-- 工具、文章、分类、标签后台数据层改为复用统一 Supabase browser client，避免重复创建 GoTrueClient。
-- 后台首页菜单移除已完成入口上的误导性“待开放”标记。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- 已清理 `.next` 并重启 `npm run dev -- -p 3000`。
-- 已检查后台 8 个页面在 `http://localhost:3000` 均返回 200。
-- 已用浏览器确认 `/admin/login` 显示登录表单，未登录访问 `/admin/reports` 会跳转到 `/admin/login?next=admin`，且不会卡在验证状态。
+妫€鏌ヤ笌淇锛?
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 妫€鏌ュ悗鍙伴〉闈細`/admin/login`銆乣/admin`銆乣/admin/tools`銆乣/admin/articles`銆乣/admin/categories`銆乣/admin/tags`銆乣/admin/submissions`銆乣/admin/reports`銆?
+- 纭鍚庡彴璺宠浆浣跨敤鐩稿璺緞锛屾病鏈夌‖缂栫爜 `localhost:3000` 鎴?`localhost:3001`銆?
+- 缁欏悗鍙扮櫥褰曟鏌ュ鍔犺秴鏃跺厹搴曪紝閬垮厤椤甸潰姘镐箙鍋滅暀鍦ㄢ€滄鍦ㄦ鏌ョ櫥褰曠姸鎬佲€濇垨鈥滄鍦ㄩ獙璇佺櫥褰曠姸鎬佲€濄€?
+- 姝ｅ父鏈櫥褰曟椂涓嶅啀鎶?`Auth session missing` 褰撲綔椤甸潰閿欒灞曠ず锛涙湭鐧诲綍璁块棶鍚庡彴绠＄悊椤典細璺宠浆鍒?`/admin/login?next=admin`銆?
+- 鏂板 `src/lib/db/admin-errors.ts`锛岀粺涓€澶勭悊鍚庡彴鍙嬪ソ閿欒鎻愮ず銆?
+- Supabase RLS 鎴栨潈闄愮被閿欒缁熶竴鏄剧ず锛歚鏉冮檺涓嶈冻锛岃妫€鏌?Supabase RLS 閰嶇疆銆俙
+- 宸ュ叿銆佹枃绔犮€佸垎绫汇€佹爣绛俱€佹姇绋裤€佹姇璇夌殑鍚庡彴鏁版嵁鍑芥暟淇濈暀鐪熷疄閿欒 `console.error`锛岄〉闈㈡樉绀哄弸濂戒腑鏂囨彁绀恒€?
+- 宸ュ叿銆佹枃绔犮€佸垎绫汇€佹爣绛惧悗鍙版暟鎹眰鏀逛负澶嶇敤缁熶竴 Supabase browser client锛岄伩鍏嶉噸澶嶅垱寤?GoTrueClient銆?
+- 鍚庡彴棣栭〉鑿滃崟绉婚櫎宸插畬鎴愬叆鍙ｄ笂鐨勮瀵兼€р€滃緟寮€鏀锯€濇爣璁般€?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸叉竻鐞?`.next` 骞堕噸鍚?`npm run dev -- -p 3000`銆?
+- 宸叉鏌ュ悗鍙?8 涓〉闈㈠湪 `http://localhost:3000` 鍧囪繑鍥?200銆?
+- 宸茬敤娴忚鍣ㄧ‘璁?`/admin/login` 鏄剧ず鐧诲綍琛ㄥ崟锛屾湭鐧诲綍璁块棶 `/admin/reports` 浼氳烦杞埌 `/admin/login?next=admin`锛屼笖涓嶄細鍗″湪楠岃瘉鐘舵€併€?
 
-下一步：
-- 使用真实管理员账号登录后，逐页测试新增、编辑、删除、状态切换是否受 Supabase RLS policy 正确允许；如果后台写入或管理失败，优先检查对应表的 authenticated `select`、`insert`、`update`、`delete` policy。
+涓嬩竴姝ワ細
+- 浣跨敤鐪熷疄绠＄悊鍛樿处鍙风櫥褰曞悗锛岄€愰〉娴嬭瘯鏂板銆佺紪杈戙€佸垹闄ゃ€佺姸鎬佸垏鎹㈡槸鍚﹀彈 Supabase RLS policy 姝ｇ‘鍏佽锛涘鏋滃悗鍙板啓鍏ユ垨绠＄悊澶辫触锛屼紭鍏堟鏌ュ搴旇〃鐨?authenticated `select`銆乣insert`銆乣update`銆乣delete` policy銆?
 
 ## 2026-06-04
 
-任务：制作后台投诉管理 `/admin/reports`。
+浠诲姟锛氬埗浣滃悗鍙版姇璇夌鐞?`/admin/reports`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/reports/page.tsx`
 - `src/components/admin/AdminShell.tsx`
 - `src/lib/db/reports.ts`
@@ -744,39 +1030,39 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次只做 `reports` 表后台管理，不修改前台页面、`/copyright` 页面、`/submit` 页面、工具后台、文章后台、分类后台、标签后台、投稿后台、数据库结构、邮件通知、复杂工单系统、自动下架内容和复杂权限。
-- 新增 `/admin/reports` 投诉管理页。
-- 页面包含投诉管理标题、说明、全部投诉数量、`pending` 数量、`reviewed` 数量、`resolved` 数量、`rejected` 数量。
-- 投诉列表读取 Supabase `reports` 表真实数据，并按 `created_at` 倒序显示。
-- 投诉列表显示权利人或机构、联系邮箱、涉及页面、问题类型、证明材料摘要、处理要求摘要、状态、提交时间和操作按钮。
-- 支持页面内展开查看详情，不创建单独详情页。
-- 涉及页面链接如为 `http` 或 `https` 链接，会新窗口打开，并带 `rel="nofollow noopener noreferrer"`。
-- 联系邮箱显示为 `mailto:` 链接。
-- 状态兼容显示数据库里的其他值，但后台按钮只允许更新为 `pending`、`reviewed`、`resolved`、`rejected`。
-- `pending` 显示为“待处理”，`reviewed` 显示为“已查看”，`resolved` 显示为“已处理”，`rejected` 显示为“已拒绝”。
-- 列表中长文本 `proof` 和 `request` 只显示摘要，详情展开后完整展示。
-- `src/lib/db/reports.ts` 新增 `getAdminReports()`、`updateReportStatus(id, status)`、`deleteReport(id)`。
-- `updateReportStatus` 只更新 `status` 字段，不更新投诉内容字段。
-- `deleteReport` 只根据 `id` 删除。
-- 更新状态和删除投诉出错时，会在控制台输出真实 Supabase 错误，页面只显示友好提示。
-- 删除投诉前会二次确认。
-- `AdminShell` 中“投诉管理”入口改为已开放。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈鍙仛 `reports` 琛ㄥ悗鍙扮鐞嗭紝涓嶄慨鏀瑰墠鍙伴〉闈€乣/copyright` 椤甸潰銆乣/submit` 椤甸潰銆佸伐鍏峰悗鍙般€佹枃绔犲悗鍙般€佸垎绫诲悗鍙般€佹爣绛惧悗鍙般€佹姇绋垮悗鍙般€佹暟鎹簱缁撴瀯銆侀偖浠堕€氱煡銆佸鏉傚伐鍗曠郴缁熴€佽嚜鍔ㄤ笅鏋跺唴瀹瑰拰澶嶆潅鏉冮檺銆?
+- 鏂板 `/admin/reports` 鎶曡瘔绠＄悊椤点€?
+- 椤甸潰鍖呭惈鎶曡瘔绠＄悊鏍囬銆佽鏄庛€佸叏閮ㄦ姇璇夋暟閲忋€乣pending` 鏁伴噺銆乣reviewed` 鏁伴噺銆乣resolved` 鏁伴噺銆乣rejected` 鏁伴噺銆?
+- 鎶曡瘔鍒楄〃璇诲彇 Supabase `reports` 琛ㄧ湡瀹炴暟鎹紝骞舵寜 `created_at` 鍊掑簭鏄剧ず銆?
+- 鎶曡瘔鍒楄〃鏄剧ず鏉冨埄浜烘垨鏈烘瀯銆佽仈绯婚偖绠便€佹秹鍙婇〉闈€侀棶棰樼被鍨嬨€佽瘉鏄庢潗鏂欐憳瑕併€佸鐞嗚姹傛憳瑕併€佺姸鎬併€佹彁浜ゆ椂闂村拰鎿嶄綔鎸夐挳銆?
+- 鏀寔椤甸潰鍐呭睍寮€鏌ョ湅璇︽儏锛屼笉鍒涘缓鍗曠嫭璇︽儏椤点€?
+- 娑夊強椤甸潰閾炬帴濡備负 `http` 鎴?`https` 閾炬帴锛屼細鏂扮獥鍙ｆ墦寮€锛屽苟甯?`rel="nofollow noopener noreferrer"`銆?
+- 鑱旂郴閭鏄剧ず涓?`mailto:` 閾炬帴銆?
+- 鐘舵€佸吋瀹规樉绀烘暟鎹簱閲岀殑鍏朵粬鍊硷紝浣嗗悗鍙版寜閽彧鍏佽鏇存柊涓?`pending`銆乣reviewed`銆乣resolved`銆乣rejected`銆?
+- `pending` 鏄剧ず涓衡€滃緟澶勭悊鈥濓紝`reviewed` 鏄剧ず涓衡€滃凡鏌ョ湅鈥濓紝`resolved` 鏄剧ず涓衡€滃凡澶勭悊鈥濓紝`rejected` 鏄剧ず涓衡€滃凡鎷掔粷鈥濄€?
+- 鍒楄〃涓暱鏂囨湰 `proof` 鍜?`request` 鍙樉绀烘憳瑕侊紝璇︽儏灞曞紑鍚庡畬鏁村睍绀恒€?
+- `src/lib/db/reports.ts` 鏂板 `getAdminReports()`銆乣updateReportStatus(id, status)`銆乣deleteReport(id)`銆?
+- `updateReportStatus` 鍙洿鏂?`status` 瀛楁锛屼笉鏇存柊鎶曡瘔鍐呭瀛楁銆?
+- `deleteReport` 鍙牴鎹?`id` 鍒犻櫎銆?
+- 鏇存柊鐘舵€佸拰鍒犻櫎鎶曡瘔鍑洪敊鏃讹紝浼氬湪鎺у埗鍙拌緭鍑虹湡瀹?Supabase 閿欒锛岄〉闈㈠彧鏄剧ず鍙嬪ソ鎻愮ず銆?
+- 鍒犻櫎鎶曡瘔鍓嶄細浜屾纭銆?
+- `AdminShell` 涓€滄姇璇夌鐞嗏€濆叆鍙ｆ敼涓哄凡寮€鏀俱€?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Supabase 中确认 `reports` 表允许已登录用户执行 `select`、`update`、`delete`；如果后台读取或操作失败，需要检查对应 RLS policy。
+- 鍦?Supabase 涓‘璁?`reports` 琛ㄥ厑璁稿凡鐧诲綍鐢ㄦ埛鎵ц `select`銆乣update`銆乣delete`锛涘鏋滃悗鍙拌鍙栨垨鎿嶄綔澶辫触锛岄渶瑕佹鏌ュ搴?RLS policy銆?
 
 ## 2026-06-04
 
-任务：制作后台投稿管理 `/admin/submissions`。
+浠诲姟锛氬埗浣滃悗鍙版姇绋跨鐞?`/admin/submissions`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/submissions/page.tsx`
 - `src/components/admin/AdminShell.tsx`
 - `src/lib/db/submissions.ts`
@@ -784,37 +1070,37 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次只做 `submissions` 表后台管理，不修改前台页面、`/submit` 页面、工具后台、文章后台、分类后台、标签后台、数据库结构、一键转工具、邮件通知、批量操作和复杂权限。
-- 新增 `/admin/submissions` 投稿管理页。
-- 页面包含投稿管理标题、说明、全部投稿数量、`pending` 数量、`reviewed` 数量、`rejected` 数量。
-- 投稿列表读取 Supabase `submissions` 表真实数据，并按 `created_at` 倒序显示。
-- 投稿列表显示工具名称、官网地址、工具简介、推荐理由、推荐人邮箱、状态、提交时间和操作按钮。
-- 支持页面内展开查看详情，不创建单独详情页。
-- 官网地址如为 `http` 或 `https` 链接，会新窗口打开，并带 `rel="nofollow noopener noreferrer"`。
-- 状态兼容显示数据库里的其他值，但后台按钮只允许更新为 `pending`、`reviewed`、`rejected`。
-- `pending` 显示为“待处理”，`reviewed` 显示为“已查看”，`rejected` 显示为“已拒绝”。
-- `src/lib/db/submissions.ts` 新增 `getAdminSubmissions()`、`updateSubmissionStatus(id, status)`、`deleteSubmission(id)`。
-- `updateSubmissionStatus` 只更新 `status` 字段，不更新投稿内容字段。
-- `deleteSubmission` 只根据 `id` 删除。
-- 更新状态和删除投稿出错时，会在控制台输出真实 Supabase 错误，页面只显示友好提示。
-- 删除投稿前会二次确认。
-- `AdminShell` 中“投稿管理”入口改为已开放。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈鍙仛 `submissions` 琛ㄥ悗鍙扮鐞嗭紝涓嶄慨鏀瑰墠鍙伴〉闈€乣/submit` 椤甸潰銆佸伐鍏峰悗鍙般€佹枃绔犲悗鍙般€佸垎绫诲悗鍙般€佹爣绛惧悗鍙般€佹暟鎹簱缁撴瀯銆佷竴閿浆宸ュ叿銆侀偖浠堕€氱煡銆佹壒閲忔搷浣滃拰澶嶆潅鏉冮檺銆?
+- 鏂板 `/admin/submissions` 鎶曠绠＄悊椤点€?
+- 椤甸潰鍖呭惈鎶曠绠＄悊鏍囬銆佽鏄庛€佸叏閮ㄦ姇绋挎暟閲忋€乣pending` 鏁伴噺銆乣reviewed` 鏁伴噺銆乣rejected` 鏁伴噺銆?
+- 鎶曠鍒楄〃璇诲彇 Supabase `submissions` 琛ㄧ湡瀹炴暟鎹紝骞舵寜 `created_at` 鍊掑簭鏄剧ず銆?
+- 鎶曠鍒楄〃鏄剧ず宸ュ叿鍚嶇О銆佸畼缃戝湴鍧€銆佸伐鍏风畝浠嬨€佹帹鑽愮悊鐢便€佹帹鑽愪汉閭銆佺姸鎬併€佹彁浜ゆ椂闂村拰鎿嶄綔鎸夐挳銆?
+- 鏀寔椤甸潰鍐呭睍寮€鏌ョ湅璇︽儏锛屼笉鍒涘缓鍗曠嫭璇︽儏椤点€?
+- 瀹樼綉鍦板潃濡備负 `http` 鎴?`https` 閾炬帴锛屼細鏂扮獥鍙ｆ墦寮€锛屽苟甯?`rel="nofollow noopener noreferrer"`銆?
+- 鐘舵€佸吋瀹规樉绀烘暟鎹簱閲岀殑鍏朵粬鍊硷紝浣嗗悗鍙版寜閽彧鍏佽鏇存柊涓?`pending`銆乣reviewed`銆乣rejected`銆?
+- `pending` 鏄剧ず涓衡€滃緟澶勭悊鈥濓紝`reviewed` 鏄剧ず涓衡€滃凡鏌ョ湅鈥濓紝`rejected` 鏄剧ず涓衡€滃凡鎷掔粷鈥濄€?
+- `src/lib/db/submissions.ts` 鏂板 `getAdminSubmissions()`銆乣updateSubmissionStatus(id, status)`銆乣deleteSubmission(id)`銆?
+- `updateSubmissionStatus` 鍙洿鏂?`status` 瀛楁锛屼笉鏇存柊鎶曠鍐呭瀛楁銆?
+- `deleteSubmission` 鍙牴鎹?`id` 鍒犻櫎銆?
+- 鏇存柊鐘舵€佸拰鍒犻櫎鎶曠鍑洪敊鏃讹紝浼氬湪鎺у埗鍙拌緭鍑虹湡瀹?Supabase 閿欒锛岄〉闈㈠彧鏄剧ず鍙嬪ソ鎻愮ず銆?
+- 鍒犻櫎鎶曠鍓嶄細浜屾纭銆?
+- `AdminShell` 涓€滄姇绋跨鐞嗏€濆叆鍙ｆ敼涓哄凡寮€鏀俱€?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Supabase 中确认 `submissions` 表允许已登录用户执行 `select`、`update`、`delete`；如果后台读取或操作失败，需要检查对应 RLS policy。
+- 鍦?Supabase 涓‘璁?`submissions` 琛ㄥ厑璁稿凡鐧诲綍鐢ㄦ埛鎵ц `select`銆乣update`銆乣delete`锛涘鏋滃悗鍙拌鍙栨垨鎿嶄綔澶辫触锛岄渶瑕佹鏌ュ搴?RLS policy銆?
 
 ## 2026-06-04
 
-任务：制作后台标签管理 `/admin/tags`。
+浠诲姟锛氬埗浣滃悗鍙版爣绛剧鐞?`/admin/tags`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/tags/page.tsx`
 - `src/components/admin/AdminShell.tsx`
 - `src/lib/db/tags.ts`
@@ -822,37 +1108,37 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次只做 `tags` 表后台管理，不修改前台页面、工具后台、文章后台、分类后台、投稿审核、数据库结构、多角色权限和路由结构。
-- 新增 `/admin/tags` 标签管理页。
-- 页面包含标签管理标题、说明、新增标签区域、标签列表、编辑标签和删除标签功能。
-- 标签列表读取 Supabase `tags` 表真实数据，并按创建时间倒序展示。
-- 标签表单字段包含 `name` 和 `slug`。
-- 新增和编辑标签时，`name` 与 `slug` 必填。
-- slug 自动生成规则：英文转小写、空格转短横线、去掉特殊符号；中文名称无法生成稳定 slug 时 fallback 为 `tag-${Date.now()}`。
-- slug 重复时返回友好错误：“slug 已存在，请换一个 slug。”
-- 新增或编辑成功后会清空表单或退出编辑状态，并刷新标签列表。
-- 删除标签前会二次确认。
-- 如果标签正在被工具或文章使用，删除失败时显示：“该标签可能正在被工具或文章使用，请先调整相关内容后再删除。”
-- `src/lib/db/tags.ts` 新增 `getAdminTags()`、`createTag(data)`、`updateTag(id, data)`、`deleteTag(id)`。
-- 保存 payload 只包含 `name` 和 `slug`，不传 `id`、`created_at` 或数据库不存在字段。
-- `createTag` / `updateTag` / `deleteTag` 出错时会在控制台输出真实 Supabase 错误。
-- `AdminShell` 中“标签管理”入口改为已开放，其它未实现后台入口继续显示“待开放”。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈鍙仛 `tags` 琛ㄥ悗鍙扮鐞嗭紝涓嶄慨鏀瑰墠鍙伴〉闈€佸伐鍏峰悗鍙般€佹枃绔犲悗鍙般€佸垎绫诲悗鍙般€佹姇绋垮鏍搞€佹暟鎹簱缁撴瀯銆佸瑙掕壊鏉冮檺鍜岃矾鐢辩粨鏋勩€?
+- 鏂板 `/admin/tags` 鏍囩绠＄悊椤点€?
+- 椤甸潰鍖呭惈鏍囩绠＄悊鏍囬銆佽鏄庛€佹柊澧炴爣绛惧尯鍩熴€佹爣绛惧垪琛ㄣ€佺紪杈戞爣绛惧拰鍒犻櫎鏍囩鍔熻兘銆?
+- 鏍囩鍒楄〃璇诲彇 Supabase `tags` 琛ㄧ湡瀹炴暟鎹紝骞舵寜鍒涘缓鏃堕棿鍊掑簭灞曠ず銆?
+- 鏍囩琛ㄥ崟瀛楁鍖呭惈 `name` 鍜?`slug`銆?
+- 鏂板鍜岀紪杈戞爣绛炬椂锛宍name` 涓?`slug` 蹇呭～銆?
+- slug 鑷姩鐢熸垚瑙勫垯锛氳嫳鏂囪浆灏忓啓銆佺┖鏍艰浆鐭í绾裤€佸幓鎺夌壒娈婄鍙凤紱涓枃鍚嶇О鏃犳硶鐢熸垚绋冲畾 slug 鏃?fallback 涓?`tag-${Date.now()}`銆?
+- slug 閲嶅鏃惰繑鍥炲弸濂介敊璇細鈥渟lug 宸插瓨鍦紝璇锋崲涓€涓?slug銆傗€?
+- 鏂板鎴栫紪杈戞垚鍔熷悗浼氭竻绌鸿〃鍗曟垨閫€鍑虹紪杈戠姸鎬侊紝骞跺埛鏂版爣绛惧垪琛ㄣ€?
+- 鍒犻櫎鏍囩鍓嶄細浜屾纭銆?
+- 濡傛灉鏍囩姝ｅ湪琚伐鍏锋垨鏂囩珷浣跨敤锛屽垹闄ゅけ璐ユ椂鏄剧ず锛氣€滆鏍囩鍙兘姝ｅ湪琚伐鍏锋垨鏂囩珷浣跨敤锛岃鍏堣皟鏁寸浉鍏冲唴瀹瑰悗鍐嶅垹闄ゃ€傗€?
+- `src/lib/db/tags.ts` 鏂板 `getAdminTags()`銆乣createTag(data)`銆乣updateTag(id, data)`銆乣deleteTag(id)`銆?
+- 淇濆瓨 payload 鍙寘鍚?`name` 鍜?`slug`锛屼笉浼?`id`銆乣created_at` 鎴栨暟鎹簱涓嶅瓨鍦ㄥ瓧娈点€?
+- `createTag` / `updateTag` / `deleteTag` 鍑洪敊鏃朵細鍦ㄦ帶鍒跺彴杈撳嚭鐪熷疄 Supabase 閿欒銆?
+- `AdminShell` 涓€滄爣绛剧鐞嗏€濆叆鍙ｆ敼涓哄凡寮€鏀撅紝鍏跺畠鏈疄鐜板悗鍙板叆鍙ｇ户缁樉绀衡€滃緟寮€鏀锯€濄€?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Supabase 中确认 `tags` 表允许已登录用户执行 `select`、`insert`、`update`、`delete`；如果后台写入失败，需要检查对应 RLS policy。
+- 鍦?Supabase 涓‘璁?`tags` 琛ㄥ厑璁稿凡鐧诲綍鐢ㄦ埛鎵ц `select`銆乣insert`銆乣update`銆乣delete`锛涘鏋滃悗鍙板啓鍏ュけ璐ワ紝闇€瑕佹鏌ュ搴?RLS policy銆?
 
 ## 2026-06-04
 
-任务：制作后台分类管理 `/admin/categories`。
+浠诲姟锛氬埗浣滃悗鍙板垎绫荤鐞?`/admin/categories`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/categories/page.tsx`
 - `src/components/admin/AdminShell.tsx`
 - `src/lib/db/categories.ts`
@@ -860,37 +1146,37 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次只做 `categories` 表后台管理，不修改前台页面、工具后台、文章后台、标签后台、投稿审核、数据库结构、多角色权限和路由结构。
-- 新增 `/admin/categories` 分类管理页。
-- 页面包含分类管理标题、说明、新增分类区域、分类列表、编辑分类和删除分类功能。
-- 分类列表读取 Supabase `categories` 表真实数据，并按 `created_at` 倒序显示。
-- 分类表单字段包含 `name`、`slug`、`description`。
-- 新增和编辑分类时，`name` 与 `slug` 必填，`description` 可选。
-- slug 自动生成规则：英文转小写、空格转短横线、去掉特殊符号；中文名称无法生成稳定 slug 时 fallback 为 `category-${Date.now()}`。
-- slug 重复时返回友好错误：“slug 已存在，请换一个 slug。”。
-- 新增或编辑成功后会清空表单或退出编辑状态，并刷新分类列表。
-- 删除分类前会二次确认。
-- 如果分类正在被工具或文章使用，删除失败时显示：“该分类可能正在被工具或文章使用，请先调整相关内容后再删除。”。
-- `src/lib/db/categories.ts` 新增 `createCategory(data)`、`updateCategory(id, data)`、`deleteCategory(id)`，并完善 `getAdminCategories()`。
-- 保存 payload 只包含 `name`、`slug`、`description`；`description` 为空时写入 `null`。
-- `createCategory` / `updateCategory` / `deleteCategory` 出错时会在控制台输出真实 Supabase 错误。
-- `AdminShell` 中“分类管理”入口改为已开放，其它未实现后台入口继续显示“待开放”。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈鍙仛 `categories` 琛ㄥ悗鍙扮鐞嗭紝涓嶄慨鏀瑰墠鍙伴〉闈€佸伐鍏峰悗鍙般€佹枃绔犲悗鍙般€佹爣绛惧悗鍙般€佹姇绋垮鏍搞€佹暟鎹簱缁撴瀯銆佸瑙掕壊鏉冮檺鍜岃矾鐢辩粨鏋勩€?
+- 鏂板 `/admin/categories` 鍒嗙被绠＄悊椤点€?
+- 椤甸潰鍖呭惈鍒嗙被绠＄悊鏍囬銆佽鏄庛€佹柊澧炲垎绫诲尯鍩熴€佸垎绫诲垪琛ㄣ€佺紪杈戝垎绫诲拰鍒犻櫎鍒嗙被鍔熻兘銆?
+- 鍒嗙被鍒楄〃璇诲彇 Supabase `categories` 琛ㄧ湡瀹炴暟鎹紝骞舵寜 `created_at` 鍊掑簭鏄剧ず銆?
+- 鍒嗙被琛ㄥ崟瀛楁鍖呭惈 `name`銆乣slug`銆乣description`銆?
+- 鏂板鍜岀紪杈戝垎绫绘椂锛宍name` 涓?`slug` 蹇呭～锛宍description` 鍙€夈€?
+- slug 鑷姩鐢熸垚瑙勫垯锛氳嫳鏂囪浆灏忓啓銆佺┖鏍艰浆鐭í绾裤€佸幓鎺夌壒娈婄鍙凤紱涓枃鍚嶇О鏃犳硶鐢熸垚绋冲畾 slug 鏃?fallback 涓?`category-${Date.now()}`銆?
+- slug 閲嶅鏃惰繑鍥炲弸濂介敊璇細鈥渟lug 宸插瓨鍦紝璇锋崲涓€涓?slug銆傗€濄€?
+- 鏂板鎴栫紪杈戞垚鍔熷悗浼氭竻绌鸿〃鍗曟垨閫€鍑虹紪杈戠姸鎬侊紝骞跺埛鏂板垎绫诲垪琛ㄣ€?
+- 鍒犻櫎鍒嗙被鍓嶄細浜屾纭銆?
+- 濡傛灉鍒嗙被姝ｅ湪琚伐鍏锋垨鏂囩珷浣跨敤锛屽垹闄ゅけ璐ユ椂鏄剧ず锛氣€滆鍒嗙被鍙兘姝ｅ湪琚伐鍏锋垨鏂囩珷浣跨敤锛岃鍏堣皟鏁寸浉鍏冲唴瀹瑰悗鍐嶅垹闄ゃ€傗€濄€?
+- `src/lib/db/categories.ts` 鏂板 `createCategory(data)`銆乣updateCategory(id, data)`銆乣deleteCategory(id)`锛屽苟瀹屽杽 `getAdminCategories()`銆?
+- 淇濆瓨 payload 鍙寘鍚?`name`銆乣slug`銆乣description`锛沗description` 涓虹┖鏃跺啓鍏?`null`銆?
+- `createCategory` / `updateCategory` / `deleteCategory` 鍑洪敊鏃朵細鍦ㄦ帶鍒跺彴杈撳嚭鐪熷疄 Supabase 閿欒銆?
+- `AdminShell` 涓€滃垎绫荤鐞嗏€濆叆鍙ｆ敼涓哄凡寮€鏀撅紝鍏跺畠鏈疄鐜板悗鍙板叆鍙ｇ户缁樉绀衡€滃緟寮€鏀锯€濄€?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Supabase 中确认 `categories` 表允许已登录用户执行 `select`、`insert`、`update`、`delete`；如果后台写入失败，需要检查对应 RLS policy。
+- 鍦?Supabase 涓‘璁?`categories` 琛ㄥ厑璁稿凡鐧诲綍鐢ㄦ埛鎵ц `select`銆乣insert`銆乣update`銆乣delete`锛涘鏋滃悗鍙板啓鍏ュけ璐ワ紝闇€瑕佹鏌ュ搴?RLS policy銆?
 
 ## 2026-06-04
 
-任务：制作后台文章管理 `/admin/articles`。
+浠诲姟锛氬埗浣滃悗鍙版枃绔犵鐞?`/admin/articles`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/articles/page.tsx`
 - `src/app/admin/articles/new/page.tsx`
 - `src/app/admin/articles/[id]/edit/page.tsx`
@@ -901,37 +1187,37 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次只做 `articles` 表后台管理，不修改前台页面、工具后台、分类后台、标签后台、投稿审核、数据库结构、多角色权限和路由结构。
-- 新增 `/admin/articles` 文章列表页，从 Supabase `articles` 表读取真实数据，按 `updated_at` 倒序显示。
-- 文章列表显示文章标题、slug、分类、状态、更新时间和编辑/删除操作。
-- 删除文章前会二次确认，删除失败显示友好提示。
-- 新增 `/admin/articles/new`，支持新增文章并写入 `articles` 表。
-- 新增 `/admin/articles/[id]/edit`，支持按 id 读取文章并更新 `articles` 表。
-- 新增 `AdminArticleForm`，复用新增/编辑表单，并提供必填校验、封面图 URL 校验、状态校验、loading 状态和友好错误提示。
-- 表单字段包含 title、slug、summary、content、cover_url、category_id、status。
-- 正文内容当前使用 textarea，不做富文本编辑器、Markdown 预览、图片上传或标签绑定。
-- `src/lib/db/articles.ts` 新增 `getAdminArticles()`、`getAdminArticleById(id)`、`createArticle(data)`、`updateArticle(id, data)`、`deleteArticle(id)`。
-- insert/update 前会清理 payload：`category_id` 空值写入 `null`，`cover_url` 空值写入 `null`，`status` 异常时默认 `draft`。
-- `createArticle` / `updateArticle` / `deleteArticle` 出错时会在控制台输出真实 Supabase 错误。
-- slug 自动生成规则：英文转小写、空格转短横线、去掉特殊符号；中文标题无法生成稳定 slug 时 fallback 为 `article-${Date.now()}`。
-- slug 重复时返回友好错误：“slug 已存在，请换一个 slug。”。
-- `AdminShell` 中“文章管理”入口改为已开放，其它未实现后台入口继续显示“待开放”。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈鍙仛 `articles` 琛ㄥ悗鍙扮鐞嗭紝涓嶄慨鏀瑰墠鍙伴〉闈€佸伐鍏峰悗鍙般€佸垎绫诲悗鍙般€佹爣绛惧悗鍙般€佹姇绋垮鏍搞€佹暟鎹簱缁撴瀯銆佸瑙掕壊鏉冮檺鍜岃矾鐢辩粨鏋勩€?
+- 鏂板 `/admin/articles` 鏂囩珷鍒楄〃椤碉紝浠?Supabase `articles` 琛ㄨ鍙栫湡瀹炴暟鎹紝鎸?`updated_at` 鍊掑簭鏄剧ず銆?
+- 鏂囩珷鍒楄〃鏄剧ず鏂囩珷鏍囬銆乻lug銆佸垎绫汇€佺姸鎬併€佹洿鏂版椂闂村拰缂栬緫/鍒犻櫎鎿嶄綔銆?
+- 鍒犻櫎鏂囩珷鍓嶄細浜屾纭锛屽垹闄ゅけ璐ユ樉绀哄弸濂芥彁绀恒€?
+- 鏂板 `/admin/articles/new`锛屾敮鎸佹柊澧炴枃绔犲苟鍐欏叆 `articles` 琛ㄣ€?
+- 鏂板 `/admin/articles/[id]/edit`锛屾敮鎸佹寜 id 璇诲彇鏂囩珷骞舵洿鏂?`articles` 琛ㄣ€?
+- 鏂板 `AdminArticleForm`锛屽鐢ㄦ柊澧?缂栬緫琛ㄥ崟锛屽苟鎻愪緵蹇呭～鏍￠獙銆佸皝闈㈠浘 URL 鏍￠獙銆佺姸鎬佹牎楠屻€乴oading 鐘舵€佸拰鍙嬪ソ閿欒鎻愮ず銆?
+- 琛ㄥ崟瀛楁鍖呭惈 title銆乻lug銆乻ummary銆乧ontent銆乧over_url銆乧ategory_id銆乻tatus銆?
+- 姝ｆ枃鍐呭褰撳墠浣跨敤 textarea锛屼笉鍋氬瘜鏂囨湰缂栬緫鍣ㄣ€丮arkdown 棰勮銆佸浘鐗囦笂浼犳垨鏍囩缁戝畾銆?
+- `src/lib/db/articles.ts` 鏂板 `getAdminArticles()`銆乣getAdminArticleById(id)`銆乣createArticle(data)`銆乣updateArticle(id, data)`銆乣deleteArticle(id)`銆?
+- insert/update 鍓嶄細娓呯悊 payload锛歚category_id` 绌哄€煎啓鍏?`null`锛宍cover_url` 绌哄€煎啓鍏?`null`锛宍status` 寮傚父鏃堕粯璁?`draft`銆?
+- `createArticle` / `updateArticle` / `deleteArticle` 鍑洪敊鏃朵細鍦ㄦ帶鍒跺彴杈撳嚭鐪熷疄 Supabase 閿欒銆?
+- slug 鑷姩鐢熸垚瑙勫垯锛氳嫳鏂囪浆灏忓啓銆佺┖鏍艰浆鐭í绾裤€佸幓鎺夌壒娈婄鍙凤紱涓枃鏍囬鏃犳硶鐢熸垚绋冲畾 slug 鏃?fallback 涓?`article-${Date.now()}`銆?
+- slug 閲嶅鏃惰繑鍥炲弸濂介敊璇細鈥渟lug 宸插瓨鍦紝璇锋崲涓€涓?slug銆傗€濄€?
+- `AdminShell` 涓€滄枃绔犵鐞嗏€濆叆鍙ｆ敼涓哄凡寮€鏀撅紝鍏跺畠鏈疄鐜板悗鍙板叆鍙ｇ户缁樉绀衡€滃緟寮€鏀锯€濄€?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Supabase 中确认 `articles` 表允许已登录用户执行 `select`、`insert`、`update`、`delete`；如果后台写入失败，需要检查对应 RLS policy。
+- 鍦?Supabase 涓‘璁?`articles` 琛ㄥ厑璁稿凡鐧诲綍鐢ㄦ埛鎵ц `select`銆乣insert`銆乣update`銆乣delete`锛涘鏋滃悗鍙板啓鍏ュけ璐ワ紝闇€瑕佹鏌ュ搴?RLS policy銆?
 
 ## 2026-06-04
 
-任务：修复后台 `/admin/tools/new` 新增工具失败时无法定位真实原因的问题。
+浠诲姟锛氫慨澶嶅悗鍙?`/admin/tools/new` 鏂板宸ュ叿澶辫触鏃舵棤娉曞畾浣嶇湡瀹炲師鍥犵殑闂銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/lib/db/tools.ts`
 - `src/types/tool.ts`
 - `src/types/database.ts`
@@ -939,34 +1225,34 @@
 - `src/components/admin/AdminToolForm.tsx`
 - `docs/TASK_LOG.md`
 
-检查与修复：
+妫€鏌ヤ笌淇锛?
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- `createTool(data)` 现在会在写入前打印 `console.log("createTool payload:", payload)`。
-- `createTool(data)` 失败时会打印 `console.error("createTool error:", error)`，并返回 Supabase 的 `error.message`。
-- `updateTool(data)` 同步增加 `updateTool payload:` 和 `updateTool error:`，方便后续编辑页排查。
-- 写入前增加 Supabase Auth session 检查；如果当前 client 没有登录态，会打印 `createTool auth error:` / `updateTool auth error:`。
-- 修复 `category_id` 空字符串问题：`""`、`undefined`、`"none"` 都会转成 `null`。
-- 修复 `website_url` 空字符串问题：未填写时写入 `null`。
-- 修复 `cover_url` 写入：未填写时写入 `null`，填写时写入字符串。
-- 同步 `tools.cover_url` 的前端类型，未改数据库 SQL 结构。
-- 修复 slug 规范：自动 slug 只保留小写英文、数字和短横线；中文标题无法生成稳定 slug 时自动 fallback 为 `tool-${Date.now()}`。
-- 修复 status：只允许 `draft` / `published`，为空或异常时默认 `draft`。
-- 保存 payload 只包含允许写入的数据库字段：`title`、`slug`、`summary`、`description`、`website_url`、`cover_url`、`category_id`、`is_free`、`is_open_source`、`target_users`、`use_cases`、`pros`、`cons`、`risk_notice`、`status`、`updated_at`。
-- 移除新增时 payload 中的 `name` 和 `created_at`，避免发送本次不允许的字段。
-- 表单保存失败提示改为优先显示返回的错误信息，否则提示“保存失败，请检查控制台错误信息。”。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- `createTool(data)` 鐜板湪浼氬湪鍐欏叆鍓嶆墦鍗?`console.log("createTool payload:", payload)`銆?
+- `createTool(data)` 澶辫触鏃朵細鎵撳嵃 `console.error("createTool error:", error)`锛屽苟杩斿洖 Supabase 鐨?`error.message`銆?
+- `updateTool(data)` 鍚屾澧炲姞 `updateTool payload:` 鍜?`updateTool error:`锛屾柟渚垮悗缁紪杈戦〉鎺掓煡銆?
+- 鍐欏叆鍓嶅鍔?Supabase Auth session 妫€鏌ワ紱濡傛灉褰撳墠 client 娌℃湁鐧诲綍鎬侊紝浼氭墦鍗?`createTool auth error:` / `updateTool auth error:`銆?
+- 淇 `category_id` 绌哄瓧绗︿覆闂锛歚""`銆乣undefined`銆乣"none"` 閮戒細杞垚 `null`銆?
+- 淇 `website_url` 绌哄瓧绗︿覆闂锛氭湭濉啓鏃跺啓鍏?`null`銆?
+- 淇 `cover_url` 鍐欏叆锛氭湭濉啓鏃跺啓鍏?`null`锛屽～鍐欐椂鍐欏叆瀛楃涓层€?
+- 鍚屾 `tools.cover_url` 鐨勫墠绔被鍨嬶紝鏈敼鏁版嵁搴?SQL 缁撴瀯銆?
+- 淇 slug 瑙勮寖锛氳嚜鍔?slug 鍙繚鐣欏皬鍐欒嫳鏂囥€佹暟瀛楀拰鐭í绾匡紱涓枃鏍囬鏃犳硶鐢熸垚绋冲畾 slug 鏃惰嚜鍔?fallback 涓?`tool-${Date.now()}`銆?
+- 淇 status锛氬彧鍏佽 `draft` / `published`锛屼负绌烘垨寮傚父鏃堕粯璁?`draft`銆?
+- 淇濆瓨 payload 鍙寘鍚厑璁稿啓鍏ョ殑鏁版嵁搴撳瓧娈碉細`title`銆乣slug`銆乣summary`銆乣description`銆乣website_url`銆乣cover_url`銆乣category_id`銆乣is_free`銆乣is_open_source`銆乣target_users`銆乣use_cases`銆乣pros`銆乣cons`銆乣risk_notice`銆乣status`銆乣updated_at`銆?
+- 绉婚櫎鏂板鏃?payload 涓殑 `name` 鍜?`created_at`锛岄伩鍏嶅彂閫佹湰娆′笉鍏佽鐨勫瓧娈点€?
+- 琛ㄥ崟淇濆瓨澶辫触鎻愮ず鏀逛负浼樺厛鏄剧ず杩斿洖鐨勯敊璇俊鎭紝鍚﹀垯鎻愮ず鈥滀繚瀛樺け璐ワ紝璇锋鏌ユ帶鍒跺彴閿欒淇℃伅銆傗€濄€?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 重新在 `/admin/tools/new` 测试新增工具；如果仍失败，优先查看浏览器控制台中的 `createTool payload:` 和 `createTool error:`。
+- 閲嶆柊鍦?`/admin/tools/new` 娴嬭瘯鏂板宸ュ叿锛涘鏋滀粛澶辫触锛屼紭鍏堟煡鐪嬫祻瑙堝櫒鎺у埗鍙颁腑鐨?`createTool payload:` 鍜?`createTool error:`銆?
 
 ## 2026-06-03
 
-任务：制作后台工具管理 `/admin/tools`。
+浠诲姟锛氬埗浣滃悗鍙板伐鍏风鐞?`/admin/tools`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/tools/page.tsx`
 - `src/app/admin/tools/new/page.tsx`
 - `src/app/admin/tools/[id]/edit/page.tsx`
@@ -978,174 +1264,174 @@
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次只做 `tools` 表后台管理，不修改前台页面、文章后台、分类后台、标签后台、数据库结构、多角色权限和路由结构。
-- 新增 `/admin/tools` 工具列表页，从 Supabase `tools` 表读取真实数据，按 `updated_at` 倒序显示。
-- 工具列表显示工具名称、slug、官网、分类、是否免费、是否开源、状态、更新时间和编辑/删除操作。
-- 删除工具前会二次确认，删除失败显示友好提示。
-- 新增 `/admin/tools/new`，支持新增工具并写入 `tools` 表。
-- 新增 `/admin/tools/[id]/edit`，支持按 id 读取工具并更新 `tools` 表。
-- 新增 `AdminShell`，为工具管理页面提供后台登录校验、侧边菜单、顶部栏、当前邮箱和退出登录按钮。
-- 新增 `AdminToolForm`，复用新增/编辑表单，并提供必填校验、URL 校验、状态校验、loading 状态和友好错误提示。
-- 表单字段包含 title、slug、summary、description、website_url、cover_url、category_id、is_free、is_open_source、target_users、use_cases、pros、cons、risk_notice、status。
-- 当前数据库类型和文档未声明 `cover_url` 字段，本次不修改数据库结构，表单先保留该输入位，写入 payload 暂不包含 `cover_url`。
-- 分类下拉从 `categories` 表读取，读取失败时页面不崩溃。
-- `src/lib/db/tools.ts` 新增 `getAdminTools()`、`getAdminToolById(id)`、`createTool(data)`、`updateTool(id, data)`、`deleteTool(id)`。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 已运行 `npm run build`，通过。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈鍙仛 `tools` 琛ㄥ悗鍙扮鐞嗭紝涓嶄慨鏀瑰墠鍙伴〉闈€佹枃绔犲悗鍙般€佸垎绫诲悗鍙般€佹爣绛惧悗鍙般€佹暟鎹簱缁撴瀯銆佸瑙掕壊鏉冮檺鍜岃矾鐢辩粨鏋勩€?
+- 鏂板 `/admin/tools` 宸ュ叿鍒楄〃椤碉紝浠?Supabase `tools` 琛ㄨ鍙栫湡瀹炴暟鎹紝鎸?`updated_at` 鍊掑簭鏄剧ず銆?
+- 宸ュ叿鍒楄〃鏄剧ず宸ュ叿鍚嶇О銆乻lug銆佸畼缃戙€佸垎绫汇€佹槸鍚﹀厤璐广€佹槸鍚﹀紑婧愩€佺姸鎬併€佹洿鏂版椂闂村拰缂栬緫/鍒犻櫎鎿嶄綔銆?
+- 鍒犻櫎宸ュ叿鍓嶄細浜屾纭锛屽垹闄ゅけ璐ユ樉绀哄弸濂芥彁绀恒€?
+- 鏂板 `/admin/tools/new`锛屾敮鎸佹柊澧炲伐鍏峰苟鍐欏叆 `tools` 琛ㄣ€?
+- 鏂板 `/admin/tools/[id]/edit`锛屾敮鎸佹寜 id 璇诲彇宸ュ叿骞舵洿鏂?`tools` 琛ㄣ€?
+- 鏂板 `AdminShell`锛屼负宸ュ叿绠＄悊椤甸潰鎻愪緵鍚庡彴鐧诲綍鏍￠獙銆佷晶杈硅彍鍗曘€侀《閮ㄦ爮銆佸綋鍓嶉偖绠卞拰閫€鍑虹櫥褰曟寜閽€?
+- 鏂板 `AdminToolForm`锛屽鐢ㄦ柊澧?缂栬緫琛ㄥ崟锛屽苟鎻愪緵蹇呭～鏍￠獙銆乁RL 鏍￠獙銆佺姸鎬佹牎楠屻€乴oading 鐘舵€佸拰鍙嬪ソ閿欒鎻愮ず銆?
+- 琛ㄥ崟瀛楁鍖呭惈 title銆乻lug銆乻ummary銆乨escription銆亀ebsite_url銆乧over_url銆乧ategory_id銆乮s_free銆乮s_open_source銆乼arget_users銆乽se_cases銆乸ros銆乧ons銆乺isk_notice銆乻tatus銆?
+- 褰撳墠鏁版嵁搴撶被鍨嬪拰鏂囨。鏈０鏄?`cover_url` 瀛楁锛屾湰娆′笉淇敼鏁版嵁搴撶粨鏋勶紝琛ㄥ崟鍏堜繚鐣欒杈撳叆浣嶏紝鍐欏叆 payload 鏆備笉鍖呭惈 `cover_url`銆?
+- 鍒嗙被涓嬫媺浠?`categories` 琛ㄨ鍙栵紝璇诲彇澶辫触鏃堕〉闈笉宕╂簝銆?
+- `src/lib/db/tools.ts` 鏂板 `getAdminTools()`銆乣getAdminToolById(id)`銆乣createTool(data)`銆乣updateTool(id, data)`銆乣deleteTool(id)`銆?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 如果后台新增、编辑、删除失败，需要在 Supabase 中为已登录用户配置 `tools` 表的 `insert`、`update`、`delete` RLS policy。
+- 濡傛灉鍚庡彴鏂板銆佺紪杈戙€佸垹闄ゅけ璐ワ紝闇€瑕佸湪 Supabase 涓负宸茬櫥褰曠敤鎴烽厤缃?`tools` 琛ㄧ殑 `insert`銆乣update`銆乣delete` RLS policy銆?
 
 ## 2026-06-03
 
-任务：修复 `/admin` 后台首页统计卡片读取真实 Supabase 数量。
+浠诲姟锛氫慨澶?`/admin` 鍚庡彴棣栭〉缁熻鍗＄墖璇诲彇鐪熷疄 Supabase 鏁伴噺銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/page.tsx`
 - `src/lib/db/admin.ts`
 - `src/lib/db/admin-stats.ts`
 - `docs/TASK_LOG.md`
 
-检查与修复：
+妫€鏌ヤ笌淇锛?
 
-- 新增 `src/lib/db/admin.ts`，集中实现后台统计读取函数 `getAdminStats()`。
-- `getAdminStats()` 返回格式为 `{ tools, articles, submissions, reports }`。
-- 工具数量使用 Supabase count 查询 `tools` 表。
-- 文章数量使用 Supabase count 查询 `articles` 表。
-- 投稿数量使用 Supabase count 查询 `submissions` 表。
-- 投诉数量使用 Supabase count 查询 `reports` 表。
-- 每项统计都使用 `{ count: "exact", head: true }`，不读取大量数据。
-- 任意单项查询失败时，该项返回 `0`，并在控制台输出错误，页面不显示技术错误。
-- `/admin` 后台首页改为从 `src/lib/db/admin.ts` 读取统计。
-- `src/lib/db/admin-stats.ts` 改为转发 `src/lib/db/admin.ts`，避免保留两套统计逻辑。
-- 保持现有 `/admin` 登录保护逻辑不变，不做 CRUD，不改前台页面。
-- 已执行 `npm run lint`，通过。
-- 已执行 `npm run build`，通过。
-- 已清理 `.next` 并重启 3001 端口 dev 服务。
+- 鏂板 `src/lib/db/admin.ts`锛岄泦涓疄鐜板悗鍙扮粺璁¤鍙栧嚱鏁?`getAdminStats()`銆?
+- `getAdminStats()` 杩斿洖鏍煎紡涓?`{ tools, articles, submissions, reports }`銆?
+- 宸ュ叿鏁伴噺浣跨敤 Supabase count 鏌ヨ `tools` 琛ㄣ€?
+- 鏂囩珷鏁伴噺浣跨敤 Supabase count 鏌ヨ `articles` 琛ㄣ€?
+- 鎶曠鏁伴噺浣跨敤 Supabase count 鏌ヨ `submissions` 琛ㄣ€?
+- 鎶曡瘔鏁伴噺浣跨敤 Supabase count 鏌ヨ `reports` 琛ㄣ€?
+- 姣忛」缁熻閮戒娇鐢?`{ count: "exact", head: true }`锛屼笉璇诲彇澶ч噺鏁版嵁銆?
+- 浠绘剰鍗曢」鏌ヨ澶辫触鏃讹紝璇ラ」杩斿洖 `0`锛屽苟鍦ㄦ帶鍒跺彴杈撳嚭閿欒锛岄〉闈笉鏄剧ず鎶€鏈敊璇€?
+- `/admin` 鍚庡彴棣栭〉鏀逛负浠?`src/lib/db/admin.ts` 璇诲彇缁熻銆?
+- `src/lib/db/admin-stats.ts` 鏀逛负杞彂 `src/lib/db/admin.ts`锛岄伩鍏嶄繚鐣欎袱濂楃粺璁￠€昏緫銆?
+- 淇濇寔鐜版湁 `/admin` 鐧诲綍淇濇姢閫昏緫涓嶅彉锛屼笉鍋?CRUD锛屼笉鏀瑰墠鍙伴〉闈€?
+- 宸叉墽琛?`npm run lint`锛岄€氳繃銆?
+- 宸叉墽琛?`npm run build`锛岄€氳繃銆?
+- 宸叉竻鐞?`.next` 骞堕噸鍚?3001 绔彛 dev 鏈嶅姟銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 登录 `/admin` 后检查投稿数量是否和 Supabase `submissions` 表行数一致。
-- 如果 `submissions` 表有数据但后台仍显示 `0`，需要检查 Supabase RLS 是否允许当前已登录管理员对 `submissions` 执行 `select/count`。
+- 鐧诲綍 `/admin` 鍚庢鏌ユ姇绋挎暟閲忔槸鍚﹀拰 Supabase `submissions` 琛ㄨ鏁颁竴鑷淬€?
+- 濡傛灉 `submissions` 琛ㄦ湁鏁版嵁浣嗗悗鍙颁粛鏄剧ず `0`锛岄渶瑕佹鏌?Supabase RLS 鏄惁鍏佽褰撳墠宸茬櫥褰曠鐞嗗憳瀵?`submissions` 鎵ц `select/count`銆?
 
 ## 2026-06-03
 
-任务：后台登录与后台首页基础验收修复。
+浠诲姟锛氬悗鍙扮櫥褰曚笌鍚庡彴棣栭〉鍩虹楠屾敹淇銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/login/page.tsx`
 - `src/app/admin/page.tsx`
 - `src/lib/db/admin-stats.ts`
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查与修复：
+妫€鏌ヤ笌淇锛?
 
-- `/admin/login` 保持 Supabase Auth 邮箱密码登录。
-- `/admin/login` 登录状态检查改为使用 Supabase `auth.getUser()`。
-- `/admin/login` 保留登录失败友好提示、登录中 loading、提交中禁用按钮。
-- `/admin/login` 密码输入框保持 `type="password"`。
-- `/admin` 权限保护改为使用 Supabase `auth.getUser()` 获取当前用户。
-- `/admin` 在用户校验完成前只显示权限检查提示，不显示后台菜单、统计卡片或管理内容。
-- 未登录访问 `/admin` 会跳转到 `/admin/login?next=admin`。
-- `/admin` 顶部栏显示当前登录邮箱，并提供退出登录按钮。
-- 退出登录调用 Supabase `auth.signOut()`，失败时显示友好提示，不做前端假退出。
-- 后台菜单补齐：后台首页、工具管理、文章管理、分类管理、标签管理、投稿管理、投诉管理、返回前台。
-- 未实现的后台菜单项显示“待开放”，保留后续路由结构，不做 CRUD。
-- `getAdminStats()` 增加 Supabase 当前用户校验，未登录不会读取统计。
-- `getAdminStats()` 继续读取 `tools`、`articles`、`submissions`、`reports` 四张表真实数量。
-- 统计读取失败时返回 0 和友好提示，控制台输出错误用于开发调试。
-- 已执行 `npm run lint`，通过。
-- 已执行 `npm run build`，通过。
-- 已清理 `.next` 并重启 3001 端口 dev 服务。
-- 已用浏览器检查未登录访问 `/admin`：最终停在 `/admin/login?next=admin`，没有出现后台统计内容。
-- 已用浏览器检查 `/admin/login`：CSS 正常加载，无横向滚动。
+- `/admin/login` 淇濇寔 Supabase Auth 閭瀵嗙爜鐧诲綍銆?
+- `/admin/login` 鐧诲綍鐘舵€佹鏌ユ敼涓轰娇鐢?Supabase `auth.getUser()`銆?
+- `/admin/login` 淇濈暀鐧诲綍澶辫触鍙嬪ソ鎻愮ず銆佺櫥褰曚腑 loading銆佹彁浜や腑绂佺敤鎸夐挳銆?
+- `/admin/login` 瀵嗙爜杈撳叆妗嗕繚鎸?`type="password"`銆?
+- `/admin` 鏉冮檺淇濇姢鏀逛负浣跨敤 Supabase `auth.getUser()` 鑾峰彇褰撳墠鐢ㄦ埛銆?
+- `/admin` 鍦ㄧ敤鎴锋牎楠屽畬鎴愬墠鍙樉绀烘潈闄愭鏌ユ彁绀猴紝涓嶆樉绀哄悗鍙拌彍鍗曘€佺粺璁″崱鐗囨垨绠＄悊鍐呭銆?
+- 鏈櫥褰曡闂?`/admin` 浼氳烦杞埌 `/admin/login?next=admin`銆?
+- `/admin` 椤堕儴鏍忔樉绀哄綋鍓嶇櫥褰曢偖绠憋紝骞舵彁渚涢€€鍑虹櫥褰曟寜閽€?
+- 閫€鍑虹櫥褰曡皟鐢?Supabase `auth.signOut()`锛屽け璐ユ椂鏄剧ず鍙嬪ソ鎻愮ず锛屼笉鍋氬墠绔亣閫€鍑恒€?
+- 鍚庡彴鑿滃崟琛ラ綈锛氬悗鍙伴椤点€佸伐鍏风鐞嗐€佹枃绔犵鐞嗐€佸垎绫荤鐞嗐€佹爣绛剧鐞嗐€佹姇绋跨鐞嗐€佹姇璇夌鐞嗐€佽繑鍥炲墠鍙般€?
+- 鏈疄鐜扮殑鍚庡彴鑿滃崟椤规樉绀衡€滃緟寮€鏀锯€濓紝淇濈暀鍚庣画璺敱缁撴瀯锛屼笉鍋?CRUD銆?
+- `getAdminStats()` 澧炲姞 Supabase 褰撳墠鐢ㄦ埛鏍￠獙锛屾湭鐧诲綍涓嶄細璇诲彇缁熻銆?
+- `getAdminStats()` 缁х画璇诲彇 `tools`銆乣articles`銆乣submissions`銆乣reports` 鍥涘紶琛ㄧ湡瀹炴暟閲忋€?
+- 缁熻璇诲彇澶辫触鏃惰繑鍥?0 鍜屽弸濂芥彁绀猴紝鎺у埗鍙拌緭鍑洪敊璇敤浜庡紑鍙戣皟璇曘€?
+- 宸叉墽琛?`npm run lint`锛岄€氳繃銆?
+- 宸叉墽琛?`npm run build`锛岄€氳繃銆?
+- 宸叉竻鐞?`.next` 骞堕噸鍚?3001 绔彛 dev 鏈嶅姟銆?
+- 宸茬敤娴忚鍣ㄦ鏌ユ湭鐧诲綍璁块棶 `/admin`锛氭渶缁堝仠鍦?`/admin/login?next=admin`锛屾病鏈夊嚭鐜板悗鍙扮粺璁″唴瀹广€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/admin/login`锛欳SS 姝ｅ父鍔犺浇锛屾棤妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 使用 Supabase Auth 中的管理员邮箱密码手动登录，确认 `/admin` 是否显示当前邮箱和四个统计卡片真实数量。
-- 如果统计卡片为 0 或提示读取失败，需要检查 Supabase RLS 是否允许已登录用户读取 `tools`、`articles`、`submissions`、`reports`。
+- 浣跨敤 Supabase Auth 涓殑绠＄悊鍛橀偖绠卞瘑鐮佹墜鍔ㄧ櫥褰曪紝纭 `/admin` 鏄惁鏄剧ず褰撳墠閭鍜屽洓涓粺璁″崱鐗囩湡瀹炴暟閲忋€?
+- 濡傛灉缁熻鍗＄墖涓?0 鎴栨彁绀鸿鍙栧け璐ワ紝闇€瑕佹鏌?Supabase RLS 鏄惁鍏佽宸茬櫥褰曠敤鎴疯鍙?`tools`銆乣articles`銆乣submissions`銆乣reports`銆?
 
 ## 2026-06-03
 
-任务：创建后台登录 `/admin/login` 和后台首页 `/admin`。
+浠诲姟锛氬垱寤哄悗鍙扮櫥褰?`/admin/login` 鍜屽悗鍙伴椤?`/admin`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/login/page.tsx`
 - `src/app/admin/page.tsx`
 - `src/lib/db/admin-stats.ts`
 - `docs/ADMIN_RULES.md`
 - `docs/TASK_LOG.md`
 
-检查与实现：
+妫€鏌ヤ笌瀹炵幇锛?
 
-- 新增 `/admin/login`，使用 Supabase Auth 邮箱密码登录。
-- 登录页使用客户端表单提交，包含邮箱、密码、登录中状态、失败提示。
-- 登录成功后跳转到 `/admin`。
-- 新增 `/admin` 后台首页，客户端检查 Supabase session。
-- 未登录访问 `/admin` 会自动跳转到 `/admin/login?next=admin`。
-- 后台首页包含左侧菜单、顶部栏、退出登录按钮。
-- 后台首页显示统计卡片：工具数量、文章数量、投稿数量、投诉数量。
-- 新增 `getAdminStats()`，读取 `tools`、`articles`、`submissions`、`reports` 四张表的 count。
-- 后台统计只使用 Supabase anon client 搭配当前登录 session，不使用 `service_role_key`。
-- 菜单中的工具管理、文章管理、投稿审核、投诉处理当前只作为占位入口，不做 CRUD。
-- 已更新 `docs/ADMIN_RULES.md`，记录当前后台阶段规则。
-- 已执行 `npm run lint`，通过。
-- 已执行 `npm run build`，通过。
-- 已重启 3001 端口 dev 服务并清理 `.next` 缓存，避免 build 和 dev 缓存混用造成资源异常。
-- 已用浏览器检查 `/admin/login`：样式加载正常，无横向滚动。
-- 已用浏览器检查未登录访问 `/admin`：会跳转到 `/admin/login?next=admin`。
+- 鏂板 `/admin/login`锛屼娇鐢?Supabase Auth 閭瀵嗙爜鐧诲綍銆?
+- 鐧诲綍椤典娇鐢ㄥ鎴风琛ㄥ崟鎻愪氦锛屽寘鍚偖绠便€佸瘑鐮併€佺櫥褰曚腑鐘舵€併€佸け璐ユ彁绀恒€?
+- 鐧诲綍鎴愬姛鍚庤烦杞埌 `/admin`銆?
+- 鏂板 `/admin` 鍚庡彴棣栭〉锛屽鎴风妫€鏌?Supabase session銆?
+- 鏈櫥褰曡闂?`/admin` 浼氳嚜鍔ㄨ烦杞埌 `/admin/login?next=admin`銆?
+- 鍚庡彴棣栭〉鍖呭惈宸︿晶鑿滃崟銆侀《閮ㄦ爮銆侀€€鍑虹櫥褰曟寜閽€?
+- 鍚庡彴棣栭〉鏄剧ず缁熻鍗＄墖锛氬伐鍏锋暟閲忋€佹枃绔犳暟閲忋€佹姇绋挎暟閲忋€佹姇璇夋暟閲忋€?
+- 鏂板 `getAdminStats()`锛岃鍙?`tools`銆乣articles`銆乣submissions`銆乣reports` 鍥涘紶琛ㄧ殑 count銆?
+- 鍚庡彴缁熻鍙娇鐢?Supabase anon client 鎼厤褰撳墠鐧诲綍 session锛屼笉浣跨敤 `service_role_key`銆?
+- 鑿滃崟涓殑宸ュ叿绠＄悊銆佹枃绔犵鐞嗐€佹姇绋垮鏍搞€佹姇璇夊鐞嗗綋鍓嶅彧浣滀负鍗犱綅鍏ュ彛锛屼笉鍋?CRUD銆?
+- 宸叉洿鏂?`docs/ADMIN_RULES.md`锛岃褰曞綋鍓嶅悗鍙伴樁娈佃鍒欍€?
+- 宸叉墽琛?`npm run lint`锛岄€氳繃銆?
+- 宸叉墽琛?`npm run build`锛岄€氳繃銆?
+- 宸查噸鍚?3001 绔彛 dev 鏈嶅姟骞舵竻鐞?`.next` 缂撳瓨锛岄伩鍏?build 鍜?dev 缂撳瓨娣风敤閫犳垚璧勬簮寮傚父銆?
+- 宸茬敤娴忚鍣ㄦ鏌?`/admin/login`锛氭牱寮忓姞杞芥甯革紝鏃犳í鍚戞粴鍔ㄣ€?
+- 宸茬敤娴忚鍣ㄦ鏌ユ湭鐧诲綍璁块棶 `/admin`锛氫細璺宠浆鍒?`/admin/login?next=admin`銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 使用 Supabase Auth 中已创建的管理员邮箱密码登录，确认 `/admin` 统计卡片是否能读到真实数量。
-- 如果统计卡片读取失败，需要检查 Supabase RLS 是否允许已登录管理员读取 `tools`、`articles`、`submissions`、`reports`。
+- 浣跨敤 Supabase Auth 涓凡鍒涘缓鐨勭鐞嗗憳閭瀵嗙爜鐧诲綍锛岀‘璁?`/admin` 缁熻鍗＄墖鏄惁鑳借鍒扮湡瀹炴暟閲忋€?
+- 濡傛灉缁熻鍗＄墖璇诲彇澶辫触锛岄渶瑕佹鏌?Supabase RLS 鏄惁鍏佽宸茬櫥褰曠鐞嗗憳璇诲彇 `tools`銆乣articles`銆乣submissions`銆乣reports`銆?
 
 ## 2026-06-03
 
-任务：紧急修复前台样式资源 404 和表单默认 GET 提交问题。
+浠诲姟锛氱揣鎬ヤ慨澶嶅墠鍙版牱寮忚祫婧?404 鍜岃〃鍗曢粯璁?GET 鎻愪氦闂銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/submit/page.tsx`
 - `src/app/copyright/page.tsx`
 - `docs/TASK_LOG.md`
 
-检查文件：
+妫€鏌ユ枃浠讹細
 - `src/app/layout.tsx`
 - `src/app/globals.css`
 - `src/lib/db/submissions.ts`
 - `src/lib/db/reports.ts`
 
-检查与修复：
+妫€鏌ヤ笌淇锛?
 
-- 确认 `src/app/layout.tsx` 已正确引入 `./globals.css`，并保留 `<html lang="zh-CN">` 与 `<body>` 结构。
-- 确认 `src/app/globals.css` 顶部保留 Tailwind 基础指令，且全站浅色渐变背景、`overflow-x: hidden`、`glass-card` 等通用样式有效。
-- 为 `/submit` 表单增加 `method="post"`，避免 React 尚未加载或水合异常时回退成默认 GET 查询提交。
-- 确认 `/submit` 已使用 `"use client"`、`onSubmit={handleSubmit}`、`event.preventDefault()`、提交中 loading、成功提示和失败提示。
-- 为 `/copyright` 表单增加 `method="post"`，避免 React 尚未加载或水合异常时回退成默认 GET 查询提交。
-- 确认 `/copyright` 已使用 `"use client"`、`onSubmit={handleSubmit}`、`event.preventDefault()`、提交中 loading、成功提示和失败提示。
-- 确认 `createSubmission(data)` 使用匿名 Supabase client 写入 `submissions` 表，并默认写入 `status: "pending"`。
-- 确认 `createReport(data)` 使用匿名 Supabase client 写入 `reports` 表，并默认写入 `status: "pending"`。
-- 已执行 `npm run lint`，通过。
-- 已执行 `npm run build`，通过。
-- 已停止本地 3000 端口 dev 服务，确认 `.next` 位于当前项目目录后删除缓存，并重新启动 dev 服务。
-- 已用浏览器检查 `/submit` 与 `/copyright`：CSS 已加载，玻璃卡片样式生效，页面不再是纯 HTML。
-- 已用浏览器检查空表单点击提交：URL 不再出现 `?toolName=...` 或 `?ownerName=...` 的默认 GET 提交形式。
-- 已用浏览器检查 `/submit` 与 `/copyright` 手机端无横向滚动。
+- 纭 `src/app/layout.tsx` 宸叉纭紩鍏?`./globals.css`锛屽苟淇濈暀 `<html lang="zh-CN">` 涓?`<body>` 缁撴瀯銆?
+- 纭 `src/app/globals.css` 椤堕儴淇濈暀 Tailwind 鍩虹鎸囦护锛屼笖鍏ㄧ珯娴呰壊娓愬彉鑳屾櫙銆乣overflow-x: hidden`銆乣glass-card` 绛夐€氱敤鏍峰紡鏈夋晥銆?
+- 涓?`/submit` 琛ㄥ崟澧炲姞 `method="post"`锛岄伩鍏?React 灏氭湭鍔犺浇鎴栨按鍚堝紓甯告椂鍥為€€鎴愰粯璁?GET 鏌ヨ鎻愪氦銆?
+- 纭 `/submit` 宸蹭娇鐢?`"use client"`銆乣onSubmit={handleSubmit}`銆乣event.preventDefault()`銆佹彁浜や腑 loading銆佹垚鍔熸彁绀哄拰澶辫触鎻愮ず銆?
+- 涓?`/copyright` 琛ㄥ崟澧炲姞 `method="post"`锛岄伩鍏?React 灏氭湭鍔犺浇鎴栨按鍚堝紓甯告椂鍥為€€鎴愰粯璁?GET 鏌ヨ鎻愪氦銆?
+- 纭 `/copyright` 宸蹭娇鐢?`"use client"`銆乣onSubmit={handleSubmit}`銆乣event.preventDefault()`銆佹彁浜や腑 loading銆佹垚鍔熸彁绀哄拰澶辫触鎻愮ず銆?
+- 纭 `createSubmission(data)` 浣跨敤鍖垮悕 Supabase client 鍐欏叆 `submissions` 琛紝骞堕粯璁ゅ啓鍏?`status: "pending"`銆?
+- 纭 `createReport(data)` 浣跨敤鍖垮悕 Supabase client 鍐欏叆 `reports` 琛紝骞堕粯璁ゅ啓鍏?`status: "pending"`銆?
+- 宸叉墽琛?`npm run lint`锛岄€氳繃銆?
+- 宸叉墽琛?`npm run build`锛岄€氳繃銆?
+- 宸插仠姝㈡湰鍦?3000 绔彛 dev 鏈嶅姟锛岀‘璁?`.next` 浣嶄簬褰撳墠椤圭洰鐩綍鍚庡垹闄ょ紦瀛橈紝骞堕噸鏂板惎鍔?dev 鏈嶅姟銆?
+- 宸茬敤娴忚鍣ㄦ鏌?`/submit` 涓?`/copyright`锛欳SS 宸插姞杞斤紝鐜荤拑鍗＄墖鏍峰紡鐢熸晥锛岄〉闈笉鍐嶆槸绾?HTML銆?
+- 宸茬敤娴忚鍣ㄦ鏌ョ┖琛ㄥ崟鐐瑰嚮鎻愪氦锛歎RL 涓嶅啀鍑虹幇 `?toolName=...` 鎴?`?ownerName=...` 鐨勯粯璁?GET 鎻愪氦褰㈠紡銆?
+- 宸茬敤娴忚鍣ㄦ鏌?`/submit` 涓?`/copyright` 鎵嬫満绔棤妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 如果真实提交仍写入失败，需要检查 Supabase 中 `submissions` 和 `reports` 表是否存在，并确认 RLS 是否允许匿名 insert。
+- 濡傛灉鐪熷疄鎻愪氦浠嶅啓鍏ュけ璐ワ紝闇€瑕佹鏌?Supabase 涓?`submissions` 鍜?`reports` 琛ㄦ槸鍚﹀瓨鍦紝骞剁‘璁?RLS 鏄惁鍏佽鍖垮悕 insert銆?
 
 ## 2026-06-03
 
-任务：接入 `/submit` 投稿页和 `/copyright` 版权投诉页的数据写入。
+浠诲姟锛氭帴鍏?`/submit` 鎶曠椤靛拰 `/copyright` 鐗堟潈鎶曡瘔椤电殑鏁版嵁鍐欏叆銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/submit/page.tsx`
 - `src/app/copyright/page.tsx`
@@ -1157,56 +1443,56 @@
 - `docs/DATABASE_SCHEMA.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 新增 `createSubmission(data)`，写入 `submissions` 表。
-- 新增 `createReport(data)`，写入 `reports` 表。
-- 两个写入函数都使用现有 Supabase anon client，不使用 `service_role_key`。
-- `/submit` 字段映射为 `tool_name`、`website_url`、`summary`、`reason`、`email`、`status`。
-- `/submit` 默认写入 `status = pending`。
-- `/submit` 增加工具名称、官方地址、工具简介必填校验。
-- `/submit` 增加官方地址必须为 `http` 或 `https` 链接的校验。
-- `/submit` 增加可选邮箱格式校验。
-- `/submit` 提交中按钮显示“提交中...”，并禁止重复点击。
-- `/submit` 成功后显示“提交成功，我们会进行人工审核后决定是否收录。”并清空表单。
-- `/submit` 失败后显示“提交失败，请稍后重试。”，不向用户展示技术错误。
-- `/copyright` 字段映射为 `owner_name`、`email`、`page_url`、`issue_type`、`proof`、`request`、`status`。
-- `/copyright` 默认写入 `status = pending`。
-- `/copyright` 增加权利人、邮箱、页面链接、问题类型、处理要求必填校验。
-- `/copyright` 增加邮箱格式校验。
-- `/copyright` 增加涉及页面链接必须为 `http` 或 `https` 链接的校验。
-- `/copyright` 提交中按钮显示“提交中...”，并禁止重复点击。
-- `/copyright` 成功后显示“反馈已提交，我们会在核实后及时处理。”并清空表单。
-- `/copyright` 失败后显示“提交失败，请稍后重试。”，不向用户展示技术错误。
-- 已更新 `docs/DATABASE_SCHEMA.md`，补充 `submissions`、`reports` 表和 RLS 注意事项。
-- 未修改首页、工具页、文章页、搜索页、Header、Footer、后台、Supabase 读取逻辑、视觉设计系统和路由结构。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- 已重启 `npm run dev`，并确认 `/submit` 和 `/copyright` 返回 200。
-- 已用浏览器检查 `/submit` 空表单校验、URL 格式校验、邮箱格式校验正常。
-- 已用浏览器检查 `/copyright` 空表单校验、URL 格式校验、邮箱格式校验正常。
-- 已用浏览器检查 `/submit` 和 `/copyright` 手机端无横向滚动。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏂板 `createSubmission(data)`锛屽啓鍏?`submissions` 琛ㄣ€?
+- 鏂板 `createReport(data)`锛屽啓鍏?`reports` 琛ㄣ€?
+- 涓や釜鍐欏叆鍑芥暟閮戒娇鐢ㄧ幇鏈?Supabase anon client锛屼笉浣跨敤 `service_role_key`銆?
+- `/submit` 瀛楁鏄犲皠涓?`tool_name`銆乣website_url`銆乣summary`銆乣reason`銆乣email`銆乣status`銆?
+- `/submit` 榛樿鍐欏叆 `status = pending`銆?
+- `/submit` 澧炲姞宸ュ叿鍚嶇О銆佸畼鏂瑰湴鍧€銆佸伐鍏风畝浠嬪繀濉牎楠屻€?
+- `/submit` 澧炲姞瀹樻柟鍦板潃蹇呴』涓?`http` 鎴?`https` 閾炬帴鐨勬牎楠屻€?
+- `/submit` 澧炲姞鍙€夐偖绠辨牸寮忔牎楠屻€?
+- `/submit` 鎻愪氦涓寜閽樉绀衡€滄彁浜や腑...鈥濓紝骞剁姝㈤噸澶嶇偣鍑汇€?
+- `/submit` 鎴愬姛鍚庢樉绀衡€滄彁浜ゆ垚鍔燂紝鎴戜滑浼氳繘琛屼汉宸ュ鏍稿悗鍐冲畾鏄惁鏀跺綍銆傗€濆苟娓呯┖琛ㄥ崟銆?
+- `/submit` 澶辫触鍚庢樉绀衡€滄彁浜ゅけ璐ワ紝璇风◢鍚庨噸璇曘€傗€濓紝涓嶅悜鐢ㄦ埛灞曠ず鎶€鏈敊璇€?
+- `/copyright` 瀛楁鏄犲皠涓?`owner_name`銆乣email`銆乣page_url`銆乣issue_type`銆乣proof`銆乣request`銆乣status`銆?
+- `/copyright` 榛樿鍐欏叆 `status = pending`銆?
+- `/copyright` 澧炲姞鏉冨埄浜恒€侀偖绠便€侀〉闈㈤摼鎺ャ€侀棶棰樼被鍨嬨€佸鐞嗚姹傚繀濉牎楠屻€?
+- `/copyright` 澧炲姞閭鏍煎紡鏍￠獙銆?
+- `/copyright` 澧炲姞娑夊強椤甸潰閾炬帴蹇呴』涓?`http` 鎴?`https` 閾炬帴鐨勬牎楠屻€?
+- `/copyright` 鎻愪氦涓寜閽樉绀衡€滄彁浜や腑...鈥濓紝骞剁姝㈤噸澶嶇偣鍑汇€?
+- `/copyright` 鎴愬姛鍚庢樉绀衡€滃弽棣堝凡鎻愪氦锛屾垜浠細鍦ㄦ牳瀹炲悗鍙婃椂澶勭悊銆傗€濆苟娓呯┖琛ㄥ崟銆?
+- `/copyright` 澶辫触鍚庢樉绀衡€滄彁浜ゅけ璐ワ紝璇风◢鍚庨噸璇曘€傗€濓紝涓嶅悜鐢ㄦ埛灞曠ず鎶€鏈敊璇€?
+- 宸叉洿鏂?`docs/DATABASE_SCHEMA.md`锛岃ˉ鍏?`submissions`銆乣reports` 琛ㄥ拰 RLS 娉ㄦ剰浜嬮」銆?
+- 鏈慨鏀归椤点€佸伐鍏烽〉銆佹枃绔犻〉銆佹悳绱㈤〉銆丠eader銆丗ooter銆佸悗鍙般€丼upabase 璇诲彇閫昏緫銆佽瑙夎璁＄郴缁熷拰璺敱缁撴瀯銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸查噸鍚?`npm run dev`锛屽苟纭 `/submit` 鍜?`/copyright` 杩斿洖 200銆?
+- 宸茬敤娴忚鍣ㄦ鏌?`/submit` 绌鸿〃鍗曟牎楠屻€乁RL 鏍煎紡鏍￠獙銆侀偖绠辨牸寮忔牎楠屾甯搞€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/copyright` 绌鸿〃鍗曟牎楠屻€乁RL 鏍煎紡鏍￠獙銆侀偖绠辨牸寮忔牎楠屾甯搞€?
+- 宸茬敤娴忚鍣ㄦ鏌?`/submit` 鍜?`/copyright` 鎵嬫満绔棤妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 如果表单提交失败，需要到 Supabase 给 `submissions` 和 `reports` 表添加允许匿名 `insert` 的 RLS policy。
+- 濡傛灉琛ㄥ崟鎻愪氦澶辫触锛岄渶瑕佸埌 Supabase 缁?`submissions` 鍜?`reports` 琛ㄦ坊鍔犲厑璁稿尶鍚?`insert` 鐨?RLS policy銆?
 
-## 用途
+## 鐢ㄩ€?
 
-记录每次小任务的执行情况，方便以后回看项目为什么变成现在这样。
+璁板綍姣忔灏忎换鍔＄殑鎵ц鎯呭喌锛屾柟渚夸互鍚庡洖鐪嬮」鐩负浠€涔堝彉鎴愮幇鍦ㄨ繖鏍枫€?
 
-## 记录规则
+## 璁板綍瑙勫垯
 
-- 每完成一个小步骤，都在本文档追加记录。
-- 记录内容包括日期、任务、改动文件、检查方式、下一步。
-- 不写无关闲聊，只保留项目事实。
+- 姣忓畬鎴愪竴涓皬姝ラ锛岄兘鍦ㄦ湰鏂囨。杩藉姞璁板綍銆?
+- 璁板綍鍐呭鍖呮嫭鏃ユ湡銆佷换鍔°€佹敼鍔ㄦ枃浠躲€佹鏌ユ柟寮忋€佷笅涓€姝ャ€?
+- 涓嶅啓鏃犲叧闂茶亰锛屽彧淇濈暀椤圭洰浜嬪疄銆?
 
 ## 2026-05-31
 
-任务：项目初始化检查并创建基础文档。
+浠诲姟锛氶」鐩垵濮嬪寲妫€鏌ュ苟鍒涘缓鍩虹鏂囨。銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `docs/PROJECT_RULES.md`
 - `docs/ROADMAP.md`
@@ -1218,20 +1504,20 @@
 - `docs/TASK_LOG.md`
 - `docs/ANTI_ENTROPY.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 查看仓库文件结构。
-- 确认当前仓库只有 `.git`，尚未初始化 Next.js 项目文件。
+- 鏌ョ湅浠撳簱鏂囦欢缁撴瀯銆?
+- 纭褰撳墠浠撳簱鍙湁 `.git`锛屽皻鏈垵濮嬪寲 Next.js 椤圭洰鏂囦欢銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 初始化 Next.js App Router + TypeScript + Tailwind CSS 项目骨架。
+- 鍒濆鍖?Next.js App Router + TypeScript + Tailwind CSS 椤圭洰楠ㄦ灦銆?
 
 ## 2026-05-31
 
-任务：制作静态首页。
+浠诲姟锛氬埗浣滈潤鎬侀椤点€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `.gitignore`
 - `eslint.config.mjs`
@@ -1258,24 +1544,24 @@
 - `src/components/site-footer.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 确认首页代码拆分到 `src/components`。
-- 确认假数据位于 `src/data/mock-tools.ts` 和 `src/data/mock-articles.ts`。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev`，并在浏览器检查电脑端和手机端布局。
-- 电脑端和手机端视口均未发现横向溢出。
+- 纭棣栭〉浠ｇ爜鎷嗗垎鍒?`src/components`銆?
+- 纭鍋囨暟鎹綅浜?`src/data/mock-tools.ts` 鍜?`src/data/mock-articles.ts`銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev`锛屽苟鍦ㄦ祻瑙堝櫒妫€鏌ョ數鑴戠鍜屾墜鏈虹甯冨眬銆?
+- 鐢佃剳绔拰鎵嬫満绔鍙ｅ潎鏈彂鐜版í鍚戞孩鍑恒€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续检查首页文案和卡片内容，确认是否需要调整分类、工具和文章的展示信息。
+- 缁х画妫€鏌ラ椤垫枃妗堝拰鍗＄墖鍐呭锛岀‘璁ゆ槸鍚﹂渶瑕佽皟鏁村垎绫汇€佸伐鍏峰拰鏂囩珷鐨勫睍绀轰俊鎭€?
 
 ## 2026-05-31
 
-任务：制作工具列表页 `/tools`。
+浠诲姟锛氬埗浣滃伐鍏峰垪琛ㄩ〉 `/tools`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/tools/page.tsx`
 - `src/components/tools/tools-page.tsx`
@@ -1287,28 +1573,28 @@
 - `src/components/site-header.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 使用 `src/data/mock-tools.ts` 假数据。
-- 不连接数据库。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后打开 `/tools`。
-- 已检查搜索功能，可匹配工具标题、简介、分类和标签。
-- 已检查分类筛选和标签筛选。
-- 已检查无结果提示。
-- 已检查响应式布局：电脑端 3 栏，平板端 2 栏，手机端 1 栏。
-- 电脑端、平板端和手机端视口均未发现横向溢出。
+- 浣跨敤 `src/data/mock-tools.ts` 鍋囨暟鎹€?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢墦寮€ `/tools`銆?
+- 宸叉鏌ユ悳绱㈠姛鑳斤紝鍙尮閰嶅伐鍏锋爣棰樸€佺畝浠嬨€佸垎绫诲拰鏍囩銆?
+- 宸叉鏌ュ垎绫荤瓫閫夊拰鏍囩绛涢€夈€?
+- 宸叉鏌ユ棤缁撴灉鎻愮ず銆?
+- 宸叉鏌ュ搷搴斿紡甯冨眬锛氱數鑴戠 3 鏍忥紝骞虫澘绔?2 鏍忥紝鎵嬫満绔?1 鏍忋€?
+- 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹瑙嗗彛鍧囨湭鍙戠幇妯悜婧㈠嚭銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 检查工具列表页的筛选文案和默认假数据是否需要补充。
+- 妫€鏌ュ伐鍏峰垪琛ㄩ〉鐨勭瓫閫夋枃妗堝拰榛樿鍋囨暟鎹槸鍚﹂渶瑕佽ˉ鍏呫€?
 
 ## 2026-05-31
 
-任务：调整工具展示逻辑，新增工具详情页。
+浠诲姟锛氳皟鏁村伐鍏峰睍绀洪€昏緫锛屾柊澧炲伐鍏疯鎯呴〉銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/data/mock-tools.ts`
 - `src/components/tools/tools-card.tsx`
@@ -1318,29 +1604,29 @@
 - `src/components/common/CopyrightNotice.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 列表页工具卡片改为“查看详情”，不再直接显示官网按钮。
-- 详情页使用 `src/data/mock-tools.ts` 假数据。
-- 详情页官网按钮仅在存在 `website_url` 时显示。
-- 外部官网链接使用新窗口打开，并设置 `rel="nofollow noopener noreferrer"`。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后检查 `/tools` 和 `/tools/raycast`。
-- 已检查 `/tools` 有 6 个“查看详情”入口，未显示官网按钮。
-- 已检查“查看详情”可跳转到 `/tools/raycast`。
-- 已检查详情页包含主要内容区、相关推荐、统一版权声明和 2 个“访问官方网站”按钮。
-- 已检查详情页电脑端和手机端视口均未发现横向溢出。
+- 鍒楄〃椤靛伐鍏峰崱鐗囨敼涓衡€滄煡鐪嬭鎯呪€濓紝涓嶅啀鐩存帴鏄剧ず瀹樼綉鎸夐挳銆?
+- 璇︽儏椤典娇鐢?`src/data/mock-tools.ts` 鍋囨暟鎹€?
+- 璇︽儏椤靛畼缃戞寜閽粎鍦ㄥ瓨鍦?`website_url` 鏃舵樉绀恒€?
+- 澶栭儴瀹樼綉閾炬帴浣跨敤鏂扮獥鍙ｆ墦寮€锛屽苟璁剧疆 `rel="nofollow noopener noreferrer"`銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢鏌?`/tools` 鍜?`/tools/raycast`銆?
+- 宸叉鏌?`/tools` 鏈?6 涓€滄煡鐪嬭鎯呪€濆叆鍙ｏ紝鏈樉绀哄畼缃戞寜閽€?
+- 宸叉鏌モ€滄煡鐪嬭鎯呪€濆彲璺宠浆鍒?`/tools/raycast`銆?
+- 宸叉鏌ヨ鎯呴〉鍖呭惈涓昏鍐呭鍖恒€佺浉鍏虫帹鑽愩€佺粺涓€鐗堟潈澹版槑鍜?2 涓€滆闂畼鏂圭綉绔欌€濇寜閽€?
+- 宸叉鏌ヨ鎯呴〉鐢佃剳绔拰鎵嬫満绔鍙ｅ潎鏈彂鐜版í鍚戞孩鍑恒€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 检查详情页内容结构是否需要继续补充真实运营字段。
+- 妫€鏌ヨ鎯呴〉鍐呭缁撴瀯鏄惁闇€瑕佺户缁ˉ鍏呯湡瀹炶繍钀ュ瓧娈点€?
 
 ## 2026-05-31
 
-任务：优化 `/tools` 页面视觉设计。
+浠诲姟锛氫紭鍖?`/tools` 椤甸潰瑙嗚璁捐銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/tools-hero.tsx`
@@ -1348,29 +1634,29 @@
 - `src/components/tools/tools-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 仅调整 `/tools` 页面视觉层，不修改筛选业务逻辑。
-- 不连接数据库。
-- 不修改路由结构。
-- 不新增依赖。
-- 保持工具卡片按钮为“查看详情”，不显示“查看官网”。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后检查 `/tools` 电脑端、平板端和手机端布局。
-- 已检查电脑端 3 栏、平板端 2 栏、手机端 1 栏。
-- 电脑端、平板端和手机端视口均未发现横向溢出。
-- 已检查页面未出现“查看官网”。
+- 浠呰皟鏁?`/tools` 椤甸潰瑙嗚灞傦紝涓嶄慨鏀圭瓫閫変笟鍔￠€昏緫銆?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀硅矾鐢辩粨鏋勩€?
+- 涓嶆柊澧炰緷璧栥€?
+- 淇濇寔宸ュ叿鍗＄墖鎸夐挳涓衡€滄煡鐪嬭鎯呪€濓紝涓嶆樉绀衡€滄煡鐪嬪畼缃戔€濄€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢鏌?`/tools` 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹甯冨眬銆?
+- 宸叉鏌ョ數鑴戠 3 鏍忋€佸钩鏉跨 2 鏍忋€佹墜鏈虹 1 鏍忋€?
+- 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹瑙嗗彛鍧囨湭鍙戠幇妯悜婧㈠嚭銆?
+- 宸叉鏌ラ〉闈㈡湭鍑虹幇鈥滄煡鐪嬪畼缃戔€濄€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 根据实际浏览效果继续微调工具卡片内容密度和筛选项数量。
+- 鏍规嵁瀹為檯娴忚鏁堟灉缁х画寰皟宸ュ叿鍗＄墖鍐呭瀵嗗害鍜岀瓫閫夐」鏁伴噺銆?
 
 ## 2026-05-31
 
-任务：彻底重新设计 `/tools` 页面视觉。
+浠诲姟锛氬交搴曢噸鏂拌璁?`/tools` 椤甸潰瑙嗚銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/tools-grid.tsx`
@@ -1383,31 +1669,31 @@
 - `src/components/tools/tools-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 保留现有搜索、筛选和跳转详情功能。
-- 不连接数据库。
-- 不修改路由结构。
-- 不新增依赖。
-- 使用指定组件拆分文件。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后检查 `/tools` 电脑端、平板端和手机端布局。
-- 已检查电脑端 3 栏、平板端 2 栏、手机端 1 栏。
-- 电脑端、平板端和手机端视口均未发现横向溢出。
-- 已检查分类筛选和标签筛选。
-- 已检查“查看详情”可跳转到详情页。
-- 已检查页面未出现“查看官网”。
+- 淇濈暀鐜版湁鎼滅储銆佺瓫閫夊拰璺宠浆璇︽儏鍔熻兘銆?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀硅矾鐢辩粨鏋勩€?
+- 涓嶆柊澧炰緷璧栥€?
+- 浣跨敤鎸囧畾缁勪欢鎷嗗垎鏂囦欢銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢鏌?`/tools` 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹甯冨眬銆?
+- 宸叉鏌ョ數鑴戠 3 鏍忋€佸钩鏉跨 2 鏍忋€佹墜鏈虹 1 鏍忋€?
+- 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹瑙嗗彛鍧囨湭鍙戠幇妯悜婧㈠嚭銆?
+- 宸叉鏌ュ垎绫荤瓫閫夊拰鏍囩绛涢€夈€?
+- 宸叉鏌モ€滄煡鐪嬭鎯呪€濆彲璺宠浆鍒拌鎯呴〉銆?
+- 宸叉鏌ラ〉闈㈡湭鍑虹幇鈥滄煡鐪嬪畼缃戔€濄€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续根据实际视觉效果微调首屏高度、筛选面板密度和工具卡片文案长度。
+- 缁х画鏍规嵁瀹為檯瑙嗚鏁堟灉寰皟棣栧睆楂樺害銆佺瓫閫夐潰鏉垮瘑搴﹀拰宸ュ叿鍗＄墖鏂囨闀垮害銆?
 
 ## 2026-05-31
 
-任务：以 Apple 官网设计理念重写 `/tools` 页面 UI。
+浠诲姟锛氫互 Apple 瀹樼綉璁捐鐞嗗康閲嶅啓 `/tools` 椤甸潰 UI銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/tools-grid.tsx`
@@ -1417,33 +1703,33 @@
 - `src/components/tools/ToolsGridHeader.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 保留现有搜索、分类筛选、标签筛选和跳转详情功能。
-- 不连接数据库。
-- 不修改后台。
-- 不修改 mock 数据来源。
-- 不新增依赖。
-- 页面不出现“查看官网”。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后检查 `/tools` 桌面端、平板端和手机端布局。
-- 已检查电脑端 3 栏、平板端 2 栏、手机端 1 栏。
-- 已检查搜索 `Markdown` 可筛选出 `Obsidian`。
-- 已检查分类筛选 `开源项目` 可筛选出 `Supabase` 和 `LocalSend`。
-- 已检查标签筛选 `PostgreSQL` 可筛选出 `Supabase`。
-- 已检查“查看详情 →”可跳转到 `/tools/raycast`。
-- 电脑端、平板端和手机端视口均未发现横向溢出。
+- 淇濈暀鐜版湁鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夊拰璺宠浆璇︽儏鍔熻兘銆?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 涓嶄慨鏀?mock 鏁版嵁鏉ユ簮銆?
+- 涓嶆柊澧炰緷璧栥€?
+- 椤甸潰涓嶅嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢鏌?`/tools` 妗岄潰绔€佸钩鏉跨鍜屾墜鏈虹甯冨眬銆?
+- 宸叉鏌ョ數鑴戠 3 鏍忋€佸钩鏉跨 2 鏍忋€佹墜鏈虹 1 鏍忋€?
+- 宸叉鏌ユ悳绱?`Markdown` 鍙瓫閫夊嚭 `Obsidian`銆?
+- 宸叉鏌ュ垎绫荤瓫閫?`寮€婧愰」鐩甡 鍙瓫閫夊嚭 `Supabase` 鍜?`LocalSend`銆?
+- 宸叉鏌ユ爣绛剧瓫閫?`PostgreSQL` 鍙瓫閫夊嚭 `Supabase`銆?
+- 宸叉鏌モ€滄煡鐪嬭鎯?鈫掆€濆彲璺宠浆鍒?`/tools/raycast`銆?
+- 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹瑙嗗彛鍧囨湭鍙戠幇妯悜婧㈠嚭銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 根据实际浏览效果继续微调 Apple 式留白、卡片内容密度和移动端首屏高度。
+- 鏍规嵁瀹為檯娴忚鏁堟灉缁х画寰皟 Apple 寮忕暀鐧姐€佸崱鐗囧唴瀹瑰瘑搴﹀拰绉诲姩绔灞忛珮搴︺€?
 
 ## 2026-05-31
 
-任务：对 `/tools` 页面进行高阶视觉重构。
+浠诲姟锛氬 `/tools` 椤甸潰杩涜楂橀樁瑙嗚閲嶆瀯銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/ToolsHero.tsx`
@@ -1452,169 +1738,169 @@
 - `src/components/tools/ToolsGridHeader.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 保留现有搜索、分类筛选、标签筛选和跳转详情功能。
-- 不连接数据库。
-- 不修改路由结构。
-- 不新增依赖。
-- 页面不出现“查看官网”。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后检查 `/tools` 桌面端、平板端和手机端布局。
-- 已检查电脑端 3 栏、平板端 2 栏、手机端 1 栏。
-- 已检查移动端 Hero 改为上下布局，概览卡弱化为简洁统计卡。
-- 已检查搜索 `Markdown` 可筛选出 `Obsidian`。
-- 已检查分类筛选 `开源项目` 可筛选出 `Supabase` 和 `LocalSend`。
-- 已检查标签筛选 `PostgreSQL` 可筛选出 `Supabase`。
-- 已检查“查看详情”可跳转到 `/tools/raycast`。
-- 电脑端、平板端和手机端视口均未发现横向溢出。
+- 淇濈暀鐜版湁鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夊拰璺宠浆璇︽儏鍔熻兘銆?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀硅矾鐢辩粨鏋勩€?
+- 涓嶆柊澧炰緷璧栥€?
+- 椤甸潰涓嶅嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢鏌?`/tools` 妗岄潰绔€佸钩鏉跨鍜屾墜鏈虹甯冨眬銆?
+- 宸叉鏌ョ數鑴戠 3 鏍忋€佸钩鏉跨 2 鏍忋€佹墜鏈虹 1 鏍忋€?
+- 宸叉鏌ョЩ鍔ㄧ Hero 鏀逛负涓婁笅甯冨眬锛屾瑙堝崱寮卞寲涓虹畝娲佺粺璁″崱銆?
+- 宸叉鏌ユ悳绱?`Markdown` 鍙瓫閫夊嚭 `Obsidian`銆?
+- 宸叉鏌ュ垎绫荤瓫閫?`寮€婧愰」鐩甡 鍙瓫閫夊嚭 `Supabase` 鍜?`LocalSend`銆?
+- 宸叉鏌ユ爣绛剧瓫閫?`PostgreSQL` 鍙瓫閫夊嚭 `Supabase`銆?
+- 宸叉鏌モ€滄煡鐪嬭鎯呪€濆彲璺宠浆鍒?`/tools/raycast`銆?
+- 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹瑙嗗彛鍧囨湭鍙戠幇妯悜婧㈠嚭銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续根据真实内容数量微调分类统计、卡片文案长度和移动端首屏信息密度。
+- 缁х画鏍规嵁鐪熷疄鍐呭鏁伴噺寰皟鍒嗙被缁熻銆佸崱鐗囨枃妗堥暱搴﹀拰绉诲姩绔灞忎俊鎭瘑搴︺€?
 
 ## 2026-05-31
 
-任务：大幅重构 `/tools` 页面 Hero 过渡与移动端概览展示。
+浠诲姟锛氬ぇ骞呴噸鏋?`/tools` 椤甸潰 Hero 杩囨浮涓庣Щ鍔ㄧ姒傝灞曠ず銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/ToolsHero.tsx`
 - `src/components/tools/ToolCard.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 保留现有搜索、分类筛选、标签筛选和跳转详情功能。
-- 不连接数据库。
-- 不修改路由结构。
-- 不新增依赖。
-- Hero 底部增加长柔和渐变过渡层，弱化深色区域与浅色内容区硬切。
-- 移动端隐藏完整“已整理工具”概览卡，改为高度较低的横条统计。
-- 工具卡片强化玻璃态、hover 上浮和青蓝微光。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已启动 `npm run dev` 后检查 `/tools` 桌面端、平板端和手机端布局。
-- 已检查桌面端保留右侧概览卡，移动端仅显示“已收录 6 个工具 + LIVE”横条。
-- 已检查电脑端 3 栏、平板端 2 栏、手机端 1 栏。
-- 已检查搜索 `Markdown` 可筛选出 `Obsidian`。
-- 已检查分类筛选 `开源项目` 可筛选出 `Supabase` 和 `LocalSend`。
-- 已检查“查看详情”可跳转到 `/tools/raycast`。
-- 电脑端、平板端和手机端视口均未发现横向溢出。
+- 淇濈暀鐜版湁鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夊拰璺宠浆璇︽儏鍔熻兘銆?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀硅矾鐢辩粨鏋勩€?
+- 涓嶆柊澧炰緷璧栥€?
+- Hero 搴曢儴澧炲姞闀挎煍鍜屾笎鍙樿繃娓″眰锛屽急鍖栨繁鑹插尯鍩熶笌娴呰壊鍐呭鍖虹‖鍒囥€?
+- 绉诲姩绔殣钘忓畬鏁粹€滃凡鏁寸悊宸ュ叿鈥濇瑙堝崱锛屾敼涓洪珮搴﹁緝浣庣殑妯潯缁熻銆?
+- 宸ュ叿鍗＄墖寮哄寲鐜荤拑鎬併€乭over 涓婃诞鍜岄潚钃濆井鍏夈€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸插惎鍔?`npm run dev` 鍚庢鏌?`/tools` 妗岄潰绔€佸钩鏉跨鍜屾墜鏈虹甯冨眬銆?
+- 宸叉鏌ユ闈㈢淇濈暀鍙充晶姒傝鍗★紝绉诲姩绔粎鏄剧ず鈥滃凡鏀跺綍 6 涓伐鍏?+ LIVE鈥濇í鏉°€?
+- 宸叉鏌ョ數鑴戠 3 鏍忋€佸钩鏉跨 2 鏍忋€佹墜鏈虹 1 鏍忋€?
+- 宸叉鏌ユ悳绱?`Markdown` 鍙瓫閫夊嚭 `Obsidian`銆?
+- 宸叉鏌ュ垎绫荤瓫閫?`寮€婧愰」鐩甡 鍙瓫閫夊嚭 `Supabase` 鍜?`LocalSend`銆?
+- 宸叉鏌モ€滄煡鐪嬭鎯呪€濆彲璺宠浆鍒?`/tools/raycast`銆?
+- 鐢佃剳绔€佸钩鏉跨鍜屾墜鏈虹瑙嗗彛鍧囨湭鍙戠幇妯悜婧㈠嚭銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 使用真实移动设备尺寸继续确认首屏高度和筛选面板露出比例。
+- 浣跨敤鐪熷疄绉诲姩璁惧灏哄缁х画纭棣栧睆楂樺害鍜岀瓫閫夐潰鏉块湶鍑烘瘮渚嬨€?
 
 ## 2026-05-31
 
-任务：创建统一版权声明组件。
+浠诲姟锛氬垱寤虹粺涓€鐗堟潈澹版槑缁勪欢銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/common/CopyrightNotice.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 更新统一版权声明文案。
-- 组件支持 `className` 参数，方便后续复用。
-- 工具详情页已在底部调用 `CopyrightNotice`。
-- 当前项目未发现 `/articles/[slug]` 文章详情页，因此未新增文章详情页引用。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
+- 鏇存柊缁熶竴鐗堟潈澹版槑鏂囨銆?
+- 缁勪欢鏀寔 `className` 鍙傛暟锛屾柟渚垮悗缁鐢ㄣ€?
+- 宸ュ叿璇︽儏椤靛凡鍦ㄥ簳閮ㄨ皟鐢?`CopyrightNotice`銆?
+- 褰撳墠椤圭洰鏈彂鐜?`/articles/[slug]` 鏂囩珷璇︽儏椤碉紝鍥犳鏈柊澧炴枃绔犺鎯呴〉寮曠敤銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 创建文章详情页时，在页面底部复用 `CopyrightNotice`。
+- 鍒涘缓鏂囩珷璇︽儏椤垫椂锛屽湪椤甸潰搴曢儴澶嶇敤 `CopyrightNotice`銆?
 
 ## 2026-05-31
 
-任务：创建广告占位组件并接入工具详情页。
+浠诲姟锛氬垱寤哄箍鍛婂崰浣嶇粍浠跺苟鎺ュ叆宸ュ叿璇︽儏椤点€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/common/AdPlaceholder.tsx`
 - `src/components/tools/tool-detail-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 新增广告占位组件，支持 `sidebar`、`banner`、`inline` 三种尺寸。
-- 工具详情页右侧栏电脑端显示 `sidebar` 广告位。
-- 工具详情页正文中间显示 `inline` 广告位。
-- 工具详情页底部显示 `banner` 广告位。
-- 仅显示“广告位”，不接入真实广告代码。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools/raycast`。
-- 桌面端可见 3 个广告位：右侧栏、正文中间、底部横幅。
-- 手机端可见 2 个广告位：正文中间、底部横幅；右侧栏广告已隐藏。
-- 详情页未发现横向滚动。
+- 鏂板骞垮憡鍗犱綅缁勪欢锛屾敮鎸?`sidebar`銆乣banner`銆乣inline` 涓夌灏哄銆?
+- 宸ュ叿璇︽儏椤靛彸渚ф爮鐢佃剳绔樉绀?`sidebar` 骞垮憡浣嶃€?
+- 宸ュ叿璇︽儏椤垫鏂囦腑闂存樉绀?`inline` 骞垮憡浣嶃€?
+- 宸ュ叿璇︽儏椤靛簳閮ㄦ樉绀?`banner` 骞垮憡浣嶃€?
+- 浠呮樉绀衡€滃箍鍛婁綅鈥濓紝涓嶆帴鍏ョ湡瀹炲箍鍛婁唬鐮併€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools/raycast`銆?
+- 妗岄潰绔彲瑙?3 涓箍鍛婁綅锛氬彸渚ф爮銆佹鏂囦腑闂淬€佸簳閮ㄦí骞呫€?
+- 鎵嬫満绔彲瑙?2 涓箍鍛婁綅锛氭鏂囦腑闂淬€佸簳閮ㄦí骞咃紱鍙充晶鏍忓箍鍛婂凡闅愯棌銆?
+- 璇︽儏椤垫湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续接入真实广告时，保持广告组件统一替换，不在页面内分散写广告代码。
+- 鍚庣画鎺ュ叆鐪熷疄骞垮憡鏃讹紝淇濇寔骞垮憡缁勪欢缁熶竴鏇挎崲锛屼笉鍦ㄩ〉闈㈠唴鍒嗘暎鍐欏箍鍛婁唬鐮併€?
 
 ## 2026-05-31
 
-任务：升级全站视觉设计系统文档。
+浠诲姟锛氬崌绾у叏绔欒瑙夎璁＄郴缁熸枃妗ｃ€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `docs/DESIGN_SYSTEM.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 仅更新设计文档，不修改页面代码。
-- 已加入浅色高级风格、留白、渐变分区、液态玻璃卡片、按钮、广告位和移动端规范。
-- 已明确首页和工具页的分区规则。
-- 已保留响应式、排版和组件化基础规则。
+- 浠呮洿鏂拌璁℃枃妗ｏ紝涓嶄慨鏀归〉闈唬鐮併€?
+- 宸插姞鍏ユ祬鑹查珮绾ч鏍笺€佺暀鐧姐€佹笎鍙樺垎鍖恒€佹恫鎬佺幓鐠冨崱鐗囥€佹寜閽€佸箍鍛婁綅鍜岀Щ鍔ㄧ瑙勮寖銆?
+- 宸叉槑纭椤靛拰宸ュ叿椤电殑鍒嗗尯瑙勫垯銆?
+- 宸蹭繚鐣欏搷搴斿紡銆佹帓鐗堝拰缁勪欢鍖栧熀纭€瑙勫垯銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续改造首页、工具页和详情页视觉时，严格按新版 `DESIGN_SYSTEM.md` 执行。
+- 鍚庣画鏀归€犻椤点€佸伐鍏烽〉鍜岃鎯呴〉瑙嗚鏃讹紝涓ユ牸鎸夋柊鐗?`DESIGN_SYSTEM.md` 鎵ц銆?
 
 ## 2026-05-31
 
-任务：升级全站基础视觉样式。
+浠诲姟锛氬崌绾у叏绔欏熀纭€瑙嗚鏍峰紡銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/globals.css`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 仅修改全站基础 CSS，不改业务逻辑。
-- 不修改数据库。
-- 不修改后台。
-- 不新增依赖。
-- 添加全站浅色渐变背景。
-- 添加 `glass-card` 通用玻璃拟态卡片类。
-- 添加 `section-gradient-blue`、`section-gradient-cyan`、`section-gradient-violet` 通用分区渐变类。
-- 添加 `soft-shadow` 通用柔和阴影类。
-- 添加 `soft-card-hover` 通用 hover 上浮效果。
-- 添加 `page-shell` 页面最大宽度容器类。
-- 添加 `section-block` 统一分区间距类。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools/raycast` 正常打开。
-- 已确认全站浅色渐变背景生效。
-- 已确认详情页未发现横向滚动。
+- 浠呬慨鏀瑰叏绔欏熀纭€ CSS锛屼笉鏀逛笟鍔￠€昏緫銆?
+- 涓嶄慨鏀规暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 涓嶆柊澧炰緷璧栥€?
+- 娣诲姞鍏ㄧ珯娴呰壊娓愬彉鑳屾櫙銆?
+- 娣诲姞 `glass-card` 閫氱敤鐜荤拑鎷熸€佸崱鐗囩被銆?
+- 娣诲姞 `section-gradient-blue`銆乣section-gradient-cyan`銆乣section-gradient-violet` 閫氱敤鍒嗗尯娓愬彉绫汇€?
+- 娣诲姞 `soft-shadow` 閫氱敤鏌斿拰闃村奖绫汇€?
+- 娣诲姞 `soft-card-hover` 閫氱敤 hover 涓婃诞鏁堟灉銆?
+- 娣诲姞 `page-shell` 椤甸潰鏈€澶у搴﹀鍣ㄧ被銆?
+- 娣诲姞 `section-block` 缁熶竴鍒嗗尯闂磋窛绫汇€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools/raycast` 姝ｅ父鎵撳紑銆?
+- 宸茬‘璁ゅ叏绔欐祬鑹叉笎鍙樿儗鏅敓鏁堛€?
+- 宸茬‘璁よ鎯呴〉鏈彂鐜版í鍚戞粴鍔ㄣ€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续升级首页和详情页视觉时，优先复用这些全站基础 class，避免页面内重复写样式。
+- 鍚庣画鍗囩骇棣栭〉鍜岃鎯呴〉瑙嗚鏃讹紝浼樺厛澶嶇敤杩欎簺鍏ㄧ珯鍩虹 class锛岄伩鍏嶉〉闈㈠唴閲嶅鍐欐牱寮忋€?
 
 ## 2026-05-31
 
-任务：重做首页视觉设计。
+浠诲姟锛氶噸鍋氶椤佃瑙夎璁°€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/home-page.tsx`
 - `src/components/hero-section.tsx`
@@ -1627,36 +1913,36 @@
 - `src/components/common/AdPlaceholder.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改后台。
-- 不新增依赖。
-- 不改变已有路由。
-- 首页 Hero 使用 `section-gradient-blue`，并加入玻璃态数据看板。
-- 搜索区使用独立 `glass-card`，搜索框和按钮尺寸加强。
-- 分类区使用 `section-gradient-cyan`，分类卡片使用 `glass-card` 和 hover 上浮。
-- 推荐工具区使用浅色渐变背景，工具卡片使用 `glass-card`，按钮文案保持“查看详情”。
-- 最新文章区使用 `section-gradient-violet`，文章卡片改为玻璃卡片。
-- 推荐工具区和最新文章区之间已插入 `AdPlaceholder` 广告位。
-- 广告位文案为“合作推广”和“此处可展示赞助工具、精选服务或广告内容”。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查首页 `/`。
-- 已检查桌面端首页 Hero 标题、广告位和“查看详情”按钮正常显示。
-- 已检查首页没有出现“查看官网”。
-- 已检查手机端 Hero 标题为 `36px`，未超过移动端限制。
-- 已检查桌面端和手机端均未发现横向滚动。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 涓嶆柊澧炰緷璧栥€?
+- 涓嶆敼鍙樺凡鏈夎矾鐢便€?
+- 棣栭〉 Hero 浣跨敤 `section-gradient-blue`锛屽苟鍔犲叆鐜荤拑鎬佹暟鎹湅鏉裤€?
+- 鎼滅储鍖轰娇鐢ㄧ嫭绔?`glass-card`锛屾悳绱㈡鍜屾寜閽昂瀵稿姞寮恒€?
+- 鍒嗙被鍖轰娇鐢?`section-gradient-cyan`锛屽垎绫诲崱鐗囦娇鐢?`glass-card` 鍜?hover 涓婃诞銆?
+- 鎺ㄨ崘宸ュ叿鍖轰娇鐢ㄦ祬鑹叉笎鍙樿儗鏅紝宸ュ叿鍗＄墖浣跨敤 `glass-card`锛屾寜閽枃妗堜繚鎸佲€滄煡鐪嬭鎯呪€濄€?
+- 鏈€鏂版枃绔犲尯浣跨敤 `section-gradient-violet`锛屾枃绔犲崱鐗囨敼涓虹幓鐠冨崱鐗囥€?
+- 鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涔嬮棿宸叉彃鍏?`AdPlaceholder` 骞垮憡浣嶃€?
+- 骞垮憡浣嶆枃妗堜负鈥滃悎浣滄帹骞库€濆拰鈥滄澶勫彲灞曠ず璧炲姪宸ュ叿銆佺簿閫夋湇鍔℃垨骞垮憡鍐呭鈥濄€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌ラ椤?`/`銆?
+- 宸叉鏌ユ闈㈢棣栭〉 Hero 鏍囬銆佸箍鍛婁綅鍜屸€滄煡鐪嬭鎯呪€濇寜閽甯告樉绀恒€?
+- 宸叉鏌ラ椤垫病鏈夊嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸叉鏌ユ墜鏈虹 Hero 鏍囬涓?`36px`锛屾湭瓒呰繃绉诲姩绔檺鍒躲€?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续按新版设计系统逐步优化工具详情页和文章详情页视觉。
+- 缁х画鎸夋柊鐗堣璁＄郴缁熼€愭浼樺寲宸ュ叿璇︽儏椤靛拰鏂囩珷璇︽儏椤佃瑙夈€?
 
 ## 2026-06-01
 
-任务：重做 `/tools` 工具库页面视觉设计。
+浠诲姟锛氶噸鍋?`/tools` 宸ュ叿搴撻〉闈㈣瑙夎璁°€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/ToolsHero.tsx`
@@ -1667,41 +1953,41 @@
 - `src/components/tools/tools-no-results.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改后台。
-- 不新增依赖。
-- 不改变 mock 数据结构。
-- 保留原有搜索、分类筛选、标签筛选、清空筛选和详情跳转逻辑。
-- 工具库 Hero 改为 `section-gradient-blue` 浅色渐变分区。
-- Hero 标题更新为“发现实用、可靠、来源清晰的数字工具”。
-- Hero 右侧新增 `glass-card` 数据卡，展示当前收录数量、分类数量和持续更新状态。
-- 搜索与筛选区改为 `glass-card`，搜索框放大，筛选胶囊选中态使用青蓝渐变。
-- 结果统计区改为独立玻璃卡片。
-- 工具卡片使用 `glass-card` 和 `soft-card-hover`，保留“查看详情”，不显示“查看官网”。
-- 工具列表第 6 个工具后插入横向 `AdPlaceholder` 广告位；少于 6 个时放在列表下方。
-- 空状态改为 `glass-card`，文案更新为“没有找到匹配的工具”和“可以尝试减少筛选条件或换一个关键词。”。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools`。
-- 已检查桌面端 Hero 标题、副标题、广告位和 6 个“查看详情”按钮正常显示。
-- 已检查 `/tools` 没有出现“查看官网”。
-- 已检查广告位位于第 6 个工具之后。
-- 已检查搜索 `Markdown` 可筛选出 `Obsidian`，且不显示 `Raycast`。
-- 已检查无结果状态显示指定文案。
-- 已检查手机端 Hero 标题为 `36px`，卡片为单列布局。
-- 已检查桌面端和手机端均未发现横向滚动。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 涓嶆柊澧炰緷璧栥€?
+- 涓嶆敼鍙?mock 鏁版嵁缁撴瀯銆?
+- 淇濈暀鍘熸湁鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹竻绌虹瓫閫夊拰璇︽儏璺宠浆閫昏緫銆?
+- 宸ュ叿搴?Hero 鏀逛负 `section-gradient-blue` 娴呰壊娓愬彉鍒嗗尯銆?
+- Hero 鏍囬鏇存柊涓衡€滃彂鐜板疄鐢ㄣ€佸彲闈犮€佹潵婧愭竻鏅扮殑鏁板瓧宸ュ叿鈥濄€?
+- Hero 鍙充晶鏂板 `glass-card` 鏁版嵁鍗★紝灞曠ず褰撳墠鏀跺綍鏁伴噺銆佸垎绫绘暟閲忓拰鎸佺画鏇存柊鐘舵€併€?
+- 鎼滅储涓庣瓫閫夊尯鏀逛负 `glass-card`锛屾悳绱㈡鏀惧ぇ锛岀瓫閫夎兌鍥婇€変腑鎬佷娇鐢ㄩ潚钃濇笎鍙樸€?
+- 缁撴灉缁熻鍖烘敼涓虹嫭绔嬬幓鐠冨崱鐗囥€?
+- 宸ュ叿鍗＄墖浣跨敤 `glass-card` 鍜?`soft-card-hover`锛屼繚鐣欌€滄煡鐪嬭鎯呪€濓紝涓嶆樉绀衡€滄煡鐪嬪畼缃戔€濄€?
+- 宸ュ叿鍒楄〃绗?6 涓伐鍏峰悗鎻掑叆妯悜 `AdPlaceholder` 骞垮憡浣嶏紱灏戜簬 6 涓椂鏀惧湪鍒楄〃涓嬫柟銆?
+- 绌虹姸鎬佹敼涓?`glass-card`锛屾枃妗堟洿鏂颁负鈥滄病鏈夋壘鍒板尮閰嶇殑宸ュ叿鈥濆拰鈥滃彲浠ュ皾璇曞噺灏戠瓫閫夋潯浠舵垨鎹竴涓叧閿瘝銆傗€濄€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools`銆?
+- 宸叉鏌ユ闈㈢ Hero 鏍囬銆佸壇鏍囬銆佸箍鍛婁綅鍜?6 涓€滄煡鐪嬭鎯呪€濇寜閽甯告樉绀恒€?
+- 宸叉鏌?`/tools` 娌℃湁鍑虹幇鈥滄煡鐪嬪畼缃戔€濄€?
+- 宸叉鏌ュ箍鍛婁綅浣嶄簬绗?6 涓伐鍏蜂箣鍚庛€?
+- 宸叉鏌ユ悳绱?`Markdown` 鍙瓫閫夊嚭 `Obsidian`锛屼笖涓嶆樉绀?`Raycast`銆?
+- 宸叉鏌ユ棤缁撴灉鐘舵€佹樉绀烘寚瀹氭枃妗堛€?
+- 宸叉鏌ユ墜鏈虹 Hero 鏍囬涓?`36px`锛屽崱鐗囦负鍗曞垪甯冨眬銆?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续按新版设计系统逐步优化工具详情页视觉。
+- 缁х画鎸夋柊鐗堣璁＄郴缁熼€愭浼樺寲宸ュ叿璇︽儏椤佃瑙夈€?
 
 ## 2026-06-01
 
-任务：参考网络视觉资料后再次重改 `/tools` 工具库视觉效果。
+浠诲姟锛氬弬鑰冪綉缁滆瑙夎祫鏂欏悗鍐嶆閲嶆敼 `/tools` 宸ュ叿搴撹瑙夋晥鏋溿€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/globals.css`
 - `src/components/tools/tools-page.tsx`
@@ -1711,39 +1997,39 @@
 - `src/components/tools/ToolCard.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 使用 Chrome 插件尝试查看 Liquid Glass / Glassmorphism 相关视觉参考。
-- 参考方向：半透明材料、背景层次、细边框、柔和阴影、玻璃高光、内容可读性。
-- 不连接数据库。
-- 不修改后台。
-- 不新增依赖。
-- 不改变 `/tools` 业务逻辑、筛选逻辑和路由结构。
-- 升级 `glass-card` 全站玻璃质感，增加饱和模糊、内高光和更柔和的液态阴影。
-- 新增 `liquid-grid` 和 `liquid-panel` 通用视觉类。
-- `/tools` Hero 增加液态玻璃信息块和更强背景层次。
-- `/tools` 搜索筛选区改为浮动控制台视觉。
-- `/tools` 工具卡片增加玻璃折射感、内层信息块和更明确的详情按钮。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools`。
-- 已检查桌面端有 10 个 `glass-card` 和 5 个 `liquid-panel`，液态玻璃样式已生效。
-- 已检查搜索 `Markdown` 可筛选出 `Obsidian`，且不显示 `Raycast`。
-- 已检查页面未出现“查看官网”，仍保留 6 个“查看详情”按钮。
-- 已检查广告位正常显示“合作推广”和“这里可以展示赞助工具或精选服务”。
-- 已检查手机端标题为 `36px`，卡片为单列布局。
-- 已检查桌面端和手机端均未发现横向滚动。
-- 已保存检查截图：`.next-dev-logs/tools-liquid-desktop.png`、`.next-dev-logs/tools-liquid-mobile.png`。
+- 浣跨敤 Chrome 鎻掍欢灏濊瘯鏌ョ湅 Liquid Glass / Glassmorphism 鐩稿叧瑙嗚鍙傝€冦€?
+- 鍙傝€冩柟鍚戯細鍗婇€忔槑鏉愭枡銆佽儗鏅眰娆°€佺粏杈规銆佹煍鍜岄槾褰便€佺幓鐠冮珮鍏夈€佸唴瀹瑰彲璇绘€с€?
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 涓嶆柊澧炰緷璧栥€?
+- 涓嶆敼鍙?`/tools` 涓氬姟閫昏緫銆佺瓫閫夐€昏緫鍜岃矾鐢辩粨鏋勩€?
+- 鍗囩骇 `glass-card` 鍏ㄧ珯鐜荤拑璐ㄦ劅锛屽鍔犻ケ鍜屾ā绯娿€佸唴楂樺厜鍜屾洿鏌斿拰鐨勬恫鎬侀槾褰便€?
+- 鏂板 `liquid-grid` 鍜?`liquid-panel` 閫氱敤瑙嗚绫汇€?
+- `/tools` Hero 澧炲姞娑叉€佺幓鐠冧俊鎭潡鍜屾洿寮鸿儗鏅眰娆°€?
+- `/tools` 鎼滅储绛涢€夊尯鏀逛负娴姩鎺у埗鍙拌瑙夈€?
+- `/tools` 宸ュ叿鍗＄墖澧炲姞鐜荤拑鎶樺皠鎰熴€佸唴灞備俊鎭潡鍜屾洿鏄庣‘鐨勮鎯呮寜閽€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools`銆?
+- 宸叉鏌ユ闈㈢鏈?10 涓?`glass-card` 鍜?5 涓?`liquid-panel`锛屾恫鎬佺幓鐠冩牱寮忓凡鐢熸晥銆?
+- 宸叉鏌ユ悳绱?`Markdown` 鍙瓫閫夊嚭 `Obsidian`锛屼笖涓嶆樉绀?`Raycast`銆?
+- 宸叉鏌ラ〉闈㈡湭鍑虹幇鈥滄煡鐪嬪畼缃戔€濓紝浠嶄繚鐣?6 涓€滄煡鐪嬭鎯呪€濇寜閽€?
+- 宸叉鏌ュ箍鍛婁綅姝ｅ父鏄剧ず鈥滃悎浣滄帹骞库€濆拰鈥滆繖閲屽彲浠ュ睍绀鸿禐鍔╁伐鍏锋垨绮鹃€夋湇鍔♀€濄€?
+- 宸叉鏌ユ墜鏈虹鏍囬涓?`36px`锛屽崱鐗囦负鍗曞垪甯冨眬銆?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
+- 宸蹭繚瀛樻鏌ユ埅鍥撅細`.next-dev-logs/tools-liquid-desktop.png`銆乣.next-dev-logs/tools-liquid-mobile.png`銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续按新版视觉语言优化工具详情页。
+- 缁х画鎸夋柊鐗堣瑙夎瑷€浼樺寲宸ュ叿璇︽儏椤点€?
 
 ## 2026-06-01
 
-任务：检查并修复广告占位组件 `AdPlaceholder`。
+浠诲姟锛氭鏌ュ苟淇骞垮憡鍗犱綅缁勪欢 `AdPlaceholder`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/common/AdPlaceholder.tsx`
 - `src/components/home-page.tsx`
@@ -1751,139 +2037,139 @@
 - `src/components/tools/tool-detail-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 确认 `src/components/common/AdPlaceholder.tsx` 已存在。
-- 将组件 props 统一为 `variant: "sidebar" | "banner" | "inline"`、`title?`、`description?`、`className?`。
-- 默认文案更新为 `title: 合作推广`。
-- 默认说明更新为 `description: 此处可展示赞助工具、精选服务或广告内容`。
-- 保留 `glass-card`、虚线边框、低调广告样式和手机端自适应。
-- 首页推荐工具区和最新文章区之间继续使用 `variant="banner"`。
-- `/tools` 工具列表第 6 个工具后继续使用 `variant="banner"`。
-- `/tools/[slug]` 详情页正文中间使用 `variant="inline"`，底部使用 `variant="banner"`，右侧栏使用 `variant="sidebar"`。
-- 不接入真实广告代码。
-- 不修改数据库。
-- 不修改后台。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查首页 `/`、工具库 `/tools`、工具详情页 `/tools/raycast`。
-- 首页推荐工具区和最新文章区之间可见 1 个 banner 广告位。
-- `/tools` 工具列表可见 1 个 banner 广告位。
-- `/tools/raycast` 桌面端可见 3 个广告位：inline、banner、sidebar。
-- `/tools/raycast` 手机端可见 2 个广告位：inline、banner；sidebar 已隐藏。
-- 已确认默认文案“合作推广”和“此处可展示赞助工具、精选服务或广告内容”正常显示。
-- 已确认首页、工具库页和详情页均未发现横向滚动。
+- 纭 `src/components/common/AdPlaceholder.tsx` 宸插瓨鍦ㄣ€?
+- 灏嗙粍浠?props 缁熶竴涓?`variant: "sidebar" | "banner" | "inline"`銆乣title?`銆乣description?`銆乣className?`銆?
+- 榛樿鏂囨鏇存柊涓?`title: 鍚堜綔鎺ㄥ箍`銆?
+- 榛樿璇存槑鏇存柊涓?`description: 姝ゅ鍙睍绀鸿禐鍔╁伐鍏枫€佺簿閫夋湇鍔℃垨骞垮憡鍐呭`銆?
+- 淇濈暀 `glass-card`銆佽櫄绾胯竟妗嗐€佷綆璋冨箍鍛婃牱寮忓拰鎵嬫満绔嚜閫傚簲銆?
+- 棣栭〉鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涔嬮棿缁х画浣跨敤 `variant="banner"`銆?
+- `/tools` 宸ュ叿鍒楄〃绗?6 涓伐鍏峰悗缁х画浣跨敤 `variant="banner"`銆?
+- `/tools/[slug]` 璇︽儏椤垫鏂囦腑闂翠娇鐢?`variant="inline"`锛屽簳閮ㄤ娇鐢?`variant="banner"`锛屽彸渚ф爮浣跨敤 `variant="sidebar"`銆?
+- 涓嶆帴鍏ョ湡瀹炲箍鍛婁唬鐮併€?
+- 涓嶄慨鏀规暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌ラ椤?`/`銆佸伐鍏峰簱 `/tools`銆佸伐鍏疯鎯呴〉 `/tools/raycast`銆?
+- 棣栭〉鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涔嬮棿鍙 1 涓?banner 骞垮憡浣嶃€?
+- `/tools` 宸ュ叿鍒楄〃鍙 1 涓?banner 骞垮憡浣嶃€?
+- `/tools/raycast` 妗岄潰绔彲瑙?3 涓箍鍛婁綅锛歩nline銆乥anner銆乻idebar銆?
+- `/tools/raycast` 鎵嬫満绔彲瑙?2 涓箍鍛婁綅锛歩nline銆乥anner锛泂idebar 宸查殣钘忋€?
+- 宸茬‘璁ら粯璁ゆ枃妗堚€滃悎浣滄帹骞库€濆拰鈥滄澶勫彲灞曠ず璧炲姪宸ュ叿銆佺簿閫夋湇鍔℃垨骞垮憡鍐呭鈥濇甯告樉绀恒€?
+- 宸茬‘璁ら椤点€佸伐鍏峰簱椤靛拰璇︽儏椤靛潎鏈彂鐜版í鍚戞粴鍔ㄣ€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续接入真实广告时，只替换 `AdPlaceholder` 内部实现，不在页面中分散写广告代码。
+- 鍚庣画鎺ュ叆鐪熷疄骞垮憡鏃讹紝鍙浛鎹?`AdPlaceholder` 鍐呴儴瀹炵幇锛屼笉鍦ㄩ〉闈腑鍒嗘暎鍐欏箍鍛婁唬鐮併€?
 
 ## 2026-06-01
 
-任务：优化 `/tools/[slug]` 工具详情页视觉和广告位结构。
+浠诲姟锛氫紭鍖?`/tools/[slug]` 宸ュ叿璇︽儏椤佃瑙夊拰骞垮憡浣嶇粨鏋勩€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tool-detail-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改后台。
-- 不新增依赖。
-- 不破坏已有路由。
-- `CopyrightNotice` 组件已存在，详情页底部继续调用。
-- 详情页 Hero 使用 `section-gradient-blue` 和 `glass-card`。
-- Hero 已显示工具名称、一句话介绍、分类、标签、是否免费、是否开源和“访问官方网站”按钮。
-- 正文主内容区放在左侧主栏，并使用 `glass-card` 包裹。
-- 正文分块显示详细介绍、主要功能、适合人群、使用场景、优点、缺点和风险提示。
-- 正文中间插入 `variant="inline"` 广告位。
-- 页面底部插入 `variant="banner"` 广告位。
-- 电脑端右侧插入 `variant="sidebar"` 广告位。
-- 相关推荐放在右侧栏，手机端自然排到正文下方。
-- 官网按钮使用 `target="_blank"` 和 `rel="nofollow noopener noreferrer"`。
-- 已确认列表页相关组件未出现“查看官网”。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools/raycast`。
-- 桌面端可见 3 个广告位：正文 inline、底部 banner、右侧 sidebar。
-- 手机端可见 2 个广告位：正文 inline、底部 banner；右侧 sidebar 已隐藏。
-- 已检查详情页有 2 个“访问官方网站”按钮。
-- 已检查官网按钮均使用 `target="_blank"` 和 `rel="nofollow noopener noreferrer"`。
-- 已检查详细介绍、主要功能、适合人群、使用场景、优点、缺点、风险提示、相关推荐和版权声明均正常显示。
-- 已检查详情页未出现“查看官网”。
-- 已检查桌面端和手机端均未发现横向滚动。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀瑰悗鍙般€?
+- 涓嶆柊澧炰緷璧栥€?
+- 涓嶇牬鍧忓凡鏈夎矾鐢便€?
+- `CopyrightNotice` 缁勪欢宸插瓨鍦紝璇︽儏椤靛簳閮ㄧ户缁皟鐢ㄣ€?
+- 璇︽儏椤?Hero 浣跨敤 `section-gradient-blue` 鍜?`glass-card`銆?
+- Hero 宸叉樉绀哄伐鍏峰悕绉般€佷竴鍙ヨ瘽浠嬬粛銆佸垎绫汇€佹爣绛俱€佹槸鍚﹀厤璐广€佹槸鍚﹀紑婧愬拰鈥滆闂畼鏂圭綉绔欌€濇寜閽€?
+- 姝ｆ枃涓诲唴瀹瑰尯鏀惧湪宸︿晶涓绘爮锛屽苟浣跨敤 `glass-card` 鍖呰９銆?
+- 姝ｆ枃鍒嗗潡鏄剧ず璇︾粏浠嬬粛銆佷富瑕佸姛鑳姐€侀€傚悎浜虹兢銆佷娇鐢ㄥ満鏅€佷紭鐐广€佺己鐐瑰拰椋庨櫓鎻愮ず銆?
+- 姝ｆ枃涓棿鎻掑叆 `variant="inline"` 骞垮憡浣嶃€?
+- 椤甸潰搴曢儴鎻掑叆 `variant="banner"` 骞垮憡浣嶃€?
+- 鐢佃剳绔彸渚ф彃鍏?`variant="sidebar"` 骞垮憡浣嶃€?
+- 鐩稿叧鎺ㄨ崘鏀惧湪鍙充晶鏍忥紝鎵嬫満绔嚜鐒舵帓鍒版鏂囦笅鏂广€?
+- 瀹樼綉鎸夐挳浣跨敤 `target="_blank"` 鍜?`rel="nofollow noopener noreferrer"`銆?
+- 宸茬‘璁ゅ垪琛ㄩ〉鐩稿叧缁勪欢鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools/raycast`銆?
+- 妗岄潰绔彲瑙?3 涓箍鍛婁綅锛氭鏂?inline銆佸簳閮?banner銆佸彸渚?sidebar銆?
+- 鎵嬫満绔彲瑙?2 涓箍鍛婁綅锛氭鏂?inline銆佸簳閮?banner锛涘彸渚?sidebar 宸查殣钘忋€?
+- 宸叉鏌ヨ鎯呴〉鏈?2 涓€滆闂畼鏂圭綉绔欌€濇寜閽€?
+- 宸叉鏌ュ畼缃戞寜閽潎浣跨敤 `target="_blank"` 鍜?`rel="nofollow noopener noreferrer"`銆?
+- 宸叉鏌ヨ缁嗕粙缁嶃€佷富瑕佸姛鑳姐€侀€傚悎浜虹兢銆佷娇鐢ㄥ満鏅€佷紭鐐广€佺己鐐广€侀闄╂彁绀恒€佺浉鍏虫帹鑽愬拰鐗堟潈澹版槑鍧囨甯告樉绀恒€?
+- 宸叉鏌ヨ鎯呴〉鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续按新版视觉语言优化文章详情页或后续后台内容管理。
+- 缁х画鎸夋柊鐗堣瑙夎瑷€浼樺寲鏂囩珷璇︽儏椤垫垨鍚庣画鍚庡彴鍐呭绠＄悊銆?
 
 ## 2026-06-01
 
-任务：更新统一版权声明组件。
+浠诲姟锛氭洿鏂扮粺涓€鐗堟潈澹版槑缁勪欢銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/common/CopyrightNotice.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 更新版权声明组件文案。
-- 使用 `glass-card` 样式。
-- 字号偏小，颜色低调，边框柔和。
-- 保留 `className` 参数，方便后续复用。
-- 工具详情页已在底部引用 `CopyrightNotice`。
-- 当前项目未发现 `/articles/[slug]` 文章详情页，因此本次无法添加文章详情页引用。
-- 后续创建文章详情页时，必须在底部引用 `CopyrightNotice`。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools/raycast`。
-- 已确认新版权声明文案正常显示。
-- 已确认版权声明组件使用 `glass-card`。
-- 已确认详情页未发现横向滚动。
+- 鏇存柊鐗堟潈澹版槑缁勪欢鏂囨銆?
+- 浣跨敤 `glass-card` 鏍峰紡銆?
+- 瀛楀彿鍋忓皬锛岄鑹蹭綆璋冿紝杈规鏌斿拰銆?
+- 淇濈暀 `className` 鍙傛暟锛屾柟渚垮悗缁鐢ㄣ€?
+- 宸ュ叿璇︽儏椤靛凡鍦ㄥ簳閮ㄥ紩鐢?`CopyrightNotice`銆?
+- 褰撳墠椤圭洰鏈彂鐜?`/articles/[slug]` 鏂囩珷璇︽儏椤碉紝鍥犳鏈鏃犳硶娣诲姞鏂囩珷璇︽儏椤靛紩鐢ㄣ€?
+- 鍚庣画鍒涘缓鏂囩珷璇︽儏椤垫椂锛屽繀椤诲湪搴曢儴寮曠敤 `CopyrightNotice`銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools/raycast`銆?
+- 宸茬‘璁ゆ柊鐗堟潈澹版槑鏂囨姝ｅ父鏄剧ず銆?
+- 宸茬‘璁ょ増鏉冨０鏄庣粍浠朵娇鐢?`glass-card`銆?
+- 宸茬‘璁よ鎯呴〉鏈彂鐜版í鍚戞粴鍔ㄣ€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 创建文章详情页时，在底部复用 `CopyrightNotice`。
+- 鍒涘缓鏂囩珷璇︽儏椤垫椂锛屽湪搴曢儴澶嶇敤 `CopyrightNotice`銆?
 
 ## 2026-06-01
 
-任务：升级全站基础视觉样式。
+浠诲姟锛氬崌绾у叏绔欏熀纭€瑙嗚鏍峰紡銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/globals.css`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 只修改 `src/app/globals.css`，未修改首页、工具库页、工具详情页、mock 数据、数据库、后台和路由结构。
-- 已检查 `src/app/layout.tsx`，无需修改。
-- 已确认 body 背景为浅色渐变。
-- 已确认 body 文字颜色使用 `#0f172a`。
-- 已在 `html` 和 `body` 上设置 `overflow-x: hidden`，并新增 `no-horizontal-scroll` 工具类。
-- 已规范 `page-shell`、`section-block`、`glass-card`、`soft-card-hover`。
-- 已新增 `glass-card-strong`、`section-gradient-soft`、`liquid-border`、`ad-glass`。
-- 已保留现有 `section-gradient-blue`、`section-gradient-cyan`、`section-gradient-violet`。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查首页 `/`、工具库 `/tools`、工具详情页 `/tools/raycast`。
-- 已确认桌面端和手机端 body 背景均为浅色渐变。
-- 已确认桌面端和手机端 body 文字颜色均为 `rgb(15, 23, 42)`。
-- 已确认桌面端和手机端 `html`、`body` 的 `overflow-x` 均为 `hidden`。
-- 已确认首页、工具库页和工具详情页在桌面端和手机端均未发现横向滚动。
+- 鍙慨鏀?`src/app/globals.css`锛屾湭淇敼棣栭〉銆佸伐鍏峰簱椤点€佸伐鍏疯鎯呴〉銆乵ock 鏁版嵁銆佹暟鎹簱銆佸悗鍙板拰璺敱缁撴瀯銆?
+- 宸叉鏌?`src/app/layout.tsx`锛屾棤闇€淇敼銆?
+- 宸茬‘璁?body 鑳屾櫙涓烘祬鑹叉笎鍙樸€?
+- 宸茬‘璁?body 鏂囧瓧棰滆壊浣跨敤 `#0f172a`銆?
+- 宸插湪 `html` 鍜?`body` 涓婅缃?`overflow-x: hidden`锛屽苟鏂板 `no-horizontal-scroll` 宸ュ叿绫汇€?
+- 宸茶鑼?`page-shell`銆乣section-block`銆乣glass-card`銆乣soft-card-hover`銆?
+- 宸叉柊澧?`glass-card-strong`銆乣section-gradient-soft`銆乣liquid-border`銆乣ad-glass`銆?
+- 宸蹭繚鐣欑幇鏈?`section-gradient-blue`銆乣section-gradient-cyan`銆乣section-gradient-violet`銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌ラ椤?`/`銆佸伐鍏峰簱 `/tools`銆佸伐鍏疯鎯呴〉 `/tools/raycast`銆?
+- 宸茬‘璁ゆ闈㈢鍜屾墜鏈虹 body 鑳屾櫙鍧囦负娴呰壊娓愬彉銆?
+- 宸茬‘璁ゆ闈㈢鍜屾墜鏈虹 body 鏂囧瓧棰滆壊鍧囦负 `rgb(15, 23, 42)`銆?
+- 宸茬‘璁ゆ闈㈢鍜屾墜鏈虹 `html`銆乣body` 鐨?`overflow-x` 鍧囦负 `hidden`銆?
+- 宸茬‘璁ら椤点€佸伐鍏峰簱椤靛拰宸ュ叿璇︽儏椤靛湪妗岄潰绔拰鎵嬫満绔潎鏈彂鐜版í鍚戞粴鍔ㄣ€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续页面视觉升级优先复用这些全站基础样式，避免重复写局部 CSS。
+- 鍚庣画椤甸潰瑙嗚鍗囩骇浼樺厛澶嶇敤杩欎簺鍏ㄧ珯鍩虹鏍峰紡锛岄伩鍏嶉噸澶嶅啓灞€閮?CSS銆?
 
 ## 2026-06-01
 
-任务：重做首页视觉设计。
+浠诲姟锛氶噸鍋氶椤佃瑙夎璁°€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
@@ -1896,39 +2182,39 @@
 - `src/components/home/home-article-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改 `/tools` 页面。
-- 不修改 `/tools/[slug]` 页面。
-- 不修改后台、Supabase 相关代码和 mock 数据结构。
-- 首页入口改为使用 `src/components/home/` 下的新首页组件。
-- Hero 使用 `section-gradient-blue`、`page-shell` 和 `glass-card-strong` 数据看板。
-- Hero 文案更新为“发现值得信任的数字工具”和指定副标题。
-- Hero 标签更新为“来源清晰”“人工整理”“持续更新”“降低试错”。
-- 搜索区使用 `glass-card-strong`，搜索框占位文案更新为指定文案。
-- 分类区使用 `section-gradient-cyan`，分类卡片使用 `glass-card` 和 `soft-card-hover`。
-- 推荐工具区使用 `section-gradient-soft`，工具卡片使用 `glass-card`，按钮文案为“查看详情”。
-- 推荐工具区和最新文章区之间插入 `AdPlaceholder` banner 广告位。
-- 最新文章区使用 `section-gradient-violet`，文章卡片使用 `glass-card`。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查首页 `/`。
-- 已检查桌面端首页标题、副标题、搜索占位文案、广告位和 6 个“查看详情”按钮正常显示。
-- 已检查首页没有出现“查看官网”。
-- 已检查桌面端分类区为 4 栏，推荐工具区和最新文章区为 3 栏。
-- 已检查手机端 Hero 标题为 `36px`，Hero 改为上下布局，分类、工具和文章卡片均为单列。
-- 已检查桌面端和手机端均未发现横向滚动。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀?`/tools` 椤甸潰銆?
+- 涓嶄慨鏀?`/tools/[slug]` 椤甸潰銆?
+- 涓嶄慨鏀瑰悗鍙般€丼upabase 鐩稿叧浠ｇ爜鍜?mock 鏁版嵁缁撴瀯銆?
+- 棣栭〉鍏ュ彛鏀逛负浣跨敤 `src/components/home/` 涓嬬殑鏂伴椤电粍浠躲€?
+- Hero 浣跨敤 `section-gradient-blue`銆乣page-shell` 鍜?`glass-card-strong` 鏁版嵁鐪嬫澘銆?
+- Hero 鏂囨鏇存柊涓衡€滃彂鐜板€煎緱淇′换鐨勬暟瀛楀伐鍏封€濆拰鎸囧畾鍓爣棰樸€?
+- Hero 鏍囩鏇存柊涓衡€滄潵婧愭竻鏅扳€濃€滀汉宸ユ暣鐞嗏€濃€滄寔缁洿鏂扳€濃€滈檷浣庤瘯閿欌€濄€?
+- 鎼滅储鍖轰娇鐢?`glass-card-strong`锛屾悳绱㈡鍗犱綅鏂囨鏇存柊涓烘寚瀹氭枃妗堛€?
+- 鍒嗙被鍖轰娇鐢?`section-gradient-cyan`锛屽垎绫诲崱鐗囦娇鐢?`glass-card` 鍜?`soft-card-hover`銆?
+- 鎺ㄨ崘宸ュ叿鍖轰娇鐢?`section-gradient-soft`锛屽伐鍏峰崱鐗囦娇鐢?`glass-card`锛屾寜閽枃妗堜负鈥滄煡鐪嬭鎯呪€濄€?
+- 鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涔嬮棿鎻掑叆 `AdPlaceholder` banner 骞垮憡浣嶃€?
+- 鏈€鏂版枃绔犲尯浣跨敤 `section-gradient-violet`锛屾枃绔犲崱鐗囦娇鐢?`glass-card`銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌ラ椤?`/`銆?
+- 宸叉鏌ユ闈㈢棣栭〉鏍囬銆佸壇鏍囬銆佹悳绱㈠崰浣嶆枃妗堛€佸箍鍛婁綅鍜?6 涓€滄煡鐪嬭鎯呪€濇寜閽甯告樉绀恒€?
+- 宸叉鏌ラ椤垫病鏈夊嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸叉鏌ユ闈㈢鍒嗙被鍖轰负 4 鏍忥紝鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涓?3 鏍忋€?
+- 宸叉鏌ユ墜鏈虹 Hero 鏍囬涓?`36px`锛孒ero 鏀逛负涓婁笅甯冨眬锛屽垎绫汇€佸伐鍏峰拰鏂囩珷鍗＄墖鍧囦负鍗曞垪銆?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 继续完善文章详情页或后台内容管理前，先保持首页和工具页视觉语言一致。
+- 缁х画瀹屽杽鏂囩珷璇︽儏椤垫垨鍚庡彴鍐呭绠＄悊鍓嶏紝鍏堜繚鎸侀椤靛拰宸ュ叿椤佃瑙夎瑷€涓€鑷淬€?
 
 ## 2026-06-01
 
-任务：重做 `/tools` 工具库页面视觉设计。
+浠诲姟锛氶噸鍋?`/tools` 宸ュ叿搴撻〉闈㈣瑙夎璁°€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/tools/tools-page.tsx`
 - `src/components/tools/ToolsHero.tsx`
@@ -1939,43 +2225,43 @@
 - `src/components/tools/tools-no-results.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改首页。
-- 不修改 `/tools/[slug]` 详情页。
-- 不修改后台、Supabase 相关代码、路由结构和 mock 数据结构。
-- 保留原有搜索、分类筛选、标签筛选、清空筛选和详情跳转逻辑。
-- 工具库 Hero 使用 `section-gradient-blue` 和 `page-shell`，右侧使用 `glass-card-strong` 数据卡。
-- Hero 文案更新为“发现实用、可靠、来源清晰的数字工具”和指定副标题。
-- Hero 标签更新为“AI 工具”“在线工具”“开源项目”“效率软件”“人工整理”。
-- 搜索与筛选区使用 `glass-card-strong`，搜索占位文案更新为“搜索工具标题、简介、分类或标签”。
-- 分类和标签筛选继续使用圆角胶囊按钮，选中状态使用青蓝渐变。
-- 结果统计区改为轻量标题 + 玻璃统计标签。
-- 工具卡片使用 `glass-card` 和 `soft-card-hover`，顶部展示分类与免费状态，底部保留“查看详情”按钮。
-- 工具列表第 6 个工具后插入 `AdPlaceholder` banner 广告位。
-- 广告位文案更新为“合作推广”和“这里可以展示赞助工具、精选服务或广告内容”。
-- 空状态使用 `glass-card`，显示指定无结果文案和“清空筛选”按钮。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools`。
-- 已检查 CSS 正常加载，桌面端工具卡片为 3 栏。
-- 已检查分类筛选 `开源项目` 可筛选出 `Supabase` 和 `LocalSend`，且不显示 `Raycast`。
-- 已检查分类和标签组合无结果时显示指定空状态文案。
-- 已检查页面未出现“查看官网”，有 6 个“查看详情”入口，示例链接为 `/tools/raycast`。
-- 已检查广告位正常显示指定文案。
-- 已检查手机端 Hero 为上下布局，标题为 `36px`，工具卡片为单列。
-- 已检查桌面端和手机端均未发现横向滚动。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀归椤点€?
+- 涓嶄慨鏀?`/tools/[slug]` 璇︽儏椤点€?
+- 涓嶄慨鏀瑰悗鍙般€丼upabase 鐩稿叧浠ｇ爜銆佽矾鐢辩粨鏋勫拰 mock 鏁版嵁缁撴瀯銆?
+- 淇濈暀鍘熸湁鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹竻绌虹瓫閫夊拰璇︽儏璺宠浆閫昏緫銆?
+- 宸ュ叿搴?Hero 浣跨敤 `section-gradient-blue` 鍜?`page-shell`锛屽彸渚т娇鐢?`glass-card-strong` 鏁版嵁鍗°€?
+- Hero 鏂囨鏇存柊涓衡€滃彂鐜板疄鐢ㄣ€佸彲闈犮€佹潵婧愭竻鏅扮殑鏁板瓧宸ュ叿鈥濆拰鎸囧畾鍓爣棰樸€?
+- Hero 鏍囩鏇存柊涓衡€淎I 宸ュ叿鈥濃€滃湪绾垮伐鍏封€濃€滃紑婧愰」鐩€濃€滄晥鐜囪蒋浠垛€濃€滀汉宸ユ暣鐞嗏€濄€?
+- 鎼滅储涓庣瓫閫夊尯浣跨敤 `glass-card-strong`锛屾悳绱㈠崰浣嶆枃妗堟洿鏂颁负鈥滄悳绱㈠伐鍏锋爣棰樸€佺畝浠嬨€佸垎绫绘垨鏍囩鈥濄€?
+- 鍒嗙被鍜屾爣绛剧瓫閫夌户缁娇鐢ㄥ渾瑙掕兌鍥婃寜閽紝閫変腑鐘舵€佷娇鐢ㄩ潚钃濇笎鍙樸€?
+- 缁撴灉缁熻鍖烘敼涓鸿交閲忔爣棰?+ 鐜荤拑缁熻鏍囩銆?
+- 宸ュ叿鍗＄墖浣跨敤 `glass-card` 鍜?`soft-card-hover`锛岄《閮ㄥ睍绀哄垎绫讳笌鍏嶈垂鐘舵€侊紝搴曢儴淇濈暀鈥滄煡鐪嬭鎯呪€濇寜閽€?
+- 宸ュ叿鍒楄〃绗?6 涓伐鍏峰悗鎻掑叆 `AdPlaceholder` banner 骞垮憡浣嶃€?
+- 骞垮憡浣嶆枃妗堟洿鏂颁负鈥滃悎浣滄帹骞库€濆拰鈥滆繖閲屽彲浠ュ睍绀鸿禐鍔╁伐鍏枫€佺簿閫夋湇鍔℃垨骞垮憡鍐呭鈥濄€?
+- 绌虹姸鎬佷娇鐢?`glass-card`锛屾樉绀烘寚瀹氭棤缁撴灉鏂囨鍜屸€滄竻绌虹瓫閫夆€濇寜閽€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools`銆?
+- 宸叉鏌?CSS 姝ｅ父鍔犺浇锛屾闈㈢宸ュ叿鍗＄墖涓?3 鏍忋€?
+- 宸叉鏌ュ垎绫荤瓫閫?`寮€婧愰」鐩甡 鍙瓫閫夊嚭 `Supabase` 鍜?`LocalSend`锛屼笖涓嶆樉绀?`Raycast`銆?
+- 宸叉鏌ュ垎绫诲拰鏍囩缁勫悎鏃犵粨鏋滄椂鏄剧ず鎸囧畾绌虹姸鎬佹枃妗堛€?
+- 宸叉鏌ラ〉闈㈡湭鍑虹幇鈥滄煡鐪嬪畼缃戔€濓紝鏈?6 涓€滄煡鐪嬭鎯呪€濆叆鍙ｏ紝绀轰緥閾炬帴涓?`/tools/raycast`銆?
+- 宸叉鏌ュ箍鍛婁綅姝ｅ父鏄剧ず鎸囧畾鏂囨銆?
+- 宸叉鏌ユ墜鏈虹 Hero 涓轰笂涓嬪竷灞€锛屾爣棰樹负 `36px`锛屽伐鍏峰崱鐗囦负鍗曞垪銆?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续可继续创建文章列表页或文章详情页，保持与首页和工具库一致的视觉语言。
+- 鍚庣画鍙户缁垱寤烘枃绔犲垪琛ㄩ〉鎴栨枃绔犺鎯呴〉锛屼繚鎸佷笌棣栭〉鍜屽伐鍏峰簱涓€鑷寸殑瑙嗚璇█銆?
 
 ## 2026-06-01
 
-任务：检查并修复广告占位组件 `AdPlaceholder`。
+浠诲姟锛氭鏌ュ苟淇骞垮憡鍗犱綅缁勪欢 `AdPlaceholder`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/common/AdPlaceholder.tsx`
 - `src/components/home/home-page.tsx`
@@ -1983,83 +2269,83 @@
 - `src/components/tools/tool-detail-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 确认 `src/components/common/AdPlaceholder.tsx` 已存在。
-- 保留组件 props：`variant: "sidebar" | "banner" | "inline"`、`title?`、`description?`、`className?`。
-- 保留默认文案：`title: 合作推广`、`description: 此处可展示赞助工具、精选服务或广告内容`。
-- 广告组件统一使用 `ad-glass`、虚线边框、低调文字，并增加明确的“广告位”标识。
-- `banner` 用于横向广告位，适合首页分区之间、工具列表中间和详情页底部。
-- `sidebar` 用于详情页右侧广告栏，手机端自然变成普通横向卡片并排到正文下方。
-- `inline` 用于详情页正文中间，保持较低高度，不干扰阅读。
-- 首页推荐工具区和最新文章区之间继续插入 `variant="banner"` 广告位。
-- `/tools` 工具列表第 6 个工具后继续插入 `variant="banner"` 广告位，并使用 `col-span-full` 横跨整行。
-- `/tools/[slug]` 详情页包含 3 个广告位：正文中间 `inline`、底部 `banner`、右侧栏 `sidebar`。
-- 不接入真实广告平台，不加入广告脚本。
-- 不修改数据库、后台、Supabase 相关代码、mock 数据结构和路由结构。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev`。
-- 已检查首页 `/`、工具库 `/tools`、工具详情页 `/tools/raycast` 均返回 200。
-- 已使用浏览器检查首页桌面端有 1 个广告位，文案为“合作推广”和“此处可展示赞助工具、精选服务或广告内容”。
-- 已使用浏览器检查 `/tools` 桌面端和手机端均有 1 个广告位，文案为“合作推广”和“这里可以展示赞助工具、精选服务或广告内容”。
-- 已使用浏览器检查 `/tools` 广告位在 grid 中 `grid-column` 为 `1 / -1`，可横跨整行。
-- 已使用浏览器检查 `/tools/raycast` 桌面端和手机端均有 3 个广告位。
-- 已确认首页、工具库页和工具详情页均未发现横向滚动。
+- 纭 `src/components/common/AdPlaceholder.tsx` 宸插瓨鍦ㄣ€?
+- 淇濈暀缁勪欢 props锛歚variant: "sidebar" | "banner" | "inline"`銆乣title?`銆乣description?`銆乣className?`銆?
+- 淇濈暀榛樿鏂囨锛歚title: 鍚堜綔鎺ㄥ箍`銆乣description: 姝ゅ鍙睍绀鸿禐鍔╁伐鍏枫€佺簿閫夋湇鍔℃垨骞垮憡鍐呭`銆?
+- 骞垮憡缁勪欢缁熶竴浣跨敤 `ad-glass`銆佽櫄绾胯竟妗嗐€佷綆璋冩枃瀛楋紝骞跺鍔犳槑纭殑鈥滃箍鍛婁綅鈥濇爣璇嗐€?
+- `banner` 鐢ㄤ簬妯悜骞垮憡浣嶏紝閫傚悎棣栭〉鍒嗗尯涔嬮棿銆佸伐鍏峰垪琛ㄤ腑闂村拰璇︽儏椤靛簳閮ㄣ€?
+- `sidebar` 鐢ㄤ簬璇︽儏椤靛彸渚у箍鍛婃爮锛屾墜鏈虹鑷劧鍙樻垚鏅€氭í鍚戝崱鐗囧苟鎺掑埌姝ｆ枃涓嬫柟銆?
+- `inline` 鐢ㄤ簬璇︽儏椤垫鏂囦腑闂达紝淇濇寔杈冧綆楂樺害锛屼笉骞叉壈闃呰銆?
+- 棣栭〉鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涔嬮棿缁х画鎻掑叆 `variant="banner"` 骞垮憡浣嶃€?
+- `/tools` 宸ュ叿鍒楄〃绗?6 涓伐鍏峰悗缁х画鎻掑叆 `variant="banner"` 骞垮憡浣嶏紝骞朵娇鐢?`col-span-full` 妯法鏁磋銆?
+- `/tools/[slug]` 璇︽儏椤靛寘鍚?3 涓箍鍛婁綅锛氭鏂囦腑闂?`inline`銆佸簳閮?`banner`銆佸彸渚ф爮 `sidebar`銆?
+- 涓嶆帴鍏ョ湡瀹炲箍鍛婂钩鍙帮紝涓嶅姞鍏ュ箍鍛婅剼鏈€?
+- 涓嶄慨鏀规暟鎹簱銆佸悗鍙般€丼upabase 鐩稿叧浠ｇ爜銆乵ock 鏁版嵁缁撴瀯鍜岃矾鐢辩粨鏋勩€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev`銆?
+- 宸叉鏌ラ椤?`/`銆佸伐鍏峰簱 `/tools`銆佸伐鍏疯鎯呴〉 `/tools/raycast` 鍧囪繑鍥?200銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌ラ椤垫闈㈢鏈?1 涓箍鍛婁綅锛屾枃妗堜负鈥滃悎浣滄帹骞库€濆拰鈥滄澶勫彲灞曠ず璧炲姪宸ュ叿銆佺簿閫夋湇鍔℃垨骞垮憡鍐呭鈥濄€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools` 妗岄潰绔拰鎵嬫満绔潎鏈?1 涓箍鍛婁綅锛屾枃妗堜负鈥滃悎浣滄帹骞库€濆拰鈥滆繖閲屽彲浠ュ睍绀鸿禐鍔╁伐鍏枫€佺簿閫夋湇鍔℃垨骞垮憡鍐呭鈥濄€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools` 骞垮憡浣嶅湪 grid 涓?`grid-column` 涓?`1 / -1`锛屽彲妯法鏁磋銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/raycast` 妗岄潰绔拰鎵嬫満绔潎鏈?3 涓箍鍛婁綅銆?
+- 宸茬‘璁ら椤点€佸伐鍏峰簱椤靛拰宸ュ叿璇︽儏椤靛潎鏈彂鐜版í鍚戞粴鍔ㄣ€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续接入真实广告或联盟链接时，只替换 `AdPlaceholder` 内部实现，页面中继续复用统一组件。
+- 鍚庣画鎺ュ叆鐪熷疄骞垮憡鎴栬仈鐩熼摼鎺ユ椂锛屽彧鏇挎崲 `AdPlaceholder` 鍐呴儴瀹炵幇锛岄〉闈腑缁х画澶嶇敤缁熶竴缁勪欢銆?
 
 ## 2026-06-01
 
-任务：优化 `/tools/[slug]` 工具详情页视觉和广告位结构。
+浠诲姟锛氫紭鍖?`/tools/[slug]` 宸ュ叿璇︽儏椤佃瑙夊拰骞垮憡浣嶇粨鏋勩€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/tools/[slug]/page.tsx`
 - `src/components/tools/tool-detail-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改首页。
-- 不修改 `/tools` 工具列表页。
-- 不修改后台、Supabase 相关代码、路由结构和 mock 数据结构。
-- 详情页 Hero 使用 `section-gradient-blue`、`page-shell` 和 `glass-card-strong`。
-- Hero 显示工具名称、一句话介绍、分类、标签、是否免费、是否开源和“访问官方网站”按钮。
-- 官网按钮仅在存在 `website_url` 时显示。
-- 官网按钮使用 `target="_blank"` 和 `rel="nofollow noopener noreferrer"`。
-- 正文主内容区使用 `page-shell`，电脑端为左侧主内容 + 右侧广告栏两栏布局。
-- 主内容使用 `glass-card`，并按顺序显示详细介绍、主要功能、适合人群、使用场景、优点、缺点和风险提示。
-- 在“主要功能”和“适合人群”之间插入 `AdPlaceholder variant="inline"`。
-- 右侧广告栏插入 `AdPlaceholder variant="sidebar"`，电脑端 sticky，手机端自然排到正文下方。
-- 正文结束后新增底部官网访问 CTA，标题为“准备访问这个工具？”。
-- 相关推荐移动到页面底部，仅推荐同分类工具，最多 3 个，卡片使用 `glass-card`，按钮文案为“查看详情”。
-- 相关推荐之后插入 `AdPlaceholder variant="banner"`。
-- 最底部继续显示 `CopyrightNotice`。
-- 找不到工具时显示友好空状态，文案为“没有找到这个工具”和“你可以返回工具库重新浏览。”，并提供“返回工具库”按钮。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/tools/raycast` 和 `/tools/not-exist` 均返回 200。
-- 已使用浏览器检查 `/tools/raycast` 桌面端有 3 个广告位，2 个“访问官方网站”按钮。
-- 已使用浏览器检查 `/tools/raycast` 官网按钮均使用 `target="_blank"` 和 `rel="nofollow noopener noreferrer"`。
-- 已使用浏览器检查 `/tools/raycast` 未出现“查看官网”。
-- 已使用浏览器检查 `/tools/raycast` 手机端标题为 `36px`，页面无横向滚动。
-- 已使用浏览器检查正文分块顺序正确，inline 广告位位于“主要功能”和“适合人群”之间。
-- 已使用浏览器检查 `/tools/supabase` 有同分类相关推荐，并显示“查看详情”按钮。
-- 已使用浏览器检查 `/tools/not-exist` 显示友好空状态和“返回工具库”按钮。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀归椤点€?
+- 涓嶄慨鏀?`/tools` 宸ュ叿鍒楄〃椤点€?
+- 涓嶄慨鏀瑰悗鍙般€丼upabase 鐩稿叧浠ｇ爜銆佽矾鐢辩粨鏋勫拰 mock 鏁版嵁缁撴瀯銆?
+- 璇︽儏椤?Hero 浣跨敤 `section-gradient-blue`銆乣page-shell` 鍜?`glass-card-strong`銆?
+- Hero 鏄剧ず宸ュ叿鍚嶇О銆佷竴鍙ヨ瘽浠嬬粛銆佸垎绫汇€佹爣绛俱€佹槸鍚﹀厤璐广€佹槸鍚﹀紑婧愬拰鈥滆闂畼鏂圭綉绔欌€濇寜閽€?
+- 瀹樼綉鎸夐挳浠呭湪瀛樺湪 `website_url` 鏃舵樉绀恒€?
+- 瀹樼綉鎸夐挳浣跨敤 `target="_blank"` 鍜?`rel="nofollow noopener noreferrer"`銆?
+- 姝ｆ枃涓诲唴瀹瑰尯浣跨敤 `page-shell`锛岀數鑴戠涓哄乏渚т富鍐呭 + 鍙充晶骞垮憡鏍忎袱鏍忓竷灞€銆?
+- 涓诲唴瀹逛娇鐢?`glass-card`锛屽苟鎸夐『搴忔樉绀鸿缁嗕粙缁嶃€佷富瑕佸姛鑳姐€侀€傚悎浜虹兢銆佷娇鐢ㄥ満鏅€佷紭鐐广€佺己鐐瑰拰椋庨櫓鎻愮ず銆?
+- 鍦ㄢ€滀富瑕佸姛鑳解€濆拰鈥滈€傚悎浜虹兢鈥濅箣闂存彃鍏?`AdPlaceholder variant="inline"`銆?
+- 鍙充晶骞垮憡鏍忔彃鍏?`AdPlaceholder variant="sidebar"`锛岀數鑴戠 sticky锛屾墜鏈虹鑷劧鎺掑埌姝ｆ枃涓嬫柟銆?
+- 姝ｆ枃缁撴潫鍚庢柊澧炲簳閮ㄥ畼缃戣闂?CTA锛屾爣棰樹负鈥滃噯澶囪闂繖涓伐鍏凤紵鈥濄€?
+- 鐩稿叧鎺ㄨ崘绉诲姩鍒伴〉闈㈠簳閮紝浠呮帹鑽愬悓鍒嗙被宸ュ叿锛屾渶澶?3 涓紝鍗＄墖浣跨敤 `glass-card`锛屾寜閽枃妗堜负鈥滄煡鐪嬭鎯呪€濄€?
+- 鐩稿叧鎺ㄨ崘涔嬪悗鎻掑叆 `AdPlaceholder variant="banner"`銆?
+- 鏈€搴曢儴缁х画鏄剧ず `CopyrightNotice`銆?
+- 鎵句笉鍒板伐鍏锋椂鏄剧ず鍙嬪ソ绌虹姸鎬侊紝鏂囨涓衡€滄病鏈夋壘鍒拌繖涓伐鍏封€濆拰鈥滀綘鍙互杩斿洖宸ュ叿搴撻噸鏂版祻瑙堛€傗€濓紝骞舵彁渚涒€滆繑鍥炲伐鍏峰簱鈥濇寜閽€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/tools/raycast` 鍜?`/tools/not-exist` 鍧囪繑鍥?200銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/raycast` 妗岄潰绔湁 3 涓箍鍛婁綅锛? 涓€滆闂畼鏂圭綉绔欌€濇寜閽€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/raycast` 瀹樼綉鎸夐挳鍧囦娇鐢?`target="_blank"` 鍜?`rel="nofollow noopener noreferrer"`銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/raycast` 鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/raycast` 鎵嬫満绔爣棰樹负 `36px`锛岄〉闈㈡棤妯悜婊氬姩銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌ユ鏂囧垎鍧楅『搴忔纭紝inline 骞垮憡浣嶄綅浜庘€滀富瑕佸姛鑳解€濆拰鈥滈€傚悎浜虹兢鈥濅箣闂淬€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/supabase` 鏈夊悓鍒嗙被鐩稿叧鎺ㄨ崘锛屽苟鏄剧ず鈥滄煡鐪嬭鎯呪€濇寜閽€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/tools/not-exist` 鏄剧ず鍙嬪ソ绌虹姸鎬佸拰鈥滆繑鍥炲伐鍏峰簱鈥濇寜閽€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续可以创建文章详情页，并复用同一套广告、版权和底部推荐结构。
+- 鍚庣画鍙互鍒涘缓鏂囩珷璇︽儏椤碉紝骞跺鐢ㄥ悓涓€濂楀箍鍛娿€佺増鏉冨拰搴曢儴鎺ㄨ崘缁撴瀯銆?
 
 ## 2026-06-01
 
-任务：统一优化文章列表页 `/articles` 和文章详情页 `/articles/[slug]`。
+浠诲姟锛氱粺涓€浼樺寲鏂囩珷鍒楄〃椤?`/articles` 鍜屾枃绔犺鎯呴〉 `/articles/[slug]`銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/articles/page.tsx`
 - `src/app/articles/[slug]/page.tsx`
@@ -2073,52 +2359,52 @@
 - `src/components/articles/article-detail-page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 不连接数据库。
-- 不修改首页。
-- 不修改 `/tools` 页面。
-- 不修改 `/tools/[slug]` 页面。
-- 不修改后台、Supabase 相关代码、路由结构和 mock 数据结构。
-- 由于 `src/data/mock-articles.ts` 只有基础列表字段，本次在 `src/components/articles/article-content.ts` 中做详情内容、标签和 slug 兼容补充，未改原 mock 文件。
-- 新增 `/articles` 文章列表页。
-- 新增 `/articles/[slug]` 文章详情页。
-- 文章列表 Hero 使用 `section-gradient-violet`、`page-shell` 和 `glass-card-strong` 数据卡。
-- 文章列表筛选区使用 `glass-card-strong`，支持搜索、分类筛选、标签筛选、显示当前文章数量和清空筛选。
-- 文章卡片使用 `glass-card` 和 `soft-card-hover`，按钮文案为“阅读全文”，链接到 `/articles/[slug]`。
-- 文章列表广告位使用 `AdPlaceholder variant="banner"`，少于 6 篇时放在列表下方，并使用 `col-span-full` 横跨整行。
-- 文章列表空状态使用 `glass-card`，显示“没有找到匹配的文章”和“可以尝试减少筛选条件或换一个关键词。”。
-- 文章详情页 Hero 使用 `section-gradient-violet`、`page-shell` 和 `glass-card-strong`。
-- 文章详情页正文使用 `page-shell`，电脑端为左侧正文 + 右侧广告栏两栏布局，手机端为单列。
-- 文章详情页正文使用 `glass-card`，排版使用较宽行距、清晰标题和列表。
-- 文章详情页正文中部插入 `AdPlaceholder variant="inline"`。
-- 文章详情页右侧栏插入 `AdPlaceholder variant="sidebar"`，手机端自然排到正文下方。
-- 文章详情页相关推荐优先推荐同分类文章，最多 3 篇，按钮文案为“阅读全文”。
-- 文章详情页相关推荐之后插入 `AdPlaceholder variant="banner"`。
-- 文章详情页底部插入 `CopyrightNotice`。
-- 找不到文章时显示友好空状态，文案为“没有找到这篇文章”和“你可以返回文章列表继续浏览。”，并提供“返回文章列表”按钮。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev` 并检查 `/articles`、`/articles/ai-tool-checklist`、`/articles/not-exist` 均返回 200。
-- 已使用浏览器检查 `/articles` 桌面端文章卡片为 3 栏，手机端为 1 栏。
-- 已使用浏览器检查 `/articles` Hero 标题、标签、内容看板、搜索占位文案和 banner 广告位正常显示。
-- 已使用浏览器检查 `/articles` 广告位 `grid-column` 为 `1 / -1`，可横跨整行。
-- 已使用浏览器检查 `/articles` 分类筛选 `开源项目` 可筛选出 1 篇文章。
-- 已使用浏览器检查 `/articles` 分类与标签组合无结果时显示指定空状态。
-- 已使用浏览器检查 `/articles/ai-tool-checklist` 桌面端有 3 个广告位，右侧正文布局为两栏。
-- 已使用浏览器检查 `/articles/ai-tool-checklist` 手机端标题为 `36px`，页面无横向滚动。
-- 已使用浏览器检查 `/articles/ai-tool-checklist` 显示版权声明。
-- 已使用浏览器检查 `/articles/not-exist` 显示友好空状态和“返回文章列表”按钮。
+- 涓嶈繛鎺ユ暟鎹簱銆?
+- 涓嶄慨鏀归椤点€?
+- 涓嶄慨鏀?`/tools` 椤甸潰銆?
+- 涓嶄慨鏀?`/tools/[slug]` 椤甸潰銆?
+- 涓嶄慨鏀瑰悗鍙般€丼upabase 鐩稿叧浠ｇ爜銆佽矾鐢辩粨鏋勫拰 mock 鏁版嵁缁撴瀯銆?
+- 鐢变簬 `src/data/mock-articles.ts` 鍙湁鍩虹鍒楄〃瀛楁锛屾湰娆″湪 `src/components/articles/article-content.ts` 涓仛璇︽儏鍐呭銆佹爣绛惧拰 slug 鍏煎琛ュ厖锛屾湭鏀瑰師 mock 鏂囦欢銆?
+- 鏂板 `/articles` 鏂囩珷鍒楄〃椤点€?
+- 鏂板 `/articles/[slug]` 鏂囩珷璇︽儏椤点€?
+- 鏂囩珷鍒楄〃 Hero 浣跨敤 `section-gradient-violet`銆乣page-shell` 鍜?`glass-card-strong` 鏁版嵁鍗°€?
+- 鏂囩珷鍒楄〃绛涢€夊尯浣跨敤 `glass-card-strong`锛屾敮鎸佹悳绱€佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹樉绀哄綋鍓嶆枃绔犳暟閲忓拰娓呯┖绛涢€夈€?
+- 鏂囩珷鍗＄墖浣跨敤 `glass-card` 鍜?`soft-card-hover`锛屾寜閽枃妗堜负鈥滈槄璇诲叏鏂団€濓紝閾炬帴鍒?`/articles/[slug]`銆?
+- 鏂囩珷鍒楄〃骞垮憡浣嶄娇鐢?`AdPlaceholder variant="banner"`锛屽皯浜?6 绡囨椂鏀惧湪鍒楄〃涓嬫柟锛屽苟浣跨敤 `col-span-full` 妯法鏁磋銆?
+- 鏂囩珷鍒楄〃绌虹姸鎬佷娇鐢?`glass-card`锛屾樉绀衡€滄病鏈夋壘鍒板尮閰嶇殑鏂囩珷鈥濆拰鈥滃彲浠ュ皾璇曞噺灏戠瓫閫夋潯浠舵垨鎹竴涓叧閿瘝銆傗€濄€?
+- 鏂囩珷璇︽儏椤?Hero 浣跨敤 `section-gradient-violet`銆乣page-shell` 鍜?`glass-card-strong`銆?
+- 鏂囩珷璇︽儏椤垫鏂囦娇鐢?`page-shell`锛岀數鑴戠涓哄乏渚ф鏂?+ 鍙充晶骞垮憡鏍忎袱鏍忓竷灞€锛屾墜鏈虹涓哄崟鍒椼€?
+- 鏂囩珷璇︽儏椤垫鏂囦娇鐢?`glass-card`锛屾帓鐗堜娇鐢ㄨ緝瀹借璺濄€佹竻鏅版爣棰樺拰鍒楄〃銆?
+- 鏂囩珷璇︽儏椤垫鏂囦腑閮ㄦ彃鍏?`AdPlaceholder variant="inline"`銆?
+- 鏂囩珷璇︽儏椤靛彸渚ф爮鎻掑叆 `AdPlaceholder variant="sidebar"`锛屾墜鏈虹鑷劧鎺掑埌姝ｆ枃涓嬫柟銆?
+- 鏂囩珷璇︽儏椤电浉鍏虫帹鑽愪紭鍏堟帹鑽愬悓鍒嗙被鏂囩珷锛屾渶澶?3 绡囷紝鎸夐挳鏂囨涓衡€滈槄璇诲叏鏂団€濄€?
+- 鏂囩珷璇︽儏椤电浉鍏虫帹鑽愪箣鍚庢彃鍏?`AdPlaceholder variant="banner"`銆?
+- 鏂囩珷璇︽儏椤靛簳閮ㄦ彃鍏?`CopyrightNotice`銆?
+- 鎵句笉鍒版枃绔犳椂鏄剧ず鍙嬪ソ绌虹姸鎬侊紝鏂囨涓衡€滄病鏈夋壘鍒拌繖绡囨枃绔犫€濆拰鈥滀綘鍙互杩斿洖鏂囩珷鍒楄〃缁х画娴忚銆傗€濓紝骞舵彁渚涒€滆繑鍥炴枃绔犲垪琛ㄢ€濇寜閽€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/articles`銆乣/articles/ai-tool-checklist`銆乣/articles/not-exist` 鍧囪繑鍥?200銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` 妗岄潰绔枃绔犲崱鐗囦负 3 鏍忥紝鎵嬫満绔负 1 鏍忋€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` Hero 鏍囬銆佹爣绛俱€佸唴瀹圭湅鏉裤€佹悳绱㈠崰浣嶆枃妗堝拰 banner 骞垮憡浣嶆甯告樉绀恒€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` 骞垮憡浣?`grid-column` 涓?`1 / -1`锛屽彲妯法鏁磋銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` 鍒嗙被绛涢€?`寮€婧愰」鐩甡 鍙瓫閫夊嚭 1 绡囨枃绔犮€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` 鍒嗙被涓庢爣绛剧粍鍚堟棤缁撴灉鏃舵樉绀烘寚瀹氱┖鐘舵€併€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles/ai-tool-checklist` 妗岄潰绔湁 3 涓箍鍛婁綅锛屽彸渚ф鏂囧竷灞€涓轰袱鏍忋€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles/ai-tool-checklist` 鎵嬫満绔爣棰樹负 `36px`锛岄〉闈㈡棤妯悜婊氬姩銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles/ai-tool-checklist` 鏄剧ず鐗堟潈澹版槑銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles/not-exist` 鏄剧ず鍙嬪ソ绌虹姸鎬佸拰鈥滆繑鍥炴枃绔犲垪琛ㄢ€濇寜閽€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续接入数据库时，将 `article-content.ts` 中的兼容详情字段迁移到真实文章表和后台表单。
+- 鍚庣画鎺ュ叆鏁版嵁搴撴椂锛屽皢 `article-content.ts` 涓殑鍏煎璇︽儏瀛楁杩佺Щ鍒扮湡瀹炴枃绔犺〃鍜屽悗鍙拌〃鍗曘€?
 
 ## 2026-06-01
 
-任务：统一优化顶部导航 Header 和底部 Footer。
+浠诲姟锛氱粺涓€浼樺寲椤堕儴瀵艰埅 Header 鍜屽簳閮?Footer銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/layout/Header.tsx`
 - `src/components/layout/MobileNav.tsx`
@@ -2127,80 +2413,80 @@
 - `src/components/site-footer.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 不修改首页内容、工具页、工具详情页、文章页、文章详情页、数据库、后台、Supabase 相关代码和 mock 数据。
-- 新增 `src/components/layout/Header.tsx`，统一站点顶部导航。
-- 新增 `src/components/layout/MobileNav.tsx`，用于手机端展开式菜单。
-- 新增 `src/components/layout/Footer.tsx`，统一站点底部页脚。
-- `src/components/site-header.tsx` 和 `src/components/site-footer.tsx` 改为兼容转发入口，避免逐个页面修改引用。
-- Header 使用半透明玻璃背景、backdrop blur、浅边框和 sticky 顶部导航。
-- Header 包含站点名“知享”、副标识“工具与知识发现站”、首页、工具库、文章、投稿、版权投诉、搜索、推荐工具。
-- 当前页面导航项使用浅色胶囊/深色高亮状态。
-- 手机端隐藏中间导航，显示“菜单”按钮，展开后使用 `glass-card` 风格移动菜单。
-- Footer 使用浅色渐变背景和 `page-shell`，包含站点说明、快速访问、参与与反馈、内容原则和版权行。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev`。
-- 已使用浏览器检查 `/articles` 桌面端 Header 为 sticky，backdrop blur 生效，主导航显示为横向布局。
-- 已使用浏览器检查 `/articles` 桌面端当前导航项“文章”高亮。
-- 已使用浏览器检查 Footer 包含“快速访问”“参与与反馈”“内容原则”和 `© 2026 知享. All rights reserved.`。
-- 已使用浏览器检查 390px 手机端中间导航隐藏，移动菜单按钮可展开，菜单包含全部导航入口。
-- 已使用浏览器检查 390px 手机端 Footer 为单列布局。
-- 已确认桌面端和手机端均未发现横向滚动。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 涓嶄慨鏀归椤靛唴瀹广€佸伐鍏烽〉銆佸伐鍏疯鎯呴〉銆佹枃绔犻〉銆佹枃绔犺鎯呴〉銆佹暟鎹簱銆佸悗鍙般€丼upabase 鐩稿叧浠ｇ爜鍜?mock 鏁版嵁銆?
+- 鏂板 `src/components/layout/Header.tsx`锛岀粺涓€绔欑偣椤堕儴瀵艰埅銆?
+- 鏂板 `src/components/layout/MobileNav.tsx`锛岀敤浜庢墜鏈虹灞曞紑寮忚彍鍗曘€?
+- 鏂板 `src/components/layout/Footer.tsx`锛岀粺涓€绔欑偣搴曢儴椤佃剼銆?
+- `src/components/site-header.tsx` 鍜?`src/components/site-footer.tsx` 鏀逛负鍏煎杞彂鍏ュ彛锛岄伩鍏嶉€愪釜椤甸潰淇敼寮曠敤銆?
+- Header 浣跨敤鍗婇€忔槑鐜荤拑鑳屾櫙銆乥ackdrop blur銆佹祬杈规鍜?sticky 椤堕儴瀵艰埅銆?
+- Header 鍖呭惈绔欑偣鍚嶁€滅煡浜€濄€佸壇鏍囪瘑鈥滃伐鍏蜂笌鐭ヨ瘑鍙戠幇绔欌€濄€侀椤点€佸伐鍏峰簱銆佹枃绔犮€佹姇绋裤€佺増鏉冩姇璇夈€佹悳绱€佹帹鑽愬伐鍏枫€?
+- 褰撳墠椤甸潰瀵艰埅椤逛娇鐢ㄦ祬鑹茶兌鍥?娣辫壊楂樹寒鐘舵€併€?
+- 鎵嬫満绔殣钘忎腑闂村鑸紝鏄剧ず鈥滆彍鍗曗€濇寜閽紝灞曞紑鍚庝娇鐢?`glass-card` 椋庢牸绉诲姩鑿滃崟銆?
+- Footer 浣跨敤娴呰壊娓愬彉鑳屾櫙鍜?`page-shell`锛屽寘鍚珯鐐硅鏄庛€佸揩閫熻闂€佸弬涓庝笌鍙嶉銆佸唴瀹瑰師鍒欏拰鐗堟潈琛屻€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev`銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` 妗岄潰绔?Header 涓?sticky锛宐ackdrop blur 鐢熸晥锛屼富瀵艰埅鏄剧ず涓烘í鍚戝竷灞€銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/articles` 妗岄潰绔綋鍓嶅鑸」鈥滄枃绔犫€濋珮浜€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?Footer 鍖呭惈鈥滃揩閫熻闂€濃€滃弬涓庝笌鍙嶉鈥濃€滃唴瀹瑰師鍒欌€濆拰 `漏 2026 鐭ヤ韩. All rights reserved.`銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?390px 鎵嬫満绔腑闂村鑸殣钘忥紝绉诲姩鑿滃崟鎸夐挳鍙睍寮€锛岃彍鍗曞寘鍚叏閮ㄥ鑸叆鍙ｃ€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?390px 鎵嬫満绔?Footer 涓哄崟鍒楀竷灞€銆?
+- 宸茬‘璁ゆ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续可以补齐 `/search`、`/submit`、`/copyright` 页面，避免导航入口进入 404。
+- 鍚庣画鍙互琛ラ綈 `/search`銆乣/submit`銆乣/copyright` 椤甸潰锛岄伩鍏嶅鑸叆鍙ｈ繘鍏?404銆?
 
 ## 2026-06-01
 
-任务：统一优化 `/submit` 投稿页和 `/copyright` 版权投诉页。
+浠诲姟锛氱粺涓€浼樺寲 `/submit` 鎶曠椤靛拰 `/copyright` 鐗堟潈鎶曡瘔椤点€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/submit/page.tsx`
 - `src/app/copyright/page.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 不修改首页、工具页、工具详情页、文章页、文章详情页、Header、Footer、数据库、后台、Supabase 相关代码和 mock 数据。
-- 新增 `/submit` 投稿页，使用 `section-gradient-cyan`、`page-shell`、`glass-card`、`glass-card-strong`。
-- `/submit` Hero 文案为“推荐一个值得收录的工具”，并显示“人工审核”“优先官网”“拒绝破解盗版”“持续收录”标签。
-- `/submit` 包含投稿说明区、投稿表单区和收录原则区。
-- `/submit` 表单包含工具名称、官方地址、工具简介、推荐理由、推荐人邮箱。
-- `/submit` 已做前台必填校验：工具名称、官方地址、工具简介。
-- `/submit` 提交成功后显示前台演示成功提示，当前不连接数据库。
-- 新增 `/copyright` 版权投诉页，使用 `section-gradient-violet`、`page-shell`、`glass-card`、`glass-card-strong`。
-- `/copyright` Hero 文案为“版权与权益问题反馈”，并显示“版权反馈”“权益处理”“链接更正”“及时核实”标签。
-- `/copyright` 包含处理说明区、投诉表单区和处理流程区。
-- `/copyright` 表单包含权利人姓名或机构名称、联系邮箱、涉及页面链接、问题类型、证明材料说明、处理要求。
-- `/copyright` 问题类型包含版权问题、商标问题、授权问题、信息错误、链接失效、其他问题。
-- `/copyright` 已做前台必填校验：权利人姓名或机构名称、联系邮箱、涉及页面链接、问题类型、处理要求。
-- `/copyright` 提交成功后显示前台演示成功提示，当前不连接数据库。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev`，并确认 `/submit` 和 `/copyright` 返回 200。
-- 已使用浏览器检查 `/submit` 空表单提交会显示 3 条必填错误。
-- 已使用浏览器检查 `/submit` 填写必填项后会显示成功提示。
-- 已使用浏览器检查 `/copyright` 空表单提交会显示 5 条必填错误。
-- 已使用浏览器检查 `/copyright` 填写必填项后会显示成功提示。
-- 已使用浏览器检查 390px 手机端 `/submit` 和 `/copyright` 标题字号为 `36px`。
-- 已使用浏览器检查 390px 手机端所有输入框和按钮宽度正常。
-- 已确认桌面端和手机端均未发现横向滚动。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 涓嶄慨鏀归椤点€佸伐鍏烽〉銆佸伐鍏疯鎯呴〉銆佹枃绔犻〉銆佹枃绔犺鎯呴〉銆丠eader銆丗ooter銆佹暟鎹簱銆佸悗鍙般€丼upabase 鐩稿叧浠ｇ爜鍜?mock 鏁版嵁銆?
+- 鏂板 `/submit` 鎶曠椤碉紝浣跨敤 `section-gradient-cyan`銆乣page-shell`銆乣glass-card`銆乣glass-card-strong`銆?
+- `/submit` Hero 鏂囨涓衡€滄帹鑽愪竴涓€煎緱鏀跺綍鐨勫伐鍏封€濓紝骞舵樉绀衡€滀汉宸ュ鏍糕€濃€滀紭鍏堝畼缃戔€濃€滄嫆缁濈牬瑙ｇ洍鐗堚€濃€滄寔缁敹褰曗€濇爣绛俱€?
+- `/submit` 鍖呭惈鎶曠璇存槑鍖恒€佹姇绋胯〃鍗曞尯鍜屾敹褰曞師鍒欏尯銆?
+- `/submit` 琛ㄥ崟鍖呭惈宸ュ叿鍚嶇О銆佸畼鏂瑰湴鍧€銆佸伐鍏风畝浠嬨€佹帹鑽愮悊鐢便€佹帹鑽愪汉閭銆?
+- `/submit` 宸插仛鍓嶅彴蹇呭～鏍￠獙锛氬伐鍏峰悕绉般€佸畼鏂瑰湴鍧€銆佸伐鍏风畝浠嬨€?
+- `/submit` 鎻愪氦鎴愬姛鍚庢樉绀哄墠鍙版紨绀烘垚鍔熸彁绀猴紝褰撳墠涓嶈繛鎺ユ暟鎹簱銆?
+- 鏂板 `/copyright` 鐗堟潈鎶曡瘔椤碉紝浣跨敤 `section-gradient-violet`銆乣page-shell`銆乣glass-card`銆乣glass-card-strong`銆?
+- `/copyright` Hero 鏂囨涓衡€滅増鏉冧笌鏉冪泭闂鍙嶉鈥濓紝骞舵樉绀衡€滅増鏉冨弽棣堚€濃€滄潈鐩婂鐞嗏€濃€滈摼鎺ユ洿姝ｂ€濃€滃強鏃舵牳瀹炩€濇爣绛俱€?
+- `/copyright` 鍖呭惈澶勭悊璇存槑鍖恒€佹姇璇夎〃鍗曞尯鍜屽鐞嗘祦绋嬪尯銆?
+- `/copyright` 琛ㄥ崟鍖呭惈鏉冨埄浜哄鍚嶆垨鏈烘瀯鍚嶇О銆佽仈绯婚偖绠便€佹秹鍙婇〉闈㈤摼鎺ャ€侀棶棰樼被鍨嬨€佽瘉鏄庢潗鏂欒鏄庛€佸鐞嗚姹傘€?
+- `/copyright` 闂绫诲瀷鍖呭惈鐗堟潈闂銆佸晢鏍囬棶棰樸€佹巿鏉冮棶棰樸€佷俊鎭敊璇€侀摼鎺ュけ鏁堛€佸叾浠栭棶棰樸€?
+- `/copyright` 宸插仛鍓嶅彴蹇呭～鏍￠獙锛氭潈鍒╀汉濮撳悕鎴栨満鏋勫悕绉般€佽仈绯婚偖绠便€佹秹鍙婇〉闈㈤摼鎺ャ€侀棶棰樼被鍨嬨€佸鐞嗚姹傘€?
+- `/copyright` 鎻愪氦鎴愬姛鍚庢樉绀哄墠鍙版紨绀烘垚鍔熸彁绀猴紝褰撳墠涓嶈繛鎺ユ暟鎹簱銆?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev`锛屽苟纭 `/submit` 鍜?`/copyright` 杩斿洖 200銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/submit` 绌鸿〃鍗曟彁浜や細鏄剧ず 3 鏉″繀濉敊璇€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/submit` 濉啓蹇呭～椤瑰悗浼氭樉绀烘垚鍔熸彁绀恒€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/copyright` 绌鸿〃鍗曟彁浜や細鏄剧ず 5 鏉″繀濉敊璇€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/copyright` 濉啓蹇呭～椤瑰悗浼氭樉绀烘垚鍔熸彁绀恒€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?390px 鎵嬫満绔?`/submit` 鍜?`/copyright` 鏍囬瀛楀彿涓?`36px`銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?390px 鎵嬫満绔墍鏈夎緭鍏ユ鍜屾寜閽搴︽甯搞€?
+- 宸茬‘璁ゆ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续可以继续制作 `/search` 搜索页，或在 Supabase 阶段把这两个表单接入审核数据表。
+- 鍚庣画鍙互缁х画鍒朵綔 `/search` 鎼滅储椤碉紝鎴栧湪 Supabase 闃舵鎶婅繖涓や釜琛ㄥ崟鎺ュ叆瀹℃牳鏁版嵁琛ㄣ€?
 
 ## 2026-06-02
 
-任务：统一优化 `/search` 搜索页。
+浠诲姟锛氱粺涓€浼樺寲 `/search` 鎼滅储椤点€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/app/search/page.tsx`
 - `src/components/search/search-page.tsx`
@@ -2209,95 +2495,95 @@
 - `src/components/search/search-results.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 不修改首页、工具页、工具详情页、文章页、文章详情页、投稿页、版权投诉页、Header、Footer、数据库、后台、Supabase 相关代码和 mock 数据结构。
-- 新增 `/search` 搜索页入口。
-- 新增 `src/components/search/` 目录，用于承载搜索页 Hero、搜索筛选区、结果区和空状态。
-- 搜索页 Hero 使用 `section-gradient-blue`、`page-shell` 和 `glass-card-strong`。
-- Hero 标题为“搜索工具、文章与效率技巧”，副标题和标签按任务要求设置。
-- Hero 右侧提示卡显示“搜索建议”和 AI 写作、PDF 工具、开源项目、图片处理、效率软件。
-- 主搜索区使用 `glass-card-strong`，搜索框占位文案为“搜索工具、文章、分类或标签”。
-- 主搜索区包含“开始搜索”按钮、清空按钮和热门关键词胶囊。
-- 热门关键词点击后会自动填入搜索框并触发搜索。
-- 快速筛选区包含“全部”“只看工具”“只看文章”，选中状态使用青蓝渐变。
-- 搜索范围覆盖工具名称、简介、分类、标签、适合人群、使用场景，以及文章标题、摘要、分类、标签和正文段落/列表内容。
-- 初始状态显示“你可以从这些内容开始”，并展示推荐工具 3 个、推荐文章 3 篇。
-- 工具结果复用 `ToolCard`，按钮文案为“查看详情”，跳转到 `/tools/[slug]`，不显示“查看官网”。
-- 文章结果复用 `ArticleCard`，按钮文案为“阅读全文”，跳转到 `/articles/[slug]`。
-- 工具结果和文章结果之间插入 `AdPlaceholder variant="banner"` 广告位；只有一种结果时广告位放在结果列表下方。
-- 无搜索结果时显示 `glass-card` 空状态，文案为“没有找到相关内容”和“可以尝试换一个关键词，或减少筛选条件。”，并提供“清空搜索”按钮。
-- 已运行 `npm run lint`。
-- 已运行 `npm run build`。
-- 已重启 `npm run dev`，并确认 `/search` 返回 200。
-- 已使用浏览器检查 `/search` 初始状态有 3 个工具详情入口和 3 篇文章阅读入口。
-- 已使用浏览器检查 `/search` 初始状态显示广告位“合作推广”和“这里可以展示赞助工具、精选服务或广告内容”。
-- 已使用浏览器检查 `/search` 页面未出现“查看官网”。
-- 已使用浏览器检查点击热门关键词“开源”后，搜索框自动填入“开源”，并匹配 2 个工具结果和 2 篇文章结果。
-- 已使用浏览器检查“只看文章”筛选后仅显示文章结果。
-- 已使用浏览器检查“只看工具”筛选后仅显示工具结果。
-- 已使用浏览器检查点击热门关键词“PDF”后显示指定空状态。
-- 已使用浏览器检查点击“清空搜索”后恢复初始推荐内容。
-- 已使用浏览器检查 390px 手机端标题字号为 `36px`，搜索框宽度正常，结果卡片为单列。
-- 已确认桌面端和手机端均未发现横向滚动。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 涓嶄慨鏀归椤点€佸伐鍏烽〉銆佸伐鍏疯鎯呴〉銆佹枃绔犻〉銆佹枃绔犺鎯呴〉銆佹姇绋块〉銆佺増鏉冩姇璇夐〉銆丠eader銆丗ooter銆佹暟鎹簱銆佸悗鍙般€丼upabase 鐩稿叧浠ｇ爜鍜?mock 鏁版嵁缁撴瀯銆?
+- 鏂板 `/search` 鎼滅储椤靛叆鍙ｃ€?
+- 鏂板 `src/components/search/` 鐩綍锛岀敤浜庢壙杞芥悳绱㈤〉 Hero銆佹悳绱㈢瓫閫夊尯銆佺粨鏋滃尯鍜岀┖鐘舵€併€?
+- 鎼滅储椤?Hero 浣跨敤 `section-gradient-blue`銆乣page-shell` 鍜?`glass-card-strong`銆?
+- Hero 鏍囬涓衡€滄悳绱㈠伐鍏枫€佹枃绔犱笌鏁堢巼鎶€宸р€濓紝鍓爣棰樺拰鏍囩鎸変换鍔¤姹傝缃€?
+- Hero 鍙充晶鎻愮ず鍗℃樉绀衡€滄悳绱㈠缓璁€濆拰 AI 鍐欎綔銆丳DF 宸ュ叿銆佸紑婧愰」鐩€佸浘鐗囧鐞嗐€佹晥鐜囪蒋浠躲€?
+- 涓绘悳绱㈠尯浣跨敤 `glass-card-strong`锛屾悳绱㈡鍗犱綅鏂囨涓衡€滄悳绱㈠伐鍏枫€佹枃绔犮€佸垎绫绘垨鏍囩鈥濄€?
+- 涓绘悳绱㈠尯鍖呭惈鈥滃紑濮嬫悳绱⑩€濇寜閽€佹竻绌烘寜閽拰鐑棬鍏抽敭璇嶈兌鍥娿€?
+- 鐑棬鍏抽敭璇嶇偣鍑诲悗浼氳嚜鍔ㄥ～鍏ユ悳绱㈡骞惰Е鍙戞悳绱€?
+- 蹇€熺瓫閫夊尯鍖呭惈鈥滃叏閮ㄢ€濃€滃彧鐪嬪伐鍏封€濃€滃彧鐪嬫枃绔犫€濓紝閫変腑鐘舵€佷娇鐢ㄩ潚钃濇笎鍙樸€?
+- 鎼滅储鑼冨洿瑕嗙洊宸ュ叿鍚嶇О銆佺畝浠嬨€佸垎绫汇€佹爣绛俱€侀€傚悎浜虹兢銆佷娇鐢ㄥ満鏅紝浠ュ強鏂囩珷鏍囬銆佹憳瑕併€佸垎绫汇€佹爣绛惧拰姝ｆ枃娈佃惤/鍒楄〃鍐呭銆?
+- 鍒濆鐘舵€佹樉绀衡€滀綘鍙互浠庤繖浜涘唴瀹瑰紑濮嬧€濓紝骞跺睍绀烘帹鑽愬伐鍏?3 涓€佹帹鑽愭枃绔?3 绡囥€?
+- 宸ュ叿缁撴灉澶嶇敤 `ToolCard`锛屾寜閽枃妗堜负鈥滄煡鐪嬭鎯呪€濓紝璺宠浆鍒?`/tools/[slug]`锛屼笉鏄剧ず鈥滄煡鐪嬪畼缃戔€濄€?
+- 鏂囩珷缁撴灉澶嶇敤 `ArticleCard`锛屾寜閽枃妗堜负鈥滈槄璇诲叏鏂団€濓紝璺宠浆鍒?`/articles/[slug]`銆?
+- 宸ュ叿缁撴灉鍜屾枃绔犵粨鏋滀箣闂存彃鍏?`AdPlaceholder variant="banner"` 骞垮憡浣嶏紱鍙湁涓€绉嶇粨鏋滄椂骞垮憡浣嶆斁鍦ㄧ粨鏋滃垪琛ㄤ笅鏂广€?
+- 鏃犳悳绱㈢粨鏋滄椂鏄剧ず `glass-card` 绌虹姸鎬侊紝鏂囨涓衡€滄病鏈夋壘鍒扮浉鍏冲唴瀹光€濆拰鈥滃彲浠ュ皾璇曟崲涓€涓叧閿瘝锛屾垨鍑忓皯绛涢€夋潯浠躲€傗€濓紝骞舵彁渚涒€滄竻绌烘悳绱⑩€濇寜閽€?
+- 宸茶繍琛?`npm run lint`銆?
+- 宸茶繍琛?`npm run build`銆?
+- 宸查噸鍚?`npm run dev`锛屽苟纭 `/search` 杩斿洖 200銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/search` 鍒濆鐘舵€佹湁 3 涓伐鍏疯鎯呭叆鍙ｅ拰 3 绡囨枃绔犻槄璇诲叆鍙ｃ€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/search` 鍒濆鐘舵€佹樉绀哄箍鍛婁綅鈥滃悎浣滄帹骞库€濆拰鈥滆繖閲屽彲浠ュ睍绀鸿禐鍔╁伐鍏枫€佺簿閫夋湇鍔℃垨骞垮憡鍐呭鈥濄€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?`/search` 椤甸潰鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌ョ偣鍑荤儹闂ㄥ叧閿瘝鈥滃紑婧愨€濆悗锛屾悳绱㈡鑷姩濉叆鈥滃紑婧愨€濓紝骞跺尮閰?2 涓伐鍏风粨鏋滃拰 2 绡囨枃绔犵粨鏋溿€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌モ€滃彧鐪嬫枃绔犫€濈瓫閫夊悗浠呮樉绀烘枃绔犵粨鏋溿€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌モ€滃彧鐪嬪伐鍏封€濈瓫閫夊悗浠呮樉绀哄伐鍏风粨鏋溿€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌ョ偣鍑荤儹闂ㄥ叧閿瘝鈥淧DF鈥濆悗鏄剧ず鎸囧畾绌虹姸鎬併€?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌ョ偣鍑烩€滄竻绌烘悳绱⑩€濆悗鎭㈠鍒濆鎺ㄨ崘鍐呭銆?
+- 宸蹭娇鐢ㄦ祻瑙堝櫒妫€鏌?390px 鎵嬫満绔爣棰樺瓧鍙蜂负 `36px`锛屾悳绱㈡瀹藉害姝ｅ父锛岀粨鏋滃崱鐗囦负鍗曞垪銆?
+- 宸茬‘璁ゆ闈㈢鍜屾墜鏈虹鍧囨湭鍙戠幇妯悜婊氬姩銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 后续可以在 Supabase 阶段把搜索范围扩展到真实工具表和文章表，并根据真实内容数量增加排序规则。
+- 鍚庣画鍙互鍦?Supabase 闃舵鎶婃悳绱㈣寖鍥存墿灞曞埌鐪熷疄宸ュ叿琛ㄥ拰鏂囩珷琛紝骞舵牴鎹湡瀹炲唴瀹规暟閲忓鍔犳帓搴忚鍒欍€?
 
 ## 2026-06-02
 
-任务：前台页面统一验收与修复。
+浠诲姟锛氬墠鍙伴〉闈㈢粺涓€楠屾敹涓庝慨澶嶃€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `src/components/home/home-article-card.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 本次不新增功能，不修改数据库、后台、Supabase 相关代码、路由结构和 mock 数据结构。
-- 已检查页面：`/`、`/tools`、`/tools/raycast`、`/articles`、`/articles/ai-tool-checklist`、`/search`、`/submit`、`/copyright`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- 已重启 `npm run dev`，并确认 8 个前台页面均返回 200。
-- 发现并修复首页最新文章卡片问题：原按钮链接为 `#` 且文案为“阅读文章”，已改为跳转 `/articles/[slug]`，按钮文案为“阅读全文”。
-- 已检查首页工具卡片按钮跳转到 `/tools/[slug]`。
-- 已检查首页文章卡片按钮跳转到 `/articles/[slug]`。
-- 已检查 `/tools` 工具卡片按钮跳转到 `/tools/[slug]`，且未出现“查看官网”。
-- 已检查 `/tools/raycast` 只在详情页显示“访问官方网站”，官网链接使用新窗口打开，并带 `rel="nofollow noopener noreferrer"`。
-- 已检查 `/articles` 文章卡片跳转到 `/articles/[slug]`，按钮文案为“阅读全文”。
-- 已检查 `/search` 工具结果跳转到 `/tools/[slug]`，文章结果跳转到 `/articles/[slug]`。
-- 已检查首页、工具库、工具详情、文章列表、文章详情、搜索页、投稿页、版权投诉页均使用浅色渐变分区和玻璃卡片风格。
-- 已检查 Header 全站统一，桌面端 sticky，手机端菜单可展开。
-- 已检查 Footer 全站统一，手机端为单列布局。
-- 已检查首页广告位位于推荐工具区和最新文章区之间。
-- 已检查 `/tools` 广告位位于工具列表中，并使用 `col-span-full` 横跨整行。
-- 已检查 `/tools/raycast` 有 3 个广告位：正文中间 inline、右侧 sidebar、底部 banner。
-- 已检查 `/articles` 广告位位于文章列表中，并使用 `col-span-full` 横跨整行。
-- 已检查 `/articles/ai-tool-checklist` 有 3 个广告位：正文中间 inline、右侧 sidebar、底部 banner。
-- 已检查 `/search` 广告位位于工具结果和文章结果之间，或结果列表下方，并横跨整行。
-- 已检查 `/tools/raycast` 和 `/articles/ai-tool-checklist` 均只有 1 个 `CopyrightNotice`，文案完整。
-- 已检查 `/tools` 搜索、分类筛选、标签筛选、清空筛选和无结果状态均正常。
-- 已检查 `/articles` 搜索、分类筛选、标签筛选、清空筛选和无结果状态均正常。
-- 已检查 `/search` 初始状态、热门关键词、全部/只看工具/只看文章、无结果状态和清空搜索均正常。
-- 已检查 `/submit` 空表单校验和正常提交成功提示均正常。
-- 已检查 `/copyright` 空表单校验、问题类型选择和正常提交成功提示均正常。
-- 已使用 390px 手机端检查所有前台页面，均未发现横向滚动。
-- 已使用 390px 手机端检查详情页两栏布局会变为单列，广告位不溢出。
-- 已使用 390px 手机端检查 Hero 标题不超过 `36px`，表单输入框不溢出。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 鏈涓嶆柊澧炲姛鑳斤紝涓嶄慨鏀规暟鎹簱銆佸悗鍙般€丼upabase 鐩稿叧浠ｇ爜銆佽矾鐢辩粨鏋勫拰 mock 鏁版嵁缁撴瀯銆?
+- 宸叉鏌ラ〉闈細`/`銆乣/tools`銆乣/tools/raycast`銆乣/articles`銆乣/articles/ai-tool-checklist`銆乣/search`銆乣/submit`銆乣/copyright`銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸查噸鍚?`npm run dev`锛屽苟纭 8 涓墠鍙伴〉闈㈠潎杩斿洖 200銆?
+- 鍙戠幇骞朵慨澶嶉椤垫渶鏂版枃绔犲崱鐗囬棶棰橈細鍘熸寜閽摼鎺ヤ负 `#` 涓旀枃妗堜负鈥滈槄璇绘枃绔犫€濓紝宸叉敼涓鸿烦杞?`/articles/[slug]`锛屾寜閽枃妗堜负鈥滈槄璇诲叏鏂団€濄€?
+- 宸叉鏌ラ椤靛伐鍏峰崱鐗囨寜閽烦杞埌 `/tools/[slug]`銆?
+- 宸叉鏌ラ椤垫枃绔犲崱鐗囨寜閽烦杞埌 `/articles/[slug]`銆?
+- 宸叉鏌?`/tools` 宸ュ叿鍗＄墖鎸夐挳璺宠浆鍒?`/tools/[slug]`锛屼笖鏈嚭鐜扳€滄煡鐪嬪畼缃戔€濄€?
+- 宸叉鏌?`/tools/raycast` 鍙湪璇︽儏椤垫樉绀衡€滆闂畼鏂圭綉绔欌€濓紝瀹樼綉閾炬帴浣跨敤鏂扮獥鍙ｆ墦寮€锛屽苟甯?`rel="nofollow noopener noreferrer"`銆?
+- 宸叉鏌?`/articles` 鏂囩珷鍗＄墖璺宠浆鍒?`/articles/[slug]`锛屾寜閽枃妗堜负鈥滈槄璇诲叏鏂団€濄€?
+- 宸叉鏌?`/search` 宸ュ叿缁撴灉璺宠浆鍒?`/tools/[slug]`锛屾枃绔犵粨鏋滆烦杞埌 `/articles/[slug]`銆?
+- 宸叉鏌ラ椤点€佸伐鍏峰簱銆佸伐鍏疯鎯呫€佹枃绔犲垪琛ㄣ€佹枃绔犺鎯呫€佹悳绱㈤〉銆佹姇绋块〉銆佺増鏉冩姇璇夐〉鍧囦娇鐢ㄦ祬鑹叉笎鍙樺垎鍖哄拰鐜荤拑鍗＄墖椋庢牸銆?
+- 宸叉鏌?Header 鍏ㄧ珯缁熶竴锛屾闈㈢ sticky锛屾墜鏈虹鑿滃崟鍙睍寮€銆?
+- 宸叉鏌?Footer 鍏ㄧ珯缁熶竴锛屾墜鏈虹涓哄崟鍒楀竷灞€銆?
+- 宸叉鏌ラ椤靛箍鍛婁綅浣嶄簬鎺ㄨ崘宸ュ叿鍖哄拰鏈€鏂版枃绔犲尯涔嬮棿銆?
+- 宸叉鏌?`/tools` 骞垮憡浣嶄綅浜庡伐鍏峰垪琛ㄤ腑锛屽苟浣跨敤 `col-span-full` 妯法鏁磋銆?
+- 宸叉鏌?`/tools/raycast` 鏈?3 涓箍鍛婁綅锛氭鏂囦腑闂?inline銆佸彸渚?sidebar銆佸簳閮?banner銆?
+- 宸叉鏌?`/articles` 骞垮憡浣嶄綅浜庢枃绔犲垪琛ㄤ腑锛屽苟浣跨敤 `col-span-full` 妯法鏁磋銆?
+- 宸叉鏌?`/articles/ai-tool-checklist` 鏈?3 涓箍鍛婁綅锛氭鏂囦腑闂?inline銆佸彸渚?sidebar銆佸簳閮?banner銆?
+- 宸叉鏌?`/search` 骞垮憡浣嶄綅浜庡伐鍏风粨鏋滃拰鏂囩珷缁撴灉涔嬮棿锛屾垨缁撴灉鍒楄〃涓嬫柟锛屽苟妯法鏁磋銆?
+- 宸叉鏌?`/tools/raycast` 鍜?`/articles/ai-tool-checklist` 鍧囧彧鏈?1 涓?`CopyrightNotice`锛屾枃妗堝畬鏁淬€?
+- 宸叉鏌?`/tools` 鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹竻绌虹瓫閫夊拰鏃犵粨鏋滅姸鎬佸潎姝ｅ父銆?
+- 宸叉鏌?`/articles` 鎼滅储銆佸垎绫荤瓫閫夈€佹爣绛剧瓫閫夈€佹竻绌虹瓫閫夊拰鏃犵粨鏋滅姸鎬佸潎姝ｅ父銆?
+- 宸叉鏌?`/search` 鍒濆鐘舵€併€佺儹闂ㄥ叧閿瘝銆佸叏閮?鍙湅宸ュ叿/鍙湅鏂囩珷銆佹棤缁撴灉鐘舵€佸拰娓呯┖鎼滅储鍧囨甯搞€?
+- 宸叉鏌?`/submit` 绌鸿〃鍗曟牎楠屽拰姝ｅ父鎻愪氦鎴愬姛鎻愮ず鍧囨甯搞€?
+- 宸叉鏌?`/copyright` 绌鸿〃鍗曟牎楠屻€侀棶棰樼被鍨嬮€夋嫨鍜屾甯告彁浜ゆ垚鍔熸彁绀哄潎姝ｅ父銆?
+- 宸蹭娇鐢?390px 鎵嬫満绔鏌ユ墍鏈夊墠鍙伴〉闈紝鍧囨湭鍙戠幇妯悜婊氬姩銆?
+- 宸蹭娇鐢?390px 鎵嬫満绔鏌ヨ鎯呴〉涓ゆ爮甯冨眬浼氬彉涓哄崟鍒楋紝骞垮憡浣嶄笉婧㈠嚭銆?
+- 宸蹭娇鐢?390px 鎵嬫満绔鏌?Hero 鏍囬涓嶈秴杩?`36px`锛岃〃鍗曡緭鍏ユ涓嶆孩鍑恒€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 当前前台静态页面验收已通过；后续可以进入 Supabase 数据表设计和表单接入阶段。
+- 褰撳墠鍓嶅彴闈欐€侀〉闈㈤獙鏀跺凡閫氳繃锛涘悗缁彲浠ヨ繘鍏?Supabase 鏁版嵁琛ㄨ璁″拰琛ㄥ崟鎺ュ叆闃舵銆?
 
 ## 2026-06-03
 
-任务：接入 Supabase 前台只读数据，把 mock 数据逐步替换为真实数据库读取。
+浠诲姟锛氭帴鍏?Supabase 鍓嶅彴鍙鏁版嵁锛屾妸 mock 鏁版嵁閫愭鏇挎崲涓虹湡瀹炴暟鎹簱璇诲彇銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 
 - `package.json`
 - `package-lock.json`
@@ -2334,73 +2620,73 @@
 - `docs/DATABASE_SCHEMA.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已安装 `@supabase/supabase-js`。
-- 新增 Supabase server/client 读取入口，统一读取 `NEXT_PUBLIC_SUPABASE_URL` 和 `NEXT_PUBLIC_SUPABASE_ANON_KEY`。
-- 未使用、未暴露、未打印 `service_role_key`。
-- 新增 `src/lib/db/*` 数据访问层，页面不直接散写 Supabase 查询。
-- 新增 `src/types/*` 类型文件，减少页面中的字段猜测和 `any` 使用。
-- 工具和文章读取规则为 `status = 'published'`，并按 `created_at` 倒序。
-- 分类和标签支持缺失兼容，页面不会因为 `category` 或 `tags` 为空报错。
-- Supabase 环境变量缺失或查询失败时，前台 fallback 到 mock 数据。
-- Supabase 配置正常但无数据时，首页、列表页和搜索页显示友好空状态。
-- Supabase 配置正常但无工具或无文章时，`/tools` 和 `/articles` 的空状态下方仍显示 banner 广告位。
-- 首页推荐工具、最新文章、分类入口优先读取 Supabase。
-- `/tools` 工具列表优先读取 Supabase，并保留搜索、分类筛选和标签筛选。
-- `/tools/[slug]` 工具详情优先读取 Supabase，并保留找不到工具时的友好空状态。
-- `/articles` 文章列表优先读取 Supabase，并保留搜索、分类筛选和标签筛选。
-- `/articles/[slug]` 文章详情优先读取 Supabase，并保留找不到文章时的友好空状态。
-- `/search` 同时优先读取 Supabase 工具和文章，并保留全部 / 只看工具 / 只看文章筛选。
-- 搜索范围补充兼容适合人群、使用场景和文章正文内容。
-- 未修改后台、登录、数据库 SQL、Header、Footer、`/submit`、`/copyright`、视觉设计系统和路由结构。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- 已重启 `npm run dev` 并检查 `/`、`/tools`、`/articles`、`/search` 均可打开。
-- 已检查桌面端和手机端 `/tools` 无横向滚动，Supabase 空数据时空状态和广告位显示正常。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸插畨瑁?`@supabase/supabase-js`銆?
+- 鏂板 Supabase server/client 璇诲彇鍏ュ彛锛岀粺涓€璇诲彇 `NEXT_PUBLIC_SUPABASE_URL` 鍜?`NEXT_PUBLIC_SUPABASE_ANON_KEY`銆?
+- 鏈娇鐢ㄣ€佹湭鏆撮湶銆佹湭鎵撳嵃 `service_role_key`銆?
+- 鏂板 `src/lib/db/*` 鏁版嵁璁块棶灞傦紝椤甸潰涓嶇洿鎺ユ暎鍐?Supabase 鏌ヨ銆?
+- 鏂板 `src/types/*` 绫诲瀷鏂囦欢锛屽噺灏戦〉闈腑鐨勫瓧娈电寽娴嬪拰 `any` 浣跨敤銆?
+- 宸ュ叿鍜屾枃绔犺鍙栬鍒欎负 `status = 'published'`锛屽苟鎸?`created_at` 鍊掑簭銆?
+- 鍒嗙被鍜屾爣绛炬敮鎸佺己澶卞吋瀹癸紝椤甸潰涓嶄細鍥犱负 `category` 鎴?`tags` 涓虹┖鎶ラ敊銆?
+- Supabase 鐜鍙橀噺缂哄け鎴栨煡璇㈠け璐ユ椂锛屽墠鍙?fallback 鍒?mock 鏁版嵁銆?
+- Supabase 閰嶇疆姝ｅ父浣嗘棤鏁版嵁鏃讹紝棣栭〉銆佸垪琛ㄩ〉鍜屾悳绱㈤〉鏄剧ず鍙嬪ソ绌虹姸鎬併€?
+- Supabase 閰嶇疆姝ｅ父浣嗘棤宸ュ叿鎴栨棤鏂囩珷鏃讹紝`/tools` 鍜?`/articles` 鐨勭┖鐘舵€佷笅鏂逛粛鏄剧ず banner 骞垮憡浣嶃€?
+- 棣栭〉鎺ㄨ崘宸ュ叿銆佹渶鏂版枃绔犮€佸垎绫诲叆鍙ｄ紭鍏堣鍙?Supabase銆?
+- `/tools` 宸ュ叿鍒楄〃浼樺厛璇诲彇 Supabase锛屽苟淇濈暀鎼滅储銆佸垎绫荤瓫閫夊拰鏍囩绛涢€夈€?
+- `/tools/[slug]` 宸ュ叿璇︽儏浼樺厛璇诲彇 Supabase锛屽苟淇濈暀鎵句笉鍒板伐鍏锋椂鐨勫弸濂界┖鐘舵€併€?
+- `/articles` 鏂囩珷鍒楄〃浼樺厛璇诲彇 Supabase锛屽苟淇濈暀鎼滅储銆佸垎绫荤瓫閫夊拰鏍囩绛涢€夈€?
+- `/articles/[slug]` 鏂囩珷璇︽儏浼樺厛璇诲彇 Supabase锛屽苟淇濈暀鎵句笉鍒版枃绔犳椂鐨勫弸濂界┖鐘舵€併€?
+- `/search` 鍚屾椂浼樺厛璇诲彇 Supabase 宸ュ叿鍜屾枃绔狅紝骞朵繚鐣欏叏閮?/ 鍙湅宸ュ叿 / 鍙湅鏂囩珷绛涢€夈€?
+- 鎼滅储鑼冨洿琛ュ厖鍏煎閫傚悎浜虹兢銆佷娇鐢ㄥ満鏅拰鏂囩珷姝ｆ枃鍐呭銆?
+- 鏈慨鏀瑰悗鍙般€佺櫥褰曘€佹暟鎹簱 SQL銆丠eader銆丗ooter銆乣/submit`銆乣/copyright`銆佽瑙夎璁＄郴缁熷拰璺敱缁撴瀯銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸查噸鍚?`npm run dev` 骞舵鏌?`/`銆乣/tools`銆乣/articles`銆乣/search` 鍧囧彲鎵撳紑銆?
+- 宸叉鏌ユ闈㈢鍜屾墜鏈虹 `/tools` 鏃犳í鍚戞粴鍔紝Supabase 绌烘暟鎹椂绌虹姸鎬佸拰骞垮憡浣嶆樉绀烘甯搞€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Supabase 中补齐 `categories`、`tags`、`tools`、`articles` 及关系表数据后，使用 `npm run dev` 检查首页、工具库、文章页和搜索页是否显示真实内容。
+- 鍦?Supabase 涓ˉ榻?`categories`銆乣tags`銆乣tools`銆乣articles` 鍙婂叧绯昏〃鏁版嵁鍚庯紝浣跨敤 `npm run dev` 妫€鏌ラ椤点€佸伐鍏峰簱銆佹枃绔犻〉鍜屾悳绱㈤〉鏄惁鏄剧ず鐪熷疄鍐呭銆?
 
 ## 2026-06-04
 
-任务：首页搜索支持精准直达详情页。
+浠诲姟锛氶椤垫悳绱㈡敮鎸佺簿鍑嗙洿杈捐鎯呴〉銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/page.tsx`
 - `src/components/home/home-page.tsx`
 - `src/components/home/home-search-section.tsx`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 首页继续读取 Supabase published 工具和 published 文章数据，并把完整 published 数据传给首页搜索组件用于精准匹配。
-- 首页搜索框输入空关键词时跳转 `/search`。
-- 首页搜索框输入非精准关键词时跳转 `/search?q=关键词`。
-- 首页搜索框输入唯一精准匹配的 published 工具 slug 或标题时，直接跳转 `/tools/[slug]`。
-- 首页搜索框输入唯一精准匹配的 published 文章 slug 或标题时，直接跳转 `/articles/[slug]`。
-- 同类内容匹配时先判断 slug 完全匹配，再判断标题完全匹配。
-- 工具和文章同时精准匹配时优先跳转工具详情。
-- 多个工具或多个文章匹配时不直接进入详情页，回退到 `/search?q=关键词`。
-- 热门关键词按钮保持模糊搜索逻辑，统一跳转 `/search?q=关键词`，不做精准直达。
-- 未修改后台、数据库结构、Supabase RLS、工具详情页、文章详情页和搜索结果页样式。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过。
-- 已重启 `npm run dev -- -p 3000`，并确认首页返回 200。
-- 已用当前 Supabase published 数据校验匹配逻辑：`published-test-tool` 和 `Published Test Tool` 会跳转工具详情，`published` 会跳转搜索页，空关键词会跳转 `/search`。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 棣栭〉缁х画璇诲彇 Supabase published 宸ュ叿鍜?published 鏂囩珷鏁版嵁锛屽苟鎶婂畬鏁?published 鏁版嵁浼犵粰棣栭〉鎼滅储缁勪欢鐢ㄤ簬绮惧噯鍖归厤銆?
+- 棣栭〉鎼滅储妗嗚緭鍏ョ┖鍏抽敭璇嶆椂璺宠浆 `/search`銆?
+- 棣栭〉鎼滅储妗嗚緭鍏ラ潪绮惧噯鍏抽敭璇嶆椂璺宠浆 `/search?q=鍏抽敭璇峘銆?
+- 棣栭〉鎼滅储妗嗚緭鍏ュ敮涓€绮惧噯鍖归厤鐨?published 宸ュ叿 slug 鎴栨爣棰樻椂锛岀洿鎺ヨ烦杞?`/tools/[slug]`銆?
+- 棣栭〉鎼滅储妗嗚緭鍏ュ敮涓€绮惧噯鍖归厤鐨?published 鏂囩珷 slug 鎴栨爣棰樻椂锛岀洿鎺ヨ烦杞?`/articles/[slug]`銆?
+- 鍚岀被鍐呭鍖归厤鏃跺厛鍒ゆ柇 slug 瀹屽叏鍖归厤锛屽啀鍒ゆ柇鏍囬瀹屽叏鍖归厤銆?
+- 宸ュ叿鍜屾枃绔犲悓鏃剁簿鍑嗗尮閰嶆椂浼樺厛璺宠浆宸ュ叿璇︽儏銆?
+- 澶氫釜宸ュ叿鎴栧涓枃绔犲尮閰嶆椂涓嶇洿鎺ヨ繘鍏ヨ鎯呴〉锛屽洖閫€鍒?`/search?q=鍏抽敭璇峘銆?
+- 鐑棬鍏抽敭璇嶆寜閽繚鎸佹ā绯婃悳绱㈤€昏緫锛岀粺涓€璺宠浆 `/search?q=鍏抽敭璇峘锛屼笉鍋氱簿鍑嗙洿杈俱€?
+- 鏈慨鏀瑰悗鍙般€佹暟鎹簱缁撴瀯銆丼upabase RLS銆佸伐鍏疯鎯呴〉銆佹枃绔犺鎯呴〉鍜屾悳绱㈢粨鏋滈〉鏍峰紡銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 宸查噸鍚?`npm run dev -- -p 3000`锛屽苟纭棣栭〉杩斿洖 200銆?
+- 宸茬敤褰撳墠 Supabase published 鏁版嵁鏍￠獙鍖归厤閫昏緫锛歚published-test-tool` 鍜?`Published Test Tool` 浼氳烦杞伐鍏疯鎯咃紝`published` 浼氳烦杞悳绱㈤〉锛岀┖鍏抽敭璇嶄細璺宠浆 `/search`銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在浏览器中从首页手动测试完整 slug、完整标题、模糊关键词和空关键词四种搜索路径。
+- 鍦ㄦ祻瑙堝櫒涓粠棣栭〉鎵嬪姩娴嬭瘯瀹屾暣 slug銆佸畬鏁存爣棰樸€佹ā绯婂叧閿瘝鍜岀┖鍏抽敭璇嶅洓绉嶆悳绱㈣矾寰勩€?
 
 ## 2026-06-05
 
-任务：添加基础 SEO、sitemap、robots 和上线前检查。
+浠诲姟锛氭坊鍔犲熀纭€ SEO銆乻itemap銆乺obots 鍜屼笂绾垮墠妫€鏌ャ€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/layout.tsx`
 - `src/app/page.tsx`
 - `src/app/tools/page.tsx`
@@ -2417,138 +2703,138 @@
 - `src/lib/seo.ts`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/CONTENT_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已在 `src/lib/seo.ts` 统一站点名称、默认描述、关键词、站点 URL、canonical、Open Graph 和 Twitter Card 基础生成逻辑。
-- 全站默认 metadata 已在 `src/app/layout.tsx` 中完善，标题模板为 `%s｜知享`。
-- `NEXT_PUBLIC_SITE_URL` 用于生成正式站点 URL；缺失时 fallback 到本地开发地址 `http://localhost:3000`。
-- 首页、工具库、工具详情、文章列表、文章详情、搜索页、投稿页、版权反馈页已添加页面级 metadata。
-- `/tools/[slug]` 动态 metadata 只读取 published 工具；找不到或读取失败时使用“工具未找到”兜底。
-- `/articles/[slug]` 动态 metadata 只读取 published 文章；找不到或读取失败时使用“文章未找到”兜底。
-- `/submit` 与 `/copyright` 原本是 Client Component，已将表单交互代码拆到同目录 client 文件，原 `page.tsx` 只负责 metadata 和页面渲染入口，表单视觉和写入逻辑不变。
-- 已新增 `src/app/sitemap.ts`，包含首页、工具库、文章、搜索、投稿、版权反馈，以及 published 工具详情页和 published 文章详情页。
-- sitemap 查询失败时返回基础页面 sitemap，不让构建失败。
-- 已新增 `src/app/robots.ts`，允许前台页面抓取，禁止 `/admin`、`/admin/`、`/admin/*`，并指向 `/sitemap.xml`。
-- 本次未修改后台 CRUD、后台登录、Supabase 数据库结构、RLS 策略、页面视觉布局、广告接入、统计代码或复杂结构化数据。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过；构建输出已包含 `/robots.txt` 和 `/sitemap.xml`。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/CONTENT_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸插湪 `src/lib/seo.ts` 缁熶竴绔欑偣鍚嶇О銆侀粯璁ゆ弿杩般€佸叧閿瘝銆佺珯鐐?URL銆乧anonical銆丱pen Graph 鍜?Twitter Card 鍩虹鐢熸垚閫昏緫銆?
+- 鍏ㄧ珯榛樿 metadata 宸插湪 `src/app/layout.tsx` 涓畬鍠勶紝鏍囬妯℃澘涓?`%s锝滅煡浜玚銆?
+- `NEXT_PUBLIC_SITE_URL` 鐢ㄤ簬鐢熸垚姝ｅ紡绔欑偣 URL锛涚己澶辨椂 fallback 鍒版湰鍦板紑鍙戝湴鍧€ `http://localhost:3000`銆?
+- 棣栭〉銆佸伐鍏峰簱銆佸伐鍏疯鎯呫€佹枃绔犲垪琛ㄣ€佹枃绔犺鎯呫€佹悳绱㈤〉銆佹姇绋块〉銆佺増鏉冨弽棣堥〉宸叉坊鍔犻〉闈㈢骇 metadata銆?
+- `/tools/[slug]` 鍔ㄦ€?metadata 鍙鍙?published 宸ュ叿锛涙壘涓嶅埌鎴栬鍙栧け璐ユ椂浣跨敤鈥滃伐鍏锋湭鎵惧埌鈥濆厹搴曘€?
+- `/articles/[slug]` 鍔ㄦ€?metadata 鍙鍙?published 鏂囩珷锛涙壘涓嶅埌鎴栬鍙栧け璐ユ椂浣跨敤鈥滄枃绔犳湭鎵惧埌鈥濆厹搴曘€?
+- `/submit` 涓?`/copyright` 鍘熸湰鏄?Client Component锛屽凡灏嗚〃鍗曚氦浜掍唬鐮佹媶鍒板悓鐩綍 client 鏂囦欢锛屽師 `page.tsx` 鍙礋璐?metadata 鍜岄〉闈㈡覆鏌撳叆鍙ｏ紝琛ㄥ崟瑙嗚鍜屽啓鍏ラ€昏緫涓嶅彉銆?
+- 宸叉柊澧?`src/app/sitemap.ts`锛屽寘鍚椤点€佸伐鍏峰簱銆佹枃绔犮€佹悳绱€佹姇绋裤€佺増鏉冨弽棣堬紝浠ュ強 published 宸ュ叿璇︽儏椤靛拰 published 鏂囩珷璇︽儏椤点€?
+- sitemap 鏌ヨ澶辫触鏃惰繑鍥炲熀纭€椤甸潰 sitemap锛屼笉璁╂瀯寤哄け璐ャ€?
+- 宸叉柊澧?`src/app/robots.ts`锛屽厑璁稿墠鍙伴〉闈㈡姄鍙栵紝绂佹 `/admin`銆乣/admin/`銆乣/admin/*`锛屽苟鎸囧悜 `/sitemap.xml`銆?
+- 鏈鏈慨鏀瑰悗鍙?CRUD銆佸悗鍙扮櫥褰曘€丼upabase 鏁版嵁搴撶粨鏋勩€丷LS 绛栫暐銆侀〉闈㈣瑙夊竷灞€銆佸箍鍛婃帴鍏ャ€佺粺璁′唬鐮佹垨澶嶆潅缁撴瀯鍖栨暟鎹€?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤鸿緭鍑哄凡鍖呭惈 `/robots.txt` 鍜?`/sitemap.xml`銆?
 
-上线环境变量提醒：
+涓婄嚎鐜鍙橀噺鎻愰啋锛?
 
-- 必须配置 `NEXT_PUBLIC_SUPABASE_URL`。
-- 必须配置 `NEXT_PUBLIC_SUPABASE_ANON_KEY`。
-- 必须配置 `NEXT_PUBLIC_SITE_URL`，例如正式域名 `https://your-domain.com`。
-- 如果后续后台服务端任务需要 `SUPABASE_SERVICE_ROLE_KEY`，只能放在服务端环境变量中，当前不要在前台暴露或打印。
+- 蹇呴』閰嶇疆 `NEXT_PUBLIC_SUPABASE_URL`銆?
+- 蹇呴』閰嶇疆 `NEXT_PUBLIC_SUPABASE_ANON_KEY`銆?
+- 蹇呴』閰嶇疆 `NEXT_PUBLIC_SITE_URL`锛屼緥濡傛寮忓煙鍚?`https://your-domain.com`銆?
+- 濡傛灉鍚庣画鍚庡彴鏈嶅姟绔换鍔￠渶瑕?`SUPABASE_SERVICE_ROLE_KEY`锛屽彧鑳芥斁鍦ㄦ湇鍔＄鐜鍙橀噺涓紝褰撳墠涓嶈鍦ㄥ墠鍙版毚闇叉垨鎵撳嵃銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 部署前在正式域名检查 `/robots.txt`、`/sitemap.xml`、首页源码中的 title/description/canonical，以及工具详情和文章详情的动态标题。
+- 閮ㄧ讲鍓嶅湪姝ｅ紡鍩熷悕妫€鏌?`/robots.txt`銆乣/sitemap.xml`銆侀椤垫簮鐮佷腑鐨?title/description/canonical锛屼互鍙婂伐鍏疯鎯呭拰鏂囩珷璇︽儏鐨勫姩鎬佹爣棰樸€?
 
 ## 2026-06-05
 
-任务：检查并完善站点 URL 配置说明。
+浠诲姟锛氭鏌ュ苟瀹屽杽绔欑偣 URL 閰嶇疆璇存槑銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/lib/seo.ts`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已检查 `src/app/sitemap.ts`，确认 sitemap URL 统一通过 `getAbsoluteUrl()` 生成。
-- 已检查 `src/app/robots.ts`，确认 robots 的 `host` 和 `sitemap` 统一通过 `getSiteUrl()` / `getAbsoluteUrl()` 生成。
-- 已检查 `src/lib/seo.ts`，确认站点 URL 统一读取 `NEXT_PUBLIC_SITE_URL`。
-- 已将 `NEXT_PUBLIC_SITE_URL` 缺失时的 fallback 从 `https://example.com` 改为 `http://localhost:3000`，避免上线前忘记替换 example.com。
-- 未写死正式域名。
-- 未修改后台、数据库、业务功能或页面视觉。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸叉鏌?`src/app/sitemap.ts`锛岀‘璁?sitemap URL 缁熶竴閫氳繃 `getAbsoluteUrl()` 鐢熸垚銆?
+- 宸叉鏌?`src/app/robots.ts`锛岀‘璁?robots 鐨?`host` 鍜?`sitemap` 缁熶竴閫氳繃 `getSiteUrl()` / `getAbsoluteUrl()` 鐢熸垚銆?
+- 宸叉鏌?`src/lib/seo.ts`锛岀‘璁ょ珯鐐?URL 缁熶竴璇诲彇 `NEXT_PUBLIC_SITE_URL`銆?
+- 宸插皢 `NEXT_PUBLIC_SITE_URL` 缂哄け鏃剁殑 fallback 浠?`https://example.com` 鏀逛负 `http://localhost:3000`锛岄伩鍏嶄笂绾垮墠蹇樿鏇挎崲 example.com銆?
+- 鏈啓姝绘寮忓煙鍚嶃€?
+- 鏈慨鏀瑰悗鍙般€佹暟鎹簱銆佷笟鍔″姛鑳芥垨椤甸潰瑙嗚銆?
 
-环境变量提醒：
+鐜鍙橀噺鎻愰啋锛?
 
-- 本地 `.env.local` 需要配置：`NEXT_PUBLIC_SITE_URL=http://localhost:3000`。
-- Vercel 生产环境需要配置：`NEXT_PUBLIC_SITE_URL=正式域名`，例如 `https://your-domain.com`。
-- `NEXT_PUBLIC_SUPABASE_URL` 和 `NEXT_PUBLIC_SUPABASE_ANON_KEY` 仍需按 Supabase 项目配置。
+- 鏈湴 `.env.local` 闇€瑕侀厤缃細`NEXT_PUBLIC_SITE_URL=http://localhost:3000`銆?
+- Vercel 鐢熶骇鐜闇€瑕侀厤缃細`NEXT_PUBLIC_SITE_URL=姝ｅ紡鍩熷悕`锛屼緥濡?`https://your-domain.com`銆?
+- `NEXT_PUBLIC_SUPABASE_URL` 鍜?`NEXT_PUBLIC_SUPABASE_ANON_KEY` 浠嶉渶鎸?Supabase 椤圭洰閰嶇疆銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 修改或新增环境变量后重启开发服务，再检查 `/robots.txt` 和 `/sitemap.xml` 是否输出期望域名。
+- 淇敼鎴栨柊澧炵幆澧冨彉閲忓悗閲嶅惎寮€鍙戞湇鍔★紝鍐嶆鏌?`/robots.txt` 鍜?`/sitemap.xml` 鏄惁杈撳嚭鏈熸湜鍩熷悕銆?
 
 ## 2026-06-05
 
-任务：Vercel 部署前检查与上线准备。
+浠诲姟锛歏ercel 閮ㄧ讲鍓嶆鏌ヤ笌涓婄嚎鍑嗗銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `.gitignore`
 - `docs/DEPLOYMENT.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DESIGN_SYSTEM.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/CONTENT_RULES.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已检查 `package.json`，当前脚本包含 `dev`、`build`、`start`、`lint`，无需修改。
-- 已检查 `next.config.ts`，当前没有影响 Vercel 部署的特殊配置，暂不修改。
-- 已检查 `src/app/sitemap.ts`，确认通过 `getAbsoluteUrl()` 使用 `NEXT_PUBLIC_SITE_URL`，并只读取 published 工具和 published 文章。
-- 已检查 `src/app/robots.ts`，确认通过 `getSiteUrl()` / `getAbsoluteUrl()` 使用 `NEXT_PUBLIC_SITE_URL`，并禁止 `/admin`、`/admin/`、`/admin/*`。
-- 已检查 `src/lib/seo.ts`，确认未写死正式域名，`NEXT_PUBLIC_SITE_URL` 缺失时本地 fallback 为 `http://localhost:3000`。
-- 已检查环境变量使用，当前代码只使用 `NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`NEXT_PUBLIC_SITE_URL`，未使用 `SUPABASE_SERVICE_ROLE_KEY`。
-- 已补充 `.gitignore`，新增 `.env.*.local`，并确认已包含 `.env`、`.env.local`、`.next`、`node_modules`。
-- 已创建 `docs/DEPLOYMENT.md`，记录 Vercel 部署步骤、环境变量、Supabase 表检查、RLS 检查、后台管理员创建、robots/sitemap 检查和上线后验收清单。
-- 当前项目没有 `README.md`，本次未新增 README，部署说明集中放在 `docs/DEPLOYMENT.md`。
-- 已运行 `npm run build`，通过。
-- 构建输出已包含 `/robots.txt` 和 `/sitemap.xml`。
-- 构建日志中仍出现一条既有 Supabase 相关推荐查询日志：`fetch related tools: 未分类`，未导致构建失败；上线前可后续单独清理未分类相关推荐参数。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DESIGN_SYSTEM.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/CONTENT_RULES.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸叉鏌?`package.json`锛屽綋鍓嶈剼鏈寘鍚?`dev`銆乣build`銆乣start`銆乣lint`锛屾棤闇€淇敼銆?
+- 宸叉鏌?`next.config.ts`锛屽綋鍓嶆病鏈夊奖鍝?Vercel 閮ㄧ讲鐨勭壒娈婇厤缃紝鏆備笉淇敼銆?
+- 宸叉鏌?`src/app/sitemap.ts`锛岀‘璁ら€氳繃 `getAbsoluteUrl()` 浣跨敤 `NEXT_PUBLIC_SITE_URL`锛屽苟鍙鍙?published 宸ュ叿鍜?published 鏂囩珷銆?
+- 宸叉鏌?`src/app/robots.ts`锛岀‘璁ら€氳繃 `getSiteUrl()` / `getAbsoluteUrl()` 浣跨敤 `NEXT_PUBLIC_SITE_URL`锛屽苟绂佹 `/admin`銆乣/admin/`銆乣/admin/*`銆?
+- 宸叉鏌?`src/lib/seo.ts`锛岀‘璁ゆ湭鍐欐姝ｅ紡鍩熷悕锛宍NEXT_PUBLIC_SITE_URL` 缂哄け鏃舵湰鍦?fallback 涓?`http://localhost:3000`銆?
+- 宸叉鏌ョ幆澧冨彉閲忎娇鐢紝褰撳墠浠ｇ爜鍙娇鐢?`NEXT_PUBLIC_SUPABASE_URL`銆乣NEXT_PUBLIC_SUPABASE_ANON_KEY`銆乣NEXT_PUBLIC_SITE_URL`锛屾湭浣跨敤 `SUPABASE_SERVICE_ROLE_KEY`銆?
+- 宸茶ˉ鍏?`.gitignore`锛屾柊澧?`.env.*.local`锛屽苟纭宸插寘鍚?`.env`銆乣.env.local`銆乣.next`銆乣node_modules`銆?
+- 宸插垱寤?`docs/DEPLOYMENT.md`锛岃褰?Vercel 閮ㄧ讲姝ラ銆佺幆澧冨彉閲忋€丼upabase 琛ㄦ鏌ャ€丷LS 妫€鏌ャ€佸悗鍙扮鐞嗗憳鍒涘缓銆乺obots/sitemap 妫€鏌ュ拰涓婄嚎鍚庨獙鏀舵竻鍗曘€?
+- 褰撳墠椤圭洰娌℃湁 `README.md`锛屾湰娆℃湭鏂板 README锛岄儴缃茶鏄庨泦涓斁鍦?`docs/DEPLOYMENT.md`銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃銆?
+- 鏋勫缓杈撳嚭宸插寘鍚?`/robots.txt` 鍜?`/sitemap.xml`銆?
+- 鏋勫缓鏃ュ織涓粛鍑虹幇涓€鏉℃棦鏈?Supabase 鐩稿叧鎺ㄨ崘鏌ヨ鏃ュ織锛歚fetch related tools: 鏈垎绫籤锛屾湭瀵艰嚧鏋勫缓澶辫触锛涗笂绾垮墠鍙悗缁崟鐙竻鐞嗘湭鍒嗙被鐩稿叧鎺ㄨ崘鍙傛暟銆?
 
-上线前风险：
+涓婄嚎鍓嶉闄╋細
 
-- Vercel 生产环境必须配置 `NEXT_PUBLIC_SITE_URL` 为正式域名，否则 robots、sitemap 和 canonical 会使用 fallback 或旧域名。
-- Supabase RLS 必须允许前台匿名读取 published 内容、匿名写入投稿和投诉，并允许 authenticated 管理后台数据。
-- Supabase Authentication 需要先创建管理员用户，否则后台无法登录。
+- Vercel 鐢熶骇鐜蹇呴』閰嶇疆 `NEXT_PUBLIC_SITE_URL` 涓烘寮忓煙鍚嶏紝鍚﹀垯 robots銆乻itemap 鍜?canonical 浼氫娇鐢?fallback 鎴栨棫鍩熷悕銆?
+- Supabase RLS 蹇呴』鍏佽鍓嶅彴鍖垮悕璇诲彇 published 鍐呭銆佸尶鍚嶅啓鍏ユ姇绋垮拰鎶曡瘔锛屽苟鍏佽 authenticated 绠＄悊鍚庡彴鏁版嵁銆?
+- Supabase Authentication 闇€瑕佸厛鍒涘缓绠＄悊鍛樼敤鎴凤紝鍚﹀垯鍚庡彴鏃犳硶鐧诲綍銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 把代码提交到 GitHub 后，按 `docs/DEPLOYMENT.md` 的步骤导入 Vercel，并配置生产环境变量。
+- 鎶婁唬鐮佹彁浜ゅ埌 GitHub 鍚庯紝鎸?`docs/DEPLOYMENT.md` 鐨勬楠ゅ鍏?Vercel锛屽苟閰嶇疆鐢熶骇鐜鍙橀噺銆?
 
 ## 2026-06-05
 
-任务：上线后安全收尾与测试数据清理记录。
+浠诲姟锛氫笂绾垮悗瀹夊叏鏀跺熬涓庢祴璇曟暟鎹竻鐞嗚褰曘€?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `docs/DEPLOYMENT.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已确认项目已部署到线上地址：`https://zhishare.vercel.app`。
-- 已通过 `git ls-files` 检查，`.env.local` 未被 Git 跟踪。
-- 已通过 `git check-ignore` 检查，`.env.local`、`.env`、`.env.production.local` 均被 `.gitignore` 忽略。
-- 已扫描 `src`、`package.json`、`next.config.ts`，未发现 `SUPABASE_SERVICE_ROLE_KEY` 或 `service_role` 硬编码。
-- 已检查线上 `https://zhishare.vercel.app/robots.txt`，确认禁止 `/admin`、`/admin/`、`/admin/*`。
-- 已检查线上 `robots.txt` 指向 `https://zhishare.vercel.app/sitemap.xml`。
-- 已检查线上 `https://zhishare.vercel.app/sitemap.xml`，确认使用线上域名。
-- 已检查线上 sitemap，当前未发现 `published-test-tool`、`draft-test-tool`、`published-test-article`、`draft-test-article`。
-- 已在 `docs/DEPLOYMENT.md` 补充 Vercel 环境变量复查说明：当前版本只需要 `NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`NEXT_PUBLIC_SITE_URL`。
-- 已在 `docs/DEPLOYMENT.md` 记录当前版本不需要 `SUPABASE_SERVICE_ROLE_KEY`，如曾添加不必要 secret key，建议删除并轮换相关 key。
-- 已在 `docs/DEPLOYMENT.md` 记录建议轮换 Supabase `service_role` key 或任何曾经暴露在临时位置的 secret key。
-- 已在 `docs/DEPLOYMENT.md` 记录测试数据清理项和后台删除路径。
-- 当前没有 `README.md`，本次未修改 README。
-- 本次未修改前台页面、后台 CRUD、数据库结构、RLS 策略、视觉设计或依赖。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/DEPLOYMENT.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸茬‘璁ら」鐩凡閮ㄧ讲鍒扮嚎涓婂湴鍧€锛歚https://zhishare.vercel.app`銆?
+- 宸查€氳繃 `git ls-files` 妫€鏌ワ紝`.env.local` 鏈 Git 璺熻釜銆?
+- 宸查€氳繃 `git check-ignore` 妫€鏌ワ紝`.env.local`銆乣.env`銆乣.env.production.local` 鍧囪 `.gitignore` 蹇界暐銆?
+- 宸叉壂鎻?`src`銆乣package.json`銆乣next.config.ts`锛屾湭鍙戠幇 `SUPABASE_SERVICE_ROLE_KEY` 鎴?`service_role` 纭紪鐮併€?
+- 宸叉鏌ョ嚎涓?`https://zhishare.vercel.app/robots.txt`锛岀‘璁ょ姝?`/admin`銆乣/admin/`銆乣/admin/*`銆?
+- 宸叉鏌ョ嚎涓?`robots.txt` 鎸囧悜 `https://zhishare.vercel.app/sitemap.xml`銆?
+- 宸叉鏌ョ嚎涓?`https://zhishare.vercel.app/sitemap.xml`锛岀‘璁や娇鐢ㄧ嚎涓婂煙鍚嶃€?
+- 宸叉鏌ョ嚎涓?sitemap锛屽綋鍓嶆湭鍙戠幇 `published-test-tool`銆乣draft-test-tool`銆乣published-test-article`銆乣draft-test-article`銆?
+- 宸插湪 `docs/DEPLOYMENT.md` 琛ュ厖 Vercel 鐜鍙橀噺澶嶆煡璇存槑锛氬綋鍓嶇増鏈彧闇€瑕?`NEXT_PUBLIC_SUPABASE_URL`銆乣NEXT_PUBLIC_SUPABASE_ANON_KEY`銆乣NEXT_PUBLIC_SITE_URL`銆?
+- 宸插湪 `docs/DEPLOYMENT.md` 璁板綍褰撳墠鐗堟湰涓嶉渶瑕?`SUPABASE_SERVICE_ROLE_KEY`锛屽鏇炬坊鍔犱笉蹇呰 secret key锛屽缓璁垹闄ゅ苟杞崲鐩稿叧 key銆?
+- 宸插湪 `docs/DEPLOYMENT.md` 璁板綍寤鸿杞崲 Supabase `service_role` key 鎴栦换浣曟浘缁忔毚闇插湪涓存椂浣嶇疆鐨?secret key銆?
+- 宸插湪 `docs/DEPLOYMENT.md` 璁板綍娴嬭瘯鏁版嵁娓呯悊椤瑰拰鍚庡彴鍒犻櫎璺緞銆?
+- 褰撳墠娌℃湁 `README.md`锛屾湰娆℃湭淇敼 README銆?
+- 鏈鏈慨鏀瑰墠鍙伴〉闈€佸悗鍙?CRUD銆佹暟鎹簱缁撴瀯銆丷LS 绛栫暐銆佽瑙夎璁℃垨渚濊禆銆?
 
-测试数据清理提醒：
+娴嬭瘯鏁版嵁娓呯悊鎻愰啋锛?
 
-- 通过 `/admin/tools` 删除 `published-test-tool` 和 `draft-test-tool`。
-- 通过 `/admin/articles` 删除 `published-test-article` 和 `draft-test-article`。
-- 删除后重新检查 `https://zhishare.vercel.app/sitemap.xml`，确认不再包含测试 slug。
+- 閫氳繃 `/admin/tools` 鍒犻櫎 `published-test-tool` 鍜?`draft-test-tool`銆?
+- 閫氳繃 `/admin/articles` 鍒犻櫎 `published-test-article` 鍜?`draft-test-article`銆?
+- 鍒犻櫎鍚庨噸鏂版鏌?`https://zhishare.vercel.app/sitemap.xml`锛岀‘璁や笉鍐嶅寘鍚祴璇?slug銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 在 Vercel 项目设置中人工复查环境变量，确认没有多余 secret；然后完成后台测试数据清理和一次完整线上冒烟测试。
+- 鍦?Vercel 椤圭洰璁剧疆涓汉宸ュ鏌ョ幆澧冨彉閲忥紝纭娌℃湁澶氫綑 secret锛涚劧鍚庡畬鎴愬悗鍙版祴璇曟暟鎹竻鐞嗗拰涓€娆″畬鏁寸嚎涓婂啋鐑熸祴璇曘€?
 
 ## 2026-06-05
 
-任务：接入 Cloudflare Turnstile 人机验证。
+浠诲姟锛氭帴鍏?Cloudflare Turnstile 浜烘満楠岃瘉銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/api/turnstile/verify/route.ts`
 - `src/app/admin/login/page.tsx`
 - `src/app/submit/submit-client.tsx`
@@ -2559,33 +2845,33 @@
 - `docs/DEPLOYMENT.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/ADMIN_RULES.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已新增服务端 API：`/api/turnstile/verify`。
-- 服务端验证通过 `TURNSTILE_SECRET_KEY` 调用 Cloudflare Turnstile siteverify 接口。
-- `TURNSTILE_SECRET_KEY` 只在服务端读取，未暴露到前端。
-- 已新增前端 Turnstile 组件，使用 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 渲染 Widget。
-- `/submit` 提交前必须完成人机验证；未验证提示“请先完成人机验证。”。
-- `/copyright` 提交前必须完成人机验证；未验证提示“请先完成人机验证。”。
-- `/admin/login` 登录前必须完成人机验证；未验证提示“请先完成人机验证。”。
-- Turnstile 服务端验证失败时统一提示“人机验证失败，请刷新后重试。”。
-- 验证成功后才继续原来的 Supabase 投稿写入、版权投诉写入或后台登录逻辑。
-- 保留原有 loading、成功提示和失败提示。
-- 未修改工具页、文章页、搜索页、后台 CRUD、数据库结构、RLS 策略或视觉设计。
-- 已更新 `docs/DEPLOYMENT.md`，记录 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 和 `TURNSTILE_SECRET_KEY` 的本地/Vercel 配置方式，以及上线后检查方法。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过；构建输出包含 `/api/turnstile/verify`。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/ADMIN_RULES.md`銆乣docs/DEPLOYMENT.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸叉柊澧炴湇鍔＄ API锛歚/api/turnstile/verify`銆?
+- 鏈嶅姟绔獙璇侀€氳繃 `TURNSTILE_SECRET_KEY` 璋冪敤 Cloudflare Turnstile siteverify 鎺ュ彛銆?
+- `TURNSTILE_SECRET_KEY` 鍙湪鏈嶅姟绔鍙栵紝鏈毚闇插埌鍓嶇銆?
+- 宸叉柊澧炲墠绔?Turnstile 缁勪欢锛屼娇鐢?`NEXT_PUBLIC_TURNSTILE_SITE_KEY` 娓叉煋 Widget銆?
+- `/submit` 鎻愪氦鍓嶅繀椤诲畬鎴愪汉鏈洪獙璇侊紱鏈獙璇佹彁绀衡€滆鍏堝畬鎴愪汉鏈洪獙璇併€傗€濄€?
+- `/copyright` 鎻愪氦鍓嶅繀椤诲畬鎴愪汉鏈洪獙璇侊紱鏈獙璇佹彁绀衡€滆鍏堝畬鎴愪汉鏈洪獙璇併€傗€濄€?
+- `/admin/login` 鐧诲綍鍓嶅繀椤诲畬鎴愪汉鏈洪獙璇侊紱鏈獙璇佹彁绀衡€滆鍏堝畬鎴愪汉鏈洪獙璇併€傗€濄€?
+- Turnstile 鏈嶅姟绔獙璇佸け璐ユ椂缁熶竴鎻愮ず鈥滀汉鏈洪獙璇佸け璐ワ紝璇峰埛鏂板悗閲嶈瘯銆傗€濄€?
+- 楠岃瘉鎴愬姛鍚庢墠缁х画鍘熸潵鐨?Supabase 鎶曠鍐欏叆銆佺増鏉冩姇璇夊啓鍏ユ垨鍚庡彴鐧诲綍閫昏緫銆?
+- 淇濈暀鍘熸湁 loading銆佹垚鍔熸彁绀哄拰澶辫触鎻愮ず銆?
+- 鏈慨鏀瑰伐鍏烽〉銆佹枃绔犻〉銆佹悳绱㈤〉銆佸悗鍙?CRUD銆佹暟鎹簱缁撴瀯銆丷LS 绛栫暐鎴栬瑙夎璁°€?
+- 宸叉洿鏂?`docs/DEPLOYMENT.md`锛岃褰?`NEXT_PUBLIC_TURNSTILE_SITE_KEY` 鍜?`TURNSTILE_SECRET_KEY` 鐨勬湰鍦?Vercel 閰嶇疆鏂瑰紡锛屼互鍙婁笂绾垮悗妫€鏌ユ柟娉曘€?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤鸿緭鍑哄寘鍚?`/api/turnstile/verify`銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 部署到 Vercel 后，在线上分别测试 `/submit`、`/copyright`、`/admin/login`：未验证时应阻止提交，验证通过后应继续原有写入或登录流程。
+- 閮ㄧ讲鍒?Vercel 鍚庯紝鍦ㄧ嚎涓婂垎鍒祴璇?`/submit`銆乣/copyright`銆乣/admin/login`锛氭湭楠岃瘉鏃跺簲闃绘鎻愪氦锛岄獙璇侀€氳繃鍚庡簲缁х画鍘熸湁鍐欏叆鎴栫櫥褰曟祦绋嬨€?
 
 ## 2026-06-05
 
-任务：修复并复查 Cloudflare Turnstile 真实接入。
+浠诲姟锛氫慨澶嶅苟澶嶆煡 Cloudflare Turnstile 鐪熷疄鎺ュ叆銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/admin/login/page.tsx`
 - `src/app/submit/submit-client.tsx`
 - `src/app/copyright/copyright-client.tsx`
@@ -2593,31 +2879,31 @@
 - `docs/DEPLOYMENT.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已确认 `/submit`、`/copyright`、`/admin/login` 页面提交前均检查 Turnstile token。
-- 已确认没有 token 时页面提示 `请先完成人机验证。`，不会继续调用 Supabase 写入或登录。
-- 已确认有 token 时先调用 `/api/turnstile/verify`，只有验证成功后才继续 `submissions`、`reports` 或 Supabase Auth 登录请求。
-- 已确认 `TurnstileWidget` 使用 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 渲染，并在缺少站点 key 时显示 `人机验证配置缺失，请联系管理员。`。
-- 已确认服务端验证接口仍使用 `TURNSTILE_SECRET_KEY`，不会暴露到前端。
-- 已检查线上 `https://zhishare.vercel.app/submit` 当前加载的 JS chunk：未包含 `turnstile` 和 `/api/turnstile/verify`，说明线上当前仍是未包含 Turnstile 的旧部署包或最新代码尚未部署成功。
-- 已更新 `docs/DEPLOYMENT.md`，补充 Turnstile 的线上 Network 检查顺序和旧部署包排查说明。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过；构建输出包含 `/api/turnstile/verify`。
-- 已启动本地 `http://localhost:3000` 做轻量检查，`/submit` 返回 200，页面能显示人机验证区域或缺配置提示。
-- 已用无效 token 请求本地 `/api/turnstile/verify`，返回 `{"success":false}`，确认不会放行无效验证。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/DEPLOYMENT.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸茬‘璁?`/submit`銆乣/copyright`銆乣/admin/login` 椤甸潰鎻愪氦鍓嶅潎妫€鏌?Turnstile token銆?
+- 宸茬‘璁ゆ病鏈?token 鏃堕〉闈㈡彁绀?`璇峰厛瀹屾垚浜烘満楠岃瘉銆俙锛屼笉浼氱户缁皟鐢?Supabase 鍐欏叆鎴栫櫥褰曘€?
+- 宸茬‘璁ゆ湁 token 鏃跺厛璋冪敤 `/api/turnstile/verify`锛屽彧鏈夐獙璇佹垚鍔熷悗鎵嶇户缁?`submissions`銆乣reports` 鎴?Supabase Auth 鐧诲綍璇锋眰銆?
+- 宸茬‘璁?`TurnstileWidget` 浣跨敤 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 娓叉煋锛屽苟鍦ㄧ己灏戠珯鐐?key 鏃舵樉绀?`浜烘満楠岃瘉閰嶇疆缂哄け锛岃鑱旂郴绠＄悊鍛樸€俙銆?
+- 宸茬‘璁ゆ湇鍔＄楠岃瘉鎺ュ彛浠嶄娇鐢?`TURNSTILE_SECRET_KEY`锛屼笉浼氭毚闇插埌鍓嶇銆?
+- 宸叉鏌ョ嚎涓?`https://zhishare.vercel.app/submit` 褰撳墠鍔犺浇鐨?JS chunk锛氭湭鍖呭惈 `turnstile` 鍜?`/api/turnstile/verify`锛岃鏄庣嚎涓婂綋鍓嶄粛鏄湭鍖呭惈 Turnstile 鐨勬棫閮ㄧ讲鍖呮垨鏈€鏂颁唬鐮佸皻鏈儴缃叉垚鍔熴€?
+- 宸叉洿鏂?`docs/DEPLOYMENT.md`锛岃ˉ鍏?Turnstile 鐨勭嚎涓?Network 妫€鏌ラ『搴忓拰鏃ч儴缃插寘鎺掓煡璇存槑銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤鸿緭鍑哄寘鍚?`/api/turnstile/verify`銆?
+- 宸插惎鍔ㄦ湰鍦?`http://localhost:3000` 鍋氳交閲忔鏌ワ紝`/submit` 杩斿洖 200锛岄〉闈㈣兘鏄剧ず浜烘満楠岃瘉鍖哄煙鎴栫己閰嶇疆鎻愮ず銆?
+- 宸茬敤鏃犳晥 token 璇锋眰鏈湴 `/api/turnstile/verify`锛岃繑鍥?`{"success":false}`锛岀‘璁や笉浼氭斁琛屾棤鏁堥獙璇併€?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 推送最新代码并重新部署 Vercel，确认 Production 环境同时配置 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 和 `TURNSTILE_SECRET_KEY`。
-- 重新部署后在线上测试 `/submit`、`/copyright`、`/admin/login`：页面应显示 Turnstile，Network 中应先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase 写入或登录请求。
+- 鎺ㄩ€佹渶鏂颁唬鐮佸苟閲嶆柊閮ㄧ讲 Vercel锛岀‘璁?Production 鐜鍚屾椂閰嶇疆 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 鍜?`TURNSTILE_SECRET_KEY`銆?
+- 閲嶆柊閮ㄧ讲鍚庡湪绾夸笂娴嬭瘯 `/submit`銆乣/copyright`銆乣/admin/login`锛氶〉闈㈠簲鏄剧ず Turnstile锛孨etwork 涓簲鍏堝嚭鐜?`/api/turnstile/verify`锛岄獙璇佹垚鍔熷悗鎵嶅嚭鐜?Supabase 鍐欏叆鎴栫櫥褰曡姹傘€?
 
 ## 2026-06-05
 
-任务：强制补强 Cloudflare Turnstile 接入。
+浠诲姟锛氬己鍒惰ˉ寮?Cloudflare Turnstile 鎺ュ叆銆?
 
-改动文件：
+鏀瑰姩鏂囦欢锛?
 - `src/app/api/turnstile/verify/route.ts`
 - `src/components/security/TurnstileWidget.tsx`
 - `src/app/admin/login/page.tsx`
@@ -2626,27 +2912,27 @@
 - `docs/DEPLOYMENT.md`
 - `docs/TASK_LOG.md`
 
-检查方式：
+妫€鏌ユ柟寮忥細
 
-- 开发前已阅读 `docs/PROJECT_RULES.md`、`docs/DATABASE_SCHEMA.md`、`docs/DEPLOYMENT.md`、`docs/ANTI_ENTROPY.md`、`docs/TASK_LOG.md`。
-- 已将 `TurnstileWidget` 的脚本地址固定为 `https://challenges.cloudflare.com/turnstile/v0/api.js`。
-- `TurnstileWidget` 文件顶部保留 `"use client";`。
-- `TurnstileWidget` 使用 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 渲染；缺少 site key 时显示 `人机验证配置缺失，请联系管理员。`，不会静默跳过。
-- `TurnstileWidget` 使用 `window.turnstile.render`，渲染容器包含 `cf-turnstile` class。
-- `TurnstileWidget` 在成功 callback 时把 token 传给父组件，在 expired/error callback 时清空 token。
-- 已将 `/api/turnstile/verify` 改为在 route 内直接读取 `TURNSTILE_SECRET_KEY`、接收 `token`、使用 `FormData` 调用 Cloudflare `siteverify`。
-- `/api/turnstile/verify` 在 token 缺失、secret 缺失、Cloudflare 验证失败时都返回 `{ success: false }`。
-- `/api/turnstile/verify` 不输出 `TURNSTILE_SECRET_KEY`。
-- 已确认 `/submit` 实际表单逻辑在 `submit-client.tsx`，提交时无 token 会提示 `请先完成人机验证。`，有 token 时先调用 `/api/turnstile/verify`，成功后才调用 `createSubmission`。
-- 已确认 `/copyright` 实际表单逻辑在 `copyright-client.tsx`，提交时无 token 会提示 `请先完成人机验证。`，有 token 时先调用 `/api/turnstile/verify`，成功后才调用 `createReport`。
-- 已确认 `/admin/login` 登录时无 token 会提示 `请先完成人机验证。`，有 token 时先调用 `/api/turnstile/verify`，成功后才调用 Supabase Auth 登录。
-- 验证失败文案统一为 `人机验证失败，请刷新后重试。`。
-- 已运行 `npm run lint`，通过。
-- 已运行 `npm run build`，通过；构建输出包含 `/api/turnstile/verify`。
-- 已检查 `.next` 构建产物，确认包含 `cf-turnstile`、Cloudflare `api.js`、`/api/turnstile/verify` 和验证提示文案。
-- 已启动本地开发服务，用无效 token 请求 `http://localhost:3000/api/turnstile/verify`，返回 `{"success":false}`。
+- 寮€鍙戝墠宸查槄璇?`docs/PROJECT_RULES.md`銆乣docs/DATABASE_SCHEMA.md`銆乣docs/DEPLOYMENT.md`銆乣docs/ANTI_ENTROPY.md`銆乣docs/TASK_LOG.md`銆?
+- 宸插皢 `TurnstileWidget` 鐨勮剼鏈湴鍧€鍥哄畾涓?`https://challenges.cloudflare.com/turnstile/v0/api.js`銆?
+- `TurnstileWidget` 鏂囦欢椤堕儴淇濈暀 `"use client";`銆?
+- `TurnstileWidget` 浣跨敤 `NEXT_PUBLIC_TURNSTILE_SITE_KEY` 娓叉煋锛涚己灏?site key 鏃舵樉绀?`浜烘満楠岃瘉閰嶇疆缂哄け锛岃鑱旂郴绠＄悊鍛樸€俙锛屼笉浼氶潤榛樿烦杩囥€?
+- `TurnstileWidget` 浣跨敤 `window.turnstile.render`锛屾覆鏌撳鍣ㄥ寘鍚?`cf-turnstile` class銆?
+- `TurnstileWidget` 鍦ㄦ垚鍔?callback 鏃舵妸 token 浼犵粰鐖剁粍浠讹紝鍦?expired/error callback 鏃舵竻绌?token銆?
+- 宸插皢 `/api/turnstile/verify` 鏀逛负鍦?route 鍐呯洿鎺ヨ鍙?`TURNSTILE_SECRET_KEY`銆佹帴鏀?`token`銆佷娇鐢?`FormData` 璋冪敤 Cloudflare `siteverify`銆?
+- `/api/turnstile/verify` 鍦?token 缂哄け銆乻ecret 缂哄け銆丆loudflare 楠岃瘉澶辫触鏃堕兘杩斿洖 `{ success: false }`銆?
+- `/api/turnstile/verify` 涓嶈緭鍑?`TURNSTILE_SECRET_KEY`銆?
+- 宸茬‘璁?`/submit` 瀹為檯琛ㄥ崟閫昏緫鍦?`submit-client.tsx`锛屾彁浜ゆ椂鏃?token 浼氭彁绀?`璇峰厛瀹屾垚浜烘満楠岃瘉銆俙锛屾湁 token 鏃跺厛璋冪敤 `/api/turnstile/verify`锛屾垚鍔熷悗鎵嶈皟鐢?`createSubmission`銆?
+- 宸茬‘璁?`/copyright` 瀹為檯琛ㄥ崟閫昏緫鍦?`copyright-client.tsx`锛屾彁浜ゆ椂鏃?token 浼氭彁绀?`璇峰厛瀹屾垚浜烘満楠岃瘉銆俙锛屾湁 token 鏃跺厛璋冪敤 `/api/turnstile/verify`锛屾垚鍔熷悗鎵嶈皟鐢?`createReport`銆?
+- 宸茬‘璁?`/admin/login` 鐧诲綍鏃舵棤 token 浼氭彁绀?`璇峰厛瀹屾垚浜烘満楠岃瘉銆俙锛屾湁 token 鏃跺厛璋冪敤 `/api/turnstile/verify`锛屾垚鍔熷悗鎵嶈皟鐢?Supabase Auth 鐧诲綍銆?
+- 楠岃瘉澶辫触鏂囨缁熶竴涓?`浜烘満楠岃瘉澶辫触锛岃鍒锋柊鍚庨噸璇曘€俙銆?
+- 宸茶繍琛?`npm run lint`锛岄€氳繃銆?
+- 宸茶繍琛?`npm run build`锛岄€氳繃锛涙瀯寤鸿緭鍑哄寘鍚?`/api/turnstile/verify`銆?
+- 宸叉鏌?`.next` 鏋勫缓浜х墿锛岀‘璁ゅ寘鍚?`cf-turnstile`銆丆loudflare `api.js`銆乣/api/turnstile/verify` 鍜岄獙璇佹彁绀烘枃妗堛€?
+- 宸插惎鍔ㄦ湰鍦板紑鍙戞湇鍔★紝鐢ㄦ棤鏁?token 璇锋眰 `http://localhost:3000/api/turnstile/verify`锛岃繑鍥?`{"success":false}`銆?
 
-下一步：
+涓嬩竴姝ワ細
 
-- 推送最新代码并重新部署 Vercel。
-- 线上重新测试 `/submit`、`/copyright`、`/admin/login`：Network 必须先出现 `/api/turnstile/verify`，验证成功后才出现 Supabase 写入或登录请求。
+- 鎺ㄩ€佹渶鏂颁唬鐮佸苟閲嶆柊閮ㄧ讲 Vercel銆?
+- 绾夸笂閲嶆柊娴嬭瘯 `/submit`銆乣/copyright`銆乣/admin/login`锛歂etwork 蹇呴』鍏堝嚭鐜?`/api/turnstile/verify`锛岄獙璇佹垚鍔熷悗鎵嶅嚭鐜?Supabase 鍐欏叆鎴栫櫥褰曡姹傘€?

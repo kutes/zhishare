@@ -87,6 +87,7 @@
 | `summary` | text | 一句话简介 |
 | `description` | text | 详细介绍 |
 | `website_url` | text | 官方网站链接 |
+| `download_url` | text | 网盘下载链接，可为空 |
 | `category_id` | uuid | 关联 `categories.id` |
 | `category` | text | 兼容字段，可选 |
 | `tags` | jsonb | 兼容字段，可选 |
@@ -184,6 +185,7 @@
 - `summary`
 - `description`
 - `website_url`
+- `download_url`
 - `category`
 - `tags`
 - `is_free`

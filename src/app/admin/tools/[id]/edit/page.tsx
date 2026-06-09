@@ -127,6 +127,7 @@ function toFormValues(tool: AdminTool): AdminToolInput {
     summary: tool.summary ?? "",
     description: tool.description ?? "",
     website_url: tool.website_url ?? "",
+    download_url: tool.download_url ?? "",
     cover_url: tool.cover_url ?? "",
     category_id: tool.category_id ?? "",
     is_free: Boolean(tool.is_free),
