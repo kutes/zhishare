@@ -2936,3 +2936,149 @@ Check result:
 
 - 鎺ㄩ€佹渶鏂颁唬鐮佸苟閲嶆柊閮ㄧ讲 Vercel銆?
 - 绾夸笂閲嶆柊娴嬭瘯 `/submit`銆乣/copyright`銆乣/admin/login`锛歂etwork 蹇呴』鍏堝嚭鐜?`/api/turnstile/verify`锛岄獙璇佹垚鍔熷悗鎵嶅嚭鐜?Supabase 鍐欏叆鎴栫櫥褰曡姹傘€?
+
+## 2026-06-11 棣栨壒宸ュ叿鏍锋澘鍐呭鑽夌
+
+### 鏈瀹屾垚
+
+- 鏂板棣栨壒 5 涓伐鍏峰唴瀹硅崏绋匡細
+  - ChatGPT
+  - Canva
+  - Photopea
+  - Notion
+  - Cursor
+- 鑽夌缁熶竴鎸夌幇鏈夊悗鍙板伐鍏峰瓧娈电粍缁囥€?
+- 姣忎釜鑽夌鍖呭惈锛?
+  - 涓€鍙ヨ瘽缁撹
+  - 宸ュ叿鎻忚堪
+  - 閫傚悎鐢ㄦ埛
+  - 浣跨敤鍦烘櫙
+  - 浼樼偣
+  - 缂虹偣
+  - 椋庨櫓鎻愰啋
+  - GEO 澶囨敞
+
+### 鏈娌℃湁淇敼
+
+- 娌℃湁淇敼鏁版嵁搴?schema銆?
+- 娌℃湁鏂板 migration銆?
+- 娌℃湁淇敼鍓嶅彴椤甸潰銆?
+- 娌℃湁淇敼鍚庡彴琛ㄥ崟銆?
+- 娌℃湁鍐欏叆 Supabase銆?
+- 娌℃湁鎻愪氦 commit銆?
+
+### 涓嬩竴姝?
+
+瀹℃牳 5 涓伐鍏疯崏绋匡紝纭鍚庡啀鍐冲畾鏄惁褰曞叆鍚庡彴鎴栫户缁埗浣滄枃绔犳牱鏉裤€?
+
+## 2026-06-09 鍐呭寤鸿瑙勮寖鏂囨。鍖?
+
+### 鏈瀹屾垚
+
+- 鏂板 `docs/content/` 鍐呭寤鸿鏂囨。鐩綍銆?
+- 鏂板鍐呭瑙勫垯銆佸唴瀹规ā鏉裤€佸瓧娈垫槧灏勩€侀€夐姹犮€佸鏍告竻鍗曘€佸唴瀹逛换鍔℃棩蹇椼€?
+- 鏄庣‘绗竴闃舵鍐呭寤鸿涓嶆墿鏁版嵁搴撱€?
+- 鏄庣‘宸ュ叿椤典紭鍏堝鐢ㄧ幇鏈夊瓧娈碉細
+  - `summary`
+  - `description`
+  - `target_users`
+  - `use_cases`
+  - `pros`
+  - `cons`
+  - `risk_notice`
+- 鏄庣‘褰撳墠涓嶅仛璇勮銆佺偣璧炪€佽浆鍙戙€侀殢鏈烘暟鎹敓鎴愮瓑浜掑姩鍔熻兘銆?
+
+### 鏈娌℃湁淇敼
+
+- 娌℃湁淇敼鍓嶅彴椤甸潰銆?
+- 娌℃湁淇敼鍚庡彴琛ㄥ崟銆?
+- 娌℃湁淇敼 Supabase schema銆?
+- 娌℃湁鏂板 SQL migration銆?
+- 娌℃湁鐢熸垚鐪熷疄宸ュ叿鍐呭銆?
+
+### 涓嬩竴姝?
+
+寮€濮嬪埗浣?5 涓伐鍏锋牱鏉垮唴瀹癸紝骞舵牴鎹幇鏈夊悗鍙板瓧娈靛啓鍏ャ€?
+
+## 2026-06-11 棣栨壒宸ュ叿鏍锋澘褰曞叆 Supabase
+
+### 鏈瀹屾垚
+
+- 灏嗛鎵?5 涓伐鍏锋牱鏉垮唴瀹瑰綍鍏?Supabase `tools` 琛細
+  - ChatGPT
+  - Canva
+  - Photopea
+  - Notion
+  - Cursor
+- 浣跨敤 `slug` 浣滀负鍐茬獊閿墽琛?upsert锛岄伩鍏嶉噸澶嶆彃鍏ャ€?
+- 鑴氭湰宸叉寜鐪熷疄鏁版嵁搴撳瓧娈佃嚜鍔ㄨ繃婊ゅ啓鍏ュ瓧娈点€?
+- 宸茬‘璁ょ湡瀹炴暟鎹簱缂哄皯锛?
+  - `tools.name`
+  - `categories.status`
+
+### 鏈娌℃湁淇敼
+
+- 娌℃湁淇敼鏁版嵁搴?schema銆?
+- 娌℃湁鏂板 migration銆?
+- 娌℃湁鏂板缂哄け瀛楁銆?
+- 娌℃湁淇敼鍓嶅彴椤甸潰銆?
+- 娌℃湁淇敼鍚庡彴琛ㄥ崟銆?
+- 娌℃湁鏂板浜掑姩鍔熻兘銆?
+- 娌℃湁鎻愪氦 commit銆?
+- 娌℃湁 push銆?
+
+### 涓嬩竴姝?
+
+鍦ㄥ悗鍙版鏌?5 涓伐鍏峰唴瀹癸紝濡傛灉鏄剧ず姝ｅ父锛屽啀灏嗗鏍搁€氳繃鐨勫伐鍏锋敼涓?`published`銆?
+
+## 2026-06-11 棣栨壒宸ュ叿鍙戝竷
+
+### 鏈瀹屾垚
+
+- 灏嗛鎵?5 涓伐鍏蜂粠 `draft` 鍙戝竷涓?`published`锛?
+  - Canva
+  - ChatGPT
+  - Cursor
+  - Notion
+  - Photopea
+- 宸茬‘璁?5 鏉″伐鍏峰潎鍦?Supabase `tools` 琛ㄤ腑銆?
+- 宸茬‘璁?5 鏉″伐鍏风姸鎬佸潎涓?`published`銆?
+
+### 鏈娌℃湁淇敼
+
+- 娌℃湁淇敼鏁版嵁搴?schema銆?
+- 娌℃湁鏂板 migration銆?
+- 娌℃湁淇敼椤甸潰浠ｇ爜銆?
+- 娌℃湁淇敼鍚庡彴琛ㄥ崟銆?
+- 娌℃湁淇敼宸ュ叿姝ｆ枃鍐呭銆?
+- 娌℃湁鏂板浜掑姩鍔熻兘銆?
+- 娌℃湁鎻愪氦 commit銆?
+- 娌℃湁 push銆?
+
+### 涓嬩竴姝?
+
+妫€鏌ュ墠鍙板伐鍏峰簱鍜?5 涓鎯呴〉灞曠ず鏁堟灉銆傜‘璁ゆ棤闂鍚庯紝鍐嶆彁浜ゅ唴瀹瑰缓璁炬枃妗ｅ彉鏇淬€?
+
+## 2026-06-11 Phase 1 `download_url` rule update
+
+### 本次完成
+
+- Updated `docs/content/CONTENT_RULES.md` to require empty `download_url` values in phase 1.
+- Updated `docs/content/CONTENT_TEMPLATES.md` with `website_url` and `download_url` writing rules.
+- Updated `docs/content/CONTENT_REVIEW_CHECKLIST.md` so release checks now require `download_url` to stay empty.
+- Updated `docs/content/CONTENT_DATA_MAP.md` to mark `download_url` as present-but-unused for real links in phase 1.
+- Checked `docs/content/tool-drafts` and confirmed the first 5 tool drafts do not contain real netdisk or third-party download links.
+- Ran a temporary Supabase cleanup script to set `download_url = null` for `canva`, `chatgpt`, `cursor`, `notion`, and `photopea`.
+- Removed the temporary `.tmp` cleanup script after execution.
+
+### 本次没有修改
+
+- No database schema changes.
+- No migrations.
+- No frontend page code changes.
+- No admin form logic changes.
+
+### 结果
+
+- Phase 1 keeps `download_url` empty across tool content.
+- Official access continues to use `website_url` only.
