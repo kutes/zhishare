@@ -158,7 +158,7 @@ export function ToolMobileSummaryCard({ tool, className = "" }: ToolMobileSummar
 
   return (
     <section
-      className={`md:hidden rounded-[28px] border border-[#0f172a]/[0.08] bg-white/90 p-4 shadow-[0_16px_42px_rgba(15,23,42,0.08)] ${className}`}
+      className={`rounded-[28px] border border-[#0f172a]/[0.08] bg-white/90 p-4 shadow-[0_16px_42px_rgba(15,23,42,0.08)] md:hidden ${className}`}
     >
       <div className="flex flex-wrap gap-2">
         <StatusPill tone="blue">{category}</StatusPill>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { toListItems } from "@/lib/db/normalizers";
 import type { ToolItem } from "@/types/tool";
 
 type MobileToolDetailSectionsProps = {
@@ -45,15 +46,8 @@ function readTextArray(source: unknown, keys: string[]) {
   for (const key of keys) {
     const value = record[key];
 
-    if (Array.isArray(value)) {
-      return value
-        .filter((item): item is string => typeof item === "string")
-        .map((item) => item.trim())
-        .filter(Boolean);
-    }
-
-    if (typeof value === "string" && value.trim()) {
-      return [value.trim()];
+    if (Array.isArray(value) || typeof value === "string") {
+      return toListItems(value);
     }
   }
 
@@ -83,14 +77,14 @@ function getRiskItems(tool: ToolItem) {
     return [direct];
   }
 
-  return ["使用前建议确认官网信息、价格、隐私政策、授权说明和账号安全。"];
+  return ["工具信息可能会变化，具体价格、功能、授权和下载方式请以官网为准。"];
 }
 
 function getCompactSummary(items: string[], emptyText: string) {
   const first = items[0]?.trim() || emptyText;
 
   if (first.length > 26) {
-    return `${first.slice(0, 26)}…`;
+    return `${first.slice(0, 26)}...`;
   }
 
   return first;
@@ -103,10 +97,7 @@ function DetailList({ section }: { section: MobileSection }) {
     <div className="bg-[#f8fbff] px-4 pb-4 pt-1">
       <ul className="space-y-2.5 rounded-[18px] border border-[#0f172a]/[0.06] bg-white/82 p-3">
         {visibleItems.map((item, index) => (
-          <li
-            key={`${section.id}-${index}`}
-            className="flex gap-2.5 text-sm font-medium leading-6 text-[#475569]"
-          >
+          <li key={`${section.id}-${index}-${item.slice(0, 24)}`} className="flex gap-2.5 text-sm font-medium leading-6 text-[#475569]">
             <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${section.accentClass}`} />
             <span>{item}</span>
           </li>
@@ -155,7 +146,7 @@ function InfoTableRow({
         </span>
 
         <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#0f172a]/10 bg-white text-base font-black text-[#0f172a] shadow-sm">
-          {open ? "−" : "+"}
+          {open ? "-" : "+"}
         </span>
       </button>
 
@@ -184,22 +175,17 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
       ["target_users", "targetUsers", "audience", "suitableFor"],
     );
 
-    const useCases = getArray(
-      tool,
-      ["use_cases", "useCases", "scenarios"],
-      ["use_cases", "useCases", "scenarios"],
-    );
-
+    const useCases = getArray(tool, ["use_cases", "useCases", "scenarios"], ["use_cases", "useCases", "scenarios"]);
     const pros = getArray(tool, ["pros", "advantages"], ["pros", "advantages"]);
     const cons = getArray(tool, ["cons", "limitations"], ["cons", "limitations"]);
 
     return [
       {
         id: "features",
-        title: "主要功能",
-        label: "能力",
+        title: "核心功能",
+        label: "功能",
         items: features.length > 0 ? features : description ? [description] : [],
-        emptyText: "暂未整理核心功能，建议先查看官网或项目主页。",
+        emptyText: "暂无内容",
         accentClass: "bg-[#60a5fa]",
       },
       {
@@ -223,7 +209,7 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
         title: "优点",
         label: "优势",
         items: pros,
-        emptyText: "暂未整理优点，后续会继续补充。",
+        emptyText: "暂无内容",
         accentClass: "bg-[#84cc16]",
       },
       {
@@ -231,15 +217,15 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
         title: "缺点",
         label: "避坑",
         items: cons,
-        emptyText: "暂未整理缺点，建议结合官网说明自行判断。",
+        emptyText: "暂无内容",
         accentClass: "bg-[#fb923c]",
       },
       {
         id: "risk",
-        title: "风险提示",
+        title: "风险提醒",
         label: "注意",
         items: getRiskItems(tool),
-        emptyText: "使用前建议确认官网信息、价格、隐私政策、授权说明和账号安全。",
+        emptyText: "工具信息可能会变化，具体价格、功能、授权和下载方式请以官网为准。",
         accentClass: "bg-[#facc15]",
       },
     ];
@@ -268,9 +254,7 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
           <div className="mt-1 flex items-start justify-between gap-3">
             <div className="min-w-0">
               <h2 className="text-xl font-black tracking-[-0.04em] text-[#0f172a]">重点信息</h2>
-              <p className="mt-1 text-xs font-medium leading-5 text-[#64748b]">
-                先看摘要，想看细节再展开分类，减少无效滑动。
-              </p>
+              <p className="mt-1 text-xs font-medium leading-5 text-[#64748b]">先看摘要，想看细节再展开分类，减少无效滑动。</p>
             </div>
 
             <button
@@ -308,9 +292,7 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
                 key={section.id}
                 section={section}
                 open={openSectionId === section.id}
-                onToggle={() =>
-                  setOpenSectionId((current) => (current === section.id ? null : section.id))
-                }
+                onToggle={() => setOpenSectionId((current) => (current === section.id ? null : section.id))}
               />
             ))}
           </div>

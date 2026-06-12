@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { AdPlaceholder } from "@/components/common/AdPlaceholder";
 import { CopyrightNotice } from "@/components/common/CopyrightNotice";
@@ -29,7 +29,8 @@ export function ToolDetailPage({ tool, relatedTools }: ToolDetailPageProps) {
         <section className="section-gradient-blue relative overflow-hidden">
           <div className="page-shell py-6 sm:py-8 lg:py-10">
             <Link href="/tools" className="inline-flex text-sm font-bold text-cyan-700 transition hover:text-cyan-900">
-              杩斿洖宸ュ叿搴?            </Link>
+              返回工具库
+            </Link>
 
             <div className="space-y-4 md:hidden">
               <ToolMobileSummaryCard tool={tool} />
@@ -37,7 +38,7 @@ export function ToolDetailPage({ tool, relatedTools }: ToolDetailPageProps) {
               <QuickFactsBar category={category} tagCount={tool.tags.length} className="mt-0 md:hidden" />
             </div>
 
-            <div className="hidden md:grid mt-4 gap-4 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.9fr)] lg:items-start">
+            <div className="mt-4 hidden gap-4 md:grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.9fr)] lg:items-start">
               <DetailHero
                 title={title}
                 summary={summary}
@@ -61,25 +62,25 @@ export function ToolDetailPage({ tool, relatedTools }: ToolDetailPageProps) {
         </section>
 
         <section className="section-gradient-soft section-block">
-          <div className="page-shell space-y-8">
+          <div className="page-shell space-y-6">
             <MobileToolDetailSections tool={tool} className="md:hidden" />
             <MobileRelatedToolsCompact relatedTools={relatedTools} className="md:hidden" />
 
-            <div className="hidden grid gap-6 md:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
-              <article className="glass-card p-5 sm:p-7">
-                <div className="space-y-6">
+            <div className="hidden gap-5 md:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+              <article className="glass-card p-4 sm:p-5">
+                <div className="space-y-4 sm:space-y-5">
                   <CollapsibleDescription title="这个工具是什么" content={description} className="mt-0" />
-                  <ListSection title="涓昏鍔熻兘" items={tool.detail.features} />
+                  <ListSection title="核心功能" items={tool.detail.features} />
                   <AdPlaceholder variant="inline" />
-                  <ListSection title="閫傚悎浜虹兢" items={tool.detail.audience} />
-                  <ListSection title="浣跨敤鍦烘櫙" items={tool.detail.scenarios} />
-                  <ListSection title="浼樼偣" items={tool.detail.pros} />
-                  <ListSection title="缂虹偣" items={tool.detail.cons} />
-                  <ListSection title="椋庨櫓鎻愮ず" items={tool.detail.risks} warning />
+                  <ListSection title="适合人群" items={tool.detail.audience} />
+                  <ListSection title="使用场景" items={tool.detail.scenarios} />
+                  <ListSection title="优点" items={tool.detail.pros} />
+                  <ListSection title="缺点" items={tool.detail.cons} />
+                  <ListSection title="风险提醒" items={tool.detail.risks} warning />
                 </div>
               </article>
 
-              <aside className="space-y-6 lg:sticky lg:top-24">
+              <aside className="space-y-5 lg:sticky lg:top-24">
                 <AdPlaceholder variant="sidebar" />
               </aside>
             </div>
@@ -105,10 +106,8 @@ export function ToolNotFoundPage() {
         <div className="page-shell flex min-h-[60vh] items-center py-16">
           <section className="glass-card-strong mx-auto max-w-2xl p-6 text-center sm:p-8">
             <p className="text-sm font-semibold text-cyan-700">工具不存在</p>
-            <h1 className="mt-3 text-3xl font-black text-ink sm:text-4xl">娌℃湁鎵惧埌杩欎釜宸ュ叿</h1>
-            <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-slate-600">
-              你可以返回工具库重新浏览。
-            </p>
+            <h1 className="mt-3 text-3xl font-black text-ink sm:text-4xl">没有找到这个工具</h1>
+            <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-slate-600">你可以返回工具库重新浏览。</p>
             <Link
               href="/tools"
               className="mt-6 inline-flex min-h-12 items-center justify-center rounded-[14px] bg-ink px-6 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-lg"
@@ -158,10 +157,10 @@ function DetailHero({
         {title}
       </h1>
 
-      <p className="mt-4 max-w-2xl text-lg font-bold leading-8 text-slate-800">{summary}</p>
-      <CollapsibleDescription title="这个工具是什么" content={description} className="mt-3" />
+      <p className="mt-3 max-w-2xl text-base font-bold leading-7 text-slate-800 sm:text-lg sm:leading-8">{summary}</p>
+      <CollapsibleDescription title="这个工具是什么" content={description} className="mt-2.5" />
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div className="mt-4 flex flex-wrap gap-2">
         {visibleTags.length > 0 ? (
           visibleTags.map((tag) => (
             <span
@@ -173,13 +172,14 @@ function DetailHero({
           ))
         ) : (
           <span className="rounded-full border border-white/80 bg-white/65 px-3 py-1.5 text-sm font-semibold text-slate-500 shadow-sm">
-            鏆傛棤鏍囩
+            暂无标签
           </span>
         )}
       </div>
 
-      <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600">
-        鎴戜滑鍏堟妸鏈€褰卞搷鍒ゆ柇鐨勪俊鎭斁鍦ㄨ繖閲岋紝鏂逛究浣犲揩閫熺湅鎳傚畠鏄笉鏄€煎緱缁х画鐪嬩笅鍘汇€?      </p>
+      <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-600">
+        我们先把最影响判断的信息放在这里，方便你快速看懂它是不是值得继续了解。
+      </p>
     </article>
   );
 }
@@ -233,19 +233,25 @@ function DetailBadge({ tone, children }: DetailBadgeProps) {
 
 type ListSectionProps = {
   title: string;
-  items: string[];
+  items: string[] | null | undefined;
   warning?: boolean;
 };
 
 function ListSection({ title, items, warning = false }: ListSectionProps) {
+  const normalizedItems = normalizeListItems(items);
+
+  if (normalizedItems.length === 0) {
+    return null;
+  }
+
   return (
-    <section className="liquid-panel p-5">
+    <section className="liquid-panel rounded-[22px] px-4 py-4 sm:px-5 sm:py-5">
       <SectionTitle>{title}</SectionTitle>
-      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-        {items.map((item) => (
+      <ul className="mt-3 grid gap-x-5 gap-y-2.5 sm:mt-4 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-3">
+        {normalizedItems.map((item, index) => (
           <li
-            key={item}
-            className={`rounded-[18px] border p-4 text-sm leading-6 ${
+            key={`${title}-${index}-${item.slice(0, 24)}`}
+            className={`rounded-[16px] border px-3.5 py-3 text-sm leading-6 ${
               warning ? "border-amber-200 bg-amber-50/80 text-amber-900" : "border-white/70 bg-white/58 text-slate-600"
             }`}
           >
@@ -257,13 +263,36 @@ function ListSection({ title, items, warning = false }: ListSectionProps) {
   );
 }
 
+function normalizeListItems(items: unknown): string[] {
+  if (!items) {
+    return [];
+  }
+
+  if (Array.isArray(items)) {
+    return items
+      .flatMap((item) => normalizeListItems(item))
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  if (typeof items === "string") {
+    return items
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .map((line) => line.replace(/^[-•*]\s*/, "").trim())
+      .filter((line) => line && line !== "-" && line !== "•" && line !== "*");
+  }
+
+  return [];
+}
+
 type SectionTitleProps = {
   children: ReactNode;
 };
 
 function SectionTitle({ children }: SectionTitleProps) {
   return (
-    <div className="border-l-4 border-cyan-300 pl-4">
+    <div className="border-l-4 border-cyan-300 pl-3.5">
       <h2 className="text-xl font-black text-[#0f172a]">{children}</h2>
     </div>
   );
@@ -281,9 +310,7 @@ function RelatedToolsSection({ relatedTools }: RelatedToolsSectionProps) {
           <p className="text-sm font-semibold text-cyan-700">相关推荐</p>
           <h2 className="mt-2 text-2xl font-black text-ink">继续看看同类工具</h2>
         </div>
-        <p className="max-w-xl text-sm leading-6 text-slate-500">
-          优先推荐同分类工具，帮助你做横向比较。
-        </p>
+        <p className="max-w-xl text-sm leading-6 text-slate-500">优先推荐同分类工具，帮助你做横向比较。</p>
       </div>
 
       {relatedTools.length > 0 ? (
@@ -299,15 +326,13 @@ function RelatedToolsSection({ relatedTools }: RelatedToolsSectionProps) {
                 href={`/tools/${relatedTool.slug}`}
                 className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[14px] bg-ink px-4 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-lg"
               >
-                鏌ョ湅璇︽儏
+                查看详情
               </Link>
             </article>
           ))}
         </div>
       ) : (
-        <div className="glass-card p-5 text-sm leading-6 text-slate-500">
-          当前暂无同分类推荐，后续内容增加后会自动补充。
-        </div>
+        <div className="glass-card p-5 text-sm leading-6 text-slate-500">当前暂无同分类推荐，后续内容增加后会自动补充。</div>
       )}
     </section>
   );
@@ -409,6 +434,3 @@ function getCompactIcon(name: string) {
 
   return first.slice(0, 2).toUpperCase();
 }
-
-
-

@@ -34,16 +34,16 @@ export function normalizeTool(
   const title = firstText(row.title, row.name, row.slug, id);
   const summary = firstText(row.summary, row.description, "暂无一句话简介。");
   const description = firstText(row.description, row.summary, "暂无详细简介。");
-  const targetUsers = readStringList(row.target_users);
-  const useCases = readStringList(row.use_cases);
-  const features = readStringList(row.features);
-  const pros = readStringList(row.pros);
-  const cons = readStringList(row.cons);
+  const targetUsers = toListItems(row.target_users);
+  const useCases = toListItems(row.use_cases);
+  const features = toListItems(row.features);
+  const pros = toListItems(row.pros);
+  const cons = toListItems(row.cons);
   const tags = options.tags?.length ? options.tags : readStringList(row.tags);
   const isFree = Boolean(row.is_free);
   const isOpenSource = Boolean(row.is_open_source);
   const categoryName = options.categoryName ?? row.category ?? "未分类";
-  const riskNotice = firstText(row.risk_notice, "使用前请以官方网站说明为准，重点确认价格、授权、隐私政策和服务条款。");
+  const riskNotice = firstText(row.risk_notice, "工具信息可能会变化，具体价格、功能、授权和下载方式请以官网为准。");
 
   return {
     id,
@@ -150,6 +150,45 @@ export function readStringList(value: unknown): string[] {
     .split(/\r?\n|,|，/)
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+export function toListItems(value: unknown): string[] {
+  if (!value) {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+    return value
+      .flatMap((item) => toListItems(item))
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  if (typeof value !== "string") {
+    return [];
+  }
+
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return [];
+  }
+
+  try {
+    const parsed: unknown = JSON.parse(trimmed);
+
+    if (Array.isArray(parsed)) {
+      return toListItems(parsed);
+    }
+  } catch {
+    // Plain text fallback below.
+  }
+
+  return trimmed
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .map((line) => line.replace(/^[-•*]\s*/, "").trim())
+    .filter((line) => line && line !== "-" && line !== "•" && line !== "*");
 }
 
 export function toRecord(value: unknown): Record<string, unknown> {

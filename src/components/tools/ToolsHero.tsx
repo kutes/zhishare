@@ -9,30 +9,24 @@ const advantages = ["严格筛选", "持续更新", "分类清晰", "安全可�
 export function ToolsHero({ totalCount, categoryCount, tagCount }: ToolsHeroProps) {
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fbff_0%,#eef8ff_48%,#ffffff_100%)]">
-      {/* Background glows */}
       <div className="pointer-events-none absolute left-[-8%] top-[-36%] h-64 w-64 rounded-full bg-sky-200/38 blur-3xl sm:h-80 sm:w-80" />
       <div className="pointer-events-none absolute bottom-[-30%] right-[-8%] h-56 w-56 rounded-full bg-cyan-100/70 blur-3xl sm:h-72 sm:w-72" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent via-white/30 to-[#f8fbff]" />
 
       <div className="page-shell relative grid gap-6 py-8 sm:py-10 md:grid-cols-[minmax(0,1fr)_minmax(260px,0.52fr)] md:items-center lg:py-12">
-        {/* Left: main content */}
         <div className="max-w-3xl">
-          {/* Badge */}
           <p className="inline-flex rounded-full border border-sky-100 bg-white/68 px-3.5 py-1.5 text-xs font-semibold text-sky-700 shadow-[0_10px_28px_rgba(14,165,233,0.09)] backdrop-blur-xl sm:text-sm">
             精选工具库
           </p>
 
-          {/* Title */}
           <h1 className="mt-4 max-w-3xl text-[1.85rem] font-black leading-tight text-[#0f172a] sm:text-3xl lg:text-4xl">
             发现更好用的工具，让效率与创意触手可及
           </h1>
 
-          {/* Subtitle */}
           <p className="mt-3 max-w-xl text-sm leading-7 text-[#475569] sm:text-base">
             收录 AI、设计、开发、运营、办公等优质工具，先看介绍，再进入详情判断是否值得使用。
           </p>
 
-          {/* Advantage badges */}
           <div className="mt-5 flex flex-wrap gap-2">
             {advantages.map((item) => (
               <span
@@ -46,7 +40,6 @@ export function ToolsHero({ totalCount, categoryCount, tagCount }: ToolsHeroProp
           </div>
         </div>
 
-        {/* Right: stats overview card (desktop only) */}
         <aside className="glass-card-strong liquid-border relative hidden overflow-hidden rounded-[24px] border border-white/75 bg-white/72 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl md:block">
           <div className="pointer-events-none absolute right-[-24%] top-[-34%] h-36 w-36 rounded-full bg-sky-200/45 blur-3xl" />
           <div className="pointer-events-none absolute bottom-[-34%] left-[-20%] h-32 w-32 rounded-full bg-cyan-100/60 blur-3xl" />

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { toListItems } from "@/lib/db/normalizers";
 import type { ToolItem } from "@/types/tool";
 
 type ToolDecisionPanelProps = {
@@ -44,15 +45,8 @@ function readTextArray(source: unknown, keys: string[]) {
   for (const key of keys) {
     const value = record[key];
 
-    if (Array.isArray(value)) {
-      return value
-        .filter((item): item is string => typeof item === "string")
-        .map((item) => item.trim())
-        .filter(Boolean);
-    }
-
-    if (typeof value === "string" && value.trim()) {
-      return [value.trim()];
+    if (Array.isArray(value) || typeof value === "string") {
+      return toListItems(value);
     }
   }
 
@@ -96,12 +90,7 @@ function getTargetUsers(tool: ToolItem) {
     return direct;
   }
 
-  const detail = getNestedDetailArray(tool, [
-    "target_users",
-    "targetUsers",
-    "audience",
-    "suitableFor",
-  ]);
+  const detail = getNestedDetailArray(tool, ["target_users", "targetUsers", "audience", "suitableFor"]);
 
   if (detail.length > 0) {
     return detail;
@@ -130,7 +119,7 @@ function getRiskNotice(tool: ToolItem) {
   return (
     readText(tool, ["risk_notice", "riskNotice"]) ||
     getNestedDetailText(tool, ["risk_notice", "riskNotice", "risk"]) ||
-    "使用前建议确认官网信息、价格、隐私政策、授权说明和账号安全。"
+    "工具信息可能会变化，具体价格、功能、授权和下载方式请以官网为准。"
   );
 }
 
@@ -141,7 +130,7 @@ function compactText(value: string, maxLength = 36) {
     return "";
   }
 
-  return text.length > maxLength ? `${text.slice(0, maxLength)}…` : text;
+  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 }
 
 function MobileDecisionRow({ item }: { item: DecisionItem }) {
@@ -150,16 +139,12 @@ function MobileDecisionRow({ item }: { item: DecisionItem }) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-[11px] font-black text-[#64748b]">{item.label}</p>
-          <p className="mt-1 text-sm font-black leading-5 text-[#0f172a]">
-            {compactText(item.value, 42)}
-          </p>
+          <p className="mt-1 text-sm font-black leading-5 text-[#0f172a]">{compactText(item.value, 42)}</p>
         </div>
         <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#5ecfb1]" />
       </div>
 
-      <p className="mt-2 text-xs font-medium leading-5 text-[#64748b]">
-        {compactText(item.detail, 58)}
-      </p>
+      <p className="mt-2 text-xs font-medium leading-5 text-[#64748b]">{compactText(item.detail, 58)}</p>
     </div>
   );
 }
@@ -205,7 +190,7 @@ function ActionButtons({
           disabled
           className="inline-flex h-11 cursor-not-allowed items-center justify-center rounded-2xl bg-[#cbd5e1] px-4 text-sm font-black text-white"
         >
-          暂无官网
+          暂无官网链接
         </button>
       )}
 
@@ -222,7 +207,7 @@ function ActionButtons({
         <button
           type="button"
           disabled
-          title="后台未填写网盘下载链接"
+          title="暂无网盘下载"
           className="inline-flex h-11 cursor-not-allowed items-center justify-center rounded-2xl border border-[#cbd5e1] bg-[#f1f5f9] px-4 text-sm font-black text-[#94a3b8]"
         >
           网盘下载
@@ -270,7 +255,7 @@ export function ToolDecisionPanel({ tool, className = "" }: ToolDecisionPanelPro
     {
       label: "访问路径",
       value: "先看详情，再访问官网。",
-      detail: "先阅读介绍、适用场景和风险提醒，再决定是否跳转官网。",
+      detail: "先阅读介绍、适用场景和风险提醒，再决定是否访问官网。",
       tone: "border-[#bfdbfe]/50 bg-[#f8fbff]",
     },
   ];
@@ -282,9 +267,7 @@ export function ToolDecisionPanel({ tool, className = "" }: ToolDecisionPanelPro
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-black text-[#20a27f]">快速判断</p>
-          <h2 className="mt-1 text-xl font-black tracking-[-0.04em] text-[#0f172a]">
-            先判断值不值得继续看
-          </h2>
+          <h2 className="mt-1 text-xl font-black tracking-[-0.04em] text-[#0f172a]">先判断值不值得继续看</h2>
         </div>
 
         <span className="hidden shrink-0 rounded-full border border-[#5ecfb1]/40 bg-[#f2fffa] px-3 py-1 text-[11px] font-black text-[#20a27f] md:inline-flex">
@@ -303,9 +286,7 @@ export function ToolDecisionPanel({ tool, className = "" }: ToolDecisionPanelPro
 
       <div className="mt-3 rounded-[20px] border border-[#0f172a]/[0.06] bg-[#f8fbff] px-3 py-3 md:hidden">
         <p className="text-[11px] font-black text-[#94a3b8]">决策摘要</p>
-        <p className="mt-1 text-sm font-black leading-6 text-[#0f172a]">
-          先看介绍，确认适用场景与风险，再决定是否访问官网或下载资源。
-        </p>
+        <p className="mt-1 text-sm font-black leading-6 text-[#0f172a]">先看介绍，确认适用场景与风险，再决定是否访问官网。</p>
       </div>
 
       {showMobileDetails ? (

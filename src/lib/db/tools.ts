@@ -223,6 +223,7 @@ async function fetchPublishedToolsFromSupabase(): Promise<ToolItem[]> {
   const client = getSupabaseServerClient();
 
   if (!client) {
+    console.log("getPublishedTools source: mock fallback");
     return mockTools;
   }
 
@@ -240,6 +241,7 @@ async function fetchPublishedToolsFromSupabase(): Promise<ToolItem[]> {
   }
 
   const rows = data ?? [];
+  console.log("getPublishedTools source: supabase");
   console.log(
     "getPublishedTools count:",
     rows.length,

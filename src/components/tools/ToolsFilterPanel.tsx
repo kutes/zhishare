@@ -27,12 +27,10 @@ export function ToolsFilterPanel({
 
   return (
     <div className="glass-card-strong liquid-border relative overflow-hidden rounded-[24px] border border-white/75 bg-white/72 p-4 shadow-[0_18px_56px_rgba(15,23,42,0.07)] backdrop-blur-2xl sm:p-5">
-      {/* Background glow */}
       <div className="pointer-events-none absolute right-[-6rem] top-[-6rem] h-40 w-40 rounded-full bg-sky-100/60 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-6rem] left-[-6rem] h-40 w-40 rounded-full bg-cyan-100/50 blur-3xl" />
 
       <div className="relative">
-        {/* Search row */}
         <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
           <div className="relative flex-1">
             <span className="pointer-events-none absolute left-4 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-[#0ea5e9] shadow-[0_0_16px_rgba(14,165,233,0.5)]" />
@@ -62,9 +60,7 @@ export function ToolsFilterPanel({
           </div>
         </div>
 
-        {/* Filter chips rows */}
         <div className="mt-4 space-y-3">
-          {/* Category chips */}
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="mr-1 text-xs font-bold text-slate-400">分类</span>
             {categories.map((category) => (
@@ -83,7 +79,6 @@ export function ToolsFilterPanel({
             ))}
           </div>
 
-          {/* Tag chips */}
           {tags.length > 1 && (
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="mr-1 text-xs font-bold text-slate-400">标签</span>
