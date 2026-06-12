@@ -620,3 +620,44 @@
 - 没有新增互动功能。
 - 没有 commit。
 - 没有 push。
+
+## 2026-06-12
+
+### 本次任务
+
+创建第三阶段首批 5 个工具草稿。
+
+### 新增工具草稿
+
+- `docs/content/tool-drafts/figma.md`
+- `docs/content/tool-drafts/capcut.md`
+- `docs/content/tool-drafts/remove-bg.md`
+- `docs/content/tool-drafts/tinypng.md`
+- `docs/content/tool-drafts/obsidian.md`
+
+### 内容方向
+
+本轮继续遵守“我试过 —— 哪里坑 —— 怎么选”的内容方向，重点补充：
+
+- 设计协作：Figma
+- 短视频剪辑：CapCut
+- 图片抠图：remove.bg
+- 图片压缩：TinyPNG
+- 知识管理：Obsidian
+
+### 本次没有做
+
+- 没有写入 Supabase。
+- 没有发布工具。
+- 没有修改数据库 schema。
+- 没有新增 migration。
+- 没有修改页面代码。
+- 没有修改后台表单。
+- 没有新增互动功能。
+- 没有填写任何 `download_url`。
+- 没有 commit。
+- 没有 push。
+
+### 下一步
+
+人工审核 5 个工具草稿。确认内容风格和字段无问题后，再录入 Supabase，并先保持 draft 或按要求发布。
