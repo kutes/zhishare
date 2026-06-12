@@ -30,7 +30,6 @@ export function getToolInitials(title: string): string {
 
   const text = title.trim();
 
-  // English: take first 2 uppercase letters
   const upperChars = text.replace(/[^A-Z]/g, "");
   if (upperChars.length >= 2) {
     return upperChars.slice(0, 2);
@@ -40,7 +39,6 @@ export function getToolInitials(title: string): string {
     return upperChars + (secondChar || text.charAt(1).toUpperCase());
   }
 
-  // Chinese or mixed: take first 2 characters
   return text.slice(0, 2);
 }
 
@@ -63,8 +61,14 @@ export function getCategoryAccentClass(categoryName: string): string {
 }
 
 export function getToolSummary(tool: ToolItem): string {
-  // ToolItem.name = display name, ToolItem.tagline = one-liner, ToolItem.description = full text
   return tool.tagline || tool.description || "暂无简介";
+}
+
+export function getToolFocusText(tool: ToolItem): string {
+  const audience = tool.detail?.audience?.map((item) => item.trim()).find(Boolean);
+  const scenario = tool.detail?.scenarios?.map((item) => item.trim()).find(Boolean);
+
+  return audience || scenario || tool.highlight || "先看详情";
 }
 
 export function getToolCoverUrl(tool: ToolItem): string | null {
@@ -76,7 +80,6 @@ export function getToolCoverUrl(tool: ToolItem): string | null {
 }
 
 export function getToolCardTitle(tool: ToolItem): string {
-  // normalizeTool stores the DB title as `name`
   return tool.name || tool.slug || "未命名工具";
 }
 

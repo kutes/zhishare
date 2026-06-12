@@ -16,14 +16,14 @@ export function ToolsGrid({ tools, onClear }: ToolsGridProps) {
         variant="banner"
         title="合作推广"
         description="这里可以展示赞助工具、精选服务或广告内容"
-        className="min-h-28"
+        className="min-h-24"
       />
     </div>
   );
 
   if (tools.length === 0) {
     return (
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-4">
         <div className="col-span-full">
           <ToolsNoResults onClear={onClear} />
         </div>
@@ -33,7 +33,7 @@ export function ToolsGrid({ tools, onClear }: ToolsGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
       {tools.map((tool, index) => (
         <Fragment key={tool.id}>
           <CompactToolCard tool={tool} />

@@ -4,8 +4,8 @@ type ToolsNoResultsProps = {
 
 export function ToolsNoResults({ onClear }: ToolsNoResultsProps) {
   return (
-    <div className="glass-card border-dashed p-8 text-center sm:p-10">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50">
+    <div className="glass-card border-dashed p-6 text-center sm:p-8">
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50">
         <svg
           className="h-6 w-6 text-slate-400"
           fill="none"
@@ -20,16 +20,16 @@ export function ToolsNoResults({ onClear }: ToolsNoResultsProps) {
           />
         </svg>
       </div>
-      <p className="mt-4 text-lg font-black text-[#0f172a]">没有找到匹配的工具</p>
+      <p className="mt-4 text-lg font-black text-[#0f172a]">暂时没找到匹配工具</p>
       <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
-        可以尝试减少筛选条件或换一个关键词。
+        可以换个关键词试试，比如：图片、视频、AI、笔记、编程。
       </p>
       <button
         type="button"
         onClick={onClear}
-        className="mt-5 inline-flex h-11 items-center rounded-[14px] bg-[#0f172a] px-5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-lg"
+        className="mt-5 inline-flex h-10 items-center rounded-[14px] bg-[#0f172a] px-5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-700 hover:shadow-lg"
       >
-        清空筛选条件
+        清空筛选
       </button>
     </div>
   );
