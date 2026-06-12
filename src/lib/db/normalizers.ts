@@ -228,21 +228,114 @@ function withFallback(items: string[], fallback: string[]) {
 }
 
 function readArticleSections(content: unknown, summary: string): ArticleSection[] {
-  if (Array.isArray(content)) {
-    const paragraphs = readStringList(content);
-    if (paragraphs.length > 0) {
-      return [{ type: "paragraphs", title: "正文内容", paragraphs }];
-    }
-  }
+  const markdown = normalizeArticleContent(content);
+  const sections = parseArticleSections(markdown);
 
-  if (typeof content === "string" && content.trim()) {
-    const paragraphs = readStringList(content);
-    if (paragraphs.length > 0) {
-      return [{ type: "paragraphs", title: "正文内容", paragraphs }];
-    }
+  if (sections.length > 0) {
+    return sections;
   }
 
   return [{ type: "paragraphs", title: "文章说明", paragraphs: [summary] }];
+}
+
+function normalizeArticleContent(content: unknown) {
+  if (typeof content === "string") {
+    return content;
+  }
+
+  if (Array.isArray(content)) {
+    return content
+      .flatMap((item) => (typeof item === "string" ? [item] : []))
+      .join("\n");
+  }
+
+  return "";
+}
+
+function parseArticleSections(markdown: string): ArticleSection[] {
+  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  const sections: ArticleSection[] = [];
+
+  let currentTitle = "正文内容";
+  let paragraphLines: string[] = [];
+  let listItems: string[] = [];
+  let inCodeBlock = false;
+
+  const flushParagraphs = () => {
+    if (paragraphLines.length === 0) {
+      return;
+    }
+
+    sections.push({
+      type: "paragraphs",
+      title: currentTitle,
+      paragraphs: paragraphLines.map((line) => line.trim()).filter(Boolean),
+    });
+    paragraphLines = [];
+  };
+
+  const flushList = () => {
+    if (listItems.length === 0) {
+      return;
+    }
+
+    sections.push({
+      type: "list",
+      title: currentTitle,
+      items: listItems,
+    });
+    listItems = [];
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (line.startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      continue;
+    }
+
+    if (inCodeBlock) {
+      if (line) {
+        paragraphLines.push(line);
+      }
+      continue;
+    }
+
+    if (!line) {
+      flushParagraphs();
+      flushList();
+      continue;
+    }
+
+    const headingMatch = line.match(/^#{1,3}\s+(.+)$/);
+    if (headingMatch) {
+      flushParagraphs();
+      flushList();
+      currentTitle = headingMatch[1].trim();
+      continue;
+    }
+
+    const listMatch = line.match(/^(?:[-*•]|\d+[.)])\s+(.+)$/);
+    if (listMatch) {
+      flushParagraphs();
+      listItems.push(listMatch[1].trim());
+      continue;
+    }
+
+    if (line === "---") {
+      flushParagraphs();
+      flushList();
+      continue;
+    }
+
+    paragraphLines.push(line.replace(/^>\s?/, ""));
+  }
+
+  flushParagraphs();
+  flushList();
+
+  return sections;
 }
 
 function formatDate(value: string | null | undefined) {
