@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "capture:homepage": "node scripts/capture-homepage.mjs"
+    "capture:homepage": "node scripts/capture-homepage.mjs",
+    "capture:tools": "node scripts/capture-tools.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",

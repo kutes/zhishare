@@ -179,3 +179,12 @@ Status: completed
 - Strengthened partner cards, featured resources, latest guide cards, sponsor banner, and ranking blocks.
 - Preserved the warm editorial style and the existing data model.
 - Did not modify hero, backend, database, routes, scripts, or dependencies.
+
+### Step 28 - Tools page visual QA capture
+
+Status: completed
+
+- Added a dedicated Playwright screenshot script for the /tools page.
+- Added npm run capture:tools.
+- Captures wide, desktop, and mobile screenshots for /tools.
+- Did not modify tools page UI, data flow, filtering logic, backend, database, routes, or dependencies.
