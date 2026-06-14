@@ -161,3 +161,11 @@ Status: completed
 - Increased the hero search bar width so search becomes the primary action.
 - Preserved the centered portal hero structure and lower homepage modules.
 - Kept mobile layout simple and single-column.
+
+### Step 25 - Soften search focus state
+
+Status: completed
+
+- Removed the harsh inner focus outline from the homepage search input.
+- Kept a subtle focus state on the whole search bar container for usability.
+- Did not modify hero structure, lower homepage modules, backend, database, routes, or dependencies.

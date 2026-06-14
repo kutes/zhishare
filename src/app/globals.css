@@ -1762,6 +1762,27 @@ canvas {
     color: var(--zh-text);
   }
 
+  .warm-home-page .zh-search-input:focus,
+  .warm-home-page .zh-search-input:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .warm-home-page .zh-search-bar:focus-within {
+    border-color: rgba(227, 167, 95, 0.28);
+    background:
+      linear-gradient(180deg, rgba(255, 247, 237, 0.066), rgba(255, 247, 237, 0.034));
+    box-shadow:
+      0 0 0 1px rgba(227, 167, 95, 0.08),
+      0 18px 48px rgba(0, 0, 0, 0.24),
+      0 0 42px rgba(227, 167, 95, 0.055),
+      inset 0 1px 0 rgba(255, 247, 237, 0.08);
+  }
+
+  .warm-home-page .zh-search-bar:focus-within .hero-search-icon {
+    color: rgba(227, 167, 95, 0.78);
+  }
+
   .warm-home-page .zh-btn:focus-visible,
   .warm-home-page .zh-pill:focus-visible,
   .warm-home-page .zh-nav-link:focus-visible,
