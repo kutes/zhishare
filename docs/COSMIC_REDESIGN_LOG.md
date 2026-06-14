@@ -128,3 +128,15 @@ Status: completed
 - Enlarged hero typography and search area for desktop.
 - Kept mobile as a single-column layout.
 - Did not modify backend, database, routing, or lower homepage sections.
+
+### Step 22 - Compact balanced hero layout
+
+Status: completed
+
+- Reduced oversized hero height from the previous wide-screen version.
+- Prevented desktop hero title wrapping.
+- Tightened search, hotword, and CTA vertical spacing.
+- Reduced excessive gap between hero and the category section.
+- Preserved the right-side resource discovery panel on desktop.
+- Kept mobile as a single-column layout.
+- Did not modify backend, database, routing, or lower homepage sections.
