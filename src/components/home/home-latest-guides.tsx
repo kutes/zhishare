@@ -12,6 +12,7 @@ export function LatestGuideCard({ item }: { item: LatestGuide }) {
         <p className="zh-guide-meta">
           {item.date} · {item.views}
         </p>
+        <span className="zh-guide-action">阅读全文 ↗</span>
       </div>
     </Link>
   );

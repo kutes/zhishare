@@ -20,7 +20,7 @@ export function SectionHeader({
       </div>
       {href ? (
         <Link className="zh-section-link" href={href}>
-          查看全部 →
+          查看全部 ↗
         </Link>
       ) : null}
     </div>

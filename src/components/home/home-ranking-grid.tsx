@@ -10,7 +10,7 @@ export function RankingCard({ group }: { group: RankingGroup }) {
           <p>{group.description}</p>
         </div>
         <Link prefetch={false} href={group.href} className="zh-section-link">
-          →
+          查看全部 ↗
         </Link>
       </div>
 

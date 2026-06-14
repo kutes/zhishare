@@ -7,6 +7,7 @@ export function FeatureSmallCard({ item }: { item: FeaturedResource }) {
       <p className="zh-card-eyebrow">{item.eyebrow}</p>
       <h3>{item.title}</h3>
       <p>{item.meta}</p>
+      <span className="zh-card-action">打开 ↗</span>
     </Link>
   );
 }
@@ -20,6 +21,7 @@ export function FeaturedLargeCard({ item }: { item: FeaturedResource }) {
         <h3>{item.title}</h3>
         <p>{item.description}</p>
         <p className="zh-card-meta">{item.meta}</p>
+        <span className="zh-card-action">查看资源 ↗</span>
       </div>
     </Link>
   );

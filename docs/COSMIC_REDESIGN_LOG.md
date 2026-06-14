@@ -169,3 +169,13 @@ Status: completed
 - Removed the harsh inner focus outline from the homepage search input.
 - Kept a subtle focus state on the whole search bar container for usability.
 - Did not modify hero structure, lower homepage modules, backend, database, routes, or dependencies.
+
+### Step 26 - Homepage content flow polish
+
+Status: completed
+
+- Improved the homepage lower content flow after freezing the hero.
+- Reframed categories as channel cards.
+- Strengthened partner cards, featured resources, latest guide cards, sponsor banner, and ranking blocks.
+- Preserved the warm editorial style and the existing data model.
+- Did not modify hero, backend, database, routes, scripts, or dependencies.

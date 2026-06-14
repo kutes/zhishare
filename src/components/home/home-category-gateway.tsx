@@ -48,7 +48,7 @@ function PortalIcon({ type }: { type: PortalCategory["icon"] }) {
 
 export function CategoryCard({ item }: { item: PortalCategory }) {
   return (
-    <Link prefetch={false} href={item.href} className="zh-card zh-card-hover zh-tool-card">
+    <Link prefetch={false} href={item.href} className="zh-card zh-card-hover zh-channel-card">
       <div className="zh-card-top">
         <span className="zh-card-icon-wrap">
           <PortalIcon type={item.icon} />

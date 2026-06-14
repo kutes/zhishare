@@ -43,8 +43,8 @@ export function CosmicHomeSections() {
   const [heroFeature, ...sideFeatures] = featuredResources;
 
   return (
-    <section className="zh-shell zh-home-sections">
-      <div className="zh-section">
+    <section className="zh-shell zh-home-sections zh-content-flow">
+      <div className="zh-section zh-section-channels">
         <SectionHeader
           eyebrow="Categories"
           title={sectionCopy.categories.title}
@@ -57,7 +57,7 @@ export function CosmicHomeSections() {
         </div>
       </div>
 
-      <div className="zh-section">
+      <div className="zh-section zh-section-partners">
         <SectionHeader eyebrow="Partners" title={sectionCopy.partners.title} />
         <div className="zh-grid zh-grid-4">
           {partnerAds.map((item) => (
@@ -66,7 +66,7 @@ export function CosmicHomeSections() {
         </div>
       </div>
 
-      <div className="zh-section">
+      <div className="zh-section zh-section-featured">
         <SectionHeader
           eyebrow="Featured"
           title={sectionCopy.featured.title}
@@ -85,7 +85,7 @@ export function CosmicHomeSections() {
 
       <PromoBanner />
 
-      <div className="zh-section">
+      <div className="zh-section zh-section-latest">
         <SectionHeader
           eyebrow="Latest"
           title={sectionCopy.latest.title}
@@ -99,7 +99,7 @@ export function CosmicHomeSections() {
         </div>
       </div>
 
-      <div className="zh-section">
+      <div className="zh-section zh-section-ranking">
         <SectionHeader
           eyebrow="Ranking"
           title={sectionCopy.ranking.title}
