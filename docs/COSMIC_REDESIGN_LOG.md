@@ -118,3 +118,13 @@ Status: completed
 - Replaced the hard round yellow glow with larger, softer, off-canvas warm ambient ellipses.
 - Added Playwright wide-screen screenshot output: homepage-wide.png.
 - Did not change content structure, backend, database, or routes.
+
+### Step 21 - Balanced hero layout v2
+
+Status: completed
+
+- Redesigned the homepage hero as a two-column large-screen composition.
+- Added a right-side resource discovery panel to reduce empty space on wide screens.
+- Enlarged hero typography and search area for desktop.
+- Kept mobile as a single-column layout.
+- Did not modify backend, database, routing, or lower homepage sections.
