@@ -140,3 +140,13 @@ Status: completed
 - Preserved the right-side resource discovery panel on desktop.
 - Kept mobile as a single-column layout.
 - Did not modify backend, database, routing, or lower homepage sections.
+
+### Step 23 - Centered editorial hero stage
+
+Status: completed
+
+- Reworked the homepage hero to follow the user's reference layout more closely.
+- Removed the two-column resource discovery panel from the hero.
+- Converted hero into a centered editorial stage with title, description, search bar, hotwords, and CTAs.
+- Reduced mobile complexity and fixed the previous side-panel-driven layout issues.
+- Preserved lower homepage modules and did not modify backend, database, routes, or dependencies.
