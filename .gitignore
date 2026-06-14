@@ -23,6 +23,9 @@ yarn-error.log*
 pnpm-debug.log*
 .next-dev-logs
 
+# Playwright visual QA screenshots
+artifacts/
+
 # vercel
 .vercel
 
