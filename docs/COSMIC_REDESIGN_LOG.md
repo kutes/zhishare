@@ -107,3 +107,14 @@ Status: completed
 - Visual QA: Playwright screenshots available.
 - Main screenshot command: `npm run capture:homepage`.
 - Current next recommended action: final total validation, then commit and push if validation passes.
+
+
+### Step 20 - Wide-screen layout and ambient glow polish
+
+Status: completed
+
+- Increased warm homepage shell width for large desktop screens.
+- Added 1600px and 1920px responsive layout polish.
+- Replaced the hard round yellow glow with larger, softer, off-canvas warm ambient ellipses.
+- Added Playwright wide-screen screenshot output: homepage-wide.png.
+- Did not change content structure, backend, database, or routes.

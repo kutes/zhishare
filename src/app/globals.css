@@ -1798,3 +1798,67 @@ canvas {
   }
 }
 /* End warm editorial readability polish v1 */
+
+
+/* Warm editorial wide-screen polish v1 */
+@layer components {
+  .public-cosmic-page.warm-home-page {
+    background:
+      radial-gradient(ellipse 980px 520px at 104% 2%, rgba(227, 167, 95, 0.085), transparent 72%),
+      radial-gradient(ellipse 860px 620px at 78% 18%, rgba(227, 167, 95, 0.045), transparent 74%),
+      radial-gradient(ellipse 720px 520px at -12% 36%, rgba(91, 58, 82, 0.11), transparent 72%),
+      linear-gradient(180deg, #120f0e 0%, #171210 46%, #120f0e 100%);
+  }
+
+  .public-cosmic-page .cosmic-shell,
+  .warm-home-page .zh-shell {
+    max-width: 1400px;
+  }
+
+  @media (min-width: 1600px) {
+    .public-cosmic-page .cosmic-shell,
+    .warm-home-page .zh-shell {
+      max-width: 1480px;
+      padding-inline: 80px;
+    }
+
+    .warm-home-page .zh-hero {
+      padding-block: 88px 104px;
+    }
+
+    .warm-home-page .zh-hero-desc,
+    .warm-home-page .zh-search-bar {
+      max-width: 700px;
+    }
+
+    .warm-home-page .zh-grid {
+      gap: 24px;
+    }
+
+    .warm-home-page .zh-section {
+      margin-top: 68px;
+    }
+
+    .warm-home-page .zh-feature-layout,
+    .warm-home-page .zh-list-grid {
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .public-cosmic-page .cosmic-shell,
+    .warm-home-page .zh-shell {
+      max-width: 1520px;
+    }
+
+    .public-cosmic-page.warm-home-page {
+      background:
+        radial-gradient(ellipse 1120px 560px at 102% 0%, rgba(227, 167, 95, 0.07), transparent 74%),
+        radial-gradient(ellipse 980px 680px at 76% 20%, rgba(227, 167, 95, 0.038), transparent 76%),
+        radial-gradient(ellipse 780px 560px at -10% 34%, rgba(91, 58, 82, 0.1), transparent 74%),
+        linear-gradient(180deg, #120f0e 0%, #171210 46%, #120f0e 100%);
+    }
+  }
+}
+/* End warm editorial wide-screen polish v1 */
+

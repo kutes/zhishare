@@ -8,6 +8,21 @@ const outputDir = path.join(process.cwd(), "artifacts", "homepage-screenshots");
 
 fs.mkdirSync(outputDir, { recursive: true });
 
+async function captureWide(browser) {
+  const page = await browser.newPage({
+    viewport: { width: 1920, height: 1200 },
+    deviceScaleFactor: 1,
+  });
+
+  await page.goto(baseUrl, { waitUntil: "networkidle" });
+  await page.screenshot({
+    path: path.join(outputDir, "homepage-wide.png"),
+    fullPage: true,
+  });
+
+  await page.close();
+}
+
 async function captureDesktop(browser) {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 1200 },
@@ -40,9 +55,11 @@ async function captureMobile(browser) {
 const browser = await chromium.launch();
 
 try {
+  await captureWide(browser);
   await captureDesktop(browser);
   await captureMobile(browser);
   console.log("HOMEPAGE_SCREENSHOTS_OK");
+  console.log("WIDE:", path.join(outputDir, "homepage-wide.png"));
   console.log("DESKTOP:", path.join(outputDir, "homepage-desktop.png"));
   console.log("MOBILE:", path.join(outputDir, "homepage-mobile.png"));
 } finally {
