@@ -29,7 +29,10 @@ function SearchIcon() {
 
 export function CosmicHomeHero() {
   return (
-    <section className="zh-shell zh-hero zh-hero-stage">
+    <section className="zh-shell zh-hero zh-hero-anomaly">
+      <div className="zh-hero-orb" aria-hidden="true" />
+      <div className="zh-hero-field" aria-hidden="true" />
+
       <div className="zh-hero-stage-inner">
         <div className="zh-eyebrow">
           <span className="zh-eyebrow-dot" />
@@ -42,7 +45,12 @@ export function CosmicHomeHero() {
 
         <p className="zh-hero-desc">{heroText.description}</p>
 
-        <form action="/search" method="get" className="zh-search-bar" role="search">
+        <form
+          action="/search"
+          method="get"
+          className="zh-search-bar zh-hero-search"
+          role="search"
+        >
           <SearchIcon />
           <input
             className="zh-search-input"

@@ -150,3 +150,14 @@ Status: completed
 - Converted hero into a centered editorial stage with title, description, search bar, hotwords, and CTAs.
 - Reduced mobile complexity and fixed the previous side-panel-driven layout issues.
 - Preserved lower homepage modules and did not modify backend, database, routes, or dependencies.
+
+### Step 24 - CSS anomalous matter hero stage
+
+Status: completed
+
+- Reworked the hero using the user's uploaded anomalous matter prompt as visual inspiration.
+- Did not introduce three, WebGL, shadcn, lucide-react, or /components/ui.
+- Added a CSS-only energy field / anomalous matter style background.
+- Increased the hero search bar width so search becomes the primary action.
+- Preserved the centered portal hero structure and lower homepage modules.
+- Kept mobile layout simple and single-column.

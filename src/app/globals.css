@@ -1862,146 +1862,216 @@ canvas {
 }
 /* End warm editorial wide-screen polish v1 */
 
-/* Hero editorial centered layout v4 */
+/* Hero anomalous matter stage v5 */
 @layer components {
-  .warm-home-page .zh-hero-stage {
+  .warm-home-page .zh-hero-anomaly {
     position: relative;
     isolation: isolate;
     display: flex;
-    min-height: clamp(360px, 46vh, 500px);
+    min-height: clamp(440px, 54vh, 620px);
     align-items: center;
     justify-content: center;
-    padding-block: clamp(58px, 8vh, 96px) clamp(42px, 6vh, 72px);
+    overflow: hidden;
+    padding-block: clamp(64px, 8vh, 108px) clamp(54px, 7vh, 86px);
     text-align: center;
   }
 
-  .warm-home-page .zh-hero-stage::before {
+  .warm-home-page .zh-hero-anomaly::before {
     position: absolute;
-    inset: -22px calc(50% - 50vw) 0;
-    z-index: -2;
+    inset: -40px calc(50% - 50vw) 0;
+    z-index: -4;
     background:
-      radial-gradient(ellipse 720px 300px at 50% 22%, rgba(227, 167, 95, 0.095), transparent 70%),
-      radial-gradient(ellipse 900px 360px at 50% 8%, rgba(255, 247, 237, 0.035), transparent 76%),
+      radial-gradient(ellipse 920px 360px at 50% 28%, rgba(227, 167, 95, 0.13), transparent 68%),
+      radial-gradient(ellipse 780px 320px at 42% 18%, rgba(255, 247, 237, 0.045), transparent 72%),
+      radial-gradient(ellipse 860px 380px at 58% 52%, rgba(105, 75, 52, 0.16), transparent 74%),
       linear-gradient(180deg, rgba(255, 247, 237, 0.018), transparent 76%);
     content: "";
     pointer-events: none;
   }
 
-  .warm-home-page .zh-hero-stage::after {
+  .warm-home-page .zh-hero-anomaly::after {
     position: absolute;
     inset: auto calc(50% - 50vw) 0;
     z-index: -1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 247, 237, 0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 247, 237, 0.1), transparent);
     content: "";
     pointer-events: none;
   }
 
-  .warm-home-page .zh-hero-stage-inner {
-    width: min(100%, 860px);
+  .warm-home-page .zh-hero-orb {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    z-index: -3;
+    width: clamp(460px, 48vw, 880px);
+    height: clamp(180px, 20vw, 340px);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 42% 48%, rgba(227, 167, 95, 0.18), transparent 28%),
+      radial-gradient(circle at 64% 42%, rgba(247, 241, 234, 0.09), transparent 24%),
+      radial-gradient(circle at 52% 56%, rgba(255, 247, 237, 0.06), transparent 46%);
+    filter: blur(26px);
+    opacity: 0.9;
+    transform: translate(-50%, -50%);
+    animation: zh-anomaly-breathe 9s ease-in-out infinite;
+  }
+
+  .warm-home-page .zh-hero-field {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -2;
+    width: min(92vw, 1080px);
+    height: 280px;
+    border-radius: 999px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 247, 237, 0.02) 0 1px,
+        transparent 1px 26px
+      ),
+      radial-gradient(ellipse at center, rgba(227, 167, 95, 0.06), transparent 70%);
+    mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
+    opacity: 0.74;
+    transform: translate(-50%, -50%);
+  }
+
+  .warm-home-page .zh-hero-anomaly .zh-hero-stage-inner {
+    width: min(100%, 980px);
     margin-inline: auto;
   }
 
-  .warm-home-page .zh-hero-stage .zh-eyebrow {
+  .warm-home-page .zh-hero-anomaly .zh-eyebrow {
     width: fit-content;
     margin-inline: auto;
-    margin-bottom: 24px;
+    margin-bottom: 26px;
   }
 
-  .warm-home-page .zh-hero-stage .zh-hero-title {
+  .warm-home-page .zh-hero-anomaly .zh-hero-title {
     white-space: nowrap;
-    font-size: clamp(58px, 5.6vw, 98px);
-    line-height: 1.05;
+    font-size: clamp(66px, 6.2vw, 116px);
+    line-height: 1.02;
     letter-spacing: 0.035em;
     margin-bottom: 16px;
   }
 
-  .warm-home-page .zh-hero-stage .zh-hero-kicker {
+  .warm-home-page .zh-hero-anomaly .zh-hero-kicker {
     margin-bottom: 18px;
   }
 
-  .warm-home-page .zh-hero-stage .zh-hero-desc {
-    max-width: 680px;
+  .warm-home-page .zh-hero-anomaly .zh-hero-desc {
+    max-width: 720px;
     margin-inline: auto;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     font-size: 15px;
     line-height: 1.75;
   }
 
-  .warm-home-page .zh-hero-stage .zh-search-bar {
-    max-width: 760px;
+  .warm-home-page .zh-hero-anomaly .zh-hero-search {
+    width: min(100%, 920px);
+    max-width: 920px;
     margin-inline: auto;
     margin-bottom: 22px;
   }
 
-  .warm-home-page .zh-hero-stage .zh-categories {
-    justify-content: center;
-    margin-bottom: 26px;
+  .warm-home-page .zh-hero-anomaly .zh-search-input {
+    min-height: 28px;
   }
 
-  .warm-home-page .zh-hero-stage .zh-cta-row {
+  .warm-home-page .zh-hero-anomaly .zh-categories {
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .warm-home-page .zh-hero-anomaly .zh-cta-row {
     justify-content: center;
   }
 
   .warm-home-page .zh-home-sections {
-    margin-top: clamp(26px, 3.6vh, 44px);
+    margin-top: clamp(24px, 3vh, 40px);
+  }
+
+  @keyframes zh-anomaly-breathe {
+    0%,
+    100% {
+      opacity: 0.72;
+      transform: translate(-50%, -50%) scale(0.96);
+    }
+
+    50% {
+      opacity: 0.96;
+      transform: translate(-50%, -50%) scale(1.04);
+    }
   }
 
   @media (min-width: 1600px) {
-    .warm-home-page .zh-hero-stage {
-      min-height: clamp(390px, 45vh, 540px);
-      padding-block: 72px 58px;
+    .warm-home-page .zh-hero-anomaly {
+      min-height: clamp(480px, 52vh, 650px);
     }
 
-    .warm-home-page .zh-hero-stage-inner {
-      width: min(100%, 920px);
+    .warm-home-page .zh-hero-anomaly .zh-hero-search {
+      width: min(100%, 980px);
+      max-width: 980px;
+    }
+
+    .warm-home-page .zh-hero-anomaly .zh-hero-stage-inner {
+      width: min(100%, 1040px);
     }
   }
 
   @media (max-width: 768px) {
-    .warm-home-page .zh-hero-stage {
+    .warm-home-page .zh-hero-anomaly {
       min-height: auto;
       align-items: flex-start;
-      padding-block: 44px 38px;
+      padding-block: 42px 38px;
       text-align: left;
     }
 
-    .warm-home-page .zh-hero-stage::before {
-      background:
-        radial-gradient(ellipse 520px 260px at 32% 0%, rgba(227, 167, 95, 0.08), transparent 72%),
-        linear-gradient(180deg, rgba(255, 247, 237, 0.018), transparent 78%);
+    .warm-home-page .zh-hero-orb {
+      left: 32%;
+      top: 22%;
+      width: 520px;
+      height: 220px;
+      opacity: 0.52;
+      filter: blur(30px);
     }
 
-    .warm-home-page .zh-hero-stage .zh-eyebrow {
+    .warm-home-page .zh-hero-field {
+      display: none;
+    }
+
+    .warm-home-page .zh-hero-anomaly .zh-eyebrow {
       margin-inline: 0;
       margin-bottom: 18px;
     }
 
-    .warm-home-page .zh-hero-stage .zh-hero-title {
+    .warm-home-page .zh-hero-anomaly .zh-hero-title {
       white-space: nowrap;
-      font-size: clamp(36px, 10.5vw, 46px);
+      font-size: clamp(38px, 10.5vw, 48px);
       letter-spacing: 0.02em;
       margin-bottom: 12px;
     }
 
-    .warm-home-page .zh-hero-stage .zh-hero-desc {
+    .warm-home-page .zh-hero-anomaly .zh-hero-desc {
       margin-inline: 0;
       margin-bottom: 22px;
       font-size: 13px;
       line-height: 1.75;
     }
 
-    .warm-home-page .zh-hero-stage .zh-search-bar {
+    .warm-home-page .zh-hero-anomaly .zh-hero-search {
+      width: 100%;
       margin-inline: 0;
       margin-bottom: 18px;
     }
 
-    .warm-home-page .zh-hero-stage .zh-categories {
+    .warm-home-page .zh-hero-anomaly .zh-categories {
       justify-content: flex-start;
       margin-bottom: 22px;
     }
 
-    .warm-home-page .zh-hero-stage .zh-cta-row {
+    .warm-home-page .zh-hero-anomaly .zh-cta-row {
       justify-content: flex-start;
     }
 
@@ -2010,11 +2080,11 @@ canvas {
     }
   }
 
-  @media (max-width: 360px) {
-    .warm-home-page .zh-hero-stage .zh-hero-title {
+  @media (max-width: 380px) {
+    .warm-home-page .zh-hero-anomaly .zh-hero-title {
       font-size: 34px;
       letter-spacing: 0.01em;
     }
   }
 }
-/* End hero editorial centered layout v4 */
+/* End hero anomalous matter stage v5 */
