@@ -62,11 +62,12 @@ export function ArticlesPage({ articles }: ArticlesPageProps) {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f8fbff]">
+    <div className="articles-page min-h-screen overflow-hidden">
       <SiteHeader />
       <main>
-        <ArticlesHero totalCount={articles.length} />
-        <section className="section-gradient-soft py-10 sm:py-12 lg:py-14">
+        <ArticlesHero totalCount={articles.length} filteredCount={filteredArticles.length} />
+
+        <section className="section-block">
           <div className="page-shell">
             <ArticlesFilterPanel
               categories={categories}
@@ -82,17 +83,19 @@ export function ArticlesPage({ articles }: ArticlesPageProps) {
             />
           </div>
         </section>
-        <section className="section-gradient-violet section-block">
+
+        <section className="section-block pt-0">
           <div className="page-shell">
-            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="articles-list-head mb-6 sm:mb-8">
               <div>
-                <p className="text-sm font-semibold text-indigo-700">文章列表</p>
-                <h2 className="mt-2 text-2xl font-black text-ink sm:text-3xl">最新整理文章</h2>
+                <p className="articles-section-eyebrow">精选文章</p>
+                <h2 className="articles-section-title mt-2">整理成型的工具实战与效率指南</h2>
               </div>
-              <p className="max-w-xl text-sm leading-6 text-slate-500">
-                当前显示 {filteredArticles.length} / {articles.length} 篇文章。
+              <p className="articles-section-copy mt-3 max-w-2xl">
+                当前显示 {filteredArticles.length} / {articles.length} 篇。通过标题、摘要、分类和标签继续缩小范围。
               </p>
             </div>
+
             <ArticlesGrid articles={filteredArticles} onClear={clearFilters} />
           </div>
         </section>

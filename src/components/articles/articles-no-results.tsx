@@ -4,16 +4,12 @@ type ArticlesNoResultsProps = {
 
 export function ArticlesNoResults({ onClear }: ArticlesNoResultsProps) {
   return (
-    <div className="glass-card border-dashed p-8 text-center sm:p-10">
-      <p className="text-lg font-black text-ink">没有找到匹配的文章</p>
-      <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-500">
-        可以尝试减少筛选条件或换一个关键词。
+    <div className="articles-empty">
+      <p className="articles-empty-title">没有找到匹配的文章</p>
+      <p className="articles-empty-copy">
+        可以尝试减少筛选条件，或者换一个关键词。当前列表仍然保留了所有文章的筛选入口。
       </p>
-      <button
-        type="button"
-        onClick={onClear}
-        className="mt-5 min-h-11 rounded-[14px] bg-ink px-5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-indigo-800 hover:shadow-lg"
-      >
+      <button type="button" onClick={onClear} className="articles-empty-button">
         清空筛选
       </button>
     </div>

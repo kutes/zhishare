@@ -238,3 +238,12 @@ Status: completed
 - ARTICLE_SLUG can override the detail screenshot target.
 - Captures wide, desktop, and mobile screenshots for both the articles list and selected article detail page.
 - Did not modify article UI, data flow, backend, database, routes, or dependencies.
+
+### Step 36 - Articles listing warm editorial redesign
+
+Status: completed
+
+- Restyled the /articles listing page into the warm dark editorial direction used by the rest of the public portal.
+- Preserved the existing query, category, and tag filtering logic without changing the article data flow.
+- Reworked the hero, filter panel, article cards, ad slot, and empty state for a more cohesive reading flow.
+- Did not modify the article detail page, backend, database, routes, screenshot scripts, or dependencies.

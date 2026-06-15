@@ -15,7 +15,8 @@ export function ArticlesGrid({ articles, onClear }: ArticlesGridProps) {
       <AdPlaceholder
         variant="banner"
         title="合作推广"
-        description="这里可以展示赞助工具、精选服务或广告内容"
+        description="这里可以展示赞助内容、精选工具推荐或者品牌合作信息。"
+        className="articles-ad-slot"
       />
     </div>
   );
@@ -32,7 +33,7 @@ export function ArticlesGrid({ articles, onClear }: ArticlesGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
       {articles.map((article, index) => (
         <Fragment key={article.id}>
           <ArticleCard article={article} />
