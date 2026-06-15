@@ -227,3 +227,14 @@ Status: completed
 - Restyled the shared public site header with warm dark background, low-opacity border, and gold accent.
 - Preserved navigation links and actions.
 - Did not modify tool detail data flow, dynamic route entry, backend, database, Supabase logic, package files, or dependencies.
+
+### Step 35 - Articles visual QA capture
+
+Status: completed
+
+- Added a dedicated Playwright screenshot script for /articles and /articles/[slug].
+- Added npm run capture:articles.
+- Default article detail screenshot target is /articles/free-ai-tools-safety.
+- ARTICLE_SLUG can override the detail screenshot target.
+- Captures wide, desktop, and mobile screenshots for both the articles list and selected article detail page.
+- Did not modify article UI, data flow, backend, database, routes, or dependencies.
