@@ -247,3 +247,12 @@ Status: completed
 - Preserved the existing query, category, and tag filtering logic without changing the article data flow.
 - Reworked the hero, filter panel, article cards, ad slot, and empty state for a more cohesive reading flow.
 - Did not modify the article detail page, backend, database, routes, screenshot scripts, or dependencies.
+
+### Step 37 - Article detail warm editorial redesign
+
+Status: completed
+
+- Restyled /articles/[slug] detail pages to match the warm editorial portal direction.
+- Preserved getArticleBySlug and getRelatedArticles data flow.
+- Preserved article sections, related articles, ad slot, copyright notice, and not-found state.
+- Did not modify the article listing page, backend, database, Supabase logic, scripts, package files, or dependencies.
