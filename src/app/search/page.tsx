@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = createPageMetadata({
   title: "搜索",
-  description: "搜索知享收录的工具、文章、分类和标签，快速发现实用工具和效率技巧。",
+  description: "搜索工具、文章、分类和标签，快速找到适合你的实用内容。",
   path: "/search",
 });
 
@@ -23,5 +23,9 @@ export default async function Page({ searchParams }: SearchPageRouteProps) {
   const initialQuery = rawQuery?.trim() ?? "";
   const [tools, articles] = await Promise.all([getPublishedTools(), getPublishedArticles()]);
 
-  return <SearchPage tools={tools} articles={articles} initialQuery={initialQuery} />;
+  return (
+    <div className="search-warm-page">
+      <SearchPage tools={tools} articles={articles} initialQuery={initialQuery} />
+    </div>
+  );
 }

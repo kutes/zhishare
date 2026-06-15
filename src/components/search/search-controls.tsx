@@ -30,52 +30,47 @@ export function SearchControls({
   onClear,
 }: SearchControlsProps) {
   return (
-    <section className="glass-card-strong p-5 sm:p-7" aria-label="搜索与筛选">
+    <section className="search-controls-shell" aria-label="搜索与筛选">
       <form
-        className="grid gap-4 lg:grid-cols-[1fr_auto_auto]"
+        className="search-controls-form"
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
-        <label className="block">
+        <label className="search-controls-field">
           <span className="sr-only">搜索关键词</span>
           <input
             value={query}
             onChange={(event) => onQueryChange(event.target.value)}
             placeholder="搜索工具、文章、分类或标签"
-            className="min-h-14 w-full rounded-[22px] border border-white/80 bg-white/72 px-5 text-base font-semibold text-ink shadow-inner outline-none transition placeholder:text-slate-400 focus:border-sky-300 focus:ring-4 focus:ring-sky-100 sm:min-h-16"
+            className="search-controls-input"
           />
         </label>
-        <button
-          type="submit"
-          className="min-h-12 rounded-2xl bg-ink px-6 py-3 text-sm font-bold text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-[0_24px_60px_rgba(15,23,42,0.24)] sm:min-h-14"
-        >
+
+        <button type="submit" className="search-controls-button search-controls-button-primary">
           开始搜索
         </button>
-        <button
-          type="button"
-          onClick={onClear}
-          className="min-h-12 rounded-2xl border border-white/80 bg-white/65 px-5 py-3 text-sm font-bold text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:text-ink hover:shadow-md sm:min-h-14"
-        >
+
+        <button type="button" onClick={onClear} className="search-controls-button search-controls-button-ghost">
           清空
         </button>
       </form>
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div className="search-controls-hotwords">
         {hotKeywords.map((keyword) => (
           <button
             key={keyword}
             type="button"
             onClick={() => onKeywordClick(keyword)}
-            className="min-h-10 rounded-full border border-sky-100 bg-white/62 px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-50/80 hover:text-sky-800"
+            className="search-controls-hotword"
           >
             {keyword}
           </button>
         ))}
       </div>
 
-      <div className="mt-6 flex flex-col gap-4 border-t border-white/70 pt-5 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-2">
+      <div className="search-controls-footer">
+        <div className="search-controls-filter-row" role="tablist" aria-label="搜索模式">
           {filters.map((filter) => {
             const active = mode === filter.value;
 
@@ -85,10 +80,8 @@ export function SearchControls({
                 type="button"
                 onClick={() => onModeChange(filter.value)}
                 className={[
-                  "min-h-10 rounded-full px-4 py-2 text-sm font-bold transition",
-                  active
-                    ? "bg-gradient-to-r from-sky-500 to-cyan-400 text-white shadow-[0_12px_30px_rgba(14,165,233,0.24)]"
-                    : "border border-white/80 bg-white/62 text-slate-600 shadow-sm hover:-translate-y-0.5 hover:bg-white hover:text-ink",
+                  "search-controls-filter-chip",
+                  active ? "is-active" : "",
                 ].join(" ")}
               >
                 {filter.label}
@@ -97,8 +90,8 @@ export function SearchControls({
           })}
         </div>
 
-        <p className="w-fit rounded-full border border-white/80 bg-white/62 px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm">
-          {hasQuery ? `当前找到 ${totalCount} 条结果` : `推荐 ${totalCount} 条内容`}
+        <p className="search-controls-summary">
+          {hasQuery ? `当前找到 ${totalCount} 条内容` : `推荐 ${totalCount} 条起点内容`}
         </p>
       </div>
     </section>

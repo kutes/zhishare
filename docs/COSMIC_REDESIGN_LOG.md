@@ -267,3 +267,13 @@ Status: completed
 - Captures desktop and mobile screenshots for /search?q=ai, /submit, /copyright, and the 404 page.
 - Allows 404 status only for the not-found route.
 - Did not modify page UI, forms, data flow, backend, database, routes, or dependencies.
+
+### Step 40 - Search page warm editorial redesign
+
+Status: completed
+
+- Restyled the /search page into the warm dark editorial direction used across the public portal.
+- Preserved the existing query handling, mode filters, tool/article result rendering, and clear action.
+- Reworked the search controls into compact warm editorial surfaces and aligned the hero, result header, empty state, and ad placeholder with the new portal palette.
+- Added a route-level wrapper only for /search so the CSS scope stays isolated from /submit, /copyright, and the 404 page.
+- Did not modify backend, database, Supabase logic, admin routes, submit, copyright, not-found, or any screenshot scripts.
