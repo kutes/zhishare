@@ -218,3 +218,12 @@ Status: completed
 - Kept the external website and download actions, related tools, collapsible descriptions, and not-found state intact.
 - Added warm detail-page CSS tokens and surfaces without touching backend, database, Supabase, or screenshot scripts.
 - Did not modify package.json, package-lock.json, scripts, the tools listing page, or any homepage component.
+
+### Step 33 - Public site header warm editorial fix
+
+Status: completed
+
+- Fixed the old light public header that appeared above warm editorial tool detail pages.
+- Restyled the shared public site header with warm dark background, low-opacity border, and gold accent.
+- Preserved navigation links and actions.
+- Did not modify tool detail data flow, dynamic route entry, backend, database, Supabase logic, package files, or dependencies.
