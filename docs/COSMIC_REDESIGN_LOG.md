@@ -188,3 +188,12 @@ Status: completed
 - Added npm run capture:tools.
 - Captures wide, desktop, and mobile screenshots for /tools.
 - Did not modify tools page UI, data flow, filtering logic, backend, database, routes, or dependencies.
+
+### Step 29 - Tools listing warm editorial redesign
+
+Status: completed
+
+- Restyled the /tools listing page into the warm dark editorial direction used by the public homepage.
+- Kept the existing query, category, and tag filtering logic intact.
+- Reworked the hero, quick tasks, filter panel, featured cards, grid cards, sponsor banner, and empty state.
+- Preserved the current data flow and did not touch detail pages, backend, database, routes, or Supabase logic.

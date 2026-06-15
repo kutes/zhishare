@@ -2,64 +2,44 @@ export function SponsorBanner() {
   const sellingPoints = [
     {
       mark: "01",
-      label: "高质量流量",
-      desc: "精准触达寻找工具的用户",
+      label: "高质量曝光",
+      desc: "面向正在主动寻找工具的用户。",
     },
     {
       mark: "02",
-      label: "品牌曝光",
-      desc: "在专业工具导航站展示",
+      label: "品牌展示",
+      desc: "在工具库场景中自然触达受众。",
     },
     {
       mark: "03",
       label: "灵活合作",
-      desc: "支持多种推广形式",
+      desc: "支持多种内容与广告形式。",
     },
   ];
 
   return (
-    <section className="relative overflow-hidden rounded-[32px] border border-white/70 bg-gradient-to-br from-[#f0f7ff] via-[#eef6ff] to-[#f8fbff] p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-2xl sm:p-8 lg:p-10">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-10%] top-[-40%] h-56 w-56 rounded-full bg-sky-200/30 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-30%] left-[-8%] h-48 w-48 rounded-full bg-cyan-100/30 blur-3xl" />
+    <section className="zh-tools-sponsor">
+      <div className="zh-tools-sponsor-copy">
+        <p className="zh-tools-eyebrow">SPONSORED</p>
+        <h2 className="zh-tools-section-title">在这里展示你的产品或服务</h2>
+        <p className="zh-tools-section-copy">
+          我们会把广告位放在资源发现链路里，让产品信息和用户需求更自然地发生连接。
+        </p>
+        <button type="button" className="zh-tools-button">
+          了解合作
+        </button>
+      </div>
 
-      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-        {/* Left: text CTA */}
-        <div className="max-w-lg">
-          <span className="inline-flex rounded-full border border-sky-200 bg-sky-50/80 px-3 py-1 text-xs font-bold text-sky-700">
-            合作推广
-          </span>
-          <h2 className="mt-4 text-2xl font-black leading-tight text-[#0f172a] sm:text-3xl">
-            在这里展示你的产品或服务
-          </h2>
-          <p className="mt-3 text-sm leading-6 text-slate-500 sm:text-base">
-            精准触达正在寻找工具、软件和效率方案的用户。
-          </p>
-          <button
-            type="button"
-            className="mt-5 inline-flex h-11 items-center justify-center rounded-[14px] bg-[#0f172a] px-6 text-sm font-bold text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-lg"
-          >
-            了解合作
-          </button>
-        </div>
-
-        {/* Right: selling points */}
-        <div className="grid gap-3 sm:grid-cols-3 lg:max-w-md">
-          {sellingPoints.map((point) => (
-            <div
-              key={point.label}
-              className="flex items-center gap-3 rounded-[18px] border border-white/80 bg-white/60 p-3.5 shadow-inner backdrop-blur sm:flex-col sm:items-start sm:gap-2"
-            >
-              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-gradient-to-br from-[#2563eb] to-[#0ea5e9] text-xs font-black text-white shadow-sm">
-                {point.mark}
-              </span>
-              <div>
-                <p className="text-sm font-bold text-[#0f172a]">{point.label}</p>
-                <p className="mt-0.5 text-xs text-slate-500">{point.desc}</p>
-              </div>
+      <div className="zh-tools-sponsor-grid">
+        {sellingPoints.map((point) => (
+          <div key={point.label} className="zh-tools-sponsor-card">
+            <span className="zh-tools-sponsor-mark">{point.mark}</span>
+            <div>
+              <p className="zh-tools-sponsor-title">{point.label}</p>
+              <p className="zh-tools-sponsor-desc">{point.desc}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

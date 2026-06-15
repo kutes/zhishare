@@ -24,12 +24,12 @@ const allOption = "全部";
 const FEATURED_COUNT = 2;
 
 const quickTasks: QuickTask[] = [
-  { label: "写作问答", keyword: "写作", hint: "ChatGPT / Perplexity" },
-  { label: "做图设计", keyword: "设计", hint: "Canva / Figma" },
+  { label: "AI 写作", keyword: "写作", hint: "ChatGPT / Perplexity" },
+  { label: "设计制图", keyword: "设计", hint: "Canva / Figma" },
   { label: "图片处理", keyword: "图片", hint: "Photopea / remove.bg / TinyPNG" },
   { label: "视频剪辑", keyword: "视频", hint: "CapCut" },
-  { label: "编程辅助", keyword: "编程", hint: "Cursor / Supabase" },
-  { label: "笔记整理", keyword: "笔记", hint: "Notion / Obsidian" },
+  { label: "编程助手", keyword: "编程", hint: "Cursor / Supabase" },
+  { label: "笔记管理", keyword: "笔记", hint: "Notion / Obsidian" },
 ];
 
 function normalizeOptions(values: string[]) {
@@ -102,38 +102,36 @@ export function ToolsPage({ tools }: ToolsPageProps) {
   const hasTools = filteredTools.length > 0;
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f8fbff]">
+    <div className="zh-tools-page min-h-screen overflow-hidden">
       <SiteHeader />
 
-      <main>
+      <main className="relative">
+        <div className="zh-tools-ambient" aria-hidden="true" />
         <ToolsHero totalCount={tools.length} categoryCount={categoryCount} tagCount={tagCount} />
 
-        <section className="py-2 sm:py-3">
-          <div className="page-shell">
-            <div className="glass-card-strong liquid-border relative overflow-hidden rounded-[22px] border border-white/75 bg-white/72 p-3 shadow-[0_14px_44px_rgba(15,23,42,0.06)] backdrop-blur-2xl sm:p-4">
-              <div className="pointer-events-none absolute right-[-5rem] top-[-5rem] h-36 w-36 rounded-full bg-sky-100/55 blur-3xl" />
-              <div className="pointer-events-none absolute bottom-[-5rem] left-[-5rem] h-36 w-36 rounded-full bg-cyan-100/45 blur-3xl" />
-
-              <div className="relative flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <section className="py-3 sm:py-4">
+          <div className="page-shell zh-tools-shell">
+            <div className="zh-tools-quick-panel">
+              <div className="zh-tools-section-head">
                 <div>
-                  <p className="text-xs font-semibold text-sky-700">快速任务入口</p>
-                  <h2 className="mt-1 text-sm font-black text-[#0f172a] sm:text-base">按你现在要做的事，先缩小工具范围</h2>
+                  <p className="zh-tools-eyebrow">QUICK START</p>
+                  <h2 className="zh-tools-subtitle">先按用途缩小范围，再进入筛选</h2>
                 </div>
-                <p className="max-w-xl text-xs leading-5 text-slate-500">
-                  点一下就能直接套用现有搜索，先看最相关的工具，再继续展开筛选。
+                <p className="zh-tools-section-copy">
+                  点击一个方向，工具库会自动切换关键词，帮助你更快定位写作、设计、视频、编程等常用场景。
                 </p>
               </div>
 
-              <div className="relative mt-3 flex gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
+              <div className="zh-tools-quick-grid">
                 {quickTasks.map((task) => (
                   <button
                     key={task.label}
                     type="button"
                     onClick={() => applyQuickTask(task.keyword)}
-                    className="min-w-[118px] shrink-0 rounded-[16px] border border-slate-200/70 bg-white/78 px-3 py-2 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-200 hover:bg-cyan-50 hover:shadow-[0_12px_26px_rgba(14,165,233,0.12)]"
+                    className="zh-tools-quick-card"
                   >
-                    <span className="block text-sm font-black text-[#0f172a]">{task.label}</span>
-                    <span className="mt-0.5 block text-[11px] leading-4 text-slate-500">{task.hint}</span>
+                    <span className="zh-tools-quick-title">{task.label}</span>
+                    <span className="zh-tools-quick-hint">{task.hint}</span>
                   </button>
                 ))}
               </div>
@@ -142,7 +140,7 @@ export function ToolsPage({ tools }: ToolsPageProps) {
         </section>
 
         <section className="py-3 sm:py-4">
-          <div className="page-shell">
+          <div className="page-shell zh-tools-shell">
             <ToolsFilterPanel
               categories={categories}
               tags={tags}
@@ -160,14 +158,16 @@ export function ToolsPage({ tools }: ToolsPageProps) {
 
         {hasFeatured && (
           <section className="py-4 sm:py-5">
-            <div className="page-shell">
-              <div className="mb-3 flex items-center gap-3 sm:mb-4">
-                <span className="h-7 w-1 rounded-full bg-gradient-to-b from-[#2563eb] to-[#0ea5e9]" />
-                <h2 className="text-base font-black text-[#0f172a] sm:text-lg">精选推荐</h2>
-                <span className="text-xs font-semibold text-slate-400">共 {featuredTools.length} 个</span>
+            <div className="page-shell zh-tools-shell">
+              <div className="zh-tools-section-head">
+                <div>
+                  <p className="zh-tools-eyebrow">FEATURED</p>
+                  <h2 className="zh-tools-section-title">精选工具与开源项目</h2>
+                </div>
+                <span className="zh-tools-count">{featuredTools.length} items</span>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              <div className="zh-tools-feature-grid">
                 {featuredTools.map((tool) => (
                   <FeaturedToolCard key={tool.id} tool={tool} />
                 ))}
@@ -176,12 +176,14 @@ export function ToolsPage({ tools }: ToolsPageProps) {
           </section>
         )}
 
-        <section className="section-gradient-cyan py-5 sm:py-6 lg:py-8">
-          <div className="page-shell">
-            <div className="mb-3 flex items-center gap-3 sm:mb-4">
-              <span className="h-7 w-1 rounded-full bg-gradient-to-b from-[#14b8a6] to-[#0ea5e9]" />
-              <h2 className="text-base font-black text-[#0f172a] sm:text-lg">全部工具</h2>
-              <span className="text-xs font-semibold text-slate-400">{hasTools ? `共 ${filteredTools.length} 个` : ""}</span>
+        <section className="py-5 sm:py-6 lg:py-8">
+          <div className="page-shell zh-tools-shell">
+            <div className="zh-tools-section-head">
+              <div>
+                <p className="zh-tools-eyebrow">BROWSE</p>
+                <h2 className="zh-tools-section-title">全部工具</h2>
+              </div>
+              <span className="zh-tools-count">{hasTools ? `${filteredTools.length} items` : "0 items"}</span>
             </div>
 
             <ToolsGrid tools={filteredTools} onClear={clearFilters} />
@@ -189,7 +191,7 @@ export function ToolsPage({ tools }: ToolsPageProps) {
         </section>
 
         <section className="py-6 sm:py-8 lg:py-10">
-          <div className="page-shell">
+          <div className="page-shell zh-tools-shell">
             <SponsorBanner />
           </div>
         </section>

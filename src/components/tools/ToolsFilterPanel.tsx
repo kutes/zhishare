@@ -11,6 +11,8 @@ type ToolsFilterPanelProps = {
   onClear: () => void;
 };
 
+const allOption = "全部";
+
 export function ToolsFilterPanel({
   categories,
   tags,
@@ -23,82 +25,74 @@ export function ToolsFilterPanel({
   onTagChange,
   onClear,
 }: ToolsFilterPanelProps) {
-  const hasActiveFilters = query.trim().length > 0 || selectedCategory !== "全部" || selectedTag !== "全部";
+  const hasActiveFilters = query.trim().length > 0 || selectedCategory !== allOption || selectedTag !== allOption;
 
   return (
-    <div className="glass-card-strong liquid-border relative overflow-hidden rounded-[22px] border border-white/75 bg-white/72 p-3 shadow-[0_16px_48px_rgba(15,23,42,0.07)] backdrop-blur-2xl sm:p-4">
-      <div className="pointer-events-none absolute right-[-6rem] top-[-6rem] h-36 w-36 rounded-full bg-sky-100/55 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-6rem] left-[-6rem] h-36 w-36 rounded-full bg-cyan-100/45 blur-3xl" />
-
-      <div className="relative">
-        <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
-          <div className="relative flex-1">
-            <span className="pointer-events-none absolute left-4 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-[#0ea5e9] shadow-[0_0_16px_rgba(14,165,233,0.5)]" />
-            <input
-              id="tools-search"
-              type="search"
-              value={query}
-              onChange={(event) => onQueryChange(event.target.value)}
-              placeholder="搜索工具名称、用途，比如：抠图、剪视频、写代码"
-              className="h-10 w-full rounded-[16px] border border-white/90 bg-white/80 pl-10 pr-4 text-sm font-semibold text-[#0f172a] shadow-[inset_0_2px_10px_rgba(15,23,42,0.04)] outline-none transition placeholder:text-slate-400 focus:border-cyan-300 focus:bg-white focus:ring-4 focus:ring-cyan-100 sm:h-11 sm:text-base"
-            />
-          </div>
-
-          <div className="flex items-center gap-2">
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={onClear}
-                className="inline-flex h-10 items-center rounded-[14px] border border-slate-200/70 bg-white/78 px-4 text-sm font-bold text-[#0f172a] shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-200 hover:bg-cyan-50 hover:shadow-[0_12px_26px_rgba(14,165,233,0.12)] sm:h-11"
-              >
-                清空筛选
-              </button>
-            )}
-            <div className="inline-flex h-10 items-center rounded-[14px] border border-sky-100 bg-sky-50/80 px-4 text-sm font-bold text-sky-700 sm:h-11">
-              {resultCount} 个工具
-            </div>
-          </div>
+    <div className="zh-tools-filter-panel">
+      <div className="zh-tools-filter-top">
+        <div>
+          <p className="zh-tools-eyebrow">FILTERS</p>
+          <h2 className="zh-tools-section-title">搜索与筛选</h2>
         </div>
 
-        <div className="mt-3 space-y-3">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] sm:flex-wrap sm:overflow-visible">
-            <span className="shrink-0 text-xs font-bold text-slate-400">分类</span>
+        <div className="zh-tools-filter-actions">
+          {hasActiveFilters && (
+            <button type="button" onClick={onClear} className="zh-tools-clear">
+              清空筛选
+            </button>
+          )}
+          <div className="zh-tools-count">{resultCount} items</div>
+        </div>
+      </div>
+
+      <div className="zh-tools-search-shell">
+        <span className="zh-tools-search-icon" aria-hidden="true">
+          ⌕
+        </span>
+        <input
+          id="tools-search"
+          type="search"
+          value={query}
+          onChange={(event) => onQueryChange(event.target.value)}
+          placeholder="搜索工具名称、用途或关键词，例如：写作、视频、编程、图片"
+          className="zh-tools-search-input"
+        />
+      </div>
+
+      <div className="zh-tools-filter-stack">
+        <div className="zh-tools-filter-row">
+          <span className="zh-tools-filter-label">分类</span>
+          <div className="zh-tools-chip-scroll">
             {categories.map((category) => (
               <button
                 key={category}
                 type="button"
                 onClick={() => onCategoryChange(category)}
-                className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold transition ${
-                  selectedCategory === category
-                    ? "border-transparent bg-gradient-to-r from-[#2563eb] via-[#0ea5e9] to-[#67e8f9] text-white shadow-[0_10px_24px_rgba(14,165,233,0.25)]"
-                    : "border-slate-200/70 bg-white/70 text-slate-600 shadow-sm hover:-translate-y-0.5 hover:border-cyan-200 hover:bg-cyan-50 hover:text-[#0f172a]"
-                }`}
+                className={selectedCategory === category ? "zh-tools-filter-chip zh-tools-filter-chip-active" : "zh-tools-filter-chip"}
               >
                 {category || "未命名"}
               </button>
             ))}
           </div>
+        </div>
 
-          {tags.length > 1 && (
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch] sm:flex-wrap sm:overflow-visible">
-              <span className="shrink-0 text-xs font-bold text-slate-400">标签</span>
+        {tags.length > 1 && (
+          <div className="zh-tools-filter-row">
+            <span className="zh-tools-filter-label">标签</span>
+            <div className="zh-tools-chip-scroll">
               {tags.map((tag) => (
                 <button
                   key={tag}
                   type="button"
                   onClick={() => onTagChange(tag)}
-                  className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold transition ${
-                    selectedTag === tag
-                      ? "border-transparent bg-gradient-to-r from-[#14b8a6] via-[#0ea5e9] to-[#6366f1] text-white shadow-[0_10px_24px_rgba(14,165,233,0.25)]"
-                      : "border-slate-200/70 bg-white/70 text-slate-600 shadow-sm hover:-translate-y-0.5 hover:border-cyan-200 hover:bg-cyan-50 hover:text-[#0f172a]"
-                  }`}
+                  className={selectedTag === tag ? "zh-tools-filter-chip zh-tools-filter-chip-active" : "zh-tools-filter-chip"}
                 >
                   {tag || "未命名"}
                 </button>
               ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
