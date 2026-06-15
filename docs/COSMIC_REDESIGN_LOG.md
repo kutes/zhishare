@@ -197,3 +197,14 @@ Status: completed
 - Kept the existing query, category, and tag filtering logic intact.
 - Reworked the hero, quick tasks, filter panel, featured cards, grid cards, sponsor banner, and empty state.
 - Preserved the current data flow and did not touch detail pages, backend, database, routes, or Supabase logic.
+
+### Step 31 - Tool detail visual QA capture
+
+Status: completed
+
+- Added a dedicated Playwright screenshot script for /tools/[slug] detail pages.
+- Added npm run capture:tool-detail.
+- Default detail screenshot target is /tools/chatgpt.
+- TOOL_SLUG can override the detail screenshot target.
+- Captures wide, desktop, and mobile screenshots for the selected tool detail page.
+- Did not modify tool detail UI, data flow, backend, database, routes, or dependencies.
