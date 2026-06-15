@@ -83,8 +83,8 @@ function getRiskItems(tool: ToolItem) {
 function getCompactSummary(items: string[], emptyText: string) {
   const first = items[0]?.trim() || emptyText;
 
-  if (first.length > 26) {
-    return `${first.slice(0, 26)}...`;
+  if (first.length > 28) {
+    return `${first.slice(0, 28)}...`;
   }
 
   return first;
@@ -94,11 +94,11 @@ function DetailList({ section }: { section: MobileSection }) {
   const visibleItems = section.items.length > 0 ? section.items : [section.emptyText];
 
   return (
-    <div className="bg-[#f8fbff] px-4 pb-4 pt-1">
-      <ul className="space-y-2.5 rounded-[18px] border border-[#0f172a]/[0.06] bg-white/82 p-3">
+    <div className="tool-mobile-section-panel">
+      <ul className="tool-mobile-section-list">
         {visibleItems.map((item, index) => (
-          <li key={`${section.id}-${index}-${item.slice(0, 24)}`} className="flex gap-2.5 text-sm font-medium leading-6 text-[#475569]">
-            <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${section.accentClass}`} />
+          <li key={`${section.id}-${index}-${item.slice(0, 24)}`} className="tool-mobile-section-item">
+            <span className={`tool-mobile-section-dot ${section.accentClass}`} />
             <span>{item}</span>
           </li>
         ))}
@@ -119,35 +119,21 @@ function InfoTableRow({
   const count = section.items.length || 1;
 
   return (
-    <div className="border-t border-[#0f172a]/[0.06] first:border-t-0">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={open}
-        className="grid w-full grid-cols-[auto_1fr_auto_auto] items-center gap-3 px-4 py-3.5 text-left transition hover:bg-[#f8fbff]"
-      >
-        <span className={`h-2.5 w-2.5 rounded-full ${section.accentClass}`} />
+    <div className="tool-mobile-section-row">
+      <button type="button" onClick={onToggle} aria-expanded={open} className="tool-mobile-section-toggle">
+        <span className={`tool-mobile-section-dot ${section.accentClass}`} />
 
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <p className="text-sm font-black text-[#0f172a]">{section.title}</p>
-            <span className="rounded-full bg-[#f1f5f9] px-2 py-0.5 text-[10px] font-black text-[#64748b]">
-              {section.label}
-            </span>
+        <div className="tool-mobile-section-copy">
+          <div className="tool-mobile-section-title-row">
+            <p className="tool-mobile-section-title">{section.title}</p>
+            <span className="tool-mobile-section-label">{section.label}</span>
           </div>
 
-          <p className="mt-1 line-clamp-1 text-xs font-medium leading-5 text-[#64748b]">
-            {getCompactSummary(section.items, section.emptyText)}
-          </p>
+          <p className="tool-mobile-section-summary">{getCompactSummary(section.items, section.emptyText)}</p>
         </div>
 
-        <span className="rounded-full border border-[#0f172a]/10 bg-white px-2 py-1 text-[11px] font-black text-[#64748b] shadow-sm">
-          {count}
-        </span>
-
-        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#0f172a]/10 bg-white text-base font-black text-[#0f172a] shadow-sm">
-          {open ? "-" : "+"}
-        </span>
+        <span className="tool-mobile-section-count">{count}</span>
+        <span className="tool-mobile-section-chevron">{open ? "−" : "+"}</span>
       </button>
 
       {open ? <DetailList section={section} /> : null}
@@ -168,13 +154,11 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
       ["features", "core_features", "coreFeatures"],
       ["features", "core_features", "coreFeatures", "mainFeatures"],
     );
-
     const targetUsers = getArray(
       tool,
       ["target_users", "targetUsers", "audience"],
       ["target_users", "targetUsers", "audience", "suitableFor"],
     );
-
     const useCases = getArray(tool, ["use_cases", "useCases", "scenarios"], ["use_cases", "useCases", "scenarios"]);
     const pros = getArray(tool, ["pros", "advantages"], ["pros", "advantages"]);
     const cons = getArray(tool, ["cons", "limitations"], ["cons", "limitations"]);
@@ -186,15 +170,15 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
         label: "功能",
         items: features.length > 0 ? features : description ? [description] : [],
         emptyText: "暂无内容",
-        accentClass: "bg-[#60a5fa]",
+        accentClass: "bg-[#e3a75f]",
       },
       {
         id: "target-users",
         title: "适合人群",
         label: "人群",
         items: targetUsers,
-        emptyText: "适合想快速判断这个工具是否值得尝试的用户。",
-        accentClass: "bg-[#5ecfb1]",
+        emptyText: "适合想快速判断这款工具是否值得继续了解的用户。",
+        accentClass: "bg-[#8bd3c7]",
       },
       {
         id: "use-cases",
@@ -202,7 +186,7 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
         label: "场景",
         items: useCases,
         emptyText: "适合在访问官网前，先了解功能、用途和基本风险。",
-        accentClass: "bg-[#93c5fd]",
+        accentClass: "bg-[#9cc1ff]",
       },
       {
         id: "pros",
@@ -210,15 +194,15 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
         label: "优势",
         items: pros,
         emptyText: "暂无内容",
-        accentClass: "bg-[#84cc16]",
+        accentClass: "bg-[#a4d65e]",
       },
       {
         id: "cons",
         title: "缺点",
-        label: "避坑",
+        label: "短板",
         items: cons,
         emptyText: "暂无内容",
-        accentClass: "bg-[#fb923c]",
+        accentClass: "bg-[#f1a46b]",
       },
       {
         id: "risk",
@@ -226,7 +210,7 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
         label: "注意",
         items: getRiskItems(tool),
         emptyText: "工具信息可能会变化，具体价格、功能、授权和下载方式请以官网为准。",
-        accentClass: "bg-[#facc15]",
+        accentClass: "bg-[#f7d560]",
       },
     ];
   }, [tool]);
@@ -246,58 +230,48 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
   }
 
   return (
-    <section className={`md:hidden ${className}`}>
-      <div className="rounded-[28px] border border-[#0f172a]/[0.08] bg-white/90 shadow-[0_16px_42px_rgba(15,23,42,0.08)]">
-        <div className="px-4 py-4">
-          <p className="text-xs font-black text-[#20a27f]">移动端速览</p>
-
-          <div className="mt-1 flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h2 className="text-xl font-black tracking-[-0.04em] text-[#0f172a]">重点信息</h2>
-              <p className="mt-1 text-xs font-medium leading-5 text-[#64748b]">先看摘要，想看细节再展开分类，减少无效滑动。</p>
-            </div>
-
-            <button
-              type="button"
-              onClick={handleToggleTable}
-              aria-expanded={showTable}
-              className="shrink-0 rounded-full border border-[#5ecfb1]/35 bg-[#f2fffa] px-3 py-1.5 text-[11px] font-black text-[#20a27f] shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
-            >
-              {showTable ? "收起分类" : "展开分类"}
-            </button>
+    <section className={`tool-mobile-sections md:hidden ${className}`.trim()}>
+      <div className="tool-mobile-sections-shell">
+        <div className="tool-mobile-sections-head">
+          <div className="min-w-0">
+            <p className="tool-detail-kicker">移动端速览</p>
+            <h2 className="tool-mobile-sections-title">重点信息</h2>
+            <p className="tool-mobile-sections-copy">先看摘要，再展开分类，可以减少无效滑动。</p>
           </div>
 
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            <div className="rounded-[16px] border border-[#0f172a]/[0.06] bg-[#f8fbff] px-3 py-2">
-              <p className="text-[10px] font-black text-[#94a3b8]">分类</p>
-              <p className="mt-1 text-sm font-black text-[#0f172a]">{sections.length} 项</p>
-            </div>
-
-            <div className="rounded-[16px] border border-[#0f172a]/[0.06] bg-[#f8fbff] px-3 py-2">
-              <p className="text-[10px] font-black text-[#94a3b8]">信息</p>
-              <p className="mt-1 text-sm font-black text-[#0f172a]">{totalCount} 条</p>
-            </div>
-
-            <div className="rounded-[16px] border border-[#0f172a]/[0.06] bg-[#f8fbff] px-3 py-2">
-              <p className="text-[10px] font-black text-[#94a3b8]">模式</p>
-              <p className="mt-1 text-sm font-black text-[#0f172a]">折叠</p>
-            </div>
-          </div>
+          <button type="button" onClick={handleToggleTable} aria-expanded={showTable} className="tool-mobile-sections-toggle">
+            {showTable ? "收起分类" : "展开分类"}
+          </button>
         </div>
 
-        {showTable ? (
-          <div className="border-t border-[#0f172a]/[0.06]">
-            {sections.map((section) => (
-              <InfoTableRow
-                key={section.id}
-                section={section}
-                open={openSectionId === section.id}
-                onToggle={() => setOpenSectionId((current) => (current === section.id ? null : section.id))}
-              />
-            ))}
+        <div className="tool-mobile-sections-stats">
+          <div className="tool-mobile-sections-stat">
+            <p className="tool-mobile-sections-stat-label">分类</p>
+            <p className="tool-mobile-sections-stat-value">{sections.length} 项</p>
           </div>
-        ) : null}
+          <div className="tool-mobile-sections-stat">
+            <p className="tool-mobile-sections-stat-label">信息</p>
+            <p className="tool-mobile-sections-stat-value">{totalCount} 条</p>
+          </div>
+          <div className="tool-mobile-sections-stat">
+            <p className="tool-mobile-sections-stat-label">模式</p>
+            <p className="tool-mobile-sections-stat-value">折叠</p>
+          </div>
+        </div>
       </div>
+
+      {showTable ? (
+        <div className="tool-mobile-sections-list-wrap">
+          {sections.map((section) => (
+            <InfoTableRow
+              key={section.id}
+              section={section}
+              open={openSectionId === section.id}
+              onToggle={() => setOpenSectionId((current) => (current === section.id ? null : section.id))}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }

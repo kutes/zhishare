@@ -208,3 +208,13 @@ Status: completed
 - TOOL_SLUG can override the detail screenshot target.
 - Captures wide, desktop, and mobile screenshots for the selected tool detail page.
 - Did not modify tool detail UI, data flow, backend, database, routes, or dependencies.
+
+### Step 32 - Tool detail warm editorial redesign
+
+Status: completed
+
+- Unified /tools/[slug] into the warm dark editorial direction used across the public portal.
+- Preserved the dynamic route entry, getToolBySlug, getRelatedTools, and the desktop/mobile rendering split.
+- Kept the external website and download actions, related tools, collapsible descriptions, and not-found state intact.
+- Added warm detail-page CSS tokens and surfaces without touching backend, database, Supabase, or screenshot scripts.
+- Did not modify package.json, package-lock.json, scripts, the tools listing page, or any homepage component.

@@ -65,7 +65,7 @@ function readTags(tool: ToolItem) {
       return "";
     })
     .filter(Boolean)
-    .slice(0, 3);
+    .slice(0, 4);
 }
 
 function getTitle(tool: ToolItem) {
@@ -131,20 +131,16 @@ function StatusPill({
   tone = "default",
 }: {
   children: string;
-  tone?: "default" | "green" | "blue";
+  tone?: "default" | "gold" | "surface";
 }) {
   const toneClass =
-    tone === "green"
-      ? "border-[#5ecfb1]/45 bg-[#f2fffa] text-[#0f766e]"
-      : tone === "blue"
-        ? "border-[#93c5fd]/50 bg-[#eff6ff] text-[#2563eb]"
-        : "border-[#0f172a]/10 bg-white text-[#475569]";
+    tone === "gold"
+      ? "tool-mobile-pill tool-mobile-pill-gold"
+      : tone === "surface"
+        ? "tool-mobile-pill tool-mobile-pill-surface"
+        : "tool-mobile-pill tool-mobile-pill-default";
 
-  return (
-    <span className={`inline-flex h-7 items-center rounded-full border px-2.5 text-[11px] font-black ${toneClass}`}>
-      {children}
-    </span>
-  );
+  return <span className={toneClass}>{children}</span>;
 }
 
 export function ToolMobileSummaryCard({ tool, className = "" }: ToolMobileSummaryCardProps) {
@@ -157,35 +153,27 @@ export function ToolMobileSummaryCard({ tool, className = "" }: ToolMobileSummar
   const tags = readTags(tool);
 
   return (
-    <section
-      className={`rounded-[28px] border border-[#0f172a]/[0.08] bg-white/90 p-4 shadow-[0_16px_42px_rgba(15,23,42,0.08)] md:hidden ${className}`}
-    >
-      <div className="flex flex-wrap gap-2">
-        <StatusPill tone="blue">{category}</StatusPill>
-        <StatusPill tone="green">{freeLabel}</StatusPill>
+    <section className={`tool-mobile-summary ${className}`.trim()}>
+      <div className="tool-mobile-summary-top">
+        <StatusPill tone="gold">{category}</StatusPill>
+        <StatusPill tone="surface">{freeLabel}</StatusPill>
         <StatusPill>{openSourceLabel}</StatusPill>
       </div>
 
-      <h1 className="mt-4 text-[2rem] font-black leading-[1.05] tracking-[-0.06em] text-[#0f172a]">{title}</h1>
-
-      <p className="mt-3 line-clamp-2 text-base font-black leading-7 text-[#1e293b]">{tagline}</p>
+      <h1 className="tool-mobile-title">{title}</h1>
+      <p className="tool-mobile-tagline">{tagline}</p>
 
       {tags.length > 0 ? (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="tool-mobile-tags">
           {tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex h-7 items-center rounded-full border border-[#0f172a]/[0.08] bg-[#f8fbff] px-2.5 text-[11px] font-black text-[#64748b]"
-            >
+            <span key={tag} className="tool-mobile-tag">
               {tag}
             </span>
           ))}
         </div>
       ) : (
-        <div className="mt-3">
-          <span className="inline-flex h-7 items-center rounded-full border border-[#0f172a]/[0.08] bg-[#f8fbff] px-2.5 text-[11px] font-black text-[#64748b]">
-            暂无标签
-          </span>
+        <div className="tool-mobile-tags">
+          <span className="tool-mobile-tag tool-mobile-tag-empty">暂无标签</span>
         </div>
       )}
 

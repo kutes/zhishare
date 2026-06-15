@@ -14,7 +14,7 @@ type DecisionItem = {
   label: string;
   value: string;
   detail: string;
-  tone: string;
+  tone: "gold" | "blue" | "surface" | "warning";
 };
 
 function readText(source: unknown, keys: string[]) {
@@ -96,7 +96,7 @@ function getTargetUsers(tool: ToolItem) {
     return detail;
   }
 
-  return ["适合想快速判断这个工具是否值得尝试的用户。"];
+  return ["适合想快速判断这款工具是否值得继续了解的用户。"];
 }
 
 function getUseCases(tool: ToolItem) {
@@ -123,7 +123,7 @@ function getRiskNotice(tool: ToolItem) {
   );
 }
 
-function compactText(value: string, maxLength = 36) {
+function compactText(value: string, maxLength = 40) {
   const text = value.trim();
 
   if (!text) {
@@ -133,35 +133,19 @@ function compactText(value: string, maxLength = 36) {
   return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 }
 
-function MobileDecisionRow({ item }: { item: DecisionItem }) {
+function DecisionRow({ item }: { item: DecisionItem }) {
   return (
-    <div className={`rounded-[18px] border px-3 py-3 ${item.tone}`}>
-      <div className="flex items-start justify-between gap-3">
+    <div className={`tool-decision-item tool-decision-item-${item.tone}`}>
+      <div className="tool-decision-item-head">
         <div className="min-w-0">
-          <p className="text-[11px] font-black text-[#64748b]">{item.label}</p>
-          <p className="mt-1 text-sm font-black leading-5 text-[#0f172a]">{compactText(item.value, 42)}</p>
-        </div>
-        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#5ecfb1]" />
-      </div>
-
-      <p className="mt-2 text-xs font-medium leading-5 text-[#64748b]">{compactText(item.detail, 58)}</p>
-    </div>
-  );
-}
-
-function DesktopDecisionRow({ item }: { item: DecisionItem }) {
-  return (
-    <div className={`rounded-[22px] border px-4 py-3 ${item.tone}`}>
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-black text-[#64748b]">{item.label}</p>
-          <p className="mt-1 text-sm font-black leading-6 text-[#0f172a]">{item.value}</p>
+          <p className="tool-decision-item-label">{item.label}</p>
+          <p className="tool-decision-item-value">{compactText(item.value, 44)}</p>
         </div>
 
-        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#5ecfb1]" />
+        <span className="tool-decision-dot" />
       </div>
 
-      <p className="mt-2 text-xs font-medium leading-5 text-[#64748b]">{item.detail}</p>
+      <p className="tool-decision-item-detail">{compactText(item.detail, 64)}</p>
     </div>
   );
 }
@@ -174,22 +158,13 @@ function ActionButtons({
   downloadUrl: string;
 }) {
   return (
-    <div className="mt-4 grid gap-2">
+    <div className="tool-decision-actions">
       {websiteUrl ? (
-        <a
-          href={websiteUrl}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          className="inline-flex h-11 items-center justify-center rounded-2xl bg-[#0f172a] px-4 text-sm font-black text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)] transition hover:-translate-y-0.5 hover:bg-[#111827]"
-        >
+        <a href={websiteUrl} target="_blank" rel="nofollow noopener noreferrer" className="tool-decision-button">
           访问官网
         </a>
       ) : (
-        <button
-          type="button"
-          disabled
-          className="inline-flex h-11 cursor-not-allowed items-center justify-center rounded-2xl bg-[#cbd5e1] px-4 text-sm font-black text-white"
-        >
+        <button type="button" disabled className="tool-decision-button tool-decision-button-disabled">
           暂无官网链接
         </button>
       )}
@@ -199,25 +174,17 @@ function ActionButtons({
           href={downloadUrl}
           target="_blank"
           rel="nofollow noopener noreferrer"
-          className="inline-flex h-11 items-center justify-center rounded-2xl border border-[#5ecfb1]/50 bg-[#f2fffa] px-4 text-sm font-black text-[#0f766e] shadow-sm transition hover:-translate-y-0.5 hover:border-[#20a27f]/60 hover:bg-white"
+          className="tool-decision-button tool-decision-button-secondary"
         >
           网盘下载
         </a>
       ) : (
-        <button
-          type="button"
-          disabled
-          title="暂无网盘下载"
-          className="inline-flex h-11 cursor-not-allowed items-center justify-center rounded-2xl border border-[#cbd5e1] bg-[#f1f5f9] px-4 text-sm font-black text-[#94a3b8]"
-        >
+        <button type="button" disabled title="暂无网盘下载" className="tool-decision-button tool-decision-button-disabled-secondary">
           网盘下载
         </button>
       )}
 
-      <Link
-        href="/tools"
-        className="inline-flex h-11 items-center justify-center rounded-2xl border border-[#0f172a]/10 bg-white px-4 text-sm font-black text-[#0f172a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#5ecfb1]/60 hover:text-[#20a27f]"
-      >
+      <Link href="/tools" className="tool-decision-link">
         返回工具库
       </Link>
     </div>
@@ -236,70 +203,65 @@ export function ToolDecisionPanel({ tool, className = "" }: ToolDecisionPanelPro
   const decisionItems: DecisionItem[] = [
     {
       label: "适合人群",
-      value: targetUsers[0] || "适合想快速判断这个工具是否值得尝试的用户。",
-      detail: targetUsers.slice(0, 2).join("；") || "适合想快速判断这个工具是否值得尝试的用户。",
-      tone: "border-[#5ecfb1]/30 bg-[#f2fffa]",
+      value: targetUsers[0] || "适合快速判断是否值得继续了解的用户。",
+      detail: targetUsers.slice(0, 2).join("；") || "优先看这类用户是否和你的需求一致。",
+      tone: "gold",
     },
     {
       label: "使用场景",
-      value: useCases[0] || "适合在访问官网前，先了解功能、用途和基本风险。",
-      detail: useCases.slice(0, 2).join("；") || "适合在访问官网前，先了解功能、用途和基本风险。",
-      tone: "border-[#93c5fd]/35 bg-[#f1f8ff]",
+      value: useCases[0] || "适合在访问官网前先看功能和用途。",
+      detail: useCases.slice(0, 2).join("；") || "先判断实际用途，再决定是否打开官网。",
+      tone: "blue",
     },
     {
       label: "风险提醒",
       value: riskNotice,
       detail: "重点关注价格、隐私、授权、账号安全和官网真实性。",
-      tone: "border-[#facc15]/45 bg-[#fffbea]",
+      tone: "warning",
     },
     {
       label: "访问路径",
-      value: "先看详情，再访问官网。",
-      detail: "先阅读介绍、适用场景和风险提醒，再决定是否访问官网。",
-      tone: "border-[#bfdbfe]/50 bg-[#f8fbff]",
+      value: "先看简介，再访问官网。",
+      detail: "建议先浏览摘要和适用场景，再决定是否跳转外部链接。",
+      tone: "surface",
     },
   ];
 
   return (
-    <aside
-      className={`rounded-[28px] border border-[#0f172a]/[0.08] bg-white/88 p-4 shadow-[0_18px_48px_rgba(15,23,42,0.08)] backdrop-blur ${className}`}
-    >
-      <div className="flex items-start justify-between gap-3">
+    <aside className={`tool-decision-panel ${className}`.trim()}>
+      <div className="tool-decision-head">
         <div className="min-w-0">
-          <p className="text-xs font-black text-[#20a27f]">快速判断</p>
-          <h2 className="mt-1 text-xl font-black tracking-[-0.04em] text-[#0f172a]">先判断值不值得继续看</h2>
+          <p className="tool-decision-kicker">快速判断</p>
+          <h2 className="tool-decision-title">先判断值不值得继续看</h2>
+          <p className="tool-decision-subtitle">把适用人群、使用场景、风险提示和下一步动作放在一起，减少犹豫。</p>
         </div>
-
-        <span className="hidden shrink-0 rounded-full border border-[#5ecfb1]/40 bg-[#f2fffa] px-3 py-1 text-[11px] font-black text-[#20a27f] md:inline-flex">
-          决策面板
-        </span>
 
         <button
           type="button"
           onClick={() => setShowMobileDetails((value) => !value)}
           aria-expanded={showMobileDetails}
-          className="shrink-0 rounded-full border border-[#5ecfb1]/40 bg-[#f2fffa] px-3 py-1.5 text-[11px] font-black text-[#20a27f] shadow-sm transition hover:-translate-y-0.5 hover:bg-white md:hidden"
+          className="tool-decision-toggle md:hidden"
         >
           {showMobileDetails ? "收起判断" : "展开判断"}
         </button>
       </div>
 
-      <div className="mt-3 rounded-[20px] border border-[#0f172a]/[0.06] bg-[#f8fbff] px-3 py-3 md:hidden">
-        <p className="text-[11px] font-black text-[#94a3b8]">决策摘要</p>
-        <p className="mt-1 text-sm font-black leading-6 text-[#0f172a]">先看介绍，确认适用场景与风险，再决定是否访问官网。</p>
+      <div className="tool-decision-summary md:hidden">
+        <p className="tool-decision-summary-label">决策摘要</p>
+        <p className="tool-decision-summary-copy">先看简介，确认适用场景与风险，再决定是否访问官网。</p>
       </div>
 
       {showMobileDetails ? (
-        <div className="mt-3 space-y-2 md:hidden">
+        <div className="tool-decision-grid md:hidden">
           {decisionItems.map((item) => (
-            <MobileDecisionRow key={item.label} item={item} />
+            <DecisionRow key={item.label} item={item} />
           ))}
         </div>
       ) : null}
 
-      <div className="mt-4 hidden space-y-3 md:block">
+      <div className="tool-decision-grid hidden md:grid">
         {decisionItems.map((item) => (
-          <DesktopDecisionRow key={item.label} item={item} />
+          <DecisionRow key={item.label} item={item} />
         ))}
       </div>
 
