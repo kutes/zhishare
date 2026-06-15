@@ -256,3 +256,14 @@ Status: completed
 - Preserved getArticleBySlug and getRelatedArticles data flow.
 - Preserved article sections, related articles, ad slot, copyright notice, and not-found state.
 - Did not modify the article listing page, backend, database, Supabase logic, scripts, package files, or dependencies.
+
+
+### Step 39 - Remaining public pages visual QA capture
+
+Status: completed
+
+- Added a dedicated Playwright screenshot script for remaining public pages.
+- Added npm run capture:public-pages.
+- Captures desktop and mobile screenshots for /search?q=ai, /submit, /copyright, and the 404 page.
+- Allows 404 status only for the not-found route.
+- Did not modify page UI, forms, data flow, backend, database, routes, or dependencies.

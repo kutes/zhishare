@@ -11,7 +11,8 @@
     "capture:homepage": "node scripts/capture-homepage.mjs",
     "capture:tools": "node scripts/capture-tools.mjs",
     "capture:tool-detail": "node scripts/capture-tool-detail.mjs",
-    "capture:articles": "node scripts/capture-articles.mjs"
+    "capture:articles": "node scripts/capture-articles.mjs",
+    "capture:public-pages": "node scripts/capture-public-pages.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",
