@@ -277,3 +277,12 @@ Status: completed
 - Reworked the search controls into compact warm editorial surfaces and aligned the hero, result header, empty state, and ad placeholder with the new portal palette.
 - Added a route-level wrapper only for /search so the CSS scope stays isolated from /submit, /copyright, and the 404 page.
 - Did not modify backend, database, Supabase logic, admin routes, submit, copyright, not-found, or any screenshot scripts.
+
+### Step 41 - Submit page warm editorial redesign v1
+
+Status: completed
+
+- Restyled the /submit page into the warm dark editorial direction used across the public portal.
+- Preserved the submit form state, validation, Turnstile flow, success/error feedback, and submission API behavior.
+- Reworked the hero, form card, checklist panel, helper text, and button states with warm editorial surfaces and compact controls.
+- Did not modify the backend, database, Supabase logic, search, copyright, not-found, tools, articles, or any screenshot scripts.

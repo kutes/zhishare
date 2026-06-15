@@ -9,19 +9,27 @@ import { createSubmission } from "@/lib/db/submissions";
 import { verifyTurnstileTokenOnClient } from "@/lib/security/turnstile-client";
 
 type SubmitErrors = Partial<Record<"toolName" | "officialUrl" | "summary" | "email", string>>;
-type SubmitStatusMessage = { type: "success" | "error"; message: string } | null;
+type SubmitStatusMessage = { type: "success"; message: string } | { type: "error"; message: string } | null;
 
-const heroTags = ["人工审核", "优先官网", "拒绝破解盗版", "持续收录"];
+const heroTags = ["人工审核", "优先官网", "拒绝盗版", "持续收录"];
 
 const submitNotes = [
   "我们优先收录官网清晰、功能明确、适合中文用户了解的工具。",
   "请尽量提供官方网站、项目主页或官方文档链接。",
-  "不收录破解软件、盗版资源、影视资源、课程搬运、电子书扫描版、网盘合集、磁力链接等内容。",
+  "不收录破解软件、盗版资源、影视资源、课程搬运、电子书扫描版、网盘合集等内容。",
 ];
 
-const contentRules = ["来源清晰", "不提供破解盗版", "优先指向官网", "人工整理后发布", "如有权益问题及时处理"];
+const contentRules = ["来源清晰", "优先官网", "人工整理后发布", "如有问题及时联系"];
 
-export default function SubmitPage() {
+const submissionKinds = [
+  "AI 工具",
+  "在线工具",
+  "开源项目",
+  "效率软件",
+  "其他资源",
+];
+
+export default function SubmitClientPage() {
   const [errors, setErrors] = useState<SubmitErrors>({});
   const [statusMessage, setStatusMessage] = useState<SubmitStatusMessage>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,9 +53,9 @@ export default function SubmitPage() {
     }
 
     if (!officialUrl) {
-      nextErrors.officialUrl = "请填写官方地址。";
+      nextErrors.officialUrl = "请填写官方网址。";
     } else if (!isHttpUrl(officialUrl)) {
-      nextErrors.officialUrl = "官方地址必须是 http 或 https 链接。";
+      nextErrors.officialUrl = "官方网址必须是 http 或 https 链接。";
     }
 
     if (!summary) {
@@ -110,156 +118,133 @@ export default function SubmitPage() {
   }
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f8fbff]">
+    <div className="submit-warm-page">
+      <div className="submit-warm-bg" aria-hidden="true" />
       <SiteHeader />
 
-      <main>
-        <section className="section-gradient-cyan">
-          <div className="page-shell py-14 sm:py-16 lg:py-20">
-            <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-              <div>
-                <div className="mb-5 inline-flex rounded-full border border-teal-200/80 bg-white/60 px-4 py-2 text-xs font-bold text-teal-700 shadow-sm backdrop-blur">
-                  推荐入口
-                </div>
-                <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl">
-                  推荐一个值得收录的工具
-                </h1>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                  如果你发现了实用、可靠、来源清晰的 AI 工具、在线工具、效率软件或开源项目，可以提交给我们进行人工整理。
-                </p>
-                <div className="mt-7 flex flex-wrap gap-3">
-                  {heroTags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-teal-200/80 bg-white/65 px-4 py-2 text-sm font-semibold text-teal-700 shadow-sm backdrop-blur"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="glass-card-strong p-6 sm:p-8">
-                <p className="text-sm font-bold text-teal-700">投稿前确认</p>
-                <div className="mt-5 grid gap-4">
-                  {["官方来源可查", "功能描述明确", "适合公开介绍"].map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-white/70 bg-white/60 px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-5 text-sm leading-7 text-slate-500">
-                  当前表单会写入 Supabase 的 submissions 表，进入待审核状态。
-                </p>
-              </div>
-            </div>
+      <main className="submit-warm-shell">
+        <section className="submit-hero">
+          <div className="submit-kicker">推荐入口</div>
+          <h1 className="submit-title">提交一个值得收录的工具</h1>
+          <p className="submit-desc">
+            如果你发现了值得分享的 AI 工具、在线工具或开源项目，欢迎提交给我们。我们会优先查看来源清晰、功能明确、适合中文用户理解的内容。
+          </p>
+          <div className="submit-hero-meta" aria-label="提交亮点">
+            {heroTags.map((tag) => (
+              <span key={tag} className="submit-hero-chip">
+                {tag}
+              </span>
+            ))}
           </div>
         </section>
 
-        <section className="section-gradient-soft">
-          <div className="page-shell section-block">
-            <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-              <section className="glass-card p-6 sm:p-8">
-                <p className="text-sm font-bold text-teal-700">投稿说明</p>
-                <h2 className="mt-3 text-2xl font-black text-ink">我们会人工判断是否适合收录</h2>
-                <div className="mt-6 grid gap-4">
-                  {submitNotes.map((note) => (
-                    <p
-                      key={note}
-                      className="rounded-2xl border border-white/70 bg-white/55 px-4 py-3 text-sm leading-7 text-slate-600"
-                    >
-                      {note}
-                    </p>
-                  ))}
-                </div>
-              </section>
-
-              <section className="glass-card-strong p-6 sm:p-8" aria-labelledby="submit-form-title">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <p className="text-sm font-bold text-teal-700">投稿表单</p>
-                    <h2 id="submit-form-title" className="mt-3 text-2xl font-black text-ink">
-                      提交工具信息
-                    </h2>
-                  </div>
-                  <p className="text-sm text-slate-500">带 * 的字段为必填</p>
-                </div>
-
-                <StatusNotice message={statusMessage} />
-
-                <form className="mt-6 grid gap-5" method="post" onSubmit={handleSubmit} noValidate>
-                  <div className="grid gap-5 md:grid-cols-2">
-                    <FormField
-                      label="工具名称"
-                      name="toolName"
-                      placeholder="例如：Raycast"
-                      error={errors.toolName}
-                      required
-                    />
-                    <FormField
-                      label="官方地址"
-                      name="officialUrl"
-                      placeholder="https://example.com"
-                      error={errors.officialUrl}
-                      required
-                    />
-                  </div>
-
-                  <TextareaField
-                    label="工具简介"
-                    name="summary"
-                    placeholder="用一两句话说明这个工具主要解决什么问题。"
-                    error={errors.summary}
-                    required
-                  />
-                  <TextareaField
-                    label="推荐理由"
-                    name="reason"
-                    placeholder="可以说明你为什么推荐、适合什么人、有哪些需要注意的地方。"
-                  />
-                  <FormField
-                    label="推荐人邮箱"
-                    name="email"
-                    type="email"
-                    placeholder="可选，方便后续联系补充信息"
-                    error={errors.email}
-                  />
-
-                  <TurnstileWidget
-                    ref={turnstileRef}
-                    onTokenChange={setTurnstileToken}
-                    className="rounded-2xl border border-white/75 bg-white/55 px-4 py-3 shadow-sm"
-                  />
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="min-h-12 rounded-2xl bg-ink px-6 py-3 text-sm font-bold text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-[0_24px_60px_rgba(15,23,42,0.24)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 sm:w-fit"
-                  >
-                    {isSubmitting ? "提交中..." : "提交推荐"}
-                  </button>
-                </form>
-              </section>
+        <section className="submit-layout" aria-label="提交表单与说明">
+          <div className="submit-form-card">
+            <div className="submit-form-header">
+              <div>
+                <p className="submit-kicker">提交表单</p>
+                <h2 className="submit-section-title">把工具信息一次说清</h2>
+              </div>
+              <p className="submit-help">带 * 的字段为必填。</p>
             </div>
 
-            <section className="glass-card mt-6 p-6 sm:p-8">
-              <p className="text-sm font-bold text-teal-700">收录原则</p>
-              <h2 className="mt-3 text-2xl font-black text-ink">内容先可信，再发布</h2>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {contentRules.map((rule) => (
-                  <span
-                    key={rule}
-                    className="rounded-full border border-white/75 bg-white/65 px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm"
-                  >
-                    {rule}
-                  </span>
-                ))}
+            <StatusNotice message={statusMessage} />
+
+            <form className="submit-form-grid" method="post" onSubmit={handleSubmit} noValidate>
+              <div className="submit-field-grid">
+                <FormField
+                  label="工具名称"
+                  name="toolName"
+                  placeholder="例如：Raycast"
+                  error={errors.toolName}
+                  required
+                />
+                <FormField
+                  label="官方网址"
+                  name="officialUrl"
+                  placeholder="https://example.com"
+                  error={errors.officialUrl}
+                  required
+                />
               </div>
-            </section>
+
+              <div className="submit-field submit-field-full">
+                <label className="submit-label" htmlFor="submissionType">
+                  提交类型
+                </label>
+                <select id="submissionType" name="submissionType" className="submit-select" defaultValue="AI 工具">
+                  {submissionKinds.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <p className="submit-help">这个选项只用于你快速描述资源类型，不影响后续审核。</p>
+              </div>
+
+              <TextareaField
+                label="工具简介"
+                name="summary"
+                placeholder="用一两句话说明这个工具主要解决什么问题。"
+                error={errors.summary}
+                required
+                fullWidth
+              />
+
+              <TextareaField
+                label="推荐理由"
+                name="reason"
+                placeholder="可以补充它适合什么人、有哪些优点，以及你为什么推荐它。"
+                fullWidth
+              />
+
+              <FormField
+                label="推荐人邮箱"
+                name="email"
+                type="email"
+                placeholder="可选，方便后续沟通补充信息"
+                error={errors.email}
+                fullWidth
+              />
+
+              <div className="submit-field submit-field-full">
+                <div className="submit-label">人机验证</div>
+                <div className="submit-turnstile-box">
+                  <TurnstileWidget ref={turnstileRef} onTokenChange={setTurnstileToken} />
+                </div>
+                <p className="submit-help">提交前请先完成验证，避免无效提交。</p>
+              </div>
+
+              <div className="submit-action-row">
+                <button type="submit" disabled={isSubmitting} className="submit-button">
+                  {isSubmitting ? "提交中..." : "提交推荐"}
+                </button>
+                <p className="submit-help">
+                  提交后会进入人工审核，若信息不完整，我们会尽量通过邮箱联系你补充。
+                </p>
+              </div>
+            </form>
           </div>
+
+          <aside className="submit-side-card">
+            <p className="submit-side-title">提交前请先确认</p>
+            <ul className="submit-side-list">
+              {submitNotes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+
+            <div className="submit-side-divider" />
+
+            <p className="submit-side-title">收录原则</p>
+            <div className="submit-rule-chips">
+              {contentRules.map((rule) => (
+                <span key={rule} className="submit-rule-chip">
+                  {rule}
+                </span>
+              ))}
+            </div>
+          </aside>
         </section>
       </main>
 
@@ -274,13 +259,7 @@ function StatusNotice({ message }: { message: SubmitStatusMessage }) {
   }
 
   return (
-    <div
-      className={`mt-6 rounded-2xl border px-4 py-3 text-sm font-semibold leading-7 ${
-        message.type === "success"
-          ? "border-emerald-200 bg-emerald-50/80 text-emerald-700"
-          : "border-rose-200 bg-rose-50/80 text-rose-700"
-      }`}
-    >
+    <div className={`submit-status ${message.type === "success" ? "submit-status-success" : "submit-status-error"}`}>
       {message.message}
     </div>
   );
@@ -293,6 +272,7 @@ function FormField({
   type = "text",
   error,
   required = false,
+  fullWidth = false,
 }: {
   label: string;
   name: string;
@@ -300,21 +280,22 @@ function FormField({
   type?: string;
   error?: string;
   required?: boolean;
+  fullWidth?: boolean;
 }) {
   return (
-    <label className="grid gap-2 text-sm font-semibold text-slate-700">
-      <span>
+    <label className={`submit-field${fullWidth ? " submit-field-full" : ""}`}>
+      <span className="submit-label">
         {label}
-        {required ? <span className="text-rose-500"> *</span> : null}
+        {required ? <span className="submit-required"> *</span> : null}
       </span>
       <input
         name={name}
         type={type}
         placeholder={placeholder}
         aria-invalid={Boolean(error)}
-        className="min-h-12 w-full rounded-2xl border border-white/80 bg-white/70 px-4 py-3 text-sm font-medium text-ink shadow-inner outline-none transition placeholder:text-slate-400 focus:border-teal-300 focus:ring-4 focus:ring-teal-100"
+        className="submit-input"
       />
-      {error ? <span className="text-xs font-semibold text-rose-600">{error}</span> : null}
+      {error ? <span className="submit-error">{error}</span> : null}
     </label>
   );
 }
@@ -325,27 +306,29 @@ function TextareaField({
   placeholder,
   error,
   required = false,
+  fullWidth = false,
 }: {
   label: string;
   name: string;
   placeholder: string;
   error?: string;
   required?: boolean;
+  fullWidth?: boolean;
 }) {
   return (
-    <label className="grid gap-2 text-sm font-semibold text-slate-700">
-      <span>
+    <label className={`submit-field${fullWidth ? " submit-field-full" : ""}`}>
+      <span className="submit-label">
         {label}
-        {required ? <span className="text-rose-500"> *</span> : null}
+        {required ? <span className="submit-required"> *</span> : null}
       </span>
       <textarea
         name={name}
         rows={4}
         placeholder={placeholder}
         aria-invalid={Boolean(error)}
-        className="w-full resize-y rounded-2xl border border-white/80 bg-white/70 px-4 py-3 text-sm font-medium leading-7 text-ink shadow-inner outline-none transition placeholder:text-slate-400 focus:border-teal-300 focus:ring-4 focus:ring-teal-100"
+        className="submit-textarea"
       />
-      {error ? <span className="text-xs font-semibold text-rose-600">{error}</span> : null}
+      {error ? <span className="submit-error">{error}</span> : null}
     </label>
   );
 }
