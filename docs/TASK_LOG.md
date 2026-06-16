@@ -3558,3 +3558,19 @@ Check result:
 ### 下一步
 
 审核 5 个工具草稿。确认后再进入录入和发布流程。
+
+## 2026-06-16
+
+### 本次完成
+
+- Added a Feishu Bitable export skeleton for the content pipeline.
+- Added a normalized-to-Feishu field mapping document.
+- Added `npm run content:feishu-export` for dry-run payload generation.
+
+### 本次没有修改
+
+- 没有接入真实飞书鉴权。
+- 没有写入飞书多维表格。
+- 没有修改数据库 schema。
+- 没有修改页面代码。
+- 没有修改后台表单。

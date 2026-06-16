@@ -12,7 +12,10 @@
     "capture:tools": "node scripts/capture-tools.mjs",
     "capture:tool-detail": "node scripts/capture-tool-detail.mjs",
     "capture:articles": "node scripts/capture-articles.mjs",
-    "capture:public-pages": "node scripts/capture-public-pages.mjs"
+    "capture:public-pages": "node scripts/capture-public-pages.mjs",
+    "content:pipeline": "py -3 scripts/content-pipeline/content_pipeline.py --source-file scripts/content-pipeline/sources.example.json --output .tmp/content-items.json",
+    "content:feishu-export": "py -3 scripts/content-pipeline/feishu_export.py --input .tmp/content-items.json --output .tmp/feishu-payload.json",
+    "content:feishu-sync": "py -3 scripts/content-pipeline/feishu_sync.py --input .tmp/feishu-payload.json"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",

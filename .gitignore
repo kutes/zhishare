@@ -26,6 +26,13 @@ pnpm-debug.log*
 # Playwright visual QA screenshots
 artifacts/
 
+# Content pipeline local outputs
+.tmp/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
 # vercel
 .vercel
 
