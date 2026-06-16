@@ -3649,3 +3649,22 @@ Files:
 - docs/content/ARTICLE_REAL_WRITER_TEMPLATE.md
 - docs/content/seed-articles-v1.csv
 - docs/content/SEED_ARTICLES_REVIEW_CHECKLIST.md
+## 2026-06-16 - First article test plan for free AI tools safety
+
+Status: completed
+
+Summary:
+
+- Added the first real-writer article test plan.
+- Added an observation sheet for 5 candidate AI tools.
+- Kept all observations in draft / pending-test state.
+- Did not write the full article.
+- Did not pretend any tool was tested.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/article-tests/free-ai-tools-safety-test-plan.md
+- docs/content/article-tests/free-ai-tools-safety-observation-sheet.csv
