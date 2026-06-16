@@ -3625,3 +3625,27 @@ Files:
 - docs/content/TOOL_CONTENT_SCHEMA.md
 - docs/content/seed-tools-v1.csv
 - docs/content/SEED_TOOLS_REVIEW_CHECKLIST.md
+## 2026-06-16 - Seed articles CSV template v1 with real-writer GEO fields
+
+Status: completed
+
+Summary:
+
+- Added the first structured article content schema.
+- Added a real-writer article template for zhishare.
+- Added a draft CSV for 10 seed article topics.
+- Added a manual review checklist for seed articles.
+- Kept all article entries in draft state.
+- Kept all real test status fields as pending real testing.
+- Did not pretend any article was personally tested.
+- Did not write full articles.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/ARTICLE_CONTENT_SCHEMA.md
+- docs/content/ARTICLE_REAL_WRITER_TEMPLATE.md
+- docs/content/seed-articles-v1.csv
+- docs/content/SEED_ARTICLES_REVIEW_CHECKLIST.md
