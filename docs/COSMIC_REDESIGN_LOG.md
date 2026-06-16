@@ -313,3 +313,12 @@ Status: completed
 - Restyled 404 UI to match the public frontend direction.
 - Added links back to the homepage, tools library, search, articles, and submit page.
 - Did not modify routing config, backend, database, Supabase logic, scripts, package files, submit page, search page, copyright page, tools pages, or articles pages.
+
+### Step 46 - Articles hero copy and tools hero typography polish
+
+Status: completed
+
+- Simplified the /articles hero into a cleaner editorial entry point.
+- Reduced the article hero title, description, tags, and reading panel copy.
+- Polished the /tools hero title typography to feel less overly serif.
+- Kept routes, data flow, filters, backend, database, Supabase logic, content pipeline, scripts, package files, and dependencies unchanged.
