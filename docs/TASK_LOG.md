@@ -3401,7 +3401,7 @@ Check result:
 
 ### 本次目的
 
-为文章系统建立第一批 GEO 内容样板，延续“我试过 - 哪里坑 - 怎么选”的内容方向。
+为文章系统建立第一批 GEO 内容样板，延续“真实痛点 - 哪里坑 - 怎么选”的内容方向。
 
 ### 本次没有修改
 
@@ -3689,3 +3689,26 @@ Files:
 
 - docs/content/article-tests/free-ai-tools-safety-source-checklist.md
 - docs/content/article-tests/free-ai-tools-safety-source-checklist.csv
+## 2026-06-17 - ahhhhfs rare resource rewrite candidate pool v1
+
+Status: completed
+
+Summary:
+
+- Added a rare resource rewrite rule document for ahhhhfs-derived topic discovery.
+- Added a CSV candidate pool with 15 uncommon resources.
+- Added rewrite angles, article title drafts, social hooks, risk notes, and test tasks.
+- Treated ahhhhfs only as a topic radar, not as a copy source.
+- Marked all official source checks as pending.
+- Marked all first-hand status fields as pending real testing.
+- Excluded gray-area directions such as piracy, paywall bypass, watermark removal, face swap, and trial reset.
+- Did not write full articles.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/AHHHHFS_RARE_RESOURCE_REWRITE_RULES.md
+- docs/content/ahhhhfs-rare-resources-v1.csv
+- docs/content/AHHHHFS_RARE_RESOURCE_REVIEW_CHECKLIST.md
