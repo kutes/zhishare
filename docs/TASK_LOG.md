@@ -3574,3 +3574,30 @@ Check result:
 - 没有修改数据库 schema。
 - 没有修改页面代码。
 - 没有修改后台表单。
+
+## 2026-06-16 - Local screenshot white-page false alarm
+
+Status: resolved
+
+Context:
+
+- Local Playwright screenshots for `/`, `/tools`, and `/articles` briefly showed a default white background / blue link appearance.
+- Online pages returned 200 and contained warm editorial markers.
+- A clean production server on port 3011 rendered the warm editorial design correctly.
+- The existing 3001 process was an old `next start -p 3001` process.
+- On the old 3001 process, the main CSS chunk returned 400 and stylesheet requests failed.
+- After stopping the old 3001 process, rebuilding, and starting a fresh production server on 3001, screenshots returned to the expected warm editorial design.
+
+Conclusion:
+
+- The issue was not a source-code regression.
+- The issue was not a missing `globals.css` import.
+- The issue was not a broken capture script.
+- The issue was a stale local `next start` process serving mismatched static assets after a new build.
+
+Future rule:
+
+- If screenshots show default white background / blue links, first check whether the target port is running an old process.
+- Verify `_next/static/css/*` responses are 200 before assuming a visual regression.
+- Prefer starting a clean production server on a fresh port or restarting the target port after `npm run build`.
+- Keep using `BASE_URL` override for screenshot scripts when testing on a clean temporary port.
