@@ -3601,3 +3601,27 @@ Future rule:
 - Verify `_next/static/css/*` responses are 200 before assuming a visual regression.
 - Prefer starting a clean production server on a fresh port or restarting the target port after `npm run build`.
 - Keep using `BASE_URL` override for screenshot scripts when testing on a clean temporary port.
+## 2026-06-16 - Seed tools CSV template v1 with real-writer GEO anchor
+
+Status: completed
+
+Summary:
+
+- Added the real-writer / GEO content anchor for zhishare.
+- Added the first structured tool content schema.
+- Added a draft CSV for 30 seed tools.
+- Added a manual review checklist for seed tools.
+- Kept all entries in draft state.
+- Kept all first-hand experience fields as pending real testing.
+- Kept official URLs and uncertain pricing as pending manual verification.
+- Did not pretend any tool was personally tested.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/REAL_WRITER_GEO_ANCHOR.md
+- docs/content/TOOL_CONTENT_SCHEMA.md
+- docs/content/seed-tools-v1.csv
+- docs/content/SEED_TOOLS_REVIEW_CHECKLIST.md
