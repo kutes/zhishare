@@ -3668,3 +3668,24 @@ Files:
 
 - docs/content/article-tests/free-ai-tools-safety-test-plan.md
 - docs/content/article-tests/free-ai-tools-safety-observation-sheet.csv
+
+## 2026-06-16 - Source checklist for free AI tools safety article
+
+Status: completed
+
+Summary:
+
+- Added an official source checklist for the first real-writer article.
+- Added a CSV checklist covering 5 candidate AI tools and 7 source types per tool.
+- Kept all source URLs as pending manual fill.
+- Kept all verification statuses as pending.
+- Did not invent official links.
+- Did not write the full article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/article-tests/free-ai-tools-safety-source-checklist.md
+- docs/content/article-tests/free-ai-tools-safety-source-checklist.csv
