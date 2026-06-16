@@ -304,3 +304,12 @@ Status: completed
 - Preserved existing copyright form fields, submit behavior, Turnstile token flow, loading state, success state, and error state.
 - Restyled hero, copyright notice sections, form controls, status messages, and action area.
 - Did not modify copyright API, Turnstile widget, backend, database, Supabase logic, scripts, package files, submit page, search page, or not-found page.
+
+### Step 43 - Not found page warm editorial redesign
+
+Status: completed
+
+- Added a custom warm editorial not-found page.
+- Restyled 404 UI to match the public frontend direction.
+- Added links back to the homepage, tools library, search, articles, and submit page.
+- Did not modify routing config, backend, database, Supabase logic, scripts, package files, submit page, search page, copyright page, tools pages, or articles pages.
