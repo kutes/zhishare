@@ -6519,3 +6519,132 @@ canvas {
 }
 
 /* End submit warm editorial page v1 */
+
+/* Warm editorial card typography polish v1 */
+@layer components {
+  .warm-home-page,
+  .zh-tools-page,
+  .article-detail-warm-page,
+  .articles-warm-page,
+  .search-warm-page,
+  .submit-warm-page {
+    --zh-ui-sans:
+      "Inter",
+      "SF Pro Display",
+      "SF Pro Text",
+      "Segoe UI",
+      "PingFang SC",
+      "Microsoft YaHei",
+      "Noto Sans SC",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    --zh-ui-serif:
+      "Songti SC",
+      "Noto Serif SC",
+      "STSong",
+      "SimSun",
+      "PingFang SC",
+      serif;
+    --zh-title-sans:
+      "Inter",
+      "SF Pro Display",
+      "Segoe UI",
+      "PingFang SC",
+      "Microsoft YaHei",
+      "Noto Sans SC",
+      system-ui,
+      sans-serif;
+    --zh-card-letter-spacing: 0.01em;
+    --zh-card-title-color: #fff7ed;
+    --zh-card-title-muted: rgba(255, 247, 237, 0.72);
+  }
+
+  .zh-tool-card h2,
+  .zh-tool-card h3,
+  .zh-tool-card-featured h3,
+  .zh-tool-card-compact h3,
+  .zh-feature-small h3,
+  .zh-feature-large h3,
+  .zh-guide-card h3,
+  .zh-ranking-card h3,
+  .article-card-title,
+  .search-result-title,
+  .article-detail-related-title {
+    font-family: var(--zh-title-sans);
+    color: var(--zh-card-title-color);
+    font-weight: 760;
+    letter-spacing: var(--zh-card-letter-spacing);
+    line-height: 1.28;
+    font-variant-ligatures: normal;
+    font-feature-settings: "kern" 1;
+    text-rendering: geometricPrecision;
+  }
+
+  .zh-tool-card h2,
+  .zh-tool-card h3,
+  .zh-tool-card-featured h3,
+  .zh-tool-card-compact h3,
+  .zh-feature-small h3,
+  .zh-feature-large h3 {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .zh-tool-card h2,
+  .zh-tool-card h3,
+  .zh-tool-card-title {
+    font-size: clamp(1.125rem, 1.2vw, 1.375rem);
+  }
+
+  .zh-tool-card-featured h3,
+  .zh-tool-card-title-lg {
+    font-size: clamp(1.375rem, 1.9vw, 2rem);
+  }
+
+  .zh-feature-small h3 {
+    font-size: 1rem;
+  }
+
+  .zh-feature-large h3 {
+    font-size: clamp(1.25rem, 1.55vw, 1.65rem);
+  }
+
+  .article-card-title {
+    font-family: var(--zh-ui-serif);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    line-height: 1.35;
+  }
+
+  .search-result-title {
+    font-family: var(--zh-title-sans);
+  }
+
+  .zh-tool-card h2 code,
+  .zh-tool-card h3 code,
+  .zh-tool-card-featured h3 code,
+  .zh-tool-card-compact h3 code {
+    font-family: inherit;
+  }
+
+  @media (max-width: 760px) {
+    .zh-tool-card h2,
+    .zh-tool-card h3,
+    .zh-tool-card-featured h3,
+    .zh-tool-card-compact h3,
+    .zh-feature-small h3,
+    .zh-feature-large h3 {
+      font-size: 18px;
+      line-height: 1.32;
+    }
+
+    .zh-tool-card-featured h3,
+    .zh-tool-card-title-lg {
+      font-size: 24px;
+    }
+  }
+}
+
+/* End warm editorial card typography polish v1 */

@@ -286,3 +286,12 @@ Status: completed
 - Preserved the submit form state, validation, Turnstile flow, success/error feedback, and submission API behavior.
 - Reworked the hero, form card, checklist panel, helper text, and button states with warm editorial surfaces and compact controls.
 - Did not modify the backend, database, Supabase logic, search, copyright, not-found, tools, articles, or any screenshot scripts.
+
+### Step 41.2 - Warm editorial card typography polish
+
+Status: completed
+
+- Polished card title typography across the warm editorial public frontend.
+- Replaced code-like card title rendering with a cleaner editorial sans/serif hierarchy.
+- Focused on tool cards, featured cards, article cards, and search result titles.
+- Did not modify data flow, routes, backend, database, Supabase logic, scripts, package files, submit behavior, copyright page, or not-found page.
