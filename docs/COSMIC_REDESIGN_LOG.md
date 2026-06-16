@@ -295,3 +295,12 @@ Status: completed
 - Replaced code-like card title rendering with a cleaner editorial sans/serif hierarchy.
 - Focused on tool cards, featured cards, article cards, and search result titles.
 - Did not modify data flow, routes, backend, database, Supabase logic, scripts, package files, submit behavior, copyright page, or not-found page.
+
+### Step 42 - Copyright page warm editorial redesign
+
+Status: completed
+
+- Restyled /copyright to match the warm editorial portal direction.
+- Preserved existing copyright form fields, submit behavior, Turnstile token flow, loading state, success state, and error state.
+- Restyled hero, copyright notice sections, form controls, status messages, and action area.
+- Did not modify copyright API, Turnstile widget, backend, database, Supabase logic, scripts, package files, submit page, search page, or not-found page.
