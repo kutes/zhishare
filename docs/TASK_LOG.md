@@ -3867,3 +3867,26 @@ Files:
 - docs/content/resource-tests/droplock-test-plan.md
 - docs/content/resource-tests/droplock-observation-sheet.csv
 - docs/content/resource-tests/droplock-source-checklist.csv
+
+## 2026-06-18 - DropLock official source discovery
+
+Status: completed
+
+Summary:
+
+- Confirmed the official DropLock homepage and GitHub repository as primary sources.
+- Prefilled the DropLock source checklist with checked rows for the official homepage, repository, and encryption design, while keeping network behavior pending.
+- Marked license, expiration policy, privacy policy, terms, and alternative-tools items as source_unverified because reliable official sources were not confirmed yet.
+- Added official source notes to keep the distinction clear between verified official sources and remaining manual checks.
+- Kept network-behavior verification pending for later review.
+- Did not create or share any real secret.
+- Did not use real API keys, passwords, tokens, or customer data.
+- Did not write the full article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/droplock-source-checklist.csv
+- docs/content/resource-tests/droplock-official-source-notes.md
