@@ -3777,3 +3777,25 @@ Files:
 - docs/content/resource-tests/privacy-filter-observation-sheet.csv
 - docs/content/resource-tests/privacy-filter-source-checklist.csv
 - docs/content/resource-tests/privacy-filter-test-run-2026-06-17.md
+## 2026-06-17 - Privacy Filter second observation
+
+Status: completed
+
+Summary:
+
+- Ran a second observation for Privacy Filter using only fictional test data.
+- Extended waiting time to check whether the model would finish loading and produce stable redaction output.
+- Updated the observation sheet with second-pass findings.
+- Added a second test-run note document.
+- Kept conclusions cautious because this is still not a production privacy evaluation.
+- Did not use real customer data.
+- Did not use real API keys.
+- Did not write a final article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/privacy-filter-observation-sheet.csv
+- docs/content/resource-tests/privacy-filter-test-run-2026-06-17-pass2.md
