@@ -1,0 +1,6 @@
+status,test_task,input_sample_type,expected_detection,actual_detection,missed_items,false_positive_items,context_preserved,network_activity_observed,local_processing_evidence,privacy_risk_notes,usability_notes,personal_verdict,checked_at,editor_notes
+draft,基础 PII 脱敏,虚构客户资料,姓名/手机号/邮箱/地址/订单号,待实测,待填写,待填写,待实测,待实测,待实测,不能用真实客户资料,待实测后填写,暂不下结论,待填写,禁止使用真实客户资料
+draft,密钥和密码脱敏,虚构 API Key 与数据库密码,API Key/数据库密码,待实测,待填写,待填写,待实测,待实测,待实测,不能用真实密钥,待实测后填写,暂不下结论,待填写,禁止使用真实密钥
+draft,上下文保留,脱敏后的虚构客户资料,保留任务背景且句子可读,待实测,待填写,待填写,待实测,待实测,待实测,过度遮挡会影响理解,待实测后填写,暂不下结论,待填写,记录是否影响后续理解
+draft,漏检与误伤,混合敏感与普通词样本,识别敏感字段且不误伤普通内容,待实测,待填写,待填写,待实测,待实测,待实测,误伤会影响可用性,待实测后填写,暂不下结论,待填写,重点记录漏检与误伤
+draft,本地处理核验,虚构低敏样本,不出现明显上传请求,待实测,待填写,待填写,待实测,待实测,待实测,如有上传需明确说明,待实测后填写,暂不下结论,待填写,重点记录网络面板

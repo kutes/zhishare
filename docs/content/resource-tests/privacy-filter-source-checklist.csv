@@ -1,0 +1,9 @@
+source_type,source_url,source_status,verification_status,what_to_check,checked_result,checked_at,editor_notes
+official_homepage,待人工填写,pending,pending,核验官方网站是否正确,待人工打开官方页面核验,待填写,不要拿第三方镜像当官方来源
+official_repository,待人工填写,pending,pending,核验是否开源、README、issue 和 release,待人工打开官方页面核验,待填写,优先查看 GitHub 或官方仓库
+license,待人工填写,pending,pending,核验许可证是否允许介绍与演示,待人工打开官方页面核验,待填写,许可证不清楚时不能写推荐
+privacy_policy,待人工填写,pending,pending,核验数据处理、上传、存储和第三方服务,待人工打开官方页面核验,待填写,不能没看隐私说明就写安全
+local_processing_claim,待人工填写,pending,pending,核验是否明确本地处理，以及是否有技术说明,待人工打开官方页面核验,待填写,不能只凭页面文案就写完全本地
+terms_or_usage,待人工填写,pending,pending,核验使用条款、限制和责任边界,待人工打开官方页面核验,待填写,不要编造可商用结论
+network_behavior,待人工填写,pending,pending,记录测试时浏览器网络面板是否出现上传请求,待人工打开官方页面核验,待填写,只能记录真实观察结果
+alternative_tools,待人工填写,pending,pending,核验是否有替代方案，避免单一推荐,待人工打开官方页面核验,待填写,后续可以补充更稳妥替代工具

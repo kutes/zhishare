@@ -3712,3 +3712,26 @@ Files:
 - docs/content/AHHHHFS_RARE_RESOURCE_REWRITE_RULES.md
 - docs/content/ahhhhfs-rare-resources-v1.csv
 - docs/content/AHHHHFS_RARE_RESOURCE_REVIEW_CHECKLIST.md
+
+## 2026-06-17 - Privacy Filter rewrite test plan
+
+Status: completed
+
+Summary:
+
+- Added the first Privacy Filter rewrite test plan for the new resource-testing track.
+- Added a draft observation sheet covering PII redaction, secret redaction, context preservation, false positives, and local-processing checks.
+- Added an official source checklist for homepage, repository, license, privacy policy, local-processing claims, terms, network behavior, and alternatives.
+- Kept all observation rows in draft state.
+- Kept all source-check rows in pending state.
+- Did not pretend the tool was tested.
+- Did not write the full article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/privacy-filter-test-plan.md
+- docs/content/resource-tests/privacy-filter-observation-sheet.csv
+- docs/content/resource-tests/privacy-filter-source-checklist.csv
