@@ -3832,6 +3832,7 @@ Summary:
 - Kept the article in review status instead of published.
 - Preserved the boundary that stable redaction output was not obtained.
 - Avoided recommendation language and absolute safety claims.
+- Aligned the publish candidate category with the final review wording.
 - Did not import content into Supabase.
 - Did not modify frontend pages.
 - Did not publish the article.

@@ -1,8 +1,8 @@
 status: review
 title: 我想把客户资料发给 AI 前先脱敏，结果第一关卡在模型加载上
 slug: privacy-filter-ai-redaction-first-look
-category: 隐私与 AI
-tags: AI 隐私, 脱敏工具, Privacy Filter, 本地处理, 真实观察
+category: 隐私与 AI 安全
+tags: AI 隐私,脱敏工具,Privacy Filter,本地处理,真实观察
 source_type: real_writer_observation
 publish_intent: 观察记录 / 避免踩坑
 recommendation_level: 暂不推荐
