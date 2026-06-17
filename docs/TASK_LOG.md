@@ -3821,3 +3821,23 @@ Files:
 - docs/content/article-drafts/privacy-filter-ai-redaction-first-look.md
 - docs/content/article-drafts/privacy-filter-social-posts-v1.md
 
+## 2026-06-17 - Privacy Filter editorial review and publish candidate
+
+Status: completed
+
+Summary:
+
+- Added an editorial review document for the first Privacy Filter article draft.
+- Added a publish-candidate package with metadata, GEO summary, suitability, risks, and review status.
+- Kept the article in review status instead of published.
+- Preserved the boundary that stable redaction output was not obtained.
+- Avoided recommendation language and absolute safety claims.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish the article.
+
+Files:
+
+- docs/content/article-drafts/privacy-filter-editorial-review.md
+- docs/content/article-drafts/privacy-filter-publish-candidate.md
+
