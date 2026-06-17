@@ -3799,3 +3799,25 @@ Files:
 
 - docs/content/resource-tests/privacy-filter-observation-sheet.csv
 - docs/content/resource-tests/privacy-filter-test-run-2026-06-17-pass2.md
+
+## 2026-06-17 - Privacy Filter first article draft
+
+Status: completed
+
+Summary:
+
+- Added the first real-writer article draft for Privacy Filter.
+- Wrote the draft around the actual observation that stable redaction output was not obtained.
+- Clearly separated official claims from zhishare observations.
+- Avoided recommendation language.
+- Avoided absolute safety claims.
+- Added social post drafts for X, Xiaohongshu, and short-video narration.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish the article.
+
+Files:
+
+- docs/content/article-drafts/privacy-filter-ai-redaction-first-look.md
+- docs/content/article-drafts/privacy-filter-social-posts-v1.md
+
