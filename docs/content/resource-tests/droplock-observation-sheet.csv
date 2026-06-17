@@ -1,0 +1,6 @@
+status,test_task,input_sample_type,expected_behavior,actual_behavior,account_required,expiration_or_one_time_behavior,delete_or_revoke_behavior,network_activity_observed,plaintext_sent_observed,encryption_claim_observed,usability_notes,security_risk_notes,personal_verdict,checked_at,editor_notes
+draft,create_secret,虚构短文本样本,应能创建临时加密内容并生成分享链接,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,pending,待填写,禁止使用生产密钥或生产密码
+draft,recipient_open,虚构短文本样本,接收方应能打开分享内容并看到清晰的过期说明,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,pending,待填写,记录打开路径是否足够简单
+draft,one_time_or_expiration,虚构短文本样本,应支持一次性打开或明确过期机制,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,pending,待填写,不能编造过期表现
+draft,revoke_or_delete,虚构短文本样本,创建方应能撤回或删除内容,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,pending,待填写,检查撤回后是否还能访问
+draft,network_and_security_boundary,虚构短文本样本,应能观察网络面板里是否存在明文上传和额外请求,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,待人工核验,pending,待填写,只记录真实观察结果

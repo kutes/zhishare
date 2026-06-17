@@ -3842,3 +3842,28 @@ Files:
 - docs/content/article-drafts/privacy-filter-editorial-review.md
 - docs/content/article-drafts/privacy-filter-publish-candidate.md
 
+
+
+## 2026-06-17 - DropLock rewrite test plan
+
+Status: completed
+
+Summary:
+
+- Added the DropLock rewrite test plan as the second P0 ahhhhfs-derived rare resource.
+- Created a fictional secret-sharing sample for testing temporary secret sharing behavior.
+- Added an observation sheet covering secret creation, recipient opening, one-time or expiration behavior, deletion or revocation, and network/security boundary checks.
+- Added a source checklist for official homepage, repository, license, encryption design, expiration policy, privacy policy, terms, network behavior, and alternatives.
+- Kept all observations in draft / pending-test state.
+- Did not use real API keys, passwords, tokens, or customer data.
+- Did not pretend the resource was tested.
+- Did not write the full article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/droplock-test-plan.md
+- docs/content/resource-tests/droplock-observation-sheet.csv
+- docs/content/resource-tests/droplock-source-checklist.csv

@@ -1,0 +1,10 @@
+source_type,source_url,source_status,verification_status,what_to_check,checked_result,checked_at,editor_notes
+official_homepage,待人工填写,pending,pending,确认官方首页用途和入口,待人工打开官方页面核验,待填写,只引用官方公开信息
+official_repository,待人工填写,pending,pending,确认仓库是否公开可读,待人工打开官方页面核验,待填写,优先核验官方仓库
+license,待人工填写,pending,pending,确认许可协议和使用边界,待人工打开官方页面核验,待填写,不要把不清楚的许可写成开源推荐
+encryption_design,待人工填写,pending,pending,确认是否说明加密方式和密钥处理,待人工打开官方页面核验,待填写,不能没有加密说明就写安全
+expiration_policy,待人工填写,pending,pending,确认是否说明过期和一次性打开,待人工打开官方页面核验,待填写,重点看一次性和失效机制
+privacy_policy,待人工填写,pending,pending,确认隐私政策如何处理上传内容,待人工打开官方页面核验,待填写,不能跳过隐私说明
+terms_or_usage,待人工填写,pending,pending,确认使用条款和责任边界,待人工打开官方页面核验,待填写,不要夸大免责范围
+network_behavior,待人工填写,pending,pending,确认是否存在明文上传和额外请求,待人工打开官方页面核验,待填写,必须做真实网络观察
+alternative_tools,待人工填写,pending,pending,确认同类工具和替代方案,待人工打开官方页面核验,待填写,避免单一推荐
