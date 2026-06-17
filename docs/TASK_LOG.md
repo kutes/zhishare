@@ -1,4 +1,4 @@
-﻿# TASK_LOG
+# TASK_LOG
 
 ## 2026-06-09
 
@@ -3890,3 +3890,25 @@ Files:
 
 - docs/content/resource-tests/droplock-source-checklist.csv
 - docs/content/resource-tests/droplock-official-source-notes.md
+
+## 2026-06-18 - DropLock first real observation
+
+Status: completed
+
+Summary:
+
+- Ran the first real observation for DropLock using only fictional secret data.
+- Updated the observation sheet with observed results.
+- Updated the network behavior row in the source checklist.
+- Added a test-run note document separating observed behavior from official claims.
+- Did not use real API keys, passwords, tokens, or customer data.
+- Did not write a final article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/droplock-observation-sheet.csv
+- docs/content/resource-tests/droplock-source-checklist.csv
+- docs/content/resource-tests/droplock-test-run-2026-06-17.md
