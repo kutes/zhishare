@@ -3735,3 +3735,23 @@ Files:
 - docs/content/resource-tests/privacy-filter-test-plan.md
 - docs/content/resource-tests/privacy-filter-observation-sheet.csv
 - docs/content/resource-tests/privacy-filter-source-checklist.csv
+
+## 2026-06-17 - Privacy Filter official source prefill
+
+Status: completed
+
+Summary:
+
+- Prefilled the official source checklist for Privacy Filter with source candidates from the official homepage, GitHub repository, license, and model card.
+- Added a separate notes file to distinguish official-page claims from the eventual local test findings.
+- Kept every source row in needs_review state so the checklist does not pretend the tool was already tested.
+- Kept network behavior and terms checks as follow-up items for real browser observation.
+- Did not write the full article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run real scraping or Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/privacy-filter-source-checklist.csv
+- docs/content/resource-tests/privacy-filter-official-source-notes.md
