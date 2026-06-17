@@ -3755,3 +3755,25 @@ Files:
 
 - docs/content/resource-tests/privacy-filter-source-checklist.csv
 - docs/content/resource-tests/privacy-filter-official-source-notes.md
+## 2026-06-17 - Privacy Filter first real observation
+
+Status: completed
+
+Summary:
+
+- Ran the first real observation for Privacy Filter using only fictional test data.
+- Updated the observation sheet with observed results.
+- Updated the network behavior row in the source checklist.
+- Added a test-run note document separating observed behavior from official claims.
+- Did not use real customer data.
+- Did not use real API keys.
+- Did not write a final article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/privacy-filter-observation-sheet.csv
+- docs/content/resource-tests/privacy-filter-source-checklist.csv
+- docs/content/resource-tests/privacy-filter-test-run-2026-06-17.md

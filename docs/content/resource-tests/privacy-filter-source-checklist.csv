@@ -1,9 +1,9 @@
 source_type,source_url,source_status,verification_status,what_to_check,checked_result,checked_at,editor_notes
-official_homepage,https://privacyfilter.app/zh-hans/,checked,needs_review,确认官方入口是否正确，避免把第三方搬运页当官方来源,已确认存在官方中文页；页面声明可在浏览器中直接观察到姓名、邮箱、电话、地址、账户、日期、URL 与密钥等脱敏能力；仍需结合真实网络面板核验是否存在上传请求,2026-06-17,这是官方入口候选，不等于最终测试结论
+official_homepage,https://privacyfilter.app/zh-hans/,checked,needs_review,确认官方入口是否正确，避免把第三方搬运页当官网来源,已确认存在官方中文页；页面声明可在浏览器中直接观察到姓名、邮箱、电话、地址、账户、日期、URL 与密钥等脱敏能力；仍需结合真实网络面板核验是否存在上传请求,2026-06-17,这是官方入口候选，不等于最终测试结论
 official_repository,https://github.com/becoolme/privacyfilter.app,checked,needs_review,核验是否开源、README、issue、release 与部署说明,已确认存在 GitHub 项目主页；后续仍需人工检查 README、提交记录、许可证与问题反馈说明,2026-06-17,GitHub 页面只用于来源确认，不能替代实测
 license,https://github.com/becoolme/privacyfilter.app/blob/main/LICENSE,checked,needs_review,核验许可证是否允许介绍、截图和二创引用,已找到 LICENSE 候选入口；仍需人工打开后确认条款细节,2026-06-17,许可证未人工全文复核前，不写死商业使用结论
 privacy_policy,https://privacyfilter.app/zh-hans/,checked,needs_review,核验是否说明数据处理、上传、存储和第三方服务,官方中文页已声明文本内容不会上传到服务器，推理在浏览器本地完成；仍需后续网络面板与样本测试验证,2026-06-17,这里只记录官方声明，不直接当最终安全结论
 local_processing_claim,https://privacyfilter.app/zh-hans/,checked,needs_review,核验是否明确本地处理，以及是否有技术说明,官方页面声明模型首次从 Hugging Face 下载并缓存，后续文本处理留在本地设备；仍需看浏览器网络面板确认下载与推理行为,2026-06-17,要区分“官方声明本地处理”和“我们实测网络行为”
-terms_or_usage,https://privacyfilter.app/zh-hans/,checked,needs_review,核验使用条款、限制和责任边界,当前只确认到官方中文页存在相关说明入口；条款正文仍需人工打开核实,2026-06-17,不要凭页面印象编造使用限制
-network_behavior,https://privacyfilter.app/zh-hans/,checked,needs_review,记录浏览器网络面板是否出现上传请求,目前还未进行真实网络面板观察；该项必须留到后续实测步骤填写,2026-06-17,不能用官方文案代替网络面板观察
+terms_or_usage,https://privacyfilter.app/zh-hans/,checked,needs_review,核验使用条款、限制和责任边界,当前只确认到官方中文页存在相关说明入口；条款正文仍需人工打开核实,2026-06-17,不要凭页面印象编造可商用结论
+network_behavior,https://privacyfilter.app/zh-hans/,checked,needs_review,记录浏览器网络面板是否出现上传请求,观察到模型/词表资源下载；未见搭载虚构样本的 POST/PUT/PATCH；仍需人工二次复核。,2026-06-17,这是一次真实浏览器观察，不是最终结论。
 alternative_tools,https://huggingface.co/openai/privacy-filter,checked,needs_review,核验是否存在替代技术背景和模型来源,已确认存在 openai/privacy-filter 模型卡，且说明其用于 PII detection and masking；模型卡还提示许可、局限和高风险使用场景注意事项,2026-06-17,模型卡是技术来源参考，不是最终产品评测
