@@ -3976,3 +3976,25 @@ Files:
 
 - docs/content/CONTENT_REVIEW_QUEUE_V1.md
 - docs/content/content-review-queue-v1.csv
+
+## 2026-06-18 - Third resource source precheck v1
+
+Status: completed
+
+Summary:
+
+- Completed a source precheck for OpenLess, PlainApp, and Recordly.
+- Confirmed official homepages and official repositories for all three candidates.
+- Confirmed MIT for OpenLess and AGPL-3.0 for PlainApp and Recordly.
+- Kept privacy or permission boundaries explicit instead of fabricating missing details.
+- Marked OpenLess as the best third P0 candidate.
+- Marked PlainApp as the fallback candidate.
+- Kept Recordly on hold pending more manual source confirmation.
+- Did not run any real scraping or import flow.
+- Did not modify frontend pages.
+- Did not write or publish a final article.
+
+Files:
+
+- docs/content/THIRD_RESOURCE_SOURCE_PRECHECK_V1.md
+- docs/content/third-resource-source-precheck-v1.csv

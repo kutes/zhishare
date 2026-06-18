@@ -1,0 +1,4 @@
+resource_name,slug,category,source_status,official_homepage,official_repository,license_status,privacy_or_permission_status,main_risk,why_it_may_fit_zhishare,why_it_may_not_fit,next_action,selection_rank,editor_notes
+OpenLess,openless,AI productivity,source_confirmed,https://openless.top/,https://github.com/Open-Less/openless,MIT,已确认本地优先；麦克风与辅助功能权限用于输入,本地优先工具仍需验证实际可用性和权限边界,与AI写作和提示词生成主题贴合；官方主页与仓库和许可都清晰,需要确认下一轮观察是否适合纳入资源测试,可进入下一轮测试,P0_candidate,来源链完整；MIT协议明确；本地数据和凭证说明较清楚
+PlainApp,plainapp,device management,source_confirmed,https://plainapp.app/,https://github.com/plainhub/plain-app,AGPL-3.0,已确认无账号；无云；同网段本地访问；权限边界待人工继续核验,Android侧的权限和分发渠道仍需进一步核实,来源清晰；私有化定位强；适合做稳定对照样本,主题更偏手机管理而不是AI工具,待人工继续核验,P1_candidate,官方站点和仓库都清晰；适合作为备选资源
+Recordly,recordly,screen recording,source_partial,https://recordly.dev/,https://github.com/webadderallorg/recordly,AGPL-3.0,待人工继续核验,尚未在本轮确认独立隐私或权限说明,官方主页和仓库可确认；适合录屏工具类资源补位,隐私与权限边界不够完整；不宜直接做P0,待人工继续核验,hold,适合作为后续补充核验对象
