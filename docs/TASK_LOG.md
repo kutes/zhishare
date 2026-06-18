@@ -3912,3 +3912,24 @@ Files:
 - docs/content/resource-tests/droplock-observation-sheet.csv
 - docs/content/resource-tests/droplock-source-checklist.csv
 - docs/content/resource-tests/droplock-test-run-2026-06-17.md
+
+## 2026-06-17 - DropLock first article draft
+
+Status: completed
+
+Summary:
+
+- Added the first real-writer article draft for DropLock.
+- Wrote the draft around the actual observation that the secret-sharing flow produced a `#m=` fragment link.
+- Clearly separated official claims from zhishare observations.
+- Avoided recommendation language and absolute safety claims.
+- Added social post drafts for X, Xiaohongshu, and short-video narration.
+- Did not use real API keys, passwords, tokens, or customer data.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish the article.
+
+Files:
+
+- docs/content/article-drafts/droplock-secret-sharing-first-look.md
+- docs/content/article-drafts/droplock-social-posts-v1.md
