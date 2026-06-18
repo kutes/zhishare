@@ -3955,3 +3955,24 @@ Files:
 
 - docs/content/article-drafts/droplock-editorial-review.md
 - docs/content/article-drafts/droplock-publish-candidate.md
+
+## 2026-06-18 - First real-writer content review queue
+
+Status: completed
+
+Summary:
+
+- Added the first review queue for real-writer rewritten articles.
+- Added Privacy Filter and DropLock to the review queue.
+- Kept both articles in review status.
+- Kept both recommendation levels as not recommended yet.
+- Marked both articles as not publishable now.
+- Added missing-before-ready and next-action fields for each article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish articles.
+
+Files:
+
+- docs/content/CONTENT_REVIEW_QUEUE_V1.md
+- docs/content/content-review-queue-v1.csv
