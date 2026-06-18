@@ -3933,3 +3933,25 @@ Files:
 
 - docs/content/article-drafts/droplock-secret-sharing-first-look.md
 - docs/content/article-drafts/droplock-social-posts-v1.md
+
+## 2026-06-18 - DropLock article review package
+
+Status: completed
+
+Summary:
+
+- Added an editorial review document for the first DropLock article draft.
+- Added a publish-candidate package with metadata, GEO summary, suitability, risks, and review status.
+- Kept the article in review status instead of published.
+- Preserved the boundary that the article is not a security audit.
+- Preserved the boundary that DropLock has not been reviewed by a security expert.
+- Preserved the boundary that it cannot replace enterprise secret management.
+- Avoided recommendation language and absolute safety claims.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish the article.
+
+Files:
+
+- docs/content/article-drafts/droplock-editorial-review.md
+- docs/content/article-drafts/droplock-publish-candidate.md
