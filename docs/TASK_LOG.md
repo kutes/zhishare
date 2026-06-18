@@ -4057,3 +4057,23 @@ Files:
 
 - docs/content/resource-tests/openless-source-checklist.csv
 - docs/content/resource-tests/openless-official-source-notes.md
+
+## 2026-06-17 - OpenLess local test preflight
+
+Status: completed
+
+Summary:
+
+- Added an OpenLess local test preflight document.
+- Did not download OpenLess.
+- Did not install OpenLess.
+- Did not run OpenLess.
+- Did not request microphone or accessibility permissions.
+- Did not configure ASR or LLM credentials.
+- Did not change the observation sheet status.
+- Did not write an article.
+- Did not modify frontend pages.
+
+Files:
+
+- docs/content/resource-tests/openless-local-test-preflight.md
