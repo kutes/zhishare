@@ -3998,3 +3998,26 @@ Files:
 
 - docs/content/THIRD_RESOURCE_SOURCE_PRECHECK_V1.md
 - docs/content/third-resource-source-precheck-v1.csv
+
+## 2026-06-18 - OpenLess rewrite test plan
+
+Status: completed
+
+Summary:
+
+- Added the OpenLess rewrite test plan as the third P0 resource test package.
+- Locked the article direction around turning messy spoken requirements into usable prompts.
+- Added draft-only observation rows for prompt cleanup quality, insertion behavior, permissions, and local-first boundaries.
+- Added a source checklist covering homepage, repository, license, installation, permissions, local-first claims, provider boundaries, usage docs, network behavior, and alternatives.
+- Kept all rows in draft or needs-review state.
+- Did not run real tests.
+- Did not write the final article.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not run Feishu sync.
+
+Files:
+
+- docs/content/resource-tests/openless-test-plan.md
+- docs/content/resource-tests/openless-observation-sheet.csv
+- docs/content/resource-tests/openless-source-checklist.csv

@@ -1,0 +1,6 @@
+status,test_task,input_sample_type,expected_behavior,actual_behavior,output_quality,insert_behavior,permission_behavior,network_or_provider_behavior,local_first_boundary,usability_notes,risk_notes,personal_verdict,checked_at,editor_notes
+draft,基础口述转 Prompt,虚构口述样本 A,能把混乱口述整理成结构化文字,待实测,待实测,待实测,待实测,待实测,不能直接写成完全离线,待实测后补充,待实测后补充,暂不下结论,待填写,禁止使用真实客户资料或公司文档
+draft,AI Prompt 场景,虚构口述样本 B,输出适合直接发给 ChatGPT / Claude / Cursor,待实测,待实测,待实测,待实测,待实测,不能把本地优先写成完全离线,待实测后补充,待实测后补充,暂不下结论,待填写,重点观察是否保留约束和不要做什么
+draft,任意输入框插入,虚构口述样本 C,能插入常见文本框或回退到剪贴板,待实测,待实测,待实测,待实测,待实测,不能把插入能力写成万能,待实测后补充,待实测后补充,暂不下结论,待填写,记录光标位置是否准确
+draft,权限边界,虚构低敏语句,权限提示清楚且用户容易理解,待实测,待实测,待实测,待实测,待实测,不能忽略麦克风和辅助功能边界,待实测后补充,待实测后补充,暂不下结论,待填写,只记录观察不做结论
+draft,本地优先与网络边界,虚构低敏语句,能说明本地存储和外部服务边界,待实测,待实测,待实测,待实测,待实测,不能把本地优先写成绝对离线,待实测后补充,待实测后补充,暂不下结论,待填写,后续需要补网络请求观察

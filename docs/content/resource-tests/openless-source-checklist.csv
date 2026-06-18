@@ -1,0 +1,11 @@
+source_type,source_url,source_status,verification_status,what_to_check,checked_result,checked_at,editor_notes
+official_homepage,https://openless.top/,checked,needs_review,确认官方入口与产品定位,已找到官方主页；页面定位为开源本地优先语音输入工具,2026-06-18,官方主页不是最终实测结论
+official_repository,https://github.com/Open-Less/openless,checked,needs_review,核验是否为官方仓库及 README 内容,已找到 GitHub 仓库；README 强调本地优先和提示词整理,2026-06-18,仓库存在不等于功能已稳定
+license,https://github.com/Open-Less/openless/blob/beta/LICENSE,checked,needs_review,核验 MIT 许可全文,仓库中可见 MIT 许可声明；仍需人工复核全文,2026-06-18,许可核验后再进入正式发布
+installation,https://github.com/Open-Less/openless/blob/beta/README.md,checked,needs_review,核验下载和安装方式,README 描述 macOS Windows Android 的下载与安装方式,2026-06-18,安装说明不代表已完成实测
+permissions,https://github.com/Open-Less/openless/blob/beta/README.md,checked,needs_review,核验麦克风和辅助功能权限,README 提到 macOS 麦克风与辅助功能权限；Windows 也有麦克风和热键监听说明,2026-06-18,权限边界需要后续观察表支撑
+local_first_claim,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验本地优先和本地存储说法,主页和 README 都强调本地优先；数据留在自己的机器上,2026-06-18,不要直接写成完全离线
+provider_boundary,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验外部 ASR 与 LLM 边界,README 提到 Volcengine ASR 和 Ark 或 DeepSeek 兼容 chat completions,2026-06-18,后续要观察网络请求与凭证配置
+usage_docs,https://github.com/Open-Less/openless/blob/beta/USAGE.md,checked,needs_review,核验使用流程和输入插入路径,README 指向 USAGE.md；需要继续核对具体操作步骤,2026-06-18,使用文档应在后续任务单里细看
+network_behavior,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验是否需要访问外部服务,README 明确会用云端 ASR 和 LLM 提供方；不是完全离线,2026-06-18,这一步只核验边界不做实测
+alternative_tools,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验替代品对照,README 列出 Typeless Wispr Flow Lazy Superwhisper 作为对比,2026-06-18,替代品只用于对照不用于实测
