@@ -4038,3 +4038,22 @@ Summary:
 Files:
 
 - docs/content/resource-tests/openless-source-checklist.csv
+
+## 2026-06-17 - OpenLess official source notes
+
+Status: completed
+
+Summary:
+
+- Added OpenLess official source notes.
+- Recorded official homepage, GitHub README, USAGE.md, docs, license, permissions, local-first claims, and provider boundary.
+- Updated OpenLess source checklist usage_docs, provider_boundary, and local_first_claim rows.
+- Kept network_behavior pending because no real observation has been run yet.
+- Did not run real tests.
+- Did not write an article.
+- Did not modify frontend pages.
+
+Files:
+
+- docs/content/resource-tests/openless-source-checklist.csv
+- docs/content/resource-tests/openless-official-source-notes.md
