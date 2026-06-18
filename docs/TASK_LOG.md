@@ -4021,3 +4021,20 @@ Files:
 - docs/content/resource-tests/openless-test-plan.md
 - docs/content/resource-tests/openless-observation-sheet.csv
 - docs/content/resource-tests/openless-source-checklist.csv
+
+## 2026-06-17 - OpenLess network behavior status correction
+
+Status: completed
+
+Summary:
+
+- Corrected the OpenLess source checklist network_behavior row back to pending status.
+- Kept network behavior unverified because no real OpenLess observation has been run yet.
+- Did not modify the OpenLess test plan or observation sheet.
+- Did not run real tests.
+- Did not write an article.
+- Did not modify frontend pages.
+
+Files:
+
+- docs/content/resource-tests/openless-source-checklist.csv

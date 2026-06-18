@@ -7,5 +7,5 @@ permissions,https://github.com/Open-Less/openless/blob/beta/README.md,checked,ne
 local_first_claim,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验本地优先和本地存储说法,主页和 README 都强调本地优先；数据留在自己的机器上,2026-06-18,不要直接写成完全离线
 provider_boundary,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验外部 ASR 与 LLM 边界,README 提到 Volcengine ASR 和 Ark 或 DeepSeek 兼容 chat completions,2026-06-18,后续要观察网络请求与凭证配置
 usage_docs,https://github.com/Open-Less/openless/blob/beta/USAGE.md,checked,needs_review,核验使用流程和输入插入路径,README 指向 USAGE.md；需要继续核对具体操作步骤,2026-06-18,使用文档应在后续任务单里细看
-network_behavior,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验是否需要访问外部服务,README 明确会用云端 ASR 和 LLM 提供方；不是完全离线,2026-06-18,这一步只核验边界不做实测
+network_behavior,待实测,pending,pending,记录测试时是否访问外部 ASR / LLM / 更新 / marketplace 服务,待真实观察后填写,待填写,只能记录真实网络观察
 alternative_tools,https://github.com/Open-Less/openless/blob/beta/README.zh.md,checked,needs_review,核验替代品对照,README 列出 Typeless Wispr Flow Lazy Superwhisper 作为对比,2026-06-18,替代品只用于对照不用于实测
