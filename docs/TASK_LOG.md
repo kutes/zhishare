@@ -4099,3 +4099,24 @@ Files:
 
 - docs/content/resource-tests/plainapp-source-checklist.csv
 - docs/content/resource-tests/plainapp-official-source-notes.md
+
+## 2026-06-20 - PlainApp local test preflight
+
+Status: completed
+
+Summary:
+
+- Added a PlainApp local test preflight document.
+- Clarified that PlainApp must not be tested on a primary phone.
+- Clarified that a spare Android device or low-sensitivity environment is required before testing.
+- Clarified sensitive Android data boundaries including files, photos, SMS, contacts, call logs, notifications, and screen mirroring.
+- Kept permission_boundary and network_behavior pending.
+- Did not download or install PlainApp.
+- Did not connect an Android device.
+- Did not access real phone data.
+- Did not write an article.
+- Did not modify frontend pages.
+
+Files:
+
+- docs/content/resource-tests/plainapp-local-test-preflight.md
