@@ -4077,3 +4077,25 @@ Summary:
 Files:
 
 - docs/content/resource-tests/openless-local-test-preflight.md
+
+## 2026-06-17 - PlainApp official source and permission boundary notes
+
+Status: completed
+
+Summary:
+
+- Switched from OpenLess installation testing to PlainApp source strengthening per user choice.
+- Added PlainApp official source checklist.
+- Added PlainApp official source and permission boundary notes.
+- Recorded official homepage, GitHub repository, license, privacy policy candidate, terms candidate, docs/FAQ, local network boundary, encryption claims, distribution channels, network behavior, and alternatives.
+- Kept permission_boundary and network_behavior pending because no real Android test has been run.
+- Did not download or install PlainApp.
+- Did not connect an Android device.
+- Did not access real files, photos, SMS, contacts, or call logs.
+- Did not write an article.
+- Did not modify frontend pages.
+
+Files:
+
+- docs/content/resource-tests/plainapp-source-checklist.csv
+- docs/content/resource-tests/plainapp-official-source-notes.md

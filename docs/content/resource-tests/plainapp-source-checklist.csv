@@ -1,0 +1,13 @@
+source_type,source_url,source_status,verification_status,what_to_check,checked_result,checked_at,editor_notes
+official_homepage,https://plainapp.app/,checked,needs_review,确认官方入口和产品定位,已找到官方首页；PlainApp 自称是通过同一网络浏览器管理 Android 手机的 Phone Web Portal，仍需人工复核全文,2026-06-17,官方入口确认不等于实测结论
+official_repository,https://github.com/plainhub/plain-app,checked,needs_review,确认官方仓库、README、维护状态、issue 和 release,已找到 GitHub 仓库；README 称其为开源 Android 手机管理工具，仍需人工复核,2026-06-17,仓库存在不等于功能已适合低风险测试
+license,https://github.com/plainhub/plain-app/blob/main/LICENSE,checked,needs_review,核验 AGPL-3.0 许可证全文,GitHub 页面显示 AGPL-3.0 license，仍需打开 LICENSE 全文核实,2026-06-17,许可证影响二次介绍和截图使用边界
+privacy_policy,https://github.com/plainhub/plain-app/blob/main/policy.html,checked,needs_review,核验隐私政策和数据处理声明,仓库存在 policy.html，仍需打开全文核实,2026-06-17,不能只看首页 no cloud 口号
+terms_or_usage,https://github.com/plainhub/plain-app/blob/main/terms.html,checked,needs_review,核验使用条款、责任边界和限制,仓库存在 terms.html，仍需打开全文核实,2026-06-17,不能自行补写使用限制
+docs_or_faq,https://plainapp.app/,checked,needs_review,核验官方 Docs/FAQ/Troubleshooting/Security Deep Dive 等入口,官网提供 Docs/FAQ、Troubleshooting、Security Deep Dive 等入口，仍需逐项打开核实,2026-06-17,文档入口确认不等于内容已复核
+permission_boundary,待人工继续核查,pending,pending,核验 Android 权限边界：文件、照片、短信、联系人、通知、屏幕镜像、通话记录等,待人工从 README、manifest、文档和测试环境继续核查,待填写,这是 PlainApp 最大风险点之一
+local_network_boundary,https://plainapp.app/,checked,needs_review,核验同网段本地访问、URL、端口、HTTPS、局域网暴露边界,官网写到 app 启动后浏览器访问同一 Wi-Fi 下手机端显示的 URL，仍需测试环境核验,2026-06-17,同网段访问不等于零风险
+encryption_claim,https://github.com/plainhub/plain-app,checked,needs_review,核验 TLS + XChaCha20-Poly1305 等加密声明,README 声称 phone-browser traffic 使用 TLS + XChaCha20-Poly1305，仍需代码/文档复核,2026-06-17,官方加密声明不等于安全审计结论
+distribution_channels,https://plainapp.app/,checked,needs_review,核验 Google Play、F-Droid、GitHub 分发渠道,官网说明可从 Google Play、F-Droid、GitHub 下载，仍需逐个链接核实,2026-06-17,不同渠道版本可能不同
+network_behavior,待实测,pending,pending,记录真实测试时局域网请求、外部请求、端口、证书和是否离开本地网络,待真实观察后填写,待填写,不能提前写成本地安全结论
+alternative_tools,待人工填充,pending,pending,记录 AirDroid、KDE Connect、LocalSend、Snapdrop 等替代方案用于对照,待人工核验后填写,待填写,替代工具也需要后续核查
