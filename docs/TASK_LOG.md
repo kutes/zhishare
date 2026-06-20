@@ -4120,3 +4120,24 @@ Summary:
 Files:
 
 - docs/content/resource-tests/plainapp-local-test-preflight.md
+
+## 2026-06-17 - Team-tested and public-review publishing rules
+
+Status: completed
+
+Summary:
+
+- Updated the software publishing rules to allow team-tested language.
+- Allowed tool copy to use terms such as team-tested and site-tested when the user provides the software.
+- Added rules for public user-review excerpts from GitHub, Reddit, Product Hunt, app stores, forums, blogs, and social platforms.
+- Clarified that public comments must be labeled as user feedback or public-review excerpts.
+- Clarified that Codex must not invent testing details or user comments.
+- Preserved official source verification before publishing.
+- Preserved the ban on piracy, cracking, watermark removal, paid bypass, gray-market, privacy-invasive, and malicious tools.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/TEAM_TESTED_SOFTWARE_PUBLISHING_RULES.md
