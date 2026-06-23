@@ -4266,3 +4266,23 @@ Files:
 - docs/content/BULK_TOOLS_DRY_RUN_REVIEW_V1.md
 - docs/content/bulk-tools-first-10-publish-candidates-v1.csv
 - docs/content/bulk-tools-first-10-review-notes-v1.csv
+
+## 2026-06-17 - First 10 tools ready-to-publish package
+
+Status: completed
+
+Summary:
+
+- Generated the first ready-to-publish package for 10 selected tool entries.
+- Created a separate ready-to-publish CSV without modifying the original staged CSV or candidate CSV.
+- Set item_status=ready_to_publish and publish_ready=yes only in the new package file.
+- Added publish risk notes for the 10 selected tools.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/bulk-tools-first-10-ready-to-publish-v1.csv
+- docs/content/BULK_TOOLS_FIRST_10_READY_TO_PUBLISH_V1.md
+- docs/content/bulk-tools-first-10-publish-risk-notes-v1.csv
