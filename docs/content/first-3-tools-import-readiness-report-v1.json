@@ -1,0 +1,29 @@
+{
+  "status": "readiness_check_completed",
+  "select_only": true,
+  "input": "docs/content/first-3-tools-ready-to-import-v1.csv",
+  "row_count": 3,
+  "selected_slugs": [
+    "localsend",
+    "stirling-pdf",
+    "cyberchef"
+  ],
+  "env": {
+    "supabase_url_present": false,
+    "service_key_present": false,
+    "anon_key_present": false
+  },
+  "detected_tools_table": "tools",
+  "existing_slugs": [],
+  "missing_slugs": [
+    "localsend",
+    "stirling-pdf",
+    "cyberchef"
+  ],
+  "blockers": [
+    "MISSING_SUPABASE_URL",
+    "MISSING_SUPABASE_READ_KEY"
+  ],
+  "ready_for_execute_review": false,
+  "next_step": ""
+}

@@ -4329,3 +4329,24 @@ Files:
 - docs/content/first-3-tools-ready-to-import-v1.csv
 - scripts/content-import/import-first-3-tools.mjs
 - docs/content/FIRST_3_TOOLS_IMPORT_SCRIPT_V1.md
+
+## 2026-06-17 - First 3 tools import readiness check
+
+Status: completed
+
+Summary:
+
+- Added a select-only Supabase readiness check for the first 3 tool imports.
+- Checked environment-variable presence without printing secrets.
+- Checked whether selected slugs already exist before allowing execute review.
+- Kept the process read-only.
+- Did not run execute mode.
+- Did not write to Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- scripts/content-import/check-first-3-tools-import-readiness.mjs
+- docs/content/FIRST_3_TOOLS_IMPORT_READINESS_CHECK_V1.md
+- docs/content/first-3-tools-import-readiness-report-v1.json
