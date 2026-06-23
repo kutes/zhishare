@@ -4286,3 +4286,24 @@ Files:
 - docs/content/bulk-tools-first-10-ready-to-publish-v1.csv
 - docs/content/BULK_TOOLS_FIRST_10_READY_TO_PUBLISH_V1.md
 - docs/content/bulk-tools-first-10-publish-risk-notes-v1.csv
+
+## 2026-06-17 - First 10 tools Supabase import mapping dry-run
+
+Status: completed
+
+Summary:
+
+- Added a dry-run mapper for the first 10 ready-to-publish tool entries.
+- Read the current tool-related schema, input types, admin form, and tool detail/page access paths to infer field mappings.
+- Generated a Supabase insert payload preview without connecting to Supabase.
+- Marked fields that can be mapped directly, fields that should be compressed into description or notes, and fields that still need manual mapping.
+- Added a package script for the first-10 ready import dry-run.
+- Did not write to Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- scripts/content-import/prepare-tools-ready-import.mjs
+- docs/content/FIRST_10_TOOLS_SUPABASE_IMPORT_DRY_RUN_V1.md
+- docs/content/first-10-tools-supabase-import-dry-run-report-v1.json
