@@ -4244,3 +4244,25 @@ Summary:
 Files:
 
 - docs/content/bulk-tools-staged-v1.csv
+
+## 2026-06-17 - Bulk tools dry-run review and first 10 candidates
+
+Status: completed
+
+Summary:
+
+- Reviewed the dry-run report for the first 50 staged tool entries.
+- Kept all original staged entries unchanged.
+- Identified the high-risk and needs-review state from the dry-run report.
+- Selected the first 10 lower-risk candidates for manual review.
+- Added a first-10 candidate CSV and review notes CSV.
+- Kept every candidate as publish_ready=no.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/BULK_TOOLS_DRY_RUN_REVIEW_V1.md
+- docs/content/bulk-tools-first-10-publish-candidates-v1.csv
+- docs/content/bulk-tools-first-10-review-notes-v1.csv
