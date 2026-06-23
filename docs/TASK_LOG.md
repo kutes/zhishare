@@ -4184,3 +4184,24 @@ Files:
 
 - docs/content/BULK_CONTENT_PUBLISHING_AUDIT.md
 - docs/content/bulk-content-field-map.csv
+
+## 2026-06-23 - Bulk tools staged CSV field freeze
+
+Status: completed
+
+Summary:
+
+- Added the first bulk tools staged CSV field specification.
+- Added an empty bulk tools staged CSV with frozen headers.
+- Added a staged CSV review checklist.
+- Prepared the project for the first batch of 50 tool entries.
+- Did not generate real tool entries yet.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/BULK_TOOL_STAGED_FIELDS_V1.md
+- docs/content/bulk-tools-staged-v1.csv
+- docs/content/bulk-tools-staged-review-checklist.md
