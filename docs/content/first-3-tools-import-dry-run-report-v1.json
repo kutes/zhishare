@@ -1,0 +1,17 @@
+{
+  "status": "dry_run_completed",
+  "execute_mode": false,
+  "safe_to_execute": false,
+  "input": "docs/content/first-3-tools-ready-to-import-v1.csv",
+  "row_count": 3,
+  "payload_preview_count": 3,
+  "selected_slugs": [],
+  "detected_tools_table": null,
+  "required_env": {
+    "supabase_url_present": false,
+    "service_key_present": false
+  },
+  "execute_blockers": [],
+  "payload_preview": [],
+  "next_step": ""
+}

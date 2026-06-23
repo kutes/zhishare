@@ -15,6 +15,7 @@
     "capture:public-pages": "node scripts/capture-public-pages.mjs",
     "content:tools-import:dry-run": "node scripts/content-import/import-tools-staged.mjs --input docs/content/bulk-tools-staged-v1.csv --report docs/content/bulk-tools-import-dry-run-report-v1.json",
     "content:tools-ready-import:dry-run": "node scripts/content-import/prepare-tools-ready-import.mjs --input docs/content/bulk-tools-first-10-ready-to-publish-v1.csv --risk docs/content/bulk-tools-first-10-publish-risk-notes-v1.csv --report docs/content/first-10-tools-supabase-import-dry-run-report-v1.json",
+    "content:first-3-tools-import:dry-run": "node scripts/content-import/import-first-3-tools.mjs --input docs/content/first-3-tools-ready-to-import-v1.csv --report docs/content/first-3-tools-import-dry-run-report-v1.json",
     "content:pipeline": "py -3 scripts/content-pipeline/content_pipeline.py --source-file scripts/content-pipeline/sources.example.json --output .tmp/content-items.json",
     "content:feishu-export": "py -3 scripts/content-pipeline/feishu_export.py --input .tmp/content-items.json --output .tmp/feishu-payload.json",
     "content:feishu-sync": "py -3 scripts/content-pipeline/feishu_sync.py --input .tmp/feishu-payload.json"

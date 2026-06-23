@@ -4307,3 +4307,25 @@ Files:
 - scripts/content-import/prepare-tools-ready-import.mjs
 - docs/content/FIRST_10_TOOLS_SUPABASE_IMPORT_DRY_RUN_V1.md
 - docs/content/first-10-tools-supabase-import-dry-run-report-v1.json
+
+## 2026-06-17 - First 3 tools import script dry-run
+
+Status: completed
+
+Summary:
+
+- Created a first-3 tools ready-to-import CSV.
+- Added a guarded import script for the first 3 tools.
+- Kept the script dry-run by default.
+- Added explicit execute-mode safety checks.
+- Added a package script for first-3 tools import dry-run.
+- Did not run execute mode.
+- Did not write to Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/first-3-tools-ready-to-import-v1.csv
+- scripts/content-import/import-first-3-tools.mjs
+- docs/content/FIRST_3_TOOLS_IMPORT_SCRIPT_V1.md
