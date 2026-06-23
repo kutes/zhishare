@@ -1,0 +1,714 @@
+{
+  "status": "dry_run_completed",
+  "input": "docs/content/bulk-tools-staged-v1.csv",
+  "row_count": 50,
+  "ready_to_import_count": 0,
+  "needs_review_count": 49,
+  "high_risk_count": 1,
+  "header": [
+    "batch_id",
+    "item_status",
+    "title",
+    "slug",
+    "category",
+    "tags",
+    "short_description",
+    "long_description",
+    "team_tested_label",
+    "tested_summary",
+    "public_review_summary",
+    "official_website",
+    "official_repository",
+    "license",
+    "platform",
+    "pricing",
+    "risk_tags",
+    "suitable_for",
+    "not_suitable_for",
+    "key_features",
+    "use_cases",
+    "caution_notes",
+    "source_urls",
+    "cover_image_prompt",
+    "seo_title",
+    "seo_description",
+    "social_post_x",
+    "social_post_xhs",
+    "editor_notes",
+    "publish_ready"
+  ],
+  "field_mapping": {
+    "staged_fields": [
+      "batch_id",
+      "item_status",
+      "title",
+      "slug",
+      "category",
+      "tags",
+      "short_description",
+      "long_description",
+      "team_tested_label",
+      "tested_summary",
+      "public_review_summary",
+      "official_website",
+      "official_repository",
+      "license",
+      "platform",
+      "pricing",
+      "risk_tags",
+      "suitable_for",
+      "not_suitable_for",
+      "key_features",
+      "use_cases",
+      "caution_notes",
+      "source_urls",
+      "cover_image_prompt",
+      "seo_title",
+      "seo_description",
+      "social_post_x",
+      "social_post_xhs",
+      "editor_notes",
+      "publish_ready"
+    ],
+    "likely_tool_fields": [
+      "title",
+      "slug",
+      "category_id",
+      "tags",
+      "summary",
+      "description",
+      "website_url",
+      "download_url",
+      "cover_url",
+      "is_free",
+      "is_open_source",
+      "target_users",
+      "use_cases",
+      "pros",
+      "cons",
+      "risk_notice",
+      "status",
+      "pricing",
+      "free_status",
+      "open_source_status"
+    ],
+    "direct_mapping_candidates": {
+      "title": [
+        "title",
+        "name"
+      ],
+      "slug": [
+        "slug"
+      ],
+      "category": [
+        "category_id",
+        "category"
+      ],
+      "tags": [
+        "tags"
+      ],
+      "short_description": [
+        "summary"
+      ],
+      "long_description": [
+        "description"
+      ],
+      "official_website": [
+        "website_url"
+      ],
+      "pricing": [
+        "pricing"
+      ],
+      "suitable_for": [
+        "target_users"
+      ],
+      "not_suitable_for": [
+        "cons"
+      ],
+      "key_features": [
+        "features"
+      ],
+      "use_cases": [
+        "use_cases"
+      ],
+      "caution_notes": [
+        "risk_notice"
+      ],
+      "publish_ready": [
+        "status"
+      ]
+    },
+    "unmapped_staged_fields": [
+      "batch_id",
+      "item_status",
+      "team_tested_label",
+      "tested_summary",
+      "public_review_summary",
+      "official_repository",
+      "license",
+      "platform",
+      "risk_tags",
+      "source_urls",
+      "cover_image_prompt",
+      "seo_title",
+      "seo_description",
+      "social_post_x",
+      "social_post_xhs",
+      "editor_notes"
+    ]
+  },
+  "rows": [
+    {
+      "title": "OpenLess",
+      "slug": "openless",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 1
+    },
+    {
+      "title": "PlainApp",
+      "slug": "plainapp",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 2
+    },
+    {
+      "title": "Recordly",
+      "slug": "recordly",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 3
+    },
+    {
+      "title": "DropLock",
+      "slug": "droplock",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 4
+    },
+    {
+      "title": "LocalSend",
+      "slug": "localsend",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 5
+    },
+    {
+      "title": "Syncthing",
+      "slug": "syncthing",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 6
+    },
+    {
+      "title": "File Browser",
+      "slug": "file-browser",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 7
+    },
+    {
+      "title": "Stirling PDF",
+      "slug": "stirling-pdf",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 8
+    },
+    {
+      "title": "CyberChef",
+      "slug": "cyberchef",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 9
+    },
+    {
+      "title": "PrivateBin",
+      "slug": "privatebin",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 10
+    },
+    {
+      "title": "Cryptomator",
+      "slug": "cryptomator",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 11
+    },
+    {
+      "title": "Vaultwarden",
+      "slug": "vaultwarden",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "high",
+      "warnings": [
+        "official_website_invalid",
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 12
+    },
+    {
+      "title": "Bitwarden",
+      "slug": "bitwarden",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 13
+    },
+    {
+      "title": "Open WebUI",
+      "slug": "open-webui",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 14
+    },
+    {
+      "title": "AnythingLLM",
+      "slug": "anythingllm",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 15
+    },
+    {
+      "title": "Dify",
+      "slug": "dify",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 16
+    },
+    {
+      "title": "Flowise",
+      "slug": "flowise",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 17
+    },
+    {
+      "title": "Langflow",
+      "slug": "langflow",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 18
+    },
+    {
+      "title": "Jan",
+      "slug": "jan",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 19
+    },
+    {
+      "title": "Ollama",
+      "slug": "ollama",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 20
+    },
+    {
+      "title": "LM Studio",
+      "slug": "lm-studio",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 21
+    },
+    {
+      "title": "RAGFlow",
+      "slug": "ragflow",
+      "category": "AI ??",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 22
+    },
+    {
+      "title": "Qdrant",
+      "slug": "qdrant",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 23
+    },
+    {
+      "title": "Chroma",
+      "slug": "chroma",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 24
+    },
+    {
+      "title": "Penpot",
+      "slug": "penpot",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 25
+    },
+    {
+      "title": "Excalidraw",
+      "slug": "excalidraw",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 26
+    },
+    {
+      "title": "DrawDB",
+      "slug": "drawdb",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 27
+    },
+    {
+      "title": "Hoppscotch",
+      "slug": "hoppscotch",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 28
+    },
+    {
+      "title": "Bruno",
+      "slug": "bruno",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 29
+    },
+    {
+      "title": "Insomnia",
+      "slug": "insomnia",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 30
+    },
+    {
+      "title": "Zed",
+      "slug": "zed",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 31
+    },
+    {
+      "title": "Lapce",
+      "slug": "lapce",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 32
+    },
+    {
+      "title": "Espanso",
+      "slug": "espanso",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 33
+    },
+    {
+      "title": "Flow Launcher",
+      "slug": "flow-launcher",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 34
+    },
+    {
+      "title": "AutoHotkey",
+      "slug": "autohotkey",
+      "category": "?????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 35
+    },
+    {
+      "title": "Everything",
+      "slug": "everything",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 36
+    },
+    {
+      "title": "Kando",
+      "slug": "kando",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 37
+    },
+    {
+      "title": "Screenity",
+      "slug": "screenity",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 38
+    },
+    {
+      "title": "Cap",
+      "slug": "cap",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 39
+    },
+    {
+      "title": "OBS Studio",
+      "slug": "obs-studio",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 40
+    },
+    {
+      "title": "ShareX",
+      "slug": "sharex",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 41
+    },
+    {
+      "title": "Flameshot",
+      "slug": "flameshot",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 42
+    },
+    {
+      "title": "Immich",
+      "slug": "immich",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 43
+    },
+    {
+      "title": "PhotoPrism",
+      "slug": "photoprism",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 44
+    },
+    {
+      "title": "Paperless-ngx",
+      "slug": "paperless-ngx",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 45
+    },
+    {
+      "title": "Linkwarden",
+      "slug": "linkwarden",
+      "category": "?????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 46
+    },
+    {
+      "title": "Wallabag",
+      "slug": "wallabag",
+      "category": "?????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 47
+    },
+    {
+      "title": "Memos",
+      "slug": "memos",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 48
+    },
+    {
+      "title": "AppFlowy",
+      "slug": "appflowy",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 49
+    },
+    {
+      "title": "AFFiNE",
+      "slug": "affine",
+      "category": "????",
+      "publish_ready": "no",
+      "risk_level": "medium",
+      "warnings": [
+        "public_review_summary_unexpected"
+      ],
+      "row_index": 50
+    }
+  ],
+  "next_step": "Review the high-risk rows first, then prepare the backend import sheet after human approval."
+}

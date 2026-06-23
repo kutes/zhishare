@@ -4204,6 +4204,26 @@ Files:
 
 - docs/content/BULK_TOOL_STAGED_FIELDS_V1.md
 - docs/content/bulk-tools-staged-v1.csv
+
+## 2026-06-17 - Bulk tools staged import dry-run scaffold
+
+Status: completed
+
+Summary:
+
+- Added a dry-run import scaffold for the first 50 staged tool entries.
+- Added CSV validation for header, row count, slug uniqueness, publish_ready status, required fields, source fields, and risk markers.
+- Added a JSON dry-run report output.
+- Added a package script for dry-run validation.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- scripts/content-import/import-tools-staged.mjs
+- docs/content/BULK_TOOLS_IMPORT_DRY_RUN_V1.md
+- docs/content/bulk-tools-import-dry-run-report-v1.json
 - docs/content/bulk-tools-staged-review-checklist.md
 
 ## 2026-06-17 - First 50 bulk tools staged content
