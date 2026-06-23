@@ -4205,3 +4205,22 @@ Files:
 - docs/content/BULK_TOOL_STAGED_FIELDS_V1.md
 - docs/content/bulk-tools-staged-v1.csv
 - docs/content/bulk-tools-staged-review-checklist.md
+
+## 2026-06-17 - First 50 bulk tools staged content
+
+Status: completed
+
+Summary:
+
+- Generated the first batch of 50 staged tool entries.
+- Wrote all entries into docs/content/bulk-tools-staged-v1.csv.
+- Kept every entry as copy_ready with publish_ready=no.
+- Used team-tested/site-tested copy style while keeping specific testing details generic unless provided.
+- Left public review excerpts as pending for a later review-mining step.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/bulk-tools-staged-v1.csv
