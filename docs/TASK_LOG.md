@@ -4141,3 +4141,25 @@ Summary:
 Files:
 
 - docs/content/TEAM_TESTED_SOFTWARE_PUBLISHING_RULES.md
+
+## 2026-06-23 - Tested copy and public review excerpt rules
+
+Status: completed
+
+Summary:
+
+- Updated the publishing rules to allow first-person tested copy when the user confirms personal testing.
+- Allowed team-tested and site-tested copy when the user confirms team testing.
+- Allowed strong marketing copy and exaggerated rhetorical style.
+- Added boundaries for public user-review excerpts from GitHub, Reddit, Product Hunt, app stores, forums, blogs, and social platforms.
+- Clarified that public comments must be labeled as user feedback or public-review excerpts.
+- Clarified that Codex must not invent personal testing, team testing, user comments, prices, licenses, safety claims, or privacy claims.
+- Preserved official source verification before publishing.
+- Preserved the ban on piracy, cracking, watermark removal, paid bypass, gray-market, privacy-invasive, and malicious tools.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- docs/content/TEAM_TESTED_SOFTWARE_PUBLISHING_RULES.md
