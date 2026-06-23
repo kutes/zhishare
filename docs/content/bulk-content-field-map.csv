@@ -1,0 +1,34 @@
+content_type,field_name,required,status,current_source,current_target,frontend_usage,admin_usage,bulk_import_notes,editor_notes
+tool,title,yes,confirmed,src/lib/db/tools.ts; src/components/admin/AdminToolForm.tsx,tools.title,tool card title; detail title,create and edit title input,必填,与 slug 一起校对
+tool,name,no,confirmed,src/data/mock-tools.ts; src/lib/db/tools.ts,tools.name or title fallback,legacy display name; fallback title,暂无专门输入,可选,用于兼容旧数据
+tool,slug,yes,confirmed,src/lib/db/tools.ts; src/components/admin/AdminToolForm.tsx,tools.slug; route /tools/[slug],public route; sitemap route,create and edit slug input,必填,避免重复 slug
+tool,category,yes,confirmed,tools.category_id plus categories table,tools.category_id and category display,分类筛选; card badge,category selector,必填,用于筛选和聚合
+tool,tags,yes,confirmed,tools.tags plus tool_tags,tool_tags and tag chips,筛选; 详情页标签,tag editor or import,必填,用于搜索和筛选
+tool,short_description,yes,confirmed,tools.summary,tools.summary,卡片摘要; hero overview,summary input,必填,一句话说明价值
+tool,long_description,yes,confirmed,tools.description,tools.description,详情页长文案,description textarea,必填,写清场景和边界
+tool,official_website,yes,confirmed,tools.website_url,tools.website_url,官网按钮; 详情页跳转,website_url input,必填,必须可访问
+tool,official_repository,no,recommended,暂无直接字段; staged CSV 预留,建议新增 tools.official_repository,仓库按钮; 开源说明,暂无专门输入,可选,开源工具再补
+tool,license,no,recommended,tools.open_source_status only partial,建议新增 tools.license,开源说明; 合规说明,暂无专门输入,可选,不要伪造许可
+tool,platform,no,recommended,暂无直接字段,建议新增 tools.platform,筛选条件; 详情页信息块,暂无专门输入,可选,用于标注平台
+tool,pricing,yes,confirmed,tools.pricing plus is_free,tools.pricing,价格角标; 筛选标签,pricing input,必填,保留免费与付费差异
+tool,free_status,no,confirmed,tools.free_status,tools.free_status,免费标签,暂无专门输入,可选,可由价格字段派生
+tool,open_source_status,no,confirmed,tools.open_source_status,tools.open_source_status,开源标签,暂无专门输入,可选,适合卡片徽标
+tool,risk_tags,no,recommended,tools.risk_notice only partial,建议新增 tools.risk_tags,风险 chips; 风险筛选,暂无专门输入,可选,更适合高风险提示
+tool,suitable_for,yes,confirmed,tools.target_users,tools.target_users,适合人群; 详情页决策区,target_users textarea,必填,用于判断适用性
+tool,not_suitable_for,yes,confirmed,tools.cons,tools.cons and risk_notice,不适合人群; 风险提示,cons textarea,必填,不要只写优点
+tool,cover_image,yes,confirmed,tools.cover_url,tools.cover_url,卡片封面; 详情页头图,cover_url input,必填,缺图会影响列表视觉
+tool,published,yes,confirmed,tools.status,tools.status,前台可见性; sitemap inclusion,status select,必填,published 才进入前台
+tool,featured,no,recommended,frontend optional featured or is_featured flags,建议新增 tools.featured or is_featured,首页精选; 推荐区,暂无专门输入,可选,用于首页精选位
+tool,source_urls,no,recommended,暂无直接字段,建议新增 tools.source_urls,编辑溯源; 审核记录,可在 staged CSV 记录,可选,保持来源可追溯
+article,title,yes,confirmed,src/lib/db/articles.ts; src/components/admin/AdminArticleForm.tsx,articles.title,detail title; card title,title input,必填,先定标题再定 slug
+article,slug,yes,confirmed,articles.slug,articles.slug; route /articles/[slug],public route; sitemap route,slug input,必填,避免冲突
+article,category,yes,confirmed,articles.category_id plus category,articles.category_id and category display,列表筛选; 详情页元信息,category selector,必填,用于聚合
+article,tags,yes,confirmed,articles.tags plus article_tags,article_tags and tag chips,筛选; 推荐,tag editor or import,必填,用于搜索和聚合
+article,excerpt,yes,confirmed,articles.summary,articles.summary,卡片摘要; 预览摘要,summary input,必填,控制首屏点击率
+article,body,yes,confirmed,articles.content,articles.content,正文段落; 详情页主体,content textarea,必填,正文必须完整
+article,source_type,no,recommended,article drafts or editorial notes,建议新增 articles.source_type,编辑溯源; 选题来源,暂无专门输入,可选,用于区分采访 转载 观察
+article,publish_status,yes,confirmed,articles.status,articles.status,前台可见性; sitemap inclusion,status select,必填,published 才公开
+article,related_tool_slug,no,recommended,暂无直接字段,建议新增 articles.related_tool_slug,关联工具卡片; 交叉推荐,暂无专门输入,可选,增强内容串联
+article,seo_title,no,recommended,暂无直接字段,建议新增 articles.seo_title,metadata title,暂无专门输入,可选,用于搜索和分享
+article,seo_description,no,recommended,暂无直接字段,建议新增 articles.seo_description,metadata description,暂无专门输入,可选,用于搜索和分享
+article,social_copy,no,recommended,暂无直接字段,建议新增 articles.social_copy,分享文案; 社交发布,暂无专门输入,可选,适合二次传播

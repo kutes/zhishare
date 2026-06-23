@@ -4163,3 +4163,24 @@ Summary:
 Files:
 
 - docs/content/TEAM_TESTED_SOFTWARE_PUBLISHING_RULES.md
+
+## 2026-06-23 - Bulk content publishing audit
+
+Status: completed
+
+Summary:
+
+- Audited the current bulk content publishing path for tools and articles.
+- Confirmed the public pages read published content from Supabase with mock fallback.
+- Confirmed the admin pages can manually create and edit tools and articles.
+- Confirmed the current pipeline is a source-collection and Feishu middle-layer skeleton rather than a direct CSV-to-Supabase publisher.
+- Added a bulk content publishing audit document.
+- Added a bulk content field map CSV.
+- Did not import content into Supabase.
+- Did not modify frontend pages.
+- Did not publish tools or articles.
+
+Files:
+
+- docs/content/BULK_CONTENT_PUBLISHING_AUDIT.md
+- docs/content/bulk-content-field-map.csv
