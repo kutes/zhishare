@@ -1,0 +1,11 @@
+check_item,status,evidence,blocking_if_failed,notes
+workspace_clean,passed,用户回传 git status --short 无输出,yes,真实导入前还需再检查一次
+readiness_passed,passed,BLOCKERS_COUNT=0 and READY_FOR_EXECUTE_REVIEW=true,yes,只读 readiness 已通过
+selected_slugs_confirmed,passed,localsend|stirling-pdf|cyberchef,yes,只导入这 3 条
+existing_slugs_zero,passed,EXISTING_SLUG_COUNT=0,yes,当前无 slug 冲突
+execute_not_run_yet,passed,用户确认仍未运行 --execute,yes,本步骤不运行 execute
+supabase_write_not_done,passed,用户确认仍未写入 Supabase,yes,仍未导入
+keys_not_committed,passed,用户确认没有提交 key,yes,密钥不得进入仓库
+manual_user_approval,pending,等待用户明确批准执行真实导入,yes,下一步必须由用户确认
+post_import_page_check,pending,等待导入后检查 /tools 和 3 个详情页,yes,导入后必须执行
+rollback_plan_acknowledged,pending,等待用户确认若失败先停止并单独回滚,yes,不能随手写 delete
