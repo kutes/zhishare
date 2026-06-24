@@ -1,0 +1,41 @@
+{
+  "status": "execute_completed",
+  "execute_mode": true,
+  "input": "docs/content/first-3-tools-ready-to-import-v1.csv",
+  "table": "tools",
+  "attempted_count": 3,
+  "inserted_count": 3,
+  "allowed_slugs": [
+    "localsend",
+    "stirling-pdf",
+    "cyberchef"
+  ],
+  "inserted_records": [
+    {
+      "id": "7b9f533d-850b-4ea8-af63-321f282d8e7f",
+      "slug": "localsend"
+    },
+    {
+      "id": "962ecbe3-6503-43dc-959d-4f96f42183bd",
+      "slug": "stirling-pdf"
+    },
+    {
+      "id": "c9a64b80-1bdd-4b06-9fa1-ec2066821fa3",
+      "slug": "cyberchef"
+    }
+  ],
+  "inserted_slugs": [
+    "localsend",
+    "stirling-pdf",
+    "cyberchef"
+  ],
+  "inserted_ids": [
+    "7b9f533d-850b-4ea8-af63-321f282d8e7f",
+    "962ecbe3-6503-43dc-959d-4f96f42183bd",
+    "c9a64b80-1bdd-4b06-9fa1-ec2066821fa3"
+  ],
+  "failed_slugs": [],
+  "errors": [],
+  "secret_values_printed": false,
+  "dry_run_only": false
+}

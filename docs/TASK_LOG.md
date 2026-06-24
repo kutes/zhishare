@@ -4394,3 +4394,22 @@ Files:
 - scripts/content-import/import-first-3-tools.mjs
 - docs/content/FIRST_3_TOOLS_EXECUTE_IMPLEMENTATION_V1.md
 - docs/content/FIRST_3_TOOLS_IMPORT_SCRIPT_V1.md
+
+## 2026-06-24 - First 3 tools execute import completed
+
+Status: completed
+
+Summary:
+
+- Ran the real `--execute` path for `localsend`, `stirling-pdf`, and `cyberchef`.
+- Inserted 3 rows into the Supabase `tools` table.
+- Re-read the inserted rows and verified the main text fields were populated.
+- Kept secrets out of logs and docs.
+- Did not modify frontend pages.
+
+Files:
+
+- scripts/content-import/import-first-3-tools.mjs
+- docs/content/first-3-tools-import-readiness-report-v1.json
+- docs/content/first-3-tools-import-execute-report-v1.json
+- docs/content/FIRST_3_TOOLS_EXECUTE_RESULT_V1.md

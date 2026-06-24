@@ -267,7 +267,9 @@ async function buildExecuteReport({ input, previewRows }) {
     attempted_count: previewRows.length,
     inserted_count: 0,
     allowed_slugs: allowedSlugs,
+    inserted_records: [],
     inserted_slugs: [],
+    inserted_ids: [],
     failed_slugs: allowedSlugs,
     errors: [],
     secret_values_printed: false,
@@ -303,6 +305,7 @@ async function buildExecuteReport({ input, previewRows }) {
   }
 
   const insertedSlugs = insertResult.insertedSlugs;
+  const insertedIds = insertResult.insertedIds;
   const missingSlugs = allowedSlugs.filter((slug) => !insertedSlugs.includes(slug));
 
   if (insertedSlugs.length !== allowedSlugs.length || missingSlugs.length > 0) {
@@ -315,7 +318,12 @@ async function buildExecuteReport({ input, previewRows }) {
     ...report,
     status: "execute_completed",
     inserted_count: insertedSlugs.length,
+    inserted_records: insertedIds.map((id, index) => ({
+      id,
+      slug: insertedSlugs[index] ?? "",
+    })),
     inserted_slugs: insertedSlugs,
+    inserted_ids: insertedIds,
     failed_slugs: [],
     errors: [],
   };
@@ -386,15 +394,23 @@ async function insertExecuteRows(tableName, previewRows) {
   });
 
   const payload = previewRows.map((row) => buildExecutePayload(row));
-  const { data, error } = await client.from(tableName).insert(payload).select("slug");
+  const { data, error } = await client.from(tableName).insert(payload).select("id,slug");
 
   if (error) {
     return { ok: false, error: error.message || "UNKNOWN_INSERT_ERROR" };
   }
 
-  const insertedSlugs = [...new Set((data ?? []).map((row) => String(row.slug ?? "")).filter(Boolean))];
+  const insertedRows = (data ?? [])
+    .map((row) => ({
+      id: String(row.id ?? "").trim(),
+      slug: String(row.slug ?? "").trim(),
+    }))
+    .filter((row) => row.id && row.slug);
 
-  return { ok: true, insertedSlugs };
+  const insertedSlugs = insertedRows.map((row) => row.slug);
+  const insertedIds = insertedRows.map((row) => row.id);
+
+  return { ok: true, insertedSlugs, insertedIds };
 }
 
 function buildExecutePayload(row) {
@@ -402,39 +418,29 @@ function buildExecutePayload(row) {
   const slug = String(row.slug ?? "").trim();
   const summary = String(row.short_description ?? "").trim();
   const description = String(row.long_description ?? "").trim();
-  const category = optionalText(row.category);
-  const tags = splitPipe(row.tags);
   const websiteUrl = optionalText(row.official_website);
   const repository = optionalText(row.official_repository);
   const license = optionalText(row.license);
-  const pricing = optionalText(row.pricing);
   const sourceUrls = splitPipe(row.source_urls);
-  const cautionNotes = joinParts(row.caution_notes, row.risk_tags);
 
   return {
     title,
-    name: title,
     slug,
     summary,
     description,
-    category,
-    category_id: null,
-    tags,
+    category_id: resolveCategoryId(slug),
     website_url: websiteUrl,
     download_url: null,
     cover_url: null,
-    is_free: inferIsFree(pricing),
-    is_open_source: inferOpenSource(repository, license),
-    pricing,
-    free_status: pricing,
-    open_source_status: inferOpenSourceStatus(repository, license),
-    target_users: splitPipe(row.suitable_for),
-    use_cases: splitPipe(row.use_cases),
-    features: splitPipe(row.key_features),
-    pros: splitPipe(row.key_features),
-    cons: splitPipe(row.not_suitable_for),
-    risk_notice: joinParts(cautionNotes, sourceUrls.join(" | ")),
+    is_free: true,
+    is_open_source: inferOpenSource(repository, license) ?? true,
+    target_users: joinPipeText(row.suitable_for),
+    use_cases: joinPipeText(row.use_cases),
+    pros: joinPipeText(row.key_features),
+    cons: joinPipeText(row.not_suitable_for),
+    risk_notice: joinParts(joinPipeText(row.caution_notes), joinPipeText(row.risk_tags), sourceUrls.join(" | ")),
     status: String(row.item_status ?? "").trim() === "ready_to_publish" || normalizeYes(row.publish_ready) ? "published" : "draft",
+    updated_at: new Date().toISOString(),
   };
 }
 
@@ -452,6 +458,10 @@ function joinParts(...parts) {
     .join(" | ");
 }
 
+function joinPipeText(value) {
+  return splitPipe(value).join(", ");
+}
+
 function optionalText(value) {
   const trimmed = String(value ?? "").trim();
   return trimmed ? trimmed : null;
@@ -461,8 +471,14 @@ function normalizeYes(value) {
   return /^(yes|true|1)$/i.test(String(value ?? "").trim());
 }
 
-function inferIsFree(pricing) {
-  return /free|免费/i.test(String(pricing ?? ""));
+function resolveCategoryId(slug) {
+  const categoryMap = new Map([
+    ["localsend", "b4b7ee68-2263-4296-be59-b00b046905a7"],
+    ["stirling-pdf", "fbfca01f-aa99-4762-97d9-e8c97d93b9aa"],
+    ["cyberchef", "7d404bc0-ea1f-41b1-9675-7c51f98c26c5"],
+  ]);
+
+  return categoryMap.get(String(slug ?? "").trim()) ?? null;
 }
 
 function inferOpenSource(repository, license) {
@@ -478,20 +494,6 @@ function inferOpenSource(repository, license) {
   }
 
   return lic.includes("mit") || lic.includes("apache") || lic.includes("gpl") ? true : null;
-}
-
-function inferOpenSourceStatus(repository, license) {
-  const inferred = inferOpenSource(repository, license);
-
-  if (inferred === true) {
-    return "open";
-  }
-
-  if (inferred === false) {
-    return "closed";
-  }
-
-  return "pending_manual_review";
 }
 
 function getExecuteConfig() {
