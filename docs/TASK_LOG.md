@@ -4370,3 +4370,27 @@ Files:
 
 - docs/content/FIRST_3_TOOLS_EXECUTE_APPROVAL_V1.md
 - docs/content/first-3-tools-execute-approval-checklist-v1.csv
+
+## 2026-06-17 - First 3 tools execute branch implementation
+
+Status: completed
+
+Summary:
+
+- Added a real `--execute` branch to the first-3 tools import script.
+- Kept dry-run as the default behavior.
+- Added Supabase URL and service key checks for execute mode.
+- Added a strict slug whitelist for localsend, stirling-pdf, and cyberchef.
+- Added slug conflict checks before insert.
+- Added guarded `insert(...).select("slug")` logic for the tools table.
+- Kept secrets out of logs and docs.
+- Did not run execute mode.
+- Did not write to Supabase.
+- Did not modify frontend pages.
+- Did not publish tools.
+
+Files:
+
+- scripts/content-import/import-first-3-tools.mjs
+- docs/content/FIRST_3_TOOLS_EXECUTE_IMPLEMENTATION_V1.md
+- docs/content/FIRST_3_TOOLS_IMPORT_SCRIPT_V1.md

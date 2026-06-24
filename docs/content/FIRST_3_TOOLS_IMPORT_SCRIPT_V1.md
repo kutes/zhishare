@@ -1,46 +1,71 @@
-# 首批 3 条工具小批量导入脚本 v1
+# First 3 tools import script v1
 
 Status: active
 
-## 1. 当前目标
+## 1. Current goal
 
-本步骤只创建首批 3 条工具的小批量导入脚本。
-默认只做 dry-run，不执行真实导入。
+This script handles the first 3 tools import flow.
+By default it only performs a dry-run and does not write to the database.
 
-## 2. 输入文件
+## 2. Input
 
 - `docs/content/first-3-tools-ready-to-import-v1.csv`
 
-## 3. 输出文件
+## 3. Output
 
 - `docs/content/first-3-tools-import-dry-run-report-v1.json`
 
-## 4. 首批 3 条
+## 4. Selected tools
 
-本次选择：
+The current whitelist is:
 
-- `cyberchef`
-- `stirling-pdf`
 - `localsend`
+- `stirling-pdf`
+- `cyberchef`
 
-## 5. 安全阀
+## 5. Safety boundary
 
-脚本默认不写数据库。
+The script defaults to dry-run.
+Only explicit `--execute` enters real write mode.
 
-只有显式传入 `--execute` 时，才允许进入真实导入分支。
+Execute mode now:
 
-本步骤不允许运行 `--execute`。
+- checks the Supabase URL and service key;
+- checks the slug whitelist first;
+- checks slug conflicts against the `tools` table;
+- only uses `insert(...).select("slug")`;
+- does not use `upsert`, `update`, or `delete`;
+- writes a dedicated execute report;
+- never prints secrets.
 
-## 6. 当前不直接导入的原因
+## 6. Why it still cannot run immediately
 
-虽然首批 10 条的 dry-run 已经通过，但首批 3 条仍然需要保持守护模式：
+Before real execution, the following still have to be true:
 
-- 先确认 CSV 结构完全稳定
-- 先确认 dry-run 报告稳定
-- 先确认没有真实密钥暴露
-- 先确认没有误写入
+- the working tree is clean;
+- the current shell session has the Supabase env values;
+- the CSV still has exactly 3 rows;
+- the slug set still matches the whitelist exactly;
+- the `tools` table has no conflict for these slugs;
+- the user has explicitly approved real import.
 
-## 7. 下一步建议
+## 7. Next step
 
-- 先跑 dry-run
-- 如果 report 里没有 blocker，再考虑后续的真实导入执行步骤
+- run dry-run first;
+- run readiness again;
+- if a real import is needed, run `--execute` separately.
+
+## Execute branch supplement
+
+`import-first-3-tools.mjs` now includes a real `--execute` branch.
+
+The default remains dry-run.
+
+Only explicit `--execute` switches the script into Supabase write mode.
+
+That branch now:
+
+- uses the Supabase JS client;
+- checks slug conflicts first;
+- inserts only the 3 allowed tools;
+- writes a dedicated execute report.
