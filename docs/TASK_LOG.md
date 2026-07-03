@@ -4413,3 +4413,23 @@ Files:
 - docs/content/first-3-tools-import-readiness-report-v1.json
 - docs/content/first-3-tools-import-execute-report-v1.json
 - docs/content/FIRST_3_TOOLS_EXECUTE_RESULT_V1.md
+
+## 2026-07-03 - Repaired 3 live tools with corrupted (????) Chinese content
+
+Status: completed
+
+Summary:
+
+- Found the content-pipeline CSV/MD files store Chinese as literal "????" mojibake (0 UTF-8 bytes on disk, corrupted in every git version, so git cannot recover it).
+- Confirmed the 2026-06-24 --execute import wrote that mojibake into Supabase; the 3 published tools (localsend, stirling-pdf, cyberchef) were rendering "??????" on production.
+- Authored correct UTF-8 Chinese for the 3 tools and repaired them with an UPDATE-only, slug-keyed script that is dry-run by default and has an anti-mojibake gate (refuses content containing "??" runs or lacking CJK).
+- Ran the guarded --execute with a runtime-only service key: UPDATED_COUNT=3, VERIFY_CLEAN=true.
+- Verified live: /tools/localsend, /tools/stirling-pdf, /tools/cyberchef now show correct Chinese with 0 mojibake runs (were 66/79/51).
+- Only wrote the 7 corrupted text columns (summary, description, target_users, use_cases, pros, cons, risk_notice); no insert/delete; the service key was never printed, written to a file, or committed.
+- Remaining risk: the other ~47 staged tools and the bulk-import CSVs are still corrupted and must be regenerated before any further import.
+
+Files:
+
+- docs/content/first-3-tools-content-fix-v1.json
+- scripts/content-import/fix-first-3-tools-content.mjs
+- docs/content/first-3-tools-content-fix-report-v1.json

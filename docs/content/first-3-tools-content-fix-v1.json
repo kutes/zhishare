@@ -1,0 +1,97 @@
+{
+  "version": "v1",
+  "purpose": "Correct UTF-8 Chinese content to repair the 3 already-imported tools whose text fields were stored as ???? mojibake. Used by scripts/content-import/fix-first-3-tools-content.mjs.",
+  "allowed_slugs": ["localsend", "stirling-pdf", "cyberchef"],
+  "fields_updated": ["summary", "description", "target_users", "use_cases", "pros", "cons", "risk_notice"],
+  "list_fields": ["target_users", "use_cases", "pros", "cons"],
+  "list_join": "\n",
+  "tools": {
+    "localsend": {
+      "title": "LocalSend",
+      "summary": "开源跨平台的局域网文件传输工具，无需联网、无需账号，在同一网络内设备之间直接互传。",
+      "description": "LocalSend 是一款开源的本地网络文件传输工具，使用体验类似 AirDrop，但跨平台且不依赖任何云服务。它通过局域网（同一 Wi-Fi 或同一路由器）在设备之间直接传输文件和文本，数据不经过外部服务器，也不需要注册账号。支持 Windows、macOS、Linux、Android、iOS 等主流平台，适合在电脑与手机之间、或多台设备之间快速传输文件。项目在 GitHub 开源，可自行查看源码与最新支持的平台。",
+      "target_users": [
+        "经常在电脑和手机之间传输文件的人",
+        "不希望文件经过云盘或第三方服务器的用户",
+        "需要跨 Windows、macOS、Linux、Android、iOS 传输的用户",
+        "局域网环境稳定、追求传输速度的用户"
+      ],
+      "use_cases": [
+        "把手机里的照片、视频快速传到电脑",
+        "在同一 Wi-Fi 下向多台设备分发文件",
+        "临时传输文本、链接或小文件",
+        "替代需要登录的网盘或聊天工具来传文件"
+      ],
+      "pros": [
+        "开源、免费，无广告、无需账号",
+        "跨平台支持广泛",
+        "局域网直传，速度快、隐私性好",
+        "界面简洁，操作接近 AirDrop"
+      ],
+      "cons": [
+        "需要设备处于同一局域网，无法跨网络远程传输",
+        "面向个人快传，大规模企业分发等复杂场景支持有限",
+        "各平台的具体功能与稳定性以实际版本为准"
+      ],
+      "risk_notice": "LocalSend 为开源项目，功能、支持平台与许可协议可能随版本更新变化，请以官方网站 localsend.org 和 GitHub 项目页 github.com/localsend/localsend 为准。建议仅在受信任的局域网环境中使用。"
+    },
+    "stirling-pdf": {
+      "title": "Stirling PDF",
+      "summary": "开源、可自托管的网页版 PDF 工具箱，支持合并、拆分、转换、压缩、加水印、OCR 等，文件在本地处理。",
+      "description": "Stirling PDF 是一套开源的、可自托管的网页版 PDF 处理工具集，通常通过 Docker 在本地或自有服务器上部署。它把常见的 PDF 操作集中在一个网页界面里，包括合并、拆分、旋转、压缩、格式转换、添加水印、加密解密、OCR 文字识别等几十种功能。由于可以自托管，文件在自己掌控的环境中处理，适合注重数据私密性的个人和团队。项目在 GitHub 开源，可查看源码与部署方式。",
+      "target_users": [
+        "需要经常处理 PDF 的个人和团队",
+        "希望文件在本地或自有服务器处理、注重隐私的用户",
+        "会使用 Docker 或愿意自托管服务的用户",
+        "想用一个工具替代多个在线 PDF 网站的用户"
+      ],
+      "use_cases": [
+        "合并、拆分、旋转、压缩 PDF",
+        "PDF 与图片、Office 等格式互相转换",
+        "给 PDF 添加水印、加密或解密",
+        "对扫描件做 OCR 文字识别"
+      ],
+      "pros": [
+        "开源、免费，功能覆盖面广",
+        "可自托管，数据私密性好",
+        "网页界面集中操作，无需安装多个软件",
+        "持续更新，社区较活跃"
+      ],
+      "cons": [
+        "自托管需要一定的部署门槛（如 Docker）",
+        "若使用他人提供的公共实例，需自行评估其安全性",
+        "超大文件或批量处理的性能取决于部署环境"
+      ],
+      "risk_notice": "Stirling PDF 为开源自托管项目，建议在自己可信的环境中部署使用；如使用第三方公开实例，请勿上传敏感文件。功能与部署方式可能随版本变化，请以 GitHub 项目页 github.com/Stirling-Tools/Stirling-PDF 及其指向的官方渠道为准。"
+    },
+    "cyberchef": {
+      "title": "CyberChef",
+      "summary": "运行在浏览器中的“数据处理瑞士军刀”，支持编码转换、加解密、压缩、哈希与数据分析等上百种操作。",
+      "description": "CyberChef 是由英国 GCHQ 开源的网页工具，被称为“网络瑞士军刀”。它完全在浏览器中运行，把上百种数据处理操作做成可拖拽的“配方（Recipe）”，能把多个步骤串联起来批量处理数据。常用于 Base64、十六进制、URL 等编码转换，各种加解密、哈希计算、压缩解压，以及数据格式转换与分析。由于在本地浏览器中运行，数据默认不会上传服务器。项目在 GitHub 开源，也可下载后离线使用。",
+      "target_users": [
+        "开发者、安全研究人员与 CTF 爱好者",
+        "经常做编码转换、加解密的技术用户",
+        "需要快速分析、清洗数据的人",
+        "希望数据在本地浏览器处理、不外传的用户"
+      ],
+      "use_cases": [
+        "Base64、URL、十六进制等编码与解码",
+        "各类加密、解密与哈希计算",
+        "压缩、解压与数据格式转换",
+        "把多步数据处理串成一个“配方”批量执行"
+      ],
+      "pros": [
+        "开源、免费，功能极其丰富",
+        "纯浏览器运行，可离线使用，数据不外传",
+        "可视化“配方”把多步操作串联，效率高",
+        "由 GCHQ 维护，认可度较高"
+      ],
+      "cons": [
+        "功能繁多，新手需要一定的学习成本",
+        "面向技术场景，非技术用户用途有限",
+        "超大数据量在浏览器中处理可能受性能限制"
+      ],
+      "risk_notice": "CyberChef 为开源工具，默认在本地浏览器运行；请仅用于合法的数据处理与安全学习，并遵守当地法律法规。功能与在线版本可能随更新变化，请以官方页面 gchq.github.io/CyberChef 和 GitHub 项目页 github.com/gchq/CyberChef 为准。"
+    }
+  }
+}

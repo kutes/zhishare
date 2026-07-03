@@ -1,0 +1,50 @@
+{
+  "status": "execute_completed",
+  "execute_mode": true,
+  "input": "docs/content/first-3-tools-content-fix-v1.json",
+  "table": "tools",
+  "allowed_slugs": [
+    "localsend",
+    "stirling-pdf",
+    "cyberchef"
+  ],
+  "writable_columns": [
+    "summary",
+    "description",
+    "risk_notice",
+    "target_users",
+    "use_cases",
+    "pros",
+    "cons",
+    "updated_at"
+  ],
+  "attempted_count": 3,
+  "updated_count": 3,
+  "updated_slugs": [
+    "localsend",
+    "stirling-pdf",
+    "cyberchef"
+  ],
+  "failed_slugs": [],
+  "before_state": [
+    {
+      "slug": "localsend",
+      "status": "published",
+      "was_corrupted": true
+    },
+    {
+      "slug": "stirling-pdf",
+      "status": "published",
+      "was_corrupted": true
+    },
+    {
+      "slug": "cyberchef",
+      "status": "published",
+      "was_corrupted": true
+    }
+  ],
+  "verify_clean": true,
+  "errors": [],
+  "secret_values_printed": false,
+  "dry_run_only": false
+}
