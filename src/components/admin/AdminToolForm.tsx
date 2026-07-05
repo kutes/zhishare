@@ -2,6 +2,8 @@
 
 import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
+import { generateToolCover } from "@/lib/covers/tool-cover.mjs";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { AdminCategoryOption, AdminDbResult, AdminToolInput, ToolStatus } from "@/types/tool";
 
 type AdminToolFormProps = {
@@ -75,11 +77,41 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
     }
 
     setIsSubmitting(true);
+
+    // 封面为空时自动生成并上传;任何失败都不阻塞保存(cover_url 留空走前台兜底占位)。
+    let coverUrl = values.cover_url?.trim() ?? "";
+    if (!coverUrl && values.slug.trim()) {
+      try {
+        const categoryName = categories.find((item) => item.id === values.category_id)?.name ?? "";
+        const { coverSvg, iconSvg } = generateToolCover({
+          title: values.title.trim(),
+          slug: values.slug.trim(),
+          category: categoryName,
+        });
+        const client = getSupabaseBrowserClient();
+        if (client) {
+          const bucket = client.storage.from("tool-covers");
+          const options = { contentType: "image/svg+xml", upsert: true };
+          const slug = values.slug.trim();
+          const coverResult = await bucket.upload(`covers/${slug}.svg`, new Blob([coverSvg]), options);
+          const iconResult = await bucket.upload(`icons/${slug}.svg`, new Blob([iconSvg]), options);
+          if (!coverResult.error && !iconResult.error) {
+            coverUrl = bucket.getPublicUrl(`covers/${slug}.svg`).data.publicUrl ?? "";
+          } else {
+            console.warn("[covers] upload failed, saving without cover", coverResult.error ?? iconResult.error);
+          }
+        }
+      } catch (error) {
+        console.warn("[covers] generation failed, saving without cover", error);
+      }
+    }
+
     const result = await onSubmit({
       ...values,
       title: values.title.trim(),
       slug: values.slug.trim(),
       summary: values.summary.trim(),
+      cover_url: coverUrl,
       status: values.status,
     });
 

@@ -9,6 +9,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <article className="articles-card">
       <div className="articles-card-topline">
+        <span className="articles-card-dot" aria-hidden="true" />
         <span className="articles-card-chip articles-card-chip-accent">{article.category}</span>
         <span className="articles-card-chip">{article.date}</span>
       </div>
@@ -30,7 +31,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
       </div>
 
       <Link href={`/articles/${article.slug}`} className="articles-card-link">
-        阅读全文
+        阅读全文 <span aria-hidden="true">→</span>
       </Link>
     </article>
   );

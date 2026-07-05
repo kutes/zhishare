@@ -2,12 +2,11 @@ import Link from "next/link";
 import type { ToolItem } from "@/types/tool";
 import {
   getToolCardTitle,
-  getToolCoverUrl,
   getToolFocusText,
+  getToolIconUrl,
   getToolInitials,
   getToolSlug,
   getToolSummary,
-  getVisibleTags,
 } from "./tool-card-utils";
 
 type CompactToolCardProps = {
@@ -20,19 +19,19 @@ export function CompactToolCard({ tool }: CompactToolCardProps) {
   const summary = getToolSummary(tool);
   const focusText = getToolFocusText(tool);
   const initials = getToolInitials(title);
-  const coverUrl = getToolCoverUrl(tool);
-  const visibleTags = getVisibleTags(tool, 3);
+  const iconUrl = getToolIconUrl(tool);
 
   return (
     <article className="zh-tool-card zh-tool-card-compact">
       <div className="zh-tool-card-top">
-        <div
-          className="zh-tool-card-visual"
-          style={coverUrl ? { backgroundImage: `url("${coverUrl}")` } : undefined}
-          aria-label={coverUrl ? `${title} icon` : undefined}
-        >
-          {!coverUrl ? <span className="zh-tool-card-initials">{initials}</span> : null}
-        </div>
+        {iconUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="zh-tool-card-icon" src={iconUrl} alt="" loading="lazy" />
+        ) : (
+          <div className="zh-tool-card-visual">
+            <span className="zh-tool-card-initials">{initials}</span>
+          </div>
+        )}
 
         <div className="zh-tool-card-copy">
           <div className="zh-tool-card-meta">
@@ -46,24 +45,15 @@ export function CompactToolCard({ tool }: CompactToolCardProps) {
         </div>
       </div>
 
-      <p className="zh-tool-card-focus">
-        <span>适合</span>
-        {focusText}
-      </p>
-
-      {visibleTags.length > 0 && (
-        <div className="zh-tool-tag-row">
-          {visibleTags.map((tag) => (
-            <span key={tag} className="zh-tool-tag">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <Link href={`/tools/${slug}`} className="zh-tool-link">
-        查看详情
-      </Link>
+      <div className="zh-tool-card-bottom">
+        <p className="zh-tool-card-focus">
+          <span>适合</span>
+          {focusText}
+        </p>
+        <Link href={`/tools/${slug}`} className="zh-tool-link zh-tool-card-arrow" aria-label={`查看 ${title} 详情`}>
+          →
+        </Link>
+      </div>
     </article>
   );
 }

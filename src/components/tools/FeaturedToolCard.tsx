@@ -25,13 +25,14 @@ export function FeaturedToolCard({ tool }: FeaturedToolCardProps) {
 
   return (
     <article className="zh-tool-card zh-tool-card-featured">
-      <div
-        className="zh-tool-feature-visual"
-        style={coverUrl ? { backgroundImage: `url("${coverUrl}")` } : undefined}
-        aria-label={coverUrl ? `${title} cover` : undefined}
-      >
-        {!coverUrl ? <span className="zh-tool-card-initials zh-tool-card-initials-large">{initials}</span> : null}
-      </div>
+      {coverUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="zh-tool-card-banner" src={coverUrl} alt="" loading="lazy" />
+      ) : (
+        <div className="zh-tool-feature-visual">
+          <span className="zh-tool-card-initials zh-tool-card-initials-large">{initials}</span>
+        </div>
+      )}
 
       <div className="zh-tool-feature-body">
         <div className="zh-tool-card-meta">
@@ -47,19 +48,22 @@ export function FeaturedToolCard({ tool }: FeaturedToolCardProps) {
           {focusText}
         </p>
 
-        {visibleTags.length > 0 && (
-          <div className="zh-tool-tag-row zh-tool-tag-row-wide">
-            {visibleTags.map((tag) => (
-              <span key={tag} className="zh-tool-tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-
-        <Link href={`/tools/${slug}`} className="zh-tool-link zh-tool-link-secondary">
-          查看详情
-        </Link>
+        <div className="zh-tool-card-bottom">
+          {visibleTags.length > 0 ? (
+            <div className="zh-tool-tag-row zh-tool-tag-row-wide">
+              {visibleTags.map((tag) => (
+                <span key={tag} className="zh-tool-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <span />
+          )}
+          <Link href={`/tools/${slug}`} className="zh-tool-link zh-tool-card-arrow" aria-label={`查看 ${title} 详情`}>
+            →
+          </Link>
+        </div>
       </div>
     </article>
   );

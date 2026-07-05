@@ -1,5 +1,7 @@
 import type { ToolItem } from "@/types/tool";
 
+export { getToolInitials } from "@/lib/covers/tool-cover.mjs";
+
 const categoryGradients: Record<string, string> = {
   "AI 工具": "from-cyan-400 via-emerald-500 to-slate-900",
   "在线工具": "from-sky-300 via-cyan-400 to-teal-500",
@@ -22,25 +24,6 @@ const categoryAccentColors: Record<string, string> = {
 
 const defaultGradient = "from-sky-300 via-cyan-200 to-slate-700";
 const defaultAccent = "bg-slate-100 text-slate-700 border-slate-200";
-
-export function getToolInitials(title: string): string {
-  if (!title || title.trim().length === 0) {
-    return "工";
-  }
-
-  const text = title.trim();
-
-  const upperChars = text.replace(/[^A-Z]/g, "");
-  if (upperChars.length >= 2) {
-    return upperChars.slice(0, 2);
-  }
-  if (upperChars.length === 1 && text.length > 1) {
-    const secondChar = text.replace(/[^a-zA-Z]/g, "").charAt(1);
-    return upperChars + (secondChar || text.charAt(1).toUpperCase());
-  }
-
-  return text.slice(0, 2);
-}
 
 export function getCategoryGradient(categoryName: string): string {
   if (!categoryName) {
@@ -85,6 +68,14 @@ export function getToolCardTitle(tool: ToolItem): string {
 
 export function getToolSlug(tool: ToolItem): string {
   return tool.slug || tool.id || "";
+}
+
+export function getToolIconUrl(tool: ToolItem): string | null {
+  const cover = getToolCoverUrl(tool);
+  if (!cover || !cover.includes("/tool-covers/covers/")) {
+    return null;
+  }
+  return cover.replace("/tool-covers/covers/", "/tool-covers/icons/");
 }
 
 export function getVisibleTags(tool: ToolItem, maxCount = 4): string[] {

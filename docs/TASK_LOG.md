@@ -4433,3 +4433,16 @@ Files:
 - docs/content/first-3-tools-content-fix-v1.json
 - scripts/content-import/fix-first-3-tools-content.mjs
 - docs/content/first-3-tools-content-fix-report-v1.json
+
+## 2026-07-05 网页风格收口 + 卡片重设计 + 生成式封面系统
+
+Result: completed (deployed to repo; production needs git push)
+
+- 风格收口:首页改用全站共享 SiteHeader/SiteFooter(跳页不再"跳变");Hero 文案对齐站点定位("发现好工具，少走弯路");4 种衬线字体栈拼写收口为 :root 单一 --zh-serif 令牌;删除死代码(22 个旧首页/旧布局组件 + 约 220 行死 CSS);CHANGELOG/ROADMAP/DATABASE_SCHEMA 三份滞后文档已对齐现实。
+- 卡片重设计(spec: docs/superpowers/specs/2026-07-05-card-redesign-covers-design.md):精选大卡=16:9 封面横幅杂志式;紧凑卡=64px 图标行内式;移除"查看详情"按钮,整卡可点(stretched-link)+ 右下箭头示意;文章卡纯排版强化(琥珀点+文字链)。
+- 生成式封面系统:零依赖确定性 SVG 生成器 src/lib/covers/tool-cover.mjs(slug 哈希定色相/变体,14 分类各配几何母题,双尺寸 16:9+1:1),Node 与浏览器共用;自检脚本 npm run covers:check 通过(确定性/viewBox/反乱码断言)。
+- Storage:创建公开桶 tool-covers;补跑脚本给全部 15 个工具(13 published + 2 draft)生成并上传封面+图标,cover_url 全部写回并读回验证,零失败(报告 docs/content/backfill-tool-covers-report-v1.json)。
+- 后台表单:保存时 cover_url 为空则浏览器端自动生成+上传+回填,失败不阻塞保存。
+- 验证:tsc 全绿;/tools DOM 断言 2 横幅+13 图标+0 兜底占位+旧按钮清零;/articles 3 点+3 文字链、0 乱码;桌面+移动截图核对,并修复移动端遗留的旧占位图堆叠规则。
+- 事故记录:会话期间用户侧 Claude Code 的辅助模型路由(DeepSeek)长时间故障,权限审核全面阻塞;根因定位于 ~/.claude/settings.json 的 ANTHROPIC_* 覆盖,已备份并移除(备份: ~/.claude/settings.backup-deepseek-2026-07-05.json)。
+- 待办:service key 已在对话中出现两次,需要用户在 Supabase 控制台轮换;后台浏览器直传的 storage RLS 策略 SQL 未执行(不影响现有功能,脚本已兜底)。

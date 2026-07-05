@@ -322,3 +322,26 @@ Status: completed
 - Reduced the article hero title, description, tags, and reading panel copy.
 - Polished the /tools hero title typography to feel less overly serif.
 - Kept routes, data flow, filters, backend, database, Supabase logic, content pipeline, scripts, package files, and dependencies unchanged.
+
+### Step 47 - Homepage nav/footer unification and design debt cleanup
+
+Status: completed (file deletion + visual QA pending tooling recovery)
+
+- Replaced the homepage-only HomeNav/HomeFooter with the shared SiteHeader/SiteFooter used by every other public page.
+- Extended the existing tools-page footer reskin selectors to cover warm-home-page instead of duplicating rules.
+- Rewrote the hero copy to match site positioning: title now states the value proposition, eyebrow matches the brand subtitle, description states curation principles; secondary CTA now points to /articles instead of duplicating /tools.
+- Consolidated 4 divergent serif font-family spellings into a single --zh-serif token on :root; fixed the warm-home body stack that listed serif fonts after sans (dead entries).
+- Removed the now-dead zh-nav/zh-logo/zh-icon-btn/zh-footer CSS rules (~170 lines).
+- Identified 22 dead component files (legacy root home cluster, home/home-* cluster, layout/Header + MobileNav) with zero references; deletion queued.
+- Did not modify data flow, routes, backend, database, Supabase logic, scripts, package files, or dependencies.
+
+### Step 48 - Card redesign with generated covers
+
+Status: completed
+
+- Added a deterministic warm-editorial SVG cover generator (16:9 banner + 1:1 icon) shared by Node scripts and the admin form.
+- Created the public tool-covers storage bucket flow and a guarded backfill script; cover_url now set for all 15 tools (13 published + 2 drafts).
+- Featured tool cards use a magazine banner layout; compact cards use a 64px icon inline layout; the detail button was replaced by an arrow affordance (whole card remains clickable).
+- Article cards received an editorial typography pass (amber dot, serif title, text link).
+- Removed the legacy mobile rules that stacked the old placeholder visual full-width; compact cards stay inline on mobile.
+- Did not modify data flow, routes, backend queries, or dependencies.
