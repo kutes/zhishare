@@ -2,16 +2,16 @@ import Link from "next/link";
 import { heroHotwords } from "./cosmic-home-data";
 
 const heroText = {
-  eyebrow: "精选 AI 工具与资源导航",
-  title: "探索 · 发现",
-  kicker: "EXPLORE · DISCOVER",
+  eyebrow: "工具与知识发现站",
+  title: "发现好工具，少走弯路",
+  kicker: "CURATED TOOLS & KNOWLEDGE",
   description:
-    "汇聚全球优质 AI 工具、开发利器与设计资源，助你生产力倍增。",
+    "人工整理的 AI 工具、在线工具、效率软件与开源项目：来源清晰、优先官网、不收录破解盗版。",
   searchPlaceholder: "搜索工具、文章或关键词",
   hotLabel: "热门分类",
   searchButton: "搜索",
-  primaryCta: "探索工具",
-  secondaryCta: "浏览工具库",
+  primaryCta: "浏览工具库",
+  secondaryCta: "阅读文章",
 };
 
 function SearchIcon() {
@@ -83,7 +83,7 @@ export function CosmicHomeHero() {
             {heroText.primaryCta}
             <span aria-hidden="true">→</span>
           </Link>
-          <Link className="zh-btn zh-btn-secondary zh-btn-lg" href="/tools">
+          <Link className="zh-btn zh-btn-secondary zh-btn-lg" href="/articles">
             {heroText.secondaryCta}
           </Link>
         </div>

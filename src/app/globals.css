@@ -39,6 +39,9 @@
   --soft-shadow: 0 22px 60px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   --strong-shadow: 0 28px 80px rgba(0, 0, 0, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.11);
   --solar-shadow: 0 0 90px rgba(246, 197, 107, 0.16), 0 0 180px rgba(217, 130, 31, 0.1);
+
+  /* Single serif stack for all editorial headings; SimSun keeps CJK serif on Windows. */
+  --zh-serif: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, "SimSun", serif;
 }
 
 * {
@@ -758,7 +761,7 @@ canvas {
   .article-detail-not-found-title,
   .article-detail-section-title {
     margin: 0;
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-weight: 600;
     letter-spacing: -0.04em;
     color: #f7f1ea;
@@ -992,7 +995,7 @@ canvas {
 
   .article-detail-related-title {
     margin-top: 0.9rem;
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-size: 1.15rem;
     font-weight: 600;
     line-height: 1.18;
@@ -1041,7 +1044,7 @@ canvas {
 
   .article-detail-copyright h2 {
     color: #f7f1ea;
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
   }
 
   .article-detail-copyright p {
@@ -1502,8 +1505,8 @@ canvas {
     font-family:
       "PingFang SC",
       "Microsoft YaHei",
-      "Noto Serif SC",
-      serif;
+      Arial,
+      sans-serif;
   }
 
   .public-cosmic-page.warm-home-page::before {
@@ -1527,102 +1530,6 @@ canvas {
     max-width: 1240px;
     margin-inline: auto;
     padding-inline: 1.25rem;
-  }
-
-  .zh-nav {
-    display: flex;
-    min-height: 5rem;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-top: 1rem;
-  }
-
-  .zh-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: #f7f1ea;
-    text-decoration: none;
-  }
-
-  .zh-logo-mark {
-    display: inline-flex;
-    width: 2.5rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(224, 167, 95, 0.5);
-    border-radius: 0.625rem;
-    color: #e3a75f;
-    font-family: "Songti SC", "Noto Serif SC", STSong, serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .zh-logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-  }
-
-  .zh-logo-title {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-  }
-
-  .zh-logo-sub {
-    color: rgba(175, 163, 153, 0.82);
-    font-size: 0.6875rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-
-  .zh-nav-links {
-    display: none;
-    align-items: center;
-    gap: 0.25rem;
-    border: 1px solid rgba(255, 247, 237, 0.09);
-    border-radius: 999px;
-    background: rgba(255, 247, 237, 0.03);
-    padding: 0.25rem;
-  }
-
-  .zh-nav-link {
-    color: rgba(175, 163, 153, 0.9);
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    padding: 0.6rem 1rem;
-    text-decoration: none;
-    transition: color 180ms ease, background-color 180ms ease;
-  }
-
-  .zh-nav-link:hover,
-  .zh-nav-link-active {
-    background: rgba(227, 167, 95, 0.12);
-    color: #f7f1ea;
-  }
-
-  .zh-nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .zh-icon-btn {
-    display: inline-flex;
-    width: 2.5rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 247, 237, 0.09);
-    border-radius: 0.625rem;
-    background: rgba(255, 247, 237, 0.035);
-    color: rgba(247, 241, 234, 0.85);
-    text-decoration: none;
   }
 
   .zh-btn {
@@ -1659,7 +1566,6 @@ canvas {
   }
 
   .zh-btn:hover,
-  .zh-icon-btn:hover,
   .zh-pill:hover,
   .zh-card-hover:hover,
   .zh-section-link:hover {
@@ -1700,7 +1606,7 @@ canvas {
 
   .zh-hero-title {
     color: #f7f1ea;
-    font-family: "Songti SC", "Noto Serif SC", STSong, serif;
+    font-family: var(--zh-serif);
     font-size: clamp(3.1rem, 7vw, 5.2rem);
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -1824,7 +1730,7 @@ canvas {
 
   .zh-section-title {
     color: #f7f1ea;
-    font-family: "Songti SC", "Noto Serif SC", STSong, serif;
+    font-family: var(--zh-serif);
     font-size: clamp(1.4rem, 2.2vw, 2rem);
     font-weight: 500;
     letter-spacing: 0.04em;
@@ -1948,7 +1854,7 @@ canvas {
   .zh-ranking-card h3,
   .zh-banner h2 {
     color: #f7f1ea;
-    font-family: "Songti SC", "Noto Serif SC", STSong, serif;
+    font-family: var(--zh-serif);
     font-weight: 500;
     letter-spacing: 0.04em;
   }
@@ -2108,50 +2014,6 @@ canvas {
     flex-shrink: 0;
   }
 
-  .zh-footer {
-    border-top: 1px solid rgba(255, 247, 237, 0.08);
-    margin-top: 4rem;
-  }
-
-  .zh-footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-block: 2.25rem;
-  }
-
-  .zh-footer p {
-    max-width: 34rem;
-    color: rgba(247, 241, 234, 0.72);
-    font-size: 0.875rem;
-    line-height: 1.8;
-    margin-top: 0.8rem;
-  }
-
-  .zh-footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .zh-footer-links a {
-    color: rgba(175, 163, 153, 0.9);
-    font-size: 0.82rem;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-
-  .zh-footer-links a:hover {
-    color: #f7f1ea;
-  }
-
-  @media (min-width: 768px) {
-    .zh-nav-links {
-      display: inline-flex;
-    }
-  }
-
   @media (max-width: 1024px) {
     .zh-shell {
       padding-inline: 1rem;
@@ -2172,14 +2034,6 @@ canvas {
   }
 
   @media (max-width: 640px) {
-    .zh-nav {
-      align-items: center;
-    }
-
-    .zh-nav-actions {
-      gap: 0.4rem;
-    }
-
     .zh-btn {
       min-height: 2.65rem;
       padding-inline: 0.9rem;
@@ -2214,10 +2068,6 @@ canvas {
       flex-direction: column;
     }
 
-    .zh-footer-inner {
-      align-items: flex-start;
-      flex-direction: column;
-    }
   }
 }
 /* End warm editorial homepage v1 */
@@ -2236,14 +2086,12 @@ canvas {
   .warm-home-page .zh-feature-small p,
   .warm-home-page .zh-feature-large p,
   .warm-home-page .zh-guide-card p,
-  .warm-home-page .zh-ranking-card p,
-  .warm-home-page .zh-footer p {
+  .warm-home-page .zh-ranking-card p {
     color: rgba(247, 241, 234, 0.7);
   }
 
   .warm-home-page .zh-guide-meta,
   .warm-home-page .zh-ranking-views,
-  .warm-home-page .zh-logo-sub,
   .warm-home-page .zh-hero-kicker,
   .warm-home-page .zh-categories-label {
     color: rgba(247, 241, 234, 0.52);
@@ -2313,7 +2161,6 @@ canvas {
 
   .warm-home-page .zh-btn:focus-visible,
   .warm-home-page .zh-pill:focus-visible,
-  .warm-home-page .zh-nav-link:focus-visible,
   .warm-home-page .zh-section-link:focus-visible,
   .warm-home-page .zh-ranking-item:focus-visible,
   .warm-home-page .zh-search-input:focus-visible {
@@ -2667,7 +2514,7 @@ canvas {
   }
 
   .warm-home-page .zh-section-title {
-    font-family: "Songti SC", "Noto Serif SC", STSong, serif;
+    font-family: var(--zh-serif);
     font-size: clamp(28px, 2.5vw, 40px);
     font-weight: 500;
     letter-spacing: 0.04em;
@@ -2931,7 +2778,8 @@ canvas {
     background-color: rgba(255, 247, 237, 0.06) !important;
   }
 
-  .zh-tools-page > footer {
+  .zh-tools-page > footer,
+  .warm-home-page > footer {
     border-top: 1px solid rgba(255, 247, 237, 0.09);
     background:
       radial-gradient(circle at 18% 0%, rgba(227, 167, 95, 0.04), transparent 34%),
@@ -2942,16 +2790,23 @@ canvas {
   .zh-tools-page > footer .text-ink,
   .zh-tools-page > footer a,
   .zh-tools-page > footer p,
-  .zh-tools-page > footer span {
+  .zh-tools-page > footer span,
+  .warm-home-page > footer .text-ink,
+  .warm-home-page > footer a,
+  .warm-home-page > footer p,
+  .warm-home-page > footer span {
     color: inherit;
   }
 
-  .zh-tools-page > footer .bg-ink {
+  .zh-tools-page > footer .bg-ink,
+  .warm-home-page > footer .bg-ink {
     background: linear-gradient(180deg, #2b211d, #171210);
   }
 
   .zh-tools-page > footer .border-white\/70,
-  .zh-tools-page > footer .border-white\/75 {
+  .zh-tools-page > footer .border-white\/75,
+  .warm-home-page > footer .border-white\/70,
+  .warm-home-page > footer .border-white\/75 {
     border-color: rgba(255, 247, 237, 0.09) !important;
   }
 
@@ -3422,6 +3277,7 @@ canvas {
   }
 
   .zh-tool-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
@@ -3585,12 +3441,65 @@ canvas {
     background: rgba(255, 247, 237, 0.04);
   }
 
-  .zh-tool-link {
-    margin-top: auto;
+  /* Stretch the detail link over the whole card so the full surface is clickable. */
+  .zh-tool-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
   }
 
   .zh-tool-link-secondary {
     align-self: flex-start;
+  }
+
+  .zh-tool-card-banner {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 1px solid rgba(247, 241, 234, 0.08);
+    transition: filter 180ms ease;
+  }
+
+  .zh-tool-card:hover .zh-tool-card-banner {
+    filter: brightness(1.08);
+  }
+
+  .zh-tool-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .zh-tool-card-arrow {
+    display: inline-flex;
+    width: 2.4rem;
+    height: 2.4rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(227, 167, 95, 0.35);
+    border-radius: 999px;
+    color: #e3a75f;
+    font-size: 1.1rem;
+    transition: background-color 180ms ease, transform 180ms ease;
+  }
+
+  .zh-tool-card:hover .zh-tool-card-arrow {
+    background: rgba(227, 167, 95, 0.14);
+    transform: translateX(2px);
+  }
+
+  .zh-tool-card-icon {
+    display: block;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    object-fit: cover;
   }
 
   .zh-tools-sponsor {
@@ -3745,17 +3654,6 @@ canvas {
       margin-top: 0.15rem;
     }
 
-    .zh-tool-card-top {
-      flex-direction: column;
-    }
-
-    .zh-tool-card-visual {
-      width: 100%;
-      height: 8.5rem;
-    }
-
-    .zh-tool-link,
-    .zh-tool-link-secondary,
     .zh-tools-button {
       width: 100%;
     }
@@ -4198,7 +4096,7 @@ canvas {
   .tool-mobile-sections-title,
   .tool-detail-related-title {
     margin: 0;
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-weight: 600;
     letter-spacing: -0.04em;
     color: #f7f1ea;
@@ -5052,7 +4950,7 @@ canvas {
   .articles-hero-title,
   .articles-section-title {
     margin: 0;
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-weight: 600;
     letter-spacing: -0.04em;
     color: var(--articles-text);
@@ -5476,7 +5374,7 @@ canvas {
   .articles-card-title {
     margin: 1rem 0 0;
     color: var(--articles-text);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -5500,24 +5398,32 @@ canvas {
     text-transform: none;
   }
 
+  .articles-card-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: #e3a75f;
+    box-shadow: 0 0 12px rgba(227, 167, 95, 0.5);
+  }
+
+  /* Stretch the read link over the whole card so the full surface is clickable. */
+  .articles-card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
   .articles-card-link {
     display: inline-flex;
-    min-height: 2.9rem;
     align-items: center;
-    justify-content: center;
+    gap: 0.4rem;
     margin-top: 1rem;
-    border: 1px solid rgba(227, 167, 95, 0.18);
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(227, 167, 95, 0.16), rgba(227, 167, 95, 0.08));
-    color: #fff3dd;
-    font-size: 0.86rem;
+    color: #e3a75f;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.04em;
-    padding: 0.72rem 1rem;
-    transition:
-      transform 160ms ease,
-      border-color 160ms ease,
-      background 160ms ease;
   }
 
   .articles-ad-slot {
@@ -5707,7 +5613,7 @@ canvas {
     margin-top: 1rem;
     max-width: 16ch;
     color: var(--search-text);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-size: clamp(2.5rem, 5.8vw, 4.8rem);
     font-weight: 600;
     letter-spacing: -0.04em;
@@ -5966,7 +5872,7 @@ canvas {
 
   .search-warm-page .page-shell.section-block > section[aria-label="搜索结果"] > div:first-child h2 {
     color: var(--search-text);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -6056,7 +5962,7 @@ canvas {
 
   .search-warm-page .glass-card.mt-8 h2 {
     color: var(--search-text);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     letter-spacing: -0.03em;
   }
 
@@ -6200,7 +6106,7 @@ canvas {
     margin: 0;
     max-width: 12ch;
     color: var(--submit-text);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-size: clamp(2.7rem, 6vw, 5rem);
     font-weight: 600;
     letter-spacing: -0.04em;
@@ -6300,7 +6206,7 @@ canvas {
   .submit-side-title {
     margin: 0.45rem 0 0;
     color: var(--submit-text);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "Source Han Serif SC", Georgia, serif;
+    font-family: var(--zh-serif);
     font-weight: 600;
     letter-spacing: -0.03em;
   }
@@ -6738,8 +6644,7 @@ canvas {
   .copyright-title {
     margin: 0;
     max-width: 10ch;
-    font-family:
-      var(--zh-serif, "Songti SC", "Noto Serif SC", "STSong", "SimSun", serif);
+    font-family: var(--zh-serif);
     font-size: clamp(2.8rem, 6.2vw, 5.4rem);
     font-weight: 600;
     line-height: 0.98;
@@ -7165,7 +7070,7 @@ canvas {
 
   .not-found-title {
     margin-top: 18px;
-    font-family: var(--zh-serif, "Songti SC", "Noto Serif SC", "STSong", "SimSun", serif);
+    font-family: var(--zh-serif);
     font-size: clamp(46px, 6vw, 96px);
     font-weight: 500;
     line-height: 1.08;
@@ -7271,7 +7176,7 @@ canvas {
 
   .not-found-card-title {
     color: #f7f1ea;
-    font-family: var(--zh-serif, "Songti SC", "Noto Serif SC", "STSong", "SimSun", serif);
+    font-family: var(--zh-serif);
     font-size: 22px;
     font-weight: 500;
     letter-spacing: 0.04em;

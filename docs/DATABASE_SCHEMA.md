@@ -4,17 +4,15 @@
 
 记录 Supabase 数据库设计、前台读取和前台表单写入约定，避免后续随意加表、加字段导致结构混乱。
 
-## 当前阶段
+## 当前阶段（2026-07-05 对齐实际进度）
 
-当前处于“前台读取 + 前台表单写入”阶段：
+前台读取、前台表单写入、后台管理均已上线：
 
-- 前台页面可以读取 Supabase 已发布内容。
-- `/submit` 投稿表单可以写入 `submissions` 表。
-- `/copyright` 版权投诉表单可以写入 `reports` 表。
-- 暂不做后台管理。
-- 暂不做登录。
-- 暂不做邮件通知。
-- 暂不做文件上传。
+- 前台页面读取 Supabase 已发布内容（工具、文章、分类、标签）。
+- `/submit` 投稿表单写入 `submissions` 表；`/copyright` 版权投诉表单写入 `reports` 表（均有 Turnstile 人机验证）。
+- `/admin` 后台已存在：管理员登录，工具/文章/分类/标签 CRUD，投稿与举报处理。
+- 批量内容导入走 `scripts/content-import/` 守门脚本（dry-run → readiness → approval → execute），execute 需要运行时提供 service key，绝不落盘。
+- 仍未做：邮件通知、文件上传。
 - 如果 Supabase 环境变量缺失或读取查询失败，内容页临时 fallback 到本地 mock 数据。
 - 如果 Supabase 配置正常但数据库暂无内容，页面显示友好空状态。
 
