@@ -15,12 +15,7 @@ type CosmicHomeSectionsProps = {
 // shows a photograph; falls back to the first published tool.
 function pickFeatured(tools: ToolItem[]) {
   const withPhoto = tools.find((tool) => (tool.cover_url ?? "").includes("/tool-covers/photos/"));
-  const hero = withPhoto ?? tools[0];
-  if (!hero) {
-    return { hero: null, sideTools: [] as ToolItem[] };
-  }
-  const sideTools = tools.filter((tool) => tool.id !== hero.id).slice(0, 4);
-  return { hero, sideTools };
+  return withPhoto ?? tools[0] ?? null;
 }
 
 const sectionCopy = {
@@ -39,9 +34,8 @@ const sectionCopy = {
 };
 
 export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps) {
-  const { hero, sideTools } = pickFeatured(tools);
-  const featuredIds = new Set([hero?.id, ...sideTools.map((tool) => tool.id)].filter(Boolean));
-  const moreTools = tools.filter((tool) => !featuredIds.has(tool.id)).slice(0, 6);
+  const hero = pickFeatured(tools);
+  const gridTools = tools.filter((tool) => tool.id !== hero?.id).slice(0, 12);
   const latestArticles = articles.slice(0, 6);
 
   return (
@@ -56,18 +50,11 @@ export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps)
                 description={sectionCopy.featured.description}
                 href="/tools"
               />
-              <div className="zh-feature-layout">
-                <FeaturedToolCard tool={hero} />
-                <div className="zh-feature-small-grid">
-                  {sideTools.map((tool) => (
-                    <CompactToolCard key={tool.id} tool={tool} />
-                  ))}
-                </div>
-              </div>
+              <FeaturedToolCard tool={hero} />
             </div>
           )}
 
-          {moreTools.length > 0 && (
+          {gridTools.length > 0 && (
             <div className="zh-section zh-section-more zh-zone-more-tools">
               <SectionHeader
                 eyebrow="More"
@@ -76,7 +63,7 @@ export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps)
                 href="/tools"
               />
               <div className="zh-grid zh-grid-3">
-                {moreTools.map((tool) => (
+                {gridTools.map((tool) => (
                   <CompactToolCard key={tool.id} tool={tool} />
                 ))}
               </div>

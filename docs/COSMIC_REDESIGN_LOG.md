@@ -396,3 +396,15 @@ Status: completed
 - Mobile (<=760px): CSS-only reorder puts the articles zone before the tools zone (single DOM, `order: -1`, no duplicate markup); the "more tools" grid is hidden on mobile, replaced by a "进入工具库" CTA button after the abbreviated tools zone (featured + 4 compact cards).
 - Deleted 4 now-dead files: home-category-gateway.tsx, home-partner-ads.tsx, home-promo-banner.tsx, cosmic-home-data.ts, plus their exclusive CSS (zh-channel-card, zh-partner-card, zh-banner, zh-ad-label, zh-badge, zh-hero-anomaly decorative stage + keyframes, old zh-hero-title/kicker/desc, zh-categories, zh-pill, zh-cta-row, zh-grid-4/zh-grid-5).
 - Verified via tsc, CSS brace-balance check, and desktop/mobile screenshot comparison. globals.css: 7040 -> 6695 lines.
+
+### Step 54 - Hero recenter + unified cover cards (user feedback pass)
+
+Status: completed
+
+- User feedback on Step 53: slim hero looked unbalanced (pill + search floating top-left over dead space), and the 64px initials icons on compact cards read as broken placeholders rather than design.
+- Hero: now centered column (tagline pill over a 640px search bar), tightened padding; the dead gap below the hero was removed by zeroing section margins inside zones (the zone container's flex gap owns the rhythm now).
+- Cards: CompactToolCard converted from icon-inline to cover-on-top (xiaohu-style) — every tool already has a 16:9 cover (official photo or generated SVG), so the icon variant was retired entirely (zh-tool-card-icon/top/visual/copy CSS deleted, getToolIconUrl util removed).
+- Homepage featured area simplified to ONE full-width FeaturedToolCard (the 4-card side stack and zh-feature-layout/zh-feature-small-grid are gone); the grid below now shows 12 uniform cover cards.
+- Mobile: articles still first; tools grid now visible but trimmed to 4 cards via nth-child, CTA follows.
+- /tools browse grid inherits the cover-card look via the shared component (13 cover cards verified via DOM assertion).
+- Verified: tsc, brace balance, homepage desktop/mobile screenshots, /tools DOM assertions.
