@@ -355,3 +355,15 @@ Status: completed
 - Guarded fetch script (npm run covers:photos:*) validates content-type and size, treats unsupported formats as skips, and never leaves a card blank; 6 tools received official photos (notion, cursor, remove-bg, tinypng, obsidian, raycast), the rest keep generated covers (bot-blocked or no og:image).
 - Compact card icons stay generated SVGs; icon URL derivation now slug-based so it works for both photo and generated cover URLs.
 - Did not modify article cards, compact card visuals, detail pages, admin form, or the database schema.
+
+### Step 50 - Homepage wired to real data with cover cards
+
+Status: completed
+
+- page.tsx now passes getPublishedTools()/getPublishedArticles() results into CosmicHomeSections instead of discarding them.
+- Featured section: hero = a real published tool (prefers one with a photo cover) via FeaturedToolCard; sides = 4 real tools via CompactToolCard. The previously-empty featured visual box is gone.
+- Latest section: 3 real published articles via ArticleCard (typography cards, no empty thumbnails).
+- Ranking section (fake view counts we don't track) replaced by an honest "更多收录工具" grid of real CompactToolCards.
+- Deleted 3 now-dead demo components (home-featured-resources, home-latest-guides, home-ranking-grid) and their fake data exports/types (featuredResources, latestGuides, rankingGroups).
+- Category gateway counts remain placeholder (86+ etc.) — flagged as a minor follow-up.
+- Did not modify /tools or /articles list pages, detail pages, admin, or the database.

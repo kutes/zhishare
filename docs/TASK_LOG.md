@@ -4457,3 +4457,14 @@ Result: completed
 - 执行结果:6 个工具挂上官方图(notion/cursor/remove-bg/tinypng/obsidian/raycast);chatgpt、canva 官网反爬,photopea/capcut/localsend/cyberchef/stirling-pdf 无 og:image,figma 为 gif 不收——以上保持生成封面。open-design(草稿)图床超时放弃。
 - 验证:tsc 绿;/tools DOM 断言精选 2 卡带照片遮罩层、13 图标不受影响;桌面截图核对(Obsidian/TinyPNG 官方图与主题融合良好)。
 - 第二期(详情页富媒体图文/视频块)待用户确认后启动。
+
+## 2026-07-09 主页接真实数据(借鉴 best.xiaohu.ai 的"图文卡片"呈现)
+
+Result: completed (real-data wiring + demo cleanup); dead CSS sweep pending
+
+- 发现主页原为纯静态演示数据(cosmic-home-data),page.tsx 虽已取真实 tools/articles 却丢弃;空图位=精选大卡 visual + 8 个指南缩略图。
+- 精选区:hero 用真实工具(优先有官方照片封面者)FeaturedToolCard,侧栏 4 个 CompactToolCard;最大空框被 Obsidian 官方封面填满。
+- 最新区:8 假指南卡 → 3 篇真实文章 ArticleCard(纯排版无空缩略图)。
+- 榜单区:含不追踪的假阅读量,改为诚实的"更多收录工具"真实工具紧凑网格。
+- 删除 3 个死掉的演示组件与假数据导出/类型;分类入口 count(86+ 等)仍为占位,列为小尾巴。
+- 验证:tsc 绿;桌面+移动截图确认全页真实数据、零空图框、零乱码。

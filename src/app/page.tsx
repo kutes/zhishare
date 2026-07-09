@@ -21,14 +21,14 @@ export const fetchCache = "force-no-store";
 export default async function Page() {
   noStore();
 
-  await Promise.all([getPublishedTools(), getPublishedArticles()]);
+  const [tools, articles] = await Promise.all([getPublishedTools(), getPublishedArticles()]);
 
   return (
     <div className="public-cosmic-page warm-home-page">
       <SiteHeader />
       <main className="zh-home-main">
         <CosmicHomeHero />
-        <CosmicHomeSections />
+        <CosmicHomeSections tools={tools} articles={articles} />
       </main>
       <SiteFooter />
     </div>
