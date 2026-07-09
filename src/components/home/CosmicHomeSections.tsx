@@ -58,6 +58,12 @@ export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps)
   const moreTools = tools.filter((tool) => !featuredIds.has(tool.id)).slice(0, 6);
   const latestArticles = articles.slice(0, 6);
 
+  // Real counts per gateway: the guide gateway counts articles, others count matching tool categories.
+  const categoryCount = (item: (typeof portalCategories)[number]) =>
+    item.icon === "guide"
+      ? articles.length
+      : tools.filter((tool) => item.match.includes(tool.category)).length;
+
   return (
     <section className="zh-shell zh-home-sections zh-content-flow">
       <div className="zh-section zh-section-channels">
@@ -68,7 +74,7 @@ export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps)
         />
         <div className="zh-grid zh-grid-5">
           {portalCategories.map((item) => (
-            <CategoryCard key={item.name} item={item} />
+            <CategoryCard key={item.name} item={item} count={categoryCount(item)} />
           ))}
         </div>
       </div>

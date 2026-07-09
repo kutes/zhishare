@@ -46,14 +46,14 @@ function PortalIcon({ type }: { type: PortalCategory["icon"] }) {
   );
 }
 
-export function CategoryCard({ item }: { item: PortalCategory }) {
+export function CategoryCard({ item, count }: { item: PortalCategory; count: number }) {
   return (
     <Link prefetch={false} href={item.href} className="zh-card zh-card-hover zh-channel-card">
       <div className="zh-card-top">
         <span className="zh-card-icon-wrap">
           <PortalIcon type={item.icon} />
         </span>
-        <span className="zh-badge">{item.count}</span>
+        {count > 0 ? <span className="zh-badge">{count} 个</span> : null}
       </div>
       <h3>{item.name}</h3>
       <p>{item.description}</p>
