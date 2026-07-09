@@ -1,0 +1,7 @@
+artifacts/
+.next/
+.tmp/
+node_modules/
+*.png
+*.jpg
+*.jpeg
