@@ -4478,3 +4478,14 @@ Result: completed
 - 安全:嵌入 URL 限定 player.bilibili.com/youtube 白名单,防止任意 iframe 注入。
 - 守门脚本 create-tool-media-bucket + import-tool-media(dry-run 校验、有阻断拒绝 execute);用真实官方截图给 tinypng(2 张)、obsidian(1 张)做了 seed。
 - 验证:tsc 绿;/tools/tinypng 画廊渲染 2 张真实熊猫官方图+中文说明;/tools/cyberchef 无媒体不出空块;桌面截图确认。
+
+## 2026-07-09 统一标准文档化(封面/卡片/真实数据/守门脚本)
+
+Result: completed
+
+- 发现 AGENTS.md(根目录、每次自动加载)与 docs/DESIGN_SYSTEM.md 严重滞后:AGENTS.md 锁定的 Hero 文案、组件文件清单已随本轮改版作废;DESIGN_SYSTEM.md 仍是废弃的"浅色液态玻璃"方向,和实际部署的暖色编辑部完全对不上。
+- DESIGN_SYSTEM.md 全文重写:补齐真实颜色令牌、--zh-serif 字体规范、卡片标准(3 个可复用组件 + stretched-link 整卡可点 + 封面三级兜底链)、真实数据禁假指标规则、内容资产标准(Storage JSON 不改数据库 + 守门脚本模式 + 视频白名单嵌入 + UTF-8 写盘)、验证标准。
+- AGENTS.md 同步重写权威方向区块与 Read Order、Component Strategy,反映当前真实文件结构。
+- COSMIC_REDESIGN_SPEC.md(旧的重复权威文档,已无引用)改为重定向说明,避免两份"权威设计方向"分叉。
+- PROJECT_RULES.md 补两条:指向 DESIGN_SYSTEM.md 的资产标准;用户不执行任何操作、数据库结构变更需先确认的约定。
+- 本次会话（2026-07-05~07-09）全部工作现已完成:封面系统、照片层、详情页富媒体、主页真实数据、死 CSS 清理、统一标准文档。全部改动仍未推送线上，等待用户指示。
