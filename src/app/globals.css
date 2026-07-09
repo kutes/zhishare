@@ -2381,6 +2381,32 @@ canvas {
     padding-bottom: clamp(72px, 10vh, 128px);
   }
 
+  .zh-home-zones {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(36px, 5vh, 58px);
+  }
+
+  .zh-zone-tools-mobile-cta {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
+    .zh-zone-articles {
+      order: -1;
+    }
+
+    .zh-zone-more-tools {
+      display: none;
+    }
+
+    .zh-zone-tools-mobile-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+  }
+
   .warm-home-page .zh-section {
     margin-top: clamp(58px, 7vh, 88px);
   }
