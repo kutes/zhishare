@@ -2,6 +2,7 @@ import { SearchIcon } from "./home-search-icon";
 
 const heroText = {
   eyebrow: "工具与知识发现站",
+  title: "发现好工具，少走弯路",
   searchPlaceholder: "搜索工具、文章或关键词",
   searchButton: "搜索",
 };
@@ -14,6 +15,8 @@ export function CosmicHomeHero() {
           <span className="zh-eyebrow-dot" />
           {heroText.eyebrow}
         </div>
+
+        <h1 className="zh-hero-heading">{heroText.title}</h1>
 
         <form action="/search" method="get" className="zh-search-bar zh-hero-search" role="search">
           <SearchIcon />

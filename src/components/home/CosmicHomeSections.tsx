@@ -50,7 +50,9 @@ export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps)
                 description={sectionCopy.featured.description}
                 href="/tools"
               />
-              <FeaturedToolCard tool={hero} />
+              <div className="zh-feature-hero">
+                <FeaturedToolCard tool={hero} />
+              </div>
             </div>
           )}
 

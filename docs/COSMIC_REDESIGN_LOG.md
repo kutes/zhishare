@@ -408,3 +408,12 @@ Status: completed
 - Mobile: articles still first; tools grid now visible but trimmed to 4 cards via nth-child, CTA follows.
 - /tools browse grid inherits the cover-card look via the shared component (13 cover cards verified via DOM assertion).
 - Verified: tsc, brace balance, homepage desktop/mobile screenshots, /tools DOM assertions.
+
+### Step 55 - Hero display type + magazine split featured card (aesthetic pass)
+
+Status: completed
+
+- User feedback on Step 54: hero read as a floating search widget with no brand anchor; the full-width 16:9 featured banner blew logo-style og-images up to ~500px of mostly empty dark with copy crammed beneath.
+- Hero: restored the serif display title "发现好工具，少走弯路" at a restrained clamp(1.9rem-2.9rem), centered column of pill -> title -> 640px search (the mainstream "display type + search" landing pattern), no kicker/desc/CTA bloat.
+- Featured card: CSS-only magazine split via a homepage-scoped .zh-feature-hero wrapper — image fills the left column (min 300px tall, object-fit cover), copy vertically centered right (Stripe/Medium featured-card pattern); stacks back to 16:9-top on <=900px. /tools featured cards keep the banner variant (wrapper-scoped, component untouched).
+- Verified: tsc + homepage desktop/mobile screenshots.
