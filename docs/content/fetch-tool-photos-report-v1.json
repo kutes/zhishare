@@ -1,0 +1,89 @@
+{
+  "status": "execute_partial",
+  "force": false,
+  "results": [
+    {
+      "id": "5dd947ab-b8bf-459c-8bf5-339feef3a58c",
+      "slug": "chatgpt",
+      "website_url": "https://chatgpt.com/",
+      "status": "probe_failed",
+      "image_url": null,
+      "error": "fetch failed"
+    },
+    {
+      "id": "8dedfdee-72c6-47e5-9c36-7ff91a390452",
+      "slug": "open-design",
+      "website_url": "https://github.com/nexu-io/open-design",
+      "status": "found",
+      "image_url": "https://repository-images.githubusercontent.com/1223170290/5eec4959-c821-4927-83fb-e904b5cbc396"
+    },
+    {
+      "id": "1c87a5fe-373f-4255-b6b0-568648b64cb9",
+      "slug": "canva",
+      "website_url": "https://www.canva.com/",
+      "status": "probe_failed",
+      "image_url": null,
+      "error": "HTTP_403"
+    },
+    {
+      "id": "1c620dc6-4087-4667-b1e4-84eaae3d0681",
+      "slug": "photopea",
+      "website_url": "https://www.photopea.com/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "9128ab39-dab2-46a5-b169-00827c16412f",
+      "slug": "figma",
+      "website_url": "https://www.figma.com/",
+      "status": "found",
+      "image_url": "https://cdn.sanity.io/images/599r6htc/regionalized/b08d37520f7d5ad8d6562975b5932dd2d9a862bb-1200x630.gif?w=1200&q=70&fit=max&auto=format"
+    },
+    {
+      "id": "5a5d08e6-6dfa-4750-8c11-9117ce021e13",
+      "slug": "capcut",
+      "website_url": "https://www.capcut.com/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "c9a64b80-1bdd-4b06-9fa1-ec2066821fa3",
+      "slug": "cyberchef",
+      "website_url": "https://gchq.github.io/CyberChef/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "962ecbe3-6503-43dc-959d-4f96f42183bd",
+      "slug": "stirling-pdf",
+      "website_url": "https://www.stirlingpdf.com/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "7b9f533d-850b-4ea8-af63-321f282d8e7f",
+      "slug": "localsend",
+      "website_url": "https://localsend.org/",
+      "status": "no_image",
+      "image_url": null
+    }
+  ],
+  "updated": [],
+  "skipped": [
+    "chatgpt",
+    "canva",
+    "photopea",
+    "figma(UNSUPPORTED_TYPE: image/gif)",
+    "capcut",
+    "cyberchef",
+    "stirling-pdf",
+    "localsend"
+  ],
+  "failed": [
+    {
+      "slug": "open-design",
+      "error": "DOWNLOAD_FAILED: The operation was aborted due to timeout"
+    }
+  ],
+  "secret_values_printed": false
+}

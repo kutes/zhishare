@@ -3453,6 +3453,12 @@ canvas {
     align-self: flex-start;
   }
 
+  .zh-tool-card-banner-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
   .zh-tool-card-banner {
     display: block;
     width: 100%;
@@ -3461,6 +3467,22 @@ canvas {
     object-fit: cover;
     border: 1px solid rgba(247, 241, 234, 0.08);
     transition: filter 180ms ease;
+  }
+
+  /* Real photos get a warm scrim so arbitrary bright images sit inside the dark theme. */
+  .zh-tool-card-banner-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 15, 14, 0.42),
+      rgba(18, 15, 14, 0.05) 40%,
+      rgba(18, 15, 14, 0.12) 68%,
+      rgba(18, 15, 14, 0.5)
+    );
+    pointer-events: none;
   }
 
   .zh-tool-card:hover .zh-tool-card-banner {

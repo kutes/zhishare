@@ -70,12 +70,23 @@ export function getToolSlug(tool: ToolItem): string {
   return tool.slug || tool.id || "";
 }
 
+export function isPhotoCover(tool: ToolItem): boolean {
+  const cover = getToolCoverUrl(tool);
+  return Boolean(cover && cover.includes("/tool-covers/photos/"));
+}
+
 export function getToolIconUrl(tool: ToolItem): string | null {
   const cover = getToolCoverUrl(tool);
-  if (!cover || !cover.includes("/tool-covers/covers/")) {
+  const slug = getToolSlug(tool);
+  if (!cover || !slug) {
     return null;
   }
-  return cover.replace("/tool-covers/covers/", "/tool-covers/icons/");
+  const marker = "/tool-covers/";
+  const index = cover.indexOf(marker);
+  if (index === -1) {
+    return null;
+  }
+  return `${cover.slice(0, index + marker.length)}icons/${slug}.svg`;
 }
 
 export function getVisibleTags(tool: ToolItem, maxCount = 4): string[] {

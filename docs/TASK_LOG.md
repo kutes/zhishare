@@ -4446,3 +4446,14 @@ Result: completed (deployed to repo; production needs git push)
 - 验证:tsc 全绿;/tools DOM 断言 2 横幅+13 图标+0 兜底占位+旧按钮清零;/articles 3 点+3 文字链、0 乱码;桌面+移动截图核对,并修复移动端遗留的旧占位图堆叠规则。
 - 事故记录:会话期间用户侧 Claude Code 的辅助模型路由(DeepSeek)长时间故障,权限审核全面阻塞;根因定位于 ~/.claude/settings.json 的 ANTHROPIC_* 覆盖,已备份并移除(备份: ~/.claude/settings.backup-deepseek-2026-07-05.json)。
 - 待办:service key 已在对话中出现两次,需要用户在 Supabase 控制台轮换;后台浏览器直传的 storage RLS 策略 SQL 未执行(不影响现有功能,脚本已兜底)。
+
+## 2026-07-09 卡片照片层(借鉴 best.xiaohu.ai 展现形式)
+
+Result: completed
+
+- 深挖 best.xiaohu.ai 的实现:静态生成 + 卡片封面为"本站转存照片(/covers/{slug}.jpg)垫底 + 暗色渐变遮罩 + 设计元素覆盖层",详情页富媒体按 /media/{slug}/ 转存,视频自托管 CDN。仅借鉴其展现形式。
+- 新增守门脚本 fetch-tool-photos.mjs(npm run covers:photos:*):抓工具官网 og:image/twitter:image → 校验(image/* 且 ≤4MB,gif 等不收视为跳过)→ 转存 tool-covers/photos/{slug} → cover_url 指向照片;抓不到自动保持生成封面,卡片永不开天窗。
+- 前端:cover_url 含 /photos/ 时精选卡加暖色渐变遮罩(rgba(18,15,14) 上下加深);图标 URL 改为按 slug 推导,照片/生成两种 cover_url 均能取到生成图标。
+- 执行结果:6 个工具挂上官方图(notion/cursor/remove-bg/tinypng/obsidian/raycast);chatgpt、canva 官网反爬,photopea/capcut/localsend/cyberchef/stirling-pdf 无 og:image,figma 为 gif 不收——以上保持生成封面。open-design(草稿)图床超时放弃。
+- 验证:tsc 绿;/tools DOM 断言精选 2 卡带照片遮罩层、13 图标不受影响;桌面截图核对(Obsidian/TinyPNG 官方图与主题融合良好)。
+- 第二期(详情页富媒体图文/视频块)待用户确认后启动。

@@ -345,3 +345,13 @@ Status: completed
 - Article cards received an editorial typography pass (amber dot, serif title, text link).
 - Removed the legacy mobile rules that stacked the old placeholder visual full-width; compact cards stay inline on mobile.
 - Did not modify data flow, routes, backend queries, or dependencies.
+
+### Step 49 - Card photo layer (learned from best.xiaohu.ai presentation)
+
+Status: completed
+
+- Featured card covers now show the tool's official og:image / twitter:image when available, re-hosted at tool-covers/photos/{slug}; generated covers remain the automatic fallback, initials the last resort.
+- Photos sit under a warm gradient scrim so arbitrary bright images integrate with the dark editorial theme (technique borrowed from best.xiaohu.ai's has-photo covers).
+- Guarded fetch script (npm run covers:photos:*) validates content-type and size, treats unsupported formats as skips, and never leaves a card blank; 6 tools received official photos (notion, cursor, remove-bg, tinypng, obsidian, raycast), the rest keep generated covers (bot-blocked or no og:image).
+- Compact card icons stay generated SVGs; icon URL derivation now slug-based so it works for both photo and generated cover URLs.
+- Did not modify article cards, compact card visuals, detail pages, admin form, or the database schema.

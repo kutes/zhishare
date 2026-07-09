@@ -8,6 +8,7 @@ import {
   getToolSlug,
   getToolSummary,
   getVisibleTags,
+  isPhotoCover,
 } from "./tool-card-utils";
 
 type FeaturedToolCardProps = {
@@ -26,8 +27,10 @@ export function FeaturedToolCard({ tool }: FeaturedToolCardProps) {
   return (
     <article className="zh-tool-card zh-tool-card-featured">
       {coverUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img className="zh-tool-card-banner" src={coverUrl} alt="" loading="lazy" />
+        <div className={`zh-tool-card-banner-wrap${isPhotoCover(tool) ? " zh-tool-card-banner-photo" : ""}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="zh-tool-card-banner" src={coverUrl} alt="" loading="lazy" />
+        </div>
       ) : (
         <div className="zh-tool-feature-visual">
           <span className="zh-tool-card-initials zh-tool-card-initials-large">{initials}</span>
