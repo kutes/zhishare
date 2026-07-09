@@ -1,12 +1,9 @@
+import Link from "next/link";
 import type { PublishedArticle } from "@/types/article";
 import type { ToolItem } from "@/types/tool";
 import { ArticleCard } from "@/components/articles/article-card";
 import { CompactToolCard } from "@/components/tools/CompactToolCard";
 import { FeaturedToolCard } from "@/components/tools/FeaturedToolCard";
-import { partnerAds, portalCategories } from "./cosmic-home-data";
-import { CategoryCard } from "./home-category-gateway";
-import { PartnerAdCard } from "./home-partner-ads";
-import { PromoBanner } from "./home-promo-banner";
 import { SectionHeader } from "./home-section-header";
 
 type CosmicHomeSectionsProps = {
@@ -27,28 +24,17 @@ function pickFeatured(tools: ToolItem[]) {
 }
 
 const sectionCopy = {
-  categories: {
-    title: "资源分类入口",
-    description:
-      "先从场景进入，再选择具体工具。适合没有明确关键词时快速发现资源。",
-  },
-  partners: {
-    title: "合作伙伴与推广位",
-  },
   featured: {
     title: "精选工具与开源项目",
-    description:
-      "筛选更值得收藏的 AI 工具、开源项目、自托管方案和效率软件。",
+    description: "筛选更值得收藏的 AI 工具、开源项目、自托管方案和效率软件。",
   },
   latest: {
     title: "最新文章与实战指南",
-    description:
-      "工具选择、避坑经验和效率方案，帮助你在收藏前判断值不值得深入。",
+    description: "工具选择、避坑经验和效率方案，帮助你在收藏前判断值不值得深入。",
   },
   more: {
     title: "更多收录工具",
-    description:
-      "继续浏览已整理的 AI 工具、开源项目、效率软件和在线工具。",
+    description: "继续浏览已整理的 AI 工具、开源项目、效率软件和在线工具。",
   },
 };
 
@@ -58,88 +44,69 @@ export function CosmicHomeSections({ tools, articles }: CosmicHomeSectionsProps)
   const moreTools = tools.filter((tool) => !featuredIds.has(tool.id)).slice(0, 6);
   const latestArticles = articles.slice(0, 6);
 
-  // Real counts per gateway: the guide gateway counts articles, others count matching tool categories.
-  const categoryCount = (item: (typeof portalCategories)[number]) =>
-    item.icon === "guide"
-      ? articles.length
-      : tools.filter((tool) => item.match.includes(tool.category)).length;
-
   return (
     <section className="zh-shell zh-home-sections zh-content-flow">
-      <div className="zh-section zh-section-channels">
-        <SectionHeader
-          eyebrow="Categories"
-          title={sectionCopy.categories.title}
-          description={sectionCopy.categories.description}
-        />
-        <div className="zh-grid zh-grid-5">
-          {portalCategories.map((item) => (
-            <CategoryCard key={item.name} item={item} count={categoryCount(item)} />
-          ))}
-        </div>
-      </div>
+      <div className="zh-home-zones">
+        <div className="zh-zone-tools">
+          {hero && (
+            <div className="zh-section zh-section-featured">
+              <SectionHeader
+                eyebrow="Tools"
+                title={sectionCopy.featured.title}
+                description={sectionCopy.featured.description}
+                href="/tools"
+              />
+              <div className="zh-feature-layout">
+                <FeaturedToolCard tool={hero} />
+                <div className="zh-feature-small-grid">
+                  {sideTools.map((tool) => (
+                    <CompactToolCard key={tool.id} tool={tool} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
-      <div className="zh-section zh-section-partners">
-        <SectionHeader eyebrow="Partners" title={sectionCopy.partners.title} />
-        <div className="zh-grid zh-grid-4">
-          {partnerAds.map((item) => (
-            <PartnerAdCard key={item.title} item={item} />
-          ))}
-        </div>
-      </div>
+          {moreTools.length > 0 && (
+            <div className="zh-section zh-section-more zh-zone-more-tools">
+              <SectionHeader
+                eyebrow="More"
+                title={sectionCopy.more.title}
+                description={sectionCopy.more.description}
+                href="/tools"
+              />
+              <div className="zh-grid zh-grid-3">
+                {moreTools.map((tool) => (
+                  <CompactToolCard key={tool.id} tool={tool} />
+                ))}
+              </div>
+            </div>
+          )}
 
-      {hero && (
-        <div className="zh-section zh-section-featured">
-          <SectionHeader
-            eyebrow="Featured"
-            title={sectionCopy.featured.title}
-            description={sectionCopy.featured.description}
-            href="/tools"
-          />
-          <div className="zh-feature-layout">
-            <FeaturedToolCard tool={hero} />
-            <div className="zh-feature-small-grid">
-              {sideTools.map((tool) => (
-                <CompactToolCard key={tool.id} tool={tool} />
+          <div className="zh-zone-tools-mobile-cta">
+            <Link className="zh-btn zh-btn-primary" href="/tools">
+              进入工具库
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+
+        {latestArticles.length > 0 && (
+          <div className="zh-zone-articles zh-section zh-section-latest">
+            <SectionHeader
+              eyebrow="Articles"
+              title={sectionCopy.latest.title}
+              description={sectionCopy.latest.description}
+              href="/articles"
+            />
+            <div className="zh-home-article-grid">
+              {latestArticles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
               ))}
             </div>
           </div>
-        </div>
-      )}
-
-      <PromoBanner />
-
-      {latestArticles.length > 0 && (
-        <div className="zh-section zh-section-latest">
-          <SectionHeader
-            eyebrow="Latest"
-            title={sectionCopy.latest.title}
-            description={sectionCopy.latest.description}
-            href="/articles"
-          />
-          <div className="zh-home-article-grid">
-            {latestArticles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {moreTools.length > 0 && (
-        <div className="zh-section zh-section-more">
-          <SectionHeader
-            eyebrow="More"
-            title={sectionCopy.more.title}
-            description={sectionCopy.more.description}
-            href="/tools"
-          />
-          <div className="zh-grid zh-grid-3">
-            {moreTools.map((tool) => (
-              <CompactToolCard key={tool.id} tool={tool} />
-            ))}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }
