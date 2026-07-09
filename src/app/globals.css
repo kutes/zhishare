@@ -1674,10 +1674,7 @@ canvas {
   }
 
   .zh-categories-label,
-  .zh-section-eyebrow,
-  .zh-card-eyebrow,
-  .zh-guide-category,
-  .zh-guide-meta {
+  .zh-section-eyebrow {
     color: rgba(175, 163, 153, 0.82);
     font-size: 0.75rem;
     font-weight: 600;
@@ -1824,9 +1821,7 @@ canvas {
   }
 
   .zh-tool-card,
-  .zh-ad-card,
-  .zh-feature-small,
-  .zh-ranking-card {
+  .zh-ad-card {
     padding: 1.1rem;
   }
 
@@ -1872,10 +1867,6 @@ canvas {
 
   .zh-tool-card h3,
   .zh-ad-card h3,
-  .zh-feature-small h3,
-  .zh-feature-large h3,
-  .zh-guide-card h3,
-  .zh-ranking-card h3,
   .zh-banner h2 {
     color: #f7f1ea;
     font-family: var(--zh-serif);
@@ -1884,10 +1875,7 @@ canvas {
   }
 
   .zh-tool-card h3,
-  .zh-ad-card h3,
-  .zh-feature-small h3,
-  .zh-guide-card h3,
-  .zh-ranking-card h3 {
+  .zh-ad-card h3 {
     margin-top: 1rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -1895,10 +1883,6 @@ canvas {
 
   .zh-tool-card p,
   .zh-ad-card p,
-  .zh-feature-small p,
-  .zh-feature-large p,
-  .zh-guide-card p,
-  .zh-ranking-card p,
   .zh-banner p {
     color: rgba(247, 241, 234, 0.72);
     font-size: 0.88rem;
@@ -1910,37 +1894,6 @@ canvas {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 1rem;
-  }
-
-  .zh-feature-large {
-    display: grid;
-    gap: 1rem;
-    min-height: 25rem;
-    padding: 1.1rem;
-  }
-
-  .zh-feature-visual {
-    min-height: 11rem;
-    border: 1px solid rgba(255, 247, 237, 0.08);
-    border-radius: 0.9rem;
-    background:
-      radial-gradient(circle at 30% 28%, rgba(227, 167, 95, 0.22), transparent 26%),
-      radial-gradient(circle at 74% 46%, rgba(255, 247, 237, 0.12), transparent 28%),
-      linear-gradient(145deg, rgba(255, 247, 237, 0.09), rgba(255, 247, 237, 0.025));
-  }
-
-  .zh-feature-copy {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-  }
-
-  .zh-card-meta {
-    color: rgba(175, 163, 153, 0.82);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    margin-top: 0.8rem;
-    text-transform: uppercase;
   }
 
   .zh-banner {
@@ -1957,87 +1910,6 @@ canvas {
     padding: 1.2rem 1.35rem;
   }
 
-  .zh-list-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .zh-guide-card {
-    display: grid;
-    grid-template-columns: 7.5rem minmax(0, 1fr);
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .zh-guide-thumb {
-    min-height: 7.25rem;
-    border: 1px solid rgba(255, 247, 237, 0.08);
-    border-radius: 0.9rem;
-    background:
-      radial-gradient(circle at 32% 30%, rgba(227, 167, 95, 0.18), transparent 32%),
-      linear-gradient(145deg, rgba(255, 247, 237, 0.08), rgba(255, 247, 237, 0.025));
-  }
-
-  .zh-guide-content {
-    min-width: 0;
-  }
-
-  .zh-guide-meta {
-    margin-top: 0.8rem;
-  }
-
-  .zh-ranking-head {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-
-  .zh-ranking-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    margin-top: 1rem;
-  }
-
-  .zh-ranking-item {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    color: rgba(247, 241, 234, 0.84);
-    text-decoration: none;
-  }
-
-  .zh-ranking-index {
-    display: inline-flex;
-    width: 1.6rem;
-    height: 1.6rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 247, 237, 0.1);
-    border-radius: 999px;
-    color: #e3a75f;
-    flex-shrink: 0;
-    font-size: 0.72rem;
-    font-weight: 700;
-  }
-
-  .zh-ranking-title {
-    min-width: 0;
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 0.88rem;
-  }
-
-  .zh-ranking-views {
-    color: rgba(175, 163, 153, 0.84);
-    font-size: 0.72rem;
-    flex-shrink: 0;
-  }
-
   @media (max-width: 1024px) {
     .zh-shell {
       padding-inline: 1rem;
@@ -2049,10 +1921,6 @@ canvas {
     }
 
     .zh-feature-layout {
-      grid-template-columns: 1fr;
-    }
-
-    .zh-list-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -2082,10 +1950,6 @@ canvas {
       grid-template-columns: 1fr;
     }
 
-    .zh-guide-card {
-      grid-template-columns: 1fr;
-    }
-
     .zh-banner,
     .zh-section-header {
       align-items: flex-start;
@@ -2106,16 +1970,10 @@ canvas {
 
   .warm-home-page .zh-section-desc,
   .warm-home-page .zh-tool-card p,
-  .warm-home-page .zh-ad-card p,
-  .warm-home-page .zh-feature-small p,
-  .warm-home-page .zh-feature-large p,
-  .warm-home-page .zh-guide-card p,
-  .warm-home-page .zh-ranking-card p {
+  .warm-home-page .zh-ad-card p {
     color: rgba(247, 241, 234, 0.7);
   }
 
-  .warm-home-page .zh-guide-meta,
-  .warm-home-page .zh-ranking-views,
   .warm-home-page .zh-hero-kicker,
   .warm-home-page .zh-categories-label {
     color: rgba(247, 241, 234, 0.52);
@@ -2123,26 +1981,16 @@ canvas {
 
   .warm-home-page .zh-card,
   .warm-home-page .zh-tool-card,
-  .warm-home-page .zh-ad-card,
-  .warm-home-page .zh-ranking-card {
+  .warm-home-page .zh-ad-card {
     border-color: rgba(255, 247, 237, 0.12);
     box-shadow:
       0 18px 45px rgba(0, 0, 0, 0.18),
       inset 0 1px 0 rgba(255, 247, 237, 0.035);
   }
 
-  .warm-home-page .zh-feature-small,
-  .warm-home-page .zh-guide-card,
-  .warm-home-page .zh-ranking-card {
-    background:
-      radial-gradient(circle at 18% 0%, rgba(227, 167, 95, 0.045), transparent 36%),
-      rgba(255, 247, 237, 0.047);
-  }
-
   .warm-home-page .zh-card:hover,
   .warm-home-page .zh-tool-card:hover,
-  .warm-home-page .zh-ad-card:hover,
-  .warm-home-page .zh-ranking-card:hover {
+  .warm-home-page .zh-ad-card:hover {
     border-color: rgba(227, 167, 95, 0.44);
     background:
       radial-gradient(circle at 18% 0%, rgba(227, 167, 95, 0.07), transparent 36%),
@@ -2186,7 +2034,6 @@ canvas {
   .warm-home-page .zh-btn:focus-visible,
   .warm-home-page .zh-pill:focus-visible,
   .warm-home-page .zh-section-link:focus-visible,
-  .warm-home-page .zh-ranking-item:focus-visible,
   .warm-home-page .zh-search-input:focus-visible {
     outline: 2px solid rgba(227, 167, 95, 0.7);
     outline-offset: 3px;
@@ -2202,18 +2049,8 @@ canvas {
     }
 
     .warm-home-page .zh-tool-card,
-    .warm-home-page .zh-ad-card,
-    .warm-home-page .zh-ranking-card {
+    .warm-home-page .zh-ad-card {
       padding: 20px;
-    }
-
-    .warm-home-page .zh-feature-large {
-      min-height: auto;
-      padding: 20px;
-    }
-
-    .warm-home-page .zh-feature-visual {
-      height: 132px;
     }
   }
 }
@@ -2259,8 +2096,7 @@ canvas {
       margin-top: 68px;
     }
 
-    .warm-home-page .zh-feature-layout,
-    .warm-home-page .zh-list-grid {
+    .warm-home-page .zh-feature-layout {
       gap: 24px;
     }
   }
@@ -2555,10 +2391,6 @@ canvas {
 
   .warm-home-page .zh-channel-card,
   .warm-home-page .zh-partner-card,
-  .warm-home-page .zh-feature-large,
-  .warm-home-page .zh-feature-small,
-  .warm-home-page .zh-guide-card,
-  .warm-home-page .zh-ranking-card,
   .warm-home-page .zh-banner {
     border-color: rgba(255, 247, 237, 0.13);
     background:
@@ -2575,20 +2407,12 @@ canvas {
   }
 
   .warm-home-page .zh-channel-card h3,
-  .warm-home-page .zh-partner-card h3,
-  .warm-home-page .zh-feature-large h3,
-  .warm-home-page .zh-feature-small h3,
-  .warm-home-page .zh-guide-card h3,
-  .warm-home-page .zh-ranking-card h3 {
+  .warm-home-page .zh-partner-card h3 {
     color: var(--zh-text);
   }
 
   .warm-home-page .zh-channel-card p,
-  .warm-home-page .zh-partner-card p,
-  .warm-home-page .zh-feature-large p,
-  .warm-home-page .zh-feature-small p,
-  .warm-home-page .zh-guide-card p,
-  .warm-home-page .zh-ranking-card p {
+  .warm-home-page .zh-partner-card p {
     color: rgba(247, 241, 234, 0.68);
   }
 
@@ -2608,40 +2432,10 @@ canvas {
     align-items: stretch;
   }
 
-  .warm-home-page .zh-feature-large {
-    min-height: 430px;
-    padding: 22px;
-  }
-
-  .warm-home-page .zh-feature-visual {
-    height: 230px;
-    border-radius: 18px;
-    background:
-      radial-gradient(circle at 28% 24%, rgba(227, 167, 95, 0.18), transparent 28%),
-      radial-gradient(circle at 68% 44%, rgba(247, 241, 234, 0.09), transparent 30%),
-      linear-gradient(135deg, rgba(255, 247, 237, 0.075), rgba(255, 247, 237, 0.025));
-    border: 1px solid rgba(255, 247, 237, 0.08);
-  }
-
   .warm-home-page .zh-feature-small-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
-  }
-
-  .warm-home-page .zh-feature-small {
-    min-height: 94px;
-    padding: 20px;
-  }
-
-  .warm-home-page .zh-card-action,
-  .warm-home-page .zh-guide-action {
-    display: inline-flex;
-    margin-top: 18px;
-    color: rgba(227, 167, 95, 0.88);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
   }
 
   .warm-home-page .zh-banner {
@@ -2653,35 +2447,6 @@ canvas {
     margin-top: clamp(54px, 7vh, 88px);
   }
 
-  .warm-home-page .zh-list-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .warm-home-page .zh-guide-card {
-    min-height: 160px;
-    padding: 18px;
-  }
-
-  .warm-home-page .zh-guide-thumb {
-    width: 108px;
-    min-width: 108px;
-    border-radius: 16px;
-  }
-
-  .warm-home-page .zh-ranking-card {
-    padding: 22px;
-  }
-
-  .warm-home-page .zh-ranking-list {
-    margin-top: 18px;
-  }
-
-  .warm-home-page .zh-ranking-item {
-    padding-block: 9px;
-  }
-
   @media (min-width: 1600px) {
     .warm-home-page .zh-content-flow {
       max-width: 1480px;
@@ -2689,10 +2454,6 @@ canvas {
 
     .warm-home-page .zh-feature-layout {
       grid-template-columns: minmax(0, 1.42fr) minmax(360px, 0.82fr);
-    }
-
-    .warm-home-page .zh-list-grid {
-      gap: 22px;
     }
   }
 
@@ -2703,10 +2464,6 @@ canvas {
 
     .warm-home-page .zh-feature-small-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .warm-home-page .zh-list-grid {
-      grid-template-columns: 1fr;
     }
   }
 
@@ -2726,38 +2483,15 @@ canvas {
     }
 
     .warm-home-page .zh-grid,
-    .warm-home-page .zh-feature-small-grid,
-    .warm-home-page .zh-list-grid {
+    .warm-home-page .zh-feature-small-grid {
       grid-template-columns: 1fr;
       gap: 14px;
     }
 
     .warm-home-page .zh-channel-card,
-    .warm-home-page .zh-partner-card,
-    .warm-home-page .zh-feature-small,
-    .warm-home-page .zh-ranking-card {
+    .warm-home-page .zh-partner-card {
       min-height: auto;
       padding: 18px;
-    }
-
-    .warm-home-page .zh-feature-large {
-      min-height: auto;
-      padding: 18px;
-    }
-
-    .warm-home-page .zh-feature-visual {
-      height: 150px;
-    }
-
-    .warm-home-page .zh-guide-card {
-      align-items: stretch;
-      min-height: auto;
-      padding: 16px;
-    }
-
-    .warm-home-page .zh-guide-thumb {
-      width: 88px;
-      min-width: 88px;
     }
 
     .warm-home-page .zh-banner {
@@ -6601,10 +6335,6 @@ canvas {
   .zh-tool-card h3,
   .zh-tool-card-featured h3,
   .zh-tool-card-compact h3,
-  .zh-feature-small h3,
-  .zh-feature-large h3,
-  .zh-guide-card h3,
-  .zh-ranking-card h3,
   .article-card-title,
   .search-result-title,
   .article-detail-related-title {
@@ -6621,9 +6351,7 @@ canvas {
   .zh-tool-card h2,
   .zh-tool-card h3,
   .zh-tool-card-featured h3,
-  .zh-tool-card-compact h3,
-  .zh-feature-small h3,
-  .zh-feature-large h3 {
+  .zh-tool-card-compact h3 {
     word-break: normal;
     overflow-wrap: anywhere;
   }
@@ -6637,14 +6365,6 @@ canvas {
   .zh-tool-card-featured h3,
   .zh-tool-card-title-lg {
     font-size: clamp(1.375rem, 1.9vw, 2rem);
-  }
-
-  .zh-feature-small h3 {
-    font-size: 1rem;
-  }
-
-  .zh-feature-large h3 {
-    font-size: clamp(1.25rem, 1.55vw, 1.65rem);
   }
 
   .article-card-title {
@@ -6669,9 +6389,7 @@ canvas {
     .zh-tool-card h2,
     .zh-tool-card h3,
     .zh-tool-card-featured h3,
-    .zh-tool-card-compact h3,
-    .zh-feature-small h3,
-    .zh-feature-large h3 {
+    .zh-tool-card-compact h3 {
       font-size: 18px;
       line-height: 1.32;
     }

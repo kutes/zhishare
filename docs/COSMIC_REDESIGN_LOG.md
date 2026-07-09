@@ -377,3 +377,12 @@ Status: completed
 - Video embeds restricted to a bilibili/youtube host allowlist to prevent unsafe iframes.
 - Guarded scripts: create-tool-media-bucket + import-tool-media (dry-run validates + refuses execute on blockers). Seeded tinypng (2) and obsidian (1) with real official screenshots.
 - Did not modify cards, articles, admin, or the database schema.
+
+### Step 52 - Dead CSS sweep (post real-data cleanup)
+
+Status: completed
+
+- Removed every CSS rule tied to the 3 demo components deleted in Step 50 (zh-feature-visual/copy/large/small, zh-guide-*, zh-ranking-*, zh-list-grid, zh-card-eyebrow/action/meta), including their appearances inside shared multi-selector rules across 5 separate CSS blocks (main homepage v1, readability polish, wide-screen polish, content-flow polish, card typography polish).
+- Kept every selector still in use (zh-feature-layout, zh-feature-small-grid, zh-channel-card, zh-partner-card, zh-tool-card family, zh-banner) untouched.
+- globals.css: 7328 -> ~7040 lines; brace count verified balanced (977/977) before and after.
+- Verified zero visual regression via tsc + side-by-side homepage and /tools screenshots (desktop) — pixel-identical to pre-cleanup captures.
