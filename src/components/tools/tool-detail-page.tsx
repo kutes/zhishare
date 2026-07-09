@@ -8,17 +8,20 @@ import { SiteHeader } from "@/components/site-header";
 import { CollapsibleDescription } from "./collapsible-description";
 import { MobileToolDetailSections } from "./mobile-tool-detail-sections";
 import { ToolDecisionPanel } from "./tool-decision-panel";
+import { ToolMediaGallery } from "./tool-media-gallery";
 import { ToolMobileSummaryCard } from "./tool-mobile-summary-card";
+import type { ToolMediaItem } from "@/lib/media/tool-media";
 import type { ToolItem } from "@/types/tool";
 
 type ToolDetailPageProps = {
   tool: ToolItem;
   relatedTools: ToolItem[];
+  media?: ToolMediaItem[];
 };
 
 type DetailBadgeTone = "gold" | "surface" | "outline";
 
-export function ToolDetailPage({ tool, relatedTools }: ToolDetailPageProps) {
+export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPageProps) {
   const detail = getDetailRecord(tool);
   const title = firstText(tool.name, detail.name, detail.title) || "未命名工具";
   const summary = firstText(tool.tagline, detail.tagline, tool.description, detail.description) || "暂无简介";
@@ -84,6 +87,7 @@ export function ToolDetailPage({ tool, relatedTools }: ToolDetailPageProps) {
         <section className="tool-detail-content">
           <div className="tool-detail-shell space-y-6 py-6 sm:py-8 lg:py-10">
             <MobileToolDetailSections tool={tool} className="md:hidden" />
+            <ToolMediaGallery items={media} className="md:hidden" />
             <MobileRelatedToolsCompact relatedTools={relatedTools} className="md:hidden" />
 
             <div className="hidden gap-5 md:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
@@ -100,6 +104,7 @@ export function ToolDetailPage({ tool, relatedTools }: ToolDetailPageProps) {
                   </section>
 
                   <ListSection title="核心功能" items={features} />
+                  <ToolMediaGallery items={media} />
                   <AdPlaceholder variant="inline" />
                   <ListSection title="适合人群" items={audience} />
                   <ListSection title="使用场景" items={scenarios} />

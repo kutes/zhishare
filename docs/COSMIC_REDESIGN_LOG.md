@@ -367,3 +367,13 @@ Status: completed
 - Deleted 3 now-dead demo components (home-featured-resources, home-latest-guides, home-ranking-grid) and their fake data exports/types (featuredResources, latestGuides, rankingGroups).
 - Category gateway counts remain placeholder (86+ etc.) — flagged as a minor follow-up.
 - Did not modify /tools or /articles list pages, detail pages, admin, or the database.
+
+### Step 51 - Tool detail rich media gallery
+
+Status: completed
+
+- Detail pages can now show official screenshots (with captions) and allowlisted video embeds, rendered after 核心功能 on desktop and in the mobile flow.
+- Media lives as tool-media/{slug}.json in a new public tool-media storage bucket (no DB schema change); the page fetches it server-side and renders nothing when absent, so tools without media are unchanged.
+- Video embeds restricted to a bilibili/youtube host allowlist to prevent unsafe iframes.
+- Guarded scripts: create-tool-media-bucket + import-tool-media (dry-run validates + refuses execute on blockers). Seeded tinypng (2) and obsidian (1) with real official screenshots.
+- Did not modify cards, articles, admin, or the database schema.

@@ -1,0 +1,10 @@
+{
+  "status": "execute_completed",
+  "input": "docs/content/tool-media-seed-v1.json",
+  "uploaded": [
+    "tinypng",
+    "obsidian"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}

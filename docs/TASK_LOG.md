@@ -4468,3 +4468,13 @@ Result: completed (real-data wiring + demo cleanup); dead CSS sweep pending
 - 榜单区:含不追踪的假阅读量,改为诚实的"更多收录工具"真实工具紧凑网格。
 - 删除 3 个死掉的演示组件与假数据导出/类型;分类入口 count(86+ 等)仍为占位,列为小尾巴。
 - 验证:tsc 绿;桌面+移动截图确认全页真实数据、零空图框、零乱码。
+
+## 2026-07-09 详情页富媒体画廊(第二期)
+
+Result: completed
+
+- 借鉴 best.xiaohu.ai 详情页图文形式,做出工具详情页"截图与演示"画廊:官方截图+说明文字、以及 bilibili/youtube 白名单视频嵌入。
+- 零数据库改动:媒体存为 tool-media/{slug}.json(新公开桶 tool-media),详情页服务端读取,无媒体则不渲染(其它工具页面不变)。
+- 安全:嵌入 URL 限定 player.bilibili.com/youtube 白名单,防止任意 iframe 注入。
+- 守门脚本 create-tool-media-bucket + import-tool-media(dry-run 校验、有阻断拒绝 execute);用真实官方截图给 tinypng(2 张)、obsidian(1 张)做了 seed。
+- 验证:tsc 绿;/tools/tinypng 画廊渲染 2 张真实熊猫官方图+中文说明;/tools/cyberchef 无媒体不出空块;桌面截图确认。

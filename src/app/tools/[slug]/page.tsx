@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ToolDetailPage, ToolNotFoundPage } from "@/components/tools/tool-detail-page";
 import { getRelatedTools, getToolBySlug } from "@/lib/db/tools";
+import { fetchToolMedia } from "@/lib/media/tool-media";
 import { DEFAULT_SITE_DESCRIPTION, createPageMetadata } from "@/lib/seo";
 
 type ToolPageProps = {
@@ -49,7 +50,10 @@ export default async function Page({ params }: ToolPageProps) {
     return <ToolNotFoundPage />;
   }
 
-  const relatedTools = await getRelatedTools(tool.category_id, tool.id);
+  const [relatedTools, media] = await Promise.all([
+    getRelatedTools(tool.category_id, tool.id),
+    fetchToolMedia(tool.slug),
+  ]);
 
-  return <ToolDetailPage tool={tool} relatedTools={relatedTools} />;
+  return <ToolDetailPage tool={tool} relatedTools={relatedTools} media={media} />;
 }

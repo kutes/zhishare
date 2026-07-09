@@ -4291,6 +4291,49 @@ canvas {
     line-height: 1.78;
   }
 
+  .tool-media-list {
+    display: grid;
+    gap: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .tool-media-item {
+    margin: 0;
+  }
+
+  .tool-media-image {
+    display: block;
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 247, 237, 0.1);
+    background: rgba(255, 247, 237, 0.03);
+  }
+
+  .tool-media-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 247, 237, 0.1);
+    background: #0d0b0a;
+  }
+
+  .tool-media-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .tool-media-caption {
+    margin-top: 0.55rem;
+    color: rgba(247, 241, 234, 0.66);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
   .tool-detail-section-head {
     display: flex;
     align-items: end;

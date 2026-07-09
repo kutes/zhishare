@@ -1,0 +1,29 @@
+{
+  "version": "v1",
+  "purpose": "Seed real official screenshots for the tool detail media gallery (Phase 2). Images are official marketing/product screenshots from each tool's own site. Uploaded as tool-media/{slug}.json by scripts/content-import/import-tool-media.mjs. Embeds (bilibili/youtube) are supported by the schema but not seeded here.",
+  "tools": {
+    "tinypng": {
+      "items": [
+        {
+          "type": "image",
+          "url": "https://tinypng.com/images/panda-happy.png",
+          "caption": "TinyPNG 采用智能有损压缩，在大幅缩小体积的同时肉眼几乎看不出差别。"
+        },
+        {
+          "type": "image",
+          "url": "https://tinypng.com/images/example-shrunk.png",
+          "caption": "官方示例：同一张图片压缩前后的文件体积对比。"
+        }
+      ]
+    },
+    "obsidian": {
+      "items": [
+        {
+          "type": "image",
+          "url": "https://obsidian.md/images/screenshot.png",
+          "caption": "Obsidian 的本地 Markdown 笔记界面，支持双向链接与实时预览。"
+        }
+      ]
+    }
+  }
+}
