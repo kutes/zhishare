@@ -386,3 +386,13 @@ Status: completed
 - Kept every selector still in use (zh-feature-layout, zh-feature-small-grid, zh-channel-card, zh-partner-card, zh-tool-card family, zh-banner) untouched.
 - globals.css: 7328 -> ~7040 lines; brace count verified balanced (977/977) before and after.
 - Verified zero visual regression via tsc + side-by-side homepage and /tools screenshots (desktop) — pixel-identical to pre-cleanup captures.
+
+### Step 53 - Homepage three-zone restructure (mobile article-first)
+
+Status: completed
+
+- Collapsed the homepage from 7 sections to 3: slim hero (tagline + search only), tools zone (featured card + compact grid + "more tools" grid), articles zone (3 article cards).
+- Removed the category gateway, partner-ad strip, and mid-page promo banner sections entirely (deferred: floating dismissible ad units, per user decision, not part of this change).
+- Mobile (<=760px): CSS-only reorder puts the articles zone before the tools zone (single DOM, `order: -1`, no duplicate markup); the "more tools" grid is hidden on mobile, replaced by a "进入工具库" CTA button after the abbreviated tools zone (featured + 4 compact cards).
+- Deleted 4 now-dead files: home-category-gateway.tsx, home-partner-ads.tsx, home-promo-banner.tsx, cosmic-home-data.ts, plus their exclusive CSS (zh-channel-card, zh-partner-card, zh-banner, zh-ad-label, zh-badge, zh-hero-anomaly decorative stage + keyframes, old zh-hero-title/kicker/desc, zh-categories, zh-pill, zh-cta-row, zh-grid-4/zh-grid-5).
+- Verified via tsc, CSS brace-balance check, and desktop/mobile screenshot comparison. globals.css: 7040 -> 6695 lines.
