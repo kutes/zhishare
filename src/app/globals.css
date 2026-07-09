@@ -1580,6 +1580,35 @@ canvas {
     padding-block: 4.25rem 3rem;
   }
 
+  .zh-hero-slim {
+    padding-block: 1.75rem 0.5rem;
+  }
+
+  .zh-hero-slim .zh-hero-stage-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .zh-hero-slim .zh-eyebrow {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .zh-hero-slim .zh-hero-search {
+    flex: 1;
+    min-width: 260px;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .zh-hero-slim .zh-hero-stage-inner {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
   .zh-eyebrow {
     display: inline-flex;
     align-items: center;
