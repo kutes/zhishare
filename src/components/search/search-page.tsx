@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import type { ArticleItem } from "@/components/articles/article-content";
+import { getSectionPlainText, type ArticleItem } from "@/components/articles/article-content";
 import type { ToolItem } from "@/types/tool";
 import { SearchHero } from "./search-hero";
 import { SearchControls, type SearchMode } from "./search-controls";
@@ -106,15 +106,7 @@ function getToolSearchText(tool: ToolItem) {
 }
 
 function getArticleSearchText(article: ArticleItem) {
-  const sectionText = article.sections
-    .map((section) => {
-      if (section.type === "paragraphs") {
-        return [section.title, ...section.paragraphs].join(" ");
-      }
-
-      return [section.title, ...section.items].join(" ");
-    })
-    .join(" ");
+  const sectionText = article.sections.map(getSectionPlainText).join(" ");
 
   return [article.title, article.summary, article.category, ...article.tags, sectionText].join(" ");
 }

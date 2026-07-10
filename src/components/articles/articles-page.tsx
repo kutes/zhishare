@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import type { ArticleItem } from "./article-content";
+import { getSectionPlainText, type ArticleItem } from "./article-content";
 import { ArticlesFilterPanel } from "./articles-filter-panel";
 import { ArticlesGrid } from "./articles-grid";
 import { ArticlesHero } from "./articles-hero";
@@ -33,15 +33,7 @@ export function ArticlesPage({ articles }: ArticlesPageProps) {
     const keyword = query.trim().toLowerCase();
 
     return articles.filter((article) => {
-      const sectionText = article.sections
-        .map((section) => {
-          if (section.type === "paragraphs") {
-            return [section.title, ...section.paragraphs].join(" ");
-          }
-
-          return [section.title, ...section.items].join(" ");
-        })
-        .join(" ");
+      const sectionText = article.sections.map(getSectionPlainText).join(" ");
       const matchesQuery =
         keyword.length === 0 ||
         [article.title, article.summary, article.category, ...article.tags, sectionText]

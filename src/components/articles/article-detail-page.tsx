@@ -1,9 +1,10 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { AdPlaceholder } from "@/components/common/AdPlaceholder";
 import { CopyrightNotice } from "@/components/common/CopyrightNotice";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import type { ArticleItem, ArticleSection } from "./article-content";
+import type { ArticleBlock, ArticleItem, ArticleSection } from "./article-content";
 
 type ArticleDetailPageProps = {
   article: ArticleItem;
@@ -48,7 +49,7 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
               <div className="article-detail-meta">
                 <span className="article-detail-meta-item">更新于 {article.date}</span>
                 <span className="article-detail-meta-item">{article.readTime}</span>
-                <span className="article-detail-meta-item">共 {article.sections.length} 个正文 section</span>
+                <span className="article-detail-meta-item">共 {article.sections.length} 节</span>
               </div>
 
               <div className="article-detail-tags">
@@ -67,13 +68,28 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
             <article className="article-detail-main">
               <div className="article-detail-main-head">
                 <div>
-                  <p className="article-detail-section-eyebrow">正文阅读</p>
+                  <p className="article-detail-kicker">正文阅读</p>
                   <h2 className="article-detail-section-heading">按编辑稿结构拆开的完整内容</h2>
                 </div>
-                <p className="article-detail-section-copy">
-                  保留原始 section 渲染逻辑，只把页面背景、卡片、层次和间距统一到暖黑编辑风。
-                </p>
+                <p className="article-detail-section-copy">按章节阅读，重点内容已用高亮框标出。</p>
               </div>
+
+              {article.tldr && article.tldr.length > 0 ? (
+                <div className="article-detail-tldr">
+                  <p className="article-detail-tldr-title">一分钟速览</p>
+                  <ul>
+                    {article.tldr.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {article.sourceNote ? (
+                <p className="article-detail-source-note">
+                  <span aria-hidden="true">⚑</span> {article.sourceNote}
+                </p>
+              ) : null}
 
               <div className="article-detail-sections">
                 {firstSections.map((section, index) => (
@@ -110,7 +126,7 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
                   </div>
                   <div className="article-detail-fact">
                     <p className="article-detail-fact-label">正文</p>
-                    <p className="article-detail-fact-value">{article.sections.length} 个 section</p>
+                    <p className="article-detail-fact-value">{article.sections.length} 节</p>
                   </div>
                   <div className="article-detail-fact">
                     <p className="article-detail-fact-label">阅读时长</p>
@@ -202,29 +218,102 @@ export function ArticleNotFoundPage() {
 }
 
 function ArticleContentSection({ section }: { section: ArticleSection }) {
-  if (section.type === "list") {
+  return (
+    <section className="article-detail-section">
+      <div className="article-detail-section-eyebrow">
+        <span className="article-detail-section-number">{section.number}</span>
+        {section.tag ? <span className="article-detail-section-tag">{section.tag}</span> : null}
+      </div>
+      <h2 className="article-detail-section-title">{section.title}</h2>
+      <div className="article-detail-section-body">
+        {section.blocks.map((block, index) => (
+          <ArticleBlockView key={`${section.number}-${block.kind}-${index}`} block={block} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ArticleBlockView({ block }: { block: ArticleBlock }) {
+  if (block.kind === "paragraph") {
+    const className =
+      block.weight === "lead"
+        ? "article-detail-lead"
+        : block.weight === "big"
+          ? "article-detail-big"
+          : undefined;
+    return <p className={className}>{block.text}</p>;
+  }
+
+  if (block.kind === "list") {
     return (
-      <section className="article-detail-section">
-        <h2 className="article-detail-section-title">{section.title}</h2>
-        <div className="article-detail-section-body article-detail-list-grid">
-          {section.items.map((item, index) => (
-            <div key={`${section.title}-item-${index}`} className="article-detail-list-item">
-              {item}
-            </div>
-          ))}
+      <div className="article-detail-list-grid">
+        {block.items.map((item, index) => (
+          <div key={index} className="article-detail-list-item">
+            {item}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (block.kind === "why") {
+    return (
+      <div className="article-detail-why">
+        <span className="article-detail-why-icon" aria-hidden="true">
+          ◆
+        </span>
+        <div>
+          <b>为什么值得看：</b>
+          {block.text}
         </div>
-      </section>
+      </div>
+    );
+  }
+
+  if (block.kind === "keypoint") {
+    return (
+      <div className="article-detail-keypoint">
+        <span className="article-detail-keypoint-tag">{block.tag}</span>
+        <p>{renderBoldMarkup(block.text)}</p>
+      </div>
+    );
+  }
+
+  if (block.kind === "photo") {
+    return (
+      <figure className="tool-media-item">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="tool-media-image" src={block.url} alt="" loading="lazy" />
+        <figcaption className="tool-media-caption">{block.caption}</figcaption>
+      </figure>
     );
   }
 
   return (
-    <section className="article-detail-section">
-      <h2 className="article-detail-section-title">{section.title}</h2>
-      <div className="article-detail-section-body">
-        {section.paragraphs.map((paragraph, index) => (
-          <p key={`${section.title}-paragraph-${index}`}>{paragraph}</p>
-        ))}
+    <figure className="tool-media-item">
+      <div className="tool-media-embed">
+        <iframe
+          src={block.url}
+          title={block.caption}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
       </div>
-    </section>
+      <figcaption className="tool-media-caption">{block.caption}</figcaption>
+    </figure>
+  );
+}
+
+function renderBoldMarkup(text: string): ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <b key={index}>{part.slice(2, -2)}</b>
+    ) : (
+      <span key={index}>{part}</span>
+    ),
   );
 }

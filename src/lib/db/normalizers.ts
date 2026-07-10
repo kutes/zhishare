@@ -1,4 +1,5 @@
 import type { ArticleSection } from "@/components/articles/article-content";
+import { getEmbedProvider } from "@/lib/media/tool-media";
 import type { MockCategory } from "@/data/mock-tools";
 import type { ArticleRow, CategoryRow, TagRow, ToolRow } from "@/types/database";
 import type { PublishedArticle } from "@/types/article";
@@ -90,7 +91,7 @@ export function normalizeArticle(
   const id = String(row.id);
   const title = firstText(row.title, row.slug, id);
   const summary = firstText(row.summary, "暂无文章摘要。");
-  const contentSections = readArticleSections(row.content, summary);
+  const { sections, tldr, sourceNote } = readArticleSections(row.content, summary);
   const tags = options.tags?.length ? options.tags : readStringList(row.tags);
 
   return {
@@ -102,7 +103,9 @@ export function normalizeArticle(
     date: formatDate(row.updated_at ?? row.created_at),
     readTime: firstText(row.read_time, "5 分钟"),
     tags,
-    sections: contentSections,
+    sections,
+    tldr,
+    sourceNote,
     cover_url: row.cover_url ?? undefined,
     category_id: row.category_id ?? undefined,
     created_at: row.created_at ?? undefined,
@@ -228,15 +231,28 @@ function withFallback(items: string[], fallback: string[]) {
   return items.length > 0 ? items : fallback;
 }
 
-function readArticleSections(content: unknown, summary: string): ArticleSection[] {
+function readArticleSections(
+  content: unknown,
+  summary: string,
+): { sections: ArticleSection[]; tldr?: string[]; sourceNote?: string } {
   const markdown = normalizeArticleContent(content);
-  const sections = parseArticleSections(markdown);
+  const parsed = parseArticleSections(markdown);
 
-  if (sections.length > 0) {
-    return sections;
+  if (parsed.sections.length > 0) {
+    return parsed;
   }
 
-  return [{ type: "paragraphs", title: "文章说明", paragraphs: [summary] }];
+  return {
+    sections: [
+      {
+        number: 1,
+        title: "文章说明",
+        blocks: [{ kind: "paragraph", text: summary, weight: "lead" }],
+      },
+    ],
+    tldr: parsed.tldr,
+    sourceNote: parsed.sourceNote,
+  };
 }
 
 function normalizeArticleContent(content: unknown) {
@@ -253,90 +269,164 @@ function normalizeArticleContent(content: unknown) {
   return "";
 }
 
-function parseArticleSections(markdown: string): ArticleSection[] {
+type ParsedArticleContent = {
+  sections: ArticleSection[];
+  tldr?: string[];
+  sourceNote?: string;
+};
+
+const LIST_LINE_PATTERN = /^(?:[-*•]|\d+[.)])\s+(.+)$/;
+
+function parseArticleSections(markdown: string): ParsedArticleContent {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const sections: ArticleSection[] = [];
 
-  let currentTitle = "正文内容";
-  let paragraphLines: string[] = [];
-  let listItems: string[] = [];
-  let inCodeBlock = false;
+  let current: ArticleSection | null = null;
+  let tldr: string[] | undefined;
+  let sourceNote: string | undefined;
+  let collectingTldr = false;
+  let seenHeading = false;
+  let atSectionStart = false;
+  let openingParagraphs = 0;
 
-  const flushParagraphs = () => {
-    if (paragraphLines.length === 0) {
-      return;
+  const pushCurrent = () => {
+    if (current) {
+      sections.push(current);
+      current = null;
     }
-
-    sections.push({
-      type: "paragraphs",
-      title: currentTitle,
-      paragraphs: paragraphLines.map((line) => line.trim()).filter(Boolean),
-    });
-    paragraphLines = [];
   };
 
-  const flushList = () => {
-    if (listItems.length === 0) {
-      return;
+  const ensureSection = (): ArticleSection => {
+    if (!current) {
+      current = { number: sections.length + 1, title: "正文内容", blocks: [] };
+      atSectionStart = true;
+      openingParagraphs = 0;
     }
-
-    sections.push({
-      type: "list",
-      title: currentTitle,
-      items: listItems,
-    });
-    listItems = [];
+    return current;
   };
 
   for (const rawLine of lines) {
     const line = rawLine.trim();
 
-    if (line.startsWith("```")) {
-      inCodeBlock = !inCodeBlock;
+    if (collectingTldr) {
+      const tldrItem = line.match(LIST_LINE_PATTERN);
+      if (tldrItem) {
+        tldr?.push(tldrItem[1].trim());
+        continue;
+      }
+      collectingTldr = false;
+    }
+
+    if (!line || line === "---") {
       continue;
     }
 
-    if (inCodeBlock) {
-      if (line) {
-        paragraphLines.push(line);
+    if (!seenHeading && !current) {
+      if (line === "[速览]" && !tldr) {
+        tldr = [];
+        collectingTldr = true;
+        continue;
+      }
+
+      const sourceMatch = line.match(/^\[来源\]\s*(.+)$/);
+      if (sourceMatch && !sourceNote) {
+        sourceNote = sourceMatch[1].trim();
+        continue;
+      }
+    }
+
+    const headingMatch = line.match(/^#{1,3}\s*(?:\[([^\]]+)\])?\s*(.+)$/);
+    if (headingMatch) {
+      pushCurrent();
+      current = {
+        number: sections.length + 1,
+        tag: headingMatch[1]?.trim() || undefined,
+        title: headingMatch[2].trim(),
+        blocks: [],
+      };
+      seenHeading = true;
+      atSectionStart = true;
+      openingParagraphs = 0;
+      continue;
+    }
+
+    const whyMatch = line.match(/^\[WHY\]\s*(.+)$/);
+    if (whyMatch) {
+      ensureSection().blocks.push({ kind: "why", text: whyMatch[1].trim() });
+      atSectionStart = false;
+      continue;
+    }
+
+    const keyMatch = line.match(/^\[KEY\s+([^\]]+)\]\s*(.+)$/);
+    if (keyMatch) {
+      ensureSection().blocks.push({ kind: "keypoint", tag: keyMatch[1].trim(), text: keyMatch[2].trim() });
+      atSectionStart = false;
+      continue;
+    }
+
+    const imgMatch = line.match(/^\[IMG\]\s*(.+)$/);
+    if (imgMatch) {
+      const [url, ...captionParts] = imgMatch[1].split("|");
+      if (url?.trim()) {
+        ensureSection().blocks.push({
+          kind: "photo",
+          url: url.trim(),
+          caption: captionParts.join("|").trim(),
+        });
+        atSectionStart = false;
       }
       continue;
     }
 
-    if (!line) {
-      flushParagraphs();
-      flushList();
+    const videoMatch = line.match(/^\[VIDEO\]\s*(.+)$/);
+    if (videoMatch) {
+      const [url, ...captionParts] = videoMatch[1].split("|");
+      const provider = url?.trim() ? getEmbedProvider(url.trim()) : null;
+      if (provider) {
+        ensureSection().blocks.push({
+          kind: "video",
+          url: url.trim(),
+          caption: captionParts.join("|").trim(),
+          provider,
+        });
+        atSectionStart = false;
+      }
       continue;
     }
 
-    const headingMatch = line.match(/^#{1,3}\s+(.+)$/);
-    if (headingMatch) {
-      flushParagraphs();
-      flushList();
-      currentTitle = headingMatch[1].trim();
-      continue;
-    }
-
-    const listMatch = line.match(/^(?:[-*•]|\d+[.)])\s+(.+)$/);
+    const listMatch = line.match(LIST_LINE_PATTERN);
     if (listMatch) {
-      flushParagraphs();
-      listItems.push(listMatch[1].trim());
+      const section = ensureSection();
+      const lastBlock = section.blocks[section.blocks.length - 1];
+      if (lastBlock?.kind === "list") {
+        lastBlock.items.push(listMatch[1].trim());
+      } else {
+        section.blocks.push({ kind: "list", items: [listMatch[1].trim()] });
+      }
+      atSectionStart = false;
       continue;
     }
 
-    if (line === "---") {
-      flushParagraphs();
-      flushList();
-      continue;
+    const section = ensureSection();
+    const text = line.replace(/^>\s?/, "");
+    let weight: "lead" | "big" | "normal" = "normal";
+    if (atSectionStart && openingParagraphs === 0) {
+      weight = "lead";
+      openingParagraphs = 1;
+    } else if (atSectionStart && openingParagraphs === 1) {
+      weight = section.number === 1 ? "big" : "normal";
+      atSectionStart = false;
     }
-
-    paragraphLines.push(line.replace(/^>\s?/, ""));
+    section.blocks.push({ kind: "paragraph", text, weight });
   }
 
-  flushParagraphs();
-  flushList();
+  pushCurrent();
 
-  return sections;
+  return {
+    sections,
+    tldr: tldr && tldr.length > 0 ? tldr : undefined,
+    sourceNote,
+  };
 }
 
 function formatDate(value: string | null | undefined) {
