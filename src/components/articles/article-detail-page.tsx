@@ -27,6 +27,16 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
             </Link>
 
             <div className="article-detail-hero-card">
+              {article.cover_url?.trim() ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className="article-detail-cover"
+                  src={article.cover_url}
+                  alt=""
+                  loading="eager"
+                />
+              ) : null}
+
               <div className="article-detail-kicker-row">
                 <span className="article-detail-kicker">文章详情</span>
                 <span className="article-detail-meta-item">{article.category}</span>

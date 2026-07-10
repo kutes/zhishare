@@ -735,6 +735,23 @@ canvas {
     padding: clamp(1.1rem, 1vw + 1rem, 1.6rem);
   }
 
+  .article-detail-cover {
+    display: block;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    margin-bottom: 1.1rem;
+    border: 1px solid rgba(255, 247, 237, 0.1);
+    border-radius: 18px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 760px) {
+    .article-detail-cover {
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+    }
+  }
+
   .article-detail-kicker-row,
   .article-detail-meta,
   .article-detail-tags,
