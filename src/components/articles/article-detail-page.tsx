@@ -140,6 +140,15 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
               <div className="article-detail-related-grid">
                 {relatedArticles.map((relatedArticle) => (
                   <article key={relatedArticle.id} className="article-detail-related-card">
+                    {relatedArticle.cover_url?.trim() ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className="article-detail-related-cover"
+                        src={relatedArticle.cover_url}
+                        alt=""
+                        loading="lazy"
+                      />
+                    ) : null}
                     <span className="article-detail-tag">{relatedArticle.category}</span>
                     <h3 className="article-detail-related-title">{relatedArticle.title}</h3>
                     <p className="article-detail-related-desc">{relatedArticle.summary}</p>

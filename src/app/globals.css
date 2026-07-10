@@ -1005,6 +1005,16 @@ canvas {
       background 180ms ease;
   }
 
+  .article-detail-related-cover {
+    display: block;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    margin-bottom: 0.85rem;
+    border: 1px solid rgba(255, 247, 237, 0.08);
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
   .article-detail-related-card:hover {
     transform: translateY(-2px);
     border-color: rgba(227, 167, 95, 0.38);
