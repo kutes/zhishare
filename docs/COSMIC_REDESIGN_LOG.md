@@ -417,3 +417,11 @@ Status: completed
 - Hero: restored the serif display title "发现好工具，少走弯路" at a restrained clamp(1.9rem-2.9rem), centered column of pill -> title -> 640px search (the mainstream "display type + search" landing pattern), no kicker/desc/CTA bloat.
 - Featured card: CSS-only magazine split via a homepage-scoped .zh-feature-hero wrapper — image fills the left column (min 300px tall, object-fit cover), copy vertically centered right (Stripe/Medium featured-card pattern); stacks back to 16:9-top on <=900px. /tools featured cards keep the banner variant (wrapper-scoped, component untouched).
 - Verified: tsc + homepage desktop/mobile screenshots.
+
+### Step 56 - Command-palette hero (third hero iteration)
+
+Status: completed
+
+- Dropped the eyebrow pill (it duplicated the header's brand subtitle verbatim).
+- Hero now: serif display title -> site-principles tagline (amber-dot separated, xiaohu-style) -> 56px pill search with integrated pill button and warm glow -> "大家在找" quick chips linking directly to 4 real tools' detail pages (real data passed from page.tsx, no fabricated hotness).
+- Mobile keeps the pill search in a row (overrides the legacy stacked-search rule) and wraps the chips.

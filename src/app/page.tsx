@@ -22,12 +22,13 @@ export default async function Page() {
   noStore();
 
   const [tools, articles] = await Promise.all([getPublishedTools(), getPublishedArticles()]);
+  const quickTools = tools.slice(0, 4).map((tool) => ({ label: tool.name, slug: tool.slug }));
 
   return (
     <div className="public-cosmic-page warm-home-page">
       <SiteHeader />
       <main className="zh-home-main">
-        <CosmicHomeHero />
+        <CosmicHomeHero quickTools={quickTools} />
         <CosmicHomeSections tools={tools} articles={articles} />
       </main>
       <SiteFooter />
