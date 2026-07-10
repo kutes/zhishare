@@ -436,3 +436,11 @@ Status: completed
 - ArticleRow/PublishedArticle type gap fixed: cover_url existed in the live DB column and Supabase types but was never read into ArticleRow or mapped in normalizeArticle.
 - Admin article form auto-generates + uploads a cover on save when empty, mirroring AdminToolForm.
 - Verified via tsc + /articles desktop/mobile screenshots + homepage article-zone DOM assertion.
+
+### Step 58 - Article detail cover band
+
+Status: completed
+
+- Article detail hero card now renders the generated cover as an inset rounded 21:9 band (16:9 on mobile) above the kicker/title; related-article cards got matching small cover bands.
+- cover_url data was already flowing (Step 57); this step only adds the missing presentation. Empty cover_url renders nothing (no placeholder box).
+- Verified via tsc, DOM assertions, and desktop/mobile screenshots.
