@@ -16,6 +16,11 @@
 ## 标记语法(已确认)
 
 ```markdown
+[速览]
+- 要点一，完整句。
+- 要点二，完整句。
+- 要点三，完整句。
+
 [来源] 一句话来源说明。
 
 ## [发布] 小节标题
@@ -38,9 +43,12 @@
 ```
 
 规则:
+- `[速览]` 独占一行,只能出现在第一个 `##` 之前,全文最多一处;其后**紧邻的连续列表行**(`- ` 开头)即速览要点,遇到第一个非列表行结束收集。
 - `[来源] ...` 只能出现在全文最前面(第一个 `##` 之前),全文最多一处。
 - `## [标签] 标题` 里的 `[标签]` 可选;省略时该小节没有短标签,只有编号。
-- 每个 `##` 小节内,**紧跟标题之后、且中间没有其它类型内容插入**的前两个普通段落自动升级为 `lead`/`big`;跳过 `[WHY]`/`[KEY]`/`[IMG]`/`[VIDEO]`/列表之后出现的段落一律 `normal`(不回溯)。
+- **lead**:每个 `##` 小节内,紧跟标题之后的第 1 个普通段落自动升级为 `lead`(每节都适用)。
+- **big**:仅当小节是**第 1 节**时,紧跟 lead 的第 2 个普通段落升级为 `big`;其余小节第 2 段就是 `normal`。(2026-07-10 修正:实测目标站 9 节全部有 lead、但 big 全文仅开篇 1 处,首版"每节前两段都加大"会导致全文视觉过重。)
+- 中间被 `[WHY]`/`[KEY]`/`[IMG]`/`[VIDEO]`/列表插入之后出现的段落一律 `normal`(不回溯)。
 - `[KEY 标签]` 的标签和正文用空格分隔;正文里 `**文字**` 转成 `<b>`(仅这一种内联标记,不做完整 Markdown 内联解析)。
 - `[IMG]`/`[VIDEO]` 用 `|` 分隔 URL 和说明文字;两侧空格自动裁剪。`[VIDEO]` 的 URL 必须匹配既有的 bilibili/youtube 域名白名单(复用 `src/lib/media/tool-media.ts` 的 `getEmbedProvider`),不匹配则整块跳过渲染(容错,不报错崩页)。
 - 旧文章(没有任何新记号)完全兼容:每个 `##` 下的段落走"前两段自动 lead/big"规则,等于免费获得新样式。
@@ -71,6 +79,7 @@ export type ArticleItem = MockArticle & {
   slug: string;
   tags: string[];
   sections: ArticleSection[];
+  tldr?: string[];
   sourceNote?: string;
   cover_url?: string | null;
 };
@@ -84,7 +93,9 @@ export type ArticleItem = MockArticle & {
 
 算法(状态机,单趟扫描):
 
-1. 逐行扫描。先处理"文首来源披露":如果还没遇到第一个 `##`,且当前行匹配 `/^\[来源\]\s*(.+)$/`,记录为 `sourceNote`,跳过该行。
+1. 逐行扫描。先处理"文首前置块"(仅在还没遇到第一个 `##` 时生效):
+   - 当前行是 `[速览]` → 进入"收集速览"模式,其后每个连续的列表行(`/^(?:[-*•]|\d+[.)])\s+(.+)$/`)推入 `tldr` 数组;遇到第一个非列表行退出该模式(该行按正常规则继续处理)。
+   - 当前行匹配 `/^\[来源\]\s*(.+)$/` → 记录为 `sourceNote`,跳过该行。
 2. 遇到 `## [标签]? 标题` (正则 `/^#{1,3}\s*(?:\[([^\]]+)\])?\s*(.+)$/`):把当前正在构建的 section(如果有)推入结果数组;新开一个 section,`number` = 结果数组长度 + 1,`tag` = 捕获组 1(可能是 undefined),`title` = 捕获组 2,`blocks = []`,并重置"是否仍在小节开头"的标记为 true。
 3. 遇到 `[WHY] 文字`:推入 `{kind:"why", text}` block,标记"不再是小节开头"。
 4. 遇到 `[KEY 标签] 正文`(正则 `/^\[KEY\s+([^\]]+)\]\s*(.+)$/`):`**x**` 替换成占位标记,推入 `{kind:"keypoint", tag, text}`(text 保留 `**`,渲染时再转 `<b>`,不在解析阶段转 HTML 字符串,避免 XSS 面);标记"不再是小节开头"。
@@ -93,14 +104,14 @@ export type ArticleItem = MockArticle & {
 7. 遇到列表行(复用现有正则 `/^(?:[-*•]|\d+[.)])\s+(.+)$/`):如果上一个 block 也是 `kind:"list"` 就 push 进它的 `items`,否则新开一个 `{kind:"list", items:[...]}` block;标记"不再是小节开头"。
 8. 遇到 `---` 或空行:跳过,不改变状态(旧逻辑里空行用来触发 flush,新模型不需要——block 边界由记号本身决定,不依赖空行)。
 9. 其余非空行 = 普通段落。**每一行独立成一个 paragraph block,不做跨行合并**(对齐现有旧解析器的行为:一行 = 一段,不是按空行分隔多行拼成一段):
-   - 若当前"仍是小节开头"且这是遇到的第 1 个普通段落 → `weight:"lead"`。
-   - 若"仍是小节开头"且这是第 2 个普通段落 → `weight:"big"`,之后清除"小节开头"标记。
+   - 若当前"仍是小节开头"且这是遇到的第 1 个普通段落 → `weight:"lead"`(每个小节都适用)。
+   - 若"仍是小节开头"且这是第 2 个普通段落:**当且仅当当前小节 `number === 1`** → `weight:"big"`;否则 `weight:"normal"`。无论哪种,之后清除"小节开头"标记。
    - 否则 → `weight:"normal"`。
    - 推入 `{kind:"paragraph", text, weight}`。
 10. 扫描结束,把最后一个 section(如果有)推入结果数组。
 11. 如果全文没有任何 `##`(结果数组为空),回退成一个单独 section:`{number:1, title:"文章说明", blocks:[{kind:"paragraph", text: summary, weight:"lead"}]}`(对齐现有 `readArticleSections` 的兜底行为)。
 
-`readArticleSections(content, summary)` 函数签名不变,内部改调新解析器,返回值加一个 `sourceNote`(从解析器一并返回,函数签名改成返回 `{ sections, sourceNote }`,调用处 `normalizeArticle` 解构后分别赋给 `article.sections` 和 `article.sourceNote`)。
+`readArticleSections(content, summary)` 内部改调新解析器,返回签名改成 `{ sections, tldr, sourceNote }`,调用处 `normalizeArticle` 解构后分别赋给 `article.sections`、`article.tldr`、`article.sourceNote`。
 
 ## 渲染组件重写
 
@@ -212,11 +223,30 @@ function renderBoldMarkup(text: string): ReactNode[] {
 
 `photo`/`video` block 直接复用 `tool-media-*` 三个 CSS 类(`.tool-media-item`/`.tool-media-image`/`.tool-media-embed`/`.tool-media-caption`,已在 `globals.css` 里,是工具详情页富媒体那次做的),不新增重复样式——这些类名语义本来就是"一张带说明的图/一段带说明的嵌入视频",不含"tool"专属逻辑,文章复用没有耦合问题。
 
-**来源披露**渲染位置:在 `article-detail-hero-card` 内、封面图和 kicker 行之间(如果 `article.sourceNote` 存在):
+**速览框 + 来源披露**渲染位置(2026-07-10 修正:对齐目标站——两者都在**正文栏顶部**,不在 hero 卡里;顺序为速览在前、披露在后、然后才是第一节):在 `article-detail-page.tsx` 的 `<div className="article-detail-sections">` 之前插入:
 
 ```tsx
-{article.sourceNote ? <p className="article-detail-source-note">{article.sourceNote}</p> : null}
+{article.tldr && article.tldr.length > 0 ? (
+  <div className="article-detail-tldr">
+    <p className="article-detail-tldr-title">一分钟速览</p>
+    <ul>
+      {article.tldr.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  </div>
+) : null}
+
+{article.sourceNote ? (
+  <p className="article-detail-source-note">
+    <span aria-hidden="true">⚑</span> {article.sourceNote}
+  </p>
+) : null}
 ```
+
+另:`article-detail-page.tsx` 顶部需要补 `import type { ReactNode } from "react";`(`renderBoldMarkup` 的返回类型用到)。
+
+顺手修两处现有的开发者黑话文案(与目标站"07-09 · 6 分钟"的读者视角一致):hero meta 里的 `共 {article.sections.length} 个正文 section` 改为 `共 {article.sections.length} 节`;侧栏"文章信息"里 `{article.sections.length} 个 section` 改为 `{article.sections.length} 节`。正文区头部的说明文案 `保留原始 section 渲染逻辑，只把页面背景……` 是给开发者看的旧注释式文案,改为面向读者的 `按章节阅读，重点内容已用高亮框标出。`
 
 **Props 类型**:`ArticleDetailPageProps.article` 类型不变(`ArticleItem`,已经在类型层面加了 `sourceNote`/`cover_url`)。
 
@@ -272,12 +302,51 @@ sections: [
 新增类(锚点:`.article-detail-section-title` 现有规则附近):
 
 ```css
+.article-detail-tldr {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(227, 167, 95, 0.2);
+  border-radius: 16px;
+  background: rgba(227, 167, 95, 0.05);
+  padding: 1rem 1.2rem;
+}
+
+.article-detail-tldr-title {
+  margin: 0 0 0.6rem;
+  color: #e3a75f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.article-detail-tldr ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.article-detail-tldr li {
+  color: rgba(247, 241, 234, 0.9);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.article-detail-tldr li::marker {
+  color: rgba(227, 167, 95, 0.7);
+}
+
 .article-detail-source-note {
-  margin: 0 0 0.9rem;
-  color: rgba(175, 163, 153, 0.75);
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 0 1.4rem;
+  color: rgba(175, 163, 153, 0.78);
   font-size: 0.82rem;
-  font-style: italic;
   line-height: 1.7;
+}
+
+.article-detail-source-note span[aria-hidden] {
+  color: rgba(227, 167, 95, 0.8);
+  flex-shrink: 0;
 }
 
 .article-detail-section-eyebrow {
