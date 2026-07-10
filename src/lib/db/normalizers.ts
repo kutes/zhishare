@@ -103,6 +103,7 @@ export function normalizeArticle(
     readTime: firstText(row.read_time, "5 分钟"),
     tags,
     sections: contentSections,
+    cover_url: row.cover_url ?? undefined,
     category_id: row.category_id ?? undefined,
     created_at: row.created_at ?? undefined,
     updated_at: row.updated_at ?? undefined,

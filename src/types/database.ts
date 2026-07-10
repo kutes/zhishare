@@ -54,6 +54,7 @@ export type ArticleRow = {
   slug: string | null;
   summary: string | null;
   content: Json | null;
+  cover_url: string | null;
   category_id: string | null;
   category: string | null;
   tags: Json | null;

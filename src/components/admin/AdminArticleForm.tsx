@@ -2,6 +2,8 @@
 
 import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
+import { generateToolCover } from "@/lib/covers/tool-cover.mjs";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { AdminArticleDbResult, AdminArticleInput, ArticleStatus } from "@/types/article";
 import type { AdminCategoryOption } from "@/types/tool";
 
@@ -67,11 +69,40 @@ export function AdminArticleForm({ mode, categories, initialValues, onSubmit }: 
     }
 
     setIsSubmitting(true);
+
+    // 封面为空时自动生成并上传;任何失败都不阻塞保存(cover_url 留空走前台兜底占位)。
+    let coverUrl = values.cover_url?.trim() ?? "";
+    if (!coverUrl && values.slug.trim()) {
+      try {
+        const categoryName = categories.find((item) => item.id === values.category_id)?.name ?? "";
+        const { coverSvg } = generateToolCover({
+          title: values.title.trim(),
+          slug: values.slug.trim(),
+          category: categoryName,
+        });
+        const client = getSupabaseBrowserClient();
+        if (client) {
+          const slug = values.slug.trim();
+          const upload = await client.storage
+            .from("article-covers")
+            .upload(`covers/${slug}.svg`, new Blob([coverSvg]), { contentType: "image/svg+xml", upsert: true });
+          if (!upload.error) {
+            coverUrl = client.storage.from("article-covers").getPublicUrl(`covers/${slug}.svg`).data.publicUrl ?? "";
+          } else {
+            console.warn("[covers] upload failed, saving without cover", upload.error);
+          }
+        }
+      } catch (error) {
+        console.warn("[covers] generation failed, saving without cover", error);
+      }
+    }
+
     const result = await onSubmit({
       ...values,
       title: values.title.trim(),
       slug: values.slug.trim(),
       summary: values.summary.trim(),
+      cover_url: coverUrl,
       status: values.status,
     });
 

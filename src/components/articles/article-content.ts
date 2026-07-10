@@ -16,6 +16,7 @@ export type ArticleItem = MockArticle & {
   slug: string;
   tags: string[];
   sections: ArticleSection[];
+  cover_url?: string | null;
 };
 
 const articleDetails: Record<string, { tags: string[]; sections: ArticleSection[] }> = {

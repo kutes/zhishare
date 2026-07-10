@@ -4919,6 +4919,40 @@ canvas {
       box-shadow 180ms ease;
   }
 
+  .articles-card-banner {
+    display: block;
+    width: calc(100% + 2.5rem);
+    aspect-ratio: 16 / 9;
+    margin: -1.25rem -1.25rem 1rem;
+    border-bottom: 1px solid rgba(255, 247, 237, 0.08);
+    object-fit: cover;
+  }
+
+  .articles-card-cover-fallback {
+    display: flex;
+    width: calc(100% + 2.5rem);
+    aspect-ratio: 16 / 9;
+    align-items: center;
+    justify-content: center;
+    margin: -1.25rem -1.25rem 1rem;
+    border-bottom: 1px solid rgba(255, 247, 237, 0.08);
+    background:
+      radial-gradient(circle at 30% 28%, rgba(227, 167, 95, 0.16), transparent 30%),
+      linear-gradient(150deg, #171210, #120f0e);
+    color: #f7f1ea;
+    font-family: var(--zh-serif);
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  .articles-card-summary-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    flex: none;
+  }
+
   .articles-card::before {
     position: absolute;
     inset: 0;

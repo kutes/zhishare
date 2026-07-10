@@ -425,3 +425,14 @@ Status: completed
 - Dropped the eyebrow pill (it duplicated the header's brand subtitle verbatim).
 - Hero now: serif display title -> site-principles tagline (amber-dot separated, xiaohu-style) -> 56px pill search with integrated pill button and warm glow -> "大家在找" quick chips linking directly to 4 real tools' detail pages (real data passed from page.tsx, no fabricated hotness).
 - Mobile keeps the pill search in a row (overrides the legacy stacked-search rule) and wraps the chips.
+
+### Step 57 - Article covers (same generator/rules as tools)
+
+Status: completed
+
+- Reversed the earlier "article cards stay pure typography" decision per user request: articles now use the same deterministic cover generator as tools (generateToolCover is generic on {title, slug, category}, already shared code).
+- New public "article-covers" bucket + guarded backfill script (dry-run validated, executed clean: 5/5 articles covered).
+- ArticleCard: cover-on-top layout matching CompactToolCard's visual language (user-confirmed choice); two-tier fallback only (generated cover -> initials) since articles have no official website for a photo tier.
+- ArticleRow/PublishedArticle type gap fixed: cover_url existed in the live DB column and Supabase types but was never read into ArticleRow or mapped in normalizeArticle.
+- Admin article form auto-generates + uploads a cover on save when empty, mirroring AdminToolForm.
+- Verified via tsc + /articles desktop/mobile screenshots + homepage article-zone DOM assertion.

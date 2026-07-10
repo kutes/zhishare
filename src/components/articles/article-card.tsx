@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getToolInitials } from "@/lib/covers/tool-cover.mjs";
 import type { ArticleItem } from "./article-content";
 
 type ArticleCardProps = {
@@ -6,8 +7,19 @@ type ArticleCardProps = {
 };
 
 export function ArticleCard({ article }: ArticleCardProps) {
+  const coverUrl = article.cover_url?.trim() || null;
+
   return (
-    <article className="articles-card">
+    <article className="articles-card articles-card-cover">
+      {coverUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="articles-card-banner" src={coverUrl} alt="" loading="lazy" />
+      ) : (
+        <div className="articles-card-cover-fallback">
+          <span>{getToolInitials(article.title)}</span>
+        </div>
+      )}
+
       <div className="articles-card-topline">
         <span className="articles-card-dot" aria-hidden="true" />
         <span className="articles-card-chip articles-card-chip-accent">{article.category}</span>
@@ -15,7 +27,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
       </div>
 
       <h2 className="articles-card-title">{article.title}</h2>
-      <p className="articles-card-summary">{article.summary}</p>
+      <p className="articles-card-summary articles-card-summary-clamp">{article.summary}</p>
 
       <div className="articles-card-tags">
         {article.tags.map((tag) => (

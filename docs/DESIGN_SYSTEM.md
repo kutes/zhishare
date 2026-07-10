@@ -62,6 +62,8 @@ CSS 变量集中定义在 `src/app/globals.css` 的 `:root`（跨页面通用）
 
 ## 内容资产标准：生成优先、守门写入
 
+**2026-07-10 更新**：文章卡此前"纯排版、不配图"的规则已作废——文章现在也走和工具一样的封面机制：`generateToolCover()`（通用函数，不局限于工具）按标题/slug/分类生成确定性 SVG，存 `article-covers` 公开桶的 `covers/{slug}.svg`，`articles.cover_url` 写库，`ArticleCard` 用与 `CompactToolCard` 视觉一致的 cover-on-top 布局。文章没有官网，因此只有两级兜底（生成封面 → 首字母），没有工具那样的官方照片层。后台文章表单保存时同样自动生成兜底。
+
 工具封面、图标、详情页富媒体统一走"零数据库改动 + Supabase Storage + 守门脚本"模式，不要为图文需求新增数据库表/列（要用户去控制台跑 SQL，违反本项目"用户不做任何运维操作"的约定）：
 
 - 结构化元数据存 Storage 里的公开 JSON 文件（如 `tool-media/{slug}.json`），前端 `fetch(..., { cache: "no-store" })` 服务端读取，解析失败一律返回空，页面不因缺媒体而报错。
