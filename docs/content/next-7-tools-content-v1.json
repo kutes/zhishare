@@ -1,0 +1,307 @@
+{
+  "version": "v1",
+  "purpose": "Correct, fact-checked UTF-8 Chinese content for the next batch of 7 tools queued in bulk-tools-first-10-ready-to-publish-v1.csv (the first-10 batch minus the 3 already imported: localsend, stirling-pdf, cyberchef). Each tool's facts are verified against its official site/repo before writing, per the content-utf8-corruption incident lesson.",
+  "batch_slugs": ["openless", "plainapp", "autohotkey", "recordly", "droplock", "syncthing", "file-browser"],
+  "completed_slugs": ["openless", "plainapp", "autohotkey", "recordly", "droplock", "syncthing", "file-browser"],
+  "pending_slugs": [],
+  "insert_fields": ["title", "slug", "summary", "description", "category_id", "website_url", "download_url", "is_free", "is_open_source", "target_users", "use_cases", "pros", "cons", "risk_notice", "status"],
+  "list_fields": ["target_users", "use_cases", "pros", "cons"],
+  "list_join": "\n",
+  "tools": {
+    "openless": {
+      "title": "OpenLess",
+      "slug": "openless",
+      "category_id": "8d38cc91-c4c6-4a5c-8cdb-e3114db282dc",
+      "category_name": "AI工具",
+      "website_url": "https://openless.top/",
+      "official_repository": "https://github.com/Open-Less/openless",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://openless.top/",
+        "https://api.github.com/repos/Open-Less/openless",
+        "https://raw.githubusercontent.com/Open-Less/openless/beta/README.md"
+      ],
+      "summary": "开源、本地优先的语音输入工具，按住热键说话，AI 会把语音整理成通顺文字直接输出到光标处。",
+      "description": "OpenLess 是一款开源的语音输入工具，可在任意有光标的输入框中使用：按住设定的热键说话，松开后 AI 会将语音转写并打磨成通顺文字，自动输出到光标所在位置，适用于 ChatGPT、Claude、Cursor 等 AI 工具，也适用于 Notion、Slack、邮件、VS Code 等日常应用。项目基于 Tauri 2 与 Rust 开发，代码完全开源（MIT 协议），音频、转写、词典、历史等数据默认保存在本机；语音识别与文字润色需要用户自行接入火山引擎 ASR 与 Ark / DeepSeek 兼容的 chat-completions 接口，可自由更换服务商，不被单一厂商锁定。目前主要支持 macOS 与 Windows。",
+      "target_users": [
+        "需要频繁打字、想用说话代替打字的人",
+        "希望语音输入工具开源、数据留在本机的用户",
+        "常用 ChatGPT、Claude、Cursor 等 AI 工具、想省去手动整理提示词步骤的人",
+        "愿意自行申请语音识别 / 大模型 API Key 的技术用户"
+      ],
+      "use_cases": [
+        "口述需求，自动整理成结构化的 AI 提示词",
+        "在 Notion、邮件、聊天工具等任意光标处直接语音输入文字",
+        "作为付费闭源语音输入工具（如 Wispr Flow、Superwhisper）的开源替代",
+        "长时间写作或整理内容时用语音提高效率"
+      ],
+      "pros": [
+        "完全开源（MIT 协议），代码透明、无黑盒",
+        "本地优先，音频、转写、历史数据默认不出本机",
+        "可自由更换语音识别与大模型服务商，不被单一厂商锁定",
+        "兼容任意有光标的输入框，覆盖主流 AI 工具与办公软件"
+      ],
+      "cons": [
+        "需要自行申请并配置语音识别与大模型的 API Key，非开箱即用",
+        "当前 macOS 版本为 ad-hoc 签名，首次启动需手动解除系统的 quarantine 限制",
+        "项目仍在早期迭代阶段，具体功能与稳定性以实际版本为准"
+      ],
+      "risk_notice": "OpenLess 为开源项目，处于持续迭代阶段，具体功能、支持平台与签名/公证状态可能随版本变化，请以官方网站 openless.top 和 GitHub 项目页 github.com/Open-Less/openless 为准。使用前请了解自己所接入的语音识别与大模型服务商的隐私政策，避免通过语音输入敏感信息。"
+    },
+    "plainapp": {
+      "title": "PlainApp",
+      "slug": "plainapp",
+      "category_id": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "category_name": "效率软件",
+      "website_url": "https://plainapp.app/",
+      "official_repository": "https://github.com/plainhub/plain-app",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://plainapp.app/",
+        "https://api.github.com/repos/plainhub/plain-app"
+      ],
+      "summary": "开源的安卓手机管理工具，在电脑浏览器里安全地访问和管理手机的文件、照片、通讯录、短信和通话记录。",
+      "description": "PlainApp 是一款开源的安卓手机管理应用。在手机上运行后，你可以通过电脑浏览器打开一个网页界面，直接管理手机里的文件、图片、视频、音乐、通讯录、短信、通话记录等内容，无需安装桌面客户端，也不依赖第三方云服务。数据在你自己的设备之间传输，注重隐私与本地掌控。采用 AGPL-3.0 开源协议，代码公开透明。适合希望在电脑上高效整理手机内容、又不想把数据交给云端的用户。",
+      "target_users": [
+        "想在电脑上管理安卓手机文件和内容的人",
+        "注重隐私、不愿把手机数据上传云端的用户",
+        "需要在电脑和手机间传文件、导出短信通讯录的人",
+        "喜欢开源、自托管方案的用户"
+      ],
+      "use_cases": [
+        "在电脑浏览器里浏览和传输手机里的文件、照片、视频",
+        "备份或导出手机的通讯录、短信、通话记录",
+        "用电脑键盘快速管理手机内容",
+        "作为需要登录云服务的手机管理软件的开源替代"
+      ],
+      "pros": [
+        "开源（AGPL-3.0），数据在自己设备间传输、注重隐私",
+        "电脑浏览器直接操作，无需安装桌面客户端",
+        "覆盖文件、媒体、通讯录、短信、通话等多类内容",
+        "界面简洁易用"
+      ],
+      "cons": [
+        "仅支持安卓手机端",
+        "需要手机和电脑处于同一网络环境",
+        "部分高级功能与稳定性以实际版本为准"
+      ],
+      "risk_notice": "PlainApp 为开源项目，功能与支持范围可能随版本更新变化，请以官方网站 plainapp.app 和 GitHub 项目页 github.com/plainhub/plain-app 为准。涉及短信、通讯录等敏感数据，请仅在受信任的网络环境中使用。"
+    },
+    "autohotkey": {
+      "title": "AutoHotkey",
+      "slug": "autohotkey",
+      "category_id": "7d404bc0-ea1f-41b1-9675-7c51f98c26c5",
+      "category_name": "编程工具",
+      "website_url": "https://www.autohotkey.com/",
+      "official_repository": "https://github.com/AutoHotkey/AutoHotkey",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://www.autohotkey.com/",
+        "https://api.github.com/repos/AutoHotkey/AutoHotkey"
+      ],
+      "summary": "免费开源的 Windows 自动化脚本工具，用简单脚本实现快捷键、文本扩展、批量操作和界面自动化。",
+      "description": "AutoHotkey 是一款面向 Windows 的免费开源自动化脚本工具。你可以用它编写脚本，把重复的操作自动化，例如自定义全局快捷键、文本快速扩展（输入缩写自动补全为长句）、批量重命名、模拟键盘鼠标操作、自动填表等。它有自己简单易学的脚本语言，既适合非程序员做日常效率增强，也能满足高级用户编写复杂自动化流程。采用 GPL-2.0 开源协议，社区活跃、资料丰富。仅支持 Windows。",
+      "target_users": [
+        "想把 Windows 上重复操作自动化的人",
+        "需要自定义快捷键、文本扩展的效率用户",
+        "愿意学习简单脚本来提升效率的人",
+        "有批量处理、界面自动化需求的高级用户"
+      ],
+      "use_cases": [
+        "自定义全局快捷键、快速启动程序",
+        "设置文本缩写自动扩展为长句",
+        "批量重命名、自动填表、模拟键鼠操作",
+        "编写脚本把多步重复流程一键完成"
+      ],
+      "pros": [
+        "免费开源（GPL-2.0），社区活跃、教程丰富",
+        "脚本语言简单，非程序员也能上手",
+        "功能强大，可覆盖从快捷键到复杂自动化",
+        "轻量，占用资源小"
+      ],
+      "cons": [
+        "仅支持 Windows",
+        "复杂自动化需要学习脚本语法",
+        "涉及模拟输入，个别软件或网游可能有兼容/风控限制"
+      ],
+      "risk_notice": "AutoHotkey 为开源工具，请从官方网站 autohotkey.com 或 GitHub 项目页 github.com/AutoHotkey/AutoHotkey 下载，避免第三方来源夹带的脚本或修改版。使用脚本自动化时请注意，部分软件、网游可能禁止模拟输入，使用前需自行确认相关规则。"
+    },
+    "recordly": {
+      "title": "Recordly",
+      "slug": "recordly",
+      "category_id": "8a954cde-d330-42af-8a26-a1e47bfa948d",
+      "category_name": "视频剪辑",
+      "website_url": "https://recordly.dev/",
+      "official_repository": "https://github.com/webadderallorg/recordly",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://recordly.dev/",
+        "https://api.github.com/repos/webadderallorg/recordly"
+      ],
+      "summary": "开源的屏幕录制工具，自带自动缩放、平滑光标、摄像头浮窗和背景美化，无需剪辑就能做出精致的演示视频。",
+      "description": "Recordly 是一款开源的屏幕录制工具，专为演示、教程和产品视频设计。它内置自动缩放（在你操作处自动放大画面）、平滑的光标动画、可缩放的摄像头浮窗和背景美化等效果，让录出来的画面不用后期剪辑也显得专业。支持 macOS、Windows、Linux。适合需要快速录制产品演示、操作讲解、教学视频，又不想花时间做后期的人。项目在 GitHub 开源，由社区支持。",
+      "target_users": [
+        "需要录制产品演示、操作教程的人",
+        "想要精致画面但不擅长或不想做视频剪辑的人",
+        "做在线课程、讲解视频的创作者",
+        "希望用开源工具替代付费录屏软件的用户"
+      ],
+      "use_cases": [
+        "录制产品功能演示和操作走查",
+        "制作教学、讲解类视频",
+        "录制带摄像头浮窗的讲解视频",
+        "快速产出无需后期的精致录屏"
+      ],
+      "pros": [
+        "开源、可免费下载使用",
+        "自动缩放、平滑光标等效果开箱即用，省去后期",
+        "支持 macOS、Windows、Linux 三平台",
+        "自带摄像头浮窗和背景美化"
+      ],
+      "cons": [
+        "主要面向录屏演示，不是完整的视频剪辑软件",
+        "复杂精细的后期仍需专业剪辑工具",
+        "具体许可协议与功能以项目页为准"
+      ],
+      "risk_notice": "Recordly 为开源项目，具体功能、支持平台与许可协议可能随版本变化，请以官方网站 recordly.dev 和 GitHub 项目页 github.com/webadderallorg/recordly 为准。请从官方渠道下载，避免第三方修改版。"
+    },
+    "droplock": {
+      "title": "DropLock",
+      "slug": "droplock",
+      "category_id": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "category_name": "在线工具",
+      "website_url": "https://droplock.apitman.com/",
+      "official_repository": "https://github.com/anderspitman/DropLock",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://droplock.apitman.com/",
+        "https://api.github.com/repos/anderspitman/DropLock"
+      ],
+      "summary": "无需后端的端到端加密私密信息分享工具，在浏览器里生成密钥，安全地收发一次性秘密。",
+      "description": "DropLock 是一款在浏览器里运行、端到端加密的私密信息分享工具，且不依赖任何后端服务器。它的原理是：你的浏览器生成一对公钥/私钥，公钥放进你分享出去的“锁盒”链接里，私钥以不可导出的形式留在你自己的浏览器中。别人拿到你的链接后，可以往“锁盒”里放入秘密并生成加密链接，只有你能解开；反过来也能把秘密安全地发给别人。适合临时、安全地传递密码、密钥、敏感文字等信息。项目开源，但体量很小、较为小众。",
+      "target_users": [
+        "需要安全传递密码、密钥等敏感信息的人",
+        "不希望敏感信息经过第三方服务器的用户",
+        "喜欢端到端加密、无后端方案的技术用户",
+        "临时收发一次性私密信息的场景"
+      ],
+      "use_cases": [
+        "安全地把密码、API 密钥发给同事或朋友",
+        "收集他人提交的敏感信息而不经服务器",
+        "临时、加密地传递私密文字",
+        "作为传统“阅后即焚”分享工具的无后端替代"
+      ],
+      "pros": [
+        "端到端加密，私钥不出本地浏览器",
+        "无后端，不依赖第三方服务器存储",
+        "开源，加密原理透明",
+        "浏览器打开即用，无需安装"
+      ],
+      "cons": [
+        "项目体量较小、较为小众，成熟度和维护活跃度需自行评估",
+        "私钥保存在浏览器本地，换设备或清缓存可能丢失访问能力",
+        "许可协议未明确标注，商用前需自行确认"
+      ],
+      "risk_notice": "DropLock 为小型开源项目（GitHub 星标较少），成熟度与长期维护情况请自行评估，重要或高敏感信息建议结合更成熟的方案。功能与安全实现以官方页面 droplock.apitman.com 和 GitHub 项目页 github.com/anderspitman/DropLock 为准；项目许可协议未明确标注，商用前请确认。"
+    },
+    "syncthing": {
+      "title": "Syncthing",
+      "slug": "syncthing",
+      "category_id": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "category_name": "效率软件",
+      "website_url": "https://syncthing.net/",
+      "official_repository": "https://github.com/syncthing/syncthing",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://syncthing.net/",
+        "https://api.github.com/repos/syncthing/syncthing"
+      ],
+      "summary": "开源的持续文件同步工具，在你自己的多台设备之间点对点实时同步文件，不经过任何云服务器。",
+      "description": "Syncthing 是一款开源的持续文件同步工具，可在你自己的多台设备（电脑、手机、服务器等）之间实时、自动地同步文件。它采用点对点（P2P）方式直接在设备间传输，数据不经过任何中央服务器或第三方云，传输过程加密。适合替代 Dropbox、坚果云等云同步服务，把数据完全掌握在自己手里。支持 Windows、macOS、Linux、Android，也可自托管，采用 MPL-2.0 开源协议，是同类工具中口碑与成熟度都很高的项目。",
+      "target_users": [
+        "想在多台设备间同步文件、又不想用云盘的人",
+        "注重数据隐私、希望数据不经第三方的用户",
+        "需要跨 Windows、macOS、Linux、Android 同步的用户",
+        "喜欢开源、自托管方案的用户"
+      ],
+      "use_cases": [
+        "在电脑、手机、服务器之间实时同步文件夹",
+        "替代云盘做私人文件同步与备份",
+        "多设备间保持资料一致",
+        "搭配 NAS 或自建服务器做私有同步"
+      ],
+      "pros": [
+        "开源（MPL-2.0），成熟稳定、口碑好",
+        "点对点直传，数据不经第三方服务器、全程加密",
+        "跨平台，支持自托管",
+        "免费，容量取决于自己的存储、无人为限制"
+      ],
+      "cons": [
+        "首次配置比云盘略复杂，需要理解设备配对",
+        "同步依赖设备在线，并非云端常驻",
+        "iOS 端无官方应用，主要依赖第三方客户端"
+      ],
+      "risk_notice": "Syncthing 为开源项目，功能与各平台支持以官方网站 syncthing.net 和 GitHub 项目页 github.com/syncthing/syncthing 为准。请从官方渠道获取安装包；重要数据请保持多份备份，不要仅依赖单一同步方案。"
+    },
+    "file-browser": {
+      "title": "File Browser",
+      "slug": "file-browser",
+      "category_id": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "category_name": "在线工具",
+      "website_url": "https://filebrowser.org/",
+      "official_repository": "https://github.com/filebrowser/filebrowser",
+      "download_url": null,
+      "is_free": true,
+      "is_open_source": true,
+      "status": "published",
+      "verified_from": [
+        "https://filebrowser.org/",
+        "https://api.github.com/repos/filebrowser/filebrowser"
+      ],
+      "summary": "开源的自托管网页文件管理器，在自己的服务器上部署后，通过浏览器上传、下载、管理和分享文件。",
+      "description": "File Browser 是一款开源的自托管网页文件管理器。把它部署在自己的服务器或 NAS 上后，你就能通过浏览器界面管理服务器上的文件：上传、下载、预览、编辑、创建分享链接，还能创建多个用户并分配不同权限。它体积小、可单文件部署、支持中文界面，常用于给自己的服务器、家庭 NAS 加一个好用的网页文件管理后台。采用 Apache-2.0 开源协议。适合有自己的服务器、想要一个轻量文件管理与分享界面的用户。",
+      "target_users": [
+        "有自己的服务器或 NAS、需要网页文件管理的人",
+        "想给家庭或团队服务器加文件分享界面的用户",
+        "需要多用户、权限控制的自托管文件管理场景",
+        "喜欢开源、自托管方案的用户"
+      ],
+      "use_cases": [
+        "给自己的服务器或 NAS 加一个网页文件管理后台",
+        "通过浏览器上传下载、预览编辑服务器文件",
+        "创建分享链接把文件发给他人",
+        "多用户分权限管理同一批文件"
+      ],
+      "pros": [
+        "开源（Apache-2.0），轻量、可单文件部署",
+        "网页界面友好，支持多用户与权限控制",
+        "可创建分享链接，方便对外分享",
+        "跨平台，适合各类自托管环境"
+      ],
+      "cons": [
+        "需要自己有服务器并完成部署，有一定门槛",
+        "面向自托管，不是开箱即用的在线网站",
+        "对外开放时需自行做好访问安全与备份"
+      ],
+      "risk_notice": "File Browser 为开源自托管项目，功能与部署方式以官方网站 filebrowser.org 和 GitHub 项目页 github.com/filebrowser/filebrowser 为准。对公网开放时请务必设置强密码、限制权限并做好备份，避免文件泄露或被未授权访问。"
+    }
+  }
+}

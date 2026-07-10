@@ -1,6 +1,6 @@
 {
   "status": "execute_completed",
-  "updated": [
+  "inserted_slugs": [
     "openless",
     "plainapp",
     "autohotkey",
@@ -9,6 +9,6 @@
     "syncthing",
     "file-browser"
   ],
-  "failed": [],
+  "verify_clean": true,
   "secret_values_printed": false
 }

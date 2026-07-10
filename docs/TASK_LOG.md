@@ -4489,3 +4489,14 @@ Result: completed
 - COSMIC_REDESIGN_SPEC.md(旧的重复权威文档,已无引用)改为重定向说明,避免两份"权威设计方向"分叉。
 - PROJECT_RULES.md 补两条:指向 DESIGN_SYSTEM.md 的资产标准;用户不执行任何操作、数据库结构变更需先确认的约定。
 - 本次会话（2026-07-05~07-09）全部工作现已完成:封面系统、照片层、详情页富媒体、主页真实数据、死 CSS 清理、统一标准文档。全部改动仍未推送线上，等待用户指示。
+
+## 2026-07-10 工具 4-10 批次入库完成(原始任务闭环)
+
+Result: completed
+
+- 最早因 UTF-8 乱码事故中断的"继续内容入库"任务闭环:7 个工具(OpenLess、PlainApp、AutoHotkey、Recordly、DropLock、Syncthing、File Browser)全部发布。
+- 内容:每个工具经官网+GitHub API 双源核实(许可、平台、免费/开源),中文重写并通过反乱码门(零 ??、含 CJK、4/4/4/3 字段);DropLock 如实标注小众(24 star)、Recordly 如实标注许可未规范声明。
+- 导入:新守门脚本 import-next-7-tools.mjs(dry-run→execute,slug 白名单+冲突检查+分类 ID 校验+插入后读回验证),INSERTED 7/7、VERIFY_CLEAN true。
+- 封面:生成封面 7/7;官方 og:image 又抓到 2 张(PlainApp、Recordly)。
+- 站点现状:已发布工具 13→20,全部有封面;/tools 渲染 20 张封面卡,零乱码。
+- 剩余:bulk-tools-staged-v1.csv 还有约 40 个损坏条目未重写(后续批次);open-design 草稿的 GitHub 图床持续超时(不影响线上)。

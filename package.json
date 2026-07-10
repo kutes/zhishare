@@ -20,6 +20,8 @@
     "covers:backfill:execute": "node scripts/content-import/backfill-tool-covers.mjs --execute",
     "covers:photos:dry-run": "node scripts/content-import/fetch-tool-photos.mjs",
     "covers:photos:execute": "node scripts/content-import/fetch-tool-photos.mjs --execute",
+    "content:next-7:dry-run": "node scripts/content-import/import-next-7-tools.mjs",
+    "content:next-7:execute": "node scripts/content-import/import-next-7-tools.mjs --execute",
     "media:bucket:execute": "node scripts/content-import/create-tool-media-bucket.mjs --execute",
     "media:import:dry-run": "node scripts/content-import/import-tool-media.mjs",
     "media:import:execute": "node scripts/content-import/import-tool-media.mjs --execute",

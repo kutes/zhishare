@@ -18,19 +18,19 @@
       "image_url": "https://repository-images.githubusercontent.com/1223170290/5eec4959-c821-4927-83fb-e904b5cbc396"
     },
     {
+      "id": "1c620dc6-4087-4667-b1e4-84eaae3d0681",
+      "slug": "photopea",
+      "website_url": "https://www.photopea.com/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
       "id": "1c87a5fe-373f-4255-b6b0-568648b64cb9",
       "slug": "canva",
       "website_url": "https://www.canva.com/",
       "status": "probe_failed",
       "image_url": null,
       "error": "HTTP_403"
-    },
-    {
-      "id": "1c620dc6-4087-4667-b1e4-84eaae3d0681",
-      "slug": "photopea",
-      "website_url": "https://www.photopea.com/",
-      "status": "no_image",
-      "image_url": null
     },
     {
       "id": "9128ab39-dab2-46a5-b169-00827c16412f",
@@ -66,18 +66,75 @@
       "website_url": "https://localsend.org/",
       "status": "no_image",
       "image_url": null
+    },
+    {
+      "id": "ab3b80a5-4b3f-4723-b2ad-f50f53c4829d",
+      "slug": "droplock",
+      "website_url": "https://droplock.apitman.com/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "30d3c907-b95d-47da-b4f6-8991adcc8310",
+      "slug": "plainapp",
+      "website_url": "https://plainapp.app/",
+      "status": "found",
+      "image_url": "https://plainapp.app/og-image.png"
+    },
+    {
+      "id": "dad4028c-bb51-401e-87a7-9f9daaa8a3a7",
+      "slug": "autohotkey",
+      "website_url": "https://www.autohotkey.com/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "a805ea39-0190-4a13-b7d2-183cc6af7693",
+      "slug": "recordly",
+      "website_url": "https://recordly.dev/",
+      "status": "found",
+      "image_url": "https://framerusercontent.com/assets/mFY0SBsKQLeoyU6Ky9bMEDZ7Gk.png"
+    },
+    {
+      "id": "e5d4dc02-eb83-4d2a-95ef-645424df6302",
+      "slug": "openless",
+      "website_url": "https://openless.top/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "5b9e4207-6826-4fd2-a610-e448712288e0",
+      "slug": "syncthing",
+      "website_url": "https://syncthing.net/",
+      "status": "no_image",
+      "image_url": null
+    },
+    {
+      "id": "93d1ae09-2fb5-4506-a08b-ce761b6397aa",
+      "slug": "file-browser",
+      "website_url": "https://filebrowser.org/",
+      "status": "no_image",
+      "image_url": null
     }
   ],
-  "updated": [],
+  "updated": [
+    "plainapp",
+    "recordly"
+  ],
   "skipped": [
     "chatgpt",
-    "canva",
     "photopea",
+    "canva",
     "figma(UNSUPPORTED_TYPE: image/gif)",
     "capcut",
     "cyberchef",
     "stirling-pdf",
-    "localsend"
+    "localsend",
+    "droplock",
+    "autohotkey",
+    "openless",
+    "syncthing",
+    "file-browser"
   ],
   "failed": [
     {
