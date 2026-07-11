@@ -1,0 +1,25 @@
+{
+  "status": "execute_completed",
+  "slug": "free-ai-tools-safety",
+  "content_chars": 992,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "结论",
+      "隐私",
+      "商用",
+      "免费版",
+      "自查"
+    ],
+    "tldr_items": 4,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big",
+      "normal"
+    ]
+  },
+  "secret_values_printed": false
+}
