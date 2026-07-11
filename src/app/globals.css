@@ -3845,7 +3845,6 @@ canvas {
   }
 
   .tool-detail-badges,
-  .tool-detail-hero-actions,
   .tool-detail-tags {
     display: flex;
     flex-wrap: wrap;
@@ -3943,18 +3942,12 @@ canvas {
   }
 
   .tool-detail-hero-plain .tool-detail-badges,
-  .tool-detail-hero-plain .tool-detail-tags,
-  .tool-detail-hero-plain .tool-detail-hero-actions {
+  .tool-detail-hero-plain .tool-detail-tags {
     justify-content: center;
   }
 
   .tool-detail-hero-plain .tool-detail-summary {
     margin-inline: auto;
-  }
-
-  .tool-detail-hero-actions {
-    margin-top: 1.4rem;
-    gap: 0.7rem;
   }
 
   .tool-detail-article {
@@ -4043,6 +4036,50 @@ canvas {
     border-color: var(--ad-border);
     background: var(--ad-surface-soft);
     box-shadow: none;
+  }
+
+  /* 正文卡底部行动按钮:访问官网 + 网盘下载(无链接则灰色禁用) */
+  .tool-detail-article-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+  }
+
+  .tool-detail-article-actions .tool-detail-primary-button,
+  .tool-detail-article-actions .tool-detail-secondary-button {
+    flex: 1 1 12rem;
+  }
+
+  .tool-detail-article-actions .tool-detail-primary-button {
+    border-color: var(--ad-accent);
+    background: var(--ad-accent);
+    color: #fff;
+  }
+
+  .tool-detail-article-actions .tool-detail-primary-button:hover {
+    border-color: #9a5f1c;
+    background: #9a5f1c;
+  }
+
+  .tool-detail-article-actions .tool-detail-secondary-button {
+    border-color: var(--ad-accent-border);
+    background: var(--ad-accent-soft);
+    color: var(--ad-accent);
+  }
+
+  .tool-detail-article-actions .tool-detail-secondary-button:hover {
+    border-color: rgba(176, 110, 34, 0.45);
+    background: rgba(176, 110, 34, 0.14);
+  }
+
+  .tool-detail-article-actions .tool-detail-button-disabled,
+  .tool-detail-article-actions .tool-detail-button-disabled:hover {
+    transform: none;
+    cursor: not-allowed;
+    border-color: rgba(35, 25, 15, 0.12);
+    background: rgba(35, 25, 15, 0.05);
+    color: rgba(42, 33, 27, 0.4);
   }
 
   .tool-detail-section {
@@ -4335,13 +4372,8 @@ canvas {
       border-radius: 24px;
     }
 
-    .tool-detail-hero-actions {
+    .tool-detail-article-actions {
       flex-direction: column;
-    }
-
-    .tool-detail-hero-actions .tool-detail-primary-button,
-    .tool-detail-hero-actions .tool-detail-secondary-button {
-      width: 100%;
     }
 
     .tool-detail-title {

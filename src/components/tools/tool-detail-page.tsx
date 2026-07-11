@@ -76,29 +76,6 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
                   ))}
                 </div>
               ) : null}
-
-              <div className="tool-detail-hero-actions">
-                {websiteUrl ? (
-                  <a
-                    href={websiteUrl}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    className="tool-detail-primary-button"
-                  >
-                    访问官网
-                  </a>
-                ) : null}
-                {downloadUrl ? (
-                  <a
-                    href={downloadUrl}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    className="tool-detail-secondary-button"
-                  >
-                    下载
-                  </a>
-                ) : null}
-              </div>
             </div>
           </div>
         </section>
@@ -122,6 +99,45 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
                 <ListSection title="优点" items={pros} />
                 <ListSection title="缺点" items={cons} />
                 <ListSection title="风险提醒" items={risks} warning />
+
+                <div className="tool-detail-article-actions">
+                  {websiteUrl ? (
+                    <a
+                      href={websiteUrl}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      className="tool-detail-primary-button"
+                    >
+                      访问官网
+                    </a>
+                  ) : (
+                    <span
+                      aria-disabled="true"
+                      className="tool-detail-primary-button tool-detail-button-disabled"
+                    >
+                      暂无官网
+                    </span>
+                  )}
+
+                  {downloadUrl ? (
+                    <a
+                      href={downloadUrl}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      className="tool-detail-secondary-button"
+                    >
+                      网盘下载
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      className="tool-detail-secondary-button tool-detail-button-disabled"
+                    >
+                      网盘下载
+                    </button>
+                  )}
+                </div>
               </div>
             </article>
 
