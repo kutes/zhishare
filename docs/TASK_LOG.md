@@ -4553,3 +4553,13 @@ Result: completed
 - 正文白纸卡:.tool-detail-article 复用 --ad-* 浅色变量组,居中 860px,内部 section/警示区/列表项/折叠简介(含渐隐遮罩)/媒体块/行内广告全部浅色适配;只放广告的 320px 右栏取消。
 - 死 CSS 同步清理:intro/note/facts/fact*/tag-empty/lead + 移动统计条,含共享选择器与媒体查询里的残留。
 - 验证:tsc 全绿、括号平衡、chatgpt+cyberchef DOM 断言(占位/黑话字符串全消失)、双端截图。仍未推送线上。
+
+## 2026-07-11 工具详情页整体重设计(与文章页统一)
+
+Result: completed
+
+- 用户反馈截图问题:hero 双栏失衡(左小卡+右高判断面板)左侧一大片死空间;判断面板的适合人群/使用场景/风险内容与下方白卡列表逐条重复。
+- 重设计对齐文章详情页:头部改为居中无卡片堆叠(徽章→标题→简介→标签→行动按钮);判断面板整体删除,唯一有价值的「访问官网/下载」按钮上移到头部(仅在有 URL 时渲染);正文单列居中 860px 白纸卡,桌面手机通用。
+- 删 3 个死组件(桌面/移动重复):ToolDecisionPanel、ToolMobileSummaryCard、MobileToolDetailSections + 文件内 MobileRelatedToolsCompact。
+- 同步清死 CSS:整段 tool-decision-*/tool-mobile-*、mobile-related-*、hero-card/intro/note/facts、section-head-mobile,含共享选择器与媒体查询里的残留。净减 1291 行。
+- 验证:tsc 全绿、括号平衡、chatgpt+localsend DOM 断言、双端截图。仍未推送线上。
