@@ -34,6 +34,7 @@ async function capturePage(browser, label, url, viewport, options = {}) {
   await page.screenshot({
     path: path.join(outputDir, label + ".png"),
     fullPage: true,
+    animations: "disabled",
   });
 
   await page.close();

@@ -27,17 +27,7 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
               返回文章列表
             </Link>
 
-            <div className="article-detail-hero-card">
-              {article.cover_url?.trim() ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  className="article-detail-cover"
-                  src={article.cover_url}
-                  alt=""
-                  loading="eager"
-                />
-              ) : null}
-
+            <div className="article-detail-hero-plain">
               <div className="article-detail-kicker-row">
                 <span className="article-detail-kicker">文章详情</span>
                 <span className="article-detail-meta-item">{article.category}</span>
@@ -105,6 +95,11 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
             </article>
 
             <aside className="article-detail-side">
+              <button className="article-detail-side-tab" type="button">
+                阅读概览
+              </button>
+
+              <div className="article-detail-side-panel">
               <section className="article-detail-side-card">
                 <p className="article-detail-side-kicker">阅读概览</p>
                 <h3 className="article-detail-side-title">这篇文章怎么读更顺手</h3>
@@ -136,6 +131,7 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
               </section>
 
               <AdPlaceholder variant="sidebar" className="article-detail-ad" />
+              </div>
             </aside>
           </div>
         </section>
