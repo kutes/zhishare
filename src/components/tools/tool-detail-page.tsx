@@ -6,10 +6,7 @@ import { toListItems } from "@/lib/db/normalizers";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CollapsibleDescription } from "./collapsible-description";
-import { MobileToolDetailSections } from "./mobile-tool-detail-sections";
-import { ToolDecisionPanel } from "./tool-decision-panel";
 import { ToolMediaGallery } from "./tool-media-gallery";
-import { ToolMobileSummaryCard } from "./tool-mobile-summary-card";
 import type { ToolMediaItem } from "@/lib/media/tool-media";
 import type { ToolItem } from "@/types/tool";
 
@@ -27,7 +24,7 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
   const summary = firstText(tool.tagline, detail.tagline, tool.description, detail.description) || "暂无简介";
   const description = firstText(tool.description, detail.description, summary) || "暂无详细介绍";
   const category = firstText(tool.category, detail.category) || "未分类";
-  const visibleTags = getVisibleTags(tool.tags, 5);
+  const visibleTags = getVisibleTags(tool.tags, 6);
   const features = getToolList(tool, ["features", "core_features", "coreFeatures"], [
     "features",
     "core_features",
@@ -44,6 +41,8 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
   const pros = getToolList(tool, ["pros", "advantages"], ["pros", "advantages"]);
   const cons = getToolList(tool, ["cons", "limitations"], ["cons", "limitations"]);
   const risks = getToolList(tool, ["risk_notice", "riskNotice"], ["risk_notice", "riskNotice", "risk"]);
+  const websiteUrl = firstText(tool.website_url, (detail as Record<string, unknown>).website_url);
+  const downloadUrl = firstText(tool.download_url, tool.downloadUrl, (detail as Record<string, unknown>).download_url);
 
   return (
     <div className="tool-detail-page">
@@ -51,64 +50,82 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
 
       <main>
         <section className="tool-detail-hero">
-          <div className="tool-detail-shell py-6 sm:py-8 lg:py-10">
+          <div className="tool-detail-shell py-6 sm:py-8 lg:py-9">
             <Link href="/tools" className="tool-detail-back-link">
               返回工具库
             </Link>
 
-            <div className="mt-5 space-y-4 md:hidden">
-              <ToolMobileSummaryCard tool={tool} />
-              <ToolDecisionPanel tool={tool} />
-            </div>
+            <div className="tool-detail-hero-plain">
+              <div className="tool-detail-badges">
+                <DetailBadge tone="gold">{category}</DetailBadge>
+                <DetailBadge tone="surface">{getFreeLabel(tool.is_free, tool.free_status)}</DetailBadge>
+                <DetailBadge tone={tool.is_open_source ? "gold" : "outline"}>
+                  {getOpenSourceLabel(tool.is_open_source, tool.open_source_status)}
+                </DetailBadge>
+              </div>
 
-            <div className="mt-5 hidden gap-5 md:grid lg:grid-cols-[minmax(0,1.45fr)_minmax(0,0.9fr)] lg:items-start">
-              <DetailHero
-                title={title}
-                summary={summary}
-                category={category}
-                visibleTags={visibleTags}
-                isFree={tool.is_free}
-                isOpenSource={tool.is_open_source}
-                freeStatus={tool.free_status}
-                openSourceStatus={tool.open_source_status}
-              />
+              <h1 className="tool-detail-title">{title}</h1>
+              <p className="tool-detail-summary">{summary}</p>
 
-              <ToolDecisionPanel tool={tool} />
+              {visibleTags.length > 0 ? (
+                <div className="tool-detail-tags">
+                  {visibleTags.map((tag) => (
+                    <span key={tag} className="tool-detail-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+
+              <div className="tool-detail-hero-actions">
+                {websiteUrl ? (
+                  <a
+                    href={websiteUrl}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="tool-detail-primary-button"
+                  >
+                    访问官网
+                  </a>
+                ) : null}
+                {downloadUrl ? (
+                  <a
+                    href={downloadUrl}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="tool-detail-secondary-button"
+                  >
+                    下载
+                  </a>
+                ) : null}
+              </div>
             </div>
           </div>
         </section>
 
         <section className="tool-detail-content">
-          <div className="tool-detail-shell space-y-6 py-6 sm:py-8 lg:py-10">
-            <MobileToolDetailSections tool={tool} className="md:hidden" />
-            <ToolMediaGallery items={media} className="md:hidden" />
-            <MobileRelatedToolsCompact relatedTools={relatedTools} className="md:hidden" />
+          <div className="tool-detail-shell space-y-6 py-6 sm:py-8 lg:py-9">
+            <article className="tool-detail-article">
+              <div className="space-y-4 sm:space-y-5">
+                <section className="tool-detail-section">
+                  <SectionTitle>这个工具是什么</SectionTitle>
+                  <div className="mt-3">
+                    <CollapsibleDescription title="" content={description} className="mt-0" />
+                  </div>
+                </section>
 
-            <div className="hidden md:block">
-              <article className="tool-detail-article">
-                <div className="space-y-4 sm:space-y-5">
-                  <section className="tool-detail-section">
-                    <SectionTitle>这个工具是什么</SectionTitle>
-                    <div className="mt-4">
-                      <CollapsibleDescription title="" content={description} className="mt-0" />
-                    </div>
-                  </section>
+                <ListSection title="核心功能" items={features} />
+                <ToolMediaGallery items={media} />
+                <AdPlaceholder variant="inline" />
+                <ListSection title="适合人群" items={audience} />
+                <ListSection title="使用场景" items={scenarios} />
+                <ListSection title="优点" items={pros} />
+                <ListSection title="缺点" items={cons} />
+                <ListSection title="风险提醒" items={risks} warning />
+              </div>
+            </article>
 
-                  <ListSection title="核心功能" items={features} />
-                  <ToolMediaGallery items={media} />
-                  <AdPlaceholder variant="inline" />
-                  <ListSection title="适合人群" items={audience} />
-                  <ListSection title="使用场景" items={scenarios} />
-                  <ListSection title="优点" items={pros} />
-                  <ListSection title="缺点" items={cons} />
-                  <ListSection title="风险提醒" items={risks} warning />
-                </div>
-              </article>
-            </div>
-
-            <div className="hidden md:block">
-              <RelatedToolsSection relatedTools={relatedTools} />
-            </div>
+            <RelatedToolsSection relatedTools={relatedTools} />
 
             <AdPlaceholder variant="banner" />
             <CopyrightNotice />
@@ -139,51 +156,6 @@ export function ToolNotFoundPage() {
       </main>
       <SiteFooter />
     </div>
-  );
-}
-
-type DetailHeroProps = {
-  title: string;
-  summary: string;
-  category: string;
-  visibleTags: string[];
-  isFree: boolean;
-  isOpenSource: boolean;
-  freeStatus?: string;
-  openSourceStatus?: string;
-};
-
-function DetailHero({
-  title,
-  summary,
-  category,
-  visibleTags,
-  isFree,
-  isOpenSource,
-  freeStatus,
-  openSourceStatus,
-}: DetailHeroProps) {
-  return (
-    <article className="tool-detail-hero-card">
-      <div className="tool-detail-badges">
-        <DetailBadge tone="gold">{category}</DetailBadge>
-        <DetailBadge tone="surface">{getFreeLabel(isFree, freeStatus)}</DetailBadge>
-        <DetailBadge tone={isOpenSource ? "gold" : "outline"}>{getOpenSourceLabel(isOpenSource, openSourceStatus)}</DetailBadge>
-      </div>
-
-      <h1 className="tool-detail-title">{title}</h1>
-      <p className="tool-detail-summary">{summary}</p>
-
-      {visibleTags.length > 0 ? (
-        <div className="tool-detail-tags">
-          {visibleTags.map((tag) => (
-            <span key={tag} className="tool-detail-tag">
-              {tag}
-            </span>
-          ))}
-        </div>
-      ) : null}
-    </article>
   );
 }
 
@@ -302,28 +274,6 @@ function getOpenSourceLabel(isOpenSource: boolean, openSourceStatus?: string) {
   return firstText(openSourceStatus, isOpenSource ? "开源" : "非开源", "未标注");
 }
 
-function getCompactIcon(name: string) {
-  const text = name.trim();
-
-  if (!text) {
-    return "KT";
-  }
-
-  const chunks = text.match(/[\p{L}\p{N}]+/gu);
-
-  if (!chunks || chunks.length === 0) {
-    return text.slice(0, 2).toUpperCase();
-  }
-
-  const first = chunks[0];
-
-  if (/^[\u4e00-\u9fa5]+$/.test(first)) {
-    return first.slice(0, 2);
-  }
-
-  return first.slice(0, 2).toUpperCase();
-}
-
 type SectionTitleProps = {
   children: ReactNode;
 };
@@ -362,45 +312,6 @@ function RelatedToolsSection({ relatedTools }: RelatedToolsSectionProps) {
         </div>
       ) : (
         <div className="tool-detail-empty-related">当前暂无同类推荐，后续内容增加后会自动补充。</div>
-      )}
-    </section>
-  );
-}
-
-type MobileRelatedToolsCompactProps = {
-  relatedTools: ToolItem[];
-  className?: string;
-};
-
-function MobileRelatedToolsCompact({ relatedTools, className = "" }: MobileRelatedToolsCompactProps) {
-  return (
-    <section className={`tool-detail-mobile-related ${className}`.trim()}>
-      <div className="tool-detail-section-head tool-detail-section-head-mobile">
-        <div>
-          <p className="tool-detail-kicker">相关推荐</p>
-          <h2 className="tool-detail-section-heading tool-detail-section-heading-mobile">继续看看同类工具</h2>
-        </div>
-        <p className="tool-detail-section-copy tool-detail-section-copy-mobile">更适合手机上快速浏览。</p>
-      </div>
-
-      {relatedTools.length > 0 ? (
-        <div className="tool-detail-mobile-related-list">
-          {relatedTools.map((relatedTool) => (
-            <Link key={relatedTool.id} href={`/tools/${relatedTool.slug}`} className="tool-detail-mobile-related-item">
-              <div className="tool-detail-mobile-related-icon">{getCompactIcon(relatedTool.name)}</div>
-              <div className="tool-detail-mobile-related-body">
-                <div className="tool-detail-mobile-related-top">
-                  <p className="tool-detail-mobile-related-title">{relatedTool.name}</p>
-                  <span className="tool-detail-mobile-related-chip">{relatedTool.category || "未分类"}</span>
-                </div>
-                <p className="tool-detail-mobile-related-copy">{relatedTool.tagline || "暂无简介"}</p>
-              </div>
-              <span className="tool-detail-mobile-related-action">查看</span>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="tool-detail-mobile-empty">当前暂无同类推荐。</div>
       )}
     </section>
   );
