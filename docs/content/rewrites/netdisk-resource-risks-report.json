@@ -1,0 +1,30 @@
+{
+  "status": "execute_completed",
+  "slug": "netdisk-resource-risks",
+  "title": "下载资源先去官网，网盘永远是最后一站",
+  "content_chars": 1043,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "来源",
+      "授权",
+      "版本",
+      "顺序"
+    ],
+    "titles": [
+      "一个文件\"能下载\"说明不了任何事",
+      "\"免费分享\"四个字不是授权书",
+      "旧不是错,但旧要自己知道",
+      "一个不容易翻车的下载顺序"
+    ],
+    "tldr_items": 4,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

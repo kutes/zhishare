@@ -1,21 +1,39 @@
 {
-  "status": "dry_run_completed",
+  "status": "execute_completed",
   "plans": [
-    {
-      "slug": "netdisk-resource-risks",
-      "action": "skip",
-      "reason": "no_cc0_result_for:netdisk resource risks"
-    },
     {
       "slug": "free-ai-tools-safety",
       "action": "skip",
       "reason": "no_cc0_result_for:free ai tools safety"
     },
     {
-      "slug": "free-image-tools-comparison",
+      "slug": "netdisk-resource-risks",
       "action": "skip",
-      "reason": "no_cc0_result_for:free image tools comparison"
+      "reason": "no_cc0_result_for:netdisk resource risks"
+    },
+    {
+      "slug": "free-image-tools-comparison",
+      "action": "insert",
+      "layer": "official",
+      "inserts": [
+        {
+          "sectionIndex": 3,
+          "sectionTitle": "remove.bg 与 TinyPNG:一个只抠图,一个只压缩",
+          "source": "official:tinypng",
+          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/tinypng.jpg | 「TinyPNG」官网视觉素材，来源：TinyPNG官方"
+        },
+        {
+          "sectionIndex": 3,
+          "sectionTitle": "remove.bg 与 TinyPNG:一个只抠图,一个只压缩",
+          "source": "official:remove-bg",
+          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/remove-bg.jpg | 「remove.bg」官网视觉素材，来源：remove.bg官方"
+        }
+      ]
     }
   ],
+  "updated": [
+    "free-image-tools-comparison"
+  ],
+  "failed": [],
   "secret_values_printed": false
 }

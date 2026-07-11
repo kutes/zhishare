@@ -1,0 +1,32 @@
+{
+  "status": "execute_completed",
+  "slug": "free-image-tools-comparison",
+  "title": "5 个免费图片工具怎么分工：封面、PSD、抠图、压缩各找各的",
+  "content_chars": 1241,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "分工",
+      "快出图",
+      "改文件",
+      "单一任务",
+      "别选错"
+    ],
+    "titles": [
+      "图片活先分类,再挑工具",
+      "Canva:先把封面做出来再说",
+      "Photopea:别人丢来 PSD,免费也能接",
+      "remove.bg 与 TinyPNG:一个只抠图,一个只压缩",
+      "Figma 是画界面的,不是修图的"
+    ],
+    "tldr_items": 4,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

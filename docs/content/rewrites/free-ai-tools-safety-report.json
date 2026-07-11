@@ -1,0 +1,32 @@
+{
+  "status": "execute_completed",
+  "slug": "free-ai-tools-safety",
+  "title": "免费 AI 工具到底安不安全？先看这 4 件事",
+  "content_chars": 1100,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "边界",
+      "隐私",
+      "商用",
+      "免费版",
+      "自查"
+    ],
+    "titles": [
+      "先分清哪些内容能喂给它",
+      "上传之前,先想这份资料能不能见人",
+      "\"AI 生成\"不等于\"能拿去卖\"",
+      "免费额度是试吃,不是正餐",
+      "收尾只需要四个问题"
+    ],
+    "tldr_items": 4,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
