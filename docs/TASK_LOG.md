@@ -4513,3 +4513,13 @@ Result: completed
 - 老文章零改动兼容(free-image-tools-comparison DOM 断言:有编号有 lead、无速览无披露、无重复标题)。
 - 读者文案去黑话:"共 N 节" 取代 "N 个正文 section"(hero meta+侧栏),正文区头与阅读指引同步改写。
 - 验证:tsc 全绿、CSS 括号平衡、24/24 解析断言、19/19 DOM 断言、双端截图符合暖色编辑部调性。仍未推送线上。
+
+## 2026-07-11 文章页三项优化(标题排版/详情页白色/素材脚本)
+
+Result: completed
+
+- 标题排版:字号 clamp(2.6-4.8rem)→clamp(1.9-2.75rem)、行高 1.15、去 16ch 限宽,hero 卡内容整体居中。
+- 详情页白色:.article-detail-warm-page 定义页面级 --ad-* 变量组(底/卡面/边框/文字/强调),全部 article-detail 颜色改引用变量——将来全站黑白切换直接接管这组变量。奶白底 #FAF6F0、强调加深 #B06E22 保对比度;共享 tool-media-* 做页面作用域浅色覆盖,工具页不受影响;导航/页脚/文章列表页按用户决定保持暖黑。
+- 素材自动插入守门脚本 insert-article-media.mjs:官方层(文中提到的已发布工具若有官方图,插到首次提及小节末尾,每篇≤2,图注以「来源:X官方」结尾)+ CC0 层(Openverse 搜图转存 article-media 桶);已含 [IMG]/[VIDEO] 的文章整篇跳过;纯函数导出并自测 7 项全过。
+- 如实记录:当前 dry-run 插入 0 篇——3 篇 DB 文章只提到无官方图的工具(Photopea/Canva),且本机网络连不通 Openverse/Wikimedia(ECONNRESET/超时)。管道就绪,后续文章提到有图工具或网络可达时自动生效。
+- 验证:双端截图(白色版排版正常)、CSS 括号平衡、article-detail 块暗色残留清零(仅保留有意的琥珀氛围光)。仍未推送线上。

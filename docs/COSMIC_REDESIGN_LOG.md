@@ -457,3 +457,13 @@ Status: completed
 - Legacy articles untouched and verified rendering with numbered sections + auto lead (DOM assertions on free-image-tools-comparison), zero tldr/source-note leakage.
 - Reader-facing copy: "共 N 节" replaces "N 个正文 section" (hero meta + sidebar), main-head and reading-guide copy de-jargonized.
 - Verified: tsc green, CSS braces balanced, 24/24 parser assertions, 19/19 DOM assertions, desktop+mobile screenshots match warm editorial direction.
+
+### Step 60 - Article page polish (title, light detail page, auto media script)
+
+Status: completed
+
+- Title block: shrunk from clamp(2.6-4.8rem) to clamp(1.9-2.75rem), line-height 1.15, removed the 16ch cap; hero card content (kicker/title/summary/meta/tags) now centered.
+- Article detail page switched to a light warm theme via page-scoped CSS variables (--ad-bg/-surface/-border/-text*/-accent*) on .article-detail-warm-page — every article-detail color now references a variable, so a future site-wide dark/light toggle plugs into this set without rework. Accent deepened to #B06E22 for contrast on cream (#FAF6F0). Shared .tool-media-* blocks get scoped light overrides (tool pages unaffected). SiteHeader/SiteFooter and /articles list stay warm dark by user decision.
+- New guarded script insert-article-media.mjs: layer 1 inserts official tool photos (from tool-covers/photos/) at the end of the section where a published tool is first mentioned (max 2/article, caption ends 来源：X官方); layer 2 falls back to one CC0 image via Openverse re-hosted into a new article-media bucket. Articles already containing [IMG]/[VIDEO] are skipped. Pure helpers (splitSections/insertLineAtSectionEnd) exported + self-tested (7 assertions).
+- Honest current outcome: dry-run inserts 0 — the 3 published DB articles mention only tools without official photos (Photopea/Canva), and both CC0 sources (Openverse, Wikimedia) are unreachable from this machine's network (ECONNRESET/timeout). The pipeline activates automatically as soon as articles mention photo-covered tools or the network allows CC0 fetches.
+- Verified: desktop+mobile screenshots of light page, brace balance, dark-color sweep of the article-detail block (only the intentional amber glow remains).
