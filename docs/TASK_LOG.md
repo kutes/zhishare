@@ -4500,3 +4500,16 @@ Result: completed
 - 封面:生成封面 7/7;官方 og:image 又抓到 2 张(PlainApp、Recordly)。
 - 站点现状:已发布工具 13→20,全部有封面;/tools 渲染 20 张封面卡,零乱码。
 - 剩余:bulk-tools-staged-v1.csv 还有约 40 个损坏条目未重写(后续批次);open-design 草稿的 GitHub 图床持续超时(不影响线上)。
+
+## 2026-07-11 文章内容标准落地(速览/披露/编号节/lead+big/WHY/KEY/图视频)
+
+Result: completed
+
+- 按 docs/ARTICLE_CONTENT_STANDARD.md 把标准渲染出来:新数据模型(块式 ArticleBlock + 编号小节)、标记解析器([速览]/[来源]/## [标签]/[WHY]/[KEY]/[IMG]/[VIDEO] 白名单)、渲染组件(速览框+⚑披露在正文栏顶部、编号+短标签 eyebrow、每节 lead/仅开篇 big、WHY 框、KEY 高亮)、暖色编辑部 CSS。
+- 顺手修了旧模型的隐藏 bug:段落+列表混合内容不再拆成两个重复标题的 section。
+- 解析器抽成 src/lib/db/article-parser.mjs(+d.mts,沿用 tool-cover.mjs 模式),自检脚本 scripts/checks/check-article-parser.mjs 24 项断言全过(旧内容兼容/全部标记/文首限定/视频白名单拒绝/隐式小节兜底)。
+- 发现并解决 spec 漏掉的类名冲突:.article-detail-section-eyebrow 原被 main-head kicker 占用,kicker 改用同样式的 .article-detail-kicker。
+- free-ai-tools-safety 按新标准重写(4 条速览、披露、5 个带标签小节、lead+big 开篇、1 WHY、2 KEY),守门脚本带结构校验+反乱码门+回读验证,execute 成功。
+- 老文章零改动兼容(free-image-tools-comparison DOM 断言:有编号有 lead、无速览无披露、无重复标题)。
+- 读者文案去黑话:"共 N 节" 取代 "N 个正文 section"(hero meta+侧栏),正文区头与阅读指引同步改写。
+- 验证:tsc 全绿、CSS 括号平衡、24/24 解析断言、19/19 DOM 断言、双端截图符合暖色编辑部调性。仍未推送线上。

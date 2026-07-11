@@ -444,3 +444,16 @@ Status: completed
 - Article detail hero card now renders the generated cover as an inset rounded 21:9 band (16:9 on mobile) above the kicker/title; related-article cards got matching small cover bands.
 - cover_url data was already flowing (Step 57); this step only adds the missing presentation. Empty cover_url renders nothing (no placeholder box).
 - Verified via tsc, DOM assertions, and desktop/mobile screenshots.
+
+### Step 59 - Article content standard rendering (xiaohu-derived)
+
+Status: completed
+
+- Implemented docs/ARTICLE_CONTENT_STANDARD.md end to end: new block-based data model (ArticleBlock/ArticleSection with numbered sections + optional tag), marker parser ([速览]/[来源]/## [标签]/[WHY]/[KEY 标签]/[IMG]/[VIDEO] with bilibili/youtube allowlist), renderer (tldr box + ⚑ source note at top of content column, section eyebrow number+tag, lead every section / big only in section 1, WHY box, KEY highlight with **bold**), warm-editorial CSS.
+- Fixed a latent bug: mixed paragraph+list content no longer splits into duplicate-titled sections (one ## = one section object).
+- Parser extracted to src/lib/db/article-parser.mjs (+ .d.mts, same pattern as tool-cover.mjs) so node can test it directly: scripts/checks/check-article-parser.mjs, 24 assertions covering legacy compat, all markers, preamble-only [来源]/[速览], video allowlist rejection, implicit-section fallback.
+- Resolved a class-name collision the spec missed: main-head kicker was already using .article-detail-section-eyebrow; switched it to the visually identical .article-detail-kicker and gave the eyebrow class to the new number+tag row.
+- free-ai-tools-safety rewritten to the standard (4 tldr items, source note, 5 tagged sections, lead+big opening, 1 WHY, 2 KEY) via guarded script with structure validation + mojibake gate + readback verify.
+- Legacy articles untouched and verified rendering with numbered sections + auto lead (DOM assertions on free-image-tools-comparison), zero tldr/source-note leakage.
+- Reader-facing copy: "共 N 节" replaces "N 个正文 section" (hero meta + sidebar), main-head and reading-guide copy de-jargonized.
+- Verified: tsc green, CSS braces balanced, 24/24 parser assertions, 19/19 DOM assertions, desktop+mobile screenshots match warm editorial direction.

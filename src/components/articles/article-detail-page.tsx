@@ -109,7 +109,7 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
                 <p className="article-detail-side-kicker">阅读概览</p>
                 <h3 className="article-detail-side-title">这篇文章怎么读更顺手</h3>
                 <p className="article-detail-side-text">
-                  先看标题、摘要和标签，再顺着正文 section 阅读，可以更快捕捉这篇文章的核心判断与实操建议。
+                  先看标题、摘要和标签，再按章节顺序阅读，可以更快捕捉这篇文章的核心判断与实操建议。
                 </p>
               </section>
 
