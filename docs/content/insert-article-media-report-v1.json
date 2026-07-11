@@ -1,0 +1,21 @@
+{
+  "status": "dry_run_completed",
+  "plans": [
+    {
+      "slug": "netdisk-resource-risks",
+      "action": "skip",
+      "reason": "no_cc0_result_for:netdisk resource risks"
+    },
+    {
+      "slug": "free-ai-tools-safety",
+      "action": "skip",
+      "reason": "no_cc0_result_for:free ai tools safety"
+    },
+    {
+      "slug": "free-image-tools-comparison",
+      "action": "skip",
+      "reason": "no_cc0_result_for:free image tools comparison"
+    }
+  ],
+  "secret_values_printed": false
+}
