@@ -59,14 +59,12 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
             <div className="mt-5 space-y-4 md:hidden">
               <ToolMobileSummaryCard tool={tool} />
               <ToolDecisionPanel tool={tool} />
-              <QuickFactsBar category={category} tagCount={tool.tags.length} className="md:hidden" />
             </div>
 
             <div className="mt-5 hidden gap-5 md:grid lg:grid-cols-[minmax(0,1.45fr)_minmax(0,0.9fr)] lg:items-start">
               <DetailHero
                 title={title}
                 summary={summary}
-                description={description}
                 category={category}
                 visibleTags={visibleTags}
                 isFree={tool.is_free}
@@ -77,10 +75,6 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
 
               <ToolDecisionPanel tool={tool} />
             </div>
-
-            <div className="hidden md:block">
-              <QuickFactsBar category={category} tagCount={tool.tags.length} />
-            </div>
           </div>
         </section>
 
@@ -90,16 +84,13 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
             <ToolMediaGallery items={media} className="md:hidden" />
             <MobileRelatedToolsCompact relatedTools={relatedTools} className="md:hidden" />
 
-            <div className="hidden gap-5 md:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+            <div className="hidden md:block">
               <article className="tool-detail-article">
                 <div className="space-y-4 sm:space-y-5">
                   <section className="tool-detail-section">
-                    <SectionTitle>核心判断</SectionTitle>
-                    <p className="tool-detail-lead">
-                      先快速看懂这款工具的用途、边界和风险，再继续深入功能细节，减少无效点击。
-                    </p>
+                    <SectionTitle>这个工具是什么</SectionTitle>
                     <div className="mt-4">
-                      <CollapsibleDescription title="这个工具是什么" content={description} className="mt-0" />
+                      <CollapsibleDescription title="" content={description} className="mt-0" />
                     </div>
                   </section>
 
@@ -113,10 +104,6 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
                   <ListSection title="风险提醒" items={risks} warning />
                 </div>
               </article>
-
-              <aside className="space-y-5 lg:sticky lg:top-24">
-                <AdPlaceholder variant="sidebar" />
-              </aside>
             </div>
 
             <div className="hidden md:block">
@@ -158,7 +145,6 @@ export function ToolNotFoundPage() {
 type DetailHeroProps = {
   title: string;
   summary: string;
-  description: string;
   category: string;
   visibleTags: string[];
   isFree: boolean;
@@ -170,7 +156,6 @@ type DetailHeroProps = {
 function DetailHero({
   title,
   summary,
-  description,
   category,
   visibleTags,
   isFree,
@@ -189,57 +174,16 @@ function DetailHero({
       <h1 className="tool-detail-title">{title}</h1>
       <p className="tool-detail-summary">{summary}</p>
 
-      <div className="tool-detail-intro">
-        <p>{description}</p>
-      </div>
-
-      <div className="tool-detail-tags">
-        {visibleTags.length > 0 ? (
-          visibleTags.map((tag) => (
+      {visibleTags.length > 0 ? (
+        <div className="tool-detail-tags">
+          {visibleTags.map((tag) => (
             <span key={tag} className="tool-detail-tag">
               {tag}
             </span>
-          ))
-        ) : (
-          <span className="tool-detail-tag tool-detail-tag-empty">暂无标签</span>
-        )}
-      </div>
-
-      <p className="tool-detail-note">
-        这里先把最影响决策的信息放在最前面，方便你迅速判断这款工具是否值得继续深入了解。
-      </p>
+          ))}
+        </div>
+      ) : null}
     </article>
-  );
-}
-
-type QuickFactsBarProps = {
-  category: string;
-  tagCount: number;
-  className?: string;
-};
-
-function QuickFactsBar({ category, tagCount, className = "" }: QuickFactsBarProps) {
-  return (
-    <div className={`tool-detail-facts ${className}`.trim()}>
-      <QuickFact label="分类" value={category || "未分类"} />
-      <QuickFact label="标签" value={tagCount > 0 ? `${tagCount} 个标签` : "暂无标签"} />
-      <QuickFact label="收录状态" value="已发布" />
-      <QuickFact label="建议动作" value="先看简介" />
-    </div>
-  );
-}
-
-type QuickFactProps = {
-  label: string;
-  value: string;
-};
-
-function QuickFact({ label, value }: QuickFactProps) {
-  return (
-    <div className="tool-detail-fact">
-      <p className="tool-detail-fact-label">{label}</p>
-      <p className="tool-detail-fact-value">{value}</p>
-    </div>
   );
 }
 

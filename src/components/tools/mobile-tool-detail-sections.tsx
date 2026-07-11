@@ -215,8 +215,6 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
     ];
   }, [tool]);
 
-  const totalCount = sections.reduce((sum, section) => sum + Math.max(section.items.length, 1), 0);
-
   function handleToggleTable() {
     setShowTable((current) => {
       const next = !current;
@@ -244,20 +242,6 @@ export function MobileToolDetailSections({ tool, className = "" }: MobileToolDet
           </button>
         </div>
 
-        <div className="tool-mobile-sections-stats">
-          <div className="tool-mobile-sections-stat">
-            <p className="tool-mobile-sections-stat-label">分类</p>
-            <p className="tool-mobile-sections-stat-value">{sections.length} 项</p>
-          </div>
-          <div className="tool-mobile-sections-stat">
-            <p className="tool-mobile-sections-stat-label">信息</p>
-            <p className="tool-mobile-sections-stat-value">{totalCount} 条</p>
-          </div>
-          <div className="tool-mobile-sections-stat">
-            <p className="tool-mobile-sections-stat-label">模式</p>
-            <p className="tool-mobile-sections-stat-value">折叠</p>
-          </div>
-        </div>
       </div>
 
       {showTable ? (

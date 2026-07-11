@@ -72,7 +72,7 @@ export function normalizeTool(
     risk_notice: riskNotice,
     detail: {
       introduction: [description],
-      features: withFallback(features, ["核心功能请以官方网站或项目文档为准。"]),
+      features,
       audience: withFallback(targetUsers, ["适合希望了解该工具用途和风险的用户。"]),
       scenarios: withFallback(useCases, ["适合在明确需求后作为备选工具进一步评估。"]),
       pros: withFallback(pros, ["来源清晰时，便于继续查看官网和文档。"]),

@@ -171,11 +171,7 @@ export function ToolMobileSummaryCard({ tool, className = "" }: ToolMobileSummar
             </span>
           ))}
         </div>
-      ) : (
-        <div className="tool-mobile-tags">
-          <span className="tool-mobile-tag tool-mobile-tag-empty">暂无标签</span>
-        </div>
-      )}
+      ) : null}
 
       <CollapsibleDescription title="这个工具是什么" content={description} className="mt-4" />
     </section>
