@@ -4563,3 +4563,14 @@ Result: completed
 - 删 3 个死组件(桌面/移动重复):ToolDecisionPanel、ToolMobileSummaryCard、MobileToolDetailSections + 文件内 MobileRelatedToolsCompact。
 - 同步清死 CSS:整段 tool-decision-*/tool-mobile-*、mobile-related-*、hero-card/intro/note/facts、section-head-mobile,含共享选择器与媒体查询里的残留。净减 1291 行。
 - 验证:tsc 全绿、括号平衡、chatgpt+localsend DOM 断言、双端截图。仍未推送线上。
+
+## 2026-07-12 工具详情页第三按钮：官方下载
+
+Result: completed
+
+- 需求:在「访问官网」「网盘下载」中间加「官方下载」按钮,跳转官方下载页;无链接时与网盘下载一样灰色禁用。
+- 约束:工具表只有 website_url / download_url 两个 URL 列;无直连 DB、无迁移、PostgREST 不能 DDL,无法加列。按项目既有「Storage JSON 不改 schema」模式解决。
+- 官方下载链接存进已有的 tool-media/{slug}.json 的 officialDownloadUrl 字段(与 media items 同文件);详情页 fetchToolOfficialDownloadUrl 服务端读取,传 prop。三按钮顺序:访问官网(website_url,实心琥珀)| 官方下载(officialDownloadUrl,琥珀描边)| 网盘下载(download_url)。中间/右侧无链接则灰色禁用 button。
+- 守门脚本 set-tool-official-download.mjs(--slug/--url,dry-run→execute,读现有 JSON 合并保留 items,回读校验);import-tool-media.mjs 加保留逻辑,重跑不再冲掉 officialDownloadUrl。
+- 端到端验证:obsidian 填 https://obsidian.md/download,DOM+截图确认官方下载可点;chatgpt 未填则灰色禁用。tsc 全绿。仍未推送线上。
+- 用法:某工具要加官方下载,告诉我地址,我跑 set-tool-official-download 脚本即可(与本项目其它数据一致,你无需碰后台/SQL)。
