@@ -55,8 +55,9 @@ Before any redesign or content step, read these files first:
 1. `AGENTS.md` (this file)
 2. `docs/DESIGN_SYSTEM.md` (full visual + data + content-asset standard)
 3. `docs/ARTICLE_CONTENT_STANDARD.md` (article writing structure + rendering pattern — read before writing or rendering any article content)
-4. `docs/PROJECT_RULES.md` (workflow rules: small steps, naming, verification)
-5. `docs/COSMIC_REDESIGN_LOG.md` (chronological record of what's already been built — check before re-deciding something already decided)
+4. `docs/CONTENT_STYLE_STANDARD.md` (voice/style standard: real-experience-sharer tone, AI-flavor blacklist — read before writing or rewriting ANY article or tool copy)
+5. `docs/PROJECT_RULES.md` (workflow rules: small steps, naming, verification)
+6. `docs/COSMIC_REDESIGN_LOG.md` (chronological record of what's already been built — check before re-deciding something already decided)
 
 If a task conflicts with these files, stop and report the conflict.
 
