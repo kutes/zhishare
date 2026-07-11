@@ -4543,3 +4543,13 @@ Result: completed(P1+P2);P3 自动路径确认走不通,转人工待办
 - 批量守门脚本 update-tools-from-rewrite.mjs:黑名单短语门+模板 summary 正则门+反乱码门,支持按条目选择性更新字段,逐工具回读验证;两批 dry-run→execute 20/20 全过。
 - 页面抽查 tinypng/localsend/chatgpt 详情页:新文案已渲染、零乱码、零黑名单短语。
 - P3:fetch-tool-photos 重跑确认 Canva(反爬)/Photopea(无 og:image)自动抓不到,figma 只有 gif;这两家官方图转人工待办(需从品牌资源页取并确认品牌素材授权)。仍未推送线上。
+
+## 2026-07-11 工具详情页优化(对齐文章页处理)
+
+Result: completed
+
+- Hero 瘦身:标题字号减半;hero 卡里与正文重复的完整简介段、自我说明式"这里先把最影响决策的信息放在最前面…"删除;快速判断面板保留(真实价值)。
+- 删黑话/占位:QuickFactsBar 整条删除("收录状态:已发布""建议动作:先看简介");normalizeTool 不再伪造"核心功能请以官方网站为准"兜底(真实数据规则);"暂无标签"占位胶囊(桌面+移动)删除;"核心判断"区元注释文案删除;移动端"分类 6 项/信息 N 条/模式 折叠"统计条删除。
+- 正文白纸卡:.tool-detail-article 复用 --ad-* 浅色变量组,居中 860px,内部 section/警示区/列表项/折叠简介(含渐隐遮罩)/媒体块/行内广告全部浅色适配;只放广告的 320px 右栏取消。
+- 死 CSS 同步清理:intro/note/facts/fact*/tag-empty/lead + 移动统计条,含共享选择器与媒体查询里的残留。
+- 验证:tsc 全绿、括号平衡、chatgpt+cyberchef DOM 断言(占位/黑话字符串全消失)、双端截图。仍未推送线上。
