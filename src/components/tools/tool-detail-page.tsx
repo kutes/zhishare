@@ -14,11 +14,12 @@ type ToolDetailPageProps = {
   tool: ToolItem;
   relatedTools: ToolItem[];
   media?: ToolMediaItem[];
+  officialDownloadUrl?: string;
 };
 
 type DetailBadgeTone = "gold" | "surface" | "outline";
 
-export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPageProps) {
+export function ToolDetailPage({ tool, relatedTools, media = [], officialDownloadUrl = "" }: ToolDetailPageProps) {
   const detail = getDetailRecord(tool);
   const title = firstText(tool.name, detail.name, detail.title) || "未命名工具";
   const summary = firstText(tool.tagline, detail.tagline, tool.description, detail.description) || "暂无简介";
@@ -117,6 +118,25 @@ export function ToolDetailPage({ tool, relatedTools, media = [] }: ToolDetailPag
                     >
                       暂无官网
                     </span>
+                  )}
+
+                  {officialDownloadUrl ? (
+                    <a
+                      href={officialDownloadUrl}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      className="tool-detail-secondary-button"
+                    >
+                      官方下载
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      className="tool-detail-secondary-button tool-detail-button-disabled"
+                    >
+                      官方下载
+                    </button>
                   )}
 
                   {downloadUrl ? (

@@ -61,7 +61,21 @@ async function main() {
   const uploaded = [];
   const failed = [];
   for (const entry of validated) {
-    const body = JSON.stringify({ slug: entry.slug, items: entry.items }, null, 2);
+    // Preserve a previously-set officialDownloadUrl so re-running this import never wipes it.
+    const preserved = { slug: entry.slug, items: entry.items };
+    try {
+      const publicUrl = `${supabaseUrl.replace(/\/$/, "")}/storage/v1/object/public/${BUCKET}/${encodeURIComponent(entry.slug)}.json`;
+      const res = await fetch(publicUrl, { cache: "no-store" });
+      if (res.ok) {
+        const prev = await res.json();
+        if (typeof prev?.officialDownloadUrl === "string" && /^https?:\/\//.test(prev.officialDownloadUrl)) {
+          preserved.officialDownloadUrl = prev.officialDownloadUrl;
+        }
+      }
+    } catch {
+      // No existing file or unreadable; nothing to preserve.
+    }
+    const body = JSON.stringify(preserved, null, 2);
     const { error } = await client.storage
       .from(BUCKET)
       .upload(`${entry.slug}.json`, body, { contentType: "application/json", upsert: true });

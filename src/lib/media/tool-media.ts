@@ -83,3 +83,27 @@ export async function fetchToolMedia(slug: string): Promise<ToolMediaItem[]> {
     return [];
   }
 }
+
+// Optional per-tool official download page URL. Stored in the same tool-media/{slug}.json
+// under `officialDownloadUrl` so no schema change is needed; guarded scripts populate it.
+// The detail page renders a disabled (gray) button when this is absent.
+export async function fetchToolOfficialDownloadUrl(slug: string): Promise<string> {
+  const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "";
+  if (!baseUrl || !slug) {
+    return "";
+  }
+
+  const url = `${baseUrl.replace(/\/$/, "")}/storage/v1/object/public/tool-media/${encodeURIComponent(slug)}.json`;
+
+  try {
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      return "";
+    }
+    const data: unknown = await response.json();
+    const value = (data as { officialDownloadUrl?: unknown })?.officialDownloadUrl;
+    return typeof value === "string" && /^https?:\/\//.test(value.trim()) ? value.trim() : "";
+  } catch {
+    return "";
+  }
+}
