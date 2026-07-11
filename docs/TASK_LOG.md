@@ -4533,3 +4533,13 @@ Result: completed (P0);P1/P2(20 个工具改写)与 P3(补 Canva/Photopea 官方
 - P0 重写 3 篇并守门回写(通用脚本 update-article-from-rewrite.mjs,--slug 参数;结构门 + 新增风格门:任何标题含"我"直接拒绝):标题小节全部改为结论式;free-image-tools-comparison 真点名 5 个工具,写入核实过的免费版限制(TinyPNG 官网实抓:单次 20 张/每张 5MB;remove.bg 免费仅预览分辨率,用宽松表述)。
 - 配图管道首次激活:重写后文章提及 remove.bg/TinyPNG,insert-article-media 官方层命中,在对应小节自动插入 2 张官方图(图注"来源:XX官方"),execute 成功,截图确认白卡内渲染正常。
 - 验证:三篇 dry-run→execute 全过反乱码门+结构门+风格门并回读一致;双端截图核对。仍未推送线上。
+
+## 2026-07-11 P1/P2 全部 20 个工具文案按风格标准改写
+
+Result: completed(P1+P2);P3 自动路径确认走不通,转人工待办
+
+- P1(前 10:chatgpt~obsidian):summary 全部重写为一句独特卖点+一个关键限制(废掉"适合…但不适合…"统一模板);description 每个补至少一条可核实细节(ChatGPT 编造出处、Photopea 支持 XD/Sketch/XCF+大 PSD 卡顿、Cursor=VS Code 壳、Canva 皇冠标记+抠图付费档、Notion 斜杠呼出块+离线弱、CapCut 自动字幕、remove.bg 预览分辨率、TinyPNG 20张/5MB+AVIF 转换(官网实抓核实)、Obsidian 本地 .md 文件);pros/cons 从 5×5 空对称精简为 3 条具体;清除"对小白来说"×8、"最大的价值不是"×5、"我觉得/我建议"。
+- P2(后 10 开源工具):保留全部已核实事实(协议/GitHub/平台),summary 去模板,description 各补真实操作路径(CyberChef 拖配方、LocalSend 同 Wi-Fi 自动发现、Stirling PDF Docker 一条命令、DropLock 清缓存即失效、AutoHotkey ::btw:: 一行脚本、PlainApp 局域网地址配对、Syncthing 互加设备 ID、File Browser 单文件启动)。
+- 批量守门脚本 update-tools-from-rewrite.mjs:黑名单短语门+模板 summary 正则门+反乱码门,支持按条目选择性更新字段,逐工具回读验证;两批 dry-run→execute 20/20 全过。
+- 页面抽查 tinypng/localsend/chatgpt 详情页:新文案已渲染、零乱码、零黑名单短语。
+- P3:fetch-tool-photos 重跑确认 Canva(反爬)/Photopea(无 og:image)自动抓不到,figma 只有 gif;这两家官方图转人工待办(需从品牌资源页取并确认品牌素材授权)。仍未推送线上。
