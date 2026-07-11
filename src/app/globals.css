@@ -655,12 +655,12 @@ canvas {
   .article-detail-shell {
     position: relative;
     z-index: 1;
-    width: min(100% - 40px, 1320px);
+    width: min(100% - 40px, 1080px);
     margin-inline: auto;
   }
 
   .article-detail-hero {
-    padding-block: clamp(56px, 8vh, 104px) clamp(30px, 5vh, 60px);
+    padding-block: clamp(32px, 5vh, 56px) clamp(20px, 3vh, 36px);
   }
 
   .article-detail-layout-shell {
@@ -745,7 +745,8 @@ canvas {
   .article-detail-cover {
     display: block;
     width: 100%;
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 3 / 1;
+    max-height: 300px;
     margin-bottom: 1.1rem;
     border: 1px solid rgba(255, 247, 237, 0.1);
     border-radius: 18px;
@@ -838,7 +839,7 @@ canvas {
 
   .article-detail-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+    grid-template-columns: minmax(0, 1fr) 280px;
     gap: 1.35rem;
   }
 
