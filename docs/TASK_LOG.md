@@ -4523,3 +4523,13 @@ Result: completed
 - 素材自动插入守门脚本 insert-article-media.mjs:官方层(文中提到的已发布工具若有官方图,插到首次提及小节末尾,每篇≤2,图注以「来源:X官方」结尾)+ CC0 层(Openverse 搜图转存 article-media 桶);已含 [IMG]/[VIDEO] 的文章整篇跳过;纯函数导出并自测 7 项全过。
 - 如实记录:当前 dry-run 插入 0 篇——3 篇 DB 文章只提到无官方图的工具(Photopea/Canva),且本机网络连不通 Openverse/Wikimedia(ECONNRESET/超时)。管道就绪,后续文章提到有图工具或网络可达时自动生效。
 - 验证:双端截图(白色版排版正常)、CSS 括号平衡、article-detail 块暗色残留清零(仅保留有意的琥珀氛围光)。仍未推送线上。
+
+## 2026-07-11 内容风格标准 + 全站审核 + P0 三篇文章重写
+
+Result: completed (P0);P1/P2(20 个工具改写)与 P3(补 Canva/Photopea 官方素材)待办
+
+- 新增 docs/CONTENT_STYLE_STANDARD.md:口吻定为"用过的人向朋友介绍";AI 味黑名单(叙述者排比标题、"我"当骨架、模板句式、全站同构、空泛概括);红线:体验感只能来自可核实的产品细节,不许编造亲历。已挂进 AGENTS.md 必读清单。
+- docs/content/content-audit-2026-07-11.md:3 篇文章全部重度(同构"我"骨架、零细节,图片工具篇标题 5 个正文只讲 2 个);前 10 工具中度(summary 模板、"对小白来说"×8、5×5 空对称);后 10 轻度(README 翻译腔,事实核实可靠保留)。
+- P0 重写 3 篇并守门回写(通用脚本 update-article-from-rewrite.mjs,--slug 参数;结构门 + 新增风格门:任何标题含"我"直接拒绝):标题小节全部改为结论式;free-image-tools-comparison 真点名 5 个工具,写入核实过的免费版限制(TinyPNG 官网实抓:单次 20 张/每张 5MB;remove.bg 免费仅预览分辨率,用宽松表述)。
+- 配图管道首次激活:重写后文章提及 remove.bg/TinyPNG,insert-article-media 官方层命中,在对应小节自动插入 2 张官方图(图注"来源:XX官方"),execute 成功,截图确认白卡内渲染正常。
+- 验证:三篇 dry-run→execute 全过反乱码门+结构门+风格门并回读一致;双端截图核对。仍未推送线上。
