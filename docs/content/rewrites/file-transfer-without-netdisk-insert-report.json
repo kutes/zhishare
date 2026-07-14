@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "file-transfer-without-netdisk",
+  "title": "传文件不用网盘：一次性发送用 LocalSend，持续同步用 Syncthing",
+  "category": "tool-collections",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "先分清",
+      "LocalSend",
+      "Syncthing",
+      "怎么选"
+    ],
+    "titles": [
+      "先分清你要\"发一次\"还是\"一直同步\"",
+      "发一次:同一 Wi-Fi 下,像 AirDrop",
+      "一直同步:多设备保持一致,像私有网盘",
+      "一句话分工,外加一个隐私彩蛋"
+    ],
+    "tldr_items": 4,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

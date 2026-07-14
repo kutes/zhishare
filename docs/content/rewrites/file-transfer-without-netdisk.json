@@ -1,0 +1,6 @@
+{
+  "title": "传文件不用网盘：一次性发送用 LocalSend，持续同步用 Syncthing",
+  "summary": "先分清是“发一次就完事”还是“两台设备一直保持一致”。一次性传输用 LocalSend（同 Wi-Fi 下像 AirDrop），持续同步用 Syncthing（点对点私有网盘）。都不经过服务器，顺带绕开网盘的来源和隐私问题。",
+  "slug": "file-transfer-without-netdisk",
+  "category_slug": "tool-collections"
+}
