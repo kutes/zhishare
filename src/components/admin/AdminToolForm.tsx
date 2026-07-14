@@ -116,7 +116,7 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
     });
 
     if (!result.success) {
-      setMessage(result.error || "Save failed, please check the console error details.");
+      setMessage(result.error || "保存失败，请查看控制台的错误详情后重试。");
       setIsSubmitting(false);
       return;
     }
@@ -211,8 +211,11 @@ export function AdminToolForm({ mode, categories, initialValues, onSubmit }: Adm
               value={values.cover_url ?? ""}
               onChange={(event) => updateValue("cover_url", event.target.value)}
               className={inputClass}
-              placeholder="当前阶段仅预留字段"
+              placeholder="留空自动生成品牌封面；也可粘贴图片直链覆盖"
             />
+            <span className="text-xs font-medium leading-5 text-slate-500">
+              可选。留空保存时会按工具名和分类自动生成封面；填写图片直链则用你的图。
+            </span>
           </label>
         </div>
 

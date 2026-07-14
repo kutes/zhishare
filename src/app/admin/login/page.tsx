@@ -124,7 +124,7 @@ export default function AdminLoginPage() {
   const isBusy = status === "checking" || status === "submitting";
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f8fbff]">
+    <main className="admin-theme min-h-screen overflow-hidden bg-[#faf6f0]">
       <section className="section-gradient-blue min-h-screen">
         <div className="page-shell flex min-h-screen items-center justify-center py-12">
           <div className="grid w-full max-w-5xl gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">

@@ -107,7 +107,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   if (status === "checking") {
     return (
-      <main className="min-h-screen overflow-hidden bg-[#f8fbff] text-ink">
+      <main className="admin-theme min-h-screen overflow-hidden bg-[#faf6f0] text-ink">
         <section className="section-gradient-soft min-h-screen">
           <div className="page-shell flex min-h-screen items-center justify-center py-10">
             <div className="glass-card-strong w-full max-w-lg p-6 text-center sm:p-8">

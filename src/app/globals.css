@@ -4450,6 +4450,69 @@ canvas {
   }
 }
 
+/* Admin: recolor the legacy blue theme to warm editorial (scoped to .admin-theme only) */
+.admin-theme {
+  background-color: #faf6f0;
+  color: #2a211b;
+}
+
+.admin-theme .glass-card,
+.admin-theme .glass-card-strong,
+.admin-theme .glass-card-interactive {
+  border-color: rgba(35, 25, 15, 0.1);
+  background: linear-gradient(180deg, #ffffff, #fdf9f3);
+  box-shadow: 0 16px 40px rgba(35, 25, 15, 0.07);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: #2a211b;
+}
+
+.admin-theme .glass-card::before,
+.admin-theme .glass-card-strong::before {
+  display: none;
+}
+
+.admin-theme .section-gradient-soft,
+.admin-theme .section-gradient-blue {
+  background: transparent;
+}
+
+.admin-theme .text-sky-700 {
+  color: #b06e22;
+}
+
+.admin-theme .text-sky-900 {
+  color: #7a4d18;
+}
+
+.admin-theme .text-sky-500 {
+  color: #c9873f;
+}
+
+.admin-theme .text-sky-200 {
+  color: #e9c896;
+}
+
+.admin-theme .bg-sky-50 {
+  background-color: rgba(227, 167, 95, 0.1);
+}
+
+.admin-theme .bg-sky-100 {
+  background-color: rgba(227, 167, 95, 0.18);
+}
+
+.admin-theme .border-sky-100 {
+  border-color: rgba(227, 167, 95, 0.22);
+}
+
+.admin-theme .border-sky-200 {
+  border-color: rgba(227, 167, 95, 0.3);
+}
+
+.admin-theme .border-sky-300 {
+  border-color: rgba(227, 167, 95, 0.4);
+}
+
 /* Articles warm editorial list page v1 */
 @layer components {
   .articles-page {

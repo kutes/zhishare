@@ -40,25 +40,25 @@ const statCards: Array<{
     key: "tools",
     label: "工具数量",
     description: "当前数据库中的工具内容",
-    accent: "from-sky-500 to-cyan-400",
+    accent: "from-[#e3a75f] to-[#edbd7e]",
   },
   {
     key: "articles",
     label: "文章数量",
     description: "当前数据库中的文章内容",
-    accent: "from-indigo-500 to-sky-400",
+    accent: "from-[#d98e4a] to-[#e3a75f]",
   },
   {
     key: "submissions",
     label: "投稿数量",
     description: "用户提交的工具推荐",
-    accent: "from-teal-500 to-emerald-400",
+    accent: "from-[#b06e22] to-[#d98e4a]",
   },
   {
     key: "reports",
     label: "投诉数量",
     description: "版权与权益反馈记录",
-    accent: "from-violet-500 to-indigo-400",
+    accent: "from-[#c9873f] to-[#edbd7e]",
   },
 ];
 
@@ -160,7 +160,7 @@ export default function AdminHomePage() {
 
   if (status === "checking") {
     return (
-      <main className="min-h-screen overflow-hidden bg-[#f8fbff] text-ink">
+      <main className="admin-theme min-h-screen overflow-hidden bg-[#faf6f0] text-ink">
         <section className="section-gradient-soft min-h-screen">
           <div className="page-shell flex min-h-screen items-center justify-center py-10">
             <div className="glass-card-strong w-full max-w-lg p-6 text-center sm:p-8">
@@ -179,7 +179,7 @@ export default function AdminHomePage() {
   const isStatsLoading = status === "loading";
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f8fbff] text-ink">
+    <main className="admin-theme min-h-screen overflow-hidden bg-[#faf6f0] text-ink">
       <section className="section-gradient-soft min-h-screen">
         <div className="page-shell py-5 sm:py-6 lg:py-8">
           <div className="grid gap-5 lg:grid-cols-[260px_1fr]">
