@@ -4574,3 +4574,14 @@ Result: completed
 - 守门脚本 set-tool-official-download.mjs(--slug/--url,dry-run→execute,读现有 JSON 合并保留 items,回读校验);import-tool-media.mjs 加保留逻辑,重跑不再冲掉 officialDownloadUrl。
 - 端到端验证:obsidian 填 https://obsidian.md/download,DOM+截图确认官方下载可点;chatgpt 未填则灰色禁用。tsc 全绿。仍未推送线上。
 - 用法:某工具要加官方下载,告诉我地址,我跑 set-tool-official-download 脚本即可(与本项目其它数据一致,你无需碰后台/SQL)。
+
+## 2026-07-14 新文章：Notion vs Obsidian 笔记工具选择
+
+Result: completed
+
+- 内容质量收尾后进入内容扩充,第一篇新文章(站里文章 3→4 篇)。
+- 选题《笔记工具选 Notion 还是 Obsidian:先看你怕丢还是怕乱》:两款工具站里都收录、能互链;复用改工具文案时已核实的事实(Notion 离线弱/按人头收费、Obsidian 本地 .md/同步自配),自包含不依赖外部网络。
+- 按 CONTENT_STYLE_STANDARD + ARTICLE_CONTENT_STANDARD 写:标题与小标题零"我"、主语多用"你/工具"、4 条结论式速览、⚑ 披露、4 编号节带标签、开篇 lead+big、1 WHY、2 KEY、决策式收尾。
+- 新增守门式插入脚本 insert-article-from-rewrite.mjs(现有的是 UPDATE):反乱码门+结构门+风格门(标题禁"我")、slug 占用检查、分类 slug→id 解析、自动生成上传封面、INSERT published + 回读校验。分类 productivity-notes(效率笔记)。
+- 配图管道命中:文章提及 Notion/Obsidian,insert-article-media 自动插入两张官方图(图注"来源:XX官方")。
+- 验证:dry-run→execute 全门通过、封面生成、双端截图确认速览/WHY/KEY/官方图渲染正常。仍未推送线上。
