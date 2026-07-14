@@ -4596,3 +4596,15 @@ Result: completed
 - 分类 tool-collections(工具合集),与图片工具那篇同类——相关推荐区已确认互相带出。
 - 无官方配图:LocalSend/Syncthing 属当初 og:image 抓不到的开源工具,CC0 又被本机网络挡住,如实留空不硬凑(实用指南,图非必需)。
 - 验证:dry-run→execute 全门通过、封面生成、双端截图。仍未推送线上。
+
+## 2026-07-14 封面全覆盖：GitHub 真封面 + 增强生成封面；工具详情副属性精简
+
+Result: completed
+
+- 副属性精简(#3):工具详情页的适合人群/使用场景/优点/缺点从"大卡里套带框小盒子"改成小琥珀标题+紧凑小字圆点列表、细线分隔;风险提醒保留警示框。白卡高度约减半,桌面+移动都更简约。
+- 封面(#2,用户定"先试抓再增强"):
+  - 新脚本 fetch-github-covers.mjs:开源工具抓 GitHub 自动社交预览图(opengraph.githubassets.com/1/{owner}/{repo},公开可抓的真·官方图),守门 dry-run→execute。8 个开源工具命中,7 个成功入 tool-covers/photos/(cyberchef/localsend/syncthing/autohotkey/droplock/openless/stirling-pdf);file-browser 持续 429 未取到,留用生成封面。
+  - 抓不到的(canva/capcut/chatgpt/figma/photopea/file-browser):增强 tool-cover.mjs 生成器——大字母下加工具名标签+琥珀短线(escapeXml+超 22 字截断),看着像成品而非占位;regenerate-generated-covers.mjs 针对 cover_url 含 /covers/ 的工具重生成并 ?v= 破缓存。covers:check 通过。
+  - 结果:20 个工具封面无一空白,三档(真实照片 7 / GitHub 官方卡 7 / 增强生成 6)。
+- 注:文章封面仍用旧生成样式(无名称标签),未一并重生成(标题过长,且文章本就都有封面),按需再说。
+- 验证:/tools 网格 + chatgpt 详情双端截图。域名 songkuntai.com 已就绪(部署接入按 docs/DEPLOY_CHINA_ACCESS.md,待用户推进)。仍未推送线上。
