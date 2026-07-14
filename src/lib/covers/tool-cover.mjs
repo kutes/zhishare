@@ -6,6 +6,23 @@ const BG_BOTTOM = "#120f0e";
 const CREAM = "#F7F1EA";
 const ACCENTS = ["#E3A75F", "#D98E4A", "#EDBD7E"];
 const SERIF = "Songti SC, Noto Serif SC, STSong, Source Han Serif SC, Georgia, SimSun, serif";
+const SANS = "PingFang SC, Microsoft YaHei, Helvetica Neue, Arial, sans-serif";
+
+function escapeXml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Short label under the big initials, so generated covers read as intentional
+// branded art rather than placeholders. Long titles are truncated with an ellipsis.
+function coverLabel(title) {
+  const text = String(title ?? "").trim();
+  if (!text) return "";
+  return escapeXml(text.length > 22 ? `${text.slice(0, 21)}…` : text);
+}
 
 export function getToolInitials(title) {
   if (!title || title.trim().length === 0) {
@@ -143,6 +160,7 @@ export function generateToolCover({ title, slug, category }) {
   const hash = hashString(String(slug ?? ""));
   const accent = ACCENTS[hash % ACCENTS.length];
   const initials = getToolInitials(String(title ?? ""));
+  const label = coverLabel(title);
   const motif = resolveMotif(category);
   const glowX = 300 + (hash % 600);
 
@@ -161,8 +179,13 @@ export function generateToolCover({ title, slug, category }) {
     `<ellipse cx="${glowX}" cy="180" rx="460" ry="300" fill="url(#glow)"/>` +
     `<ellipse cx="1050" cy="620" rx="380" ry="240" fill="rgba(91,58,82,0.18)"/>` +
     motif(accent) +
-    `<text x="600" y="337" dy="0.36em" text-anchor="middle" fill="${CREAM}" ` +
-    `font-family="${SERIF}" font-size="230" font-weight="600" letter-spacing="8">${initials}</text>` +
+    `<text x="600" y="300" dy="0.36em" text-anchor="middle" fill="${CREAM}" ` +
+    `font-family="${SERIF}" font-size="196" font-weight="600" letter-spacing="8">${initials}</text>` +
+    (label
+      ? `<line x1="540" y1="452" x2="660" y2="452" stroke="${accent}" stroke-width="4" opacity="0.85"/>` +
+        `<text x="600" y="512" text-anchor="middle" fill="${CREAM}" fill-opacity="0.92" ` +
+        `font-family="${SANS}" font-size="52" font-weight="600" letter-spacing="2">${label}</text>`
+      : "") +
     `<rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="rgba(247,241,234,0.1)"/>` +
     `</svg>`;
 
