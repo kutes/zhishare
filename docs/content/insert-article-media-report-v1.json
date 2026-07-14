@@ -18,27 +18,16 @@
     },
     {
       "slug": "notion-vs-obsidian",
-      "action": "insert",
-      "layer": "official",
-      "inserts": [
-        {
-          "sectionIndex": 1,
-          "sectionTitle": "一切都能拼进一页,但离线和账单要有数",
-          "source": "official:notion",
-          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/notion.jpg | 「Notion」官网视觉素材，来源：Notion官方"
-        },
-        {
-          "sectionIndex": 2,
-          "sectionTitle": "笔记是你电脑里的文件,软件没了也在",
-          "source": "official:obsidian",
-          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/obsidian.png | 「Obsidian」官网视觉素材，来源：Obsidian官方"
-        }
-      ]
+      "action": "skip",
+      "reason": "already_has_media"
+    },
+    {
+      "slug": "file-transfer-without-netdisk",
+      "action": "skip",
+      "reason": "no_cc0_result_for:file transfer without netdisk"
     }
   ],
-  "updated": [
-    "notion-vs-obsidian"
-  ],
+  "updated": [],
   "failed": [],
   "secret_values_printed": false
 }
