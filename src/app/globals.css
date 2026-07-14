@@ -2783,7 +2783,6 @@ canvas {
   .zh-tools-quick-card,
   .zh-tools-button,
   .zh-tools-clear,
-  .zh-tool-link,
   .zh-tool-link-secondary {
     transition:
       transform 180ms ease,
@@ -2971,8 +2970,6 @@ canvas {
   .zh-tools-button:focus-visible,
   .zh-tools-clear:hover,
   .zh-tools-clear:focus-visible,
-  .zh-tool-link:hover,
-  .zh-tool-link:focus-visible,
   .zh-tool-link-secondary:hover,
   .zh-tool-link-secondary:focus-visible {
     transform: translateY(-2px);
@@ -3118,6 +3115,8 @@ canvas {
     gap: 0.9rem;
     border-radius: 24px;
     padding: 1rem;
+    color: inherit;
+    text-decoration: none;
   }
 
   .zh-tool-card-featured {
@@ -3237,7 +3236,6 @@ canvas {
     padding: 0.26rem 0.55rem;
   }
 
-  .zh-tool-link,
   .zh-tool-link-secondary,
   .zh-tools-button {
     display: inline-flex;
@@ -3246,25 +3244,12 @@ canvas {
     min-height: 2.7rem;
     border: 1px solid rgba(227, 167, 95, 0.22);
     border-radius: 16px;
-    background: linear-gradient(180deg, rgba(227, 167, 95, 0.14), rgba(227, 167, 95, 0.08));
+    background: rgba(255, 247, 237, 0.04);
     color: #fff3dd;
     font-size: 0.84rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     padding: 0.7rem 1rem;
-  }
-
-  .zh-tool-link-secondary,
-  .zh-tools-button {
-    background: rgba(255, 247, 237, 0.04);
-  }
-
-  /* Stretch the detail link over the whole card so the full surface is clickable. */
-  .zh-tool-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
   }
 
   .zh-tool-link-secondary {
@@ -4710,7 +4695,6 @@ canvas {
 
   .articles-hero-panel-kicker,
   .articles-filter-group-title,
-  .articles-card-meta,
   .articles-result-bar {
     color: var(--articles-muted);
     font-size: 0.74rem;
@@ -4960,41 +4944,45 @@ canvas {
   .articles-card {
     position: relative;
     display: flex;
-    min-height: 24rem;
+    min-height: 17rem;
     flex-direction: column;
     overflow: hidden;
-    padding: 1.25rem;
+    border-radius: 24px;
+    padding: 1.5rem 1.4rem 1.35rem;
+    color: inherit;
+    text-decoration: none;
     transition:
-      transform 180ms ease,
-      border-color 180ms ease,
-      background 180ms ease,
-      box-shadow 180ms ease;
+      transform 200ms ease,
+      border-color 200ms ease,
+      background 200ms ease,
+      box-shadow 200ms ease;
   }
 
-  .articles-card-banner {
-    display: block;
-    width: calc(100% + 2.5rem);
-    aspect-ratio: 16 / 9;
-    margin: -1.25rem -1.25rem 1rem;
-    border-bottom: 1px solid rgba(255, 247, 237, 0.08);
-    object-fit: cover;
+  /* top-left accent bar that extends across the card on hover */
+  .articles-card-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 3.4rem;
+    height: 3px;
+    border-radius: 0 0 999px 0;
+    background: linear-gradient(90deg, #e3a75f, rgba(227, 167, 95, 0));
+    transition: width 300ms ease;
   }
 
-  .articles-card-cover-fallback {
-    display: flex;
-    width: calc(100% + 2.5rem);
-    aspect-ratio: 16 / 9;
-    align-items: center;
-    justify-content: center;
-    margin: -1.25rem -1.25rem 1rem;
-    border-bottom: 1px solid rgba(255, 247, 237, 0.08);
-    background:
-      radial-gradient(circle at 30% 28%, rgba(227, 167, 95, 0.16), transparent 30%),
-      linear-gradient(150deg, #171210, #120f0e);
-    color: #f7f1ea;
+  /* oversized faint serif quotation mark, fills the empty space a cover used to */
+  .articles-card-watermark {
+    position: absolute;
+    right: 0.3rem;
+    bottom: -3.4rem;
+    z-index: 0;
     font-family: var(--zh-serif);
-    font-size: 2.4rem;
-    font-weight: 600;
+    font-size: 13rem;
+    line-height: 1;
+    color: rgba(227, 167, 95, 0.08);
+    pointer-events: none;
+    user-select: none;
   }
 
   .articles-card-summary-clamp {
@@ -5046,30 +5034,53 @@ canvas {
   }
 
   .articles-card-title {
-    margin: 1rem 0 0;
+    margin: 1.1rem 0 0;
     color: var(--articles-text);
     font-family: var(--zh-serif);
-    font-size: 1.4rem;
+    font-size: clamp(1.5rem, 1.4vw, 1.8rem);
     font-weight: 600;
     letter-spacing: -0.03em;
-    line-height: 1.22;
+    line-height: 1.2;
   }
 
   .articles-card-summary {
-    margin: 0.85rem 0 0;
+    margin: 0.75rem 0 0;
     color: var(--articles-muted);
-    flex: 1;
     line-height: 1.8;
   }
 
-  .articles-card-meta {
+  .articles-card-tags {
+    margin-top: 0.9rem;
+  }
+
+  .articles-card-foot {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.15rem;
+  }
+
+  .articles-card-readtime {
     color: var(--articles-faint);
+    font-size: 0.8rem;
+    font-weight: 600;
     letter-spacing: 0.06em;
-    text-transform: none;
+  }
+
+  .articles-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #e3a75f;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .articles-card-cta span {
+    transition: transform 200ms ease;
   }
 
   .articles-card-dot {
@@ -5079,25 +5090,6 @@ canvas {
     border-radius: 999px;
     background: #e3a75f;
     box-shadow: 0 0 12px rgba(227, 167, 95, 0.5);
-  }
-
-  /* Stretch the read link over the whole card so the full surface is clickable. */
-  .articles-card-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-  }
-
-  .articles-card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 1rem;
-    color: #e3a75f;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
   }
 
   .articles-ad-slot {
@@ -5147,7 +5139,6 @@ canvas {
   @media (hover: hover) and (pointer: fine) {
     .articles-clear-button:hover,
     .articles-empty-button:hover,
-    .articles-card-link:hover,
     .articles-filter-pill:hover {
       transform: translateY(-1px);
       border-color: rgba(227, 167, 95, 0.32);
@@ -5155,9 +5146,21 @@ canvas {
     }
 
     .articles-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 247, 237, 0.14);
+      transform: translateY(-3px);
+      border-color: rgba(227, 167, 95, 0.28);
       box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+    }
+
+    .articles-card:hover .articles-card-accent {
+      width: 100%;
+    }
+
+    .articles-card:hover .articles-card-cta span {
+      transform: translateX(4px);
+    }
+
+    .articles-card:hover .articles-card-title {
+      color: #fff6ea;
     }
   }
 
@@ -5195,10 +5198,9 @@ canvas {
     }
 
     .articles-card {
-      min-height: 22rem;
+      min-height: 15rem;
     }
 
-    .articles-card-link,
     .articles-clear-button,
     .articles-empty-button {
       width: 100%;

@@ -25,7 +25,7 @@ export function FeaturedToolCard({ tool }: FeaturedToolCardProps) {
   const visibleTags = getVisibleTags(tool, 4);
 
   return (
-    <article className="zh-tool-card zh-tool-card-featured">
+    <Link href={`/tools/${slug}`} className="zh-tool-card zh-tool-card-featured" aria-label={`查看 ${title} 详情`}>
       {coverUrl ? (
         <div className={`zh-tool-card-banner-wrap${isPhotoCover(tool) ? " zh-tool-card-banner-photo" : ""}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -63,11 +63,11 @@ export function FeaturedToolCard({ tool }: FeaturedToolCardProps) {
           ) : (
             <span />
           )}
-          <Link href={`/tools/${slug}`} className="zh-tool-link zh-tool-card-arrow" aria-label={`查看 ${title} 详情`}>
+          <span className="zh-tool-card-arrow" aria-hidden="true">
             →
-          </Link>
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

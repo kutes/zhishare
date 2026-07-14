@@ -25,7 +25,7 @@ export function CompactToolCard({ tool }: CompactToolCardProps) {
   const coverUrl = getToolCoverUrl(tool);
 
   return (
-    <article className="zh-tool-card zh-tool-card-cover">
+    <Link href={`/tools/${slug}`} className="zh-tool-card zh-tool-card-cover" aria-label={`查看 ${title} 详情`}>
       {coverUrl ? (
         <div className={`zh-tool-card-banner-wrap${isPhotoCover(tool) ? " zh-tool-card-banner-photo" : ""}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -51,10 +51,10 @@ export function CompactToolCard({ tool }: CompactToolCardProps) {
           <span>适合</span>
           {focusText}
         </p>
-        <Link href={`/tools/${slug}`} className="zh-tool-link zh-tool-card-arrow" aria-label={`查看 ${title} 详情`}>
+        <span className="zh-tool-card-arrow" aria-hidden="true">
           →
-        </Link>
+        </span>
       </div>
-    </article>
+    </Link>
   );
 }
