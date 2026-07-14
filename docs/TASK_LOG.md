@@ -4585,3 +4585,14 @@ Result: completed
 - 新增守门式插入脚本 insert-article-from-rewrite.mjs(现有的是 UPDATE):反乱码门+结构门+风格门(标题禁"我")、slug 占用检查、分类 slug→id 解析、自动生成上传封面、INSERT published + 回读校验。分类 productivity-notes(效率笔记)。
 - 配图管道命中:文章提及 Notion/Obsidian,insert-article-media 自动插入两张官方图(图注"来源:XX官方")。
 - 验证:dry-run→execute 全门通过、封面生成、双端截图确认速览/WHY/KEY/官方图渲染正常。仍未推送线上。
+
+## 2026-07-14 新文章：LocalSend vs Syncthing（不用网盘传文件）
+
+Result: completed
+
+- 第二篇新文章(站里文章 4→5 篇)。选题呼应网盘避坑文章,两个工具站里都有。
+- 《传文件不用网盘:一次性发送用 LocalSend,持续同步用 Syncthing》:核心分工=发一次(LocalSend,同 Wi-Fi 像 AirDrop) vs 一直同步(Syncthing,点对点私有网盘);收尾接上"下载先看来源"——点对点不经服务器,来源和隐私都在自己手里。
+- 复用已核实事实(LocalSend 同 Wi-Fi 自动发现/全平台/需同局域网;Syncthing 互加设备 ID/P2P 加密/iOS 无官方端)。标题小标题零"我",过结构门+风格门+反乱码门。
+- 分类 tool-collections(工具合集),与图片工具那篇同类——相关推荐区已确认互相带出。
+- 无官方配图:LocalSend/Syncthing 属当初 og:image 抓不到的开源工具,CC0 又被本机网络挡住,如实留空不硬凑(实用指南,图非必需)。
+- 验证:dry-run→execute 全门通过、封面生成、双端截图。仍未推送线上。
