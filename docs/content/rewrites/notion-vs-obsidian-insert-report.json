@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "notion-vs-obsidian",
+  "title": "笔记工具选 Notion 还是 Obsidian：先看你怕丢还是怕乱",
+  "category": "productivity-notes",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "先分清",
+      "Notion",
+      "Obsidian",
+      "怎么选"
+    ],
+    "titles": [
+      "选之前,先分清你怕\"乱\"还是怕\"丢\"",
+      "一切都能拼进一页,但离线和账单要有数",
+      "笔记是你电脑里的文件,软件没了也在",
+      "三个问题,基本能定去留"
+    ],
+    "tldr_items": 4,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

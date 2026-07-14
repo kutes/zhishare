@@ -13,26 +13,31 @@
     },
     {
       "slug": "free-image-tools-comparison",
+      "action": "skip",
+      "reason": "already_has_media"
+    },
+    {
+      "slug": "notion-vs-obsidian",
       "action": "insert",
       "layer": "official",
       "inserts": [
         {
-          "sectionIndex": 3,
-          "sectionTitle": "remove.bg 与 TinyPNG:一个只抠图,一个只压缩",
-          "source": "official:tinypng",
-          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/tinypng.jpg | 「TinyPNG」官网视觉素材，来源：TinyPNG官方"
+          "sectionIndex": 1,
+          "sectionTitle": "一切都能拼进一页,但离线和账单要有数",
+          "source": "official:notion",
+          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/notion.jpg | 「Notion」官网视觉素材，来源：Notion官方"
         },
         {
-          "sectionIndex": 3,
-          "sectionTitle": "remove.bg 与 TinyPNG:一个只抠图,一个只压缩",
-          "source": "official:remove-bg",
-          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/remove-bg.jpg | 「remove.bg」官网视觉素材，来源：remove.bg官方"
+          "sectionIndex": 2,
+          "sectionTitle": "笔记是你电脑里的文件,软件没了也在",
+          "source": "official:obsidian",
+          "line": "[IMG] https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/obsidian.png | 「Obsidian」官网视觉素材，来源：Obsidian官方"
         }
       ]
     }
   ],
   "updated": [
-    "free-image-tools-comparison"
+    "notion-vs-obsidian"
   ],
   "failed": [],
   "secret_values_printed": false
