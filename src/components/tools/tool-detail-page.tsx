@@ -5,6 +5,7 @@ import { CopyrightNotice } from "@/components/common/CopyrightNotice";
 import { toListItems } from "@/lib/db/normalizers";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { CollapsibleBlock } from "./collapsible-block";
 import { CollapsibleDescription } from "./collapsible-description";
 import { ToolMediaGallery } from "./tool-media-gallery";
 import type { ToolMediaItem } from "@/lib/media/tool-media";
@@ -42,6 +43,7 @@ export function ToolDetailPage({ tool, relatedTools, media = [], officialDownloa
   const pros = getToolList(tool, ["pros", "advantages"], ["pros", "advantages"]);
   const cons = getToolList(tool, ["cons", "limitations"], ["cons", "limitations"]);
   const risks = getToolList(tool, ["risk_notice", "riskNotice"], ["risk_notice", "riskNotice", "risk"]);
+  const hasExtras = [features, audience, scenarios, pros, cons].some((list) => list.length > 0);
   const websiteUrl = firstText(tool.website_url, (detail as Record<string, unknown>).website_url);
   const downloadUrl = firstText(tool.download_url, tool.downloadUrl, (detail as Record<string, unknown>).download_url);
 
@@ -92,14 +94,21 @@ export function ToolDetailPage({ tool, relatedTools, media = [], officialDownloa
                   </div>
                 </section>
 
-                <ListSection title="核心功能" items={features} />
                 <ToolMediaGallery items={media} />
-                <AdPlaceholder variant="inline" />
-                <ListSection title="适合人群" items={audience} />
-                <ListSection title="使用场景" items={scenarios} />
-                <ListSection title="优点" items={pros} />
-                <ListSection title="缺点" items={cons} />
+
+                {hasExtras ? (
+                  <CollapsibleBlock summary="更多信息：适合人群、使用场景、优缺点">
+                    <ListSection title="核心功能" items={features} />
+                    <ListSection title="适合人群" items={audience} />
+                    <ListSection title="使用场景" items={scenarios} />
+                    <ListSection title="优点" items={pros} />
+                    <ListSection title="缺点" items={cons} />
+                  </CollapsibleBlock>
+                ) : null}
+
                 <ListSection title="风险提醒" items={risks} warning />
+
+                <AdPlaceholder variant="inline" />
 
                 <div className="tool-detail-article-actions">
                   {websiteUrl ? (

@@ -4002,6 +4002,47 @@ canvas {
     color: var(--ad-text-muted);
   }
 
+  /* 隐藏式「更多信息」:副属性默认收起 */
+  .tool-detail-more {
+    border-top: 1px solid var(--ad-border);
+  }
+
+  .tool-detail-more-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 0 0;
+    color: var(--ad-text-muted);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .tool-detail-more-toggle:hover {
+    color: var(--ad-accent);
+  }
+
+  .tool-detail-more-state {
+    flex-shrink: 0;
+    color: var(--ad-accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .tool-detail-more-body {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 0.6rem;
+  }
+
+  /* 折叠内的各小节去掉自身分隔线,交给容器统一间距 */
+  .tool-detail-more-body .tool-detail-section {
+    border-top: none;
+    padding-top: 0;
+  }
+
   .tool-detail-article .tool-collapsible-description {
     border-color: var(--ad-border);
     background: var(--ad-surface-soft);
