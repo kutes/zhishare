@@ -51,13 +51,6 @@ export function ToolsPage({ tools }: ToolsPageProps) {
     [tools],
   );
 
-  const categoryCount = useMemo(
-    () => categories.filter((category) => category !== allOption && category.trim().length > 0).length,
-    [categories],
-  );
-
-  const tagCount = useMemo(() => tags.filter((tag) => tag !== allOption && tag.trim().length > 0).length, [tags]);
-
   const filteredTools = useMemo(() => {
     const keyword = query.trim().toLowerCase();
 
@@ -107,7 +100,7 @@ export function ToolsPage({ tools }: ToolsPageProps) {
 
       <main className="relative">
         <div className="zh-tools-ambient" aria-hidden="true" />
-        <ToolsHero totalCount={tools.length} categoryCount={categoryCount} tagCount={tagCount} />
+        <ToolsHero totalCount={tools.length} />
 
         <section className="py-3 sm:py-4 zh-tools-quick-section">
           <div className="page-shell zh-tools-shell">

@@ -2678,7 +2678,7 @@ canvas {
   .zh-tools-hero {
     position: relative;
     overflow: hidden;
-    padding-block: 4rem 2rem;
+    padding-block: 2.75rem 2rem;
   }
 
   .zh-tools-hero-glow {
@@ -2704,15 +2704,63 @@ canvas {
     pointer-events: none;
   }
 
-  .zh-tools-hero-grid {
-    position: relative;
-    display: grid;
-    gap: 1.25rem;
-    align-items: stretch;
+  .zh-tools-hero-shell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
   }
 
-  .zh-tools-hero-copy,
-  .zh-tools-hero-panel,
+  .zh-tools-hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    color: rgba(227, 167, 95, 0.85);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .zh-tools-hero-kicker-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: #e3a75f;
+    box-shadow: 0 0 12px rgba(227, 167, 95, 0.55);
+  }
+
+  .zh-tools-hero-row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem 1.1rem;
+  }
+
+  .zh-tools-hero-divider {
+    width: 1px;
+    height: 1.9rem;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, transparent, rgba(227, 167, 95, 0.55), transparent);
+  }
+
+  .zh-tools-hero-count {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    border: 1px solid rgba(227, 167, 95, 0.24);
+    border-radius: 999px;
+    background: rgba(227, 167, 95, 0.09);
+    color: #f1c47f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.34rem 0.78rem;
+  }
+
   .zh-tools-quick-panel,
   .zh-tools-filter-panel,
   .zh-tool-card,
@@ -2730,8 +2778,6 @@ canvas {
     -webkit-backdrop-filter: blur(22px) saturate(1.05);
   }
 
-  .zh-tools-hero-copy,
-  .zh-tools-hero-panel,
   .zh-tools-quick-panel,
   .zh-tools-filter-panel,
   .zh-tools-sponsor,
@@ -2749,7 +2795,7 @@ canvas {
   }
 
   .zh-tools-title {
-    margin-top: 0.85rem;
+    margin: 0;
     font-family:
       "Space Grotesk",
       "Segoe UI",
@@ -2760,17 +2806,15 @@ canvas {
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
-    font-size: clamp(2.6rem, 5vw, 4.75rem);
+    font-size: clamp(1.9rem, 2.8vw, 2.6rem);
     font-weight: 780;
-    letter-spacing: -0.035em;
-    line-height: 0.96;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
     text-transform: none;
   }
 
   .zh-tools-lead,
   .zh-tools-section-copy,
-  .zh-tools-stat-label,
-  .zh-tools-stat-value,
   .zh-tools-quick-hint,
   .zh-tool-card-desc,
   .zh-tool-card-focus,
@@ -2780,20 +2824,12 @@ canvas {
   }
 
   .zh-tools-lead {
-    max-width: 44rem;
-    margin-top: 1rem;
-    font-size: 0.98rem;
-    line-height: 1.9;
+    margin: 0;
+    max-width: 30rem;
+    font-size: 0.94rem;
+    line-height: 1.7;
   }
 
-  .zh-tools-chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-    margin-top: 1.15rem;
-  }
-
-  .zh-tools-chip,
   .zh-tools-filter-chip,
   .zh-tools-quick-card,
   .zh-tools-button,
@@ -2807,32 +2843,6 @@ canvas {
       color 180ms ease;
   }
 
-  .zh-tools-chip {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.05rem;
-    border: 1px solid rgba(255, 247, 237, 0.09);
-    border-radius: 999px;
-    background: rgba(255, 247, 237, 0.045);
-    color: rgba(247, 241, 234, 0.86);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    padding: 0.42rem 0.8rem;
-  }
-
-  .zh-tools-hero-grid {
-    grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
-  }
-
-  .zh-tools-hero-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    min-height: 100%;
-  }
-
-  .zh-tools-panel-top,
   .zh-tools-filter-top,
   .zh-tools-section-head {
     display: flex;
@@ -2841,7 +2851,6 @@ canvas {
     gap: 1rem;
   }
 
-  .zh-tools-panel-label,
   .zh-tools-filter-label {
     color: rgba(175, 163, 153, 0.84);
     font-size: 0.74rem;
@@ -2850,106 +2859,12 @@ canvas {
     text-transform: uppercase;
   }
 
-  .zh-tools-panel-title,
   .zh-tools-subtitle,
   .zh-tools-section-title,
   .zh-tools-empty-title,
   .zh-tools-sponsor-title,
   .zh-tool-card-title {
     color: #f7f1ea;
-  }
-
-  .zh-tools-panel-title {
-    margin-top: 0.35rem;
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-
-  .zh-tools-live-dot {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    border: 1px solid rgba(227, 167, 95, 0.16);
-    border-radius: 999px;
-    background: rgba(227, 167, 95, 0.08);
-    color: rgba(255, 241, 215, 0.94);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 0.45rem 0.7rem;
-    text-transform: uppercase;
-  }
-
-  .zh-tools-live-dot span {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 999px;
-    background: #e3a75f;
-    box-shadow: 0 0 0 6px rgba(227, 167, 95, 0.12);
-  }
-
-  .zh-tools-stat-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-  }
-
-  .zh-tools-stat-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.75rem;
-  }
-
-  .zh-tools-stat-card {
-    border: 1px solid rgba(255, 247, 237, 0.09);
-    border-radius: 20px;
-    background: rgba(255, 247, 237, 0.035);
-    padding: 0.95rem 1rem;
-  }
-
-  .zh-tools-stat-card-compact {
-    padding-block: 0.85rem;
-  }
-
-  .zh-tools-stat-value {
-    display: flex;
-    align-items: baseline;
-    gap: 0.35rem;
-    margin-top: 0.35rem;
-    color: #f7f1ea;
-  }
-
-  .zh-tools-stat-value span:first-child {
-    font-size: 1.45rem;
-    font-weight: 700;
-  }
-
-  .zh-tools-stat-value span:last-child {
-    color: rgba(175, 163, 153, 0.86);
-    font-size: 0.74rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .zh-tools-hero-note {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    border: 1px solid rgba(227, 167, 95, 0.15);
-    border-radius: 18px;
-    background: rgba(227, 167, 95, 0.065);
-    color: rgba(247, 241, 234, 0.86);
-    font-size: 0.82rem;
-    padding: 0.8rem 0.95rem;
-  }
-
-  .zh-tools-hero-note span {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 999px;
-    background: #e3a75f;
-    box-shadow: 0 0 0 5px rgba(227, 167, 95, 0.08);
   }
 
   .zh-tools-section-copy {
@@ -3426,7 +3341,6 @@ canvas {
   }
 
   @media (max-width: 1200px) {
-    .zh-tools-hero-grid,
     .zh-tools-sponsor {
       grid-template-columns: 1fr;
     }
@@ -3439,20 +3353,18 @@ canvas {
 
   @media (max-width: 720px) {
     .zh-tools-hero {
-      padding-block: 2.25rem 1.25rem;
+      padding-block: 2rem 1.25rem;
     }
 
-    .zh-tools-hero-copy,
+    .zh-tools-hero-shell {
+      gap: 0.7rem;
+    }
+
     .zh-tools-filter-panel,
     .zh-tools-sponsor,
     .zh-tools-empty {
       padding: 1.1rem;
       border-radius: 24px;
-    }
-
-    /* 手机端隐藏「资源发现面板」:统计数字对手机用户决策价值低,优先省出滚动空间。 */
-    .zh-tools-hero-panel {
-      display: none;
     }
 
     /* 手机端隐藏「先按用途缩小范围」快速入口卡片:与下方筛选功能重复,整块让位。 */
@@ -3461,28 +3373,18 @@ canvas {
     }
 
     .zh-tools-title {
-      margin-top: 0.6rem;
-      font-size: clamp(1.85rem, 9vw, 2.35rem);
-      letter-spacing: -0.02em;
-      line-height: 1.08;
+      font-size: clamp(1.7rem, 8vw, 2.1rem);
     }
 
-    .zh-tools-lead {
-      margin-top: 0.6rem;
-      font-size: 0.9rem;
-      line-height: 1.7;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-    }
-
-    /* 装饰性英文徽标(warm editorial / search first...)无实际功能,手机端让位给正文。 */
-    .zh-tools-chip-row {
+    /* 窄屏下简介会换行,竖分隔线失去两侧内容会变成悬空短线,直接隐藏。 */
+    .zh-tools-hero-divider {
       display: none;
     }
 
-    .zh-tools-hero-grid,
+    .zh-tools-lead {
+      max-width: none;
+    }
+
     .zh-tools-feature-grid,
     .zh-tools-grid {
       grid-template-columns: 1fr;
