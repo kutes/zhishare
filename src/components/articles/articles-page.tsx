@@ -57,7 +57,7 @@ export function ArticlesPage({ articles }: ArticlesPageProps) {
     <div className="articles-page min-h-screen overflow-hidden">
       <SiteHeader />
       <main>
-        <ArticlesHero totalCount={articles.length} filteredCount={filteredArticles.length} />
+        <ArticlesHero totalCount={articles.length} />
 
         <section className="section-block">
           <div className="page-shell">
