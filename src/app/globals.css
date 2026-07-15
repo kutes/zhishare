@@ -4629,15 +4629,59 @@ canvas {
   .articles-hero-shell {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
-    padding-block: 2.5rem 1.75rem;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding-block: 2.75rem 2rem;
+  }
+
+  .articles-hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    color: rgba(227, 167, 95, 0.85);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .articles-hero-kicker-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: #e3a75f;
+    box-shadow: 0 0 12px rgba(227, 167, 95, 0.55);
   }
 
   .articles-hero-row {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.7rem 1.2rem;
+    align-items: center;
+    gap: 0.7rem 1.1rem;
+  }
+
+  .articles-hero-divider {
+    width: 1px;
+    height: 1.9rem;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, transparent, rgba(227, 167, 95, 0.55), transparent);
+  }
+
+  .articles-hero-count {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    border: 1px solid rgba(227, 167, 95, 0.24);
+    border-radius: 999px;
+    background: rgba(227, 167, 95, 0.09);
+    color: #f1c47f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.34rem 0.78rem;
   }
 
   .articles-eyebrow {
@@ -5064,6 +5108,11 @@ canvas {
   @media (max-width: 720px) {
     .articles-hero-shell {
       padding-block: 2rem 1.25rem;
+    }
+
+    /* 窄屏下简介会换行,竖分隔线失去两侧内容会变成悬空短线,直接隐藏。 */
+    .articles-hero-divider {
+      display: none;
     }
 
     .articles-hero-desc {
