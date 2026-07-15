@@ -109,7 +109,7 @@ export function ToolsPage({ tools }: ToolsPageProps) {
         <div className="zh-tools-ambient" aria-hidden="true" />
         <ToolsHero totalCount={tools.length} categoryCount={categoryCount} tagCount={tagCount} />
 
-        <section className="py-3 sm:py-4">
+        <section className="py-3 sm:py-4 zh-tools-quick-section">
           <div className="page-shell zh-tools-shell">
             <div className="zh-tools-quick-panel">
               <div className="zh-tools-section-head">

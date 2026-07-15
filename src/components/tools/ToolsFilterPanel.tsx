@@ -60,7 +60,7 @@ export function ToolsFilterPanel({
       </div>
 
       <div className="zh-tools-filter-stack">
-        <div className="zh-tools-filter-row">
+        <div className="zh-tools-filter-row zh-tools-filter-row-category">
           <span className="zh-tools-filter-label">分类</span>
           <div className="zh-tools-chip-scroll">
             {categories.map((category) => (
@@ -77,7 +77,7 @@ export function ToolsFilterPanel({
         </div>
 
         {tags.length > 1 && (
-          <div className="zh-tools-filter-row">
+          <div className="zh-tools-filter-row zh-tools-filter-row-tag">
             <span className="zh-tools-filter-label">标签</span>
             <div className="zh-tools-chip-scroll">
               {tags.map((tag) => (

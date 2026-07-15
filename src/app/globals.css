@@ -3443,7 +3443,6 @@ canvas {
     }
 
     .zh-tools-hero-copy,
-    .zh-tools-quick-panel,
     .zh-tools-filter-panel,
     .zh-tools-sponsor,
     .zh-tools-empty {
@@ -3453,6 +3452,11 @@ canvas {
 
     /* 手机端隐藏「资源发现面板」:统计数字对手机用户决策价值低,优先省出滚动空间。 */
     .zh-tools-hero-panel {
+      display: none;
+    }
+
+    /* 手机端隐藏「先按用途缩小范围」快速入口卡片:与下方筛选功能重复,整块让位。 */
+    .zh-tools-quick-section {
       display: none;
     }
 
@@ -3484,53 +3488,22 @@ canvas {
       grid-template-columns: 1fr;
     }
 
-    /* 「先按用途缩小范围」卡片:单列大卡改双列紧凑网格,大幅压缩滚动高度。 */
-    .zh-tools-quick-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.6rem;
-      margin-top: 0.85rem;
-    }
-
-    .zh-tools-quick-card {
-      padding: 0.75rem 0.8rem;
-      border-radius: 16px;
-    }
-
-    .zh-tools-quick-title {
-      font-size: 0.86rem;
-    }
-
-    .zh-tools-quick-hint {
-      margin-top: 0.2rem;
-      font-size: 0.7rem;
-      line-height: 1.4;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .zh-tools-quick-panel .zh-tools-section-copy {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-    }
-
-    .zh-tools-panel-top,
-    .zh-tools-filter-top,
     .zh-tools-section-head {
       flex-direction: column;
       align-items: flex-start;
     }
 
-    .zh-tools-filter-actions {
-      width: 100%;
-      justify-content: space-between;
+    /* 搜索与筛选卡片精简:只保留搜索框 + 小字分类,隐藏标题行、计数、清空按钮和标签行。 */
+    .zh-tools-filter-panel {
+      gap: 0.7rem;
     }
 
-    /* 搜索与筛选卡片精简:窄一号的搜索框 + 分类/标签改横向单行滑动,不再逐行换行占高度。 */
-    .zh-tools-filter-panel {
-      gap: 0.8rem;
+    .zh-tools-filter-top {
+      display: none;
+    }
+
+    .zh-tools-filter-row-tag {
+      display: none;
     }
 
     .zh-tools-search-shell {
@@ -3543,22 +3516,33 @@ canvas {
     }
 
     .zh-tools-filter-stack {
-      gap: 0.7rem;
+      gap: 0.5rem;
     }
 
-    .zh-tools-chip-scroll {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-bottom: 0.15rem;
-      scrollbar-width: none;
+    /* 分类改小字纯文本,不再是大号胶囊按钮;可换行展示,一目了然。 */
+    .zh-tools-filter-row-category .zh-tools-chip-scroll {
+      flex-wrap: wrap;
+      overflow-x: visible;
+      gap: 0.3rem 0.9rem;
     }
 
-    .zh-tools-chip-scroll::-webkit-scrollbar {
-      display: none;
+    .zh-tools-filter-row-category .zh-tools-filter-chip {
+      min-height: 0;
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 0.1rem 0;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: rgba(247, 241, 234, 0.62);
     }
 
-    .zh-tools-chip-scroll .zh-tools-filter-chip {
-      flex-shrink: 0;
+    .zh-tools-filter-row-category .zh-tools-filter-chip-active {
+      border: none;
+      background: transparent;
+      color: #e3a75f;
+      font-weight: 700;
     }
 
     .zh-tools-button {
