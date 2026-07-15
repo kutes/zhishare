@@ -3439,11 +3439,10 @@ canvas {
 
   @media (max-width: 720px) {
     .zh-tools-hero {
-      padding-block: 3rem 1.5rem;
+      padding-block: 2.25rem 1.25rem;
     }
 
     .zh-tools-hero-copy,
-    .zh-tools-hero-panel,
     .zh-tools-quick-panel,
     .zh-tools-filter-panel,
     .zh-tools-sponsor,
@@ -3452,17 +3451,69 @@ canvas {
       border-radius: 24px;
     }
 
+    /* 手机端隐藏「资源发现面板」:统计数字对手机用户决策价值低,优先省出滚动空间。 */
+    .zh-tools-hero-panel {
+      display: none;
+    }
+
     .zh-tools-title {
-      font-size: clamp(2.1rem, 12vw, 3rem);
+      margin-top: 0.6rem;
+      font-size: clamp(1.85rem, 9vw, 2.35rem);
       letter-spacing: -0.02em;
-      line-height: 1;
+      line-height: 1.08;
+    }
+
+    .zh-tools-lead {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    /* 装饰性英文徽标(warm editorial / search first...)无实际功能,手机端让位给正文。 */
+    .zh-tools-chip-row {
+      display: none;
     }
 
     .zh-tools-hero-grid,
-    .zh-tools-quick-grid,
     .zh-tools-feature-grid,
     .zh-tools-grid {
       grid-template-columns: 1fr;
+    }
+
+    /* 「先按用途缩小范围」卡片:单列大卡改双列紧凑网格,大幅压缩滚动高度。 */
+    .zh-tools-quick-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.85rem;
+    }
+
+    .zh-tools-quick-card {
+      padding: 0.75rem 0.8rem;
+      border-radius: 16px;
+    }
+
+    .zh-tools-quick-title {
+      font-size: 0.86rem;
+    }
+
+    .zh-tools-quick-hint {
+      margin-top: 0.2rem;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .zh-tools-quick-panel .zh-tools-section-copy {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
     }
 
     .zh-tools-panel-top,
@@ -3477,12 +3528,37 @@ canvas {
       justify-content: space-between;
     }
 
+    /* 搜索与筛选卡片精简:窄一号的搜索框 + 分类/标签改横向单行滑动,不再逐行换行占高度。 */
+    .zh-tools-filter-panel {
+      gap: 0.8rem;
+    }
+
     .zh-tools-search-shell {
-      align-items: flex-start;
+      align-items: center;
+      padding: 0.65rem 0.85rem;
     }
 
     .zh-tools-search-icon {
-      margin-top: 0.15rem;
+      margin-top: 0;
+    }
+
+    .zh-tools-filter-stack {
+      gap: 0.7rem;
+    }
+
+    .zh-tools-chip-scroll {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.15rem;
+      scrollbar-width: none;
+    }
+
+    .zh-tools-chip-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .zh-tools-chip-scroll .zh-tools-filter-chip {
+      flex-shrink: 0;
     }
 
     .zh-tools-button {
