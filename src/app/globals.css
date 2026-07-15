@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Self-hosted (no Google Fonts CDN, so it still loads behind the GFW). Variable font,
+   weight 300-700, Latin/number glyphs only — Chinese text falls through to the next
+   font in each stack automatically since Space Grotesk has no CJK glyphs. Matches the
+   reference site's typography approach (best.xiaohu.ai uses the same family). */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: dark;
 
@@ -65,6 +79,7 @@ body {
     linear-gradient(180deg, #000000 0%, #050505 46%, #000000 100%);
   color: var(--foreground);
   font-family:
+    "Space Grotesk",
     "PingFang SC",
     "Microsoft YaHei",
     Arial,
@@ -1789,6 +1804,7 @@ canvas {
       linear-gradient(180deg, #120f0e 0%, #171210 46%, #120f0e 100%);
     color: #f7f1ea;
     font-family:
+      "Space Grotesk",
       "PingFang SC",
       "Microsoft YaHei",
       Arial,
@@ -2735,8 +2751,7 @@ canvas {
   .zh-tools-title {
     margin-top: 0.85rem;
     font-family:
-      "Inter",
-      "SF Pro Display",
+      "Space Grotesk",
       "Segoe UI",
       "PingFang SC",
       "Microsoft YaHei",
@@ -6100,9 +6115,7 @@ canvas {
   .search-warm-page,
   .submit-warm-page {
     --zh-ui-sans:
-      "Inter",
-      "SF Pro Display",
-      "SF Pro Text",
+      "Space Grotesk",
       "Segoe UI",
       "PingFang SC",
       "Microsoft YaHei",
@@ -6119,8 +6132,7 @@ canvas {
       "PingFang SC",
       serif;
     --zh-title-sans:
-      "Inter",
-      "SF Pro Display",
+      "Space Grotesk",
       "Segoe UI",
       "PingFang SC",
       "Microsoft YaHei",
