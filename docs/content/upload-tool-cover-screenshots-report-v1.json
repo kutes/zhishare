@@ -1,0 +1,64 @@
+{
+  "status": "execute_completed",
+  "plan": [
+    {
+      "slug": "canva",
+      "status": "ready",
+      "id": "1c87a5fe-373f-4255-b6b0-568648b64cb9",
+      "filePath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\canva-final.jpg",
+      "bytes": 87657,
+      "uploadPath": "photos/canva.jpg"
+    },
+    {
+      "slug": "capcut",
+      "status": "ready",
+      "id": "5a5d08e6-6dfa-4750-8c11-9117ce021e13",
+      "filePath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\capcut-final.jpg",
+      "bytes": 50228,
+      "uploadPath": "photos/capcut.jpg"
+    },
+    {
+      "slug": "chatgpt",
+      "status": "ready",
+      "id": "5dd947ab-b8bf-459c-8bf5-339feef3a58c",
+      "filePath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\chatgpt-final.jpg",
+      "bytes": 40248,
+      "uploadPath": "photos/chatgpt.jpg"
+    },
+    {
+      "slug": "figma",
+      "status": "ready",
+      "id": "9128ab39-dab2-46a5-b169-00827c16412f",
+      "filePath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\figma-final.jpg",
+      "bytes": 48788,
+      "uploadPath": "photos/figma.jpg"
+    },
+    {
+      "slug": "file-browser",
+      "status": "ready",
+      "id": "93d1ae09-2fb5-4506-a08b-ce761b6397aa",
+      "filePath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\file-browser-final.jpg",
+      "bytes": 60485,
+      "uploadPath": "photos/file-browser.jpg"
+    },
+    {
+      "slug": "photopea",
+      "status": "ready",
+      "id": "1c620dc6-4087-4667-b1e4-84eaae3d0681",
+      "filePath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\photopea-final.jpg",
+      "bytes": 98369,
+      "uploadPath": "photos/photopea.jpg"
+    }
+  ],
+  "updated": [
+    "canva",
+    "capcut",
+    "chatgpt",
+    "figma",
+    "file-browser",
+    "photopea"
+  ],
+  "failed": [],
+  "source_note": "Screenshots of each tool's official homepage, captured with Playwright, cookie banners dismissed where present.",
+  "secret_values_printed": false
+}
