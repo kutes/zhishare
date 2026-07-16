@@ -715,7 +715,6 @@ canvas {
   }
 
   .article-detail-main,
-  .article-detail-section,
   .article-detail-side-card,
   .article-detail-related-card,
   .article-detail-empty-related,
@@ -792,7 +791,6 @@ canvas {
   }
 
   .article-detail-summary,
-  .article-detail-section-copy,
   .article-detail-side-text,
   .article-detail-related-copy,
   .article-detail-not-found-copy,
@@ -838,17 +836,9 @@ canvas {
   }
 
   .article-detail-main {
-    width: min(100%, 860px);
+    width: min(100%, 920px);
     margin-inline: auto;
-    padding: clamp(1.1rem, 1vw + 1rem, 1.6rem);
-  }
-
-  .article-detail-main-head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.15rem;
+    padding: clamp(1.75rem, 2vw + 1.1rem, 3.25rem);
   }
 
   .article-detail-section-heading {
@@ -857,34 +847,36 @@ canvas {
     line-height: 1.08;
   }
 
-  .article-detail-section-copy {
-    max-width: 28rem;
-    font-size: 0.92rem;
-  }
-
+  /* 小节不再各自成卡片:大留白 + 细分隔线撑开层次,首节紧跟速览/来源不加线 */
   .article-detail-sections {
     display: grid;
-    gap: 1rem;
+    gap: 0;
   }
 
   .article-detail-section {
-    padding: 1rem;
+    padding-block: 2.75rem;
+    border-top: 1px solid var(--ad-border, rgba(255, 247, 237, 0.09));
+  }
+
+  .article-detail-section:first-child {
+    padding-top: 0;
+    border-top: none;
   }
 
   .article-detail-section-title {
-    font-size: clamp(1.25rem, 1.6vw, 1.7rem);
-    line-height: 1.08;
+    font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+    line-height: 1.22;
   }
 
   .article-detail-section-body {
-    margin-top: 0.85rem;
+    margin-top: 1.1rem;
     color: var(--ad-text-soft, rgba(247, 241, 234, 0.88));
-    font-size: 0.96rem;
-    line-height: 1.88;
+    font-size: 1.06rem;
+    line-height: 1.85;
   }
 
   .article-detail-tldr {
-    margin-bottom: 1rem;
+    margin-bottom: 1.75rem;
     border: 1px solid var(--ad-accent-border, rgba(227, 167, 95, 0.2));
     border-radius: 16px;
     background: var(--ad-accent-soft, rgba(227, 167, 95, 0.05));
@@ -919,7 +911,7 @@ canvas {
   .article-detail-source-note {
     display: flex;
     gap: 0.5rem;
-    margin: 0 0 1.4rem;
+    margin: 0 0 2rem;
     color: var(--ad-text-faint, rgba(175, 163, 153, 0.78));
     font-size: 0.82rem;
     line-height: 1.7;
@@ -934,7 +926,7 @@ canvas {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
   }
 
   .article-detail-section-number {
@@ -961,14 +953,14 @@ canvas {
 
   .article-detail-lead {
     color: var(--ad-text, #f7f1ea);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    line-height: 1.75;
+    line-height: 1.7;
   }
 
   .article-detail-big {
     color: var(--ad-text-soft, rgba(247, 241, 234, 0.92));
-    font-size: 1.02rem;
+    font-size: 1.12rem;
     line-height: 1.8;
   }
 
@@ -1017,7 +1009,7 @@ canvas {
   }
 
   .article-detail-section-body p + p {
-    margin-top: 0.9rem;
+    margin-top: 1.05rem;
   }
 
   .article-detail-list-grid {
@@ -1521,24 +1513,11 @@ canvas {
   }
 
   .article-detail-main .article-detail-section {
-    border-color: var(--ad-border);
-    background: var(--ad-surface);
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    border-top-color: var(--ad-border);
   }
 
-  .article-detail-main .article-detail-kicker {
-    color: var(--ad-accent);
-  }
-
-  .article-detail-main .article-detail-section-heading,
   .article-detail-main .article-detail-section-title {
     color: var(--ad-text);
-  }
-
-  .article-detail-main .article-detail-section-copy {
-    color: var(--ad-text-muted);
   }
 
   .article-detail-main .article-detail-ad.ad-glass {
@@ -1594,7 +1573,6 @@ canvas {
       grid-template-columns: 1fr;
     }
 
-    .article-detail-main-head,
     .article-detail-related-head {
       align-items: start;
       flex-direction: column;
@@ -1621,7 +1599,6 @@ canvas {
     }
 
     .article-detail-main,
-    .article-detail-section,
     .article-detail-side-card,
     .article-detail-related-card,
     .article-detail-empty-related,
@@ -1629,6 +1606,14 @@ canvas {
     .article-detail-ad.ad-glass,
     .article-detail-copyright {
       border-radius: 20px;
+    }
+
+    .article-detail-main {
+      padding: 1.25rem;
+    }
+
+    .article-detail-section {
+      padding-block: 1.9rem;
     }
 
     .article-detail-list-grid,

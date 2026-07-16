@@ -56,14 +56,6 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
         <section className="article-detail-layout-shell">
           <div className="article-detail-shell article-detail-layout">
             <article className="article-detail-main">
-              <div className="article-detail-main-head">
-                <div>
-                  <p className="article-detail-kicker">正文阅读</p>
-                  <h2 className="article-detail-section-heading">按编辑稿结构拆开的完整内容</h2>
-                </div>
-                <p className="article-detail-section-copy">按章节阅读，重点内容已用高亮框标出。</p>
-              </div>
-
               {article.tldr && article.tldr.length > 0 ? (
                 <div className="article-detail-tldr">
                   <p className="article-detail-tldr-title">一分钟速览</p>
