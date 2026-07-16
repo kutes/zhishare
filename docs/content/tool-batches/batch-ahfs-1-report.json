@@ -1,0 +1,55 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-ahfs-1",
+  "plan": [
+    {
+      "slug": "copytranslator",
+      "title": "CopyTranslator",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\copytranslator-final.jpg"
+    },
+    {
+      "slug": "audiomass",
+      "title": "AudioMass",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "8a954cde-d330-42af-8a26-a1e47bfa948d",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\audiomass-final.jpg"
+    },
+    {
+      "slug": "dapanyuntu",
+      "title": "大盘云图",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\dapanyuntu-final.jpg"
+    },
+    {
+      "slug": "uniclipboard",
+      "title": "UniClipboard",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\uniclipboard-final.jpg"
+    },
+    {
+      "slug": "kaobuddy",
+      "title": "考搭子 KaoBuddy",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "8d38cc91-c4c6-4a5c-8cdb-e3114db282dc",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\kaobuddy-final.jpg"
+    }
+  ],
+  "inserted": [
+    "copytranslator",
+    "audiomass",
+    "dapanyuntu",
+    "uniclipboard",
+    "kaobuddy"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
