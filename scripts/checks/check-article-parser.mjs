@@ -134,6 +134,58 @@ function check(name, actual, expected) {
   check("边界: 速览遇非列表行即停止收集", parsed.tldr, undefined);
 }
 
+// 样例 5:v2 富文块([SUB]/[STATS]/[VS]/[KV]/[STEPS]/[END])
+{
+  const rich = [
+    "## 富文块小节",
+    "",
+    "本节结论。",
+    "",
+    "[SUB] 那么,它到底是什么?",
+    "",
+    "[STATS] 9750 亿|总参数 ;; 410 亿|每 token 激活",
+    "",
+    "[VS] 先去官网|官网能证明来源和授权。|直接用网盘|网盘链接只能证明文件存在。",
+    "",
+    "[VS] 推荐做法|去官网下载。 ;; 避免做法|网盘直接装。",
+    "",
+    "[KV] 免费额度|每天 50 次 ;; 离线可用|是 ;; 中文界面|是",
+    "",
+    "[STEPS] 打开官网|认准域名 ;; 下载安装包 ;; 校验签名|可选",
+    "",
+    "[STATS] 只有一项|不足两项该被丢弃",
+    "",
+    "[END] 一句可以带走的收束判断。",
+  ].join("\n");
+  const { sections } = parseArticleSections(rich, stubProvider);
+  const blocks = sections[0].blocks;
+
+  check(
+    "富文块: block 顺序(非法块被丢弃)",
+    blocks.map((b) => b.kind),
+    ["paragraph", "subheading", "stats", "contrast", "kv", "steps", "takeaway"],
+  );
+  check("富文块: SUB 文本", blocks[1], { kind: "subheading", text: "那么,它到底是什么?" });
+  check("富文块: STATS 拆条", blocks[2], {
+    kind: "stats",
+    items: [
+      { value: "9750 亿", label: "总参数" },
+      { value: "410 亿", label: "每 token 激活" },
+    ],
+  });
+  check("富文块: 非两栏 VS 被丢弃,合法 VS 两栏解析", blocks[3], {
+    kind: "contrast",
+    good: { title: "推荐做法", text: "去官网下载。" },
+    bad: { title: "避免做法", text: "网盘直接装。" },
+  });
+  check("富文块: KV 三行", blocks[4].rows.length, 3);
+  check("富文块: STEPS 可选说明", blocks[5], {
+    kind: "steps",
+    items: [{ title: "打开官网", text: "认准域名" }, { title: "下载安装包" }, { title: "校验签名", text: "可选" }],
+  });
+  check("富文块: END 收束句", blocks[6], { kind: "takeaway", text: "一句可以带走的收束判断。" });
+}
+
 // 样例 4:无任何 ## 的纯文本(解析器返回隐式小节,兜底逻辑在 normalizers)
 {
   const plain = ["只有一段话。", "第二段。"].join("\n");

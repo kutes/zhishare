@@ -286,20 +286,88 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
     );
   }
 
-  return (
-    <figure className="tool-media-item">
-      <div className="tool-media-embed">
-        <iframe
-          src={block.url}
-          title={block.caption}
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
+  if (block.kind === "video") {
+    return (
+      <figure className="tool-media-item">
+        <div className="tool-media-embed">
+          <iframe
+            src={block.url}
+            title={block.caption}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
+        <figcaption className="tool-media-caption">{block.caption}</figcaption>
+      </figure>
+    );
+  }
+
+  if (block.kind === "subheading") {
+    return <h3 className="article-detail-subheading">{block.text}</h3>;
+  }
+
+  if (block.kind === "stats") {
+    return (
+      <div className="article-detail-stats">
+        {block.items.map((item, index) => (
+          <div key={index} className="article-detail-stat">
+            <span className="article-detail-stat-value">{item.value}</span>
+            <span className="article-detail-stat-label">{item.label}</span>
+          </div>
+        ))}
       </div>
-      <figcaption className="tool-media-caption">{block.caption}</figcaption>
-    </figure>
+    );
+  }
+
+  if (block.kind === "contrast") {
+    return (
+      <div className="article-detail-contrast">
+        <div className="article-detail-contrast-card article-detail-contrast-good">
+          <span className="article-detail-contrast-badge">✓ {block.good.title}</span>
+          <p>{block.good.text}</p>
+        </div>
+        <div className="article-detail-contrast-card article-detail-contrast-bad">
+          <span className="article-detail-contrast-badge">✕ {block.bad.title}</span>
+          <p>{block.bad.text}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (block.kind === "kv") {
+    return (
+      <dl className="article-detail-kv">
+        {block.rows.map((row, index) => (
+          <div key={index} className="article-detail-kv-row">
+            <dt>{row.key}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+    );
+  }
+
+  if (block.kind === "steps") {
+    return (
+      <ol className="article-detail-steps">
+        {block.items.map((item, index) => (
+          <li key={index} className="article-detail-step">
+            <span className="article-detail-step-no">{index + 1}</span>
+            <span className="article-detail-step-title">{item.title}</span>
+            {item.text ? <span className="article-detail-step-text">{item.text}</span> : null}
+          </li>
+        ))}
+      </ol>
+    );
+  }
+
+  return (
+    <p className="article-detail-takeaway">
+      <span className="article-detail-takeaway-bar" aria-hidden="true" />
+      {block.text}
+    </p>
   );
 }
 
