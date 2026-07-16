@@ -1,0 +1,65 @@
+{
+  "status": "execute_partial",
+  "plan": [
+    {
+      "article": "file-transfer-without-netdisk",
+      "status": "ready",
+      "file": "5d5e30797662017855f689a6_unboxing.svg",
+      "bg": "#7BA7D7",
+      "bytes": 86864
+    },
+    {
+      "article": "notion-vs-obsidian",
+      "status": "ready",
+      "file": "5da4a2a996a90ccc56796336_sitting-reading.svg",
+      "bg": "#C9C4DD",
+      "bytes": 80355
+    },
+    {
+      "article": "free-image-tools-comparison",
+      "status": "ready",
+      "file": "5d5e30ba8983564552c60dc7_selfie.svg",
+      "bg": "#F2C879",
+      "bytes": 51385
+    },
+    {
+      "article": "netdisk-resource-risks",
+      "status": "ready",
+      "file": "5d73852f7a6dfa5b3e1e829f_clumsy.svg",
+      "bg": "#E8A79E",
+      "bytes": 209719
+    },
+    {
+      "article": "free-ai-tools-safety",
+      "status": "ready",
+      "file": "5d73855542881e5005f1a547_float.svg",
+      "bg": "#A8CDBA",
+      "bytes": 98420
+    }
+  ],
+  "updated": [],
+  "failed": [
+    {
+      "article": "file-transfer-without-netdisk",
+      "error": "UPLOAD_FAILED: new row violates row-level security policy"
+    },
+    {
+      "article": "notion-vs-obsidian",
+      "error": "UPLOAD_FAILED: new row violates row-level security policy"
+    },
+    {
+      "article": "free-image-tools-comparison",
+      "error": "UPLOAD_FAILED: new row violates row-level security policy"
+    },
+    {
+      "article": "netdisk-resource-risks",
+      "error": "UPLOAD_FAILED: new row violates row-level security policy"
+    },
+    {
+      "article": "free-ai-tools-safety",
+      "error": "UPLOAD_FAILED: new row violates row-level security policy"
+    }
+  ],
+  "license": "Open Doodles (opendoodles.com) — CC0 1.0 public domain",
+  "secret_values_printed": false
+}

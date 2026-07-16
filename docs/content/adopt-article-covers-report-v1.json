@@ -1,0 +1,30 @@
+{
+  "status": "dry_run_completed",
+  "plan": [
+    {
+      "article": "file-transfer-without-netdisk",
+      "tool": "localsend",
+      "status": "ready",
+      "articleId": "3191a0e6-fd60-4780-9f33-e22ed2da0730",
+      "photoUrl": "https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/localsend.png",
+      "uploadPath": "photos/file-transfer-without-netdisk.png"
+    },
+    {
+      "article": "notion-vs-obsidian",
+      "tool": "notion",
+      "status": "ready",
+      "articleId": "60e50432-963d-4881-91b5-1857dd936404",
+      "photoUrl": "https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/notion.jpg",
+      "uploadPath": "photos/notion-vs-obsidian.jpg"
+    },
+    {
+      "article": "free-image-tools-comparison",
+      "tool": "remove-bg",
+      "status": "ready",
+      "articleId": "0f067809-386b-4d90-828d-ec7f249f1a5e",
+      "photoUrl": "https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-covers/photos/remove-bg.jpg",
+      "uploadPath": "photos/free-image-tools-comparison.jpg"
+    }
+  ],
+  "secret_values_printed": false
+}
