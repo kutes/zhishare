@@ -18,8 +18,9 @@ Current approved direction:
 Card standard (established 2026-07-05/07-09, see `docs/DESIGN_SYSTEM.md` for full detail):
 
 - Exactly 3 reusable card components: `FeaturedToolCard`, `CompactToolCard`, `ArticleCard`. Do not write one-off card markup for new sections — reuse these.
-- Whole-card click via stretched-link (`position: relative` on card + `::after { inset: 0 }` on the one visible action link/arrow).
+- Whole-card click: the card's outer element IS the `<Link>` (established 2026-07-15; the older stretched-link `::after` technique broke when `.card > *` rules re-scoped `position` and must not be reintroduced). Inner "阅读全文"/arrow text is decorative `<span aria-hidden>`.
 - Tool cover/icon fallback chain, always resolved in this order, never leave a card blank: official photo (`tool-covers/photos/{slug}`) -> generated SVG cover (`tool-covers/covers/{slug}.svg`, deterministic, see `src/lib/covers/tool-cover.mjs`) -> initials placeholder. Compact-card icons always use the generated SVG (never a photo).
+- Article cover chain (established 2026-07-16), never leave the media slot blank and never use big-letter typographic covers: real related image first (the official photo of the tool the article is about, copied into `article-covers/photos/{slug}` — see `scripts/content-import/adopt-article-covers-from-tools.mjs`) -> bright illustration card (vivid solid background + theme-matched CC0 line illustration from a stock library such as Open Doodles, composed 1200x675 SVG at `article-covers/doodles/{slug}.svg` — see `scripts/content-import/adopt-doodle-covers.mjs`) -> gradient + first-character placeholder rendered by `ArticleCard` only as a last resort. New articles must get a cover from one of the first two tiers at publish time.
 
 Data standard (critical — read this):
 

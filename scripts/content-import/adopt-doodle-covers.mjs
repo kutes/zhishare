@@ -15,6 +15,9 @@ const BUCKET = "article-covers";
 const REPORT = "docs/content/adopt-doodle-covers-report-v1.json";
 const executeMode = process.argv.includes("--execute");
 const doodleDir = process.env.DOODLE_DIR ?? "";
+// --only=slug1,slug2 limits the run to a subset of the mapped articles.
+const onlyArg = process.argv.find((arg) => arg.startsWith("--only="));
+const onlySlugs = onlyArg ? onlyArg.slice("--only=".length).split(",").filter(Boolean) : null;
 
 // article slug -> { doodle file, bright background }. Palette follows the
 // xiaohu reference: saturated-but-soft solids that read clearly at card size.
@@ -50,8 +53,9 @@ async function main() {
     process.exit(1);
   }
 
+  const selected = onlySlugs ? COVERS.filter((c) => onlySlugs.includes(c.article)) : COVERS;
   const composed = [];
-  for (const item of COVERS) {
+  for (const item of selected) {
     const sourcePath = path.join(doodleDir, item.file);
     if (!fs.existsSync(sourcePath)) {
       composed.push({ article: item.article, status: "doodle_file_missing", file: item.file });

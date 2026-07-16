@@ -1,5 +1,5 @@
 {
-  "status": "dry_run_completed",
+  "status": "execute_completed",
   "plan": [
     {
       "article": "file-transfer-without-netdisk",
@@ -26,5 +26,11 @@
       "uploadPath": "photos/free-image-tools-comparison.jpg"
     }
   ],
+  "updated": [
+    "file-transfer-without-netdisk",
+    "notion-vs-obsidian",
+    "free-image-tools-comparison"
+  ],
+  "failed": [],
   "secret_values_printed": false
 }

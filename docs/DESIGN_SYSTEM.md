@@ -62,7 +62,13 @@ CSS 变量集中定义在 `src/app/globals.css` 的 `:root`（跨页面通用）
 
 ## 内容资产标准：生成优先、守门写入
 
-**2026-07-10 更新**：文章卡此前"纯排版、不配图"的规则已作废——文章现在也走和工具一样的封面机制：`generateToolCover()`（通用函数，不局限于工具）按标题/slug/分类生成确定性 SVG，存 `article-covers` 公开桶的 `covers/{slug}.svg`，`articles.cover_url` 写库，`ArticleCard` 用与 `CompactToolCard` 视觉一致的 cover-on-top 布局。文章没有官网，因此只有两级兜底（生成封面 → 首字母），没有工具那样的官方照片层。后台文章表单保存时同样自动生成兜底。
+**2026-07-16 更新（覆盖 2026-07-10 规则）**：文章封面不再使用"大字母"生成式 SVG，改为三级兜底链，图位永不开天窗：
+
+1. **真实相关图**：文章讲到具体工具的，直接复用该工具的官网照片（拷贝进 `article-covers/photos/{slug}.*`，不引用原地址，防止工具封面变动牵连文章）。脚本：`scripts/content-import/adopt-article-covers-from-tools.mjs`。
+2. **亮色简笔画卡**：抓不到真实图的，用免费素材站的 CC0 简笔画插画（如 Open Doodles，公有领域可商用）+ 鲜明纯色底合成 1200×675 SVG，主题要和文章内容呼应，存 `article-covers/doodles/{slug}.svg`。脚本：`scripts/content-import/adopt-doodle-covers.mjs`（先本地合成预览、目检后再 `--execute`）。
+3. **首字占位**：仅当 `cover_url` 意外为空时由 `ArticleCard` 前端渲染渐变底+标题首字,属于异常兜底,不应长期出现。
+
+新文章发布时必须走前两级之一拿到封面。禁止再生成"标题前两字大字排版"式封面。
 
 工具封面、图标、详情页富媒体统一走"零数据库改动 + Supabase Storage + 守门脚本"模式，不要为图文需求新增数据库表/列（要用户去控制台跑 SQL，违反本项目"用户不做任何运维操作"的约定）：
 
