@@ -1,0 +1,55 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-a-office",
+  "plan": [
+    {
+      "slug": "7-zip",
+      "title": "7-Zip",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\7-zip-final.jpg"
+    },
+    {
+      "slug": "everything",
+      "title": "Everything",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\everything-final.jpg"
+    },
+    {
+      "slug": "powertoys",
+      "title": "PowerToys",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\powertoys-final.jpg"
+    },
+    {
+      "slug": "snipaste",
+      "title": "Snipaste",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\snipaste-final.jpg"
+    },
+    {
+      "slug": "libreoffice",
+      "title": "LibreOffice",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\libreoffice-final.jpg"
+    }
+  ],
+  "inserted": [
+    "7-zip",
+    "everything",
+    "powertoys",
+    "snipaste",
+    "libreoffice"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
