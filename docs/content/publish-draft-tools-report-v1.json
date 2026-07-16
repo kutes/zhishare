@@ -1,0 +1,20 @@
+{
+  "status": "execute_completed",
+  "plan": {
+    "raycast": {
+      "status": "publish_as_is",
+      "current_status": "draft"
+    },
+    "open-design": {
+      "status": "rewrite_and_publish",
+      "current_status": "draft",
+      "cover_source": "https://static.open-design.ai/landing/assets/og-card.png"
+    }
+  },
+  "updated": [
+    "raycast",
+    "open-design"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}

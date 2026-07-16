@@ -1,0 +1,96 @@
+{
+  "status": "execute_completed",
+  "plan": {
+    "moves": [
+      {
+        "fromSlug": "image-tools",
+        "toSlug": "image-processing",
+        "status": "ready",
+        "fromId": "7a6ba2af-1568-4af3-a8be-a14e70ccc3f6",
+        "toId": "bc909c01-b83d-489a-a23f-592ed2992c0b",
+        "affectedTools": [
+          "photopea"
+        ]
+      },
+      {
+        "fromSlug": "productivity-tools",
+        "toSlug": "productivity",
+        "status": "ready",
+        "fromId": "b51f9eca-f0bf-41db-b0e1-4cfab6d1fe64",
+        "toId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+        "affectedTools": [
+          "notion"
+        ]
+      },
+      {
+        "fromSlug": "productivity-notes",
+        "toSlug": "productivity",
+        "status": "ready",
+        "fromId": "6aef1b36-b030-4e53-b9b3-cb011daf3a88",
+        "toId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+        "affectedTools": [
+          "obsidian"
+        ]
+      }
+    ],
+    "deletes": [
+      {
+        "slug": "image-tools",
+        "status": "ready",
+        "id": "7a6ba2af-1568-4af3-a8be-a14e70ccc3f6"
+      },
+      {
+        "slug": "productivity-tools",
+        "status": "ready",
+        "id": "b51f9eca-f0bf-41db-b0e1-4cfab6d1fe64"
+      },
+      {
+        "slug": "open-source",
+        "status": "ready",
+        "id": "be44b813-22b5-4e6a-bb10-64212dd3063e"
+      }
+    ],
+    "rename": {
+      "slug": "video-editing",
+      "newName": "音视频",
+      "newSlug": "video-audio",
+      "status": "ready",
+      "id": "8a954cde-d330-42af-8a26-a1e47bfa948d",
+      "currentName": "视频剪辑"
+    }
+  },
+  "moved": [
+    {
+      "fromSlug": "image-tools",
+      "toSlug": "image-processing",
+      "tools": [
+        "photopea"
+      ]
+    },
+    {
+      "fromSlug": "productivity-tools",
+      "toSlug": "productivity",
+      "tools": [
+        "notion"
+      ]
+    },
+    {
+      "fromSlug": "productivity-notes",
+      "toSlug": "productivity",
+      "tools": [
+        "obsidian"
+      ]
+    }
+  ],
+  "deleted": [
+    "image-tools",
+    "productivity-tools",
+    "open-source"
+  ],
+  "renamed": {
+    "from": "video-editing",
+    "to": "video-audio"
+  },
+  "failed": [],
+  "secret_values_printed": false
+}

@@ -1,0 +1,89 @@
+{
+  "status": "execute_completed",
+  "plan": [
+    {
+      "slug": "free-ai-tools-safety",
+      "status": "ready",
+      "articleId": "aef04613-c7cf-4bc1-8df0-47dfa9edfada",
+      "tags": [
+        {
+          "name": "免费",
+          "tagId": "8868f8d1-954a-427d-9d87-1aae8292bcdc"
+        },
+        {
+          "name": "AI写作",
+          "tagId": "5ae61466-b18e-4510-b028-cd7826d2f847"
+        }
+      ]
+    },
+    {
+      "slug": "netdisk-resource-risks",
+      "status": "ready",
+      "articleId": "437d12d1-c90a-4a0b-bb68-ebce22c33e5c",
+      "tags": [
+        {
+          "name": "免费",
+          "tagId": "8868f8d1-954a-427d-9d87-1aae8292bcdc"
+        },
+        {
+          "name": "效率软件",
+          "tagId": "0ed96d41-189d-400c-89a1-efafccbb9701"
+        }
+      ]
+    },
+    {
+      "slug": "free-image-tools-comparison",
+      "status": "ready",
+      "articleId": "0f067809-386b-4d90-828d-ec7f249f1a5e",
+      "tags": [
+        {
+          "name": "免费",
+          "tagId": "8868f8d1-954a-427d-9d87-1aae8292bcdc"
+        },
+        {
+          "name": "图片处理",
+          "tagId": "8c7d4f2a-54ca-4fd0-a089-cbd1816bece6"
+        }
+      ]
+    },
+    {
+      "slug": "file-transfer-without-netdisk",
+      "status": "ready",
+      "articleId": "3191a0e6-fd60-4780-9f33-e22ed2da0730",
+      "tags": [
+        {
+          "name": "免费",
+          "tagId": "8868f8d1-954a-427d-9d87-1aae8292bcdc"
+        },
+        {
+          "name": "开源",
+          "tagId": "421612c6-f5d5-4875-8a65-5e01b23e1654"
+        }
+      ]
+    },
+    {
+      "slug": "notion-vs-obsidian",
+      "status": "ready",
+      "articleId": "60e50432-963d-4881-91b5-1857dd936404",
+      "tags": [
+        {
+          "name": "效率软件",
+          "tagId": "0ed96d41-189d-400c-89a1-efafccbb9701"
+        },
+        {
+          "name": "中文",
+          "tagId": "0d586039-fae7-4a1d-a8d6-a198333a0cf9"
+        }
+      ]
+    }
+  ],
+  "updated": [
+    "free-ai-tools-safety",
+    "netdisk-resource-risks",
+    "free-image-tools-comparison",
+    "file-transfer-without-netdisk",
+    "notion-vs-obsidian"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
