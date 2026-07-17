@@ -86,45 +86,6 @@ export function ArticleDetailPage({ article, relatedArticles }: ArticleDetailPag
               </div>
             </article>
 
-            <aside className="article-detail-side">
-              <button className="article-detail-side-tab" type="button">
-                阅读概览
-              </button>
-
-              <div className="article-detail-side-panel">
-              <section className="article-detail-side-card">
-                <p className="article-detail-side-kicker">阅读概览</p>
-                <h3 className="article-detail-side-title">这篇文章怎么读更顺手</h3>
-                <p className="article-detail-side-text">
-                  先看标题、摘要和标签，再按章节顺序阅读，可以更快捕捉这篇文章的核心判断与实操建议。
-                </p>
-              </section>
-
-              <section className="article-detail-side-card">
-                <p className="article-detail-side-kicker">文章信息</p>
-                <div className="article-detail-facts">
-                  <div className="article-detail-fact">
-                    <p className="article-detail-fact-label">分类</p>
-                    <p className="article-detail-fact-value">{article.category}</p>
-                  </div>
-                  <div className="article-detail-fact">
-                    <p className="article-detail-fact-label">标签</p>
-                    <p className="article-detail-fact-value">{article.tags.length} 个</p>
-                  </div>
-                  <div className="article-detail-fact">
-                    <p className="article-detail-fact-label">正文</p>
-                    <p className="article-detail-fact-value">{article.sections.length} 节</p>
-                  </div>
-                  <div className="article-detail-fact">
-                    <p className="article-detail-fact-label">阅读时长</p>
-                    <p className="article-detail-fact-value">{article.readTime}</p>
-                  </div>
-                </div>
-              </section>
-
-              <AdPlaceholder variant="sidebar" className="article-detail-ad" />
-              </div>
-            </aside>
           </div>
         </section>
 
@@ -273,6 +234,22 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
       <figure className="tool-media-item">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="tool-media-image" src={block.url} alt="" loading="lazy" />
+        <figcaption className="tool-media-caption">{block.caption}</figcaption>
+      </figure>
+    );
+  }
+
+  if (block.kind === "localvideo") {
+    return (
+      <figure className="tool-media-item">
+        <video
+          className="tool-media-image"
+          controls
+          preload="none"
+          playsInline
+          poster={block.poster || undefined}
+          src={block.url}
+        />
         <figcaption className="tool-media-caption">{block.caption}</figcaption>
       </figure>
     );

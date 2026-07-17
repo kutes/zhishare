@@ -86,88 +86,88 @@ export function ToolDetailPage({ tool, relatedTools, media = [], officialDownloa
         <section className="tool-detail-content">
           <div className="tool-detail-shell space-y-6 py-6 sm:py-8 lg:py-9">
             <article className="tool-detail-article">
-              <div className="space-y-4 sm:space-y-5">
-                <section className="tool-detail-section">
-                  <SectionTitle>这个工具是什么</SectionTitle>
-                  <div className="mt-3">
-                    <CollapsibleDescription title="" content={description} className="mt-0" />
+                <div className="space-y-4 sm:space-y-5">
+                  <section className="tool-detail-section">
+                    <SectionTitle>这个工具是什么</SectionTitle>
+                    <div className="mt-3">
+                      <CollapsibleDescription title="" content={description} className="mt-0" />
+                    </div>
+                  </section>
+
+                  <ToolMediaGallery items={media} />
+
+                  {hasExtras ? (
+                    <CollapsibleBlock summary="更多信息：适合人群、使用场景、优缺点">
+                      <ListSection title="核心功能" items={features} />
+                      <ListSection title="适合人群" items={audience} />
+                      <ListSection title="使用场景" items={scenarios} />
+                      <ListSection title="优点" items={pros} />
+                      <ListSection title="缺点" items={cons} />
+                    </CollapsibleBlock>
+                  ) : null}
+
+                  <ListSection title="风险提醒" items={risks} warning />
+
+                  <AdPlaceholder variant="inline" />
+
+                  <div className="tool-detail-article-actions">
+                    {websiteUrl ? (
+                      <a
+                        href={websiteUrl}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        className="tool-detail-primary-button"
+                      >
+                        访问官网
+                      </a>
+                    ) : (
+                      <span
+                        aria-disabled="true"
+                        className="tool-detail-primary-button tool-detail-button-disabled"
+                      >
+                        暂无官网
+                      </span>
+                    )}
+
+                    {officialDownloadUrl ? (
+                      <a
+                        href={officialDownloadUrl}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        className="tool-detail-secondary-button"
+                      >
+                        官方下载
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="tool-detail-secondary-button tool-detail-button-disabled"
+                      >
+                        官方下载
+                      </button>
+                    )}
+
+                    {downloadUrl ? (
+                      <a
+                        href={downloadUrl}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        className="tool-detail-secondary-button"
+                      >
+                        网盘下载
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled
+                        className="tool-detail-secondary-button tool-detail-button-disabled"
+                      >
+                        网盘下载
+                      </button>
+                    )}
                   </div>
-                </section>
-
-                <ToolMediaGallery items={media} />
-
-                {hasExtras ? (
-                  <CollapsibleBlock summary="更多信息：适合人群、使用场景、优缺点">
-                    <ListSection title="核心功能" items={features} />
-                    <ListSection title="适合人群" items={audience} />
-                    <ListSection title="使用场景" items={scenarios} />
-                    <ListSection title="优点" items={pros} />
-                    <ListSection title="缺点" items={cons} />
-                  </CollapsibleBlock>
-                ) : null}
-
-                <ListSection title="风险提醒" items={risks} warning />
-
-                <AdPlaceholder variant="inline" />
-
-                <div className="tool-detail-article-actions">
-                  {websiteUrl ? (
-                    <a
-                      href={websiteUrl}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      className="tool-detail-primary-button"
-                    >
-                      访问官网
-                    </a>
-                  ) : (
-                    <span
-                      aria-disabled="true"
-                      className="tool-detail-primary-button tool-detail-button-disabled"
-                    >
-                      暂无官网
-                    </span>
-                  )}
-
-                  {officialDownloadUrl ? (
-                    <a
-                      href={officialDownloadUrl}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      className="tool-detail-secondary-button"
-                    >
-                      官方下载
-                    </a>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      className="tool-detail-secondary-button tool-detail-button-disabled"
-                    >
-                      官方下载
-                    </button>
-                  )}
-
-                  {downloadUrl ? (
-                    <a
-                      href={downloadUrl}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      className="tool-detail-secondary-button"
-                    >
-                      网盘下载
-                    </a>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      className="tool-detail-secondary-button tool-detail-button-disabled"
-                    >
-                      网盘下载
-                    </button>
-                  )}
                 </div>
-              </div>
             </article>
 
             <RelatedToolsSection relatedTools={relatedTools} />

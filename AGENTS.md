@@ -13,7 +13,6 @@ Current approved direction:
 - Buttons: compact warm editorial style. Search bar: practical, rectangular-rounded, clear.
 - Do not reintroduce the pure-black cosmic sun homepage, the Liquid Glass button experiment, or the Dark Blog Card experiment.
 - Do not introduce shadcn, framer-motion, or lucide-react unless explicitly approved later.
-- Use Playwright screenshots (`scripts/capture-*.mjs`) after any visual change; confirm zero regression by comparing before/after.
 
 Card standard (established 2026-07-05/07-09, see `docs/DESIGN_SYSTEM.md` for full detail):
 
@@ -89,7 +88,7 @@ Every task should be small (see `docs/PROJECT_RULES.md` — "每次只做一个�
 2. Do not rename routes without explicit instruction.
 3. Do not change data fetching contracts unless explicitly instructed.
 4. Do not add dependencies unless explicitly instructed.
-5. Report: modified files, `npx tsc --noEmit` result, and (for visual changes) screenshot verification.
+5. Report: modified files and `npx tsc --noEmit` result.
 6. If uncertain, stop and report rather than guessing.
 
 ## Component Strategy

@@ -7,6 +7,7 @@ export type ArticleBlock =
   | { kind: "keypoint"; tag: string; text: string }
   | { kind: "photo"; url: string; caption: string }
   | { kind: "video"; url: string; caption: string; provider: "bilibili" | "youtube" }
+  | { kind: "localvideo"; url: string; poster: string; caption: string }
   // v2 富文块(2026-07-16,docs/ARTICLE_CONTENT_STANDARD.md「v2 补充」)
   | { kind: "subheading"; text: string }
   | { kind: "stats"; items: { value: string; label: string }[] }

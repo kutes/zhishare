@@ -113,6 +113,28 @@ export function parseArticleSections(markdown, getEmbedProvider) {
       continue;
     }
 
+    const mp4Match = line.match(/^\[MP4\]\s*(.+)$/);
+    if (mp4Match) {
+      const [url, ...rest] = mp4Match[1].split("|");
+      if (url?.trim()) {
+        // rest 可选：第一段为 poster（图片路径），其余为 caption
+        let poster = "";
+        let captionParts = rest;
+        if (rest[0] && /\.(jpg|jpeg|png|webp|svg)$/i.test(rest[0].trim())) {
+          poster = rest[0].trim();
+          captionParts = rest.slice(1);
+        }
+        ensureSection().blocks.push({
+          kind: "localvideo",
+          url: url.trim(),
+          poster,
+          caption: captionParts.join("|").trim(),
+        });
+        atSectionStart = false;
+      }
+      continue;
+    }
+
     const videoMatch = line.match(/^\[VIDEO\]\s*(.+)$/);
     if (videoMatch) {
       const [url, ...captionParts] = videoMatch[1].split("|");
