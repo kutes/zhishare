@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ToolDetailPage, ToolNotFoundPage } from "@/components/tools/tool-detail-page";
 import { getRelatedTools, getToolBySlug } from "@/lib/db/tools";
-import { fetchToolMedia, fetchToolOfficialDownloadUrl } from "@/lib/media/tool-media";
+import { fetchToolFeatures, fetchToolMedia, fetchToolOfficialDownloadUrl } from "@/lib/media/tool-media";
 import { DEFAULT_SITE_DESCRIPTION, createPageMetadata } from "@/lib/seo";
 
 type ToolPageProps = {
@@ -50,15 +50,20 @@ export default async function Page({ params }: ToolPageProps) {
     return <ToolNotFoundPage />;
   }
 
-  const [relatedTools, media, officialDownloadUrl] = await Promise.all([
+  const [relatedTools, media, officialDownloadUrl, features] = await Promise.all([
     getRelatedTools(tool.category_id, tool.id),
     fetchToolMedia(tool.slug),
     fetchToolOfficialDownloadUrl(tool.slug),
+    fetchToolFeatures(tool.slug),
   ]);
+
+  // tools 表没有 features 列，核心功能列表存于 tool-media/{slug}.json，
+  // 这里合并进 tool 对象，交给 getToolList 的 "features" 直查键渲染。
+  const toolWithFeatures = features.length > 0 ? { ...tool, features } : tool;
 
   return (
     <ToolDetailPage
-      tool={tool}
+      tool={toolWithFeatures}
       relatedTools={relatedTools}
       media={media}
       officialDownloadUrl={officialDownloadUrl}

@@ -1,0 +1,16 @@
+{
+  "mode": "execute",
+  "plan": {
+    "slug": "kaobuddy",
+    "problems": [],
+    "descriptionParagraphs": 4,
+    "features": 6,
+    "mediaImages": 1,
+    "officialDownloadUrl": "https://github.com/jin-zi-xuan/kaobuddy-pwa/releases"
+  },
+  "uploaded": [
+    "https://iqurkzdutvhijcbftezz.supabase.co/storage/v1/object/public/tool-media/shots/kaobuddy-1.jpg"
+  ],
+  "rowVerified": true,
+  "mediaJsonStatus": 200
+}

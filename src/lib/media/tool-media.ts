@@ -84,6 +84,33 @@ export async function fetchToolMedia(slug: string): Promise<ToolMediaItem[]> {
   }
 }
 
+// Optional per-tool feature list ("核心功能"). The tools table has no features
+// column, so it lives in the same tool-media/{slug}.json under `features`;
+// the detail page merges it into the tool object where getToolList expects it.
+export async function fetchToolFeatures(slug: string): Promise<string[]> {
+  const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "";
+  if (!baseUrl || !slug) {
+    return [];
+  }
+
+  const url = `${baseUrl.replace(/\/$/, "")}/storage/v1/object/public/tool-media/${encodeURIComponent(slug)}.json`;
+
+  try {
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) {
+      return [];
+    }
+    const data: unknown = await response.json();
+    const value = (data as { features?: unknown })?.features;
+    if (!Array.isArray(value)) {
+      return [];
+    }
+    return value.filter((item): item is string => typeof item === "string" && item.trim().length > 0);
+  } catch {
+    return [];
+  }
+}
+
 // Optional per-tool official download page URL. Stored in the same tool-media/{slug}.json
 // under `officialDownloadUrl` so no schema change is needed; guarded scripts populate it.
 // The detail page renders a disabled (gray) button when this is absent.
