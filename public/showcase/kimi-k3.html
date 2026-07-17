@@ -88,7 +88,7 @@ tailwind.config = {
       <div class="bg-surface border border-line rounded-2xl p-5"><div class="num text-3xl md:text-4xl text-ink font-semibold">$15</div><div class="mt-1.5 text-sm text-muted">每百万输出 token，缓存命中输入 $0.30</div></div>
     </div>
 
-    <p class="mt-6 text-xs text-muted leading-relaxed max-w-3xl">⚑ 本页基于 Kimi 官方发布博客整理，跑分为厂商自评口径；「独立检验」一节数据来自 The Decoder 报道（含 Artificial Analysis 测试结果）；Anthropic 模型价格已对照其官方定价资料核对。页面示意配图为占位图。</p>
+    <p class="mt-6 text-xs text-muted leading-relaxed max-w-3xl">⚑ 本页基于 Kimi 官方发布博客整理，跑分为厂商自评口径；「独立检验」一节数据来自 The Decoder 报道（含 Artificial Analysis 测试结果）；Anthropic 模型价格已对照其官方定价资料核对。页面图表、截图与演示视频均取自 Kimi 官方博客并标注来源，版权归月之暗面所有。</p>
   </div>
 </section>
 
@@ -119,8 +119,8 @@ tailwind.config = {
       <div class="border-l-2 border-s1 bg-surface rounded-r-xl p-4 text-sm">
         <span class="text-s1 font-semibold">◆ 为什么值得看：</span>开源模型过去总比最强闭源「小一号、弱一截」。这次第一次有开放权重的模型逼近了顶级闭源的能力线——官方也直言整体仍低于 Claude Fable 5 和 GPT 5.6 Sol，它的目标是做开源阵营里最强的那个。
       </div>
-      <img class="rounded-xl border border-line w-full" src="https://placehold.co/1200x630/141413/898781?text=Kimi+K3+Console+%C2%B7+UI+Screenshot+Placeholder" alt="Kimi K3 控制台界面截图占位">
-      <p class="text-xs text-muted">Kimi K3 网页版界面（占位图，正式截图以 kimi.com 为准）。来源：本站示意</p>
+      <img class="rounded-xl border border-line w-full bg-white" src="kimi-k3-assets/showcase-report.png" alt="BrowseComp 得分与每任务成本散点图" loading="lazy">
+      <p class="text-xs text-muted">官方图：BrowseComp 网页检索的「得分 vs 每任务成本」——K3（红星）落在左上角，高分且低成本。来源：Kimi 官方博客</p>
     </div>
     <div class="lg:col-span-2">
       <!-- 时间线 -->
@@ -141,7 +141,8 @@ tailwind.config = {
             <div class="text-xs text-muted mt-1">低于 max 的省算力档位随更新推出</div></li>
         </ol>
       </div>
-      <img class="mt-4 rounded-xl border border-line w-full" src="https://placehold.co/800x500/141413/898781?text=Launch+Event+%2F+Blog+Hero+Placeholder" alt="发布博客头图占位">
+      <img class="mt-4 rounded-xl border border-line w-full" src="kimi-k3-assets/hero.png" alt="Kimi K3 官方发布头图" loading="lazy">
+      <p class="text-xs text-muted mt-1">来源：Kimi 官方博客</p>
     </div>
   </div>
 </section>
@@ -194,12 +195,10 @@ tailwind.config = {
     </div>
   </div>
 
-  <div class="mt-8 grid md:grid-cols-3 gap-4">
-    <img class="rounded-xl border border-line w-full" src="https://placehold.co/640x400/141413/898781?text=KDA+Attention+Diagram" alt="KDA 注意力机制示意占位">
-    <img class="rounded-xl border border-line w-full" src="https://placehold.co/640x400/141413/898781?text=AttnRes+Cross-Depth+Diagram" alt="注意力残差示意占位">
-    <img class="rounded-xl border border-line w-full" src="https://placehold.co/640x400/141413/898781?text=MoE+Routing+Diagram" alt="稀疏专家路由示意占位">
+  <div class="mt-8 bg-card border border-line rounded-2xl p-4">
+    <img class="rounded-lg w-full bg-white" src="kimi-k3-assets/roofline.svg" alt="MiniTriton 在 NVIDIA CUDA core 上的 roofline 基准" loading="lazy">
+    <p class="text-xs text-muted mt-3">官方案例：K3 从零写出的 GPU 编译器 MiniTriton，在 NVIDIA CUDA core 上的 roofline 基准——已能与成熟的 Triton 栈掰手腕（官方演示，未经第三方复现）。来源：Kimi 官方博客</p>
   </div>
-  <p class="text-xs text-muted mt-2">三张结构示意（占位图，按官方博客描述自绘方向）。来源：本站示意</p>
 </div>
 </section>
 
@@ -208,6 +207,19 @@ tailwind.config = {
   <p class="eyebrow text-xs text-muted mb-2"><span class="text-s1 font-bold mr-2">3</span>跑 分</p>
   <h2 class="font-serif text-3xl md:text-4xl text-ink">31 项基准：哪里第一，哪里还差着</h2>
   <p class="mt-4 max-w-3xl text-sm leading-relaxed text-muted">测试条件（官方脚注）：K3 全部成绩在最高推理档 max、temperature 1.0 下取得；各模型分别在 KimiCode / Claude Code / Codex 三种框架中评估；带 * 的成绩使用 Claude Code 框架；Claude Fable 5 部分结果包含回退行为。<span class="text-ink2">自家出题自家判卷，参考着看。</span></p>
+
+  <!-- 官方基准原图 -->
+  <div class="mt-8 grid lg:grid-cols-2 gap-4">
+    <figure class="bg-white rounded-2xl border border-line p-3">
+      <img class="rounded-lg w-full" src="kimi-k3-assets/bench-coding.png" alt="Kimi K3 编码类基准官方对比图" loading="lazy">
+      <figcaption class="text-xs text-muted mt-2 px-1">编码类基准官方对比总览（K3 蓝色高亮）。来源：Kimi 官方博客</figcaption>
+    </figure>
+    <figure class="bg-white rounded-2xl border border-line p-3">
+      <img class="rounded-lg w-full" src="kimi-k3-assets/bench-agentic.png" alt="Kimi K3 代理与视觉类基准官方对比图" loading="lazy">
+      <figcaption class="text-xs text-muted mt-2 px-1">代理与视觉类基准官方对比总览。来源：Kimi 官方博客</figcaption>
+    </figure>
+  </div>
+  <p class="text-xs text-muted mt-3">↑ 官方发布的原始基准图（自评口径）。↓ 下方为同一批数据的可筛选表格版，方便横向查阅。</p>
 
   <!-- 两张亮点图 -->
   <div class="mt-8 grid lg:grid-cols-2 gap-5">
@@ -322,6 +334,11 @@ tailwind.config = {
       <p class="mt-3 text-xs text-muted">共性：深度推理与精细视觉理解。官方原话承认「性能仍低于最强的专有模型」。</p>
     </div>
   </div>
+
+  <figure class="mt-6 bg-white rounded-2xl border border-line p-3">
+    <img class="rounded-lg w-full" src="kimi-k3-assets/bench-knowledge.png" alt="Kimi K3 内部知识工作基准对比图" loading="lazy">
+    <figcaption class="text-xs text-muted mt-2 px-1">内部知识工作基准：K3（max）在研报、PPT、视频剪辑等生产型任务上的表现。<span class="text-ink2">注意：这是自家出题自家判卷的内部评测，参考着看。</span>来源：Kimi 官方博客</figcaption>
+  </figure>
 </section>
 
 <!-- ============ 4 独立检验 ============ -->
@@ -438,6 +455,11 @@ tailwind.config = {
     </div>
     <p class="px-5 py-3 text-xs text-muted border-t border-line">单位：美元/百万 token。K3 与 K2.6 来自 Kimi 官方定价；Anthropic 三款经其官方定价资料核对，缓存命中价按其缓存读取 0.1 倍规则折算；Sonnet 5 另有 2026-08-31 前的首发优惠价（输入 $2 / 输出 $10）。</p>
   </div>
+
+  <figure class="mt-6 bg-white rounded-2xl border border-line p-3">
+    <img class="rounded-lg w-full" src="kimi-k3-assets/showcase-3d.png" alt="Kimi Code Bench V2 得分与每任务成本散点图" loading="lazy">
+    <figcaption class="text-xs text-muted mt-2 px-1">官方图：Kimi Code Bench V2 的「得分 vs 每任务成本」——K3（红星）以约 $4/任务 换来 72% 得分，性价比明显优于同分位的 Opus 4.8、Fable 5。来源：Kimi 官方博客（自评口径）</figcaption>
+  </figure>
 </section>
 
 <!-- ============ 6 上手 ============ -->
@@ -453,22 +475,21 @@ tailwind.config = {
     <div class="bg-card border border-line rounded-2xl p-5"><div class="text-2xl">📦</div><h3 class="mt-2 text-ink font-semibold text-sm">自部署</h3><p class="mt-1.5 text-xs text-muted leading-relaxed">等 7/27 前权重放出；KDA 的 vLLM 适配已由官方贡献社区</p></div>
   </div>
 
-  <!-- 视频占位 -->
-  <div class="mt-10 grid md:grid-cols-2 gap-5">
-    <div class="bg-card border border-line rounded-2xl overflow-hidden">
-      <div class="aspect-video grid place-items-center bg-plane relative">
-        <img class="absolute inset-0 w-full h-full object-cover opacity-60" src="https://placehold.co/1280x720/141413/3987e5?text=%E2%96%B6+Kimi+K3+Official+Demo" alt="官方演示视频占位">
-        <div class="relative w-16 h-16 rounded-full bg-s1/90 grid place-items-center text-white text-xl">▶</div>
-      </div>
-      <div class="p-4"><h3 class="text-ink text-sm font-semibold">官方演示视频（嵌入位）</h3><p class="text-xs text-muted mt-1">待官方发布 B 站/YouTube 演示后替换为真实 iframe，本站不伪造视频链接。<a class="text-s1 hover:underline" href="https://search.bilibili.com/all?keyword=Kimi%20K3" target="_blank" rel="noopener">去 B 站搜索 ↗</a></p></div>
-    </div>
-    <div class="bg-card border border-line rounded-2xl overflow-hidden">
-      <div class="aspect-video grid place-items-center bg-plane relative">
-        <img class="absolute inset-0 w-full h-full object-cover opacity-60" src="https://placehold.co/1280x720/141413/9085e9?text=%E2%96%B6+Kimi+Work+%C2%B7+Widgets+%26+Dashboard" alt="Kimi Work 演示视频占位">
-        <div class="relative w-16 h-16 rounded-full bg-s4/90 grid place-items-center text-white text-xl">▶</div>
-      </div>
-      <div class="p-4"><h3 class="text-ink text-sm font-semibold">Kimi Work 新功能演示（嵌入位）</h3><p class="text-xs text-muted mt-1">Widgets 小组件与 Dashboard 仪表盘随 K3 一同上线，演示视频待补。</p></div>
-    </div>
+  <!-- 官方演示视频（真实内嵌） -->
+  <h3 class="mt-12 text-ink font-semibold">官方演示视频</h3>
+  <div class="mt-4 grid md:grid-cols-2 gap-5">
+    <figure class="bg-card border border-line rounded-2xl overflow-hidden">
+      <video class="w-full aspect-video bg-plane" controls preload="none" playsinline poster="kimi-k3-assets/game-openworld.png">
+        <source src="kimi-k3-assets/demo-1.mp4" type="video/mp4">您的浏览器不支持内嵌视频。
+      </video>
+      <figcaption class="p-4 text-xs text-muted">K3 长时程自主任务官方演示（原视频，非第三方复现）。封面为 K3 生成的 Three.js 3D 开放世界。来源：Kimi 官方博客</figcaption>
+    </figure>
+    <figure class="bg-card border border-line rounded-2xl overflow-hidden">
+      <video class="w-full aspect-video bg-plane" controls preload="none" playsinline poster="kimi-k3-assets/hero.png">
+        <source src="kimi-k3-assets/demo-2.mp4" type="video/mp4">您的浏览器不支持内嵌视频。
+      </video>
+      <figcaption class="p-4 text-xs text-muted">Kimi K3 官方发布演示视频。来源：Kimi 官方博客</figcaption>
+    </figure>
   </div>
 </div>
 </section>
@@ -492,7 +513,7 @@ tailwind.config = {
 <footer id="sources" class="border-t border-line bg-plane">
   <div class="max-w-6xl mx-auto px-5 py-10 text-sm leading-relaxed">
     <h2 class="text-ink font-semibold mb-3">来源与口径说明</h2>
-    <p class="text-muted">来源：Kimi 官方博客 <a class="text-s1 hover:underline" href="https://www.kimi.com/blog/kimi-k3" target="_blank" rel="noopener">Kimi K3 Tech Blog: Open Frontier Intelligence</a>（2026 年 7 月）；独立评测与价格对比数据来自 <a class="text-s1 hover:underline" href="https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/" target="_blank" rel="noopener">The Decoder</a>（含 Artificial Analysis 测试结果）；Anthropic 模型价格另核对了其官方定价资料。除「独立检验」一节外，性能数据为厂商自评口径；技术报告与模型权重截至发稿尚未放出。页面配图为占位图，不代表官方物料。</p>
+    <p class="text-muted">来源：Kimi 官方博客 <a class="text-s1 hover:underline" href="https://www.kimi.com/blog/kimi-k3" target="_blank" rel="noopener">Kimi K3 Tech Blog: Open Frontier Intelligence</a>（2026 年 7 月）；独立评测与价格对比数据来自 <a class="text-s1 hover:underline" href="https://the-decoder.com/kimis-open-model-k3-nears-gpt-5-6-sol-and-fable-5-while-signaling-the-end-of-super-cheap-chinese-ai/" target="_blank" rel="noopener">The Decoder</a>（含 Artificial Analysis 测试结果）；Anthropic 模型价格另核对了其官方定价资料。除「独立检验」一节外，性能数据为厂商自评口径；技术报告与模型权重截至发稿尚未放出。页面所用图表、产品截图与演示视频均取自 Kimi 官方博客，版权归月之暗面（Moonshot AI）所有，本站仅作解读引用。</p>
     <div class="mt-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted border-t border-line pt-5">
       <span>知享 · 工具与知识发现站 · 2026-07-17</span>
       <a href="#" class="hover:text-ink">回到顶部 ↑</a>
