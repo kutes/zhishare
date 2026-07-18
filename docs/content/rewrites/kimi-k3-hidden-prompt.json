@@ -1,0 +1,6 @@
+{
+  "title": "一句「hi」被计成 86 个 token：Kimi K3 API 里疑有约 85 token 的隐藏提示词",
+  "summary": "Simon Willison 用鹈鹕基准实测 Kimi K3 时发现 token 计数异常：最短输入也多出约 85 个 token，疑为 API 层隐藏系统提示词；测试同时留下一份真实成本账——画一只鹈鹕 0.25 美元、推理 token 占近八成。注入环节尚无官方说法，本文按推断口径如实梳理。",
+  "slug": "kimi-k3-hidden-prompt",
+  "category_slug": "ai-basics"
+}

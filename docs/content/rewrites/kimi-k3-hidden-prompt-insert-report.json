@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "kimi-k3-hidden-prompt",
+  "title": "一句「hi」被计成 86 个 token：Kimi K3 API 里疑有约 85 token 的隐藏提示词",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发现",
+      "证据",
+      "实测",
+      "提醒"
+    ],
+    "titles": [
+      "一句「hi」，怎么变成 86 个 token",
+      "85 个 token 是怎么算出来的",
+      "顺带测出的真实成本账",
+      "趣味基准和跑分，都要打折看"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
