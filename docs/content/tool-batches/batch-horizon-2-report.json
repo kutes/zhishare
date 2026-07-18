@@ -1,0 +1,55 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-2",
+  "plan": [
+    {
+      "slug": "opendisplay",
+      "title": "OpenDisplay",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\opendisplay-final.jpg"
+    },
+    {
+      "slug": "airbattery",
+      "title": "AirBattery",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\airbattery-final.jpg"
+    },
+    {
+      "slug": "mini-tokyo-3d",
+      "title": "Mini Tokyo 3D",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\mini-tokyo-3d-final.jpg"
+    },
+    {
+      "slug": "aurashare",
+      "title": "Aura Share",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\aurashare-final.jpg"
+    },
+    {
+      "slug": "velvetyne",
+      "title": "Velvetyne",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "01fa2c8a-6f19-4d10-b3f8-0195aff57737",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\velvetyne-final.jpg"
+    }
+  ],
+  "inserted": [
+    "opendisplay",
+    "airbattery",
+    "mini-tokyo-3d",
+    "aurashare",
+    "velvetyne"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
