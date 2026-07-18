@@ -1,0 +1,34 @@
+[
+  {
+    "title": "LLM Cliché Highlighter",
+    "slug": "llm-cliche-highlighter",
+    "category_slug": "productivity",
+    "summary": "粘贴一段文字，自动标出「delve into」「no fluff, no filler」这类 AI 味口头禅；12 种模式全部可单独开关，纯浏览器本地跑，不上传文字。",
+    "description": "由知名开发者 Simon Willison 制作的单页网页工具，专门抓 LLM 生成文本里的陈词滥调。打开就能用：粘贴文字或填一个网址（用 r.jina.ai 代理抓取正文）自动分析，命中的句子直接高亮，链式模式（比如「no X, no Y」这种句式）还会显示命中了几个。12 种模式默认全开，也可以逐个关掉只看自己在意的几种。分析在浏览器本地完成，不需要联网调用任何 AI 接口，粘贴的文字也不会被上传。代码开源在 GitHub（simonw/tools 仓库，Apache-2.0），页面自带 79 项自检用例。",
+    "website_url": "https://tools2.simonwillison.net/llm-cliche-highlighter",
+    "download_url": "",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "经常用 AI 辅助写作、需要人工润色去 AI 味的人\n编辑、审稿人，想快速筛出文章里的套话\n对 LLM 生成文本的固定句式感兴趣的人",
+    "use_cases": "AI 生成初稿后，粘贴进去看哪些句子该重写\n审一篇疑似 AI 代写的稿件，快速定位套话密度\n填文章网址直接检测线上内容，不用手动复制",
+    "pros": "12 种模式覆盖常见 AI 口头禅，链式套话还会计数\n纯本地分析，不上传文字、不用注册\n开源可审计，作者本人是知名独立开发者",
+    "cons": "只识别英文陈词滥调模式，中文文本用不上\n判定基于固定模式匹配，不是语义理解，可能漏判或误判",
+    "risk_notice": ""
+  },
+  {
+    "title": "Stereo2Spatial",
+    "slug": "stereo2spatial",
+    "category_slug": "video-audio",
+    "summary": "把普通立体声歌曲转成 7.1.4 空间音频和双耳音效，本地处理不联网；但开发者是个人而非公司、上架仅 3 个月零评价，且必须有 NVIDIA RTX 20 系列以上显卡才能跑。",
+    "description": "微软商店应用，官方定位是「本地优先」的音频转换工具：建立你的音乐库、排队转换、生成的文件都留在本机，官方描述里写明输入、输出、模型文件和诊断数据在正常使用下都不出设备。核心功能是把普通立体声轨转换成 7.1.4 空间音频和双耳（binaural）输出，同时支持本地音乐库管理、批量排队转换、播放回顾结果。官方特别提醒：双耳输出用普通耳机就能听，但要用真正的空间播放器效果，你的输出设备本身也得支持空间音频（比如 7.1.4 音响系统或兼容耳机），否则达不到宣传效果。",
+    "website_url": "https://apps.microsoft.com/detail/9pj6r7rqdvp1?hl=en-US&gl=US",
+    "download_url": "https://apps.microsoft.com/detail/9pj6r7rqdvp1?hl=en-US&gl=US",
+    "is_free": true,
+    "is_open_source": false,
+    "target_users": "有独立显卡（NVIDIA RTX 20 系列以上）、想给音乐库做空间音效的发烧友\n已经有 7.1.4 音响或空间音频耳机、想在本地处理而非上传云端的人",
+    "use_cases": "把常听的立体声歌曲批量转成双耳版本，戴耳机听\n配合支持空间音频的耳机或音响，转出 7.1.4 版本试听效果",
+    "pros": "官方宣称处理在本地完成，不上传音频文件\n免费使用，微软商店直接安装",
+    "cons": "必须 NVIDIA RTX 20 系列以上显卡，AMD/Intel 显卡或核显用不了，是硬性门槛\n2026 年 4 月才上架，截至查证时在商店里还没有任何用户评价，稳定性和实际效果无人验证\n非开源，处理细节和「本地处理」的说法无法独立审计，只能依据官方自述",
+    "risk_notice": "⚠ 开发者为具名个人（Francis LaBounty），非公司主体，也没有开源代码可供审计；「数据不出设备」是开发者自述，本站未能独立验证。上架仅约 3 个月、零用户评价，建议先在非敏感音频上小范围试用，警惕程度按软件避坑标准从严处理。"
+  }
+]
