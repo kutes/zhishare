@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "qwen-3-8-preview",
+  "title": "阿里预览 Qwen 3.8：2.4 万亿参数紧追 Kimi K3，但目前只有一条推文",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发布",
+      "冷静",
+      "背景",
+      "上手"
+    ],
+    "titles": [
+      "一条推文，紧跟 Kimi K3",
+      "先别急着下结论",
+      "放进国产开源大模型这盘棋里看",
+      "现在能怎么试"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
