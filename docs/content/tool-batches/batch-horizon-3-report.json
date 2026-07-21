@@ -1,0 +1,19 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-3",
+  "plan": [
+    {
+      "slug": "nativ",
+      "title": "Nativ",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "8d38cc91-c4c6-4a5c-8cdb-e3114db282dc",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\nativ-final.jpg"
+    }
+  ],
+  "inserted": [
+    "nativ"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}

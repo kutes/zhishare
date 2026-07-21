@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Nativ",
+    "slug": "nativ",
+    "category_slug": "ai-tools",
+    "summary": "Mac 上跑开源大模型的原生 App，基于苹果 MLX 框架为 Apple Silicon 优化，聊天、本地服务、性能监控一体；免账号免订阅，MIT 全开源。注意目前是 v0.0.1 早期版本。",
+    "description": "Nativ 是一款让你在 Mac 上本地运行开源 AI 模型的原生应用，专为 Apple Silicon（M1 及以上）设计，底层基于苹果的 MLX / MLX-VLM 框架，针对 M 系列芯片的统一内存和 Metal 做了优化，官方称没有额外的封装或转换层。功能上不只是聊天：内置一个精选模型库（会根据你的硬件推荐合适的模型，合作模型来自 Google、Cohere、Liquid AI 等），聊天界面支持流式输出、Markdown、代码高亮和图片输入，还带一块开发者会在意的性能监控面板——实时 tokens/秒、内存压力、温度状态、首字延迟。它也能作为本地模型服务端，把 Claude Code、Codex、OpenCode 等你已经在用的编程 Agent 接到本机跑的模型上。全部开源（MIT），包括桌面 App 本身，官方强调不搞订阅、不卖数据。开发者是 Prince Canuma，也是 LM Studio 依赖的 MLX-VLM 库的维护者。",
+    "website_url": "https://blaizzy.github.io/nativ/",
+    "download_url": "https://github.com/Blaizzy/nativ/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "用 Apple Silicon Mac、想在本地跑开源大模型的人\n在意隐私、不想把对话发到云端的人\n想把本地模型接到 Claude Code / Codex 等编程 Agent 的开发者",
+    "use_cases": "在本地跑开源模型聊天，数据不出本机\n给已有的编程 Agent 提供一个本地模型服务端\n用性能面板观察本地推理的速度、内存和发热情况",
+    "pros": "原生 MLX 优化，专为 Apple Silicon 调校，非跨平台套壳\n全开源（含桌面 App），免账号免订阅，不卖数据\n带实时性能监控（tokens/秒、内存、温度、首字延迟），对开发者友好\n可作本地服务端，对接 Claude Code、Codex、OpenCode 等 Agent",
+    "cons": "只支持 Apple Silicon Mac（M1 及以上），Windows、Linux、Intel 芯片 Mac 用不了\n目前是 v0.0.1 极早期版本，功能和稳定性还在起步阶段\n同类工具（LM Studio、Ollama、Jan）已经很成熟，Nativ 的差异化主要在 MLX 原生优化\n模型体积大（动辄 10-20GB），对硬盘和内存有要求",
+    "risk_notice": "目前为 v0.0.1 早期版本，建议先用于尝鲜和非关键场景，重要工作流不要立刻全押上；下载认准官网 blaizzy.github.io/nativ 与其 GitHub 仓库。"
+  }
+]

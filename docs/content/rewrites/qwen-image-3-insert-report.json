@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "qwen-image-3",
+  "title": "阿里 Qwen-Image-3.0：主打复杂文字排版，但演示图好看不等于你能用出来",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发布",
+      "能力",
+      "冷静",
+      "上手"
+    ],
+    "titles": [
+      "第三代 Qwen-Image，主打一个「实」",
+      "官方演示到底展示了什么",
+      "亮眼演示 ≠ 你能用出同样效果",
+      "现在能怎么试"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
