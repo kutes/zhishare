@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "claude-code-team-practices",
+  "title": "Anthropic 自曝：Claude Code 团队 65% 的代码由 AI 提交，系统提示词砍了 80%",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "数据",
+      "提示词",
+      "流程",
+      "冷静"
+    ],
+    "titles": [
+      "造工具的团队，自己用得有多狠",
+      "最值得抄的一段：怎么给新模型写指令",
+      "先自己吃狗粮，再逐步放手给 AI 审",
+      "这些数字该怎么看"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

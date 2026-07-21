@@ -1,0 +1,6 @@
+{
+  "title": "Anthropic 自曝：Claude Code 团队 65% 的代码由 AI 提交，系统提示词砍了 80%",
+  "summary": "Anthropic 的 Claude Code 团队在公开访谈里摊开内部数字：自己团队 65% 的工程 PR 已由 AI 完成，系统提示词为适配新模型砍掉 80%。更实用的是他们写提示词的最新经验——新模型上别堆示例、别列一堆禁令、别下绝对命令。数字是团队自述口径，但那几条提示词经验谁都能今天就用。",
+  "slug": "claude-code-team-practices",
+  "category_slug": "ai-basics"
+}
