@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "gemini-3-6-flash",
+  "title": "Google 一次发三个 Gemini：3.6 Flash 更强、Flash-Lite 更便宜、Flash Cyber 你用不了",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发布",
+      "三选一",
+      "Cyber",
+      "冷静"
+    ],
+    "titles": [
+      "一次发三个，各管一摊",
+      "哪个干什么活",
+      "那个你用不了的安全模型",
+      "命名有点乱，社区有点怨"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
