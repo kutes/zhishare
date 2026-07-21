@@ -1,0 +1,6 @@
+{
+  "title": "Cursor 智能体集群：一秒 1000 次提交，4 小时用 Rust 重写了个 SQLite",
+  "summary": "Cursor 公布新一代 AI 智能体集群：峰值每秒约 1000 次提交（旧系统每小时 1000 次），并让一群 AI 只靠 835 页手册、4 小时从零用 Rust 重写 SQLite，多个模型组合跑到 100%。但最有价值的是成本账——「强模型规划+便宜模型干活」比全用 GPT-5.5 便宜约 8 倍。附冷静提醒：这是官方自演示，且 SQLite 很可能在训练数据里。",
+  "slug": "cursor-agent-swarm",
+  "category_slug": "ai-basics"
+}

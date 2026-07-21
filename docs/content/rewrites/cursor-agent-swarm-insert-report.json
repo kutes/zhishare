@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "cursor-agent-swarm",
+  "title": "Cursor 智能体集群：一秒 1000 次提交，4 小时用 Rust 重写了个 SQLite",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发布",
+      "原理",
+      "账本",
+      "冷静"
+    ],
+    "titles": [
+      "一秒 1000 次提交，4 小时重写一个 SQLite",
+      "关键不是更快，是「拆得更碎」",
+      "最有意思的是这张成本表",
+      "这个实验证明了什么，没证明什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
