@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Vibe Kanban",
+    "slug": "vibe-kanban",
+    "category_slug": "coding-tools",
+    "summary": "面向 AI 编程时代的看板工具，专门用来编排 Claude Code、Codex 等编程 Agent：把任务拆成卡片分派给多个 Agent 并行干活，人只管规划和审阅。Apache-2.0、GitHub 2.7 万星。注意：官方已宣布项目转为社区维护。",
+    "description": "当你同时指挥多个 AI 编程 Agent（Claude Code、Codex 等）时，瓶颈从「写代码」变成了「怎么给它们派活、怎么审它们的产出」。Vibe Kanban 就是解决这个的看板工具：用 plan → prompt → review 的流程，把工作拆成卡片分派给不同 Agent 并行执行，你专注在规划和审阅这两个人类真正该做的环节。它支持接入 Claude Code、Codex 等主流编程 Agent，一条 npx 命令就能起。项目开源（Apache-2.0），GitHub 星标 2.7 万。需要留意：官方（BloopAI）已在官网宣布该项目正在 sunsetting——将不再由公司主力维护，转为开源社区继续维护。",
+    "website_url": "https://www.vibekanban.com/",
+    "download_url": "https://github.com/BloopAI/vibe-kanban",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "同时指挥多个 AI 编程 Agent、需要统一编排的开发者\n觉得「给 Agent 派活和审代码」比写代码更费神的人\n想把 AI 编程工作流做成看板式管理的团队",
+    "use_cases": "把一个大任务拆成卡片，分派给多个编程 Agent 并行做\n用 plan/prompt/review 流程集中审阅 Agent 的产出\n统一编排 Claude Code、Codex 等不同 Agent 的工作",
+    "pros": "专为多 Agent 编排设计，plan→prompt→review 流程清晰\n支持主流编程 Agent，npx 一条命令即可启动\n开源（Apache-2.0），GitHub 2.7 万星，生态成熟",
+    "cons": "官方已宣布项目 sunsetting，转为社区维护，后续更新节奏存在不确定性\n面向已经在用编程 Agent 的开发者，纯新手用不上\n价值依赖你手里的编程 Agent，本身不写代码",
+    "risk_notice": "官方（BloopAI）已宣布 Vibe Kanban 转为社区维护、不再由公司主力开发；若长期依赖，建议关注其社区活跃度与后续维护情况。"
+  },
+  {
+    "title": "Everywhere",
+    "slug": "everywhere",
+    "category_slug": "ai-tools",
+    "summary": "能「看见」你当前屏幕的桌面 AI 助手：不用把内容复制粘贴到聊天框，它直接感知你正在用的应用和屏幕内容来帮你，减少来回切窗口。GitHub 6千多星。",
+    "description": "普通 AI 助手都活在一个独立聊天框里，你得不停地复制粘贴、切窗口。Everywhere 的思路是把 AI 从浏览器标签页和独立应用里「解放」出来，做成一个屏幕感知的桌面助手：它能读取你当前正在用的应用和屏幕上的内容作为上下文，直接就地帮你处理，不用先把东西搬到聊天框。官方定位是让 AI 成为操作系统级、随叫随到的能力。代码在 GitHub 公开（星标 6 千多，更新活跃），提供各平台下载；采用自定义许可证。因为它会读取屏幕内容，隐私上需要留意。",
+    "website_url": "https://everywhere.sylinko.com/",
+    "download_url": "https://github.com/Sylinko/Everywhere",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "受够了在 AI 聊天框和工作窗口之间反复复制粘贴的人\n希望 AI 能结合当前屏幕内容直接帮忙的人\n想要一个随叫随到、跨应用的桌面 AI 助手的人",
+    "use_cases": "在任意应用里就地唤起 AI，基于当前屏幕内容提问或处理\n读邮件、看文档时直接让它总结或起草回复，不用切窗口\n把 AI 当成跨应用的常驻助手减少上下文搬运",
+    "pros": "屏幕感知，能结合当前应用内容直接帮忙，省去复制粘贴\n跨应用的桌面级助手，不局限于某个聊天框\n代码在 GitHub 公开，星标 6 千多，更新活跃",
+    "cons": "会读取屏幕内容，对隐私敏感或涉密场景需谨慎\n采用自定义许可证（非标准开源协议），商用前建议看清授权\n官网设有 Pricing，部分高级功能可能为付费",
+    "risk_notice": "该工具会读取你当前屏幕上的内容作为上下文，处理敏感信息（密码、合同、涉密材料）时请谨慎使用或关闭；若接入自有大模型，API Key 妥善保管。"
+  },
+  {
+    "title": "DeepSeek 用量监控",
+    "slug": "deepseek-monitor",
+    "category_slug": "coding-tools",
+    "summary": "Windows 桌面小工具，实时查看 DeepSeek API 的账户余额和 Token 消耗，不用每次登录网页后台。用 Tauri + React + Rust 做，开源免费。",
+    "description": "在本地或脚本里频繁调用 DeepSeek API 时，余额和用量分散在网页后台，查起来麻烦。DeepSeek 用量监控是一个 Windows 桌面小工具，把账户余额、Token 消耗等信息直接显示在桌面，随时能看，不用每次登录官网后台。它用 Tauri + React + Rust 构建，体积轻、原生运行，界面支持一套亮色 UI，缓存显示当前版本号等信息。开源免费（MIT），有正式的 Release 版本可直接下载安装。适合用 DeepSeek API 做开发、想随时盯住余额和花费的人。",
+    "website_url": "https://github.com/Joyi-code/DeepSeekMonitorWindows",
+    "download_url": "https://github.com/Joyi-code/DeepSeekMonitorWindows/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "用 DeepSeek API 做开发、想随时盯余额的人\n不想每次查用量都登录网页后台的人\n偏好轻量桌面小工具的 Windows 用户",
+    "use_cases": "桌面上随时查看 DeepSeek 账户余额和 Token 消耗\n开发调试时盯住 API 花费，避免余额突然见底\n把它常驻桌面，替代反复登录官网查用量",
+    "pros": "余额和 Token 用量直接显示在桌面，免登录后台\nTauri + React + Rust 构建，轻量原生\n开源免费（MIT），有正式 Release 可直接下载",
+    "cons": "仅支持 Windows；只监控 DeepSeek，不覆盖其他厂商 API\n需要填入自己的 DeepSeek API 相关凭据才能读取数据\n功能聚焦用量监控，不参与实际 API 调用",
+    "risk_notice": "需要配置你自己的 DeepSeek API 凭据，请从官方仓库的 Release 下载、妥善保管密钥，勿在公用电脑上填写。"
+  }
+]

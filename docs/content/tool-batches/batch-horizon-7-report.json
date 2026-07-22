@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-7",
+  "plan": [
+    {
+      "slug": "vibe-kanban",
+      "title": "Vibe Kanban",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "7d404bc0-ea1f-41b1-9675-7c51f98c26c5",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\vibe-kanban-final.jpg"
+    },
+    {
+      "slug": "everywhere",
+      "title": "Everywhere",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "8d38cc91-c4c6-4a5c-8cdb-e3114db282dc",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\everywhere-final.jpg"
+    },
+    {
+      "slug": "deepseek-monitor",
+      "title": "DeepSeek 用量监控",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "7d404bc0-ea1f-41b1-9675-7c51f98c26c5",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\deepseek-monitor-final.jpg"
+    }
+  ],
+  "inserted": [
+    "vibe-kanban",
+    "everywhere",
+    "deepseek-monitor"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
