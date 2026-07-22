@@ -1,0 +1,50 @@
+[
+  {
+    "title": "WinLens",
+    "slug": "winlens",
+    "category_slug": "productivity",
+    "summary": "Windows 版的「Google Lens」：框选屏幕上任意位置的文字，就地识别并翻译，覆盖软件界面、图片、PDF 里那些没法直接复制的文字。MIT 开源。",
+    "description": "屏幕上很多文字是没法直接复制的——软件界面、图片、扫描版 PDF、游戏里的说明。WinLens 把手机上「Google Lens」那种体验搬到了 Windows 桌面：框选屏幕上任意一块区域，它就地做 OCR 识别并翻译，结果直接覆盖显示，不用先截图再传到别的翻译工具。常驻系统托盘，随用随起。项目开源（MIT），基于 C#/.NET WPF 开发，星标 220+，带正式 Release 版本，文档、贡献指南、安全策略都比较齐全，是一个维护规范的小工具。",
+    "website_url": "https://github.com/marco-beltrame/WinLens",
+    "download_url": "https://github.com/marco-beltrame/WinLens/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "经常要翻译软件界面、图片、PDF 里不可复制文字的人\n读外文资料、外文软件、外文游戏说明的 Windows 用户\n想要一个随叫随到的屏幕取词翻译工具的人",
+    "use_cases": "框选外文软件界面就地翻译，看懂菜单和按钮\n翻译图片、扫描 PDF 里没法复制的文字\n对屏幕任意区域快速 OCR 取字",
+    "pros": "屏幕任意区域框选即 OCR + 翻译，就地覆盖显示\n开源（MIT），项目维护规范，有正式 Release\n常驻托盘、随用随起，覆盖不可复制的文字场景",
+    "cons": "仅支持 Windows\n翻译质量取决于其接入的翻译/OCR 服务\n专注屏幕取词翻译，不做整篇文档的批量翻译",
+    "risk_notice": ""
+  },
+  {
+    "title": "票易合",
+    "slug": "piaoyihe",
+    "category_slug": "productivity",
+    "summary": "把多张发票 PDF 合并、排版成指定格式的开源桌面工具：支持批量合并、按不同布局排版，报销贴发票、整理票据时很省事。Apache-2.0，Windows/macOS 都能用。",
+    "description": "报销时最烦的就是一堆发票 PDF 要挨个打印、排版、贴。票易合是一款基于 Python + PySide6 开发的跨平台桌面工具（支持 Windows 和 macOS），专门把多张发票 PDF 合并并排版成指定格式：支持多种布局方式（比如一页放几张），满足不同场景下的发票合并、打印需求。它还支持批量重命名、查重等整理功能。项目开源（Apache-2.0），持续更新、有正式 Release 版本，适合经常要处理、报销一堆发票的人。",
+    "website_url": "https://github.com/absolutelyZero/piaoyihe",
+    "download_url": "https://github.com/absolutelyZero/piaoyihe/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "经常要报销、需要合并打印一堆发票的上班族\n帮公司/团队整理票据的财务、行政人员\n想把多张发票 PDF 排版成一页省纸打印的人",
+    "use_cases": "把一沓发票 PDF 按指定布局合并成一个文件再打印\n批量整理、重命名发票文件\n对发票做查重，避免重复报销",
+    "pros": "多张发票 PDF 合并 + 按布局排版，报销打印省事\n跨平台（Windows/macOS），开源（Apache-2.0）\n带批量重命名、查重等实用整理功能",
+    "cons": "功能聚焦发票 PDF 处理，不是通用 PDF 工具\n排版布局按其预设，特别定制的版式可能覆盖不到\n处理效果取决于发票 PDF 本身的规范程度",
+    "risk_notice": ""
+  },
+  {
+    "title": "ElegantClipboard",
+    "slug": "elegantclipboard",
+    "category_slug": "productivity",
+    "summary": "Windows 上的本地剪贴板管理工具，自动保存你复制过的文字、图片、链接，Win+V 一呼出就能翻找、收藏、再粘贴；低占用、离线、数据留本机。MIT 开源。",
+    "description": "Windows 自带的剪贴板历史（Win+V）功能太弱，复制多了就找不回来。ElegantClipboard 是一款本地剪贴板增强工具：常驻后台自动记录你复制过的文字、图片、链接等，需要时呼出面板就能实时搜索、收藏置顶、再次粘贴。官方主打低占用、高性能、现代化界面、高度自定义，数据全部本地离线存储、不上传云端。项目开源（MIT），星标 400+、更新活跃。适合复制粘贴频繁、需要经常翻找剪贴板历史的人。",
+    "website_url": "https://github.com/Y-ASLant/ElegantClipboard",
+    "download_url": "https://github.com/Y-ASLant/ElegantClipboard/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "复制粘贴频繁、经常要翻找剪贴板历史的人\n觉得 Windows 自带 Win+V 太弱的用户\n在意隐私、希望剪贴板数据只留本机的人",
+    "use_cases": "翻回几步之前复制过的文字或图片再粘贴\n把常用的文本片段收藏置顶，随时取用\n用搜索快速定位历史剪贴板内容",
+    "pros": "自动记录文字/图片/链接，支持搜索、收藏、置顶\n数据本地离线存储、不上传云端，隐私友好\n低占用、界面现代、高度自定义，开源（MIT）",
+    "cons": "仅支持 Windows\n剪贴板历史含敏感内容（密码、验证码）时需自己留意清理\n专注剪贴板管理，不含截图 OCR 等更重的扩展功能",
+    "risk_notice": "剪贴板历史可能记录到密码、验证码等敏感内容，公用或涉密电脑上使用请注意及时清理历史。"
+  }
+]

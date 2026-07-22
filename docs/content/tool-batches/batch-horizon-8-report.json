@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-8",
+  "plan": [
+    {
+      "slug": "winlens",
+      "title": "WinLens",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\winlens-final.jpg"
+    },
+    {
+      "slug": "piaoyihe",
+      "title": "票易合",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\piaoyihe-final.jpg"
+    },
+    {
+      "slug": "elegantclipboard",
+      "title": "ElegantClipboard",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\elegantclipboard-final.jpg"
+    }
+  ],
+  "inserted": [
+    "winlens",
+    "piaoyihe",
+    "elegantclipboard"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
