@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "laguna-s-21",
+  "title": "Poolside 开源 Laguna S 2.1：118B 参数只激活 8B，连自家跑分都不吹牛",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发布",
+      "跑分",
+      "坦诚",
+      "上手"
+    ],
+    "titles": [
+      "巨型模型竞赛的反方向",
+      "自家数据都没吹：差距摆在明面上",
+      "两个值得全行业学的动作",
+      "想试的话，门槛很低"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Poolside 开源 Laguna S 2.1：118B 参数只激活 8B，连自家跑分都不吹牛",
+  "summary": "在 Kimi K3、Qwen 3.8 卷万亿参数的另一头，美国公司 Poolside 开源了 8B 激活的编程模型 Laguna S 2.1：家用硬件有机会本地跑、免登录网页可试。官方自家跑分坦承离顶级还差得远，还自列三个已知缺陷、公开全部评测轨迹供人复查——透明度比分数更值得全行业学。",
+  "slug": "laguna-s-21",
+  "category_slug": "ai-basics"
+}
