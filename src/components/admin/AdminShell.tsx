@@ -122,7 +122,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f8fbff] text-ink">
+    <main className="admin-theme min-h-screen overflow-hidden bg-[#faf6f0] text-ink">
       <section className="section-gradient-soft min-h-screen">
         <div className="page-shell py-5 sm:py-6 lg:py-8">
           <div className="grid gap-5 lg:grid-cols-[260px_1fr]">
