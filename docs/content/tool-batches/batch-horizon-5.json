@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Input 0",
+    "slug": "input0",
+    "category_slug": "productivity",
+    "summary": "macOS 上按住热键说话、松开就转成文字的语音输入工具，用 Rust + Metal 原生开发，主打「零打字」；可选自定义 LLM 对转录结果做润色。",
+    "description": "Input 0 是一款 macOS 原生的语音输入工具，交互很简单：按住一个热键开始录音，松开后自动把你说的话转成文字，直接落在光标处，官方口号是「Zero typing. Pure voice.」（零打字，纯语音）。它用 Rust + Metal 开发，针对 macOS 做了原生集成，主打高保真的 AI 转录。除了转录，还支持接入自定义的 LLM 对结果做润色（比如去掉口头语、整理成通顺句子）。代码在 GitHub 公开。适合需要大量输入、又想用说话代替打字的人。",
+    "website_url": "https://input0.com/",
+    "download_url": "https://github.com/10xChengTu/input0",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "需要频繁打字、想用说话代替打字提速的 Mac 用户\n手部疲劳、想减少键盘输入的人\n希望语音转录后自动润色成通顺文字的人",
+    "use_cases": "按住热键口述，松手即把语音转成文字落到光标处\n口述初稿再用自定义 LLM 自动润色成通顺段落\n写长文、回消息时用说话代替大量打字",
+    "pros": "Rust + Metal 原生开发，针对 macOS 优化，交互「按住说、松开出字」很顺\n可接入自定义 LLM 对转录结果润色\n代码在 GitHub 公开",
+    "cons": "仅支持 macOS，Windows/Linux 用不了\n采用自定义许可证（非标准开源协议），商用前建议看清授权\n转录与润色质量取决于所接入的模型，部分功能可能需要自备 API Key",
+    "risk_notice": "认准官网 input0.com 与其 GitHub 仓库下载；若接入自定义 LLM，API Key 请妥善保管，勿在公用设备上配置。"
+  },
+  {
+    "title": "DeepTutor",
+    "slug": "deeptutor",
+    "category_slug": "ai-tools",
+    "summary": "香港大学团队开源的「个性化 AI 学习伴侣」，用多智能体做深度辅导：能读资料、陪你按知识点学、还能协助写作。Apache-2.0 协议，GitHub 星标近 3 万。",
+    "description": "DeepTutor 是香港大学数据智能实验室（HKUDS）开源的 AI 学习辅导系统，定位是「Agent-native 的个性化学习伴侣」。它不是简单的问答机器人，而是用多智能体架构做深度、长期的个性化辅导——可以导入学习资料、围绕知识点陪你一步步学，界面里还有 Home、My Agents、Co-Writer、Book 等模块，能协助阅读和写作。项目完全开源（Apache-2.0），GitHub 星标接近 3 万，是同类开源教育 AI 里关注度很高的一个。它是自托管项目，需要自己按官方文档部署后使用。",
+    "website_url": "https://deeptutor.info/",
+    "download_url": "https://github.com/HKUDS/DeepTutor",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "想用 AI 做系统化、个性化学习辅导的学生\n需要围绕自己的资料做深度学习/复习的人\n对开源多智能体学习系统感兴趣的开发者",
+    "use_cases": "导入学习资料，让 AI 按知识点陪你逐步学习\n用 Co-Writer 等模块辅助阅读与写作\n作为开源教育 AI 项目自行部署、二次开发",
+    "pros": "港大团队开源，Apache-2.0 协议，GitHub 星标近 3 万，社区活跃\n多智能体做深度个性化辅导，不止于简单问答\n完全开源，可自托管、可改造",
+    "cons": "是自托管项目，需要一定技术能力按文档部署，不是开箱即用\n深度使用通常需要接入大模型 API，会产生调用成本\n面向学习辅导场景，不是通用 AI 助手",
+    "risk_notice": "自托管部署与接入大模型时，注意 API Key 与个人学习资料的隐私保护；实际能力与稳定性以自行部署后的体验为准。"
+  },
+  {
+    "title": "FeedCraft",
+    "slug": "feedcraft",
+    "category_slug": "online-tools",
+    "summary": "轻量级 RSS 中间件：把只给摘要的 RSS 源加工成全文，还能顺手翻译、AI 摘要，处理完再输出成新的 RSS 给你的阅读器订阅。开源自托管。",
+    "description": "很多 RSS 源只给一段摘要，点进去还得跳原网页，体验很割裂。FeedCraft 就是插在「原始 RSS」和「你的阅读器」之间的一层加工中间件：你把源丢给它，它可以提取全文、做翻译、用 AI 生成摘要，处理完再吐出一个新的 RSS 地址，你的阅读器订阅这个新地址就行。它是开源项目（GPL-3.0），基于 Docker 自托管部署，带一个管理后台配置各种加工规则。适合重度 RSS 用户把订阅体验一次性理顺。",
+    "website_url": "https://github.com/Colin-XKL/FeedCraft",
+    "download_url": "https://github.com/Colin-XKL/FeedCraft",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "受不了 RSS 源「只给摘要」的重度 RSS 用户\n想给外文 RSS 自动加翻译、给长文加 AI 摘要的人\n愿意自己用 Docker 部署、折腾订阅工作流的人",
+    "use_cases": "把只给摘要的源加工成全文再订阅\n给外文 RSS 源自动翻译成中文\n给长文源加一段 AI 摘要，先扫一眼再决定读不读",
+    "pros": "全文提取 + 翻译 + AI 摘要一站式，处理后仍输出标准 RSS\n开源（GPL-3.0），Docker 自托管，数据在自己手里\n带管理后台，加工规则可灵活配置",
+    "cons": "需要自己用 Docker 部署，对纯小白有门槛\n翻译和 AI 摘要功能通常要自备大模型/翻译 API\n是给 RSS 加工的中间件，本身不是阅读器，仍需搭配 RSS 客户端使用",
+    "risk_notice": "自托管服务请设置好后台密码；接入翻译/AI 摘要的 API Key 妥善保管。"
+  }
+]

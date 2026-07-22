@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-5",
+  "plan": [
+    {
+      "slug": "input0",
+      "title": "Input 0",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\input0-final.jpg"
+    },
+    {
+      "slug": "deeptutor",
+      "title": "DeepTutor",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "8d38cc91-c4c6-4a5c-8cdb-e3114db282dc",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\deeptutor-final.jpg"
+    },
+    {
+      "slug": "feedcraft",
+      "title": "FeedCraft",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\feedcraft-final.jpg"
+    }
+  ],
+  "inserted": [
+    "input0",
+    "deeptutor",
+    "feedcraft"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
