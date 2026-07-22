@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "chatgpt-ads",
+  "title": "ChatGPT 开始卖广告了：三条官方承诺，和一个值得你警惕的定向逻辑",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "发布",
+      "方式",
+      "争议",
+      "提醒"
+    ],
+    "titles": [
+      "靴子落地：ChatGPT 里要有广告了",
+      "广告长什么样、靠什么定向",
+      "社区为什么不买账",
+      "对普通用户意味着什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 2,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
