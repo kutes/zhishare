@@ -1,0 +1,50 @@
+[
+  {
+    "title": "CodexBar",
+    "slug": "codexbar",
+    "category_slug": "coding-tools",
+    "summary": "macOS 菜单栏小工具，实时盯着 OpenAI Codex、Claude Code 等 AI 编程工具的用量：使用窗口、剩余额度、重置倒计时一眼看全，不用再切到各家后台查。免费开源，GitHub 近 2 万星。",
+    "description": "用 AI 编程工具最烦的就是不知道自己额度还剩多少、什么时候重置。CodexBar 是一个常驻 macOS 菜单栏的小工具，把这些信息集中显示出来：当前使用窗口、剩余额度/积分、重置倒计时、token 消耗和花费统计，支持 OpenAI Codex、Claude Code 等你实际付费的 AI 编码服务。它直接读本地的使用日志来估算，点一下菜单栏图标就能看，不用挨个登录各家后台。免费开源（MIT），作者是知名开发者 Peter Steinberger，GitHub 星标近 1.9 万、更新活跃，可用 brew 一行命令安装。",
+    "website_url": "https://codexbar.app/",
+    "download_url": "https://github.com/steipete/CodexBar",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "重度使用 Codex、Claude Code 等付费 AI 编程工具的开发者\n想随时掌握 AI 额度、避免用超或忘记重置时间的人\n喜欢把常用信息放在菜单栏一眼看全的 Mac 用户",
+    "use_cases": "写代码时瞥一眼菜单栏，看当前额度还剩多少、几点重置\n跟踪每天/近 31 天的 token 消耗和花费\n同时监控多个 AI 编码服务的用量，不用来回切后台",
+    "pros": "菜单栏常驻，用量、额度、重置倒计时、花费一眼看全\n支持 Codex、Claude Code 等多个主流 AI 编码服务\n免费开源（MIT），GitHub 近 1.9 万星，更新活跃，brew 一行安装",
+    "cons": "仅支持 macOS，Windows/Linux 用不了\n数据基于读取本地使用日志估算，与官方后台可能有细微出入\n只做用量监控，不参与实际的代码编写",
+    "risk_notice": ""
+  },
+  {
+    "title": "isUpMap",
+    "slug": "isupmap",
+    "category_slug": "online-tools",
+    "summary": "一张实时刷新的「全网服务健康热力图」：AWS、GitHub、OpenAI、Cursor、Netflix 等 40 多个常用服务当前是正常、降级还是宕机，绿黄红一目了然。免登录网页，开源。",
+    "description": "服务突然连不上时，第一反应总是「是自己网络的问题，还是它真挂了？」isUpMap 把这个判断变成看一眼的事：它把 40 多个热门互联网服务按开发/云、AI、生产力、社交、支付等分类，铺成一张彩色热力图，每个服务用绿（正常 OPERATIONAL）、黄（降级 DEGRADED）、红（宕机 DOWN）实时标注状态，页面持续刷新。涵盖 AWS、GitHub、Cloudflare、OpenAI、Anthropic、Cursor、Notion、Netflix、Steam、Stripe 等常用服务，还带一个搜索/命令栏快速定位。它基于 Cloudflare 搭建、开源（MIT），打开网页免登录直接看。",
+    "website_url": "https://isupmap.com/",
+    "download_url": "https://github.com/Jaironlanda/isupmap",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "服务连不上时想快速确认「是不是对方挂了」的人\n同时依赖多个云/AI/SaaS 服务的开发者和运维\n想一个页面盯全网常用服务状态的人",
+    "use_cases": "网站或 API 抽风时，先来这看一眼是不是官方宕机\n上线前扫一眼所依赖的云/AI 服务当前是否正常\n把它当作全网服务健康的实时仪表盘常驻一个标签页",
+    "pros": "40+ 常用服务的状态一图流，绿黄红实时刷新\n分类清晰、带搜索命令栏，定位服务很快\n免登录网页直接用，开源（MIT），基于 Cloudflare",
+    "cons": "状态来自各服务的公开状态页聚合，可能与你的实际体验有时间差\n只覆盖它收录的那批热门服务，冷门/自建服务查不到\n页面顶部含少量赞助位（免费工具的常见形式）",
+    "risk_notice": ""
+  },
+  {
+    "title": "TripStar",
+    "slug": "tripstar",
+    "category_slug": "ai-tools",
+    "summary": "开源的 AI 文旅智能体「旅途星辰」：把「想去哪、玩几天、什么偏好」交给它，自动生成行程规划并在地图上可视化路线。GPL-2.0，GitHub 2000+ 星，有在线体验。",
+    "description": "TripStar（旅途星辰）是一个开源的 AI 旅行规划智能体，目标是解决「做旅行攻略太累」这件事。你给出目的地、天数、偏好等信息，它用 AI 生成一份行程安排，并把路线在地图上可视化出来，让你直观看到每天去哪、怎么走。项目在 GitHub 开源（GPL-2.0，星标 2000+），并在魔搭（ModelScope）上提供了在线体验版，想先试不用自己部署。适合出行前想快速拿到一版可参考行程、再自己微调的人。",
+    "website_url": "https://github.com/1sdv/TripStar",
+    "download_url": "https://github.com/1sdv/TripStar",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "懒得从零做攻略、想让 AI 先出一版行程的人\n出行前需要把路线在地图上看清楚的人\n对开源 AI 智能体应用感兴趣、想自己部署的开发者",
+    "use_cases": "输入目的地和天数，让 AI 生成一份初版行程再自己改\n把规划的路线在地图上可视化，直观安排每天动线\n作为开源 AI 智能体案例自行部署、二次开发",
+    "pros": "输入偏好即生成行程并地图可视化，省去从零做攻略\n开源（GPL-2.0），GitHub 2000+ 星，可自托管\n提供魔搭在线体验版，想先试不用部署",
+    "cons": "AI 生成的行程是参考稿，营业时间、票务、路况等需自行核实\n深度使用通常需接入大模型 API，会有调用成本\n更偏行程规划本身，不负责订票订酒店等交易环节",
+    "risk_notice": "AI 生成的行程仅供参考，出行前请自行核实景点开放时间、交通与票务等实际信息，重要行程不要完全依赖 AI 输出。"
+  }
+]
