@@ -1,0 +1,46 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-4",
+  "plan": [
+    {
+      "slug": "freecut",
+      "title": "FreeCut",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "8a954cde-d330-42af-8a26-a1e47bfa948d",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\freecut-final.jpg"
+    },
+    {
+      "slug": "text2voice",
+      "title": "Text2Voice",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\text2voice-final.jpg"
+    },
+    {
+      "slug": "canirun-ai",
+      "title": "Can I Run AI",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\canirun-ai-final.jpg"
+    },
+    {
+      "slug": "qwerty-learner",
+      "title": "Qwerty Learner",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\qwerty-learner-final.jpg"
+    }
+  ],
+  "inserted": [
+    "freecut",
+    "text2voice",
+    "canirun-ai",
+    "qwerty-learner"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
