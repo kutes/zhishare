@@ -27,6 +27,7 @@ const menuItems = [
   { label: "标签管理", href: "/admin/tags" },
   { label: "投稿管理", href: "/admin/submissions" },
   { label: "投诉管理", href: "/admin/reports" },
+  { label: "数据统计", href: "/admin/stats" },
   { label: "返回前台", href: "/" },
 ];
 

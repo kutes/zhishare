@@ -21,6 +21,7 @@ const menuItems = [
   { label: "标签管理", href: "/admin/tags", pending: false },
   { label: "投稿管理", href: "/admin/submissions", pending: false },
   { label: "投诉管理", href: "/admin/reports", pending: false },
+  { label: "数据统计", href: "/admin/stats", pending: false },
   { label: "返回前台", href: "/", pending: false },
 ];
 
