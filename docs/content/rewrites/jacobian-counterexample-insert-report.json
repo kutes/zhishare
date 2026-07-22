@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "jacobian-counterexample",
+  "title": "AI 推翻悬置 87 年的雅可比猜想：3 个变量、7 次多项式，陶哲轩亲自撰文解读",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "事件",
+      "猜想",
+      "验证",
+      "冷静"
+    ],
+    "titles": [
+      "一个悬了 87 年的猜想，被 AI 找到了反例",
+      "它到底在问什么",
+      "反例是怎么被「钉死」的",
+      "这件事说明什么，不说明什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
