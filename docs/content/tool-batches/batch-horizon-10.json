@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Pinkbin",
+    "slug": "pinkbin",
+    "category_slug": "productivity",
+    "summary": "Windows 上「扫盘 + AI 帮你看懂能不能删」的开源磁盘清理工具：秒扫整盘看空间占用，把不认识的文件夹交给 AI 判断这是什么、删了会丢什么，再逐项放心删（默认进回收站）。MIT 开源。",
+    "description": "清理磁盘最怕的不是空间不够，而是「这个几十 GB 的文件夹到底能不能删」。Pinkbin 是一款开源的 Windows 磁盘清理工具（基于 Tauri 2 + React + Rust），思路是「扫盘 · 看懂 · 逐项删」：先秒扫整盘，用树状视图把每个目录的空间占用可视化出来；遇到不认识的文件夹，直接拖给内置 AI，它会用文字告诉你这是什么、能不能删、删了会丢什么；确认后再按项清理，默认删进回收站、可恢复。官方强调只读取文件的路径和体积等元信息、不读取文件内容。项目开源（MIT），GitHub 星标 1200+、更新活跃，有正式 Release。注意：目前仅提供 Windows 预编译版，macOS/Linux 需自行编译。",
+    "website_url": "https://github.com/cccyd2003-qwq/pinkbin",
+    "download_url": "https://github.com/cccyd2003-qwq/pinkbin/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "磁盘常年爆满、想清理又怕误删的 Windows 用户\n面对一堆不认识的文件夹、不知道能不能删的人\n喜欢用可视化方式看清磁盘空间占用的人",
+    "use_cases": "秒扫整盘，用树状视图看清每个目录占了多少空间\n把不认识的大文件夹拖给 AI，判断能不能删、删了会丢什么\n逐项清理占空间的缓存/残留，默认进回收站可恢复",
+    "pros": "扫盘 + AI 判断「能不能删」+ 逐项清理，一条龙且直观\n默认删进回收站可恢复，官方称只读元信息、不读文件内容\n开源（MIT），Tauri 原生、更新活跃，有正式 Release",
+    "cons": "目前仅提供 Windows 预编译版，macOS/Linux 需自行编译\nAI 判断功能通常需要配置模型/API，可能产生调用成本\nAI 的删除建议仅供参考，重要文件仍需自己再确认",
+    "risk_notice": "删除文件有风险：AI 给出的「能不能删」仅为建议，清理前请自行确认，重要数据先备份；直读磁盘信息可能需要管理员权限，请从官方仓库 Release 下载安装。"
+  },
+  {
+    "title": "Mac Sai",
+    "slug": "macsai",
+    "category_slug": "productivity",
+    "summary": "开源、免费、无订阅的 Mac 清理与优化工具，定位是 CleanMyMac 的平替：清系统垃圾、查杀恶意软件、彻底卸载应用、磁盘占用可视化，无广告、无遥测。BSD-3 协议，已做 Apple 公证，brew 可装。",
+    "description": "CleanMyMac 好用但要订阅、还带遥测。Mac Sai 用 Swift 6 + SwiftUI 开发，目标是做一个功能对齐 CleanMyMac、但完全开源免费的替代品：一键智能扫描清理系统垃圾（十多类）、查杀恶意软件、彻底卸载应用并清理残留、磁盘占用树状图可视化、重复文件查找、菜单栏系统监控等都集成在一个界面里。官方强调「无订阅、无遥测、无广告」，代码开源（BSD-3-Clause）、经过安全审计、已做 Apple 公证（notarized），可用 brew 一行安装或下载 DMG。界面支持简体中文。适合想要一个干净、透明、不收订阅费的 Mac 清理工具的人。",
+    "website_url": "https://github.com/iliyami/MacSai",
+    "download_url": "https://github.com/iliyami/MacSai/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "想清理优化 Mac、又不想为 CleanMyMac 付订阅费的人\n在意隐私、希望清理工具无遥测无广告的用户\n想要一个开源透明、可查杀恶意软件的 Mac 维护工具的人",
+    "use_cases": "一键智能扫描并清理系统垃圾、缓存、残留\n彻底卸载应用并清掉散落的残留文件\n用磁盘树状图找出占空间的大文件，或查杀恶意软件",
+    "pros": "功能对齐 CleanMyMac（清理/查杀/卸载/磁盘可视化），却完全免费\n开源（BSD-3），无订阅、无遥测、无广告，已做 Apple 公证\n支持 brew 安装、界面含简体中文，更新活跃",
+    "cons": "仅支持 macOS 14 及以上\n系统清理类操作需谨慎，清理前建议核对扫描结果\n恶意软件查杀能力有限，重度安全需求仍需专业方案配合",
+    "risk_notice": "清理与卸载会删除文件，执行前请核对扫描结果、避免误删；请从官方仓库 Release 或 brew 官方 cask 下载，确保是经 Apple 公证的正版。"
+  },
+  {
+    "title": "FlowScroll",
+    "slug": "flowscroll",
+    "category_slug": "productivity",
+    "summary": "把浏览器里「单击中键、以当前位置为中心自由滚动」的体验带到整个桌面系统的开源工具：网页、PDF、代码、表格、长文档都能丝滑无级滚动。跨平台，惯性/横向/死区可调，GPL-3.0。",
+    "description": "浏览器里单击鼠标中键后那种「以当前位置为中心自由滚动」的手感很舒服，但离开浏览器就没了。FlowScroll 就是把这套交互扩展到整个桌面系统：在 PDF、代码编辑器、表格、时间轴、长网页里，用中键进入连续无级滚动模式，比一格一格拨滚轮更连贯省力。它支持点击启用/长按启用两种工作模式，滚动的加速曲线、惯性、死区、横向滚动、方向反转都能调，还带黑白名单、正则匹配、全屏停用、托盘常驻，以及配置的 WebDAV 同步。跨平台（Windows/macOS，Linux 为预览版），用 Python 开发、Nuitka 打包，开源（GPL-3.0），有官网与正式 Release。",
+    "website_url": "https://cyrilpeng.github.io/FlowScroll/",
+    "download_url": "https://github.com/CyrilPeng/FlowScroll/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "经常读长网页、长 PDF、长文档，觉得拨滚轮累的人\n看大段代码、日志、超宽表格需要顺畅滚动的人\n喜欢浏览器中键自由滚动、想全系统都能用的人",
+    "use_cases": "在 PDF、代码编辑器、表格里用中键进入连续无级滚动\n阅读长文档时用惯性滚动代替反复拨滚轮\n给特定应用设黑白名单，只在需要的地方启用",
+    "pros": "把浏览器式中键自由滚动带到全系统，阅读长内容更省力\n加速曲线/惯性/死区/横向/反转可调，带黑白名单与正则\n跨平台，开源（GPL-3.0），有官网与正式 Release",
+    "cons": "Linux 目前为预览版，稳定性以实际使用为准\nmacOS 需在「隐私与安全性」中授予辅助功能权限才能全局生效\n是滚动增强工具，需要一点适应期改变原有滚动习惯",
+    "risk_notice": "该工具需要监听鼠标输入、并在 macOS 上授予辅助功能权限才能实现全局滚动，请从官方仓库 Release 下载；如启用 WebDAV 同步，账号密码请妥善保管。"
+  }
+]

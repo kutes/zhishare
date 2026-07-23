@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-10",
+  "plan": [
+    {
+      "slug": "pinkbin",
+      "title": "Pinkbin",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\pinkbin-final.jpg"
+    },
+    {
+      "slug": "macsai",
+      "title": "Mac Sai",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\macsai-final.jpg"
+    },
+    {
+      "slug": "flowscroll",
+      "title": "FlowScroll",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\flowscroll-final.jpg"
+    }
+  ],
+  "inserted": [
+    "pinkbin",
+    "macsai",
+    "flowscroll"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
