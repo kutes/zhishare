@@ -1,0 +1,31 @@
+{
+  "status": "execute_completed",
+  "slug": "bento-single-file-slides",
+  "title": "Bento：把整个「PPT 软件」塞进一个 HTML 文件——560 KB、免安装、文件即软件",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 4,
+    "tags": [
+      "事件",
+      "能力",
+      "AI",
+      "冷静"
+    ],
+    "titles": [
+      "一个 HTML 文件，装下了整个「PPT 软件」",
+      "它不只是「能显示」，是真能编能演",
+      "为什么说它「为 AI 而生」",
+      "惊艳，但请按「早期项目」对待"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 3,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

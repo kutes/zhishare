@@ -1,0 +1,6 @@
+{
+  "title": "Bento：把整个「PPT 软件」塞进一个 HTML 文件——560 KB、免安装、文件即软件",
+  "summary": "Bento 是一个幻灯片工具，但查看器、播放器、编辑器全打包进一个约 560 KB 的 HTML 文件里：发给别人，浏览器打开就能看能编能放映，不用装、不用注册。数据是文件顶部一段明文 JSON，人能读、AI（Claude Code/Cursor/本地模型）能直接改；保存时文件重写自己。本地优先，可选端到端加密协作。MIT 开源、GitHub 590+ 星。冷静提醒：这是刚创建一周的新项目、作者为新账号无维护历史，概念惊艳但宜按早期项目对待。",
+  "slug": "bento-single-file-slides",
+  "category_slug": "ai-basics"
+}
