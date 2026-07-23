@@ -1,0 +1,33 @@
+{
+  "status": "execute_completed",
+  "slug": "ai-labs-pelicanmaxxing",
+  "title": "所有 AI 画「骑车鹈鹕」都朝右，是在给出名基准刷分吗？1008 张 SVG 的实测：证据不足",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "背景",
+      "实验",
+      "结论",
+      "朝右",
+      "冷静"
+    ],
+    "titles": [
+      "一句「画只骑车的鹈鹕」，如何成了 AI 圈的隐形考场",
+      "1008 张 SVG，是怎么测出来的",
+      "五条证据，都指向「没在刷鹈鹕」",
+      "「所有鹈鹕都朝右」，其实不是偏见的证据",
+      "它证明了什么，又没证明什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 4,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
