@@ -1,0 +1,50 @@
+[
+  {
+    "title": "KeyStats",
+    "slug": "keystats",
+    "category_slug": "productivity",
+    "summary": "常驻菜单栏的键鼠使用统计小工具：记录你每天敲了多少键、点了多少次鼠标、鼠标移动和滚动了多远，还能看趋势、按键分布、热力图和分应用统计。明确「不记录你输入的文字、不记录你点在哪」。macOS/Windows，MIT 开源。",
+    "description": "想量化自己每天在键盘鼠标上的「工作量」？KeyStats 是一个常驻菜单栏的轻量原生小工具（macOS 和 Windows 都有），记录你每天的按键次数、鼠标点击次数、鼠标移动距离和滚动距离，并提供趋势曲线、按键分布、热力图、分应用统计等视图。它特别强调隐私：**只统计「次数和距离」，不记录你输入的具体文字、也不记录你点击的位置内容**（官网原话 No input content is stored），还提供可选的端到端加密多设备同步。项目开源（MIT），GitHub 星标 1400+、更新活跃，被 awesome-mac 收录，macOS 可用 brew 一行安装。",
+    "website_url": "https://keystats.vercel.app/",
+    "download_url": "https://github.com/debugtheworldbot/keyStats/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "想量化自己每天键鼠使用量、了解使用习惯的人\n喜欢数据化、爱看统计图表的效率工具爱好者\n在意隐私、希望统计工具不记录输入内容的用户",
+    "use_cases": "菜单栏随时查看今天敲了多少键、点了多少次鼠标\n看按键分布、热力图，了解自己的输入习惯\n用可选的端到端加密同步，在多台设备间合并统计",
+    "pros": "记录按键/点击/移动/滚动，含趋势、热力图、分应用统计\n明确只统计次数和距离、不记录输入文字与点击内容，隐私友好\n跨 macOS/Windows，开源（MIT），brew 可装，更新活跃",
+    "cons": "需要授予输入监听/辅助功能权限才能统计\n是使用量统计工具，不含自动化、宏等更重的功能\n多设备同步为可选功能，需自行开启配置",
+    "risk_notice": "统计需要输入监听/辅助功能权限；据官方说明它只记录按键与鼠标的次数、距离等统计量，不记录你输入的文字或点击的具体内容。请从官方仓库 Release 或 brew 官方 tap 下载。"
+  },
+  {
+    "title": "SkreenPro",
+    "slug": "skreenpro",
+    "category_slug": "productivity",
+    "summary": "开源免费的 macOS 截图美化工具，CleanShot X 风格的平替：给截图加漂亮背景、阴影、边框、圆角和留白，快速做出适合分享、发文档的精致图。基于 Electron + React 开发，MIT 开源。",
+    "description": "把随手截的图变成适合发推、写文档、做演示的精致图，是很多创作者和开发者的高频需求。SkreenPro 是一款开源免费的 macOS 截图美化编辑器（基于 Electron + React + Konva 开发），提供一套专业的美化工具：自定义背景（纯色或图片）、可调模糊与偏移的阴影、边框样式与粗细、圆角、留白间距等，支持拖拽导入。它另带可选的云端同步（基于 Supabase，GitHub/Google OAuth 登录），不用则纯本地也能编辑。项目开源（MIT），有官网 skreen.pro 与正式 Release。需要说明：项目当前星标较少、最近版本为 1.0.1、更新节奏偏慢，且预编译版主要面向 Apple Silicon。",
+    "website_url": "https://skreen.pro/",
+    "download_url": "https://github.com/SkreenPro/SkreenPro/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "经常要把截图美化后分享、发文档的创作者和开发者\n想要 CleanShot X 那种截图美化、但偏好开源免费方案的人\n用 Apple Silicon Mac、想快速给截图加背景阴影的人",
+    "use_cases": "给截图加背景、阴影、圆角，做成适合分享的精致图\n给产品截图统一加边框留白，用于文档或演示\n对随手截的图做快速美化后导出",
+    "pros": "背景/阴影/边框/圆角/留白等美化工具齐全，上手快\n开源免费（MIT），有官网与正式 Release，云同步为可选\nCleanShot X 风格的截图美化，适合创作者与开发者",
+    "cons": "仅 macOS，且预编译版主要面向 Apple Silicon\n项目星标较少、最近版本 1.0.1、更新节奏偏慢，成熟度有限\n云同步依赖 Supabase 并需 OAuth 登录，介意者可只用本地功能",
+    "risk_notice": "云同步为可选功能，会用到第三方账号登录（GitHub/Google）；不需要可只用本地编辑。请从官网 skreen.pro 或其 GitHub Release 下载。"
+  },
+  {
+    "title": "SubsTracker",
+    "slug": "substracker",
+    "category_slug": "online-tools",
+    "summary": "基于 Cloudflare Workers 的自托管「订阅到期提醒」系统：在网页里管理域名、会员、账单等各类订阅，到点通过企业微信 / Bark / ntfy / Telegram 等 10 种渠道推送提醒，避免忘记续费或被自动扣款。MIT 开源、GitHub 近 3000 星。",
+    "description": "域名、会员、云服务、各种订阅到期日很容易忘，一不留神要么服务中断、要么被自动续费扣款。SubsTracker 是一个基于 Cloudflare Workers + KV 的轻量级自托管订阅管理系统：在网页后台里录入各类订阅及到期日，设置提前提醒（如提前 7/3/1 天和当天），到点自动通过企业微信、Bark、ntfy、Telegram 等 **10 种通知渠道**把提醒推送给你，并自带发送与调度日志方便排查。部署在自己的 Cloudflare 账户下，数据自持。项目开源（MIT），GitHub 星标近 3000、更新活跃，可用命令行或 GitHub Actions 一键部署。",
+    "website_url": "https://github.com/wangwangit/SubsTracker",
+    "download_url": "https://github.com/wangwangit/SubsTracker",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "手里有域名、会员、云服务等多项订阅、怕忘记续费的人\n想避免被自动扣款、需要提前到期提醒的人\n愿意自托管、希望订阅数据留在自己 Cloudflare 账户里的人",
+    "use_cases": "录入各类订阅到期日，提前几天自动收到续费提醒\n用企业微信/Bark/ntfy 等自己顺手的渠道接收提醒\n把域名、会员、账单集中在一个网页后台统一管理",
+    "pros": "自托管在 Cloudflare Workers，数据自持，部署简单\n支持企业微信/Bark/ntfy/Telegram 等 10 种通知渠道\n开源（MIT），GitHub 近 3000 星，更新活跃，带发送/调度日志",
+    "cons": "需要有 Cloudflare 账户并自行部署，对纯小白有一点门槛\n面向个人订阅提醒，不做多用户协作或复杂审批流\n部分通知渠道（如 Telegram）在国内网络环境下不一定可用，可改用企业微信/Bark 等",
+    "risk_notice": "部署后默认登录为 admin/password，请务必第一时间在「系统配置」修改密码；各通知渠道的 Token、Cloudflare 凭据请妥善保管，勿泄露或提交到公开仓库。"
+  }
+]

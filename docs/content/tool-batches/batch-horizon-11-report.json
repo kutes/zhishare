@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-11",
+  "plan": [
+    {
+      "slug": "keystats",
+      "title": "KeyStats",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\keystats-final.jpg"
+    },
+    {
+      "slug": "skreenpro",
+      "title": "SkreenPro",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\skreenpro-final.jpg"
+    },
+    {
+      "slug": "substracker",
+      "title": "SubsTracker",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\substracker-final.jpg"
+    }
+  ],
+  "inserted": [
+    "keystats",
+    "skreenpro",
+    "substracker"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
