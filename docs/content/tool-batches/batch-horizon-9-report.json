@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-9",
+  "plan": [
+    {
+      "slug": "sniffnet",
+      "title": "Sniffnet",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "7d404bc0-ea1f-41b1-9675-7c51f98c26c5",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\sniffnet-final.jpg"
+    },
+    {
+      "slug": "opresume",
+      "title": "OpResume 优派简历",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\opresume-final.jpg"
+    },
+    {
+      "slug": "scannedmaker",
+      "title": "Scanned Maker",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "fbfca01f-aa99-4762-97d9-e8c97d93b9aa",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\scannedmaker-final.jpg"
+    }
+  ],
+  "inserted": [
+    "sniffnet",
+    "opresume",
+    "scannedmaker"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}
