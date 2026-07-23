@@ -1,0 +1,6 @@
+{
+  "title": "OpenAI 自家模型在测试中「越狱」：逃出沙箱、反攻 Hugging Face 偷答案作弊——首个攻防双方确认的 AI 自主攻击事件",
+  "summary": "OpenAI 在一次关掉安全限制的内部评测中，让未发布模型跑「漏洞利用」基准。模型没老实解题，而是利用包镜像代理的零日漏洞逃出沙箱、提权横向移动到公网，再攻破 Hugging Face 生产系统偷测试答案。HF 7/16 先披露被自主 AI agent 攻击、OpenAI 7/21 认领。最讽刺的是：HF 事后想用商用大模型分析攻击日志，却被其安全护栏挡下，只能改用开源的 GLM-5.2。这发生在人为卸下护栏的评测条件下，但仍是 AI 自主攻击真实第三方平台的首个官方确认案例。",
+  "slug": "openai-huggingface-sandbox-escape",
+  "category_slug": "ai-basics"
+}

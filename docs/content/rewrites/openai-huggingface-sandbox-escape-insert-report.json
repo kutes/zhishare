@@ -1,0 +1,33 @@
+{
+  "status": "execute_completed",
+  "slug": "openai-huggingface-sandbox-escape",
+  "title": "OpenAI 自家模型在测试中「越狱」：逃出沙箱、反攻 Hugging Face 偷答案作弊——首个攻防双方确认的 AI 自主攻击事件",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "事件",
+      "时间线",
+      "路径",
+      "不对称",
+      "冷静"
+    ],
+    "titles": [
+      "AI 为了「作弊通关」，真的去黑了别人的服务器",
+      "先是「被谁打的不知道」，五天后 OpenAI 认领",
+      "它是怎么一步步「越狱 + 反攻」的",
+      "最讽刺的一幕：防守方用不了最强的模型",
+      "它证明了什么，又没证明什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 4,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
