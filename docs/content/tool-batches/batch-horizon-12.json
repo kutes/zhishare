@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Palmier Pro",
+    "slug": "palmier-pro",
+    "category_slug": "video-audio",
+    "summary": "「为 AI 而生」的 macOS 视频编辑器：让 Claude、Codex 等 AI 工具通过 MCP 直接读取和编辑你的多轨时间轴，还能在剪辑里调用大模型生成图片和视频。开源（GPL-3.0）、GitHub 1.1 万星。注意：需要 macOS 26 (Tahoe) + Apple Silicon，且带付费订阅档。",
+    "description": "大多数剪辑软件是给人手动操作的，Palmier Pro 反过来把 AI 放在中心：它是一款开源的 macOS 视频编辑器，内置本地 MCP 服务器，让 Claude、Codex 这类 AI 智能体能直接读取、管理项目并编辑多轨时间轴，也能在剪辑过程中直接调用最新的大模型生成图片和视频，把「AI 生成」和「传统剪辑」打通。它用 Swift + 原生 macOS API 开发，也提供应用内聊天。项目开源（GPL-3.0），GitHub 星标约 1.1 万、更新活跃，是 YC S24 项目。需要重点留意：目前**要求 macOS 26 (Tahoe) 且仅支持 Apple Silicon**，同时官网设有付费 Pro/Max 订阅档（面向 AI 生成等高级能力），并非所有功能都免费。",
+    "website_url": "https://palmier.io/",
+    "download_url": "https://github.com/palmier-io/palmier-pro/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "想让 AI 智能体（Claude/Codex）参与视频剪辑流程的创作者\n需要在剪辑里直接生成图片/视频、打通 AI 与时间轴的人\n用最新款 Apple Silicon Mac、愿意尝鲜 AI 原生剪辑的用户",
+    "use_cases": "让 Claude/Codex 通过 MCP 直接读改多轨时间轴、管理项目\n在剪辑过程中调用大模型即时生成图片或视频素材\n把 AI 生成与传统剪辑合并到一个工作流里",
+    "pros": "AI 原生设计，支持通过 MCP 让 AI 智能体直接操作时间轴\n可在剪辑内调用大模型生成图片/视频，打通生成与剪辑\n开源（GPL-3.0），Swift 原生开发，GitHub 约 1.1 万星、更新活跃",
+    "cons": "硬件门槛高：要求 macOS 26 (Tahoe) 且仅支持 Apple Silicon\n带付费 Pro/Max 订阅档，AI 生成等高级功能并非全部免费\nAI 生成通常依赖外部大模型，会产生相应的调用成本",
+    "risk_notice": "AI 生成的画面与剪辑结果仅供参考，商用前请核对版权与授权；接入的大模型 API Key 请妥善保管。请从官网 palmier.io 或其 GitHub Release 下载。"
+  },
+  {
+    "title": "98.css",
+    "slug": "98css",
+    "category_slug": "design-tools",
+    "summary": "一个把「Windows 98 界面」还原成 CSS 的设计系统：用语义化 HTML + 一行引入的样式，就能做出带立体边框、标题栏、复选框的怀旧 Win98 风网页。纯 CSS、无 JavaScript，约 4.35KB，MIT 开源、GitHub 1.1 万星。",
+    "description": "想给网页做一套「复古 Windows 98」的怀旧界面？98.css 是一个专门还原老式 UI 的 CSS 设计系统：它只用 CSS、不含任何 JavaScript，靠语义化 HTML（<button>、<input>、<fieldset> 等）就能把按钮、复选框、单选、滑块、下拉、窗口标题栏、状态栏、树视图、标签页等组件渲染成经典的 Win98 立体灰质感。用法极简，一行 <link> 从 unpkg 引入、或 npm 安装即可，压缩后约 4.35KB，且因为不带 JS，能和 React、Vue 或原生任意前端框架搭配。项目开源（MIT），GitHub 星标约 1.1 万，是复古 UI 里最知名的方案之一，作者把无障碍访问也列为目标之一。",
+    "website_url": "https://jdan.github.io/98.css/",
+    "download_url": "https://github.com/jdan/98.css",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "想给网页/小项目做 Windows 98 怀旧风格的开发者\n喜欢复古 UI、做个人主页或趣味项目的人\n需要一套零 JS、可搭配任意框架的复古组件样式的前端",
+    "use_cases": "给个人主页、Demo 或趣味项目套上 Win98 复古外观\n用语义化 HTML 快速搭出带立体边框的窗口、按钮、表单\n配合 React/Vue 或原生前端，做怀旧风格界面",
+    "pros": "纯 CSS、无 JavaScript，兼容任意前端框架\n组件齐全（窗口/按钮/复选框/滑块/树视图等），高度还原 Win98\n体积小（约 4.35KB），一行引入即用，开源（MIT）、1.1 万星",
+    "cons": "只提供样式、不含交互逻辑，行为需要你自己实现\n是特定的怀旧美学，适合趣味/个性化项目，非通用 UI 方案\n项目成熟稳定、更新频率低（作为样式库属正常）",
+    "risk_notice": ""
+  },
+  {
+    "title": "OpenBidKit 易标",
+    "slug": "openbidkit",
+    "category_slug": "ai-tools",
+    "summary": "开源的 AI 投标工具箱「易标」：用 AI 辅助编写标书，并提供知识库、标书查重、废标项检查等投标常用功能，帮中小企业更快地做标书。桌面应用（Electron），AGPL-3.0 开源，GitHub 2000+ 星。",
+    "description": "投标做标书是件又费时又容易踩坑的事。易标（OpenBidKit）是一款开源的 AI 投标工具箱，核心是用 AI 辅助编写标书：围绕招标要求生成/完善标书内容，并配套了企业知识库、标书查重、废标项检查等投标场景常用的功能，目标是帮中小企业更高效地完成投标材料。它是基于 Electron + React + TypeScript 开发的桌面应用，项目开源（AGPL-3.0），GitHub 星标 2000+、更新活跃。需要说明：AI 生成功能通常需要接入大模型；官方站点另设有付费方案（托管/增值服务），自行下载开源版可免费使用。",
+    "website_url": "https://yibiao.pro/",
+    "download_url": "https://github.com/FB208/OpenBidKit_Yibiao/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "经常要写标书、做投标材料的中小企业与个人\n想用 AI 提高标书编写效率、并做查重/废标项自查的人\n需要一个开源、可本地使用的投标工具箱的用户",
+    "use_cases": "用 AI 围绕招标要求辅助生成、完善标书内容\n对标书做查重、废标项检查，降低低级失误\n用企业知识库沉淀常用资料，复用到不同标书里",
+    "pros": "AI 辅助写标书 + 知识库 + 查重 + 废标项检查，覆盖投标常用环节\n开源（AGPL-3.0），桌面应用，GitHub 2000+ 星、更新活跃\n开源版可本地免费使用，数据可自行掌控",
+    "cons": "AI 生成功能通常需接入大模型，会产生调用成本\n官方站点设有付费方案，并非所有增值服务都免费\nAGPL-3.0 为强 copyleft 协议，二次开发/商用集成需遵守其条款",
+    "risk_notice": "AI 生成的标书内容仅供辅助，务必人工逐项核对与合规审查后再用于正式投标，切勿直接照搬；官网宣传的「中标率」等为营销口径，不代表实际效果。接入的大模型 API Key 请妥善保管。"
+  }
+]
