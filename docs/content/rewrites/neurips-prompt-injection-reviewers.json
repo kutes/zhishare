@@ -1,0 +1,6 @@
+{
+  "title": "顶级会议往论文里埋「隐形暗号」，专抓用 AI 代写审稿的人：NeurIPS 用 prompt injection 反制，也惹来争议",
+  "summary": "为了揪出「把论文丢给大模型、让 AI 代写审稿」的懒政，AI 顶会 NeurIPS 2026 在送审论文里植入只有 AI 会读到的隐藏指令，诱导 LLM 在评审里写出暗号短语（如 This work addresses the central challenge）——评审出现暗号就等于自曝 AI 代写。已知暗号两句，有人在 PDF 转 Word 时才发现。隔壁 ICML 2026 用类似手段桌拒近 500 篇（约 2%）。但争议很大：prompt injection 正是会议禁止作者使用的手段，批评者称「预设恶意的陷阱会腐蚀系统信任」。一次聪明的反制，也是一记「连防作弊都要靠藏话」的警钟。",
+  "slug": "neurips-prompt-injection-reviewers",
+  "category_slug": "ai-basics"
+}

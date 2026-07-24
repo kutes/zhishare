@@ -1,0 +1,33 @@
+{
+  "status": "execute_completed",
+  "slug": "neurips-prompt-injection-reviewers",
+  "title": "顶级会议往论文里埋「隐形暗号」，专抓用 AI 代写审稿的人：NeurIPS 用 prompt injection 反制，也惹来争议",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "事件",
+      "手法",
+      "战果",
+      "争议",
+      "冷静"
+    ],
+    "titles": [
+      "会议在论文里埋了只有 AI 看得到的「暗号」",
+      "暗号是哪两句，又是怎么被发现的",
+      "不止 NeurIPS：ICML 已因此桌拒近 500 篇",
+      "抓作弊，还是「设套」？",
+      "它反映了什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 4,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}
