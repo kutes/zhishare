@@ -1,0 +1,37 @@
+{
+  "status": "execute_completed",
+  "batch": "batch-horizon-13",
+  "plan": [
+    {
+      "slug": "finetune",
+      "title": "FineTune",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\finetune-final.jpg"
+    },
+    {
+      "slug": "appports",
+      "title": "AppPorts",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\appports-final.jpg"
+    },
+    {
+      "slug": "macusb",
+      "title": "macUSB",
+      "status": "ready",
+      "problems": [],
+      "categoryId": "b4b7ee68-2263-4296-be59-b00b046905a7",
+      "coverPath": "C:\\Users\\Administrator\\Documents\\zhishare\\artifacts\\tool-cover-shots\\macusb-final.jpg"
+    }
+  ],
+  "inserted": [
+    "finetune",
+    "appports",
+    "macusb"
+  ],
+  "failed": [],
+  "secret_values_printed": false
+}

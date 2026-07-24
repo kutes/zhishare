@@ -1,0 +1,50 @@
+[
+  {
+    "title": "FineTune",
+    "slug": "finetune",
+    "category_slug": "productivity",
+    "summary": "常驻菜单栏的 macOS 音频控制工具：给每个 App 单独调音量、把声音路由到不同输出设备、多设备同时播放，还带 10 段均衡器。免费开源（GPL-3.0）的 SoundSource 平替，GitHub 8000+ 星。",
+    "description": "macOS 自带的音量只能整体调，想给 Spotify 单独压低、把浏览器的声音单独送到某个音箱就没办法。FineTune 是一个常驻菜单栏的音频控制工具，把这些都补齐了：**分应用单独调音量**、把不同 App 的声音**路由到不同的输出设备**、**多设备同时输出**，还内置 **10 段均衡器**和逐设备的音量/静音控制。它用纯 Swift 开发、界面原生，定位是付费工具 SoundSource 的免费开源平替。项目开源（GPL-3.0），GitHub 星标约 8200、更新活跃，有正式 Release。",
+    "website_url": "https://github.com/ronitsingh10/FineTune",
+    "download_url": "https://github.com/ronitsingh10/FineTune/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "想给不同 App 单独调音量的 Mac 用户\n需要把声音分别送到不同音箱/耳机、或多设备同时播放的人\n想要 SoundSource 那类功能、但偏好免费开源方案的人",
+    "use_cases": "把某个 App（如 Spotify、浏览器）的音量单独调高或压低\n把不同应用的声音路由到不同的输出设备\n多设备同时输出，或用 10 段 EQ 调整整体音色",
+    "pros": "分应用音量 + 多设备输出 + 音频路由 + 10 段 EQ，功能齐全\n免费开源（GPL-3.0），纯 Swift 原生开发，界面清爽\nGitHub 约 8200 星、更新活跃，是 SoundSource 的开源平替",
+    "cons": "仅支持 macOS\n涉及系统音频路由，需授予相应权限、可能依赖音频驱动组件\n功能聚焦音频控制，不做录音、剪辑等更重的音频处理",
+    "risk_notice": "该工具需要访问系统音频、可能需安装音频驱动/授予权限才能实现路由，请从官方 GitHub Release 下载安装。"
+  },
+  {
+    "title": "AppPorts",
+    "slug": "appports",
+    "category_slug": "productivity",
+    "summary": "帮 Mac「腾空间」的开源工具：把体积庞大的应用无缝迁移到移动硬盘等外部存储，并自动建立软链接，让系统照常运行；需要时可随时一键还原。macOS 12.0+，Apache-2.0 开源，GitHub 1900+ 星。",
+    "description": "Mac 的内置存储寸土寸金，一些大型应用（IDE、游戏等）动辄几个 GB。AppPorts 是一款开源的 macOS 工具，专门帮你释放本地空间：把庞大的应用**迁移到外部存储**（如移动硬盘），并在原位置**自动建立软链接（symlink）**，让系统和你「无感」——应用看起来还在原地、照常启动运行，但实际占的是外部存储的空间。它还支持随时**一键还原**回本地。项目开源（Apache-2.0），基于 Swift 开发，界面能并列显示「本地应用」与「外部应用库」，GitHub 星标 1900+、更新活跃，要求 macOS 12.0 及以上。",
+    "website_url": "https://appports.shimoko.com/",
+    "download_url": "https://github.com/wzh4869/AppPorts/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "内置硬盘吃紧、装了很多大型应用的 Mac 用户\n想把不常用的大应用挪到移动硬盘、腾出本地空间的人\n希望迁移后系统照常运行、且能随时还原的用户",
+    "use_cases": "把体积大的应用迁移到移动硬盘，释放本地磁盘空间\n迁移后靠自动软链接让应用照常从原位置启动\n需要时一键把应用还原回本地存储",
+    "pros": "迁移大应用到外部存储 + 自动软链接，系统无感照常运行\n支持一键还原，操作可逆，界面并列显示本地/外部应用\n开源（Apache-2.0），GitHub 1900+ 星、更新活跃",
+    "cons": "仅支持 macOS 12.0 及以上\n迁移到外部存储的应用，在该存储断开时将无法正常运行\n迁移涉及移动应用文件，操作前建议了解清楚再进行",
+    "risk_notice": "被迁移到外部硬盘的应用，需在该硬盘连接时才能运行；迁移/还原涉及移动应用文件，重要数据请先备份，并从官网或其 GitHub Release 下载。"
+  },
+  {
+    "title": "macUSB",
+    "slug": "macusb",
+    "category_slug": "productivity",
+    "summary": "Mac 上的一体化 U 盘启动盘制作工具：下载系统镜像、写入 U 盘、做成可启动盘，一条龙搞定。开源免费（MIT），可用 Homebrew 安装，要求 macOS 14.6 及以上。",
+    "description": "在 Mac 上做一个可启动的 U 盘（装系统、跑 Linux、做急救盘）通常要折腾命令行和多个工具。macUSB 把这件事做成一体化：**下载镜像 → 写入 U 盘 → 做成可启动盘**（Download、Flash、Boot）一条龙，界面简洁，官方口号就是「the all-in-one USB creator for Mac」。它开源免费（MIT），可从官网直接下载或用 Homebrew 一行安装，当前版本 v2.3.1，要求 macOS 14.6 及以上。适合需要制作启动盘、又不想折腾命令行的 Mac 用户。",
+    "website_url": "https://macusb.app/",
+    "download_url": "https://github.com/Kruszoneq/macUSB/releases",
+    "is_free": true,
+    "is_open_source": true,
+    "target_users": "需要在 Mac 上制作系统/Linux/急救启动盘的人\n嫌命令行做启动盘太麻烦、想要图形化一体工具的用户\n偏好开源免费、可用 Homebrew 安装的 Mac 用户",
+    "use_cases": "下载镜像并写入 U 盘，制作可启动的安装盘\n为装系统、跑 Linux Live 或做急救盘准备启动 U 盘\n用 Homebrew 一行安装，图形化完成整个制作流程",
+    "pros": "下载、写入、制作启动盘一体化，免折腾命令行\n开源免费（MIT），可用 Homebrew 安装，界面简洁\n更新活跃，有正式 Release，GitHub 2000+ 星",
+    "cons": "仅支持 macOS，且要求 macOS 14.6 及以上\n制作启动盘会格式化并清空目标 U 盘的原有数据\n下载系统镜像需要一定的网络与磁盘空间",
+    "risk_notice": "制作启动盘会格式化目标 U 盘、清空其上原有数据，操作前请确认已选对设备并备份重要文件；请从官网 macusb.app 或其 GitHub Release 下载。"
+  }
+]
