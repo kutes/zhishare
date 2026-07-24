@@ -1,0 +1,33 @@
+{
+  "status": "execute_completed",
+  "slug": "activevision-benchmark",
+  "title": "AI 会「读图」却不会「看图」：新基准 ActiveVision 上最强模型只得 10.6%，人类 96.1%",
+  "category": "ai-basics",
+  "cover": true,
+  "structure": {
+    "sections": 5,
+    "tags": [
+      "现象",
+      "考题",
+      "成绩",
+      "原因",
+      "冷静"
+    ],
+    "titles": [
+      "AI 能给整幅画写小作文，却数不清一团乱线里有几个圈",
+      "它到底考什么：三类「必须反复看」的任务",
+      "10.6% 对 96.1%，\"开挂\"也追不上",
+      "人看图是「闭环」，模型是「看一眼就说」",
+      "它说明什么，又没说明什么"
+    ],
+    "tldr_items": 5,
+    "has_source_note": true,
+    "why_count": 1,
+    "keypoint_count": 4,
+    "first_section_weights": [
+      "lead",
+      "big"
+    ]
+  },
+  "secret_values_printed": false
+}

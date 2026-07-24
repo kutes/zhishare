@@ -1,0 +1,6 @@
+{
+  "title": "AI 会「读图」却不会「看图」：新基准 ActiveVision 上最强模型只得 10.6%，人类 96.1%",
+  "summary": "南加州大学的新基准 ActiveVision（论文《An Exam for Active Observers》）专门测「主动视觉观察」——数乱线里的闭环、跟箭头链走到终点、找完全相同的剪影等必须反复回看的题。结果前沿多模态模型全面崩溃：最强的 GPT-5.5 只得 10.6%（17 任务里 11 个 0 分），Claude Fable 5 仅 3.5%，而三名人类平均 96.1%、每题约 30 秒。让 Claude Code+Fable 5 自己写代码当工具智能体也只到 50.6%、每题要 12–15 分钟。原因：人看图是「猜测→回看验证」的闭环，模型却是「看一眼就描述」。会认图不等于能可靠读工程图、电路图。",
+  "slug": "activevision-benchmark",
+  "category_slug": "ai-basics"
+}
